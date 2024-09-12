@@ -2,7 +2,7 @@ var goobers = 1;
 var finders = 0;
 
 
-document.getElementById("goobercount").innerHTML = "goober count: "+goobers;
+document.getElementById("goobercount").innerHTML = "goober count: "+goobers ;
 
 
 
