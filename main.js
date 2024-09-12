@@ -13,7 +13,7 @@ function load(){
 }
 
 
-// most important one
+// most important one bc yea
 var save={
 goobers:goobers,
 finders:finders
