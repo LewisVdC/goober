@@ -1,50 +1,56 @@
-var goobers = 1;
-var finders = 0;
+var red = 10;
+var redfilter = 0;
+var redpointer = 0;
+var bigredfilter = 0;
 
+document.getElementById("redcount").innerHTML = "red: " + red;
 
-document.getElementById("goobercount").innerHTML = "goober count: "+goobers ;
-
-
-
-function load(){
-    var savegame = JSON.parse(localStorage.getItem("save"));
-    if (typeof savegame.goobers !== "undefined") goobers = savegame.goobers;
-    if (typeof savegame.finders !== "undefined") finders = savegame.finders;
+function load() {
+  var savegame = JSON.parse(localStorage.getItem("save"));
+  if (typeof savegame.red !== "undefined") red = savegame.red;
+  if (typeof savegame.redfilter !== "undefined") redfilter = savegame.redfilter;
+  //
+  //
+  //
+  //
+  //
+  var nextCost = Math.floor(10 * Math.pow(1.1, redfilter));
+  document.getElementById("redfiltercost").innerHTML = nextCost;
+  document.getElementById("redfiltercount").innerHTML = redfilter;
 }
-
 
 // most important one bc yea
-var save={
-goobers:goobers,
-finders:finders
-} 
+var save = {
+  red: red,
+  redfilter: redfilter,
+};
 
-document.getElementById("goobercount").innerHTML = "goober count: "+goobers;
+document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
 
-function goober(number){goobers=goobers+number
-    document.getElementById("goobercount").innerHTML = "goober count: "+goobers;
+function calcred(number) {
+  red = red + number / 10;
+  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
 }
 
-function buyFinder(){
-    document.getElementById("goobercount").innerHTML = "goober count: "+goobers;
-    var findercost = Math.floor(10*Math.pow(1.1,finders));
-    if (goobers >= findercost){
-        finders=finders+1
-        goobers=goobers-findercost
-        document.getElementById("findercount").innerHTML= finders;
-        document.getElementById("goobercount").innerHTML = "goober count: "+goobers;
-    }
+function buyredfilter() {
+  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+  var redfiltercost = Math.floor(10 * Math.pow(1.1, redfilter));
+  if (red >= redfiltercost) {
+    redfilter = redfilter + 1;
+    red = red - redfiltercost;
+    document.getElementById("redfiltercount").innerHTML = redfilter;
+    document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+  }
 
-    var nextCost = Math.floor(10 * Math.pow(1.1,finders));
-    document.getElementById('findercost').innerHTML = nextCost; 
+  var nextCost = Math.floor(10 * Math.pow(1.1, redfilter));
+  document.getElementById("redfiltercost").innerHTML = nextCost;
 }
 
-
-window.setInterval(function(){
-    var save={
-        goobers:goobers,
-        finders:finders}
-    localStorage.setItem("save",JSON.stringify(save));
-    goober(finders)
-
-}, 1000);
+window.setInterval(function () {
+  var save = {
+    red: red,
+    redfilter: redfilter,
+  };
+  localStorage.setItem("save", JSON.stringify(save));
+  calcred(redfilter);
+}, 100);

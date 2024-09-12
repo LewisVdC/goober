@@ -1,14 +1,69 @@
 <head>
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body onload="load()">
-    <div id="toptext">ur a goober</div>
-    <div id=top> <span id="goobercount"></span></div>
-    <div id="red">
-        <button id="guy" onClick="goober(1)">get a goober</button>
-        <button id="find" onClick="buyFinder()"><span id="findercount"> 0! ☹ aww</span> | get someone to find u goobers (they want money though) annual pay=<span id="findercost">10</span></button>
+  <div id="toptext"></div>
+  <div id="red">
+    <div id="top"><span id="redcount"></span></div>
+    <div id="redbuildings">
+      <div id="build1">
+        <div id="building1text">
+          <span>red filter: <span id="redfiltercount"></span></span>
+        </div>
+        <div id="building1">
+          <button id="redfilter" onClick="buyredfilter()">
+            cost:
+            <span id="redfiltercost">10</span>
+          </button>
+        </div>
+      </div>
+      <div id="build2">
+        <div id="building2text">
+          <span>red laser pointer: <span id="findercount"></span></span>
+        </div>
+        <div id="building2">
+          <button id="find" onClick="buyFinder()">
+            cost:
+            <span id="findercost">10</span>
+          </button>
+        </div>
+      </div>
+      <div id="build3">
+        <div id="building3text">
+          <span>big red filter: <span id="findercount"></span></span>
+        </div>
+        <div id="building3">
+          <button id="find" onClick="buyFinder()">
+            cost:
+            <span id="findercost">10</span>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div id="building4text">
+          <span>idk yet: <span id="findercount"></span></span>
+        </div>
+        <div id="building4">
+          <button id="find" onClick="buyFinder()">
+            cost:
+            <span id="findercost">10</span>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div id="building5text">
+          <span>idk either: <span id="findercount"></span></span>
+        </div>
+        <div id="building5">
+          <button id="find" onClick="buyFinder()">
+            cost:
+            <span id="findercost">10</span>
+          </button>
+        </div>
+      </div>
     </div>
-    <div id="green"></div>
-    <div id="blue"></div>
-    <script type="text/javascript" src="main.js"></script>
+  </div>
+  <div id="green"></div>
+  <div id="blue"></div>
+  <script type="text/javascript" src="main.js"></script>
 </body>
