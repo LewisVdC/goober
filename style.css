@@ -63,8 +63,60 @@ div#build3 {
   margin: auto;
   width: 50%;
   text-align: left;
-  padding-top: 5%;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+div#building3 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#building3text {
+  width: 55%;
+}
+div#build4 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#building4 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#building4text {
+  width: 55%;
+}
+div#build5 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#building5 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#building5text {
+  width: 55%;
+}
+
+button#redfilter {
+  border: ridge;
+  width: 100px;
+  height: 24px;
+}
+button#redpointer {
+  width: 100px;
+  border: ridge;
+  height: 24px;
 }
