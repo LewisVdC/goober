@@ -112,11 +112,52 @@ div#building5text {
 
 button#redfilter {
   border: ridge;
-  width: 100px;
+  width: 150px;
   height: 24px;
 }
 button#redpointer {
-  width: 100px;
+  width: 150px;
   border: ridge;
   height: 24px;
+}
+button#bigredfilter {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+button#bigredpointer {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+button#rednanometerwave {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+div#upgrades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25%;
+}
+div#upgradesbox {
+  padding-top: 2%;
+  color: white;
+  border: 1px;
+  display: flex;
+  justify-content: center;
+}
+button#upgrade1 {
+  transition-duration: 0.5s;
+  width: 100px;
+  height: 100px;
+}
+button#upgrade1:hover {
+  transition-duration: 0.5s;
+  width: 120px;
+  height: 120px;
+}
+.bought1 {
+  color: red;
 }
