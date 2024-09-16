@@ -6,6 +6,7 @@ var bigredpointer = 0;
 var rednanometerwave = 0;
 var upgrade1 = 0;
 var debugnumber = 0;
+var loaded = 0;
 
 document.getElementById("redcount").innerHTML = "red: " + red;
 
@@ -45,7 +46,8 @@ function load() {
   document.getElementById("bigredpointercost").innerHTML = nextCost4;
   document.getElementById("rednanometerwavecost").innerHTML = nextCost5;
   document.getElementById("rednanometerwavecount").innerHTML = rednanometerwave;
-  console.log(loaded)
+  console.log("loaded")
+  loaded = 1;
 }
 
 // most important one bc yea oh nvm this is kinda useless
@@ -145,6 +147,9 @@ function redupgrade1() {
 }
 
 window.setInterval(function () {
+  //ugh
+  if (loaded === 1){
+  
   //unlocks
   if (red >= 50) {
     var upgradesred = 1;
@@ -177,4 +182,4 @@ window.setInterval(function () {
       //rednanometerwave
       (rednanometerwave * 0.5 + 1)
   );
-}, 10);
+}}, 10);
