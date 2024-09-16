@@ -85,7 +85,7 @@ function buyredpointer() {
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
   }
 
-  var nextCost2 = Math.floor(10 * Math.pow(1.1, redfilter));
+  var nextCost2 = Math.floor(100 * Math.pow(1.1, redfilter));
   document.getElementById("redpointercost").innerHTML = nextCost2;
 }
 
