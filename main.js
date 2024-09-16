@@ -45,6 +45,7 @@ function load() {
   document.getElementById("bigredpointercost").innerHTML = nextCost4;
   document.getElementById("rednanometerwavecost").innerHTML = nextCost5;
   document.getElementById("rednanometerwavecount").innerHTML = rednanometerwave;
+  console.log(loaded)
 }
 
 // most important one bc yea oh nvm this is kinda useless
