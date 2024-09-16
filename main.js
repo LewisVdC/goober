@@ -57,7 +57,7 @@ document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
 
 function calcred(number) {
   debugnumber = number;
-  red = red + number / 10;
+  red = red + number / 100;
   document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
 }
 
@@ -176,4 +176,4 @@ window.setInterval(function () {
       //rednanometerwave
       (rednanometerwave * 0.5 + 1)
   );
-}, 100);
+}, 10);
