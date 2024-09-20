@@ -12,6 +12,7 @@ document.getElementById("redcount").innerHTML = "red: " + red;
 
 function load() {
   var savegame = JSON.parse(localStorage.getItem("save"));
+  if(savegame != null){
   if (typeof savegame.red !== "undefined") red = savegame.red;
   if (typeof savegame.redfilter !== "undefined") redfilter = savegame.redfilter;
   if (typeof savegame.redpointer !== "undefined")
@@ -46,7 +47,10 @@ function load() {
   document.getElementById("bigredpointercost").innerHTML = nextCost4;
   document.getElementById("rednanometerwavecost").innerHTML = nextCost5;
   document.getElementById("rednanometerwavecount").innerHTML = rednanometerwave;
-  console.log("loaded")
+  console.log("loaded");
+  loaded = 1;
+}
+  console.log("no saved game");
   loaded = 1;
 }
 
