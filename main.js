@@ -156,7 +156,7 @@ window.setInterval(function () {
   //ugh
   if (loaded === 1) {
     //unlocks
-    if (red >= 50) {
+    if (red >= 50000) {
       var upgradesred = 1;
       document.getElementById("upgrades").style.display = "flex";
       document.getElementById("upgradesbox").style.display = "flex";
