@@ -153,11 +153,13 @@ button#upgrade1 {
   width: 100px;
   height: 100px;
 }
-button#upgrade1:hover {
-  transition-duration: 0.5s;
-  width: 120px;
-  height: 120px;
-}
+
 .bought1 {
   color: red;
+}
+div#upgrades {
+  display: none;
+}
+div#upgradesbox {
+  display: none;
 }

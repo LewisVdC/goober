@@ -46,7 +46,7 @@ function load() {
   document.getElementById("bigredpointercost").innerHTML = nextCost4;
   document.getElementById("rednanometerwavecost").innerHTML = nextCost5;
   document.getElementById("rednanometerwavecount").innerHTML = rednanometerwave;
-  console.log("loaded")
+  console.log("loaded");
   loaded = 1;
 }
 
@@ -148,38 +148,40 @@ function redupgrade1() {
 
 window.setInterval(function () {
   //ugh
-  if (loaded === 1){
-  
-  //unlocks
-  if (red >= 50) {
-    var upgradesred = 1;
+  if (loaded === 1) {
+    //unlocks
+    if (red >= 50) {
+      var upgradesred = 1;
+      document.getElementById("upgrades").style.display = "flex";
+      document.getElementById("upgradesbox").style.display = "flex";
+    }
+
+    //and then make the unlocks work if they need extra code
+
+    //save
+    var save = {
+      red: red,
+      redfilter: redfilter,
+      redpointer: redpointer,
+      bigredfilter: bigredfilter,
+      bigredpointer: bigredpointer,
+      rednanometerwave: rednanometerwave,
+      upgrade1: upgrade1,
+    };
+    localStorage.setItem("save", JSON.stringify(save));
+
+    //increase red
+    calcred(
+      //filter
+      (redfilter * (redfilter * upgrade1 + 1) +
+        //pointer
+        redpointer * 10 +
+        //bigredfilter
+        bigredfilter * 100 +
+        //bigredpointer
+        bigredpointer * 1000) *
+        //rednanometerwave
+        (rednanometerwave * 0.5 + 1)
+    );
   }
-
-  //and then make the unlocks work if they need extra code
-
-  //save
-  var save = {
-    red: red,
-    redfilter: redfilter,
-    redpointer: redpointer,
-    bigredfilter: bigredfilter,
-    bigredpointer: bigredpointer,
-    rednanometerwave: rednanometerwave,
-    upgrade1: upgrade1,
-  };
-  localStorage.setItem("save", JSON.stringify(save));
-
-  //increase red
-  calcred(
-    //filter
-    (redfilter * (redfilter * upgrade1 + 1) +
-      //pointer
-      redpointer * 10 +
-      //bigredfilter
-      bigredfilter * 100 +
-      //bigredpointer
-      bigredpointer * 1000) *
-      //rednanometerwave
-      (rednanometerwave * 0.5 + 1)
-  );
-}}, 10);
+}, 10);
