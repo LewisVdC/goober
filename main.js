@@ -12,41 +12,47 @@ document.getElementById("redcount").innerHTML = "red: " + red;
 
 function load() {
   var savegame = JSON.parse(localStorage.getItem("save"));
-  if (typeof savegame.red !== "undefined") red = savegame.red;
-  if (typeof savegame.redfilter !== "undefined") redfilter = savegame.redfilter;
-  if (typeof savegame.redpointer !== "undefined")
-    redpointer = savegame.redpointer;
-  if (typeof savegame.bigredfilter !== "undefined")
-    bigredfilter = savegame.bigredfilter;
-  if (typeof savegame.bigredpointer !== "undefined")
-    bigredpointer = savegame.bigredpointer;
-  if (typeof savegame.rednanometerwave !== "undefined")
-    rednanometerwave = savegame.rednanometerwave;
-  if (typeof savegame.upgrade1 !== "undefined") upgrade1 = savegame.upgrade1;
-  //
-  //
-  //
-  //
-  //
-  if (upgrade1 === 1) {
-    document.getElementById("upgrade1cost").innerHTML = "bought";
+  if (savegame != null) {
+    if (typeof savegame.red !== "undefined") red = savegame.red;
+    if (typeof savegame.redfilter !== "undefined")
+      redfilter = savegame.redfilter;
+    if (typeof savegame.redpointer !== "undefined")
+      redpointer = savegame.redpointer;
+    if (typeof savegame.bigredfilter !== "undefined")
+      bigredfilter = savegame.bigredfilter;
+    if (typeof savegame.bigredpointer !== "undefined")
+      bigredpointer = savegame.bigredpointer;
+    if (typeof savegame.rednanometerwave !== "undefined")
+      rednanometerwave = savegame.rednanometerwave;
+    if (typeof savegame.upgrade1 !== "undefined") upgrade1 = savegame.upgrade1;
+    //
+    //
+    //
+    //
+    //
+    if (upgrade1 === 1) {
+      document.getElementById("upgrade1cost").innerHTML = "bought";
+    }
+    var nextCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
+    var nextCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
+    var nextCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
+    var nextCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer));
+    var nextCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave));
+    document.getElementById("redfiltercost").innerHTML = nextCost1;
+    document.getElementById("redfiltercount").innerHTML = redfilter;
+    document.getElementById("redpointercost").innerHTML = nextCost2;
+    document.getElementById("redpointercount").innerHTML = redpointer;
+    document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
+    document.getElementById("bigredfiltercost").innerHTML = nextCost3;
+    document.getElementById("bigredpointercount").innerHTML = bigredpointer;
+    document.getElementById("bigredpointercost").innerHTML = nextCost4;
+    document.getElementById("rednanometerwavecost").innerHTML = nextCost5;
+    document.getElementById("rednanometerwavecount").innerHTML =
+      rednanometerwave;
+    console.log("loaded");
+    loaded = 1;
   }
-  var nextCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
-  var nextCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
-  var nextCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
-  var nextCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer));
-  var nextCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave));
-  document.getElementById("redfiltercost").innerHTML = nextCost1;
-  document.getElementById("redfiltercount").innerHTML = redfilter;
-  document.getElementById("redpointercost").innerHTML = nextCost2;
-  document.getElementById("redpointercount").innerHTML = redpointer;
-  document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
-  document.getElementById("bigredfiltercost").innerHTML = nextCost3;
-  document.getElementById("bigredpointercount").innerHTML = bigredpointer;
-  document.getElementById("bigredpointercost").innerHTML = nextCost4;
-  document.getElementById("rednanometerwavecost").innerHTML = nextCost5;
-  document.getElementById("rednanometerwavecount").innerHTML = rednanometerwave;
-  console.log("loaded");
+  console.log("no saved game");
   loaded = 1;
 }
 
