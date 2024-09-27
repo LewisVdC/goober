@@ -4,7 +4,21 @@ var redpointer = 0;
 var bigredfilter = 0;
 var bigredpointer = 0;
 var rednanometerwave = 0;
-var upgrade1 = 0;
+var redupgrade1 = 0;
+var green = 10;
+var greenfilter = 0;
+var greenpointer = 0;
+var biggreenfilter = 0;
+var biggreenpointer = 0;
+var greennanometerwave = 0;
+var greenupgrade1 = 0;
+var blue = 10;
+var bluefilter = 0;
+var bluepointer = 0;
+var bigbluefilter = 0;
+var bigbluepointer = 0;
+var bluenanometerwave = 0;
+var blueupgrade1 = 0;
 var debugnumber = 0;
 var loaded = 0;
 
@@ -13,6 +27,7 @@ document.getElementById("redcount").innerHTML = "red: " + red;
 function load() {
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
+    //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
     if (typeof savegame.redfilter !== "undefined")
       redfilter = savegame.redfilter;
@@ -24,14 +39,46 @@ function load() {
       bigredpointer = savegame.bigredpointer;
     if (typeof savegame.rednanometerwave !== "undefined")
       rednanometerwave = savegame.rednanometerwave;
-    if (typeof savegame.upgrade1 !== "undefined") upgrade1 = savegame.upgrade1;
+    if (typeof savegame.redupgrade1 !== "undefined")
+      redupgrade1 = savegame.redupgrade1;
+
+    //green
+    if (typeof savegame.green !== "undefined") green = savegame.green;
+    if (typeof savegame.greenfilter !== "undefined")
+      greenfilter = savegame.greenfilter;
+    if (typeof savegame.greenpointer !== "undefined")
+      greenpointer = savegame.greenpointer;
+    if (typeof savegame.biggreenfilter !== "undefined")
+      biggreenfilter = savegame.biggreenfilter;
+    if (typeof savegame.biggreenpointer !== "undefined")
+      biggreenpointer = savegame.biggreenpointer;
+    if (typeof savegame.greennanometerwave !== "undefined")
+      greennanometerwave = savegame.greennanometerwave;
+    if (typeof savegame.greenupgrade1 !== "undefined")
+      greenupgrade1 = savegame.greenupgrade1;
+
+    //blue
+    if (typeof savegame.red !== "undefined") red = savegame.red;
+    if (typeof savegame.redfilter !== "undefined")
+      redfilter = savegame.redfilter;
+    if (typeof savegame.redpointer !== "undefined")
+      redpointer = savegame.redpointer;
+    if (typeof savegame.bigredfilter !== "undefined")
+      bigredfilter = savegame.bigredfilter;
+    if (typeof savegame.bigredpointer !== "undefined")
+      bigredpointer = savegame.bigredpointer;
+    if (typeof savegame.rednanometerwave !== "undefined")
+      rednanometerwave = savegame.rednanometerwave;
+    if (typeof savegame.redupgrade1 !== "undefined")
+      redupgrade1 = savegame.redupgrade1;
     //
     //
     //
     //
     //
-    if (upgrade1 === 1) {
-      document.getElementById("upgrade1cost").innerHTML = "bought";
+    if (redupgrade1 === 1) {
+      document.getElementById("redupgrade1cost").innerHTML = "bought";
+      document.getElementById("redupgrade1").style.border = "outset";
     }
     var nextCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
     var nextCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
@@ -51,9 +98,10 @@ function load() {
       rednanometerwave;
     console.log("loaded");
     loaded = 1;
+  } else {
+    console.log("no saved game");
+    loaded = 1;
   }
-  console.log("no saved game");
-  loaded = 1;
 }
 
 // most important one bc yea oh nvm this is kinda useless
@@ -63,6 +111,29 @@ function load() {
 //};
 
 document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+document.getElementById("greencount").innerHTML = "green: " + Math.floor(green);
+document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+
+function showtab(x) {
+  if (x === "red") {
+    document.getElementById("red").style.display = "block";
+    document.getElementById("tabs").style.backgroundColor = "rgb(20,0,0)";
+    document.getElementById("green").style.display = "none";
+    document.getElementById("blue").style.display = "none";
+  }
+  if (x === "green") {
+    document.getElementById("red").style.display = "none";
+    document.getElementById("green").style.display = "block";
+    document.getElementById("tabs").style.backgroundColor = "rgb(0,20,0)";
+    document.getElementById("blue").style.display = "none";
+  }
+  if (x === "blue") {
+    document.getElementById("red").style.display = "none";
+    document.getElementById("green").style.display = "none";
+    document.getElementById("blue").style.display = "block";
+    document.getElementById("tabs").style.backgroundColor = "rgb(0,0,20)";
+  }
+}
 
 function calcred(number) {
   debugnumber = number;
@@ -145,10 +216,11 @@ function buyrednanometerwave() {
 
 function redupgrade1() {
   document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
-  if (red >= 150000 && upgrade1 === 0) {
-    upgrade1 = 1;
+  if (red >= 150000 && redupgrade1 === 0) {
+    redupgrade1 = 1;
     red = red - 150000;
-    document.getElementById("upgrade1cost").innerHTML = "bought";
+    document.getElementById("redupgrade1cost").innerHTML = "bought";
+    document.getElementById("redupgrade1").style.border = "outset";
   }
 }
 
@@ -157,9 +229,8 @@ window.setInterval(function () {
   if (loaded === 1) {
     //unlocks
     if (red >= 50000) {
-      var upgradesred = 1;
-      document.getElementById("upgrades").style.display = "flex";
-      document.getElementById("upgradesbox").style.display = "flex";
+      document.getElementById("redupgrades").style.display = "flex";
+      document.getElementById("redupgradesbox").style.display = "flex";
     }
 
     //and then make the unlocks work if they need extra code
@@ -172,14 +243,28 @@ window.setInterval(function () {
       bigredfilter: bigredfilter,
       bigredpointer: bigredpointer,
       rednanometerwave: rednanometerwave,
-      upgrade1: upgrade1,
+      redupgrade1: redupgrade1,
+      green: green,
+      greenfilter: greenfilter,
+      greenpointer: greenpointer,
+      biggreenfilter: biggreenfilter,
+      biggreenpointer: biggreenpointer,
+      greennanometerwave: greennanometerwave,
+      greenupgrade1: greenupgrade1,
+      blue: blue,
+      bluefilter: redfilter,
+      bluepointer: bluepointer,
+      bigbluefilter: bigbluefilter,
+      bigbluepointer: bigbluepointer,
+      bluenanometerwave: bluenanometerwave,
+      blueupgrade1: blueupgrade1,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
     //increase red
     calcred(
       //filter
-      (redfilter * (redfilter * upgrade1 + 1) +
+      (redfilter * (redfilter * redupgrade1 + 1) +
         //pointer
         redpointer * 10 +
         //bigredfilter

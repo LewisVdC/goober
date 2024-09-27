@@ -21,7 +21,282 @@ div#red {
   margin: 0;
   padding: 0;
 }
-div#build1 {
+div#green {
+  background-color: rgb(0, 20, 0);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+div#blue {
+  background-color: rgb(0, 0, 20);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+div#redbuild1 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+span#redfiltercount {
+  margin-right: 20%;
+}
+div#redbuilding1 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#redbuilding1text {
+  width: 55%;
+}
+div#redbuild2 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#redbuilding2 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#redbuilding2text {
+  width: 55%;
+}
+div#redbuild3 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#redbuilding3 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#redbuilding3text {
+  width: 55%;
+}
+div#redbuild4 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#redbuilding4 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#redbuilding4text {
+  width: 55%;
+}
+div#redbuild5 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#redbuilding5 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#redbuilding5text {
+  width: 55%;
+}
+
+button#redfilter {
+  border: ridge;
+  width: 150px;
+  height: 24px;
+}
+button#redpointer {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+button#bigredfilter {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+button#bigredpointer {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+button#rednanometerwave {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+div#redupgrades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+}
+div#redupgradesbox {
+  padding-top: 2%;
+  color: white;
+  border: 1px;
+  display: flex;
+  justify-content: center;
+}
+button#redupgrade1 {
+  transition-duration: 0.5s;
+  width: 100px;
+  height: 100px;
+}
+
+.bought1 {
+  color: red;
+}
+div#redupgrades {
+  display: none;
+}
+div#redupgradesbox {
+  display: none;
+}
+div#tabs {
+  background-color: rgb(20, 0, 0);
+  display: flex;
+  justify-content: center;
+}
+div#greenbuild1 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+span#greenfiltercount {
+  margin-right: 20%;
+}
+div#greenbuilding1 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#greenbuilding1text {
+  width: 55%;
+}
+div#greenbuild2 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#greenbuilding2 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#greenbuilding2text {
+  width: 55%;
+}
+div#greenbuild3 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#greenbuilding3 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#greenbuilding3text {
+  width: 55%;
+}
+div#greenbuild4 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#greenbuilding4 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#greenbuilding4text {
+  width: 55%;
+}
+div#greenbuild5 {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#greenbuilding5 {
+  display: inline-block;
+  margin-left: 0;
+}
+div#greenbuilding5text {
+  width: 55%;
+}
+
+button#greenfilter {
+  border: ridge;
+  width: 150px;
+  height: 24px;
+}
+button#greenpointer {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+button#biggreenfilter {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+button#biggreenpointer {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+button#greennanometerwave {
+  width: 150px;
+  border: ridge;
+  height: 24px;
+}
+div#bluebuild1 {
   color: white;
   margin: auto;
   width: 50%;
@@ -134,32 +409,4 @@ button#rednanometerwave {
   width: 150px;
   border: ridge;
   height: 24px;
-}
-div#upgrades {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 5%;
-}
-div#upgradesbox {
-  padding-top: 2%;
-  color: white;
-  border: 1px;
-  display: flex;
-  justify-content: center;
-}
-button#upgrade1 {
-  transition-duration: 0.5s;
-  width: 100px;
-  height: 100px;
-}
-
-.bought1 {
-  color: red;
-}
-div#upgrades {
-  display: none;
-}
-div#upgradesbox {
-  display: none;
 }
