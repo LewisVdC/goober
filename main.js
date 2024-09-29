@@ -19,7 +19,10 @@ var bigbluefilter = 0;
 var bigbluepointer = 0;
 var bluenanometerwave = 0;
 var blueupgrade1 = 0;
-var debugnumber = 0;
+var debugrednumber = 0;
+var debuggreennumber = 0;
+var debugbluenumber = 0;
+
 var loaded = 0;
 
 document.getElementById("redcount").innerHTML = "red: " + red;
@@ -58,19 +61,19 @@ function load() {
       greenupgrade1 = savegame.greenupgrade1;
 
     //blue
-    if (typeof savegame.red !== "undefined") red = savegame.red;
-    if (typeof savegame.redfilter !== "undefined")
-      redfilter = savegame.redfilter;
-    if (typeof savegame.redpointer !== "undefined")
-      redpointer = savegame.redpointer;
-    if (typeof savegame.bigredfilter !== "undefined")
-      bigredfilter = savegame.bigredfilter;
-    if (typeof savegame.bigredpointer !== "undefined")
-      bigredpointer = savegame.bigredpointer;
-    if (typeof savegame.rednanometerwave !== "undefined")
-      rednanometerwave = savegame.rednanometerwave;
-    if (typeof savegame.redupgrade1 !== "undefined")
-      redupgrade1 = savegame.redupgrade1;
+    if (typeof savegame.blue !== "undefined") blue = savegame.blue;
+    if (typeof savegame.bluefilter !== "undefined")
+      bluefilter = savegame.bluefilter;
+    if (typeof savegame.bluepointer !== "undefined")
+      bluepointer = savegame.bluepointer;
+    if (typeof savegame.bigbluefilter !== "undefined")
+      bigbluefilter = savegame.bigbluefilter;
+    if (typeof savegame.bigbluepointer !== "undefined")
+      bigbluepointer = savegame.bigbluepointer;
+    if (typeof savegame.bluenanometerwave !== "undefined")
+      bluenanometerwave = savegame.bluenanometerwave;
+    if (typeof savegame.rblueupgrade1 !== "undefined")
+      blueupgrade1 = savegame.blueupgrade1;
     //
     //
     //
@@ -80,22 +83,64 @@ function load() {
       document.getElementById("redupgrade1cost").innerHTML = "bought";
       document.getElementById("redupgrade1").style.border = "outset";
     }
-    var nextCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
-    var nextCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
-    var nextCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
-    var nextCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer));
-    var nextCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave));
-    document.getElementById("redfiltercost").innerHTML = nextCost1;
+    document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("greencount").innerHTML =
+      "green: " + Math.floor(green);
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + Math.floor(blue);
+
+    var nextredCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
+    var nextredCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
+    var nextredCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
+    var nextredCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer));
+    var nextredCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave));
+    document.getElementById("redfiltercost").innerHTML = nextredCost1;
     document.getElementById("redfiltercount").innerHTML = redfilter;
-    document.getElementById("redpointercost").innerHTML = nextCost2;
+    document.getElementById("redpointercost").innerHTML = nextredCost2;
     document.getElementById("redpointercount").innerHTML = redpointer;
     document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
-    document.getElementById("bigredfiltercost").innerHTML = nextCost3;
+    document.getElementById("bigredfiltercost").innerHTML = nextredCost3;
     document.getElementById("bigredpointercount").innerHTML = bigredpointer;
-    document.getElementById("bigredpointercost").innerHTML = nextCost4;
-    document.getElementById("rednanometerwavecost").innerHTML = nextCost5;
+    document.getElementById("bigredpointercost").innerHTML = nextredCost4;
+    document.getElementById("rednanometerwavecost").innerHTML = nextredCost5;
     document.getElementById("rednanometerwavecount").innerHTML =
       rednanometerwave;
+    var nextgreenCost1 = Math.floor(10 * Math.pow(1.1, greenfilter));
+    var nextgreenCost2 = Math.floor(100 * Math.pow(1.1, greenpointer));
+    var nextgreenCost3 = Math.floor(1000 * Math.pow(1.1, biggreenfilter));
+    var nextgreenCost4 = Math.floor(10000 * Math.pow(1.1, biggreenpointer));
+    var nextgreenCost5 = Math.floor(100000 * Math.pow(1.1, greennanometerwave));
+
+    document.getElementById("greenfiltercost").innerHTML = nextgreenCost1;
+    document.getElementById("greenfiltercount").innerHTML = greenfilter;
+    document.getElementById("greenpointercost").innerHTML = nextgreenCost2;
+    document.getElementById("greenpointercount").innerHTML = greenpointer;
+    document.getElementById("biggreenfiltercount").innerHTML = biggreenfilter;
+    document.getElementById("biggreenfiltercost").innerHTML = nextgreenCost3;
+    document.getElementById("biggreenpointercount").innerHTML = biggreenpointer;
+    document.getElementById("biggreenpointercost").innerHTML = nextgreenCost4;
+    document.getElementById("greennanometerwavecost").innerHTML =
+      nextgreenCost5;
+    document.getElementById("greennanometerwavecount").innerHTML =
+      greennanometerwave;
+    var nextblueCost1 = Math.floor(10 * Math.pow(1.1, bluefilter));
+    var nextblueCost2 = Math.floor(100 * Math.pow(1.1, bluepointer));
+    var nextblueCost3 = Math.floor(1000 * Math.pow(1.1, bigbluefilter));
+    var nextblueCost4 = Math.floor(10000 * Math.pow(1.1, bigbluepointer));
+    var nextblueCost5 = Math.floor(100000 * Math.pow(1.1, bluenanometerwave));
+
+    document.getElementById("bluefiltercost").innerHTML = nextblueCost1;
+    document.getElementById("bluefiltercount").innerHTML = bluefilter;
+    document.getElementById("bluepointercost").innerHTML = nextblueCost2;
+    document.getElementById("bluepointercount").innerHTML = bluepointer;
+    document.getElementById("bigbluefiltercount").innerHTML = bigbluefilter;
+    document.getElementById("bigbluefiltercost").innerHTML = nextblueCost3;
+    document.getElementById("bigbluepointercount").innerHTML = bigbluepointer;
+    document.getElementById("bigbluepointercost").innerHTML = nextblueCost4;
+    document.getElementById("bluenanometerwavecost").innerHTML = nextblueCost5;
+    document.getElementById("bluenanometerwavecount").innerHTML =
+      bluenanometerwave;
+
     console.log("loaded");
     loaded = 1;
   } else {
@@ -118,6 +163,7 @@ function showtab(x) {
   if (x === "red") {
     document.getElementById("red").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(20,0,0)";
+    document.getElementById("top").style.color = "rgb(255,0,0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
   }
@@ -125,6 +171,7 @@ function showtab(x) {
     document.getElementById("red").style.display = "none";
     document.getElementById("green").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,20,0)";
+    document.getElementById("top").style.color = "rgb(0,255,0)";
     document.getElementById("blue").style.display = "none";
   }
   if (x === "blue") {
@@ -132,14 +179,31 @@ function showtab(x) {
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,0,20)";
+    document.getElementById("top").style.color = "blue";
   }
 }
 
 function calcred(number) {
-  debugnumber = number;
+  debugrednumber = number;
   red = red + number / 100;
   document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
 }
+function calcgreen(number) {
+  debuggreennumber = number;
+  green = green + number / 100;
+  document.getElementById("greencount").innerHTML =
+    "green: " + Math.floor(green);
+}
+function calcblue(number) {
+  debugbluenumber = number;
+  blue = blue + number / 100;
+  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+}
+
+//
+//
+//
+//
 
 function buyredfilter() {
   document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
@@ -151,8 +215,8 @@ function buyredfilter() {
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
   }
 
-  var nextCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
-  document.getElementById("redfiltercost").innerHTML = nextCost1;
+  var nextredCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
+  document.getElementById("redfiltercost").innerHTML = nextredCost1;
 }
 
 function buyredpointer() {
@@ -165,8 +229,8 @@ function buyredpointer() {
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
   }
 
-  var nextCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
-  document.getElementById("redpointercost").innerHTML = nextCost2;
+  var nextredCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
+  document.getElementById("redpointercost").innerHTML = nextredCost2;
 }
 
 function buybigredfilter() {
@@ -179,8 +243,8 @@ function buybigredfilter() {
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
   }
 
-  var nextCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
-  document.getElementById("bigredfiltercost").innerHTML = nextCost3;
+  var nextredCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
+  document.getElementById("bigredfiltercost").innerHTML = nextredCost3;
 }
 
 function buybigredpointer() {
@@ -193,8 +257,8 @@ function buybigredpointer() {
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
   }
 
-  var nextCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer));
-  document.getElementById("bigredpointercost").innerHTML = nextCost4;
+  var nextredCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer));
+  document.getElementById("bigredpointercost").innerHTML = nextredCost4;
 }
 
 function buyrednanometerwave() {
@@ -210,9 +274,175 @@ function buyrednanometerwave() {
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
   }
 
-  var nextCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave));
-  document.getElementById("rednanometerwavecost").innerHTML = nextCost5;
+  var nextredCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave));
+  document.getElementById("rednanometerwavecost").innerHTML = nextredCost5;
 }
+
+function buygreenfilter() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + Math.floor(green);
+  var greenfiltercost = Math.floor(10 * Math.pow(1.1, greenfilter));
+  if (green >= greenfiltercost) {
+    greenfilter = greenfilter + 1;
+    green = green - greenfiltercost;
+    document.getElementById("greenfiltercount").innerHTML = greenfilter;
+    document.getElementById("greencount").innerHTML =
+      "green: " + Math.floor(green);
+  }
+
+  var nextgreenCost1 = Math.floor(10 * Math.pow(1.1, greenfilter));
+  document.getElementById("greenfiltercost").innerHTML = nextgreenCost1;
+}
+
+function buygreenpointer() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + Math.floor(green);
+  var greenpointercost = Math.floor(100 * Math.pow(1.1, greenpointer));
+  if (green >= greenpointercost) {
+    greenpointer = greenpointer + 1;
+    green = green - greenpointercost;
+    document.getElementById("greenpointercount").innerHTML = greenpointer;
+    document.getElementById("greencount").innerHTML =
+      "green: " + Math.floor(green);
+  }
+
+  var nextgreenCost2 = Math.floor(100 * Math.pow(1.1, greenpointer));
+  document.getElementById("greenpointercost").innerHTML = nextgreenCost2;
+}
+
+function buybiggreenfilter() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + Math.floor(green);
+  var biggreenfiltercost = Math.floor(1000 * Math.pow(1.1, biggreenfilter));
+  if (green >= biggreenfiltercost) {
+    biggreenfilter = biggreenfilter + 1;
+    green = green - biggreenfiltercost;
+    document.getElementById("biggreenfiltercount").innerHTML = biggreenfilter;
+    document.getElementById("greencount").innerHTML =
+      "green: " + Math.floor(green);
+  }
+
+  var nextgreenCost3 = Math.floor(1000 * Math.pow(1.1, biggreenfilter));
+  document.getElementById("biggreenfiltercost").innerHTML = nextgreenCost3;
+}
+
+function buybiggreenpointer() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + Math.floor(green);
+  var biggreenpointercost = Math.floor(10000 * Math.pow(1.1, biggreenpointer));
+  if (green >= biggreenpointercost) {
+    biggreenpointer = biggreenpointer + 1;
+    green = green - biggreenpointercost;
+    document.getElementById("biggreenpointercount").innerHTML = biggreenpointer;
+    document.getElementById("greencount").innerHTML =
+      "green: " + Math.floor(green);
+  }
+
+  var nextgreenCost4 = Math.floor(10000 * Math.pow(1.1, biggreenpointer));
+  document.getElementById("biggreenpointercost").innerHTML = nextgreenCost4;
+}
+
+function buygreennanometerwave() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + Math.floor(green);
+  var greennanometerwavecost = Math.floor(
+    100000 * Math.pow(1.1, greennanometerwave)
+  );
+  if (green >= greennanometerwavecost) {
+    greennanometerwave = greennanometerwave + 1;
+    green = green - greennanometerwavecost;
+    document.getElementById("greennanometerwavecount").innerHTML =
+      greennanometerwave;
+    document.getElementById("greencount").innerHTML =
+      "green: " + Math.floor(green);
+  }
+
+  var nextgreenCost5 = Math.floor(100000 * Math.pow(1.1, greennanometerwave));
+  document.getElementById("greennanometerwavecost").innerHTML = nextgreenCost5;
+}
+
+function buybluefilter() {
+  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  var bluefiltercost = Math.floor(10 * Math.pow(1.1, bluefilter));
+  if (blue >= bluefiltercost) {
+    bluefilter = bluefilter + 1;
+    blue = blue - bluefiltercost;
+    document.getElementById("bluefiltercount").innerHTML = bluefilter;
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + Math.floor(blue);
+  }
+
+  var nextblueCost1 = Math.floor(10 * Math.pow(1.1, bluefilter));
+  document.getElementById("bluefiltercost").innerHTML = nextblueCost1;
+}
+
+function buybluepointer() {
+  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  var bluepointercost = Math.floor(100 * Math.pow(1.1, bluepointer));
+  if (blue >= bluepointercost) {
+    bluepointer = bluepointer + 1;
+    blue = blue - bluepointercost;
+    document.getElementById("bluepointercount").innerHTML = bluepointer;
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + Math.floor(blue);
+  }
+
+  var nextblueCost2 = Math.floor(100 * Math.pow(1.1, bluepointer));
+  document.getElementById("bluepointercost").innerHTML = nextblueCost2;
+}
+
+function buybigbluefilter() {
+  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  var bigbluefiltercost = Math.floor(1000 * Math.pow(1.1, bigbluefilter));
+  if (blue >= bigbluefiltercost) {
+    bigbluefilter = bigbluefilter + 1;
+    blue = blue - bigbluefiltercost;
+    document.getElementById("bigbluefiltercount").innerHTML = bigbluefilter;
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + Math.floor(blue);
+  }
+
+  var nextblueCost3 = Math.floor(1000 * Math.pow(1.1, bigbluefilter));
+  document.getElementById("bigbluefiltercost").innerHTML = nextblueCost3;
+}
+
+function buybigbluepointer() {
+  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  var bigbluepointercost = Math.floor(10000 * Math.pow(1.1, bigbluepointer));
+  if (blue >= bigbluepointercost) {
+    bigbluepointer = bigbluepointer + 1;
+    blue = blue - bigbluepointercost;
+    document.getElementById("bigbluepointercount").innerHTML = bigbluepointer;
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + Math.floor(blue);
+  }
+
+  var nextblueCost4 = Math.floor(10000 * Math.pow(1.1, bigbluepointer));
+  document.getElementById("bigbluepointercost").innerHTML = nextblueCost4;
+}
+
+function buybluenanometerwave() {
+  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  var bluenanometerwavecost = Math.floor(
+    100000 * Math.pow(1.1, bluenanometerwave)
+  );
+  if (blue >= bluenanometerwavecost) {
+    bluenanometerwave = bluenanometerwave + 1;
+    blue = blue - bluenanometerwavecost;
+    document.getElementById("bluenanometerwavecount").innerHTML =
+      bluenanometerwave;
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + Math.floor(blue);
+  }
+
+  var nextblueCost5 = Math.floor(100000 * Math.pow(1.1, bluenanometerwave));
+  document.getElementById("bluenanometerwavecost").innerHTML = nextblueCost5;
+}
+
+//
+//
+//
+//
 
 function redupgrade1() {
   document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
@@ -221,6 +451,27 @@ function redupgrade1() {
     red = red - 150000;
     document.getElementById("redupgrade1cost").innerHTML = "bought";
     document.getElementById("redupgrade1").style.border = "outset";
+  }
+}
+
+function greenupgrade1() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + Math.floor(green);
+  if (green >= 150000 && greenupgrade1 === 0) {
+    greenupgrade1 = 1;
+    green = green - 150000;
+    document.getElementById("greenupgrade1cost").innerHTML = "bought";
+    document.getElementById("greenupgrade1").style.border = "outset";
+  }
+}
+
+function blueupgrade1() {
+  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  if (blue >= 150000 && redupgrade1 === 0) {
+    blueupgrade1 = 1;
+    blue = blue - 150000;
+    document.getElementById("blueupgrade1cost").innerHTML = "bought";
+    document.getElementById("blueupgrade1").style.border = "outset";
   }
 }
 
@@ -263,6 +514,33 @@ window.setInterval(function () {
 
     //increase red
     calcred(
+      //filter
+      (redfilter * (redfilter * redupgrade1 + 1) +
+        //pointer
+        redpointer * 10 +
+        //bigredfilter
+        bigredfilter * 100 +
+        //bigredpointer
+        bigredpointer * 1000) *
+        //rednanometerwave
+        (rednanometerwave * 0.5 + 1)
+    );
+    //increase green
+    calcgreen(
+      //filter
+      (redfilter * (redfilter * redupgrade1 + 1) +
+        //pointer
+        redpointer * 10 +
+        //bigredfilter
+        bigredfilter * 100 +
+        //bigredpointer
+        bigredpointer * 1000) *
+        //rednanometerwave
+        (rednanometerwave * 0.5 + 1)
+    );
+
+    //increase blue
+    calcblue(
       //filter
       (redfilter * (redfilter * redupgrade1 + 1) +
         //pointer

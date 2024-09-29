@@ -3,6 +3,7 @@ body {
   padding: 0;
   background-color: rgb(0, 0, 0);
   overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 div#toptext {
   color: white;
@@ -10,9 +11,17 @@ div#toptext {
 div#top {
   margin: auto;
   width: 50%;
-  color: white;
   text-align: center;
   padding-top: 2.5%;
+}
+span#redcount {
+  color: red;
+}
+span#greencount {
+  color: green;
+}
+span#bluecount {
+  color: blue;
 }
 div#red {
   background-color: rgb(20, 0, 0);
@@ -296,6 +305,24 @@ button#greennanometerwave {
   border: ridge;
   height: 24px;
 }
+div#greenupgrades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+}
+div#greenupgradesbox {
+  padding-top: 2%;
+  color: white;
+  border: 1px;
+  display: flex;
+  justify-content: center;
+}
+button#greenupgrade1 {
+  transition-duration: 0.5s;
+  width: 100px;
+  height: 100px;
+}
 div#bluebuild1 {
   color: white;
   margin: auto;
@@ -306,17 +333,17 @@ div#bluebuild1 {
   justify-content: center;
   align-items: center;
 }
-span#redfiltercount {
+span#bluefiltercount {
   margin-right: 20%;
 }
-div#building1 {
+div#bluebuilding1 {
   display: inline-block;
   margin-left: 0;
 }
-div#building1text {
+div#bluebuilding1text {
   width: 55%;
 }
-div#build2 {
+div#bluebuild2 {
   color: white;
   margin: auto;
   width: 50%;
@@ -326,14 +353,14 @@ div#build2 {
   justify-content: center;
   align-items: center;
 }
-div#building2 {
+div#bluebuilding2 {
   display: inline-block;
   margin-left: 0;
 }
-div#building2text {
+div#bluebuilding2text {
   width: 55%;
 }
-div#build3 {
+div#bluebuild3 {
   color: white;
   margin: auto;
   width: 50%;
@@ -343,14 +370,14 @@ div#build3 {
   justify-content: center;
   align-items: center;
 }
-div#building3 {
+div#bluebuilding3 {
   display: inline-block;
   margin-left: 0;
 }
-div#building3text {
+div#bluebuilding3text {
   width: 55%;
 }
-div#build4 {
+div#bluebuild4 {
   color: white;
   margin: auto;
   width: 50%;
@@ -360,14 +387,14 @@ div#build4 {
   justify-content: center;
   align-items: center;
 }
-div#building4 {
+div#bluebuilding4 {
   display: inline-block;
   margin-left: 0;
 }
-div#building4text {
+div#bluebuilding4text {
   width: 55%;
 }
-div#build5 {
+div#bluebuild5 {
   color: white;
   margin: auto;
   width: 50%;
@@ -377,36 +404,53 @@ div#build5 {
   justify-content: center;
   align-items: center;
 }
-div#building5 {
+div#bluebuilding5 {
   display: inline-block;
   margin-left: 0;
 }
-div#building5text {
+div#bluebuilding5text {
   width: 55%;
 }
-
-button#redfilter {
+button#bluefilter {
   border: ridge;
   width: 150px;
   height: 24px;
 }
-button#redpointer {
+button#bluepointer {
   width: 150px;
   border: ridge;
   height: 24px;
 }
-button#bigredfilter {
+button#bigbluefilter {
   width: 150px;
   border: ridge;
   height: 24px;
 }
-button#bigredpointer {
+button#bigbluepointer {
   width: 150px;
   border: ridge;
   height: 24px;
 }
-button#rednanometerwave {
+button#bluenanometerwave {
   width: 150px;
   border: ridge;
   height: 24px;
+}
+div#blueupgrades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+}
+div#blueupgradesbox {
+  padding-top: 2%;
+  color: white;
+  border: 1px;
+  display: flex;
+  justify-content: center;
+}
+button#blueupgrade1 {
+  transition-duration: 0.5s;
+  width: 100px;
+  height: 100px;
 }
