@@ -22,6 +22,7 @@ var blueupgrade1 = 0;
 var debugrednumber = 0;
 var debuggreennumber = 0;
 var debugbluenumber = 0;
+var redupgrade2 = 0;
 
 var loaded = 0;
 
@@ -44,6 +45,8 @@ function load() {
       rednanometerwave = savegame.rednanometerwave;
     if (typeof savegame.redupgrade1 !== "undefined")
       redupgrade1 = savegame.redupgrade1;
+    if (typeof savegame.redupgrade2 !== "undefined")
+      redupgrade2 = savegame.redupgrade2;
 
     //green
     if (typeof savegame.green !== "undefined") green = savegame.green;
@@ -82,6 +85,10 @@ function load() {
     if (redupgrade1 === 1) {
       document.getElementById("redupgrade1cost").innerHTML = "bought";
       document.getElementById("redupgrade1").style.border = "outset";
+    }
+    if (redupgrade2 === 1) {
+      document.getElementById("redupgrade2cost").innerHTML = "bought";
+      document.getElementById("redupgrade2").style.border = "outset";
     }
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
     document.getElementById("greencount").innerHTML =
@@ -453,6 +460,15 @@ function buyredupgrade1() {
     document.getElementById("redupgrade1").style.border = "outset";
   }
 }
+function buyredupgrade2() {
+  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+  if (red >= 250000 && redupgrade2 === 0) {
+    redupgrade2 = 1;
+    red = red - 250000;
+    document.getElementById("redupgrade2cost").innerHTML = "bought";
+    document.getElementById("redupgrade2").style.border = "outset";
+  }
+}
 
 function buygreenupgrade1() {
   document.getElementById("greencount").innerHTML =
@@ -481,7 +497,13 @@ window.setInterval(function () {
     //unlocks
     if (red >= 50000) {
       document.getElementById("redupgrades").style.display = "flex";
-      document.getElementById("redupgradesbox").style.display = "flex";
+      document.getElementById("redupgradesbox").style.display = "grid";
+      document.getElementById("redupgrade1").style.display = "block";
+    }
+    if (red >= 100000) {
+      document.getElementById("redupgrades").style.display = "flex";
+      document.getElementById("redupgradesbox").style.display = "grid";
+      document.getElementById("redupgrade2").style.display = "block";
     }
 
     //and then make the unlocks work if they need extra code
@@ -495,6 +517,7 @@ window.setInterval(function () {
       bigredpointer: bigredpointer,
       rednanometerwave: rednanometerwave,
       redupgrade1: redupgrade1,
+      redupgrade2: redupgrade2,
       green: green,
       greenfilter: greenfilter,
       greenpointer: greenpointer,
@@ -515,7 +538,7 @@ window.setInterval(function () {
     //increase red
     calcred(
       //filter
-      (redfilter * (redfilter * (redupgrade1 + 1)) +
+      (redfilter * (redfilter * redupgrade1 + 1) +
         //pointer
         redpointer * 10 +
         //bigredfilter
@@ -536,7 +559,9 @@ window.setInterval(function () {
         //bigpointer
         biggreenpointer * 1000) *
         //nanometerwave
-        (greennanometerwave * (0.5 + 1))
+        (greennanometerwave * 0.5 + 1) *
+        //weaksynergy
+        (Math.log(5, "red") * redupgrade2 + 1)
     );
 
     //increase blue
