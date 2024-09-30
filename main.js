@@ -23,6 +23,8 @@ var debugrednumber = 0;
 var debuggreennumber = 0;
 var debugbluenumber = 0;
 var redupgrade2 = 0;
+var greenupgrade2 = 0;
+var blueupgrade2 = 0;
 
 var loaded = 0;
 
@@ -62,6 +64,8 @@ function load() {
       greennanometerwave = savegame.greennanometerwave;
     if (typeof savegame.greenupgrade1 !== "undefined")
       greenupgrade1 = savegame.greenupgrade1;
+    if (typeof savegame.greenupgrade2 !== "undefined")
+      greenupgrade2 = savegame.greenupgrade2;
 
     //blue
     if (typeof savegame.blue !== "undefined") blue = savegame.blue;
@@ -75,8 +79,10 @@ function load() {
       bigbluepointer = savegame.bigbluepointer;
     if (typeof savegame.bluenanometerwave !== "undefined")
       bluenanometerwave = savegame.bluenanometerwave;
-    if (typeof savegame.rblueupgrade1 !== "undefined")
+    if (typeof savegame.blueupgrade1 !== "undefined")
       blueupgrade1 = savegame.blueupgrade1;
+    if (typeof savegame.blueupgrade2 !== "undefined")
+      blueupgrade2 = savegame.blueupgrade2;
     //
     //
     //
@@ -89,6 +95,22 @@ function load() {
     if (redupgrade2 === 1) {
       document.getElementById("redupgrade2cost").innerHTML = "bought";
       document.getElementById("redupgrade2").style.border = "outset";
+    }
+    if (greenupgrade1 === 1) {
+      document.getElementById("greenupgrade1cost").innerHTML = "bought";
+      document.getElementById("greenupgrade1").style.border = "outset";
+    }
+    if (greenupgrade2 === 1) {
+      document.getElementById("greenupgrade2cost").innerHTML = "bought";
+      document.getElementById("greenupgrade2").style.border = "outset";
+    }
+    if (blueupgrade1 === 1) {
+      document.getElementById("blueupgrade1cost").innerHTML = "bought";
+      document.getElementById("blueupgrade1").style.border = "outset";
+    }
+    if (blueupgrade2 === 1) {
+      document.getElementById("blueupgrade2cost").innerHTML = "bought";
+      document.getElementById("blueupgrade2").style.border = "outset";
     }
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
     document.getElementById("greencount").innerHTML =
@@ -481,13 +503,34 @@ function buygreenupgrade1() {
   }
 }
 
+function buygreenupgrade2() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + Math.floor(green);
+  if (green >= 250000 && greenupgrade2 === 0) {
+    greenupgrade2 = 1;
+    green = green - 250000;
+    document.getElementById("greenupgrade2cost").innerHTML = "bought";
+    document.getElementById("greenupgrade2").style.border = "outset";
+  }
+}
+
 function buyblueupgrade1() {
   document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
-  if (blue >= 150000 && redupgrade1 === 0) {
+  if (blue >= 150000 && blueupgrade1 === 0) {
     blueupgrade1 = 1;
     blue = blue - 150000;
     document.getElementById("blueupgrade1cost").innerHTML = "bought";
     document.getElementById("blueupgrade1").style.border = "outset";
+  }
+}
+
+function buyblueupgrade2() {
+  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  if (blue >= 250000 && blueupgrade2 === 0) {
+    blueupgrade2 = 1;
+    blue = blue - 250000;
+    document.getElementById("blueupgrade2cost").innerHTML = "bought";
+    document.getElementById("blueupgrade2").style.border = "outset";
   }
 }
 
@@ -504,6 +547,26 @@ window.setInterval(function () {
       document.getElementById("redupgrades").style.display = "flex";
       document.getElementById("redupgradesbox").style.display = "grid";
       document.getElementById("redupgrade2").style.display = "block";
+    }
+    if (green >= 50000) {
+      document.getElementById("greenupgrades").style.display = "flex";
+      document.getElementById("greenupgradesbox").style.display = "grid";
+      document.getElementById("greenupgrade1").style.display = "block";
+    }
+    if (green >= 100000) {
+      document.getElementById("greenupgrades").style.display = "flex";
+      document.getElementById("greenupgradesbox").style.display = "grid";
+      document.getElementById("greenupgrade2").style.display = "block";
+    }
+    if (blue >= 50000) {
+      document.getElementById("blueupgrades").style.display = "flex";
+      document.getElementById("blueupgradesbox").style.display = "grid";
+      document.getElementById("blueupgrade1").style.display = "block";
+    }
+    if (blue >= 100000) {
+      document.getElementById("blueupgrades").style.display = "flex";
+      document.getElementById("blueupgradesbox").style.display = "grid";
+      document.getElementById("blueupgrade2").style.display = "block";
     }
 
     //and then make the unlocks work if they need extra code
@@ -525,13 +588,15 @@ window.setInterval(function () {
       biggreenpointer: biggreenpointer,
       greennanometerwave: greennanometerwave,
       greenupgrade1: greenupgrade1,
+      greenupgrade2: greenupgrade2,
       blue: blue,
-      bluefilter: redfilter,
+      bluefilter: bluefilter,
       bluepointer: bluepointer,
       bigbluefilter: bigbluefilter,
       bigbluepointer: bigbluepointer,
       bluenanometerwave: bluenanometerwave,
       blueupgrade1: blueupgrade1,
+      blueupgrade2: blueupgrade2,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -546,8 +611,13 @@ window.setInterval(function () {
         //bigredpointer
         bigredpointer * 1000) *
         //rednanometerwave
-        (rednanometerwave * (0.5 + 1))
+        (rednanometerwave * 0.5 + 1) *
+        //weaksynergygreen
+        (Math.log(green + 1) * greenupgrade2 + 1) *
+        //weaksynergyblue
+        (Math.log(blue + 1) * blueupgrade2 + 1)
     );
+
     //increase green
     calcgreen(
       //filter
@@ -560,9 +630,13 @@ window.setInterval(function () {
         biggreenpointer * 1000) *
         //nanometerwave
         (greennanometerwave * 0.5 + 1) *
-        //weaksynergy
-        (Math.log(5, "red") * redupgrade2 + 1)
+        //weaksynergyred
+        (Math.log(red + 1) * redupgrade2 + 1) *
+        //weaksynergyblue
+        (Math.log(blue + 1) * blueupgrade2 + 1)
     );
+    //weaksynergyblue
+    Math.log(blue) * blueupgrade2 + 1;
 
     //increase blue
     calcblue(
@@ -575,7 +649,11 @@ window.setInterval(function () {
         //bigpointer
         bigbluepointer * 1000) *
         //nanometerwave
-        (bluenanometerwave * (0.5 + 1))
+        (bluenanometerwave * 0.5 + 1) *
+        //weaksynergyred
+        (Math.log(red + 1) * redupgrade2 + 1) *
+        //weaksynergygreen
+        (Math.log(red + 1) * redupgrade2 + 1)
     );
   }
 }, 10);

@@ -2,6 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="style.css" />
+  <title>Red Green Blue</title>
 </head>
 <body onload="load()">
   <div id="toptext"></div>
@@ -162,10 +163,14 @@
             >
           </button>
         </div>
+        <div id="greenupgradesrow2">
+          <button id="greenupgrade2" onClick="buygreenupgrade2()">
+            weak synergy<br /><span id="greenupgrade2cost">cost:250000</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-
   <div id="blue" class="tab" style="display: none">
     <div id="top"><span id="bluecount"></span></div>
     <div id="bluebuildings">
@@ -232,12 +237,18 @@
       <div id="blueupgradesbox">
         <div id="blueupgradesrow1">
           <button id="blueupgrade1" onClick="buyblueupgrade1()">
-            bluefilter upgrade<br /><span id="upgrade1cost">cost:150000</span>
+            bluefilter upgrade<br /><span id="blueupgrade1cost"
+              >cost:150000</span
+            >
+          </button>
+        </div>
+        <div id="blueupgradesrow2">
+          <button id="blueupgrade2" onClick="buyblueupgrade2()">
+            weak synergy<br /><span id="blueupgrade2cost">cost:250000</span>
           </button>
         </div>
       </div>
     </div>
+    <script type="text/javascript" src="main.js"></script>
   </div>
-
-  <script type="text/javascript" src="main.js"></script>
 </body>
