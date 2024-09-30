@@ -444,7 +444,7 @@ function buybluenanometerwave() {
 //
 //
 
-function redupgrade1() {
+function buyredupgrade1() {
   document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
   if (red >= 150000 && redupgrade1 === 0) {
     redupgrade1 = 1;
@@ -454,7 +454,7 @@ function redupgrade1() {
   }
 }
 
-function greenupgrade1() {
+function buygreenupgrade1() {
   document.getElementById("greencount").innerHTML =
     "green: " + Math.floor(green);
   if (green >= 150000 && greenupgrade1 === 0) {
@@ -465,7 +465,7 @@ function greenupgrade1() {
   }
 }
 
-function blueupgrade1() {
+function buyblueupgrade1() {
   document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
   if (blue >= 150000 && redupgrade1 === 0) {
     blueupgrade1 = 1;
@@ -515,7 +515,7 @@ window.setInterval(function () {
     //increase red
     calcred(
       //filter
-      (redfilter * (redfilter * redupgrade1 + 1) +
+      (redfilter * (redfilter * (redupgrade1 + 1)) +
         //pointer
         redpointer * 10 +
         //bigredfilter
@@ -523,34 +523,34 @@ window.setInterval(function () {
         //bigredpointer
         bigredpointer * 1000) *
         //rednanometerwave
-        (rednanometerwave * 0.5 + 1)
+        (rednanometerwave * (0.5 + 1))
     );
     //increase green
     calcgreen(
       //filter
-      (redfilter * (redfilter * redupgrade1 + 1) +
+      (greenfilter * (greenfilter * greenupgrade1 + 1) +
         //pointer
-        redpointer * 10 +
-        //bigredfilter
-        bigredfilter * 100 +
-        //bigredpointer
-        bigredpointer * 1000) *
-        //rednanometerwave
-        (rednanometerwave * 0.5 + 1)
+        greenpointer * 10 +
+        //bigfilter
+        biggreenfilter * 100 +
+        //bigpointer
+        biggreenpointer * 1000) *
+        //nanometerwave
+        (greennanometerwave * (0.5 + 1))
     );
 
     //increase blue
     calcblue(
       //filter
-      (redfilter * (redfilter * redupgrade1 + 1) +
+      (bluefilter * (bluefilter * blueupgrade1 + 1) +
         //pointer
-        redpointer * 10 +
-        //bigredfilter
-        bigredfilter * 100 +
-        //bigredpointer
-        bigredpointer * 1000) *
-        //rednanometerwave
-        (rednanometerwave * 0.5 + 1)
+        bluepointer * 10 +
+        //bigfilter
+        bigbluefilter * 100 +
+        //bigpointer
+        bigbluepointer * 1000) *
+        //nanometerwave
+        (bluenanometerwave * (0.5 + 1))
     );
   }
 }, 10);
