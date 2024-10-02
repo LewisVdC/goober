@@ -181,12 +181,19 @@ button#redupgrade1 {
 div#redupgradesrow1 {
   padding-bottom: 0px;
   height: 100px;
+  display: flex;
 }
 div#redupgradesrow2 {
   display: table-column;
   height: 100px;
 }
 button#redupgrade2 {
+  transition-duration: 0.5s;
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+button#redupgrade3 {
   transition-duration: 0.5s;
   width: 100px;
   height: 100px;
@@ -341,10 +348,20 @@ button#greenupgrade1 {
   display: none;
 }
 div#greenupgradesrow2 {
+  display: flex;
+  height: 100px;
+}
+div#greenupgradesrow2 {
   display: table-column;
   height: 100px;
 }
 button#greenupgrade2 {
+  transition-duration: 0.5s;
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+button#greenupgrade3 {
   transition-duration: 0.5s;
   width: 100px;
   height: 100px;
@@ -491,11 +508,21 @@ button#blueupgrade1 {
   height: 100px;
   display: none;
 }
+div#blueupgradesrow1 {
+  display: flex;
+  height: 100px;
+}
 div#blueupgradesrow2 {
   display: table-column;
   height: 100px;
 }
 button#blueupgrade2 {
+  transition-duration: 0.5s;
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+button#blueupgrade3 {
   transition-duration: 0.5s;
   width: 100px;
   height: 100px;
