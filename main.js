@@ -89,8 +89,8 @@ function load() {
     if (typeof savegame.blueupgrade1 !== "undefined")
       blueupgrade1 = savegame.blueupgrade1;
     if (typeof savegame.blueupgrade2 !== "undefined")
-      blueupgrade3 = savegame.blueupgrade2;
-    if (typeof savegame.blueupgrade2 !== "undefined")
+      blueupgrade2 = savegame.blueupgrade2;
+    if (typeof savegame.blueupgrade3 !== "undefined")
       blueupgrade3 = savegame.blueupgrade3;
     //
     //
