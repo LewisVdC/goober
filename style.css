@@ -351,8 +351,8 @@ div#greenupgradesrow2 {
   display: flex;
   height: 100px;
 }
-div#greenupgradesrow2 {
-  display: table-column;
+div#greenupgradesrow1 {
+  display: flex;
   height: 100px;
 }
 button#greenupgrade2 {
