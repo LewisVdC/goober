@@ -33,6 +33,10 @@ var loaded = 0;
 
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
+var taskColorGoalHEX = "#ff0000";
+var taskColorGoalRed = 255;
+var taskColorGoalGreen = 0;
+var taskColorGoalBlue = 0;
 
 document.getElementById("redcount").innerHTML = "red: " + red;
 
@@ -740,3 +744,11 @@ window.setInterval(function () {
     );
   }
 }, 10);
+
+function submitTask(){
+  if(red >= taskColorGoalRed && green >= taskColorGoalGreen && blue >= taskColorGoalBlue){
+    red -= taskColorGoalRed;
+    green -= taskColorGoalGreen;
+    blue -= taskColorGoalBlue;
+  }
+}
