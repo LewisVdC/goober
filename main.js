@@ -106,6 +106,10 @@ function load() {
     }
     if (redupgrade2 === 1) {
       document.getElementById("redupgrade2cost").innerHTML = "bought";
+      //document.getElementById("redupgrade2").style.border = "outset";
+    }
+    if (redupgrade3 === 1) {
+      document.getElementById("redupgrade3cost").innerHTML = "bought";
       //document.getElementById("redupgrade3").style.border = "outset";
     }
     if (greenupgrade1 === 1) {
