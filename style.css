@@ -7,8 +7,10 @@ body {
 }
 
 
-.timosucks{margin-left: 15px; text-align: left;}
-
+.timosucks{margin-left: 15px; text-align: left; margin-right: 15px;}
+#taskColor{
+  color: rgb(188, 156, 86);
+}
 
 div#tasks{
   color:white;
