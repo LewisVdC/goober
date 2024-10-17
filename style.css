@@ -5,6 +5,17 @@ body {
   overflow: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+div#tasks{
+  color:white;
+  position: absolute;
+  text-align: right;
+  right: 0px;
+  border-left-style: ridge;
+  border-bottom-style: ridge;
+  border-width: medium;
+}
+
 div#toptext {
   color: white;
 }
