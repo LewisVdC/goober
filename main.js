@@ -37,6 +37,25 @@ var taskColorGoalHEX = "#ff0000";
 var taskColorGoalRed = 255;
 var taskColorGoalGreen = 0;
 var taskColorGoalBlue = 0;
+let hexResult = '#'
+const hex = {
+  '0': '0',
+  '1': '1',
+  '2': '2',
+  '3': '3',
+  '4': '4',
+  '5': '5',
+  '6': '6',
+  '7': '6',
+  '8': '8',
+  '9': '9', 
+  '10': 'A', 
+  '11': 'B', 
+  '12': 'C', 
+  '13': 'D', 
+  '14': 'E',
+  '15': 'F'
+}
 
 document.getElementById("redcount").innerHTML = "red: " + red;
 
@@ -745,11 +764,37 @@ window.setInterval(function () {
   }
 }, 10);
 
+function rgbToHex(rgb){
+  let rgbColor = rgb.split(', ')
+  let values = Object.values(hex)
+  hexResult = "#"
+  rgbColor.forEach(element => {
+      if (values.includes(element)){
+          hexResult += element + element
+      } else {
+          let number = Number(element)/16;
+          let firstDig = String(number).slice(0,2).replace('.', '');
+          let secondDig = String(((number - Number(firstDig))*16));
+          hexResult += hex[firstDig]
+          hexResult += hex[secondDig]
+      }
+  });
+}
+
 function submitTask(){
   if(red >= taskColorGoalRed && green >= taskColorGoalGreen && blue >= taskColorGoalBlue){
     red -= taskColorGoalRed;
     green -= taskColorGoalGreen;
     blue -= taskColorGoalBlue;
+    taskColorGoalRed = Math.floor(Math.random() * 256);
+    taskColorGoalGreen = Math.floor(Math.random() * 256);
+    taskColorGoalBlue = Math.floor(Math.random() * 256);
+    document.getElementById("taskGoalAmountRed").innerHTML = taskColorGoalRed;
+    document.getElementById("taskGoalAmountGreen").innerHTML = taskColorGoalGreen;
+    document.getElementById("taskGoalAmountBlue").innerHTML = taskColorGoalBlue;
+    rgbToHex(taskColorGoalRed+", "+taskColorGoalGreen+", "+taskColorGoalBlue)
+    document.getElementById("taskColor").innerHTML = hexResult;
+    document.getElementById("taskColor").style.color = "rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
   }
 }
 
