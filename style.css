@@ -13,13 +13,14 @@ body {
 }
 
 div#tasks{
-  color:white;
+  color:red;
   position: absolute;
   text-align: right;
   right: 0px;
   border-left-style: outset;
   border-bottom-style: outset;
   border-width: 5px;
+  border-color: red;
 }
 
 div#toptext {
@@ -152,28 +153,28 @@ div#redbuilding5text {
 }
 
 button#redfilter {
-  border: ridge;
+  /*border: ridge;*/
   width: 150px;
   height: 24px;
 }
 button#redpointer {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#bigredfilter {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#bigredpointer {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#rednanometerwave {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 div#redupgrades {
@@ -321,28 +322,28 @@ div#greenbuilding5text {
 }
 
 button#greenfilter {
-  border: ridge;
+  /*border: ridge;*/
   width: 150px;
   height: 24px;
 }
 button#greenpointer {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#biggreenfilter {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#biggreenpointer {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#greennanometerwave {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 div#greenupgrades {
@@ -473,28 +474,28 @@ div#bluebuilding5text {
   width: 55%;
 }
 button#bluefilter {
-  border: ridge;
+  /*border: ridge;*/
   width: 150px;
   height: 24px;
 }
 button#bluepointer {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#bigbluefilter {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#bigbluepointer {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 button#bluenanometerwave {
   width: 150px;
-  border: ridge;
+  /*border: ridge;*/
   height: 24px;
 }
 div#blueupgrades {
@@ -544,4 +545,31 @@ button#blueupgrade3 {
   width: 100px;
   height: 100px;
   display: none;
+}
+button#tabred{
+  background-color: red;
+}
+button#tabblue{
+  background-color: blue;
+}
+button#tabgreen{
+  background-color: green;
+}
+.redupgrades{
+  background-color: red;
+}
+.greenupgrades{
+  background-color: green;
+}
+.blueupgrades{
+  background-color: blue;
+}
+.redtext{
+  color: red;
+}
+.bluetext{
+  color: blue;
+}
+.greentext{
+  color: green;
 }

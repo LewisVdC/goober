@@ -216,6 +216,8 @@ function showtab(x) {
     document.getElementById("top").style.color = "rgb(255,0,0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
+    document.getElementById("tasks").style.color = "red";
+    document.getElementById("tasks").style.borderColor = "red";
   }
   if (x === "green") {
     document.getElementById("red").style.display = "none";
@@ -223,6 +225,8 @@ function showtab(x) {
     document.getElementById("tabs").style.backgroundColor = "rgb(0,20,0)";
     document.getElementById("top").style.color = "rgb(0,255,0)";
     document.getElementById("blue").style.display = "none";
+    document.getElementById("tasks").style.color = "green";
+    document.getElementById("tasks").style.borderColor = "green";
   }
   if (x === "blue") {
     document.getElementById("red").style.display = "none";
@@ -230,6 +234,8 @@ function showtab(x) {
     document.getElementById("blue").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,0,20)";
     document.getElementById("top").style.color = "blue";
+    document.getElementById("tasks").style.color = "blue";
+    document.getElementById("tasks").style.borderColor = "blue";
   }
 }
 
