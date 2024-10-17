@@ -11,9 +11,9 @@ div#tasks{
   position: absolute;
   text-align: right;
   right: 0px;
-  border-left-style: ridge;
-  border-bottom-style: ridge;
-  border-width: medium;
+  border-left-style: outset;
+  border-bottom-style: outset;
+  border-width: 5px;
 }
 
 div#toptext {
