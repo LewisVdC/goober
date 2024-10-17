@@ -795,6 +795,7 @@ function submitTask(){
     rgbToHex(taskColorGoalRed+", "+taskColorGoalGreen+", "+taskColorGoalBlue)
     document.getElementById("taskColor").innerHTML = hexResult;
     document.getElementById("taskColor").style.color = "rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
+    document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
   }
 }
 
