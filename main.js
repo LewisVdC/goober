@@ -216,7 +216,8 @@ function showtab(x) {
     document.getElementById("blue").style.display = "none";
     document.getElementById("tasks").style.color = "rgb(155,20,20)";
     document.getElementById("tasks").style.borderColor = "rgb(155,20,20)";
-    document.getElementById("body").style.textShadow = "0px 0px 10px red"
+    document.getElementById("body").style.textShadow = "0px 0px 10px red";
+    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(155,20,20)";
   }
   if (x === "green") {
     document.getElementById("red").style.display = "none";
@@ -226,7 +227,8 @@ function showtab(x) {
     document.getElementById("blue").style.display = "none";
     document.getElementById("tasks").style.color = "green";
     document.getElementById("tasks").style.borderColor = "green";
-    document.getElementById("body").style.textShadow = "0px 0px 10px green"
+    document.getElementById("body").style.textShadow = "0px 0px 10px green";
+    document.getElementById("submitTaskButton").style.backgroundColor = "green";
   }
   if (x === "blue") {
     document.getElementById("red").style.display = "none";
@@ -236,7 +238,8 @@ function showtab(x) {
     document.getElementById("top").style.color = "blue";
     document.getElementById("tasks").style.color = "blue";
     document.getElementById("tasks").style.borderColor = "blue";
-    document.getElementById("body").style.textShadow = "0px 0px 10px blue"
+    document.getElementById("body").style.textShadow = "0px 0px 10px blue";
+    document.getElementById("submitTaskButton").style.backgroundColor = "blue";
   }
 }
 
@@ -595,6 +598,10 @@ function buyblueupgrade3() {
 }
 
 window.setInterval(function () {
+  //wuuuuuuuuuuuuuuugh
+  document.getElementById("taskAmountRed").innerHTML = Math.round(red);
+  document.getElementById("taskAmountBlue").innerHTML = Math.round(blue);
+  document.getElementById("taskAmountGreen").innerHTML = Math.round(green);
   //ugh
   if (loaded === 1) {
     //unlocks
