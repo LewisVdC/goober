@@ -548,12 +548,15 @@ button#blueupgrade3 {
 }
 button#tabred{
   background-color: rgb(155,20,20);
+  box-shadow: 0px 0px 50px 5px red;
 }
 button#tabblue{
   background-color: blue;
+  box-shadow: 0px 0px 50px 5px blue;
 }
 button#tabgreen{
   background-color: green;
+  box-shadow: 0px 0px 50px 5px green;
 }
 .redupgrades{
   background-color: rgb(155,20,20);
@@ -572,4 +575,7 @@ button#tabgreen{
 }
 .greentext{
   color: green;
+}
+#body{
+  text-shadow: 0px 0px 10px red
 }

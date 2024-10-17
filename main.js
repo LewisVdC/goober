@@ -31,6 +31,9 @@ var blueupgrade3 = 0;
 
 var loaded = 0;
 
+var arrOfPtags = document.getElementsByTagName("p");
+var arrOfSpanTags = document.getElementsByTagName("span");
+
 document.getElementById("redcount").innerHTML = "red: " + red;
 
 function load() {
@@ -99,39 +102,35 @@ function load() {
     //
     if (redupgrade1 === 1) {
       document.getElementById("redupgrade1cost").innerHTML = "bought";
-      document.getElementById("redupgrade1").style.border = "outset";
+      //document.getElementById("redupgrade1").style.border = "outset";
     }
     if (redupgrade2 === 1) {
       document.getElementById("redupgrade2cost").innerHTML = "bought";
-      document.getElementById("redupgrade2").style.border = "outset";
-    }
-    if (redupgrade3 === 1) {
-      document.getElementById("redupgrade3cost").innerHTML = "bought";
-      document.getElementById("redupgrade3").style.border = "outset";
+      //document.getElementById("redupgrade3").style.border = "outset";
     }
     if (greenupgrade1 === 1) {
       document.getElementById("greenupgrade1cost").innerHTML = "bought";
-      document.getElementById("greenupgrade1").style.border = "outset";
+      //document.getElementById("greenupgrade1").style.border = "outset";
     }
     if (greenupgrade2 === 1) {
       document.getElementById("greenupgrade2cost").innerHTML = "bought";
-      document.getElementById("greenupgrade2").style.border = "outset";
+      //document.getElementById("greenupgrade2").style.border = "outset";
     }
     if (greenupgrade3 === 1) {
       document.getElementById("greenupgrade3cost").innerHTML = "bought";
-      document.getElementById("greenupgrade3").style.border = "outset";
+      //document.getElementById("greenupgrade3").style.border = "outset";
     }
     if (blueupgrade1 === 1) {
       document.getElementById("blueupgrade1cost").innerHTML = "bought";
-      document.getElementById("blueupgrade1").style.border = "outset";
+      //document.getElementById("blueupgrade1").style.border = "outset";
     }
     if (blueupgrade2 === 1) {
       document.getElementById("blueupgrade2cost").innerHTML = "bought";
-      document.getElementById("blueupgrade2").style.border = "outset";
+      //document.getElementById("blueupgrade2").style.border = "outset";
     }
     if (blueupgrade3 === 1) {
       document.getElementById("blueupgrade3cost").innerHTML = "bought";
-      document.getElementById("blueupgrade3").style.border = "outset";
+      //document.getElementById("blueupgrade3").style.border = "outset";
     }
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
     document.getElementById("greencount").innerHTML =
@@ -190,7 +189,6 @@ function load() {
     document.getElementById("bluenanometerwavecost").innerHTML = nextblueCost5;
     document.getElementById("bluenanometerwavecount").innerHTML =
       bluenanometerwave;
-
     console.log("loaded");
     loaded = 1;
   } else {
@@ -218,6 +216,7 @@ function showtab(x) {
     document.getElementById("blue").style.display = "none";
     document.getElementById("tasks").style.color = "rgb(155,20,20)";
     document.getElementById("tasks").style.borderColor = "rgb(155,20,20)";
+    document.getElementById("body").style.textShadow = "0px 0px 10px red"
   }
   if (x === "green") {
     document.getElementById("red").style.display = "none";
@@ -227,6 +226,7 @@ function showtab(x) {
     document.getElementById("blue").style.display = "none";
     document.getElementById("tasks").style.color = "green";
     document.getElementById("tasks").style.borderColor = "green";
+    document.getElementById("body").style.textShadow = "0px 0px 10px green"
   }
   if (x === "blue") {
     document.getElementById("red").style.display = "none";
@@ -236,6 +236,7 @@ function showtab(x) {
     document.getElementById("top").style.color = "blue";
     document.getElementById("tasks").style.color = "blue";
     document.getElementById("tasks").style.borderColor = "blue";
+    document.getElementById("body").style.textShadow = "0px 0px 10px blue"
   }
 }
 
@@ -506,7 +507,7 @@ function buyredupgrade1() {
     redupgrade1 = 1;
     red = red - 150000;
     document.getElementById("redupgrade1cost").innerHTML = "bought";
-    document.getElementById("redupgrade1").style.border = "outset";
+    //document.getElementById("redupgrade1").style.border = "outset";
   }
 }
 
@@ -516,7 +517,7 @@ function buyredupgrade2() {
     redupgrade2 = 1;
     red = red - 250000;
     document.getElementById("redupgrade2cost").innerHTML = "bought";
-    document.getElementById("redupgrade2").style.border = "outset";
+    //document.getElementById("redupgrade2").style.border = "outset";
   }
 }
 
@@ -526,7 +527,7 @@ function buyredupgrade3() {
     redupgrade3 = 1;
     red = red - 500000;
     document.getElementById("redupgrade3cost").innerHTML = "bought";
-    document.getElementById("redupgrade3").style.border = "outset";
+    //document.getElementById("redupgrade3").style.border = "outset";
   }
 }
 
@@ -537,7 +538,7 @@ function buygreenupgrade1() {
     greenupgrade1 = 1;
     green = green - 150000;
     document.getElementById("greenupgrade1cost").innerHTML = "bought";
-    document.getElementById("greenupgrade1").style.border = "outset";
+    //document.getElementById("greenupgrade1").style.border = "outset";
   }
 }
 
@@ -548,7 +549,7 @@ function buygreenupgrade2() {
     greenupgrade2 = 1;
     green = green - 250000;
     document.getElementById("greenupgrade2cost").innerHTML = "bought";
-    document.getElementById("greenupgrade2").style.border = "outset";
+    //document.getElementById("greenupgrade2").style.border = "outset";
   }
 }
 
@@ -559,7 +560,7 @@ function buygreenupgrade3() {
     greenupgrade3 = 1;
     green = green - 500000;
     document.getElementById("greenupgrade3cost").innerHTML = "bought";
-    document.getElementById("greenupgrade3").style.border = "outset";
+    //document.getElementById("greenupgrade3").style.border = "outset";
   }
 }
 
@@ -569,7 +570,7 @@ function buyblueupgrade1() {
     blueupgrade1 = 1;
     blue = blue - 150000;
     document.getElementById("blueupgrade1cost").innerHTML = "bought";
-    document.getElementById("blueupgrade1").style.border = "outset";
+    //document.getElementById("blueupgrade1").style.border = "outset";
   }
 }
 
@@ -579,7 +580,7 @@ function buyblueupgrade2() {
     blueupgrade2 = 1;
     blue = blue - 250000;
     document.getElementById("blueupgrade2cost").innerHTML = "bought";
-    document.getElementById("blueupgrade2").style.border = "outset";
+    //document.getElementById("blueupgrade2").style.border = "outset";
   }
 }
 
