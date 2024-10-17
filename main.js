@@ -752,3 +752,9 @@ function submitTask(){
     blue -= taskColorGoalBlue;
   }
 }
+
+function resetData(){
+  loaded = 35;
+  localStorage.removeItem("save");
+  location.reload();
+}
