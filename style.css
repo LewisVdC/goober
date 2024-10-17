@@ -13,14 +13,14 @@ body {
 }
 
 div#tasks{
-  color:red;
+  color: rgb(155,20,20);
   position: absolute;
   text-align: right;
   right: 0px;
   border-left-style: outset;
   border-bottom-style: outset;
   border-width: 5px;
-  border-color: red;
+  border-color: rgb(155,20,20);
 }
 
 div#toptext {
@@ -34,7 +34,7 @@ div#top {
   padding-top: 2.5%;
 }
 span#redcount {
-  color: red;
+  color: rgb(155,20,20);
 }
 span#greencount {
   color: green;
@@ -219,7 +219,7 @@ button#redupgrade3 {
 }
 
 .bought1 {
-  color: red;
+  color: rgb(155,20,20);
 }
 div#redupgrades {
   display: none;
@@ -547,7 +547,7 @@ button#blueupgrade3 {
   display: none;
 }
 button#tabred{
-  background-color: red;
+  background-color: rgb(155,20,20);
 }
 button#tabblue{
   background-color: blue;
@@ -556,7 +556,7 @@ button#tabgreen{
   background-color: green;
 }
 .redupgrades{
-  background-color: red;
+  background-color: rgb(155,20,20);
 }
 .greenupgrades{
   background-color: green;
@@ -565,7 +565,7 @@ button#tabgreen{
   background-color: blue;
 }
 .redtext{
-  color: red;
+  color: rgb(155,20,20);
 }
 .bluetext{
   color: blue;

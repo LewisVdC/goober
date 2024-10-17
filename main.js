@@ -216,8 +216,8 @@ function showtab(x) {
     document.getElementById("top").style.color = "rgb(255,0,0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "red";
-    document.getElementById("tasks").style.borderColor = "red";
+    document.getElementById("tasks").style.color = "rgb(155,20,20)";
+    document.getElementById("tasks").style.borderColor = "rgb(155,20,20)";
   }
   if (x === "green") {
     document.getElementById("red").style.display = "none";
