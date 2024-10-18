@@ -33,6 +33,32 @@ var blueupgrade3 = 0;
 
 var loaded = 0;
 
+var arrOfPtags = document.getElementsByTagName("p");
+var arrOfSpanTags = document.getElementsByTagName("span");
+var taskColorGoalHEX = "#ff0000";
+var taskColorGoalRed = 255;
+var taskColorGoalGreen = 0;
+var taskColorGoalBlue = 0;
+let hexResult = '#'
+const hex = {
+  '0': '0',
+  '1': '1',
+  '2': '2',
+  '3': '3',
+  '4': '4',
+  '5': '5',
+  '6': '6',
+  '7': '6',
+  '8': '8',
+  '9': '9', 
+  '10': 'A', 
+  '11': 'B', 
+  '12': 'C', 
+  '13': 'D', 
+  '14': 'E',
+  '15': 'F'
+}
+
 document.getElementById("redcount").innerHTML = "red: " + red;
 
 function load() {
@@ -101,39 +127,39 @@ function load() {
     //
     if (redupgrade1 === 1) {
       document.getElementById("redupgrade1cost").innerHTML = "bought";
-      document.getElementById("redupgrade1").style.border = "outset";
+      //document.getElementById("redupgrade1").style.border = "outset";
     }
     if (redupgrade2 === 1) {
       document.getElementById("redupgrade2cost").innerHTML = "bought";
-      document.getElementById("redupgrade2").style.border = "outset";
+      //document.getElementById("redupgrade2").style.border = "outset";
     }
     if (redupgrade3 === 1) {
       document.getElementById("redupgrade3cost").innerHTML = "bought";
-      document.getElementById("redupgrade3").style.border = "outset";
+      //document.getElementById("redupgrade3").style.border = "outset";
     }
     if (greenupgrade1 === 1) {
       document.getElementById("greenupgrade1cost").innerHTML = "bought";
-      document.getElementById("greenupgrade1").style.border = "outset";
+      //document.getElementById("greenupgrade1").style.border = "outset";
     }
     if (greenupgrade2 === 1) {
       document.getElementById("greenupgrade2cost").innerHTML = "bought";
-      document.getElementById("greenupgrade2").style.border = "outset";
+      //document.getElementById("greenupgrade2").style.border = "outset";
     }
     if (greenupgrade3 === 1) {
       document.getElementById("greenupgrade3cost").innerHTML = "bought";
-      document.getElementById("greenupgrade3").style.border = "outset";
+      //document.getElementById("greenupgrade3").style.border = "outset";
     }
     if (blueupgrade1 === 1) {
       document.getElementById("blueupgrade1cost").innerHTML = "bought";
-      document.getElementById("blueupgrade1").style.border = "outset";
+      //document.getElementById("blueupgrade1").style.border = "outset";
     }
     if (blueupgrade2 === 1) {
       document.getElementById("blueupgrade2cost").innerHTML = "bought";
-      document.getElementById("blueupgrade2").style.border = "outset";
+      //document.getElementById("blueupgrade2").style.border = "outset";
     }
     if (blueupgrade3 === 1) {
       document.getElementById("blueupgrade3cost").innerHTML = "bought";
-      document.getElementById("blueupgrade3").style.border = "outset";
+      //document.getElementById("blueupgrade3").style.border = "outset";
     }
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
     document.getElementById("greencount").innerHTML =
@@ -192,7 +218,6 @@ function load() {
     document.getElementById("bluenanometerwavecost").innerHTML = nextblueCost5;
     document.getElementById("bluenanometerwavecount").innerHTML =
       bluenanometerwave;
-
     console.log("loaded");
     loaded = 1;
   } else {
@@ -218,6 +243,10 @@ function showtab(x) {
     document.getElementById("top").style.color = "rgb(255,0,0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
+    document.getElementById("tasks").style.color = "rgb(155,20,20)";
+    document.getElementById("tasks").style.borderColor = "rgb(155,20,20)";
+    document.getElementById("body").style.textShadow = "0px 0px 10px red";
+    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(155,20,20)";
   }
   if (x === "green") {
     document.getElementById("red").style.display = "none";
@@ -225,6 +254,10 @@ function showtab(x) {
     document.getElementById("tabs").style.backgroundColor = "rgb(0,20,0)";
     document.getElementById("top").style.color = "rgb(0,255,0)";
     document.getElementById("blue").style.display = "none";
+    document.getElementById("tasks").style.color = "green";
+    document.getElementById("tasks").style.borderColor = "green";
+    document.getElementById("body").style.textShadow = "0px 0px 10px green";
+    document.getElementById("submitTaskButton").style.backgroundColor = "green";
   }
   if (x === "blue") {
     document.getElementById("red").style.display = "none";
@@ -232,6 +265,10 @@ function showtab(x) {
     document.getElementById("blue").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,0,20)";
     document.getElementById("top").style.color = "blue";
+    document.getElementById("tasks").style.color = "blue";
+    document.getElementById("tasks").style.borderColor = "blue";
+    document.getElementById("body").style.textShadow = "0px 0px 10px blue";
+    document.getElementById("submitTaskButton").style.backgroundColor = "blue";
   }
 }
 
@@ -502,7 +539,7 @@ function buyredupgrade1() {
     redupgrade1 = 1;
     red = red - 150000;
     document.getElementById("redupgrade1cost").innerHTML = "bought";
-    document.getElementById("redupgrade1").style.border = "outset";
+    //document.getElementById("redupgrade1").style.border = "outset";
   }
 }
 
@@ -512,7 +549,7 @@ function buyredupgrade2() {
     redupgrade2 = 1;
     red = red - 250000;
     document.getElementById("redupgrade2cost").innerHTML = "bought";
-    document.getElementById("redupgrade2").style.border = "outset";
+    //document.getElementById("redupgrade2").style.border = "outset";
   }
 }
 
@@ -522,7 +559,7 @@ function buyredupgrade3() {
     redupgrade3 = 1;
     red = red - 500000;
     document.getElementById("redupgrade3cost").innerHTML = "bought";
-    document.getElementById("redupgrade3").style.border = "outset";
+    //document.getElementById("redupgrade3").style.border = "outset";
   }
 }
 
@@ -533,7 +570,7 @@ function buygreenupgrade1() {
     greenupgrade1 = 1;
     green = green - 150000;
     document.getElementById("greenupgrade1cost").innerHTML = "bought";
-    document.getElementById("greenupgrade1").style.border = "outset";
+    //document.getElementById("greenupgrade1").style.border = "outset";
   }
 }
 
@@ -544,7 +581,7 @@ function buygreenupgrade2() {
     greenupgrade2 = 1;
     green = green - 250000;
     document.getElementById("greenupgrade2cost").innerHTML = "bought";
-    document.getElementById("greenupgrade2").style.border = "outset";
+    //document.getElementById("greenupgrade2").style.border = "outset";
   }
 }
 
@@ -555,7 +592,7 @@ function buygreenupgrade3() {
     greenupgrade3 = 1;
     green = green - 500000;
     document.getElementById("greenupgrade3cost").innerHTML = "bought";
-    document.getElementById("greenupgrade3").style.border = "outset";
+    //document.getElementById("greenupgrade3").style.border = "outset";
   }
 }
 
@@ -565,7 +602,7 @@ function buyblueupgrade1() {
     blueupgrade1 = 1;
     blue = blue - 150000;
     document.getElementById("blueupgrade1cost").innerHTML = "bought";
-    document.getElementById("blueupgrade1").style.border = "outset";
+    //document.getElementById("blueupgrade1").style.border = "outset";
   }
 }
 
@@ -575,7 +612,7 @@ function buyblueupgrade2() {
     blueupgrade2 = 1;
     blue = blue - 250000;
     document.getElementById("blueupgrade2cost").innerHTML = "bought";
-    document.getElementById("blueupgrade2").style.border = "outset";
+    //document.getElementById("blueupgrade2").style.border = "outset";
   }
 }
 
@@ -590,6 +627,10 @@ function buyblueupgrade3() {
 }
 
 window.setInterval(function () {
+  //wuuuuuuuuuuuuuuugh
+  document.getElementById("taskAmountRed").innerHTML = Math.round(red);
+  document.getElementById("taskAmountBlue").innerHTML = Math.round(blue);
+  document.getElementById("taskAmountGreen").innerHTML = Math.round(green);
   //ugh
   if (loaded === 1) {
     //unlocks
@@ -724,3 +765,44 @@ window.setInterval(function () {
     );
   }
 }, 10);
+
+function rgbToHex(rgb){
+  let rgbColor = rgb.split(', ')
+  let values = Object.values(hex)
+  hexResult = "#"
+  rgbColor.forEach(element => {
+      if (values.includes(element)){
+          hexResult += element + element
+      } else {
+          let number = Number(element)/16;
+          let firstDig = String(number).slice(0,2).replace('.', '');
+          let secondDig = String(((number - Number(firstDig))*16));
+          hexResult += hex[firstDig]
+          hexResult += hex[secondDig]
+      }
+  });
+}
+
+function submitTask(){
+  if(red >= taskColorGoalRed && green >= taskColorGoalGreen && blue >= taskColorGoalBlue){
+    red -= taskColorGoalRed;
+    green -= taskColorGoalGreen;
+    blue -= taskColorGoalBlue;
+    taskColorGoalRed = Math.floor(Math.random() * 256);
+    taskColorGoalGreen = Math.floor(Math.random() * 256);
+    taskColorGoalBlue = Math.floor(Math.random() * 256);
+    document.getElementById("taskGoalAmountRed").innerHTML = taskColorGoalRed;
+    document.getElementById("taskGoalAmountGreen").innerHTML = taskColorGoalGreen;
+    document.getElementById("taskGoalAmountBlue").innerHTML = taskColorGoalBlue;
+    rgbToHex(taskColorGoalRed+", "+taskColorGoalGreen+", "+taskColorGoalBlue)
+    document.getElementById("taskColor").innerHTML = hexResult;
+    document.getElementById("taskColor").style.color = "rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
+    document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
+  }
+}
+
+function resetData(){
+  loaded = 35;
+  localStorage.removeItem("save");
+  location.reload();
+}
