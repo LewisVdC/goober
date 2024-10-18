@@ -48,6 +48,7 @@ span#bluecount {
   color: blue;
 }
 div#red {
+  display: block;
   background-color: rgb(20, 0, 0);
   height: 100%;
   width: 100%;
