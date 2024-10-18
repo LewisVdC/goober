@@ -42,6 +42,7 @@ var taskColorGoalGreen = 0;
 var taskColorGoalBlue = 0;
 let hexResult = '#'
 var tasksCompleted = 0;
+var taskReward = "10 green";
 const hex = {
   '0': '0',
   '1': '1',
@@ -122,6 +123,32 @@ function load() {
       blueupgrade2 = savegame.blueupgrade2;
     if (typeof savegame.blueupgrade3 !== "undefined")
       blueupgrade3 = savegame.blueupgrade3;
+    //tasks
+    if(typeof savegame.tasksCompleted !== "undefined")
+      tasksCompleted = savegame.tasksCompleted;
+    if(typeof savegame.colorGoal !== "undefined")
+      document.getElementById("taskColor").innerHTML = savegame.colorGoal;
+    if(typeof savegame.colorGoalColor !== "undefined")
+      document.getElementById("taskColor").style.color = String(savegame.colorGoalColor);
+      document.getElementById("taskColor").style.textShadow = "0 0 10px "+String(savegame.colorGoalColor);
+    if(tasksCompleted > 0){
+      document.getElementById("tabgreen").style.display = "block";
+    }
+    if(tasksCompleted > 1){
+      document.getElementById("tabblue").style.display = "block";
+    }
+    if(typeof savegame.taskColorGoalRed !== "undefined")
+      taskColorGoalRed = savegame.taskColorGoalRed;
+      document.getElementById("taskGoalAmountRed").innerHTML = Math.round(taskColorGoalRed);
+    if(typeof savegame.taskColorGoalGreen !== "undefined")
+      taskColorGoalGreen = savegame.taskColorGoalGreen;
+      document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
+    if(typeof savegame.taskColorGoalBlue !== "undefined")
+      taskColorGoalBlue = savegame.taskColorGoalBlue;
+      document.getElementById("taskGoalAmountBlue").innerHTML = Math.round(taskColorGoalBlue);
+    if(typeof savegame.taskReward !== "undefined")
+      taskReward = savegame.taskReward;
+      document.getElementById("taskReward").innerHTML = savegame.taskReward;
     //
     //
     //
@@ -724,6 +751,13 @@ window.setInterval(function () {
       blueupgrade1: blueupgrade1,
       blueupgrade2: blueupgrade2,
       blueupgrade3: blueupgrade3,
+      tasksCompleted: tasksCompleted,
+      colorGoal: document.getElementById("taskColor").innerHTML,
+      colorGoalColor: document.getElementById("taskColor").style.color,
+      taskColorGoalBlue: taskColorGoalBlue,
+      taskColorGoalGreen: taskColorGoalGreen,
+      taskColorGoalRed: taskColorGoalRed,
+      taskReward: taskReward,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -825,6 +859,7 @@ function submitTask(){
       document.getElementById("taskColor").style.color = "green";
       document.getElementById("taskColor").style.textShadow = "0 0 10px green";
       document.getElementById("taskReward").innerHTML = "10 blue";
+      taskReward = "10 blue";
       document.getElementById("tabgreen").style.display = "block";
       green+=10;
     }else if(tasksCompleted === 2){
@@ -838,6 +873,7 @@ function submitTask(){
       document.getElementById("taskColor").style.color = "blue";
       document.getElementById("taskColor").style.textShadow = "0 0 10px blue";
       document.getElementById("taskReward").innerHTML = "?????";
+      taskReward = "?????";
       document.getElementById("tabblue").style.display = "block";
       blue+=10;
     }
