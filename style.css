@@ -26,8 +26,8 @@ body {
   margin-top: 5px;
 }
 #taskColor{
-  color: rgb(255,255,0);
-  text-shadow: 0 0 10px yellow;
+  color: rgb(255,0,0);
+  text-shadow: 0 0 10px red;
 }
 div#tasks{
   color: rgb(155,20,20);
@@ -576,14 +576,17 @@ button#tabred{
   box-shadow: 0px 0px 50px 5px red;
 }
 button#tabblue{
+  display: none;
   background-color: blue;
   box-shadow: 0px 0px 50px 5px blue;
 }
 button#tabgreen{
+  display: none;
   background-color: green;
   box-shadow: 0px 0px 50px 5px green;
 }
 button#tabyellow{
+  display: none;
   background-color: yellow;
   box-shadow: 0px 0px 50px 0px yellow;
 }
