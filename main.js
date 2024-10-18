@@ -1,3 +1,5 @@
+// ):
+
 var red = 10;
 var redfilter = 0;
 var redpointer = 0;
@@ -234,19 +236,19 @@ function showtab(x) {
 }
 
 function calcred(number) {
-  debugrednumber = number;
-  red = red + number / 100;
+  debugrednumber = number / 2;
+  red = red + number / 200;
   document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
 }
 function calcgreen(number) {
-  debuggreennumber = number;
-  green = green + number / 100;
+  debuggreennumber = number / 2;
+  green = green + number / 200;
   document.getElementById("greencount").innerHTML =
     "green: " + Math.floor(green);
 }
 function calcblue(number) {
-  debugbluenumber = number;
-  blue = blue + number / 100;
+  debugbluenumber = number / 2;
+  blue = blue + number / 200;
   document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
 }
 
