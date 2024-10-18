@@ -26,7 +26,8 @@ body {
   margin-top: 5px;
 }
 #taskColor{
-  color: rgb(255,0,0);
+  color: rgb(255,255,0);
+  text-shadow: 0 0 10px yellow;
 }
 div#tasks{
   color: rgb(155,20,20);
@@ -75,6 +76,13 @@ div#green {
 }
 div#blue {
   background-color: rgb(0, 0, 20);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+div#yellow {
+  background-color: rgb(20, 20, 0);
   height: 100%;
   width: 100%;
   margin: 0;

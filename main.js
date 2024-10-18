@@ -36,9 +36,9 @@ var tab = "red";
 
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
-var taskColorGoalHEX = "#ff0000";
+var taskColorGoalHEX = "#ffff00";
 var taskColorGoalRed = 255;
-var taskColorGoalGreen = 0;
+var taskColorGoalGreen = 255;
 var taskColorGoalBlue = 0;
 let hexResult = '#'
 var tasksCompleted = 0;
