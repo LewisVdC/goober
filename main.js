@@ -242,6 +242,7 @@ function showtab(x) {
   if (x === "red") {
     tab = "red";
     document.getElementById("red").style.display = "block";
+    document.getElementById("yellow").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(20,0,0)";
     document.getElementById("top").style.color = "rgb(255,0,0)";
     document.getElementById("green").style.display = "none";
@@ -255,6 +256,7 @@ function showtab(x) {
   if (x === "green") {
     tab="green";
     document.getElementById("red").style.display = "none";
+    document.getElementById("yellow").style.display = "none";
     document.getElementById("green").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,20,0)";
     document.getElementById("top").style.color = "rgb(0,255,0)";
@@ -268,6 +270,7 @@ function showtab(x) {
   if (x === "blue") {
     tab="blue";
     document.getElementById("red").style.display = "none";
+    document.getElementById("yellow").style.display = "none";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,0,20)";
@@ -277,6 +280,20 @@ function showtab(x) {
     document.getElementById("reward").style.borderColor = "blue";
     document.getElementById("body").style.textShadow = "0px 0px 10px blue";
     document.getElementById("submitTaskButton").style.backgroundColor = "blue";
+  }
+  if (x === "yellow") {
+    tab = "yellow";
+    document.getElementById("yellow").style.display = "block";
+    document.getElementById("red").style.display = "none";
+    document.getElementById("tabs").style.backgroundColor = "rgb(20,20,0)";
+    document.getElementById("top").style.color = "rgb(240,255,85)";
+    document.getElementById("green").style.display = "none";
+    document.getElementById("blue").style.display = "none";
+    document.getElementById("tasks").style.color = "rgb(240,255,85)";
+    document.getElementById("tasks").style.borderColor = "rgb(240,255,85)";
+    document.getElementById("reward").style.borderColor = "rgb(240,255,85)";
+    document.getElementById("body").style.textShadow = "0px 0px 10px yellow";
+    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(240,255,85)";
   }
 }
 

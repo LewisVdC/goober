@@ -575,6 +575,10 @@ button#tabgreen{
   background-color: green;
   box-shadow: 0px 0px 50px 5px green;
 }
+button#tabyellow{
+  background-color: yellow;
+  box-shadow: 0px 0px 50px 0px yellow;
+}
 .redupgrades{
   background-color: rgb(155,20,20);
 }
