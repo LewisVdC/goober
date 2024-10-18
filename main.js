@@ -38,6 +38,7 @@ var taskColorGoalRed = 255;
 var taskColorGoalGreen = 0;
 var taskColorGoalBlue = 0;
 let hexResult = '#'
+var tasksCompleted = 0;
 const hex = {
   '0': '0',
   '1': '1',
@@ -786,16 +787,17 @@ function submitTask(){
     red -= taskColorGoalRed;
     green -= taskColorGoalGreen;
     blue -= taskColorGoalBlue;
-    taskColorGoalRed = Math.floor(Math.random() * 256);
-    taskColorGoalGreen = Math.floor(Math.random() * 256);
-    taskColorGoalBlue = Math.floor(Math.random() * 256);
-    document.getElementById("taskGoalAmountRed").innerHTML = taskColorGoalRed;
-    document.getElementById("taskGoalAmountGreen").innerHTML = taskColorGoalGreen;
-    document.getElementById("taskGoalAmountBlue").innerHTML = taskColorGoalBlue;
-    rgbToHex(taskColorGoalRed+", "+taskColorGoalGreen+", "+taskColorGoalBlue)
+    tasksCompleted++;
+    taskColorGoalRed = Math.floor(Math.random() * 256) * 1000 * Math.pow(1.2, tasksCompleted);
+    taskColorGoalGreen = Math.floor(Math.random() * 256) * 1000 * Math.pow(1.2, tasksCompleted);
+    taskColorGoalBlue = Math.floor(Math.random() * 256) * 1000 * Math.pow(1.2, tasksCompleted);
+    document.getElementById("taskGoalAmountRed").innerHTML = Math.round(taskColorGoalRed);
+    document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
+    document.getElementById("taskGoalAmountBlue").innerHTML = Math.round(taskColorGoalBlue);
+    rgbToHex(Math.round(taskColorGoalRed/(1000 * Math.pow(1.2, tasksCompleted)))+", "+Math.round(taskColorGoalGreen/(1000 * Math.pow(1.2, tasksCompleted)))+", "+Math.round(taskColorGoalBlue/(1000 * Math.pow(1.2, tasksCompleted))));
     document.getElementById("taskColor").innerHTML = hexResult;
-    document.getElementById("taskColor").style.color = "rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
-    document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
+    document.getElementById("taskColor").style.color = "rgb("+String(Math.round(taskColorGoalRed/(1000 * Math.pow(1.2, tasksCompleted))))+", "+ String(Math.round(taskColorGoalGreen/(1000 * Math.pow(1.2, tasksCompleted))))+", "+String(Math.round(taskColorGoalBlue/(1000 * Math.pow(1.2, tasksCompleted))))+")";
+    document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(Math.round(taskColorGoalRed/(1000 * Math.pow(1.2, tasksCompleted))))+", "+ String(Math.round(taskColorGoalGreen/(1000 * Math.pow(1.2, tasksCompleted))))+", "+String(Math.round(taskColorGoalBlue/(1000 * Math.pow(1.2, tasksCompleted))))+")";
   }
 }
 
