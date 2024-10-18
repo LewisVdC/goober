@@ -248,6 +248,7 @@ function showtab(x) {
     document.getElementById("blue").style.display = "none";
     document.getElementById("tasks").style.color = "rgb(155,20,20)";
     document.getElementById("tasks").style.borderColor = "rgb(155,20,20)";
+    document.getElementById("reward").style.borderColor = "rgb(155,20,20)";
     document.getElementById("body").style.textShadow = "0px 0px 10px red";
     document.getElementById("submitTaskButton").style.backgroundColor = "rgb(155,20,20)";
   }
@@ -260,6 +261,7 @@ function showtab(x) {
     document.getElementById("blue").style.display = "none";
     document.getElementById("tasks").style.color = "green";
     document.getElementById("tasks").style.borderColor = "green";
+    document.getElementById("reward").style.borderColor = "green";
     document.getElementById("body").style.textShadow = "0px 0px 10px green";
     document.getElementById("submitTaskButton").style.backgroundColor = "green";
   }
@@ -272,6 +274,7 @@ function showtab(x) {
     document.getElementById("top").style.color = "blue";
     document.getElementById("tasks").style.color = "blue";
     document.getElementById("tasks").style.borderColor = "blue";
+    document.getElementById("reward").style.borderColor = "blue";
     document.getElementById("body").style.textShadow = "0px 0px 10px blue";
     document.getElementById("submitTaskButton").style.backgroundColor = "blue";
   }
