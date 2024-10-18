@@ -32,6 +32,7 @@ var greenupgrade3 = 0;
 var blueupgrade3 = 0;
 
 var loaded = 0;
+var tab = "red";
 
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
@@ -239,6 +240,7 @@ document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
 
 function showtab(x) {
   if (x === "red") {
+    tab = "red";
     document.getElementById("red").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(20,0,0)";
     document.getElementById("top").style.color = "rgb(255,0,0)";
@@ -250,6 +252,7 @@ function showtab(x) {
     document.getElementById("submitTaskButton").style.backgroundColor = "rgb(155,20,20)";
   }
   if (x === "green") {
+    tab="green";
     document.getElementById("red").style.display = "none";
     document.getElementById("green").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,20,0)";
@@ -261,6 +264,7 @@ function showtab(x) {
     document.getElementById("submitTaskButton").style.backgroundColor = "green";
   }
   if (x === "blue") {
+    tab="blue";
     document.getElementById("red").style.display = "none";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "block";
@@ -802,9 +806,62 @@ function submitTask(){
     document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(Math.round(taskColorGoalRed/(1000 * Math.pow(1.2, tasksCompleted))))+", "+ String(Math.round(taskColorGoalGreen/(1000 * Math.pow(1.2, tasksCompleted))))+", "+String(Math.round(taskColorGoalBlue/(1000 * Math.pow(1.2, tasksCompleted))))+")";
   }
 }
-
+document.addEventListener("keydown", function(event){
+  if(event.key==="r"){
+    showtab("red");
+  }else if(event.key==="g"){
+    showtab("green");
+  }else if(event.key==="b"){
+    showtab("blue");
+  }
+  if(event.code==="Digit1"){
+    if(tab==="red"){
+      buyredfilter();
+    }else if(tab==="green"){
+      buygreenfilter();
+    }else if(tab==="blue"){
+      buybluefilter();
+    }
+  }
+  if(event.code==="Digit2"){
+    if(tab==="red"){
+      buyredpointer();
+    }else if(tab==="green"){
+      buygreenpointer();
+    }else if(tab==="blue"){
+      buybluepointer();
+    }
+  }
+  if(event.code==="Digit3"){
+    if(tab==="red"){
+      buybigredfilter();
+    }else if(tab==="green"){
+      buybiggreenfilter();
+    }else if(tab==="blue"){
+      buybigbluefilter();
+    }
+  }
+  if(event.code==="Digit4"){
+    if(tab==="red"){
+      buybigredpointer();
+    }else if(tab==="green"){
+      buybiggreenpointer();
+    }else if(tab==="blue"){
+      buybigbluepointer();
+    }
+  }
+  if(event.code==="Digit5"){
+    if(tab==="red"){
+      buyrednanometerwave();
+    }else if(tab==="green"){
+      buygreennanometerwave();
+    }else if(tab==="blue"){
+      buybluenanometerwave();
+    }
+  }
+});
 function resetData(){
-  loaded = 35;
+  loaded = 69420;
   localStorage.removeItem("save");
   location.reload();
 }
