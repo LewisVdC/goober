@@ -286,14 +286,14 @@ function showtab(x) {
     document.getElementById("yellow").style.display = "block";
     document.getElementById("red").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(20,20,0)";
-    document.getElementById("top").style.color = "rgb(240,255,85)";
+    document.getElementById("top").style.color = "rgb(110,115,41)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(240,255,85)";
-    document.getElementById("tasks").style.borderColor = "rgb(240,255,85)";
-    document.getElementById("reward").style.borderColor = "rgb(240,255,85)";
-    document.getElementById("body").style.textShadow = "0px 0px 10px yellow";
-    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(240,255,85)";
+    document.getElementById("tasks").style.color = "rgb(110,115,41)";
+    document.getElementById("tasks").style.borderColor = "rgb(110,115,41)";
+    document.getElementById("reward").style.borderColor = "rgb(110,115,41)";
+    document.getElementById("body").style.textShadow = "0px 0px 10px rgb(148, 148, 0)";
+    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(110,115,41)";
   }
 }
 
