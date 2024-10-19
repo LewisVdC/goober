@@ -927,6 +927,8 @@ document.addEventListener("keydown", function(event){
     showtab("green");
   }else if(event.key==="b" && tasksCompleted >= 2){
     showtab("blue");
+  }else if(event.key==="y" && tasksCompleted >= 4){
+    showtab("yellow");
   }
   if(event.code==="Digit1"){
     if(tab==="red"){
