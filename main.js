@@ -125,6 +125,9 @@ function load() {
       blueupgrade2 = savegame.blueupgrade2;
     if (typeof savegame.blueupgrade3 !== "undefined")
       blueupgrade3 = savegame.blueupgrade3;
+    //yellow
+    if(typeof savegame.yellow !== "undefined")
+      yellow = savegame.yellow;
     //tasks
     if(typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -202,7 +205,7 @@ function load() {
       "green: " + Math.floor(green);
     document.getElementById("bluecount").innerHTML =
       "blue: " + Math.floor(blue);
-
+    document.getElementById("yellowcount").innerHTML = "yellow: "+Math.floor(yellow);
     var nextredCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
     var nextredCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
     var nextredCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
@@ -271,6 +274,7 @@ function load() {
 document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
 document.getElementById("greencount").innerHTML = "green: " + Math.floor(green);
 document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+document.getElementById("yellowcount").innerHTML = "yellow: "+Math.floor(yellow);
 
 function showtab(x) {
   if (x === "red") {
@@ -320,14 +324,14 @@ function showtab(x) {
     document.getElementById("yellow").style.display = "block";
     document.getElementById("red").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(20,20,0)";
-    document.getElementById("top").style.color = "rgb(110,115,41)";
+    document.getElementById("top").style.color = "rgb(153, 128, 0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(110,115,41)";
-    document.getElementById("tasks").style.borderColor = "rgb(110,115,41)";
-    document.getElementById("reward").style.borderColor = "rgb(110,115,41)";
+    document.getElementById("tasks").style.color = "rgb(153, 128, 0)";
+    document.getElementById("tasks").style.borderColor = "rgb(153, 128, 0)";
+    document.getElementById("reward").style.borderColor = "rgb(153, 128, 0)";
     document.getElementById("body").style.textShadow = "0px 0px 10px rgb(148, 148, 0)";
-    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(110,115,41)";
+    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(153, 128, 0)";
   }
 }
 
@@ -766,6 +770,7 @@ window.setInterval(function () {
       taskColorGoalRed: taskColorGoalRed,
       taskReward: taskReward,
       taskBooster: taskBooster,
+      yellow: yellow,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -898,7 +903,7 @@ function submitTask(){
       document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
       document.getElementById("taskGoalAmountBlue").innerHTML = Math.round(taskColorGoalBlue);
       document.getElementById("taskColor").innerHTML = "#6E7329";
-      document.getElementById("taskColor").style.color = "rgb(110, 115, 41)";
+      document.getElementById("taskColor").style.color = "rgb(153, 128, 0)";
       document.getElementById("taskColor").style.textShadow = "0 0 10px yellow";
       document.getElementById("taskReward").innerHTML = "10 yellow";
       taskReward = "10 yellow";
@@ -917,6 +922,7 @@ function submitTask(){
       document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(Math.round(taskColorGoalRed/(1000 * Math.pow(1.2, tasksCompleted))))+", "+ String(Math.round(taskColorGoalGreen/(1000 * Math.pow(1.2, tasksCompleted))))+", "+String(Math.round(taskColorGoalBlue/(1000 * Math.pow(1.2, tasksCompleted))))+")";
       document.getElementById("tabyellow").style.display = "block";
       yellow+=10;
+      document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     }
   }
 }
