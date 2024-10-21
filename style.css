@@ -626,6 +626,8 @@ button#tabyellow{
   width: 100px;
   margin-bottom: 4px;
   background-color: rgb(153, 128, 0);
+  display: inline-grid;
+  text-align: center;
 }
 #yellowcount{
   color: rgb(153, 128, 0);
