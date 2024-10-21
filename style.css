@@ -619,15 +619,19 @@ button#tabyellow{
 #yellowbuildings{
   text-align: center;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .yellowupgrades{
-  height: 100px;
+  height: 110px;
   width: 100px;
   margin-bottom: 4px;
   background-color: rgb(153, 128, 0);
   display: inline-grid;
   text-align: center;
+}
+.yellowdescription{
+  margin-top: 0;
+  margin-bottom: 0;
 }
 #yellowcount{
   color: rgb(153, 128, 0);
