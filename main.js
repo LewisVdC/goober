@@ -31,6 +31,23 @@ var redupgrade3 = 0;
 var greenupgrade3 = 0;
 var blueupgrade3 = 0;
 var yellow = 0;
+var governmentfundingcount = 0;
+var governmentfundingprice = 2;
+var redfiltercost = 10;
+var redpointercost = 100;
+var bigredfiltercost = 1000;
+var bigredpointercost = 10000;
+var rednanometerwavecost = 100000;
+var greenfiltercost = 10;
+var greenpointercost = 100;
+var biggreenfiltercost = 1000;
+var biggreenpointercost = 10000;
+var greennanometerwavecost = 100000;
+var bluefiltercost = 10;
+var bluepointercost = 100;
+var bigbluefiltercost = 1000;
+var bigbluepointercost = 10000;
+var bluenanometerwavecost = 100000;
 
 var loaded = 0;
 var tab = "red";
@@ -87,6 +104,16 @@ function load() {
       redupgrade2 = savegame.redupgrade2;
     if (typeof savegame.redupgrade3 !== "undefined")
       redupgrade3 = savegame.redupgrade3;
+    if(typeof savegame.redfiltercost !== "undefined")
+      redfiltercost = savegame.redfiltercost;
+    if(typeof savegame.redpointercost !== "undefined")
+      redpointercost = savegame.redpointercost;
+    if(typeof savegame.bigredfiltercost !== "undefined")
+      bigredfiltercost = savegame.bigredfiltercost;
+    if(typeof savegame.bigredpointercost !== "undefined")
+      bigredpointercost = savegame.bigredpointercost;
+    if(typeof savegame.rednanometerwavecost !== "undefined")
+      rednanometerwavecost = savegame.rednanometerwavecost;
 
     //green
     if (typeof savegame.green !== "undefined") green = savegame.green;
@@ -106,6 +133,16 @@ function load() {
       greenupgrade2 = savegame.greenupgrade2;
     if (typeof savegame.greenupgrade3 !== "undefined")
       greenupgrade3 = savegame.greenupgrade3;
+    if(typeof savegame.greenfiltercost !== "undefined")
+      greenfiltercost = savegame.greenfiltercost;
+    if(typeof savegame.greenpointercost !== "undefined")
+      greenpointercost = savegame.greenpointercost;
+    if(typeof savegame.biggreenfiltercost !== "undefined")
+      biggreenfiltercost = savegame.biggreenfiltercost;
+    if(typeof savegame.biggreenpointercost !== "undefined")
+      biggreenpointercost = savegame.biggreenpointercost;
+    if(typeof savegame.greennanometerwavecost !== "undefined")
+      greennanometerwavecost = savegame.greennanometerwavecost;
 
     //blue
     if (typeof savegame.blue !== "undefined") blue = savegame.blue;
@@ -125,9 +162,24 @@ function load() {
       blueupgrade2 = savegame.blueupgrade2;
     if (typeof savegame.blueupgrade3 !== "undefined")
       blueupgrade3 = savegame.blueupgrade3;
+    if(typeof savegame.bluefiltercost !== "undefined")
+      bluefiltercost = savegame.bluefiltercost;
+    if(typeof savegame.bluepointercost !== "undefined")
+      bluepointercost = savegame.bluepointercost;
+    if(typeof savegame.bigbluefiltercost !== "undefined")
+      bigbluefiltercost = savegame.bigbluefiltercost;
+    if(typeof savegame.bigbluepointercost !== "undefined")
+      bigbluepointercost = savegame.bigbluepointercost;
+    if(typeof savegame.bluenanometerwavecost !== "undefined")
+      bluenanometerwavecost = savegame.bluenanometerwavecost;
     //yellow
     if(typeof savegame.yellow !== "undefined")
       yellow = savegame.yellow;
+    if(typeof savegame.governmentfundingcount !== "undefined")
+      governmentfundingcount = savegame.governmentfundingcount;
+    if(typeof savegame.governmentfundingprice !== "undefined")
+      governmentfundingprice = savegame.governmentfundingprice;
+      document.getElementById("governmentfundingprice").innerHTML = governmentfundingprice;
     //tasks
     if(typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -147,13 +199,13 @@ function load() {
     }
     if(typeof savegame.taskColorGoalRed !== "undefined")
       taskColorGoalRed = savegame.taskColorGoalRed;
-      document.getElementById("taskGoalAmountRed").innerHTML = Math.round(taskColorGoalRed);
+      document.getElementById("taskGoalAmountRed").innerHTML = Math.floor(taskColorGoalRed);
     if(typeof savegame.taskColorGoalGreen !== "undefined")
       taskColorGoalGreen = savegame.taskColorGoalGreen;
-      document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
+      document.getElementById("taskGoalAmountGreen").innerHTML = Math.floor(taskColorGoalGreen);
     if(typeof savegame.taskColorGoalBlue !== "undefined")
       taskColorGoalBlue = savegame.taskColorGoalBlue;
-      document.getElementById("taskGoalAmountBlue").innerHTML = Math.round(taskColorGoalBlue);
+      document.getElementById("taskGoalAmountBlue").innerHTML = Math.floor(taskColorGoalBlue);
     if(typeof savegame.taskReward !== "undefined")
       taskReward = savegame.taskReward;
       document.getElementById("taskReward").innerHTML = savegame.taskReward;
@@ -206,11 +258,11 @@ function load() {
     document.getElementById("bluecount").innerHTML =
       "blue: " + Math.floor(blue);
     document.getElementById("yellowcount").innerHTML = "yellow: "+Math.floor(yellow);
-    var nextredCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
-    var nextredCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
-    var nextredCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
-    var nextredCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer));
-    var nextredCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave));
+    var nextredCost1 = Math.floor(10 * Math.pow(1.1, redfilter) / (1+(0.1 * governmentfundingcount)));
+    var nextredCost2 = Math.floor(100 * Math.pow(1.1, redpointer) / (1+(0.1 * governmentfundingcount)));
+    var nextredCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter) / (1+(0.1 * governmentfundingcount)));
+    var nextredCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer) / (1+(0.1 * governmentfundingcount)));
+    var nextredCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave) / (1+(0.1 * governmentfundingcount)));
     document.getElementById("redfiltercost").innerHTML = nextredCost1;
     document.getElementById("redfiltercount").innerHTML = redfilter;
     document.getElementById("redpointercost").innerHTML = nextredCost2;
@@ -220,13 +272,12 @@ function load() {
     document.getElementById("bigredpointercount").innerHTML = bigredpointer;
     document.getElementById("bigredpointercost").innerHTML = nextredCost4;
     document.getElementById("rednanometerwavecost").innerHTML = nextredCost5;
-    document.getElementById("rednanometerwavecount").innerHTML =
-      rednanometerwave;
-    var nextgreenCost1 = Math.floor(10 * Math.pow(1.1, greenfilter));
-    var nextgreenCost2 = Math.floor(100 * Math.pow(1.1, greenpointer));
-    var nextgreenCost3 = Math.floor(1000 * Math.pow(1.1, biggreenfilter));
-    var nextgreenCost4 = Math.floor(10000 * Math.pow(1.1, biggreenpointer));
-    var nextgreenCost5 = Math.floor(100000 * Math.pow(1.1, greennanometerwave));
+    document.getElementById("rednanometerwavecount").innerHTML = rednanometerwave;
+    var nextgreenCost1 = Math.floor(10 * Math.pow(1.1, greenfilter) / (1+(0.1 * governmentfundingcount)));
+    var nextgreenCost2 = Math.floor(100 * Math.pow(1.1, greenpointer) / (1+(0.1 * governmentfundingcount)));
+    var nextgreenCost3 = Math.floor(1000 * Math.pow(1.1, biggreenfilter) / (1+(0.1 * governmentfundingcount)));
+    var nextgreenCost4 = Math.floor(10000 * Math.pow(1.1, biggreenpointer) / (1+(0.1 * governmentfundingcount)));
+    var nextgreenCost5 = Math.floor(100000 * Math.pow(1.1, greennanometerwave) / (1+(0.1 * governmentfundingcount)));
 
     document.getElementById("greenfiltercost").innerHTML = nextgreenCost1;
     document.getElementById("greenfiltercount").innerHTML = greenfilter;
@@ -236,15 +287,13 @@ function load() {
     document.getElementById("biggreenfiltercost").innerHTML = nextgreenCost3;
     document.getElementById("biggreenpointercount").innerHTML = biggreenpointer;
     document.getElementById("biggreenpointercost").innerHTML = nextgreenCost4;
-    document.getElementById("greennanometerwavecost").innerHTML =
-      nextgreenCost5;
-    document.getElementById("greennanometerwavecount").innerHTML =
-      greennanometerwave;
-    var nextblueCost1 = Math.floor(10 * Math.pow(1.1, bluefilter));
-    var nextblueCost2 = Math.floor(100 * Math.pow(1.1, bluepointer));
-    var nextblueCost3 = Math.floor(1000 * Math.pow(1.1, bigbluefilter));
-    var nextblueCost4 = Math.floor(10000 * Math.pow(1.1, bigbluepointer));
-    var nextblueCost5 = Math.floor(100000 * Math.pow(1.1, bluenanometerwave));
+    document.getElementById("greennanometerwavecost").innerHTML =nextgreenCost5;
+    document.getElementById("greennanometerwavecount").innerHTML =greennanometerwave;
+    var nextblueCost1 = Math.floor(10 * Math.pow(1.1, bluefilter) / (1+(0.1 * governmentfundingcount)));
+    var nextblueCost2 = Math.floor(100 * Math.pow(1.1, bluepointer) / (1+(0.1 * governmentfundingcount)));
+    var nextblueCost3 = Math.floor(1000 * Math.pow(1.1, bigbluefilter) / (1+(0.1 * governmentfundingcount)));
+    var nextblueCost4 = Math.floor(10000 * Math.pow(1.1, bigbluepointer) / (1+(0.1 * governmentfundingcount)));
+    var nextblueCost5 = Math.floor(100000 * Math.pow(1.1, bluenanometerwave) / (1+(0.1 * governmentfundingcount)));
 
     document.getElementById("bluefiltercost").innerHTML = nextblueCost1;
     document.getElementById("bluefiltercount").innerHTML = bluefilter;
@@ -255,8 +304,7 @@ function load() {
     document.getElementById("bigbluepointercount").innerHTML = bigbluepointer;
     document.getElementById("bigbluepointercost").innerHTML = nextblueCost4;
     document.getElementById("bluenanometerwavecost").innerHTML = nextblueCost5;
-    document.getElementById("bluenanometerwavecount").innerHTML =
-      bluenanometerwave;
+    document.getElementById("bluenanometerwavecount").innerHTML =bluenanometerwave;
     console.log("loaded");
     loaded = 1;
   } else {
@@ -358,237 +406,168 @@ function calcblue(number) {
 //
 
 function buyredfilter() {
-  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
-  var redfiltercost = Math.floor(10 * Math.pow(1.1, redfilter));
   if (red >= redfiltercost) {
-    redfilter = redfilter + 1;
-    red = red - redfiltercost;
-    document.getElementById("redfiltercount").innerHTML = redfilter;
+    redfilter ++;
+    red -= redfiltercost;
+    redfiltercost = Math.floor(10 * Math.pow(1.1, redfilter) / (1+(0.1 * governmentfundingcount)));
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("redfiltercount").innerHTML = redfilter;
+    document.getElementById("redfiltercost").innerHTML = redfiltercost;
   }
-
-  var nextredCost1 = Math.floor(10 * Math.pow(1.1, redfilter));
-  document.getElementById("redfiltercost").innerHTML = nextredCost1;
 }
 
 function buyredpointer() {
-  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
-  var redpointercost = Math.floor(100 * Math.pow(1.1, redpointer));
   if (red >= redpointercost) {
-    redpointer = redpointer + 1;
-    red = red - redpointercost;
-    document.getElementById("redpointercount").innerHTML = redpointer;
+    redpointer ++;
+    red -= redpointercost;
+    redpointercost = Math.floor(100 * Math.pow(1.1, redpointer) / (1+(0.1 * governmentfundingcount)));
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("redpointercount").innerHTML = redpointer;
+    document.getElementById("redpointercost").innerHTML = redpointercost;
   }
-
-  var nextredCost2 = Math.floor(100 * Math.pow(1.1, redpointer));
-  document.getElementById("redpointercost").innerHTML = nextredCost2;
 }
 
 function buybigredfilter() {
-  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
-  var bigredfiltercost = Math.floor(1000 * Math.pow(1.1, bigredfilter));
   if (red >= bigredfiltercost) {
-    bigredfilter = bigredfilter + 1;
-    red = red - bigredfiltercost;
-    document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
+    bigredfilter ++;
+    red -= bigredfiltercost;
+    bigredfiltercost = Math.floor(1000 * Math.pow(1.1, bigredfilter) / (1+(0.1 * governmentfundingcount)));
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
+    document.getElementById("bigredfiltercost").innerHTML = bigredfiltercost;
   }
-
-  var nextredCost3 = Math.floor(1000 * Math.pow(1.1, bigredfilter));
-  document.getElementById("bigredfiltercost").innerHTML = nextredCost3;
 }
 
 function buybigredpointer() {
-  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
-  var bigredpointercost = Math.floor(10000 * Math.pow(1.1, bigredpointer));
   if (red >= bigredpointercost) {
-    bigredpointer = bigredpointer + 1;
-    red = red - bigredpointercost;
-    document.getElementById("bigredpointercount").innerHTML = bigredpointer;
+    bigredpointer ++;
+    red -= bigredpointercost;
+    bigredpointercost = Math.floor(10000 * Math.pow(1.1, bigredpointer) / (1+(0.1 * governmentfundingcount)));
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("bigredpointercount").innerHTML = bigredpointer;
+    document.getElementById("bigredpointercost").innerHTML = bigredpointercost;
   }
-
-  var nextredCost4 = Math.floor(10000 * Math.pow(1.1, bigredpointer));
-  document.getElementById("bigredpointercost").innerHTML = nextredCost4;
 }
 
 function buyrednanometerwave() {
-  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
-  var rednanometerwavecost = Math.floor(
-    100000 * Math.pow(1.1, rednanometerwave)
-  );
   if (red >= rednanometerwavecost) {
-    rednanometerwave = rednanometerwave + 1;
-    red = red - rednanometerwavecost;
-    document.getElementById("rednanometerwavecount").innerHTML =
-      rednanometerwave;
+    rednanometerwave ++;
+    red -= rednanometerwavecost;
+    rednanometerwavecost = Math.floor(100000 * Math.pow(1.1, rednanometerwave) / (1+(0.1 * governmentfundingcount)));
     document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("rednanometerwavecount").innerHTML = rednanometerwave;
+    document.getElementById("rednanometerwavecost").innerHTML = rednanometerwavecost;
   }
-
-  var nextredCost5 = Math.floor(100000 * Math.pow(1.1, rednanometerwave));
-  document.getElementById("rednanometerwavecost").innerHTML = nextredCost5;
 }
 
 function buygreenfilter() {
-  document.getElementById("greencount").innerHTML =
-    "green: " + Math.floor(green);
-  var greenfiltercost = Math.floor(10 * Math.pow(1.1, greenfilter));
   if (green >= greenfiltercost) {
-    greenfilter = greenfilter + 1;
-    green = green - greenfiltercost;
+    greenfilter ++;
+    green -= greenfiltercost;
+    greenfiltercost = Math.floor(10 * Math.pow(1.1, greenfilter) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("greencount").innerHTML = "green: " + Math.floor(green);
     document.getElementById("greenfiltercount").innerHTML = greenfilter;
-    document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+    document.getElementById("greenfiltercost").innerHTML = greenfiltercost;
   }
-
-  var nextgreenCost1 = Math.floor(10 * Math.pow(1.1, greenfilter));
-  document.getElementById("greenfiltercost").innerHTML = nextgreenCost1;
 }
 
 function buygreenpointer() {
-  document.getElementById("greencount").innerHTML =
-    "green: " + Math.floor(green);
-  var greenpointercost = Math.floor(100 * Math.pow(1.1, greenpointer));
   if (green >= greenpointercost) {
-    greenpointer = greenpointer + 1;
-    green = green - greenpointercost;
+    greenpointer ++;
+    green -= greenpointercost;
+    greenpointercost = Math.floor(100 * Math.pow(1.1, greenpointer) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("greencount").innerHTML = "green: " + Math.floor(green);
     document.getElementById("greenpointercount").innerHTML = greenpointer;
-    document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+    document.getElementById("greenpointercost").innerHTML = greenpointercost;
   }
-
-  var nextgreenCost2 = Math.floor(100 * Math.pow(1.1, greenpointer));
-  document.getElementById("greenpointercost").innerHTML = nextgreenCost2;
 }
 
 function buybiggreenfilter() {
-  document.getElementById("greencount").innerHTML =
-    "green: " + Math.floor(green);
-  var biggreenfiltercost = Math.floor(1000 * Math.pow(1.1, biggreenfilter));
   if (green >= biggreenfiltercost) {
-    biggreenfilter = biggreenfilter + 1;
-    green = green - biggreenfiltercost;
+    biggreenfilter ++;
+    green -= biggreenfiltercost;
+    biggreenfiltercost = Math.floor(1000 * Math.pow(1.1, biggreenfilter) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("greencount").innerHTML = "green: " + Math.floor(green);
     document.getElementById("biggreenfiltercount").innerHTML = biggreenfilter;
-    document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+    document.getElementById("biggreenfiltercost").innerHTML = biggreenfiltercost;
   }
-
-  var nextgreenCost3 = Math.floor(1000 * Math.pow(1.1, biggreenfilter));
-  document.getElementById("biggreenfiltercost").innerHTML = nextgreenCost3;
 }
 
 function buybiggreenpointer() {
-  document.getElementById("greencount").innerHTML =
-    "green: " + Math.floor(green);
-  var biggreenpointercost = Math.floor(10000 * Math.pow(1.1, biggreenpointer));
   if (green >= biggreenpointercost) {
-    biggreenpointer = biggreenpointer + 1;
-    green = green - biggreenpointercost;
+    biggreenpointer ++;
+    green -= biggreenpointercost;
+    biggreenpointercost = Math.floor(10000 * Math.pow(1.1, biggreenpointer) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("greencount").innerHTML = "green: " + Math.floor(green);
     document.getElementById("biggreenpointercount").innerHTML = biggreenpointer;
-    document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+    document.getElementById("biggreenpointercost").innerHTML = biggreenpointercost;
   }
-
-  var nextgreenCost4 = Math.floor(10000 * Math.pow(1.1, biggreenpointer));
-  document.getElementById("biggreenpointercost").innerHTML = nextgreenCost4;
 }
 
 function buygreennanometerwave() {
-  document.getElementById("greencount").innerHTML =
-    "green: " + Math.floor(green);
-  var greennanometerwavecost = Math.floor(
-    100000 * Math.pow(1.1, greennanometerwave)
-  );
   if (green >= greennanometerwavecost) {
-    greennanometerwave = greennanometerwave + 1;
-    green = green - greennanometerwavecost;
-    document.getElementById("greennanometerwavecount").innerHTML =
-      greennanometerwave;
-    document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+    greennanometerwave ++;
+    green -= greennanometerwavecost;
+    greennanometerwavecost = Math.floor(100000 * Math.pow(1.1, greennanometerwave) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("greencount").innerHTML = "green: " + Math.floor(green);
+    document.getElementById("greennanometerwavecount").innerHTML = greennanometerwave;
+    document.getElementById("greennanometerwavecost").innerHTML = greennanometerwavecost;
   }
-
-  var nextgreenCost5 = Math.floor(100000 * Math.pow(1.1, greennanometerwave));
-  document.getElementById("greennanometerwavecost").innerHTML = nextgreenCost5;
 }
 
 function buybluefilter() {
-  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
-  var bluefiltercost = Math.floor(10 * Math.pow(1.1, bluefilter));
   if (blue >= bluefiltercost) {
-    bluefilter = bluefilter + 1;
-    blue = blue - bluefiltercost;
+    bluefilter ++;
+    blue -= bluefiltercost;
+    bluefiltercost = Math.floor(10 * Math.pow(1.1, bluefilter) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
     document.getElementById("bluefiltercount").innerHTML = bluefilter;
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+    document.getElementById("bluefiltercost").innerHTML = bluefiltercost;
   }
-
-  var nextblueCost1 = Math.floor(10 * Math.pow(1.1, bluefilter));
-  document.getElementById("bluefiltercost").innerHTML = nextblueCost1;
 }
 
 function buybluepointer() {
-  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
-  var bluepointercost = Math.floor(100 * Math.pow(1.1, bluepointer));
   if (blue >= bluepointercost) {
-    bluepointer = bluepointer + 1;
-    blue = blue - bluepointercost;
+    bluepointer ++;
+    blue -= bluepointercost;
+    bluepointercost = Math.floor(100 * Math.pow(1.1, bluepointer) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
     document.getElementById("bluepointercount").innerHTML = bluepointer;
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+    document.getElementById("bluepointercost").innerHTML = bluepointercost;
   }
-
-  var nextblueCost2 = Math.floor(100 * Math.pow(1.1, bluepointer));
-  document.getElementById("bluepointercost").innerHTML = nextblueCost2;
 }
 
 function buybigbluefilter() {
-  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
-  var bigbluefiltercost = Math.floor(1000 * Math.pow(1.1, bigbluefilter));
   if (blue >= bigbluefiltercost) {
-    bigbluefilter = bigbluefilter + 1;
-    blue = blue - bigbluefiltercost;
+    bigbluefilter ++;
+    blue -= bigbluefiltercost;
+    bigbluefiltercost = Math.floor(1000 * Math.pow(1.1, bigbluefilter) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
     document.getElementById("bigbluefiltercount").innerHTML = bigbluefilter;
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+    document.getElementById("bigbluefiltercost").innerHTML = bigbluefiltercost;
   }
-
-  var nextblueCost3 = Math.floor(1000 * Math.pow(1.1, bigbluefilter));
-  document.getElementById("bigbluefiltercost").innerHTML = nextblueCost3;
 }
 
 function buybigbluepointer() {
-  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
-  var bigbluepointercost = Math.floor(10000 * Math.pow(1.1, bigbluepointer));
   if (blue >= bigbluepointercost) {
-    bigbluepointer = bigbluepointer + 1;
-    blue = blue - bigbluepointercost;
+    bigbluepointer ++;
+    blue -= bigbluepointercost;
+    bigbluepointercost = Math.floor(10000 * Math.pow(1.1, bigbluepointer) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
     document.getElementById("bigbluepointercount").innerHTML = bigbluepointer;
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+    document.getElementById("bigbluepointercost").innerHTML = bigbluepointercost;
   }
-
-  var nextblueCost4 = Math.floor(10000 * Math.pow(1.1, bigbluepointer));
-  document.getElementById("bigbluepointercost").innerHTML = nextblueCost4;
 }
 
 function buybluenanometerwave() {
-  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
-  var bluenanometerwavecost = Math.floor(
-    100000 * Math.pow(1.1, bluenanometerwave)
-  );
   if (blue >= bluenanometerwavecost) {
-    bluenanometerwave = bluenanometerwave + 1;
-    blue = blue - bluenanometerwavecost;
-    document.getElementById("bluenanometerwavecount").innerHTML =
-      bluenanometerwave;
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+    bluenanometerwave ++;
+    blue -= bluenanometerwavecost;
+    bluenanometerwavecost = Math.floor(100000 * Math.pow(1.1, bluenanometerwave) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+    document.getElementById("bluenanometerwavecount").innerHTML = bluenanometerwave;
+    document.getElementById("bluenanometerwavecost").innerHTML = bluenanometerwavecost;
   }
-
-  var nextblueCost5 = Math.floor(100000 * Math.pow(1.1, bluenanometerwave));
-  document.getElementById("bluenanometerwavecost").innerHTML = nextblueCost5;
 }
 
 //
@@ -691,9 +670,9 @@ function buyblueupgrade3() {
 
 window.setInterval(function () {
   //wuuuuuuuuuuuuuuugh
-  document.getElementById("taskAmountRed").innerHTML = Math.round(red);
-  document.getElementById("taskAmountBlue").innerHTML = Math.round(blue);
-  document.getElementById("taskAmountGreen").innerHTML = Math.round(green);
+  document.getElementById("taskAmountRed").innerHTML = Math.floor(red);
+  document.getElementById("taskAmountBlue").innerHTML = Math.floor(blue);
+  document.getElementById("taskAmountGreen").innerHTML = Math.floor(green);
   //ugh
   if (loaded === 1) {
     //unlocks
@@ -771,6 +750,23 @@ window.setInterval(function () {
       taskReward: taskReward,
       taskBooster: taskBooster,
       yellow: yellow,
+      governmentfundingcount: governmentfundingcount,
+      governmentfundingprice: governmentfundingprice,
+      redfiltercost: redfiltercost,
+      redpointercost: redpointercost,
+      bigredfiltercost: bigredfiltercost,
+      bigredpointercost: bigredpointercost,
+      rednanometerwavecost: rednanometerwavecost,
+      greenfiltercost: greenfiltercost,
+      greenpointercost: greenpointercost,
+      biggreenfiltercost: biggreenfiltercost,
+      biggreenpointercost: biggreenpointercost,
+      greennanometerwavecost: greennanometerwavecost,
+      bluefiltercost: bluefiltercost,
+      bluepointercost: bluepointercost,
+      bigbluefiltercost: bigbluefiltercost,
+      bigbluepointercost: bigbluepointercost,
+      bluenanometerwavecost: bluenanometerwavecost,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -986,4 +982,44 @@ function resetData(){
   loaded = 69420;
   localStorage.removeItem("save");
   location.reload();
+}
+
+function buygovernmentfunding(){
+  if(yellow >= governmentfundingprice){
+    yellow -= governmentfundingprice;
+    document.getElementById("yellowcount").innerHTML = yellow;
+    governmentfundingcount ++;
+    governmentfundingprice = Math.round(governmentfundingprice * 1.35);
+    document.getElementById("governmentfundingprice").innerHTML = governmentfundingprice;
+    redfiltercost = Math.floor(10 * Math.pow(1.1, redfilter) / (1+(0.1 * governmentfundingcount)));
+    redpointercost = Math.floor(100 * Math.pow(1.1, redpointer) / (1+(0.1 * governmentfundingcount)));
+    bigredfiltercost = Math.floor(1000 * Math.pow(1.1, bigredfilter) / (1+(0.1 * governmentfundingcount)));
+    bigredpointercost = Math.floor(10000 * Math.pow(1.1, bigredpointer) / (1+(0.1 * governmentfundingcount)));
+    rednanometerwavecost = Math.floor(100000 * Math.pow(1.1, rednanometerwave) / (1+(0.1 * governmentfundingcount)));
+    greenfiltercost = Math.floor(10 * Math.pow(1.1, greenfilter) / (1+(0.1 * governmentfundingcount)));
+    greenpointercost = Math.floor(100 * Math.pow(1.1, greenpointer) / (1+(0.1 * governmentfundingcount)));
+    biggreenfiltercost = Math.floor(1000 * Math.pow(1.1, biggreenfilter) / (1+(0.1 * governmentfundingcount)));
+    biggreenpointercost = Math.floor(10000 * Math.pow(1.1, biggreenpointer) / (1+(0.1 * governmentfundingcount)));
+    greennanometerwavecost = Math.floor(100000 * Math.pow(1.1, greennanometerwave) / (1+(0.1 * governmentfundingcount)));
+    bluefiltercost = Math.floor(10 * Math.pow(1.1, bluefilter) / (1+(0.1 * governmentfundingcount)));
+    bluepointercost = Math.floor(100 * Math.pow(1.1, bluepointer) / (1+(0.1 * governmentfundingcount)));
+    bigbluefiltercost = Math.floor(1000 * Math.pow(1.1, bigbluefilter) / (1+(0.1 * governmentfundingcount)));
+    bigbluepointercost = Math.floor(10000 * Math.pow(1.1, bigbluepointer) / (1+(0.1 * governmentfundingcount)));
+    bluenanometerwavecost = Math.floor(100000 * Math.pow(1.1, bluenanometerwave) / (1+(0.1 * governmentfundingcount)));
+    document.getElementById("redfiltercost").innerHTML = redfiltercost;
+    document.getElementById("redpointercost").innerHTML = redpointercost;
+    document.getElementById("bigredfiltercost").innerHTML = bigredfiltercost;
+    document.getElementById("bigredpointercost").innerHTML = bigredpointercost;
+    document.getElementById("rednanometerwavecost").innerHTML = rednanometerwavecost;
+    document.getElementById("greenfiltercost").innerHTML = greenfiltercost;
+    document.getElementById("greenpointercost").innerHTML = greenpointercost;
+    document.getElementById("biggreenfiltercost").innerHTML = biggreenfiltercost;
+    document.getElementById("biggreenpointercost").innerHTML = biggreenpointercost;
+    document.getElementById("greennanometerwavecost").innerHTML = greennanometerwavecost;
+    document.getElementById("bluefiltercost").innerHTML = bluefiltercost;
+    document.getElementById("bluepointercost").innerHTML = bluepointercost;
+    document.getElementById("bigbluefiltercost").innerHTML = bigbluefiltercost;
+    document.getElementById("bigbluepointercost").innerHTML = bigbluepointercost;
+    document.getElementById("bluenanometerwavecost").innerHTML = bluenanometerwavecost;
+  }
 }
