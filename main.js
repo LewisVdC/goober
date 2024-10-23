@@ -48,8 +48,10 @@ var bluepointercost = 100;
 var bigbluefiltercost = 1000;
 var bigbluepointercost = 10000;
 var bluenanometerwavecost = 100000;
-var largerprismsprice = 4;
+var largerprismsprice = 10;
 var largerprismscount = 0;
+var colorharmonyprice = 4;
+var colorharmonycount = 0;
 
 var loaded = 0;
 var tab = "red";
@@ -187,6 +189,11 @@ function load() {
     if(typeof savegame.largerprismsprice !== "undefined")
       largerprismsprice = savegame.largerprismsprice;
       document.getElementById("largerprismsprice").innerHTML = largerprismsprice;
+    if(typeof savegame.colorharmonycount !== "undefined")
+      colorharmonycount = savegame.colorharmonycount;
+    if(typeof savegame.colorharmonyprice !== "undefined")
+      colorharmonyprice = savegame.colorharmonyprice;
+      document.getElementById("colorharmonyprice").innerHTML = colorharmonyprice;
     //tasks
     if(typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -776,6 +783,8 @@ window.setInterval(function () {
       bluenanometerwavecost: bluenanometerwavecost,
       largerprismscount: largerprismscount,
       largerprismsprice: largerprismsprice,
+      colorharmonycount: colorharmonycount,
+      colorharmonyprice: colorharmonyprice,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -799,7 +808,10 @@ window.setInterval(function () {
         (10 * blueupgrade2 + 1) *
         //task booster
         taskBooster * 
-        Math.pow(2, largerprismscount)
+        //yellow larger prisms
+        Math.pow(2, largerprismscount) *
+        //yellow color harmony
+        (1 + (yellow / 10) * colorharmonycount)
     );
 
     //increase green
@@ -822,7 +834,10 @@ window.setInterval(function () {
         (10 * blueupgrade2 + 1) *
         //task booster
         taskBooster * 
-        Math.pow(2, largerprismscount)
+        //yellow larger prisms
+        Math.pow(2, largerprismscount) *
+        //yellow color harmony
+        (1 + (yellow / 10) * colorharmonycount)
     );
     //weaksynergyblue
     Math.log(blue) * blueupgrade2 + 1;
@@ -847,7 +862,10 @@ window.setInterval(function () {
         (10 * greenupgrade2 + 1) *
         //task booster
         taskBooster  * 
-        Math.pow(2, largerprismscount)
+        //yellow larger prisms
+        Math.pow(2, largerprismscount) *
+        //yellow color harmony
+        (1 + (yellow / 10) * colorharmonycount)
     );
   }
 }, 10);
@@ -1041,8 +1059,18 @@ function buylargerprisms(){
   if(yellow >= largerprismsprice){
     yellow -= largerprismsprice;
     largerprismscount ++;
-    largerprismsprice = Math.round(largerprismsprice * 1.6);
+    largerprismsprice = Math.round(largerprismsprice * 1.85);
     document.getElementById("yellowcount").innerHTML =  "yellow: " + yellow;
     document.getElementById("largerprismsprice").innerHTML = largerprismsprice; 
+  }
+}
+
+function buycolorharmony(){
+  if(yellow >= colorharmonyprice){
+    yellow -= colorharmonyprice;
+    colorharmonycount ++;
+    colorharmonyprice = Math.round(colorharmonyprice * 1.43);
+    document.getElementById("yellowcount").innerHTML = "yellow: " + yellow;
+    document.getElementById("colorharmonyprice").innerHTML = colorharmonyprice;
   }
 }
