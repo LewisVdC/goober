@@ -636,11 +636,23 @@ button#tabyellow{
 #yellowcount{
   color: rgb(153, 128, 0);
 }
-button:hover:not(.submit, #tabyellow, #tabred, #tabgreen, #tabblue){
+button:hover:not(.submit){
   scale: 1.1;
   z-index: 9999;
 }
 button {
   transition: 0.2s ease-out !important;
   transform: scale(1);
+}
+#tabred:hover{
+  box-shadow: 0px 0px 50px 8px red;
+}
+#tabyellow:hover{
+  box-shadow: 0px 0px 50px 4px yellow;
+}
+#tabgreen:hover{
+  box-shadow: 0px 0px 50px 12px green;
+}
+#tabblue:hover{
+  box-shadow: 0px 0px 50px 12px blue;
 }
