@@ -48,6 +48,8 @@ var bluepointercost = 100;
 var bigbluefiltercost = 1000;
 var bigbluepointercost = 10000;
 var bluenanometerwavecost = 100000;
+var largerprismsprice = 4;
+var largerprismscount = 0;
 
 var loaded = 0;
 var tab = "red";
@@ -180,6 +182,11 @@ function load() {
     if(typeof savegame.governmentfundingprice !== "undefined")
       governmentfundingprice = savegame.governmentfundingprice;
       document.getElementById("governmentfundingprice").innerHTML = governmentfundingprice;
+    if(typeof savegame.largerprismscount !== "undefined")
+      largerprismscount = savegame.largerprismscount;
+    if(typeof savegame.largerprismsprice !== "undefined")
+      largerprismsprice = savegame.largerprismsprice;
+      document.getElementById("largerprismsprice").innerHTML = largerprismsprice;
     //tasks
     if(typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -767,6 +774,8 @@ window.setInterval(function () {
       bigbluefiltercost: bigbluefiltercost,
       bigbluepointercost: bigbluepointercost,
       bluenanometerwavecost: bluenanometerwavecost,
+      largerprismscount: largerprismscount,
+      largerprismsprice: largerprismsprice,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -789,7 +798,8 @@ window.setInterval(function () {
         (Math.log(blue + 1) * blueupgrade2 + 1)) /
         (10 * blueupgrade2 + 1) *
         //task booster
-        taskBooster
+        taskBooster * 
+        Math.pow(2, largerprismscount)
     );
 
     //increase green
@@ -811,7 +821,8 @@ window.setInterval(function () {
         (Math.log(blue + 1) * blueupgrade2 + 1)) /
         (10 * blueupgrade2 + 1) *
         //task booster
-        taskBooster
+        taskBooster * 
+        Math.pow(2, largerprismscount)
     );
     //weaksynergyblue
     Math.log(blue) * blueupgrade2 + 1;
@@ -835,7 +846,8 @@ window.setInterval(function () {
         (Math.log(red + 1) * redupgrade2 + 1)) /
         (10 * greenupgrade2 + 1) *
         //task booster
-        taskBooster
+        taskBooster  * 
+        Math.pow(2, largerprismscount)
     );
   }
 }, 10);
@@ -984,6 +996,7 @@ function resetData(){
   location.reload();
 }
 
+//yellow upgrades
 function buygovernmentfunding(){
   if(yellow >= governmentfundingprice){
     yellow -= governmentfundingprice;
@@ -1021,5 +1034,15 @@ function buygovernmentfunding(){
     document.getElementById("bigbluefiltercost").innerHTML = bigbluefiltercost;
     document.getElementById("bigbluepointercost").innerHTML = bigbluepointercost;
     document.getElementById("bluenanometerwavecost").innerHTML = bluenanometerwavecost;
+  }
+}
+
+function buylargerprisms(){
+  if(yellow >= largerprismsprice){
+    yellow -= largerprismsprice;
+    largerprismscount ++;
+    largerprismsprice = Math.round(largerprismsprice * 1.6);
+    document.getElementById("yellowcount").innerHTML = yellow;
+    document.getElementById("largerprismsprice").innerHTML = largerprismsprice; 
   }
 }
