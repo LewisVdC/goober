@@ -1000,7 +1000,7 @@ function resetData(){
 function buygovernmentfunding(){
   if(yellow >= governmentfundingprice){
     yellow -= governmentfundingprice;
-    document.getElementById("yellowcount").innerHTML = yellow;
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     governmentfundingcount ++;
     governmentfundingprice = Math.round(governmentfundingprice * 1.35);
     document.getElementById("governmentfundingprice").innerHTML = governmentfundingprice;
@@ -1042,7 +1042,7 @@ function buylargerprisms(){
     yellow -= largerprismsprice;
     largerprismscount ++;
     largerprismsprice = Math.round(largerprismsprice * 1.6);
-    document.getElementById("yellowcount").innerHTML = yellow;
+    document.getElementById("yellowcount").innerHTML =  "yellow: " + yellow;
     document.getElementById("largerprismsprice").innerHTML = largerprismsprice; 
   }
 }
