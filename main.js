@@ -52,6 +52,8 @@ var largerprismsprice = 10;
 var largerprismscount = 0;
 var colorharmonyprice = 4;
 var colorharmonycount = 0;
+var streamlinedtasksprice = 5;
+var streamlinedtaskscount = 0;
 
 var loaded = 0;
 var tab = "red";
@@ -194,6 +196,11 @@ function load() {
     if(typeof savegame.colorharmonyprice !== "undefined")
       colorharmonyprice = savegame.colorharmonyprice;
       document.getElementById("colorharmonyprice").innerHTML = colorharmonyprice;
+      if(typeof savegame.streamlinedtaskscount !== "undefined")
+        streamlinedtaskscount = savegame.streamlinedtaskscount;
+      if(typeof savegame.streamlinedtasksprice !== "undefined")
+        streamlinedtasksprice = savegame.streamlinedtasksprice;
+        document.getElementById("streamlinedtasksprice").innerHTML = streamlinedtasksprice;
     //tasks
     if(typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -785,6 +792,8 @@ window.setInterval(function () {
       largerprismsprice: largerprismsprice,
       colorharmonycount: colorharmonycount,
       colorharmonyprice: colorharmonyprice,
+      streamlinedtaskscount: streamlinedtaskscount,
+      streamlinedtasksprice: streamlinedtasksprice,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -895,7 +904,7 @@ function submitTask(){
     tasksCompleted++;
     if(tasksCompleted === 1){
       taskColorGoalRed = 0;
-      taskColorGoalGreen = 255;
+      taskColorGoalGreen = 255 / (1 + (streamlinedtaskscount * 10));
       taskColorGoalBlue = 0;
       document.getElementById("taskGoalAmountRed").innerHTML = Math.round(taskColorGoalRed);
       document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
@@ -910,7 +919,7 @@ function submitTask(){
     }else if(tasksCompleted === 2){
       taskColorGoalRed = 0;
       taskColorGoalGreen = 0;
-      taskColorGoalBlue = 255;
+      taskColorGoalBlue = 255 / (1 + (streamlinedtaskscount * 10));
       document.getElementById("taskGoalAmountRed").innerHTML = Math.round(taskColorGoalRed);
       document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
       document.getElementById("taskGoalAmountBlue").innerHTML = Math.round(taskColorGoalBlue);
@@ -922,9 +931,9 @@ function submitTask(){
       document.getElementById("tabblue").style.display = "block";
       blue+=10;
     }else if(tasksCompleted === 3){
-      taskColorGoalRed = 1100;
-      taskColorGoalGreen = 1150;
-      taskColorGoalBlue = 410;
+      taskColorGoalRed = 1100 / (1 + (streamlinedtaskscount * 10));
+      taskColorGoalGreen = 1150 / (1 + (streamlinedtaskscount * 10));
+      taskColorGoalBlue = 410 / (1 + (streamlinedtaskscount * 10));
       document.getElementById("taskGoalAmountRed").innerHTML = Math.round(taskColorGoalRed);
       document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
       document.getElementById("taskGoalAmountBlue").innerHTML = Math.round(taskColorGoalBlue);
@@ -936,16 +945,16 @@ function submitTask(){
       taskBooster = 2;
     }
     else{
-      taskColorGoalRed = Math.floor(Math.random() * 256) * 1000 * Math.pow(1.2, tasksCompleted);
-      taskColorGoalGreen = Math.floor(Math.random() * 256) * 1000 * Math.pow(1.2, tasksCompleted);
-      taskColorGoalBlue = Math.floor(Math.random() * 256) * 1000 * Math.pow(1.2, tasksCompleted);
+      taskColorGoalRed = Math.floor(Math.random() * 256 * 1000 * Math.pow(1.2, tasksCompleted) / (1+(10 * streamlinedtaskscount)));
+      taskColorGoalGreen = Math.floor(Math.random() * 256 * 1000 * Math.pow(1.2, tasksCompleted) / (1+(10 * streamlinedtaskscount)));
+      taskColorGoalBlue = Math.floor(Math.random() * 256 * 1000 * Math.pow(1.2, tasksCompleted) / (1+(10 * streamlinedtaskscount)));
       document.getElementById("taskGoalAmountRed").innerHTML = Math.round(taskColorGoalRed);
       document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
       document.getElementById("taskGoalAmountBlue").innerHTML = Math.round(taskColorGoalBlue);
-      rgbToHex(Math.round(taskColorGoalRed/(1000 * Math.pow(1.2, tasksCompleted)))+", "+Math.round(taskColorGoalGreen/(1000 * Math.pow(1.2, tasksCompleted)))+", "+Math.round(taskColorGoalBlue/(1000 * Math.pow(1.2, tasksCompleted))));
+      rgbToHex(Math.round(taskColorGoalRed * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted)))+", "+Math.round(taskColorGoalGreen * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted)))+", "+Math.round(taskColorGoalBlue * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted))));
       document.getElementById("taskColor").innerHTML = hexResult;
-      document.getElementById("taskColor").style.color = "rgb("+String(Math.round(taskColorGoalRed/(1000 * Math.pow(1.2, tasksCompleted))))+", "+ String(Math.round(taskColorGoalGreen/(1000 * Math.pow(1.2, tasksCompleted))))+", "+String(Math.round(taskColorGoalBlue/(1000 * Math.pow(1.2, tasksCompleted))))+")";
-      document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(Math.round(taskColorGoalRed/(1000 * Math.pow(1.2, tasksCompleted))))+", "+ String(Math.round(taskColorGoalGreen/(1000 * Math.pow(1.2, tasksCompleted))))+", "+String(Math.round(taskColorGoalBlue/(1000 * Math.pow(1.2, tasksCompleted))))+")";
+      document.getElementById("taskColor").style.color = "rgb("+String(Math.round(taskColorGoalRed * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted))))+", "+ String(Math.round(taskColorGoalGreen * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted))))+", "+String(Math.round(taskColorGoalBlue * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted))))+")";
+      document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(Math.round(taskColorGoalRed * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted))))+", "+ String(Math.round(taskColorGoalGreen * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted))))+", "+String(Math.round(taskColorGoalBlue * (1 + (10 * streamlinedtaskscount )) /(1000 * Math.pow(1.2, tasksCompleted))))+")";
       document.getElementById("tabyellow").style.display = "block";
       yellow+=10;
       document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
@@ -1072,5 +1081,21 @@ function buycolorharmony(){
     colorharmonyprice = Math.round(colorharmonyprice * 1.43);
     document.getElementById("yellowcount").innerHTML = "yellow: " + yellow;
     document.getElementById("colorharmonyprice").innerHTML = colorharmonyprice;
+  }
+}
+
+function buystreamlinedtasks(){
+  if(yellow >= streamlinedtasksprice){
+    yellow -= streamlinedtasksprice;
+    streamlinedtaskscount ++;
+    streamlinedtasksprice = Math.round(streamlinedtasksprice * 1.32);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("streamlinedtasksprice").innerHTML = streamlinedtasksprice;
+    taskColorGoalRed = taskColorGoalRed/10;
+    taskColorGoalBlue = taskColorGoalBlue/10;
+    taskColorGoalGreen = taskColorGoalGreen/10;
+    document.getElementById("taskGoalAmountRed").innerHTML = Math.round(taskColorGoalRed);
+    document.getElementById("taskGoalAmountGreen").innerHTML = Math.round(taskColorGoalGreen);
+    document.getElementById("taskGoalAmountBlue").innerHTML = Math.round(taskColorGoalBlue);
   }
 }
