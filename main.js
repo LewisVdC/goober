@@ -444,7 +444,7 @@ function showtab(x) {
     document.getElementById("tasks").style.color = "rgb(155,20,20)";
     document.getElementById("tasks").style.borderColor = "rgb(155,20,20)";
     document.getElementById("reward").style.borderColor = "rgb(155,20,20)";
-    document.getElementById("body").style.textShadow = "0px 0px 10px red";
+    document.getElementById("body").style.textShadow = "0px 0px 4px red, 0 0 10px rgb(125,0,0)";
     document.getElementById("submitTaskButton").style.backgroundColor = "rgb(155,20,20)";
   }
   if (x === "green") {
@@ -458,7 +458,7 @@ function showtab(x) {
     document.getElementById("tasks").style.color = "green";
     document.getElementById("tasks").style.borderColor = "green";
     document.getElementById("reward").style.borderColor = "green";
-    document.getElementById("body").style.textShadow = "0px 0px 10px green";
+    document.getElementById("body").style.textShadow = "0px 0px 10px green, 0 0 10px rgb(0,125,0)";
     document.getElementById("submitTaskButton").style.backgroundColor = "green";
   }
   if (x === "blue") {
@@ -472,7 +472,7 @@ function showtab(x) {
     document.getElementById("tasks").style.color = "blue";
     document.getElementById("tasks").style.borderColor = "blue";
     document.getElementById("reward").style.borderColor = "blue";
-    document.getElementById("body").style.textShadow = "0px 0px 10px blue";
+    document.getElementById("body").style.textShadow = "0px 0px 10px blue, 0 0 10px rgb(0,0,125)";
     document.getElementById("submitTaskButton").style.backgroundColor = "blue";
   }
   if (x === "yellow") {
@@ -486,7 +486,7 @@ function showtab(x) {
     document.getElementById("tasks").style.color = "rgb(153, 128, 0)";
     document.getElementById("tasks").style.borderColor = "rgb(153, 128, 0)";
     document.getElementById("reward").style.borderColor = "rgb(153, 128, 0)";
-    document.getElementById("body").style.textShadow = "0px 0px 10px rgb(148, 148, 0)";
+    document.getElementById("body").style.textShadow = "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)";
     document.getElementById("submitTaskButton").style.backgroundColor = "rgb(153, 128, 0)";
   }
 }

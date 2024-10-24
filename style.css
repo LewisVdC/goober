@@ -27,7 +27,7 @@ body {
 }
 #taskColor{
   color: rgb(255,0,0);
-  text-shadow: 0 0 10px red;
+  text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
 }
 div#tasks{
   color: rgb(155,20,20);
@@ -609,7 +609,7 @@ button#tabyellow{
   color: green;
 }
 #body{
-  text-shadow: 0px 0px 10px red;
+  text-shadow: 0px 0px 10px red, 0 0 10px rgb(125, 0, 0);
 }
 #submitTaskButton{
   text-align: center;
