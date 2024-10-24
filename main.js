@@ -56,6 +56,28 @@ var streamlinedtasksprice = 5;
 var streamlinedtaskscount = 0;
 var yellowsynergyprice = 6;
 var yellowsynergycount = 0;
+var redoverflowprice = 100;
+var redoverflowcount = 0;
+var greenoverflowprice = 100;
+var greenoverflowcount = 0;
+var blueoverflowprice = 100;
+var blueoverflowcount = 0;
+var tricolorboostprice = 500;
+var tricolorboostcount = 0;
+var taskmasteryprice = 20;
+var taskmasterycount = 0;
+var goldenmultiplierprice = 35;
+var goldenmultipliercount = 0;
+var colorsyphonprice = 120;
+var colorsyphoncount = 0;
+var laserpointersprice = 30;
+var laserpointerscount = 0;
+var finerfiltersprice = 30;
+var finerfilterscount = 0;
+var micrometerwaveprice = 60;
+var micrometerwavecount = 0;
+var strongersynergyprice = 100;
+var strongersynergycount = 0;
 
 var loaded = 0;
 var tab = "red";
@@ -209,6 +231,61 @@ function load() {
     if(typeof savegame.yellowsynergyprice !== "undefined")
       yellowsynergyprice = savegame.yellowsynergyprice;
       document.getElementById("yellowsynergyprice").innerHTML = yellowsynergyprice;
+    if(typeof savegame.redoverflowcount !== "undefined")
+      redoverflowcount = savegame.redoverflowcount;
+    if(typeof savegame.redoverflowprice !== "undefined")
+      redoverflowprice = savegame.redoverflowprice;
+      document.getElementById("redoverflowprice").innerHTML = redoverflowprice;
+    if(typeof savegame.greenoverflowcount !== "undefined")
+      greenoverflowcount = savegame.greenoverflowcount;
+    if(typeof savegame.greenoverflowprice !== "undefined")
+      greenoverflowprice = savegame.greenoverflowprice;
+      document.getElementById("greenoverflowprice").innerHTML = greenoverflowprice;
+    if(typeof savegame.blueoverflowcount !== "undefined")
+      blueoverflowcount = savegame.blueoverflowcount;
+    if(typeof savegame.blueoverflowprice !== "undefined")
+      blueoverflowprice = savegame.blueoverflowprice;
+      document.getElementById("blueoverflowprice").innerHTML = blueoverflowprice;
+    if(typeof savegame.tricolorboostcount !== "undefined")
+      tricolorboostcount = savegame.tricolorboostcount;
+    if(typeof savegame.tricolorboostprice !== "undefined")
+      tricolorboostprice = savegame.tricolorboostprice;
+      document.getElementById("tricolorboostprice").innerHTML = tricolorboostprice;
+    if(typeof savegame.taskmasterycount !== "undefined")
+      taskmasterycount = savegame.taskmasterycount;
+    if(typeof savegame.taskmasteryprice !== "undefined")
+      taskmasteryprice = savegame.taskmasteryprice;
+      document.getElementById("taskmasteryprice").innerHTML = taskmasteryprice;
+    if(typeof savegame.goldenmultipliercount !== "undefined")
+      goldenmultipliercount = savegame.goldenmultipliercount;
+    if(typeof savegame.goldenmultiplierprice !== "undefined")
+      goldenmultiplierprice = savegame.goldenmultiplierprice;
+      document.getElementById("goldenmultiplierprice").innerHTML = goldenmultiplierprice;
+    if(typeof savegame.colorsyphoncount !== "undefined")
+      colorsyphoncount = savegame.colorsyphoncount;
+    if(typeof savegame.colorsyphonprice !== "undefined")
+      colorsyphonprice = savegame.colorsyphonprice;
+      document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
+    if(typeof savegame.laserpointerscount !== "undefined")
+      laserpointerscount = savegame.laserpointerscount;
+    if(typeof savegame.laserpointersprice !== "undefined")
+      laserpointersprice = savegame.laserpointersprice;
+      document.getElementById("laserpointersprice").innerHTML = laserpointersprice;
+    if(typeof savegame.finerfilterscount !== "undefined")
+      finerfilterscount = savegame.finerfilterscount;
+    if(typeof savegame.finerfiltersprice !== "undefined")
+      finerfiltersprice = savegame.finerfiltersprice;
+      document.getElementById("finerfiltersprice").innerHTML = finerfiltersprice;
+    if(typeof savegame.micrometerwavecount !== "undefined")
+      micrometerwavecount = savegame.micrometerwavecount;
+    if(typeof savegame.micrometerwaveprice !== "undefined")
+      micrometerwaveprice = savegame.micrometerwaveprice;
+      document.getElementById("micrometerwaveprice").innerHTML = micrometerwaveprice;
+    if(typeof savegame.strongersynergycount !== "undefined")
+      strongersynergycount = savegame.strongersynergycount;
+    if(typeof savegame.strongersynergyprice !== "undefined")
+      strongersynergyprice = savegame.strongersynergyprice;
+      document.getElementById("strongersynergyprice").innerHTML = strongersynergyprice;
     //tasks
     if(typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -807,6 +884,24 @@ window.setInterval(function () {
       streamlinedtasksprice: streamlinedtasksprice,
       yellowsynergycount: yellowsynergycount,
       yellowsynergyprice: yellowsynergyprice,
+      redoverflowcount: redoverflowcount,
+      redoverflowprice: redoverflowprice,
+      greenoverflowcount: greenoverflowcount,
+      greenoverflowprice: greenoverflowprice,
+      blueoverflowcount: blueoverflowcount,
+      blueoverflowprice: blueoverflowprice,
+      tricolorboostcount: tricolorboostcount,
+      tricolorboostprice: tricolorboostprice,
+      taskmasterycount: taskmasterycount,
+      taskmasteryprice: taskmasteryprice,
+      goldenmultipliercount: goldenmultipliercount,
+      goldenmultiplierprice: goldenmultiplierprice,
+      colorsyphoncount: colorsyphoncount,
+      colorsyphonprice: colorsyphonprice,
+      laserpointerscount: laserpointerscount,
+      laserpointersprice: laserpointersprice,
+      finerfilterscount: finerfilterscount,
+      finerfiltersprice: finerfiltersprice
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -1126,5 +1221,115 @@ function buyyellowsynergy(){
     document.getElementById("yellowsynergyprice").innerHTML = yellowsynergyprice;
     taskRewardCount = 10 * (1+(yellowsynergycount * 0.25));
     document.getElementById("taskReward").innerHTML = String(taskRewardCount) + " " + taskRewardColor;
+  }
+}
+
+function buyredoverflow(){
+  if(yellow >= redoverflowprice){
+    yellow -= redoverflowprice;
+    redoverflowcount ++;
+    redoverflowprice = Math.round(redoverflowprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("redoverflowprice").innerHTML = redoverflowprice;
+  }
+}
+
+function buygreenoverflow(){
+  if(yellow >= greenoverflowprice){
+    yellow -= greenoverflowprice;
+    greenoverflowcount ++;
+    greenoverflowprice = Math.round(greenoverflowprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("greenoverflowprice").innerHTML = greenoverflowprice;
+  }
+}
+
+function buyblueoverflow(){
+  if(yellow >= blueoverflowprice){
+    yellow -= blueoverflowprice;
+    blueoverflowcount ++;
+    blueoverflowprice = Math.round(blueoverflowprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("blueoverflowprice").innerHTML = blueoverflowprice;
+  }
+}
+
+function buytricolorboost(){
+  if(yellow >= tricolorboostprice){
+    yellow -= tricolorboostprice;
+    tricolorboostcount ++;
+    tricolorboostprice = Math.round(tricolorboostprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("tricolorboostprice").innerHTML = tricolorboostprice;
+  }
+}
+
+function buytaskmastery(){
+  if(yellow >= taskmasteryprice){
+    yellow -= taskmasteryprice;
+    taskmasterycount ++;
+    taskmasteryprice = Math.round(taskmasteryprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("taskmasteryprice").innerHTML = taskmasteryprice;
+  }
+}
+
+function buygoldenmultiplier(){
+  if(yellow >= goldenmultiplierprice){
+    yellow -= goldenmultiplierprice;
+    goldenmultipliercount ++;
+    goldenmultiplierprice = Math.round(goldenmultiplierprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("goldenmultiplierprice").innerHTML = goldenmultiplierprice;
+  }
+}
+
+function buycolorsyphon(){
+  if(yellow >= colorsyphonprice){
+    yellow -= colorsyphonprice;
+    colorsyphoncount ++;
+    colorsyphonprice = Math.round(colorsyphonprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
+  }
+}
+
+function buylaserpointers(){
+  if(yellow >= laserpointersprice){
+    yellow -= laserpointersprice;
+    laserpointerscount ++;
+    laserpointersprice = Math.round(laserpointersprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("laserpointersprice").innerHTML = laserpointersprice;
+  }
+}
+
+function buyfinerfilters(){
+  if(yellow >= finerfiltersprice){
+    yellow -= finerfiltersprice;
+    finerfilterscount ++;
+    finerfiltersprice = Math.round(finerfiltersprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("finerfiltersprice").innerHTML = finerfiltersprice;
+  }
+}
+
+function buymicrometerwave(){
+  if(yellow >= micrometerwaveprice){
+    yellow -= micrometerwaveprice;
+    micrometerwavecount ++;
+    micrometerwaveprice = Math.round(micrometerwaveprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("micrometerwaveprice").innerHTML = micrometerwaveprice;
+  }
+}
+
+function buystrongersynergy(){
+  if(yellow >= strongersynergyprice){
+    yellow -= strongersynergyprice;
+    strongersynergycount ++;
+    strongersynergyprice = Math.round(strongersynergyprice * x);
+    document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
+    document.getElementById("strongersynergyprice").innerHTML = strongersynergyprice;
   }
 }
