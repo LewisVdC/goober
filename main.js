@@ -901,7 +901,11 @@ window.setInterval(function () {
       laserpointerscount: laserpointerscount,
       laserpointersprice: laserpointersprice,
       finerfilterscount: finerfilterscount,
-      finerfiltersprice: finerfiltersprice
+      finerfiltersprice: finerfiltersprice,
+      micrometerwavecount: micrometerwavecount,
+      micrometerwaveprice: micrometerwaveprice,
+      strongersynergycount: strongersynergycount,
+      strongersynergyprice: strongersynergyprice,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -1228,7 +1232,7 @@ function buyredoverflow(){
   if(yellow >= redoverflowprice){
     yellow -= redoverflowprice;
     redoverflowcount ++;
-    redoverflowprice = Math.round(redoverflowprice * x);
+    redoverflowprice = Math.round(redoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("redoverflowprice").innerHTML = redoverflowprice;
   }
@@ -1238,7 +1242,7 @@ function buygreenoverflow(){
   if(yellow >= greenoverflowprice){
     yellow -= greenoverflowprice;
     greenoverflowcount ++;
-    greenoverflowprice = Math.round(greenoverflowprice * x);
+    greenoverflowprice = Math.round(greenoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("greenoverflowprice").innerHTML = greenoverflowprice;
   }
@@ -1248,7 +1252,7 @@ function buyblueoverflow(){
   if(yellow >= blueoverflowprice){
     yellow -= blueoverflowprice;
     blueoverflowcount ++;
-    blueoverflowprice = Math.round(blueoverflowprice * x);
+    blueoverflowprice = Math.round(blueoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("blueoverflowprice").innerHTML = blueoverflowprice;
   }
@@ -1258,7 +1262,7 @@ function buytricolorboost(){
   if(yellow >= tricolorboostprice){
     yellow -= tricolorboostprice;
     tricolorboostcount ++;
-    tricolorboostprice = Math.round(tricolorboostprice * x);
+    tricolorboostprice = Math.round(tricolorboostprice * 1.68);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("tricolorboostprice").innerHTML = tricolorboostprice;
   }
@@ -1268,7 +1272,7 @@ function buytaskmastery(){
   if(yellow >= taskmasteryprice){
     yellow -= taskmasteryprice;
     taskmasterycount ++;
-    taskmasteryprice = Math.round(taskmasteryprice * x);
+    taskmasteryprice = Math.round(taskmasteryprice * 1.44);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("taskmasteryprice").innerHTML = taskmasteryprice;
   }
@@ -1278,7 +1282,7 @@ function buygoldenmultiplier(){
   if(yellow >= goldenmultiplierprice){
     yellow -= goldenmultiplierprice;
     goldenmultipliercount ++;
-    goldenmultiplierprice = Math.round(goldenmultiplierprice * x);
+    goldenmultiplierprice = Math.round(goldenmultiplierprice * 1.91);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("goldenmultiplierprice").innerHTML = goldenmultiplierprice;
   }
@@ -1288,7 +1292,7 @@ function buycolorsyphon(){
   if(yellow >= colorsyphonprice){
     yellow -= colorsyphonprice;
     colorsyphoncount ++;
-    colorsyphonprice = Math.round(colorsyphonprice * x);
+    colorsyphonprice = Math.round(colorsyphonprice * 2.1);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
   }
@@ -1298,7 +1302,7 @@ function buylaserpointers(){
   if(yellow >= laserpointersprice){
     yellow -= laserpointersprice;
     laserpointerscount ++;
-    laserpointersprice = Math.round(laserpointersprice * x);
+    laserpointersprice = Math.round(laserpointersprice * 1.53);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("laserpointersprice").innerHTML = laserpointersprice;
   }
@@ -1308,7 +1312,7 @@ function buyfinerfilters(){
   if(yellow >= finerfiltersprice){
     yellow -= finerfiltersprice;
     finerfilterscount ++;
-    finerfiltersprice = Math.round(finerfiltersprice * x);
+    finerfiltersprice = Math.round(finerfiltersprice * 1.43);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("finerfiltersprice").innerHTML = finerfiltersprice;
   }
@@ -1318,7 +1322,7 @@ function buymicrometerwave(){
   if(yellow >= micrometerwaveprice){
     yellow -= micrometerwaveprice;
     micrometerwavecount ++;
-    micrometerwaveprice = Math.round(micrometerwaveprice * x);
+    micrometerwaveprice = Math.round(micrometerwaveprice * 1.51);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("micrometerwaveprice").innerHTML = micrometerwaveprice;
   }
@@ -1328,7 +1332,7 @@ function buystrongersynergy(){
   if(yellow >= strongersynergyprice){
     yellow -= strongersynergyprice;
     strongersynergycount ++;
-    strongersynergyprice = Math.round(strongersynergyprice * x);
+    strongersynergyprice = Math.round(strongersynergyprice * 1.4);
     document.getElementById("yellowcount").innerHTML = "yellow: "+yellow;
     document.getElementById("strongersynergyprice").innerHTML = strongersynergyprice;
   }
