@@ -1282,6 +1282,9 @@ function submitTask() {
         ")";
       document.getElementById("tabyellow").style.display = "block";
       yellow += taskRewardCount;
+      if(Math.random()*100 <= 5){
+        yellow += taskRewardCount * 100 * taskmasterycount;
+      }
       document.getElementById("yellowcount").innerHTML = "yellow: " + yellow;
       document.getElementById("taskReward").innerHTML =
         String(taskRewardCount) + " " + taskRewardColor;
