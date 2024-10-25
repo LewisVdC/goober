@@ -1337,3 +1337,75 @@ function buystrongersynergy(){
     document.getElementById("strongersynergyprice").innerHTML = strongersynergyprice;
   }
 }
+
+window.setInterval(function (){
+  yellow += redoverflowcount * (//filter
+    ((((redfilter * (redfilter * redupgrade1 + 1) +
+      //pointer
+      redpointer * 10 * (redpointer * redupgrade3 + 1) +
+      //bigredfilter
+      bigredfilter * 100 +
+      //bigredpointer
+      bigredpointer * 1000) *
+      //rednanometerwave
+      (rednanometerwave * 0.5 + 1) *
+      //weaksynergygreen
+      (Math.log(green + 1) * greenupgrade2 + 1)) /
+      (10 * greenupgrade2 + 1)) *
+      //weaksynergyblue
+      (Math.log(blue + 1) * blueupgrade2 + 1)) /
+      (10 * blueupgrade2 + 1) *
+      //task booster
+      taskBooster * 
+      //yellow larger prisms
+      Math.pow(2, largerprismscount) *
+      //yellow color harmony
+      (1 + (yellow / 10) * colorharmonycount)) / 1000000000000;
+
+  yellow += greenoverflowcount * (//filter
+    ((((greenfilter * (greenfilter * greenupgrade1 + 1) +
+      //pointer
+      greenpointer * 10 * (greenpointer * blueupgrade3 + 1) +
+      //bigfilter
+      biggreenfilter * 100 +
+      //bigpointer
+      biggreenpointer * 1000) *
+      //nanometerwave
+      (greennanometerwave * 0.5 + 1) *
+      //weaksynergyred
+      (Math.log(red + 1) * redupgrade2 + 1)) /
+      (10 * redupgrade2 + 1)) *
+      //weaksynergyblue
+      (Math.log(blue + 1) * blueupgrade2 + 1)) /
+      (10 * blueupgrade2 + 1) *
+      //task booster
+      taskBooster * 
+      //yellow larger prisms
+      Math.pow(2, largerprismscount) *
+      //yellow color harmony
+      (1 + (yellow / 10) * colorharmonycount)) / 1000000000000;
+
+  yellow += blueoverflowcount * (//filter
+    ((((bluefilter * (bluefilter * blueupgrade1 + 1) +
+      //pointer
+      bluepointer * 10 * (bluepointer * blueupgrade3 + 1) +
+      //bigfilter
+      bigbluefilter * 100 +
+      //bigpointer
+      bigbluepointer * 1000) *
+      //nanometerwave
+      (bluenanometerwave * 0.5 + 1) *
+      //weaksynergyred
+      (Math.log(red + 1) * redupgrade2 + 1)) /
+      (10 * redupgrade2 + 1)) *
+      //weaksynergygreen
+      (Math.log(red + 1) * redupgrade2 + 1)) /
+      (10 * greenupgrade2 + 1) *
+      //task booster
+      taskBooster  * 
+      //yellow larger prisms
+      Math.pow(2, largerprismscount) *
+      //yellow color harmony
+      (1 + (yellow / 10) * colorharmonycount)) / 1000000000000;
+  document.getElementById("yellowcount").innerHTML = "yellow: "+Math.round(yellow);
+}, 10)
