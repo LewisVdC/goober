@@ -39,25 +39,25 @@ var taskColorGoalHEX = "#ff0000";
 var taskColorGoalRed = 255;
 var taskColorGoalGreen = 0;
 var taskColorGoalBlue = 0;
-let hexResult = '#'
+let hexResult = "#";
 const hex = {
-  '0': '0',
-  '1': '1',
-  '2': '2',
-  '3': '3',
-  '4': '4',
-  '5': '5',
-  '6': '6',
-  '7': '6',
-  '8': '8',
-  '9': '9', 
-  '10': 'A', 
-  '11': 'B', 
-  '12': 'C', 
-  '13': 'D', 
-  '14': 'E',
-  '15': 'F'
-}
+  0: "0",
+  1: "1",
+  2: "2",
+  3: "3",
+  4: "4",
+  5: "5",
+  6: "6",
+  7: "6",
+  8: "8",
+  9: "9",
+  10: "A",
+  11: "B",
+  12: "C",
+  13: "D",
+  14: "E",
+  15: "F",
+};
 
 document.getElementById("redcount").innerHTML = "red: " + red;
 
@@ -246,7 +246,8 @@ function showtab(x) {
     document.getElementById("tasks").style.color = "rgb(155,20,20)";
     document.getElementById("tasks").style.borderColor = "rgb(155,20,20)";
     document.getElementById("body").style.textShadow = "0px 0px 10px red";
-    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(155,20,20)";
+    document.getElementById("submitTaskButton").style.backgroundColor =
+      "rgb(155,20,20)";
   }
   if (x === "green") {
     document.getElementById("red").style.display = "none";
@@ -766,25 +767,29 @@ window.setInterval(function () {
   }
 }, 10);
 
-function rgbToHex(rgb){
-  let rgbColor = rgb.split(', ')
-  let values = Object.values(hex)
-  hexResult = "#"
-  rgbColor.forEach(element => {
-      if (values.includes(element)){
-          hexResult += element + element
-      } else {
-          let number = Number(element)/16;
-          let firstDig = String(number).slice(0,2).replace('.', '');
-          let secondDig = String(((number - Number(firstDig))*16));
-          hexResult += hex[firstDig]
-          hexResult += hex[secondDig]
-      }
+function rgbToHex(rgb) {
+  let rgbColor = rgb.split(", ");
+  let values = Object.values(hex);
+  hexResult = "#";
+  rgbColor.forEach((element) => {
+    if (values.includes(element)) {
+      hexResult += element + element;
+    } else {
+      let number = Number(element) / 16;
+      let firstDig = String(number).slice(0, 2).replace(".", "");
+      let secondDig = String((number - Number(firstDig)) * 16);
+      hexResult += hex[firstDig];
+      hexResult += hex[secondDig];
+    }
   });
 }
 
-function submitTask(){
-  if(red >= taskColorGoalRed && green >= taskColorGoalGreen && blue >= taskColorGoalBlue){
+function submitTask() {
+  if (
+    red >= taskColorGoalRed &&
+    green >= taskColorGoalGreen &&
+    blue >= taskColorGoalBlue
+  ) {
     red -= taskColorGoalRed;
     green -= taskColorGoalGreen;
     blue -= taskColorGoalBlue;
@@ -792,16 +797,34 @@ function submitTask(){
     taskColorGoalGreen = Math.floor(Math.random() * 256);
     taskColorGoalBlue = Math.floor(Math.random() * 256);
     document.getElementById("taskGoalAmountRed").innerHTML = taskColorGoalRed;
-    document.getElementById("taskGoalAmountGreen").innerHTML = taskColorGoalGreen;
+    document.getElementById("taskGoalAmountGreen").innerHTML =
+      taskColorGoalGreen;
     document.getElementById("taskGoalAmountBlue").innerHTML = taskColorGoalBlue;
-    rgbToHex(taskColorGoalRed+", "+taskColorGoalGreen+", "+taskColorGoalBlue)
+    rgbToHex(
+      taskColorGoalRed + ", " + taskColorGoalGreen + ", " + taskColorGoalBlue
+    );
     document.getElementById("taskColor").innerHTML = hexResult;
-    document.getElementById("taskColor").style.color = "rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
-    document.getElementById("taskColor").style.textShadow = "0px 0px 10px "+"rgb("+String(taskColorGoalRed)+", "+ String(taskColorGoalGreen)+", "+String(taskColorGoalBlue)+")";
+    document.getElementById("taskColor").style.color =
+      "rgb(" +
+      String(taskColorGoalRed) +
+      ", " +
+      String(taskColorGoalGreen) +
+      ", " +
+      String(taskColorGoalBlue) +
+      ")";
+    document.getElementById("taskColor").style.textShadow =
+      "0px 0px 10px " +
+      "rgb(" +
+      String(taskColorGoalRed) +
+      ", " +
+      String(taskColorGoalGreen) +
+      ", " +
+      String(taskColorGoalBlue) +
+      ")";
   }
 }
 
-function resetData(){
+function resetData() {
   loaded = 35;
   localStorage.removeItem("save");
   location.reload();
