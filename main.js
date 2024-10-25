@@ -1047,6 +1047,8 @@ window.setInterval(function () {
         //weaksynergyblue
         (Math.log(blue + 1) * blueupgrade2 + 1)) /
         (10 * blueupgrade2 + 1)) *
+        //stronger synergy
+        (1 + strongersynergycount * 10) *
         //task booster
         taskBooster *
         //yellow larger prisms
@@ -1075,6 +1077,8 @@ window.setInterval(function () {
         //weaksynergyblue
         (Math.log(blue + 1) * blueupgrade2 + 1)) /
         (10 * blueupgrade2 + 1)) *
+        //stronger synergy
+        (1 + strongersynergycount * 10) *
         //task booster
         taskBooster *
         //yellow larger prisms
@@ -1105,6 +1109,8 @@ window.setInterval(function () {
         //weaksynergygreen
         (Math.log(red + 1) * redupgrade2 + 1)) /
         (10 * greenupgrade2 + 1)) *
+        //stronger synergy
+        (1 + strongersynergycount * 10) *
         //task booster
         taskBooster *
         //yellow larger prisms
@@ -1708,6 +1714,8 @@ window.setInterval(function (){
       //weaksynergyblue
       (Math.log(blue + 1) * blueupgrade2 + 1)) /
       (10 * blueupgrade2 + 1) *
+      //stronger synergy
+      (1 + strongersynergycount * 10) *
       //task booster
       taskBooster * 
       //yellow larger prisms
@@ -1733,6 +1741,8 @@ window.setInterval(function (){
       //weaksynergyblue
       (Math.log(blue + 1) * blueupgrade2 + 1)) /
       (10 * blueupgrade2 + 1) *
+      //stronger synergy
+      (1 + strongersynergycount * 10) *
       //task booster
       taskBooster * 
       //yellow larger prisms
@@ -1758,6 +1768,8 @@ window.setInterval(function (){
       //weaksynergygreen
       (Math.log(red + 1) * redupgrade2 + 1)) /
       (10 * greenupgrade2 + 1) *
+      //stronger synergy
+      (1 + strongersynergycount * 10) *
       //task booster
       taskBooster  * 
       //yellow larger prisms
