@@ -3,16 +3,38 @@
 <head>
   <link rel="stylesheet" href="style.css" />
   <title>Red Green Blue</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body onload="load()" id="body">
   <div id="tasks">
-    <p class="timosucks" style="margin-bottom: 0px;"><strong>Current task: <span id="taskColor">#FF0000</span></strong></p>
-    <p class="timosucks" id="reward">Reward: <span id="taskReward">10 green</span></p>
-    <p class="timosucks" >red: <span id="taskAmountRed">0</span>/<span id="taskGoalAmountRed">255</span></p>
-    <p class="timosucks" >green: <span id="taskAmountGreen">0</span>/<span id="taskGoalAmountGreen">0</span></p>
-    <p class="timosucks" >blue; <span id="taskAmountBlue">0</span>/<span id="taskGoalAmountBlue">0</span></p>
-    <button id="submitTaskButton" class="redupgrades submit" onClick="submitTask()">Submit</button>
+    <p class="timosucks" style="margin-bottom: 0px">
+      <strong>Current task: <span id="taskColor">#FF0000</span></strong>
+    </p>
+    <p class="timosucks" id="reward">
+      Reward: <span id="taskReward">10 green</span>
+    </p>
+    <p class="timosucks">
+      red: <span id="taskAmountRed">0</span>/<span id="taskGoalAmountRed"
+        >255</span
+      >
+    </p>
+    <p class="timosucks">
+      green: <span id="taskAmountGreen">0</span>/<span id="taskGoalAmountGreen"
+        >0</span
+      >
+    </p>
+    <p class="timosucks">
+      blue: <span id="taskAmountBlue">0</span>/<span id="taskGoalAmountBlue"
+        >0</span
+      >
+    </p>
+    <button
+      id="submitTaskButton"
+      class="redupgrades submit"
+      onClick="submitTask()"
+    >
+      Submit
+    </button>
   </div>
   <div id="toptext"></div>
   <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
@@ -21,7 +43,9 @@
     <button class="tab" id="tabred" onclick="showtab('red')">Red</button>
     <button class="tab" id="tabgreen" onclick="showtab('green')">Green</button>
     <button class="tab" id="tabblue" onclick="showtab('blue')">Blue</button>
-    <button class="tab" id="tabyellow" onclick="showtab('yellow')">Yellow</button>
+    <button class="tab" id="tabyellow" onclick="showtab('yellow')">
+      Yellow
+    </button>
   </div>
 
   <div id="red" class="tab">
@@ -54,7 +78,11 @@
           <span>big red filter: <span id="bigredfiltercount"></span></span>
         </div>
         <div id="redbuilding3">
-          <button id="bigredfilter" class="redupgrades" onClick="buybigredfilter()">
+          <button
+            id="bigredfilter"
+            class="redupgrades"
+            onClick="buybigredfilter()"
+          >
             cost:
             <span id="bigredfiltercost">1000</span>
           </button>
@@ -67,7 +95,11 @@
           ></span>
         </div>
         <div id="redbuilding4">
-          <button id="bigredpointer" class="redupgrades" onClick="buybigredpointer()">
+          <button
+            id="bigredpointer"
+            class="redupgrades"
+            onClick="buybigredpointer()"
+          >
             cost:
             <span id="bigredpointercost">10000</span>
           </button>
@@ -80,26 +112,44 @@
           ></span>
         </div>
         <div id="redbuilding5">
-          <button id="rednanometerwave" class="redupgrades" onClick="buyrednanometerwave()">
+          <button
+            id="rednanometerwave"
+            class="redupgrades"
+            onClick="buyrednanometerwave()"
+          >
             cost:
             <span id="rednanometerwavecost">100000</span>
           </button>
         </div>
       </div>
-      <div id="redupgrades"><span style="color: rgb(155,20,20)">upgrades</span></div>
+      <div id="redupgrades">
+        <span style="color: rgb(155, 20, 20)">upgrades</span>
+      </div>
       <div id="redupgradesbox">
         <div id="redupgradesrow1">
-          <button id="redupgrade1" class="redupgrades" onClick="buyredupgrade1()">
+          <button
+            id="redupgrade1"
+            class="redupgrades"
+            onClick="buyredupgrade1()"
+          >
             redfilter upgrade<br /><span id="redupgrade1cost">cost:150000</span>
           </button>
-          <button id="redupgrade3" class="redupgrades" onclick="buyredupgrade3()">
+          <button
+            id="redupgrade3"
+            class="redupgrades"
+            onclick="buyredupgrade3()"
+          >
             redpointer upgrade <br /><span id="redupgrade3cost"
               >cost:500000</span
             >
           </button>
         </div>
         <div id="redupgradesrow2">
-          <button id="redupgrade2" class="redupgrades" onClick="buyredupgrade2()">
+          <button
+            id="redupgrade2"
+            class="redupgrades"
+            onClick="buyredupgrade2()"
+          >
             weak synergy<br /><span id="redupgrade2cost">cost:250000</span>
           </button>
         </div>
@@ -115,7 +165,11 @@
           <span>green filter: <span id="greenfiltercount"></span></span>
         </div>
         <div id="greenbuilding1">
-          <button id="greenfilter" class="greenupgrades" onClick="buygreenfilter()">
+          <button
+            id="greenfilter"
+            class="greenupgrades"
+            onClick="buygreenfilter()"
+          >
             cost:
             <span id="greenfiltercost">10</span>
           </button>
@@ -126,7 +180,11 @@
           <span>green laser pointer: <span id="greenpointercount"></span></span>
         </div>
         <div id="greenbuilding2">
-          <button id="greenpointer" class="greenupgrades" onClick="buygreenpointer()">
+          <button
+            id="greenpointer"
+            class="greenupgrades"
+            onClick="buygreenpointer()"
+          >
             cost:
             <span id="greenpointercost">100</span>
           </button>
@@ -137,20 +195,28 @@
           <span>big green filter: <span id="biggreenfiltercount"></span></span>
         </div>
         <div id="greenbuilding3">
-          <button id="biggreenfilter" class="greenupgrades" onClick="buybiggreenfilter()">
+          <button
+            id="biggreenfilter"
+            class="greenupgrades"
+            onClick="buybiggreenfilter()"
+          >
             cost:
             <span id="biggreenfiltercost">1000</span>
           </button>
         </div>
       </div>
       <div id="greenbuild4">
-        <div id="greenbuilding4text"8 class="greentext">
+        <div id="greenbuilding4text" 8 class="greentext">
           <span
             >big green laser pointer: <span id="biggreenpointercount"></span
           ></span>
         </div>
         <div id="greenbuilding4">
-          <button id="biggreenpointer" class="greenupgrades" onClick="buybiggreenpointer()">
+          <button
+            id="biggreenpointer"
+            class="greenupgrades"
+            onClick="buybiggreenpointer()"
+          >
             cost:
             <span id="biggreenpointercost">10000</span>
           </button>
@@ -163,7 +229,11 @@
           ></span>
         </div>
         <div id="greenbuilding5">
-          <button id="greennanometerwave" class="greenupgrades" onClick="buygreennanometerwave()">
+          <button
+            id="greennanometerwave"
+            class="greenupgrades"
+            onClick="buygreennanometerwave()"
+          >
             cost:
             <span id="greennanometerwavecost">100000</span>
           </button>
@@ -172,19 +242,31 @@
       <div id="greenupgrades"><span style="color: green">upgrades</span></div>
       <div id="greenupgradesbox">
         <div id="greenupgradesrow1">
-          <button id="greenupgrade1" class="greenupgrades" onClick="buygreenupgrade1()">
+          <button
+            id="greenupgrade1"
+            class="greenupgrades"
+            onClick="buygreenupgrade1()"
+          >
             greenfilter upgrade<br /><span id="greenupgrade1cost"
               >cost:150000</span
             >
           </button>
-          <button id="greenupgrade3" class="greenupgrades" onclick="buygreenupgrade3()">
+          <button
+            id="greenupgrade3"
+            class="greenupgrades"
+            onclick="buygreenupgrade3()"
+          >
             greenpointer upgrade <br /><span id="greenupgrade3cost"
               >cost:500000</span
             >
           </button>
         </div>
         <div id="greenupgradesrow2">
-          <button id="greenupgrade2" class="greenupgrades" onClick="buygreenupgrade2()">
+          <button
+            id="greenupgrade2"
+            class="greenupgrades"
+            onClick="buygreenupgrade2()"
+          >
             weak synergy<br /><span id="greenupgrade2cost">cost:250000</span>
           </button>
         </div>
@@ -199,7 +281,11 @@
           <span>blue filter: <span id="bluefiltercount"></span></span>
         </div>
         <div id="bluebuilding1">
-          <button id="bluefilter" class="blueupgrades" onClick="buybluefilter()">
+          <button
+            id="bluefilter"
+            class="blueupgrades"
+            onClick="buybluefilter()"
+          >
             cost:
             <span id="bluefiltercost">10</span>
           </button>
@@ -210,7 +296,11 @@
           <span>blue laser pointer: <span id="bluepointercount"></span></span>
         </div>
         <div id="bluebuilding2">
-          <button id="bluepointer" class="blueupgrades" onClick="buybluepointer()">
+          <button
+            id="bluepointer"
+            class="blueupgrades"
+            onClick="buybluepointer()"
+          >
             cost:
             <span id="bluepointercost">100</span>
           </button>
@@ -221,7 +311,11 @@
           <span>big blue filter: <span id="bigbluefiltercount"></span></span>
         </div>
         <div id="bluebuilding3">
-          <button id="bigbluefilter" class="blueupgrades" onClick="buybigbluefilter()">
+          <button
+            id="bigbluefilter"
+            class="blueupgrades"
+            onClick="buybigbluefilter()"
+          >
             cost:
             <span id="bigbluefiltercost">1000</span>
           </button>
@@ -234,7 +328,11 @@
           ></span>
         </div>
         <div id="bluebuilding4">
-          <button id="bigbluepointer" class="blueupgrades" onClick="buybigbluepointer()">
+          <button
+            id="bigbluepointer"
+            class="blueupgrades"
+            onClick="buybigbluepointer()"
+          >
             cost:
             <span id="bigbluepointercost">10000</span>
           </button>
@@ -247,7 +345,11 @@
           ></span>
         </div>
         <div id="bluebuilding5">
-          <button id="bluenanometerwave" class="blueupgrades" onClick="buybluenanometerwave()">
+          <button
+            id="bluenanometerwave"
+            class="blueupgrades"
+            onClick="buybluenanometerwave()"
+          >
             cost:
             <span id="bluenanometerwavecost">100000</span>
           </button>
@@ -256,19 +358,31 @@
       <div id="blueupgrades"><span style="color: blue">upgrades</span></div>
       <div id="blueupgradesbox">
         <div id="blueupgradesrow1">
-          <button id="blueupgrade1" class="blueupgrades" onClick="buyblueupgrade1()">
+          <button
+            id="blueupgrade1"
+            class="blueupgrades"
+            onClick="buyblueupgrade1()"
+          >
             bluefilter upgrade<br /><span id="blueupgrade1cost"
               >cost:150000</span
             >
           </button>
-          <button id="blueupgrade3" class="blueupgrades" onclick="buyblueupgrade3()">
+          <button
+            id="blueupgrade3"
+            class="blueupgrades"
+            onclick="buyblueupgrade3()"
+          >
             bluepointer upgrade <br /><span id="blueupgrade3cost"
               >cost:500000</span
             >
           </button>
         </div>
         <div id="blueupgradesrow2">
-          <button id="blueupgrade2" class="blueupgrades" onClick="buyblueupgrade2()">
+          <button
+            id="blueupgrade2"
+            class="blueupgrades"
+            onClick="buyblueupgrade2()"
+          >
             weak synergy<br /><span id="blueupgrade2cost">cost:250000</span>
           </button>
         </div>
@@ -282,87 +396,119 @@
       <button class="yellowupgrades" onclick="buygovernmentfunding()">
         <strong>government funding</strong>
         <p class="yellowdescription">divide upgrade cost by /1.1</p>
-        <p class="yellowdescription"><span id="governmentfundingprice">2</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="governmentfundingprice">2</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buycolorharmony()">
         <strong>color harmony</strong>
         <p class="yellowdescription">multiply rgb gain by yellow/10</p>
-        <p class="yellowdescription"><span id="colorharmonyprice">2</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="colorharmonyprice">2</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buylargerprisms()">
         <strong>larger prisms</strong>
         <p class="yellowdescription">multiply rgb gain by 2x</p>
-        <p class="yellowdescription"><span id="largerprismsprice">10</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="largerprismsprice">10</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buystreamlinedtasks()">
         <strong>streamlined tasks</strong>
         <p class="yellowdescription">divide task goal by /10</p>
-        <p class="yellowdescription"><span id="streamlinedtasksprice">5</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="streamlinedtasksprice">5</span> yellow
+        </p>
       </button>
-      <br/>
+      <br />
       <button class="yellowupgrades" onclick="buyyellowsynergy()">
         <strong>yellow synergy</strong>
         <p class="yellowdescription">boost yellow output by 25%</p>
-        <p class="yellowdescription"><span id="yellowsynergyprice">6</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="yellowsynergyprice">6</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buyredoverflow()">
         <strong>red overflow</strong>
         <p class="yellowdescription">gain 1 yellow/s per 1e10 red/s</p>
-        <p class="yellowdescription"><span id="redoverflowprice">100</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="redoverflowprice">100</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buygreenoverflow()">
         <strong>green overflow</strong>
         <p class="yellowdescription">gain 1 yellow/s per 1e10 green/s</p>
-        <p class="yellowdescription"><span id="greenoverflowprice">100</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="greenoverflowprice">100</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buyblueoverflow()">
         <strong>blue overflow</strong>
         <p class="yellowdescription">gain 1 yellow/s per 1e10 blue/s</p>
-        <p class="yellowdescription"><span id="blueoverflowprice">100</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="blueoverflowprice">100</span> yellow
+        </p>
       </button>
-      <br/>
+      <br />
       <button class="yellowupgrades" onclick="buytricolorboost()">
         <strong>tri-color boost</strong>
         <p class="yellowdescription">+50% rgb gain per 100 yellow</p>
-        <p class="yellowdescription"><span id="tricolorboostprice">500</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="tricolorboostprice">500</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buytaskmastery()">
         <strong>task mastery</strong>
         <p class="yellowdescription">get a small chance for 100x task reward</p>
-        <p class="yellowdescription"><span id="taskmasteryprice">20</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="taskmasteryprice">20</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buygoldenmultiplier()">
         <strong>golden multiplier</strong>
-        <p class="yellowdescription"> boost yellow gain by tasks completed</p>
-        <p class="yellowdescription"><span id="goldenmultiplierprice">35</span> yellow</p>
+        <p class="yellowdescription">boost yellow gain by tasks completed</p>
+        <p class="yellowdescription">
+          <span id="goldenmultiplierprice">35</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buycolorsyphon()">
         <strong>color syphon</strong>
         <p class="yellowdescription">gain 5 min worth of rgb for every task</p>
-        <p class="yellowdescription"><span id="colorsyphonprice">120</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="colorsyphonprice">120</span> yellow
+        </p>
       </button>
-      <br/>
+      <br />
       <button class="yellowupgrades" onclick="buylaserpointers()">
         <strong>laser pointers</strong>
         <p class="yellowdescription">boost pointers by 5x</p>
-        <p class="yellowdescription"><span id="laserpointersprice">30</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="laserpointersprice">30</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buyfinerfilters()">
         <strong>finer filters</strong>
         <p class="yellowdescription">boost filters by 5x</p>
-        <p class="yellowdescription"><span id="finerfiltersprice">30</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="finerfiltersprice">30</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buymicrometerwave()">
         <strong>micrometer wave</strong>
         <p class="yellowdescription">boost nanometer wave by 2x</p>
-        <p class="yellowdescription"><span id="micrometerwaveprice">60</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="micrometerwaveprice">60</span> yellow
+        </p>
       </button>
       <button class="yellowupgrades" onclick="buystrongersynergy()">
         <strong>stronger synergy</strong>
         <p class="yellowdescription">make weak synergy 10x stronger</p>
-        <p class="yellowdescription"><span id="strongersynergyprice">100</span> yellow</p>
+        <p class="yellowdescription">
+          <span id="strongersynergyprice">100</span> yellow
+        </p>
       </button>
-      <br/>
+      <br />
     </div>
   </div>
   <script type="text/javascript" src="main.js"></script>
