@@ -1040,7 +1040,7 @@ window.setInterval(function () {
         //bigredpointer
         bigredpointer * 1000 * (1 +  focussedpointerscount * 3)) *
         //rednanometerwave
-        (rednanometerwave * 0.5 + 1) *
+        (rednanometerwave * 0.5 + 1) * (1 + micrometerwavecount * 2) *
         //weaksynergygreen
         (Math.log(green + 1) * greenupgrade2 + 1)) /
         (10 * greenupgrade2 + 1)) *
@@ -1068,7 +1068,7 @@ window.setInterval(function () {
         //bigpointer
         biggreenpointer * 1000 * (1 +  focussedpointerscount * 3)) *
         //nanometerwave
-        (greennanometerwave * 0.5 + 1) *
+        (greennanometerwave * 0.5 + 1) * (1 + micrometerwavecount * 2) *
         //weaksynergyred
         (Math.log(red + 1) * redupgrade2 + 1)) /
         (10 * redupgrade2 + 1)) *
@@ -1098,7 +1098,7 @@ window.setInterval(function () {
         //bigpointer
         bigbluepointer * 1000 * (1 +  focussedpointerscount * 3)) *
         //nanometerwave
-        (bluenanometerwave * 0.5 + 1) *
+        (bluenanometerwave * 0.5 + 1) * (1 + micrometerwavecount * 2) *
         //weaksynergyred
         (Math.log(red + 1) * redupgrade2 + 1)) /
         (10 * redupgrade2 + 1)) *
@@ -1701,7 +1701,7 @@ window.setInterval(function (){
       //bigredpointer
       bigredpointer * 1000 * (1 +  focussedpointerscount * 3)) *
       //rednanometerwave
-      (rednanometerwave * 0.5 + 1) *
+      (rednanometerwave * 0.5 + 1) * (1 + micrometerwavecount * 2) *
       //weaksynergygreen
       (Math.log(green + 1) * greenupgrade2 + 1)) /
       (10 * greenupgrade2 + 1)) *
@@ -1726,7 +1726,7 @@ window.setInterval(function (){
       //bigpointer
       biggreenpointer * 1000) * (1 +  focussedpointerscount * 3) *
       //nanometerwave
-      (greennanometerwave * 0.5 + 1) *
+      (greennanometerwave * 0.5 + 1) * (1 + micrometerwavecount * 2) *
       //weaksynergyred
       (Math.log(red + 1) * redupgrade2 + 1)) /
       (10 * redupgrade2 + 1)) *
@@ -1751,7 +1751,7 @@ window.setInterval(function (){
       //bigpointer
       bigbluepointer * 1000 * (1 +  focussedpointerscount * 3)) *
       //nanometerwave
-      (bluenanometerwave * 0.5 + 1) *
+      (bluenanometerwave * 0.5 + 1) * (1 + micrometerwavecount * 2) *
       //weaksynergyred
       (Math.log(red + 1) * redupgrade2 + 1)) /
       (10 * redupgrade2 + 1)) *
