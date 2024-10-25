@@ -506,6 +506,7 @@ function showtab(x) {
       "0px 0px 10px red, 0 0 10px rgb(125,0,0)";
     document.getElementById("submitTaskButton").style.backgroundColor =
       "rgb(155,20,20)";
+    document.getElementById("body").style.backgroundColor = "rgb(20, 0, 0)";
   }
   if (x === "green") {
     tab = "green";
@@ -521,6 +522,7 @@ function showtab(x) {
     document.getElementById("body").style.textShadow =
       "0px 0px 10px green, 0 0 10px rgb(0,125,0)";
     document.getElementById("submitTaskButton").style.backgroundColor = "green";
+    document.getElementById("body").style.backgroundColor = "rgb(0, 20, 0)";
   }
   if (x === "blue") {
     tab = "blue";
@@ -536,6 +538,7 @@ function showtab(x) {
     document.getElementById("body").style.textShadow =
       "0px 0px 10px blue, 0 0 10px rgb(0,0,125)";
     document.getElementById("submitTaskButton").style.backgroundColor = "blue";
+    document.getElementById("body").style.backgroundColor = "rgb(0, 0, 20)";
   }
   if (x === "yellow") {
     tab = "yellow";
@@ -552,6 +555,7 @@ function showtab(x) {
       "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)";
     document.getElementById("submitTaskButton").style.backgroundColor =
       "rgb(153, 128, 0)";
+    document.getElementById("body").style.backgroundColor = "rgb(20, 20, 0)";
   }
 }
 
