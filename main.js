@@ -1669,4 +1669,4 @@ window.setInterval(function (){
       //yellow color harmony
       (1 + (yellow / 10) * colorharmonycount)) / 1000000000000;
   document.getElementById("yellowcount").innerHTML = "yellow: "+Math.round(yellow);
-}, 10)
+}, 20)
