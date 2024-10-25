@@ -7,19 +7,21 @@
 </head>
 <body onload="load()" id="body">
   <div id="tasks">
-    <p class="timosucks"><strong>Current task: <span id="taskColor">#FF0000</span></strong>
+    <p class="timosucks" style="margin-bottom: 0px;"><strong>Current task: <span id="taskColor">#FF0000</span></strong></p>
+    <p class="timosucks" id="reward">Reward: <span id="taskReward">10 green</span></p>
     <p class="timosucks" >red: <span id="taskAmountRed">0</span>/<span id="taskGoalAmountRed">255</span></p>
-    <p class="timosucks" >blue: <span id="taskAmountBlue">0</span>/<span id="taskGoalAmountBlue">0</span></p>
     <p class="timosucks" >green: <span id="taskAmountGreen">0</span>/<span id="taskGoalAmountGreen">0</span></p>
-    <button id="submitTaskButton" class="redupgrades" onClick="submitTask()">Submit</button>
+    <p class="timosucks" >blue; <span id="taskAmountBlue">0</span>/<span id="taskGoalAmountBlue">0</span></p>
+    <button id="submitTaskButton" class="redupgrades submit" onClick="submitTask()">Submit</button>
   </div>
   <div id="toptext"></div>
-  <button onClick="resetData()" style="position: absolute;">reset data</button>
+  <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
   <!-- tabs -->
   <div id="tabs">
-    <button id="tabred" onclick="showtab('red')">Red</button>
-    <button id="tabgreen" onclick="showtab('green')">Green</button>
-    <button id="tabblue" onclick="showtab('blue')">Blue</button>
+    <button class="tab" id="tabred" onclick="showtab('red')">Red</button>
+    <button class="tab" id="tabgreen" onclick="showtab('green')">Green</button>
+    <button class="tab" id="tabblue" onclick="showtab('blue')">Blue</button>
+    <button class="tab" id="tabyellow" onclick="showtab('yellow')">Yellow</button>
   </div>
 
   <div id="red" class="tab">
@@ -272,6 +274,96 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="main.js"></script>
   </div>
+
+  <div id="yellow" class="tab" style="display: none">
+    <div id="top"><span id="yellowcount">yellow: 0</span></div>
+    <div id="yellowbuildings">
+      <button class="yellowupgrades" onclick="buygovernmentfunding()">
+        <strong>government funding</strong>
+        <p class="yellowdescription">divide upgrade cost by /1.1</p>
+        <p class="yellowdescription"><span id="governmentfundingprice">2</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buycolorharmony()">
+        <strong>color harmony</strong>
+        <p class="yellowdescription">multiply rgb gain by yellow/10</p>
+        <p class="yellowdescription"><span id="colorharmonyprice">2</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buylargerprisms()">
+        <strong>larger prisms</strong>
+        <p class="yellowdescription">multiply rgb gain by 2x</p>
+        <p class="yellowdescription"><span id="largerprismsprice">10</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buystreamlinedtasks()">
+        <strong>streamlined tasks</strong>
+        <p class="yellowdescription">divide task goal by /10</p>
+        <p class="yellowdescription"><span id="streamlinedtasksprice">5</span> yellow</p>
+      </button>
+      <br/>
+      <button class="yellowupgrades" onclick="buyyellowsynergy()">
+        <strong>yellow synergy</strong>
+        <p class="yellowdescription">boost yellow output by 25%</p>
+        <p class="yellowdescription"><span id="yellowsynergyprice">6</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buyredoverflow()">
+        <strong>red overflow</strong>
+        <p class="yellowdescription">gain 1 yellow/s per 1e10 red/s</p>
+        <p class="yellowdescription"><span id="redoverflowprice">100</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buygreenoverflow()">
+        <strong>green overflow</strong>
+        <p class="yellowdescription">gain 1 yellow/s per 1e10 green/s</p>
+        <p class="yellowdescription"><span id="greenoverflowprice">100</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buyblueoverflow()">
+        <strong>blue overflow</strong>
+        <p class="yellowdescription">gain 1 yellow/s per 1e10 blue/s</p>
+        <p class="yellowdescription"><span id="blueoverflowprice">100</span> yellow</p>
+      </button>
+      <br/>
+      <button class="yellowupgrades" onclick="buytricolorboost()">
+        <strong>tri-color boost</strong>
+        <p class="yellowdescription">+50% rgb gain per 100 yellow</p>
+        <p class="yellowdescription"><span id="tricolorboostprice">500</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buytaskmastery()">
+        <strong>task mastery</strong>
+        <p class="yellowdescription">get a small chance for 100x task reward</p>
+        <p class="yellowdescription"><span id="taskmasteryprice">20</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buygoldenmultiplier()">
+        <strong>golden multiplier</strong>
+        <p class="yellowdescription"> boost yellow gain by tasks completed</p>
+        <p class="yellowdescription"><span id="goldenmultiplierprice">35</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buycolorsyphon()">
+        <strong>color syphon</strong>
+        <p class="yellowdescription">gain 5 min worth of rgb for every task</p>
+        <p class="yellowdescription"><span id="colorsyphonprice">120</span> yellow</p>
+      </button>
+      <br/>
+      <button class="yellowupgrades" onclick="buylaserpointers()">
+        <strong>laser pointers</strong>
+        <p class="yellowdescription">boost pointers by 5x</p>
+        <p class="yellowdescription"><span id="laserpointersprice">30</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buyfinerfilters()">
+        <strong>finer filters</strong>
+        <p class="yellowdescription">boost filters by 5x</p>
+        <p class="yellowdescription"><span id="finerfiltersprice">30</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buymicrometerwave()">
+        <strong>micrometer wave</strong>
+        <p class="yellowdescription">boost nanometer wave by 2x</p>
+        <p class="yellowdescription"><span id="micrometerwaveprice">60</span> yellow</p>
+      </button>
+      <button class="yellowupgrades" onclick="buystrongersynergy()">
+        <strong>stronger synergy</strong>
+        <p class="yellowdescription">make weak synergy 10x stronger</p>
+        <p class="yellowdescription"><span id="strongersynergyprice">100</span> yellow</p>
+      </button>
+      <br/>
+    </div>
+  </div>
+  <script type="text/javascript" src="main.js"></script>
 </body>

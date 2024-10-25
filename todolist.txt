@@ -1,0 +1,10 @@
+to do:
+-bulk buy upgrades
+-task rewards
+-prestiege(white)
+
+working on:
+-task rewards (help needed)
+
+done:
+keyboard inputs

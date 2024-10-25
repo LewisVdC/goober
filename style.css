@@ -13,9 +13,21 @@ body {
 
 .timosucks{margin-left: 15px; text-align: left; margin-right: 15px;}
 
-
+#reward{
+  border-bottom: outset;
+  border-width: 5px;
+  border-color: rgb(155, 20, 20);
+  width: 100%;
+  margin-left: 0px;
+  border-left-width: 15px;
+  padding-left: 15px;
+  border-bottom-width: 5px;
+  padding-bottom: 20px;
+  margin-top: 5px;
+}
 #taskColor{
   color: rgb(255,0,0);
+  text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
 }
 div#tasks{
   color: rgb(155,20,20);
@@ -64,6 +76,13 @@ div#green {
 }
 div#blue {
   background-color: rgb(0, 0, 20);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+div#yellow {
+  background-color: rgb(20, 20, 0);
   height: 100%;
   width: 100%;
   margin: 0;
@@ -557,12 +576,19 @@ button#tabred{
   box-shadow: 0px 0px 50px 5px red;
 }
 button#tabblue{
+  display: none;
   background-color: blue;
   box-shadow: 0px 0px 50px 5px blue;
 }
 button#tabgreen{
+  display: none;
   background-color: green;
   box-shadow: 0px 0px 50px 5px green;
+}
+button#tabyellow{
+  display: none;
+  background-color: yellow;
+  box-shadow: 0px 0px 50px 0px yellow;
 }
 .redupgrades{
   background-color: rgb(155,20,20);
@@ -583,10 +609,53 @@ button#tabgreen{
   color: green;
 }
 #body{
-  text-shadow: 0px 0px 10px red;
+  text-shadow: 0px 0px 10px red, 0 0 10px rgb(125, 0, 0);
 }
 #submitTaskButton{
   text-align: center;
   background-color: rgb(155, 20, 20);
   width: 100%;
+}
+#yellowbuildings{
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.yellowupgrades{
+  height: 110px;
+  width: 100px;
+  margin-bottom: 4px;
+  background-color: rgb(153, 128, 0);
+  display: inline-grid;
+  text-align: center;
+}
+.yellowdescription{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#yellowcount{
+  color: rgb(153, 128, 0);
+}
+button:hover:not(.submit){
+  scale: 1.1;
+  z-index: 9999;
+}
+button {
+  transition: 0.2s ease-out !important;
+  transform: scale(1);
+}
+#tabred:hover{
+  box-shadow: 0px 0px 50px 8px red;
+}
+#tabyellow:hover{
+  box-shadow: 0px 0px 50px 4px yellow;
+}
+#tabgreen:hover{
+  box-shadow: 0px 0px 50px 12px green;
+}
+#tabblue:hover{
+  box-shadow: 0px 0px 50px 12px blue;
+}
+#reset{
+  position: absolute;
 }
