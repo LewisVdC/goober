@@ -70,8 +70,8 @@ var goldenmultiplierprice = 35;
 var goldenmultipliercount = 0;
 var colorsyphonprice = 120;
 var colorsyphoncount = 0;
-var laserpointersprice = 30;
-var laserpointerscount = 0;
+var focussedpointersprice = 30;
+var focussedpointerscount = 0;
 var finerfiltersprice = 30;
 var finerfilterscount = 0;
 var micrometerwaveprice = 60;
@@ -271,12 +271,12 @@ function load() {
     if (typeof savegame.colorsyphonprice !== "undefined")
       colorsyphonprice = savegame.colorsyphonprice;
     document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
-    if (typeof savegame.laserpointerscount !== "undefined")
-      laserpointerscount = savegame.laserpointerscount;
-    if (typeof savegame.laserpointersprice !== "undefined")
-      laserpointersprice = savegame.laserpointersprice;
-    document.getElementById("laserpointersprice").innerHTML =
-      laserpointersprice;
+    if (typeof savegame.focussedpointerscount !== "undefined")
+      focussedpointerscount = savegame.focussedpointerscount;
+    if (typeof savegame.focussedpointersprice !== "undefined")
+      focussedpointersprice = savegame.focussedpointersprice;
+    document.getElementById("focussedpointersprice").innerHTML =
+      focussedpointersprice;
     if (typeof savegame.finerfilterscount !== "undefined")
       finerfilterscount = savegame.finerfilterscount;
     if (typeof savegame.finerfiltersprice !== "undefined")
@@ -1018,8 +1018,8 @@ window.setInterval(function () {
       goldenmultiplierprice: goldenmultiplierprice,
       colorsyphoncount: colorsyphoncount,
       colorsyphonprice: colorsyphonprice,
-      laserpointerscount: laserpointerscount,
-      laserpointersprice: laserpointersprice,
+      focussedpointerscount: focussedpointerscount,
+      focussedpointersprice: focussedpointersprice,
       finerfilterscount: finerfilterscount,
       finerfiltersprice: finerfiltersprice,
       micrometerwavecount: micrometerwavecount,
@@ -1032,13 +1032,13 @@ window.setInterval(function () {
     //increase red
     calcred(
       //filter
-      (((((redfilter * (redfilter * redupgrade1 + 1) +
+      (((((redfilter * (redfilter * redupgrade1 + 1) * (1 +  finerfilterscount * 3) +
         //pointer
-        redpointer * 10 * (redpointer * redupgrade3 + 1) +
+        redpointer * 10 * (redpointer * redupgrade3 + 1) * (1 +  focussedpointerscount * 3) +
         //bigredfilter
-        bigredfilter * 100 +
+        bigredfilter * 100 * (1 +  finerfilterscount * 3) +
         //bigredpointer
-        bigredpointer * 1000) *
+        bigredpointer * 1000 * (1 +  focussedpointerscount * 3)) *
         //rednanometerwave
         (rednanometerwave * 0.5 + 1) *
         //weaksynergygreen
@@ -1060,13 +1060,13 @@ window.setInterval(function () {
     //increase green
     calcgreen(
       //filter
-      (((((greenfilter * (greenfilter * greenupgrade1 + 1) +
+      (((((greenfilter * (greenfilter * greenupgrade1 + 1) * (1 +  finerfilterscount * 3) +
         //pointer
-        greenpointer * 10 * (greenpointer * blueupgrade3 + 1) +
+        greenpointer * 10 * (greenpointer * blueupgrade3 + 1) * (1 +  focussedpointerscount * 3) +
         //bigfilter
-        biggreenfilter * 100 +
+        biggreenfilter * 100 * (1 +  finerfilterscount * 3) +
         //bigpointer
-        biggreenpointer * 1000) *
+        biggreenpointer * 1000 * (1 +  focussedpointerscount * 3)) *
         //nanometerwave
         (greennanometerwave * 0.5 + 1) *
         //weaksynergyred
@@ -1090,13 +1090,13 @@ window.setInterval(function () {
     //increase blue
     calcblue(
       //filter
-      (((((bluefilter * (bluefilter * blueupgrade1 + 1) +
+      (((((bluefilter * (bluefilter * blueupgrade1 + 1) * (1 +  finerfilterscount * 3) +
         //pointer
-        bluepointer * 10 * (bluepointer * blueupgrade3 + 1) +
+        bluepointer * 10 * (bluepointer * blueupgrade3 + 1) * (1 +  focussedpointerscount * 3) +
         //bigfilter
-        bigbluefilter * 100 +
+        bigbluefilter * 100 * (1 +  finerfilterscount * 3) +
         //bigpointer
-        bigbluepointer * 1000) *
+        bigbluepointer * 1000 * (1 +  focussedpointerscount * 3)) *
         //nanometerwave
         (bluenanometerwave * 0.5 + 1) *
         //weaksynergyred
@@ -1648,14 +1648,14 @@ function buycolorsyphon() {
   }
 }
 
-function buylaserpointers() {
-  if (yellow >= laserpointersprice) {
-    yellow -= laserpointersprice;
-    laserpointerscount++;
-    laserpointersprice = Math.round(laserpointersprice * 1.53);
+function buyfocussedpointers() {
+  if (yellow >= focussedpointersprice) {
+    yellow -= focussedpointersprice;
+    focussedpointerscount++;
+    focussedpointersprice = Math.round(focussedpointersprice * 1.53);
     document.getElementById("yellowcount").innerHTML = "yellow: " + yellow;
-    document.getElementById("laserpointersprice").innerHTML =
-      laserpointersprice;
+    document.getElementById("focussedpointersprice").innerHTML =
+      focussedpointersprice;
   }
 }
 
@@ -1693,13 +1693,13 @@ function buystrongersynergy() {
 
 window.setInterval(function (){
   yellow += redoverflowcount * (//filter
-    ((((redfilter * (redfilter * redupgrade1 + 1) +
+    ((((redfilter * (redfilter * redupgrade1 + 1) * (1 +  finerfilterscount * 3) +
       //pointer
-      redpointer * 10 * (redpointer * redupgrade3 + 1) +
+      redpointer * 10 * (redpointer * redupgrade3 + 1) * (1 +  focussedpointerscount * 3) +
       //bigredfilter
-      bigredfilter * 100 +
+      bigredfilter * 100 * (1 +  finerfilterscount * 3) +
       //bigredpointer
-      bigredpointer * 1000) *
+      bigredpointer * 1000 * (1 +  focussedpointerscount * 3)) *
       //rednanometerwave
       (rednanometerwave * 0.5 + 1) *
       //weaksynergygreen
@@ -1718,13 +1718,13 @@ window.setInterval(function (){
       (1 + tricolorboostcount * 0.5 * (yellow/1000)) / 1000000000000;
 
   yellow += greenoverflowcount * (//filter
-    ((((greenfilter * (greenfilter * greenupgrade1 + 1) +
+    ((((greenfilter * (greenfilter * greenupgrade1 + 1) * (1 +  finerfilterscount * 3) +
       //pointer
-      greenpointer * 10 * (greenpointer * blueupgrade3 + 1) +
+      greenpointer * 10 * (greenpointer * blueupgrade3 + 1) * (1 +  focussedpointerscount * 3) +
       //bigfilter
-      biggreenfilter * 100 +
+      biggreenfilter * 100 * (1 +  finerfilterscount * 3) +
       //bigpointer
-      biggreenpointer * 1000) *
+      biggreenpointer * 1000) * (1 +  focussedpointerscount * 3) *
       //nanometerwave
       (greennanometerwave * 0.5 + 1) *
       //weaksynergyred
@@ -1743,13 +1743,13 @@ window.setInterval(function (){
       (1 + tricolorboostcount * 0.5 * (yellow/1000)) / 1000000000000;
 
   yellow += blueoverflowcount * (//filter
-    ((((bluefilter * (bluefilter * blueupgrade1 + 1) +
+    ((((bluefilter * (bluefilter * blueupgrade1 + 1) * (1 +  finerfilterscount * 3) +
       //pointer
-      bluepointer * 10 * (bluepointer * blueupgrade3 + 1) +
+      bluepointer * 10 * (bluepointer * blueupgrade3 + 1) * (1 +  focussedpointerscount * 3) +
       //bigfilter
-      bigbluefilter * 100 +
+      bigbluefilter * 100 * (1 +  finerfilterscount * 3) +
       //bigpointer
-      bigbluepointer * 1000) *
+      bigbluepointer * 1000 * (1 +  focussedpointerscount * 3)) *
       //nanometerwave
       (bluenanometerwave * 0.5 + 1) *
       //weaksynergyred
