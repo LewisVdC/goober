@@ -1052,7 +1052,9 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)
+        (1 + (yellow / 10) * colorharmonycount) * 
+        //tri-color boost
+        (1 + tricolorboostcount * 0.5 * (yellow/1000))
     );
 
     //increase green
@@ -1078,7 +1080,9 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)
+        (1 + (yellow / 10) * colorharmonycount) * 
+        //tri-color boost
+        (1 + tricolorboostcount * 0.5 * (yellow/1000))
     );
     //weaksynergyblue
     Math.log(blue) * blueupgrade2 + 1;
@@ -1106,7 +1110,9 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)
+        (1 + (yellow / 10) * colorharmonycount) * 
+        //tri-color boost
+        (1 + tricolorboostcount * 0.5 * (yellow/1000))
     );
   }
 }, 10);
@@ -1621,7 +1627,9 @@ window.setInterval(function (){
       //yellow larger prisms
       Math.pow(2, largerprismscount) *
       //yellow color harmony
-      (1 + (yellow / 10) * colorharmonycount)) / 1000000000000;
+      (1 + (yellow / 10) * colorharmonycount)) * 
+      //tri-color boost
+      (1 + tricolorboostcount * 0.5 * (yellow/1000)) / 1000000000000;
 
   yellow += greenoverflowcount * (//filter
     ((((greenfilter * (greenfilter * greenupgrade1 + 1) +
@@ -1644,7 +1652,9 @@ window.setInterval(function (){
       //yellow larger prisms
       Math.pow(2, largerprismscount) *
       //yellow color harmony
-      (1 + (yellow / 10) * colorharmonycount)) / 1000000000000;
+      (1 + (yellow / 10) * colorharmonycount)) * 
+      //tri-color boost
+      (1 + tricolorboostcount * 0.5 * (yellow/1000)) / 1000000000000;
 
   yellow += blueoverflowcount * (//filter
     ((((bluefilter * (bluefilter * blueupgrade1 + 1) +
@@ -1667,6 +1677,8 @@ window.setInterval(function (){
       //yellow larger prisms
       Math.pow(2, largerprismscount) *
       //yellow color harmony
-      (1 + (yellow / 10) * colorharmonycount)) / 1000000000000;
+      (1 + (yellow / 10) * colorharmonycount)) * 
+      //tri-color boost
+      (1 + tricolorboostcount * 0.5 * (yellow/1000)) / 1000000000000;
   document.getElementById("yellowcount").innerHTML = "yellow: "+Math.round(yellow);
 }, 20)
