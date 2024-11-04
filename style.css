@@ -60,7 +60,7 @@ span#bluecount {
   color: blue;
 }
 span#cyancount {
-  color: cyan;
+  color: rgb(0, 180, 190);
 }
 div#red {
   display: block;
@@ -97,6 +97,7 @@ div#cyan {
   width: 100%;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 div#redbuild1 {
   color: white;
@@ -646,6 +647,7 @@ button#tabcyan{
   background-color: rgb(153, 128, 0);
   display: inline-grid;
   text-align: center;
+  border-radius: 10px;
 }
 .yellowdescription{
   margin-top: 0;
@@ -679,4 +681,15 @@ button {
 }
 #reset{
   position: absolute;
+}
+.cyanbuildings{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.cyanupgrades{
+  background-color: rgb(0, 180, 190);
+  text-align: center;
 }
