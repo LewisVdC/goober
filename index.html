@@ -43,10 +43,10 @@
     <button class="tab" id="tabred" onclick="showtab('red')">Red</button>
     <button class="tab" id="tabgreen" onclick="showtab('green')">Green</button>
     <button class="tab" id="tabblue" onclick="showtab('blue')">Blue</button>
-    <br />
     <button class="tab" id="tabyellow" onclick="showtab('yellow')">
       Yellow
     </button>
+    <button class="tab" id="tabcyan" onclick="showtab('cyan')">Cyan</button>
   </div>
 
   <div id="red" class="tab">
@@ -427,7 +427,7 @@
         <strong>yellow synergy</strong>
         <p class="yellowdescription">boost yellow output by 25%</p>
         <p class="yellowdescription">
-          <span id="yellowsynergyprice">6</span> yellow
+          <span id="yellowsynergyprice">12</span> yellow
         </p>
       </button>
       <button class="yellowupgrades" onclick="buyredoverflow()">
@@ -454,14 +454,14 @@
       <br />
       <button class="yellowupgrades" onclick="buytricolorboost()">
         <strong>tri-color boost</strong>
-        <p class="yellowdescription">+50% rgb gain per 100 yellow</p>
+        <p class="yellowdescription">+50% rgb gain per 1000 yellow</p>
         <p class="yellowdescription">
           <span id="tricolorboostprice">500</span> yellow
         </p>
       </button>
       <button class="yellowupgrades" onclick="buytaskmastery()">
         <strong>task mastery</strong>
-        <p class="yellowdescription">get a small chance for 100x task reward</p>
+        <p class="yellowdescription">get a small chance for 10x task reward</p>
         <p class="yellowdescription">
           <span id="taskmasteryprice">20</span> yellow
         </p>
@@ -475,22 +475,22 @@
       </button>
       <button class="yellowupgrades" onclick="buycolorsyphon()">
         <strong>color syphon</strong>
-        <p class="yellowdescription">gain 5 min worth of rgb for every task</p>
+        <p class="yellowdescription">reroll the task color</p>
         <p class="yellowdescription">
-          <span id="colorsyphonprice">120</span> yellow
+          <span id="colorsyphonprice">12</span> yellow
         </p>
       </button>
       <br />
-      <button class="yellowupgrades" onclick="buylaserpointers()">
-        <strong>laser pointers</strong>
-        <p class="yellowdescription">boost pointers by 5x</p>
+      <button class="yellowupgrades" onclick="buyfocussedpointers()">
+        <strong>fucussed pointers</strong>
+        <p class="yellowdescription">boost pointers by 3x</p>
         <p class="yellowdescription">
-          <span id="laserpointersprice">30</span> yellow
+          <span id="focussedpointersprice">30</span> yellow
         </p>
       </button>
       <button class="yellowupgrades" onclick="buyfinerfilters()">
         <strong>finer filters</strong>
-        <p class="yellowdescription">boost filters by 5x</p>
+        <p class="yellowdescription">boost filters by 3x</p>
         <p class="yellowdescription">
           <span id="finerfiltersprice">30</span> yellow
         </p>
@@ -511,6 +511,11 @@
       </button>
       <br />
     </div>
+  </div>
+
+  <div id="cyan" class="tab">
+    <div id="top"><span id="cyancount">cyan: 0</span></div>
+    <div id="cyanbuildings"></div>
   </div>
   <script type="text/javascript" src="main.js"></script>
 </body>
