@@ -611,12 +611,15 @@ button#tabcyan{
 }
 .redupgrades{
   background-color: rgb(155,20,20);
+  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155,20,20));
 }
 .greenupgrades{
   background-color: green;
+  background: linear-gradient(45deg, #003e00, #32db32, #025202);
 }
 .blueupgrades{
   background-color: blue;
+  background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
 }
 .redtext{
   color: rgb(155,20,20);
@@ -648,6 +651,7 @@ button#tabcyan{
   display: inline-grid;
   text-align: center;
   border-radius: 10px;
+  background: linear-gradient(45deg, rgb(101 84 0), yellow, rgb(153, 128, 0));
 }
 .yellowdescription{
   margin-top: 0;
@@ -692,4 +696,5 @@ button {
 .cyanupgrades{
   background-color: rgb(0, 180, 190);
   text-align: center;
+  width: 200px;
 }
