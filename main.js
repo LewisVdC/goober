@@ -575,7 +575,7 @@ function showtab(x) {
     document.getElementById("reward").style.borderColor = "rgb(0, 180, 190)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)";
-    document.getElementById("submitTaskButton").style.backgroundColor =
+    document.getElementById("submitTaskButton").style.background =
       "rgb(0, 180, 190)";
     document.getElementById("body").style.backgroundColor = "rgb(0, 20, 20)";
   }

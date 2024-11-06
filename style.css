@@ -698,3 +698,26 @@ button {
   text-align: center;
   width: 200px;
 }
+#redautomation{
+  width: calc(100%/3);
+  height: 100%;
+}
+button#redautomation{
+  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155,20,20));
+}
+#greenautomation{
+  margin-left: calc(100%/3);
+  width: calc(100%/3);
+  height: 100%;
+}
+button#greenautomation{
+  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+}
+#blueautomation{
+  margin-left: calc(100%/3*2);
+  width: calc(100%/3);
+  height: 100%;
+}
+button#blueautomation{
+  background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
+}
