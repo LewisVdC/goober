@@ -581,6 +581,25 @@ function showtab(x) {
       "rgb(0, 180, 190)";
     document.getElementById("body").style.backgroundColor = "rgb(0, 20, 20)";
   }
+  if (x === "magenta") {
+    tab = "magenta";
+    document.getElementById("cyan").style.display = "none";
+    document.getElementById("magenta").style.display = "block";
+    document.getElementById("red").style.display = "none";
+    document.getElementById("tabs").style.backgroundColor = "rgb(0,20,20)";
+    document.getElementById("top").style.color = "rgb(0, 180, 190)";
+    document.getElementById("green").style.display = "none";
+    document.getElementById("blue").style.display = "none";
+    document.getElementById("yellow").style.display = "none";
+    document.getElementById("tasks").style.color = "rgb(0, 180, 190)";
+    document.getElementById("tasks").style.borderColor = "rgb(0, 180, 190)";
+    document.getElementById("reward").style.borderColor = "rgb(0, 180, 190)";
+    document.getElementById("body").style.textShadow =
+      "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)";
+    document.getElementById("submitTaskButton").style.background =
+      "rgb(0, 180, 190)";
+    document.getElementById("body").style.backgroundColor = "rgb(0, 20, 20)";
+  }
 }
 
 function calcred(number) {
