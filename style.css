@@ -739,3 +739,35 @@ button#greenautomation {
 button#blueautomation {
   background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
 }
+
+.magentabuild {
+  color: white;
+  margin: auto;
+  width: 50%;
+  text-align: left;
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.magentabuilding {
+  display: inline-block;
+  margin-left: 0;
+  width: 350px;
+}
+.magentatext {
+  width: 75%;
+  color: magenta;
+}
+.magentaupgrades {
+  width: 150px;
+  height: 24px;
+}
+div#magenta {
+  display: block;
+  background-color: rgba(255, 0, 255, 0.1);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

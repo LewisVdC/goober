@@ -590,106 +590,74 @@
     <div id="top" style="margin-bottom: 10px">
       <span id="magentacount">magenta: 0</span></div>
     <div id="magentabuildings">
-      <div id="magentabuild1">
+      <div id="magentabuild1" class="magentabuild">
         <div id="magentabuilding1text" class="magentatext">
           <span>pour some magenta into a couldron: <span id="couldroncount"></span></span>
         </div>
-        <div id="magentabuilding1">
+        <div id="magentabuilding1" class="magentabuilding">
           <button id="couldron" class="magentaupgrades" onClick="buycouldron()">
             cost:
             <span id="couldroncost">10</span>
           </button>
         </div>
       </div>
-      <div id="magentabuild2">
-        <div id="redbuilding2text" class="redtext">
-          <span>red laser pointer: <span id="redpointercount"></span></span>
+      <div id="magentabuild2" class="magentabuild">
+        <div id="magentabuilding2text" class="magentatext">
+          <span>study your mixture: <span id="studycount"></span></span>
         </div>
-        <div id="redbuilding2">
-          <button id="redpointer" class="redupgrades" onClick="buyredpointer()">
+        <div id="magentabuilding2" class="magentabuilding">
+          <button id="studycouldron" class="magentaupgrades" onClick="buystudy()">
             cost:
-            <span id="redpointercost">100</span>
+            <span id="studycost">100</span>
           </button>
         </div>
       </div>
-      <div id="redbuild3">
-        <div id="redbuilding3text" class="redtext">
-          <span>big red filter: <span id="bigredfiltercount"></span></span>
+      <div id="magentabuild3" class="magentabuild">
+        <div id="magentabuilding3text" class="magentatext">
+          <span>feed it to a test animal: <span id="feedcount"></span></span>
         </div>
-        <div id="redbuilding3">
+        <div id="magentabuilding3" class="magentabuilding">
           <button
-            id="bigredfilter"
-            class="redupgrades"
-            onClick="buybigredfilter()"
+            id="feed"
+            class="magentaupgrades"
+            onClick="buyfeed()"
           >
             cost:
-            <span id="bigredfiltercost">1000</span>
+            <span id="feedcost">1000</span>
           </button>
         </div>
       </div>
-      <div id="redbuild4">
-        <div id="redbuilding4text" class="redtext">
+      <div id="magentabuild4" class="magentabuild">
+        <div id="magentabuilding4text" class="magentatext">
           <span
-            >big red laser pointer: <span id="bigredpointercount"></span
+            >feed it to a person: <span id="feedpersoncount"></span
           ></span>
         </div>
-        <div id="redbuilding4">
+        <div id="magentabuilding4" class="magentabuilding">
           <button
-            id="bigredpointer"
-            class="redupgrades"
-            onClick="buybigredpointer()"
+            id="feedperson"
+            class="magentaupgrades"
+            onClick="buyfeedperson()"
           >
             cost:
-            <span id="bigredpointercost">10000</span>
+            <span id="feedpersoncost">10000</span>
           </button>
         </div>
       </div>
-      <div id="redbuild5">
-        <div id="redbuilding5text" class="redtext">
+      <div id="magentabuild5" class="magentabuild">
+        <div id="magentabuilding5text" class="magentatext">
           <span
-            >665 nanometer wave: <span id="rednanometerwavecount"></span
+            >drink it yourself: <span id="drinkcount"></span
           ></span>
         </div>
-        <div id="redbuilding5">
+        <div id="magentabuilding5" class="magentabuilding">
           <button
-            id="rednanometerwave"
-            class="redupgrades"
-            onClick="buyrednanometerwave()"
+            id="drink"
+            class="magentaupgrades"
+            onClick="buydrink()"
           >
             cost:
-            <span id="rednanometerwavecost">100000</span>
-          </button>
-        </div>
-      </div>
-      <div id="redupgrades">
-        <span style="color: rgb(155, 20, 20)">upgrades</span>
-      </div>
-      <div id="redupgradesbox">
-        <div id="redupgradesrow1">
-          <button
-            id="redupgrade1"
-            class="redupgrades"
-            onClick="buyredupgrade1()"
-          >
-            redfilter upgrade<br /><span id="redupgrade1cost">cost:150000</span>
-          </button>
-          <button
-            id="redupgrade3"
-            class="redupgrades"
-            onclick="buyredupgrade3()"
-          >
-            redpointer upgrade <br /><span id="redupgrade3cost"
-              >cost:500000</span
-            >
-          </button>
-        </div>
-        <div id="redupgradesrow2">
-          <button
-            id="redupgrade2"
-            class="redupgrades"
-            onClick="buyredupgrade2()"
-          >
-            weak synergy<br /><span id="redupgrade2cost">cost:250000</span>
+            <span id="drinkcost">100000</span>
           </button>
         </div>
       </div>
