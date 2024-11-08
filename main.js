@@ -1409,6 +1409,8 @@ document.addEventListener("keydown", function (event) {
     showtab("yellow");
   } else if(event.key === "c" && cyan > 0) {
     showtab("cyan");
+  } else if(event.key === "m" && true === true) {
+    showtab("magenta");
   }
   if (event.code === "Digit1") {
     if (tab === "red") {
