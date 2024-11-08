@@ -64,7 +64,7 @@ span#bluecount {
   color: blue;
 }
 span#cyancount {
-  color: cyan;
+  color: rgb(0, 180, 190);
 }
 div#red {
   display: block;
@@ -101,6 +101,7 @@ div#cyan {
   width: 100%;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 div#redbuild1 {
   color: white;
@@ -614,12 +615,15 @@ button#tabcyan {
 }
 .redupgrades {
   background-color: rgb(155, 20, 20);
+  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20));
 }
 .greenupgrades {
   background-color: green;
+  background: linear-gradient(45deg, #003e00, #32db32, #025202);
 }
 .blueupgrades {
   background-color: blue;
+  background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
 }
 .redtext {
   color: rgb(155, 20, 20);
@@ -650,6 +654,8 @@ button#tabcyan {
   background-color: rgb(153, 128, 0);
   display: inline-grid;
   text-align: center;
+  border-radius: 10px;
+  background: linear-gradient(45deg, rgb(101 84 0), yellow, rgb(153, 128, 0));
 }
 .yellowdescription {
   margin-top: 0;
@@ -684,6 +690,38 @@ button {
 #reset {
   position: absolute;
 }
-.tab {
-  width: 5%;
+.cyanbuildings {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.cyanupgrades {
+  background-color: rgb(0, 180, 190);
+  text-align: center;
+  width: 200px;
+}
+#redautomation {
+  width: calc(100% / 3);
+  height: 100%;
+}
+button#redautomation {
+  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20));
+}
+#greenautomation {
+  margin-left: calc(100% / 3);
+  width: calc(100% / 3);
+  height: 100%;
+}
+button#greenautomation {
+  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+}
+#blueautomation {
+  margin-left: calc(100% / 3 * 2);
+  width: calc(100% / 3);
+  height: 100%;
+}
+button#blueautomation {
+  background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
 }
