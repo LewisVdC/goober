@@ -614,7 +614,7 @@ button#tabyellow {
   box-shadow: 0px 0px 50px 0px yellow;
 }
 button#tabcyan {
-  display: block;
+  display: none;
   background-color: cyan;
   box-shadow: 0 0 50px 5px cyan;
 }
