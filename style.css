@@ -764,6 +764,7 @@ button#blueautomation {
 .magentaupgrades {
   width: 150px;
   height: 24px;
+  background: linear-gradient(45deg, #5e005e, #ff00ff, #9b009b);
 }
 div#magenta {
   display: block;
