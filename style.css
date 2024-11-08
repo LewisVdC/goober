@@ -774,3 +774,6 @@ div#magenta {
   margin: 0;
   padding: 0;
 }
+.cyansubmit{
+  background: linear-gradient(45deg, #004f4f, #00ffff, #009a9a);
+}
