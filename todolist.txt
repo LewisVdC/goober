@@ -2,6 +2,7 @@ to do:
 -bulk buy upgrades
 -task rewards
 -prestiege(white)
+-line 590 in the javascript needs updating to the colors they arent right
 
 working on:
 -task rewards (help needed)
