@@ -617,13 +617,13 @@ function showtab(x) {
     document.getElementById("magenta").style.display = "block";
     document.getElementById("red").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(44,0,44)";
-    document.getElementById("top").style.color = "rgb(0, 180, 190)";
+    document.getElementById("top").style.color = "magenta";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
     document.getElementById("yellow").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(0, 180, 190)";
-    document.getElementById("tasks").style.borderColor = "rgb(0, 180, 190)";
-    document.getElementById("reward").style.borderColor = "rgb(0, 180, 190)";
+    document.getElementById("tasks").style.color = "magenta";
+    document.getElementById("tasks").style.borderColor = "magenta";
+    document.getElementById("reward").style.borderColor = "magenta";
     document.getElementById("body").style.textShadow = 
     "rgb(255,0,73) 0px 0px 10px, rgb(255 126 126) 0px 0px 10px";
     document.getElementById("body").style.backgroundColor = "rgb(44, 0, 44)";
