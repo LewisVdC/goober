@@ -1142,7 +1142,7 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount) *
+        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
         //tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
@@ -1178,7 +1178,7 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount) *
+        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
         //tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
@@ -1216,7 +1216,7 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount) *
+        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
         //tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
@@ -1768,7 +1768,7 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)) *
+        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) *
       //tri-color boost
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
     1000000000000;
@@ -1804,7 +1804,7 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)) *
+        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) *
       //tri-color boost
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
     1000000000000;
@@ -1839,7 +1839,7 @@ window.setInterval(function () {
         //yellow larger prisms
         Math.pow(2, largerprismscount) *
         //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)) *
+        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) *
       //tri-color boost
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
     1000000000000;
