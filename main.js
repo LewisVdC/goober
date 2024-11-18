@@ -1113,112 +1113,109 @@ window.setInterval(function () {
 
     //increase red
     calcred(
-      //filter
+      // filter
       (((((redfilter *
-        (redfilter * redupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
-        redpointer *
-          10 *
-          (redpointer * redupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigredfilter
-        bigredfilter * 100 * (1 + finerfilterscount * 3) +
-        //bigredpointer
-        bigredpointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //rednanometerwave
-        (rednanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergygreen
-        (Math.log(green + 1) * greenupgrade2 + 1)) /
-        (10 * greenupgrade2 + 1)) *
-        //weaksynergyblue
-        (Math.log(blue + 1) * blueupgrade2 + 1)) /
-        (10 * blueupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
-        taskBooster *
-        //yellow larger prisms
-        Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
-        //tri-color boost
-        (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (redfilter * redupgrade1 + 1) *
+          (1 + Math.sqrt(finerfilterscount) * 2) +
+          // pointer
+          redpointer *
+            10 *
+            (redpointer * redupgrade3 + 1) *
+            (1 + Math.sqrt(focussedpointerscount) * 2) +
+          // bigredfilter
+          bigredfilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+          // bigredpointer
+          bigredpointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          // rednanometerwave
+          (rednanometerwave * 0.5 + 1) *
+          (1 + Math.log1p(micrometerwavecount) * 1.5) *
+          // weaksynergygreen
+          (Math.log1p(green) * greenupgrade2 + 1)) /
+          (10 * greenupgrade2 + 1)) *
+          // weaksynergyblue
+          (Math.log1p(blue) * blueupgrade2 + 1)) /
+          (10 * blueupgrade2 + 1)) *
+          // stronger synergy
+          (1 + Math.sqrt(strongersynergycount) * 5) *
+          // task booster
+          taskBooster *
+          // yellow larger prisms
+          Math.pow(2, largerprismscount) *
+          // yellow color harmony
+          (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+          // tri-color boost
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
-
     //increase green
     calcgreen(
-      //filter
+      // filter
       (((((greenfilter *
-        (greenfilter * greenupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
-        greenpointer *
-          10 *
-          (greenpointer * blueupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigfilter
-        biggreenfilter * 100 * (1 + finerfilterscount * 3) +
-        //bigpointer
-        biggreenpointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //nanometerwave
-        (greennanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergyred
-        (Math.log(red + 1) * redupgrade2 + 1)) /
-        (10 * redupgrade2 + 1)) *
-        //weaksynergyblue
-        (Math.log(blue + 1) * blueupgrade2 + 1)) /
-        (10 * blueupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
-        taskBooster *
-        //yellow larger prisms
-        Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
-        //tri-color boost
-        (1 + tricolorboostcount * 0.5 * (yellow / 1000))
-    );
-    //weaksynergyblue
-    Math.log(blue) * blueupgrade2 + 1;
+          (greenfilter * greenupgrade1 + 1) *
+          (1 + Math.sqrt(finerfilterscount) * 2) +
+          // pointer
+          greenpointer *
+            10 *
+            (greenpointer * greenupgrade3 + 1) *
+            (1 + Math.sqrt(focussedpointerscount) * 2) +
+          // biggreenfilter
+          biggreenfilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+          // biggreenpointer
+          biggreenpointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          // greennanometerwave
+          (greennanometerwave * 0.5 + 1) *
+          (1 + Math.log1p(micrometerwavecount) * 1.5) *
+          // weaksynergyred
+          (Math.log1p(red) * redupgrade2 + 1)) /
+          (10 * redupgrade2 + 1)) *
+          // weaksynergyblue
+          (Math.log1p(blue) * blueupgrade2 + 1)) /
+          (10 * blueupgrade2 + 1)) *
+          // stronger synergy
+          (1 + Math.sqrt(strongersynergycount) * 5) *
+          // task booster
+          taskBooster *
+          // yellow larger prisms
+          Math.pow(2, largerprismscount) *
+          // yellow color harmony
+          (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+          // tri-color boost
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+     );
 
     //increase blue
     calcblue(
-      //filter
+      // filter
       (((((bluefilter *
-        (bluefilter * blueupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
-        bluepointer *
-          10 *
-          (bluepointer * blueupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigfilter
-        bigbluefilter * 100 * (1 + finerfilterscount * 3) +
-        //bigpointer
-        bigbluepointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //nanometerwave
-        (bluenanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergyred
-        (Math.log(red + 1) * redupgrade2 + 1)) /
-        (10 * redupgrade2 + 1)) *
-        //weaksynergygreen
-        (Math.log(red + 1) * redupgrade2 + 1)) /
-        (10 * greenupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
-        taskBooster *
-        //yellow larger prisms
-        Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
-        //tri-color boost
-        (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (bluefilter * blueupgrade1 + 1) *
+          (1 + Math.sqrt(finerfilterscount) * 2) +
+          // pointer
+          bluepointer *
+            10 *
+            (bluepointer * blueupgrade3 + 1) *
+            (1 + Math.sqrt(focussedpointerscount) * 2) +
+          // bigbluefilter
+          bigbluefilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+          // bigbluepointer
+          bigbluepointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          // bluenanometerwave
+          (bluenanometerwave * 0.5 + 1) *
+          (1 + Math.log1p(micrometerwavecount) * 1.5) *
+          // weaksynergygreen
+          (Math.log1p(green) * greenupgrade2 + 1)) /
+          (10 * greenupgrade2 + 1)) *
+          // weaksynergyred
+          (Math.log1p(red) * redupgrade2 + 1)) /
+          (10 * redupgrade2 + 1)) *
+          // stronger synergy
+          (1 + Math.sqrt(strongersynergycount) * 5) *
+          // task booster
+          taskBooster *
+          // yellow larger prisms
+          Math.pow(2, largerprismscount) *
+          // yellow color harmony
+          (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+          // tri-color boost
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
   }
 }, 10);
@@ -1282,8 +1279,8 @@ function submitTask() {
       document.getElementById("taskColor").style.color = "blue";
       document.getElementById("taskColor").style.textShadow = "0 0 10px blue";
       document.getElementById("taskReward").innerHTML = "2x color gain";
-      taskRewardCount = "2x color gain";
-      taskRewardColor = "";
+      taskRewardCount = 2;
+      taskRewardColor = "x color gain";
       document.getElementById("tabblue").style.display = "block";
       blue += 10;
     } else if (tasksCompleted === 3) {
@@ -1738,111 +1735,80 @@ function buystrongersynergy() {
 }
 
 window.setInterval(function () {
-  yellow +=
-    (redoverflowcount * //filter
+  yellow += 
+    (redoverflowcount * 
       ((((((redfilter *
         (redfilter * redupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
+        (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
         redpointer *
           10 *
           (redpointer * redupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigredfilter
-        bigredfilter * 100 * (1 + finerfilterscount * 3) +
-        //bigredpointer
-        bigredpointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //rednanometerwave
+          (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
+        bigredfilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+        bigredpointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
         (rednanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergygreen
-        (Math.log(green + 1) * greenupgrade2 + 1)) /
+        (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+        (Math.log1p(green) * greenupgrade2 + 1)) / // Controlled synergy with green
         (10 * greenupgrade2 + 1)) *
-        //weaksynergyblue
-        (Math.log(blue + 1) * blueupgrade2 + 1)) /
+        (Math.log1p(blue) * blueupgrade2 + 1)) / // Controlled synergy with blue
         (10 * blueupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
+        (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
-        //yellow larger prisms
         Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) *
-      //tri-color boost
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
-    1000000000000;
+        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+    1e12; // Adjusted scaling factor for 1e10 red
 
-  yellow +=
-    (greenoverflowcount * //filter
+
+    yellow += 
+    (greenoverflowcount * 
       ((((((greenfilter *
         (greenfilter * greenupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
+        (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
         greenpointer *
           10 *
-          (greenpointer * blueupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigfilter
-        biggreenfilter * 100 * (1 + finerfilterscount * 3) +
-        //bigpointer
-        biggreenpointer * 1000) *
-        (1 + focussedpointerscount * 3) *
-        //nanometerwave
+          (greenpointer * greenupgrade3 + 1) *
+          (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
+        biggreenfilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+        biggreenpointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
         (greennanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergyred
-        (Math.log(red + 1) * redupgrade2 + 1)) /
+        (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+        (Math.log1p(red) * redupgrade2 + 1)) / // Controlled synergy with red
         (10 * redupgrade2 + 1)) *
-        //weaksynergyblue
-        (Math.log(blue + 1) * blueupgrade2 + 1)) /
+        (Math.log1p(blue) * blueupgrade2 + 1)) / // Controlled synergy with blue
         (10 * blueupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
+        (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
-        //yellow larger prisms
         Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) *
-      //tri-color boost
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
-    1000000000000;
+        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+    1e12; // Adjusted scaling factor for 1e10 green
 
-  yellow +=
-    (blueoverflowcount * //filter
-      ((((((bluefilter *
-        (bluefilter * blueupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
-        bluepointer *
-          10 *
-          (bluepointer * blueupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigfilter
-        bigbluefilter * 100 * (1 + finerfilterscount * 3) +
-        //bigpointer
-        bigbluepointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //nanometerwave
-        (bluenanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergyred
-        (Math.log(red + 1) * redupgrade2 + 1)) /
-        (10 * redupgrade2 + 1)) *
-        //weaksynergygreen
-        (Math.log(red + 1) * redupgrade2 + 1)) /
-        (10 * greenupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
-        taskBooster *
-        //yellow larger prisms
-        Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) *
-      //tri-color boost
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
-    1000000000000;
+
+  yellow += 
+  (blueoverflowcount * 
+    ((((((bluefilter *
+      (bluefilter * blueupgrade1 + 1) *
+      (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
+      bluepointer *
+        10 *
+        (bluepointer * blueupgrade3 + 1) *
+        (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
+      bigbluefilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+      bigbluepointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+      (bluenanometerwave * 0.5 + 1) *
+      (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+      (Math.log1p(red) * redupgrade2 + 1)) / // Controlled synergy with red
+      (10 * redupgrade2 + 1)) *
+      (Math.log1p(green) * greenupgrade2 + 1)) / // Controlled synergy with green
+      (10 * greenupgrade2 + 1)) *
+      (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
+      taskBooster *
+      Math.pow(2, largerprismscount) *
+      (1 + (yellow / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+    (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+  1e12; // Adjusted scaling factor for 1e10 red
+
   document.getElementById("yellowcount").innerHTML =
     "yellow: " + Math.round(yellow);
 }, 20);
