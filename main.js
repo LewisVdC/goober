@@ -124,6 +124,9 @@ var bluepointerautomationtimer = 0;
 var bigbluefilterautomationtimer = 0; 
 var bigbluepointerautomationtimer = 0; 
 var bluenanometerwaveautomationtimer = 0; 
+var redtogglestate = true;
+var greentogglestate = true;
+var bluetogglestate = true;
 
 var loaded = 0;
 var tab = "red";
@@ -418,7 +421,29 @@ function load() {
         bluenanometerwaveautomationcount = savegame.bluenanometerwaveautomationcount;
       if (typeof savegame.bluenanometerwaveautomationprice !== "undefined")
         bluenanometerwaveautomationprice = savegame.bluenanometerwaveautomationprice;
-      document.getElementById("bluenanometerwaveautomationprice").innerHTML = Math.round(bluenanometerwaveautomationprice) + " cyan";      
+      document.getElementById("bluenanometerwaveautomationprice").innerHTML = Math.round(bluenanometerwaveautomationprice) + " cyan";    
+      if(typeof savegame.redtogglestate !== "undefined")
+        redtogglestate = savegame.redtogglestate;
+        if(redtogglestate){
+          document.getElementById("redtoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+        }else{
+          document.getElementById("redtoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
+        }
+      if(typeof savegame.greentogglestate !== "undefined")
+        greentogglestate = savegame.greentogglestate;
+        if(greentogglestate){
+          document.getElementById("greentoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+        }else{
+          document.getElementById("greentoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
+        }
+      if(typeof savegame.bluetogglestate !== "undefined")
+        bluetogglestate = savegame.bluetogglestate;
+        if(bluetogglestate){
+          document.getElementById("bluetoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+        }else{
+          document.getElementById("bluetoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
+        }
+          
     //tasks
     if (typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -1258,6 +1283,9 @@ window.setInterval(function () {
       bigbluepointerautomationprice: bigbluepointerautomationprice, 
       bluenanometerwaveautomationcount: bluenanometerwaveautomationcount, 
       bluenanometerwaveautomationprice: bluenanometerwaveautomationprice,
+      redtogglestate: redtogglestate,
+      greentogglestate: greentogglestate,
+      bluetogglestate: bluetogglestate,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -1277,64 +1305,64 @@ window.setInterval(function () {
     bigbluefilterautomationtimer += bigbluefilterautomationcount;
     bigbluepointerautomationtimer += bigbluepointerautomationcount;
     bluenanometerwaveautomationtimer += bluenanometerwaveautomationcount;
-    if(redfilterautomationtimer >= 200){
-      redfilterautomationtimer -= 200;
+    if(redfilterautomationtimer >= 200 && redtogglestate){
+      redfilterautomationtimer = 0;
       buyredfilter();
     }
-    if(greenfilterautomationtimer >= 200){
-      greenfilterautomationtimer -= 200;
+    if(greenfilterautomationtimer >= 200 && greentogglestate){
+      greenfilterautomationtimer = 0;
       buygreenfilter();
     }
-    if(bluefilterautomationtimer >= 200){
-      bluefilterautomationtimer -= 200;
+    if(bluefilterautomationtimer >= 200 && bluetogglestate){
+      bluefilterautomationtimer = 0;
       buybluefilter();
     }
-    if(redpointerautomationtimer >= 200){
-      redpointerautomationtimer -= 200;
+    if(redpointerautomationtimer >= 200 && redtogglestate){
+      redpointerautomationtimer = 0;
       buyredpointer();
     }
-    if(greenpointerautomationtimer >= 200){
-      greenpointerautomationtimer -= 200;
+    if(greenpointerautomationtimer >= 200 && greentogglestate){
+      greenpointerautomationtimer = 0;
       buygreenpointer();
     }
-    if(bluepointerautomationtimer >= 200){
-      bluepointerautomationtimer -= 200;
+    if(bluepointerautomationtimer >= 200 && bluetogglestate){
+      bluepointerautomationtimer = 0;
       buybluepointer();
     }
-    if(bigredfilterautomationtimer >= 200){
-      bigredfilterautomationtimer -= 200;
+    if(bigredfilterautomationtimer >= 200 && redtogglestate){
+      bigredfilterautomationtimer = 0;
       buybigredfilter();
     }
-    if(biggreenfilterautomationtimer >= 200){
-      biggreenfilterautomationtimer -= 200;
+    if(biggreenfilterautomationtimer >= 200 && greentogglestate){
+      biggreenfilterautomationtimer = 0;
       buybiggreenfilter();
     }
-    if(bigbluefilterautomationtimer >= 200){
-      bigbluefilterautomationtimer -= 200;
+    if(bigbluefilterautomationtimer >= 200 && bluetogglestate){
+      bigbluefilterautomationtimer = 0;
       buybigbluefilter();
     }
-    if(bigredpointerautomationtimer >= 200){
-      bigredpointerautomationtimer -= 200;
+    if(bigredpointerautomationtimer >= 200 && redtogglestate){
+      bigredpointerautomationtimer = 0;
       buybigredpointer();
     }
-    if(biggreenpointerautomationtimer >= 200){
-      biggreenpointerautomationtimer -= 200;
+    if(biggreenpointerautomationtimer >= 200 && greentogglestate){
+      biggreenpointerautomationtimer = 0;
       buybiggreenpointer();
     }
-    if(bigbluepointerautomationtimer >= 200){
-      bigbluepointerautomationtimer -= 200;
+    if(bigbluepointerautomationtimer >= 200 && bluetogglestate){
+      bigbluepointerautomationtimer = 0;
       buybigbluepointer();
     }
-    if(rednanometerwaveautomationtimer >= 200){
-      rednanometerwaveautomationtimer -= 200;
+    if(rednanometerwaveautomationtimer >= 200 && redtogglestate){
+      rednanometerwaveautomationtimer = 0;
       buyrednanometerwave();
     }
-    if(greennanometerwaveautomationtimer >= 200){
-      greennanometerwaveautomationtimer -= 200;
+    if(greennanometerwaveautomationtimer >= 200 && greentogglestate){
+      greennanometerwaveautomationtimer = 0;
       buygreennanometerwave();
     }
-    if(bluenanometerwaveautomationtimer >= 200){
-      bluenanometerwaveautomationtimer -= 200;
+    if(bluenanometerwaveautomationtimer >= 200 && bluetogglestate){
+      bluenanometerwaveautomationtimer = 0;
       buybluenanometerwave();
     }
     //increase red
@@ -2173,5 +2201,31 @@ function buybluenanometerwaveautomation(){
     bluenanometerwaveautomationprice = 5 * Math.pow(1.3, bluenanometerwaveautomationcount);
     document.getElementById("bluenanometerwaveautomationprice").innerHTML =  Math.round(bluenanometerwaveautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
+  }
+}
+
+//toggle automation
+function togglered(){
+  redtogglestate = !redtogglestate;
+  if(redtogglestate){
+    document.getElementById("redtoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+  }else{
+    document.getElementById("redtoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
+  }
+}
+function togglegreen(){
+  greentogglestate = !greentogglestate;
+  if(greentogglestate){
+    document.getElementById("greentoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+  }else{
+    document.getElementById("greentoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
+  }
+}
+function toggleblue(){
+  bluetogglestate = !bluetogglestate;
+  if(bluetogglestate){
+    document.getElementById("bluetoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+  }else{
+    document.getElementById("bluetoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
   }
 }

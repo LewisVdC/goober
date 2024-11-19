@@ -778,3 +778,18 @@ div#magenta {
 .cyansubmit{
   background: linear-gradient(45deg, #004f4f, #00ffff, #009a9a);
 }
+.toggle{
+  margin-top: 20px;
+}
+#redtoggle{
+  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  height: 40px;
+}
+#greentoggle{
+  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  height: 40px;
+}
+#bluetoggle{
+  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  height: 40px;
+}
