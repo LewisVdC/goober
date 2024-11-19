@@ -716,7 +716,7 @@ function showtab(x) {
     tab = "yellow";
     document.getElementById("yellow").style.display = "block";
     document.getElementById("red").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(20,20,0)";
+    document.getElementById("tabs").style.backgroundColor = "rgb(44,44,0)";
     document.getElementById("top").style.color = "rgb(153, 128, 0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
@@ -726,7 +726,7 @@ function showtab(x) {
     document.getElementById("reward").style.borderColor = "rgb(153, 128, 0)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)";
-    document.getElementById("body").style.backgroundColor = "rgb(20, 20, 0)";
+    document.getElementById("body").style.backgroundColor = "rgb(44, 44, 0)";
     document.getElementById("submitTaskButton").classList.remove("blueupgrades");
     document.getElementById("submitTaskButton").classList.remove("greenupgrades");
     document.getElementById("submitTaskButton").classList.add("yellowupgrades");
@@ -738,7 +738,7 @@ function showtab(x) {
     tab = "cyan";
     document.getElementById("cyan").style.display = "block";
     document.getElementById("red").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(0,20,20)";
+    document.getElementById("tabs").style.backgroundColor = "rgb(0,44,44)";
     document.getElementById("top").style.color = "rgb(0, 180, 190)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
@@ -748,7 +748,7 @@ function showtab(x) {
     document.getElementById("reward").style.borderColor = "rgb(0, 180, 190)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)";
-    document.getElementById("body").style.backgroundColor = "rgb(0, 20, 20)";
+    document.getElementById("body").style.backgroundColor = "rgb(0, 44, 44)";
     document.getElementById("submitTaskButton").classList.remove("blueupgrades");
     document.getElementById("submitTaskButton").classList.remove("greenupgrades");
     document.getElementById("submitTaskButton").classList.remove("yellowupgrades");
