@@ -109,6 +109,21 @@ var bigbluepointerautomationcount = 0;
 var bigbluepointerautomationprice = 5;
 var bluenanometerwaveautomationcount = 0;
 var bluenanometerwaveautomationprice = 5;
+var redfilterautomationtimer = 0; 
+var redpointerautomationtimer = 0; 
+var bigredfilterautomationtimer = 0;  
+var bigredpointerautomationtimer = 0; 
+var rednanometerwaveautomationtimer = 0; 
+var greenfilterautomationtimer = 0;  
+var greenpointerautomationtimer = 0; 
+var biggreenfilterautomationtimer = 0; 
+var biggreenpointerautomationtimer = 0; 
+var greennanometerwaveautomationtimer = 0; 
+var bluefilterautomationtimer = 0;  
+var bluepointerautomationtimer = 0; 
+var bigbluefilterautomationtimer = 0; 
+var bigbluepointerautomationtimer = 0; 
+var bluenanometerwaveautomationtimer = 0; 
 
 var loaded = 0;
 var tab = "red";
@@ -1246,6 +1261,82 @@ window.setInterval(function () {
     };
     localStorage.setItem("save", JSON.stringify(save));
 
+    //auto buy
+    redfilterautomationtimer += redfilterautomationcount;
+    redpointerautomationtimer += redpointerautomationcount;
+    bigredfilterautomationtimer += bigredfilterautomationcount;
+    bigredpointerautomationtimer += bigredpointerautomationcount;
+    rednanometerwaveautomationtimer += rednanometerwaveautomationcount;
+    greenfilterautomationtimer += greenfilterautomationcount;
+    greenpointerautomationtimer += greenpointerautomationcount;
+    biggreenfilterautomationtimer += biggreenfilterautomationcount;
+    biggreenpointerautomationtimer += biggreenpointerautomationcount;
+    greennanometerwaveautomationtimer += greennanometerwaveautomationcount;
+    bluefilterautomationtimer += bluefilterautomationcount;
+    bluepointerautomationtimer += bluepointerautomationcount;
+    bigbluefilterautomationtimer += bigbluefilterautomationcount;
+    bigbluepointerautomationtimer += bigbluepointerautomationcount;
+    bluenanometerwaveautomationtimer += bluenanometerwaveautomationcount;
+    if(redfilterautomationtimer >= 200){
+      redfilterautomationtimer -= 200;
+      buyredfilter();
+    }
+    if(greenfilterautomationtimer >= 200){
+      greenfilterautomationtimer -= 200;
+      buygreenfilter();
+    }
+    if(bluefilterautomationtimer >= 200){
+      bluefilterautomationtimer -= 200;
+      buybluefilter();
+    }
+    if(redpointerautomationtimer >= 200){
+      redpointerautomationtimer -= 200;
+      buyredpointer();
+    }
+    if(greenpointerautomationtimer >= 200){
+      greenpointerautomationtimer -= 200;
+      buygreenpointer();
+    }
+    if(bluepointerautomationtimer >= 200){
+      bluepointerautomationtimer -= 200;
+      buybluepointer();
+    }
+    if(bigredfilterautomationtimer >= 200){
+      bigredfilterautomationtimer -= 200;
+      buybigredfilter();
+    }
+    if(biggreenfilterautomationtimer >= 200){
+      biggreenfilterautomationtimer -= 200;
+      buybiggreenfilter();
+    }
+    if(bigbluefilterautomationtimer >= 200){
+      bigbluefilterautomationtimer -= 200;
+      buybigbluefilter();
+    }
+    if(bigredpointerautomationtimer >= 200){
+      bigredpointerautomationtimer -= 200;
+      buybigredpointer();
+    }
+    if(biggreenpointerautomationtimer >= 200){
+      biggreenpointerautomationtimer -= 200;
+      buybiggreenpointer();
+    }
+    if(bigbluepointerautomationtimer >= 200){
+      bigbluepointerautomationtimer -= 200;
+      buybigbluepointer();
+    }
+    if(rednanometerwaveautomationtimer >= 200){
+      rednanometerwaveautomationtimer -= 200;
+      buyrednanometerwave();
+    }
+    if(greennanometerwaveautomationtimer >= 200){
+      greennanometerwaveautomationtimer -= 200;
+      buygreennanometerwave();
+    }
+    if(bluenanometerwaveautomationtimer >= 200){
+      bluenanometerwaveautomationtimer -= 200;
+      buybluenanometerwave();
+    }
     //increase red
     calcred(
       // filter
@@ -1953,7 +2044,7 @@ function buyredfilterautomation(){
   if(red > redfilterautomationprice){
     redfilterautomationcount ++;
     cyan -= redfilterautomationprice;
-    redfilterautomationprice = 5 * Math.pow(1.1, redfilterautomationcount);
+    redfilterautomationprice = 5 * Math.pow(1.3, redfilterautomationcount);
     document.getElementById("redfilterautomationprice").innerHTML = Math.round(redfilterautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -1962,7 +2053,7 @@ function buyredpointerautomation(){
   if(red > redpointerautomationprice){
     redpointerautomationcount ++;
     cyan -= redpointerautomationprice;
-    redpointerautomationprice = 5 * Math.pow(1.1, redpointerautomationcount);
+    redpointerautomationprice = 5 * Math.pow(1.3, redpointerautomationcount);
     document.getElementById("redpointerautomationprice").innerHTML =  Math.round(redpointerautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -1971,7 +2062,7 @@ function buybigredfilterautomation(){
   if(red > bigredfilterautomationprice){
     bigredfilterautomationcount ++;
     cyan -= bigredfilterautomationprice;
-    bigredfilterautomationprice = 5 * Math.pow(1.1, bigredfilterautomationcount);
+    bigredfilterautomationprice = 5 * Math.pow(1.3, bigredfilterautomationcount);
     document.getElementById("bigredfilterautomationprice").innerHTML =  Math.round(bigredfilterautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -1980,7 +2071,7 @@ function buybigredpointerautomation(){
   if(red > bigredpointerautomationprice){
     bigredpointerautomationcount ++;
     cyan -= bigredpointerautomationprice;
-    bigredpointerautomationprice = 5 * Math.pow(1.1, bigredpointerautomationcount);
+    bigredpointerautomationprice = 5 * Math.pow(1.3, bigredpointerautomationcount);
     document.getElementById("bigredpointerautomationprice").innerHTML =  Math.round(bigredpointerautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -1989,7 +2080,7 @@ function buyrednanometerwaveautomation(){
   if(red > rednanometerwaveautomationprice){
     rednanometerwaveautomationcount ++;
     cyan -= rednanometerwaveautomationprice;
-    rednanometerwaveautomationprice = 5 * Math.pow(1.1, rednanometerwaveautomationcount);
+    rednanometerwaveautomationprice = 5 * Math.pow(1.3, rednanometerwaveautomationcount);
     document.getElementById("rednanometerwaveautomationprice").innerHTML =  Math.round(rednanometerwaveautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -1998,7 +2089,7 @@ function buygreenfilterautomation(){
   if(green > greenfilterautomationprice){
     greenfilterautomationcount ++;
     cyan -=greenfilterautomationprice;
-    greenfilterautomationprice = 5 * Math.pow(1.1, greenfilterautomationcount);
+    greenfilterautomationprice = 5 * Math.pow(1.3, greenfilterautomationcount);
     document.getElementById("greenfilterautomationprice").innerHTML =  Math.round(greenfilterautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2007,7 +2098,7 @@ function buygreenpointerautomation(){
   if(green > greenpointerautomationprice){
     greenpointerautomationcount ++;
     cyan -=greenpointerautomationprice;
-    greenpointerautomationprice = 5 * Math.pow(1.1, greenpointerautomationcount);
+    greenpointerautomationprice = 5 * Math.pow(1.3, greenpointerautomationcount);
     document.getElementById("greenpointerautomationprice").innerHTML =  Math.round(greenpointerautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2016,7 +2107,7 @@ function buybiggreenfilterautomation(){
   if(green > biggreenfilterautomationprice){
     biggreenfilterautomationcount ++;
     cyan -=biggreenfilterautomationprice;
-    biggreenfilterautomationprice = 5 * Math.pow(1.1, biggreenfilterautomationcount);
+    biggreenfilterautomationprice = 5 * Math.pow(1.3, biggreenfilterautomationcount);
     document.getElementById("biggreenfilterautomationprice").innerHTML =  Math.round(biggreenfilterautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2025,7 +2116,7 @@ function buybiggreenpointerautomation(){
   if(green > biggreenpointerautomationprice){
     biggreenpointerautomationcount ++;
     cyan -=biggreenpointerautomationprice;
-    biggreenpointerautomationprice = 5 * Math.pow(1.1, biggreenpointerautomationcount);
+    biggreenpointerautomationprice = 5 * Math.pow(1.3, biggreenpointerautomationcount);
     document.getElementById("biggreenpointerautomationprice").innerHTML =  Math.round(biggreenpointerautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2034,7 +2125,7 @@ function buygreennanometerwaveautomation(){
   if(green > greennanometerwaveautomationprice){
     greennanometerwaveautomationcount ++;
     cyan -=greennanometerwaveautomationprice;
-    greennanometerwaveautomationprice = 5 * Math.pow(1.1, greennanometerwaveautomationcount);
+    greennanometerwaveautomationprice = 5 * Math.pow(1.3, greennanometerwaveautomationcount);
     document.getElementById("greennanometerwaveautomationprice").innerHTML =  Math.round(greennanometerwaveautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2043,7 +2134,7 @@ function buybluefilterautomation(){
   if(blue > bluefilterautomationprice){
     bluefilterautomationcount ++;
     cyan -=bluefilterautomationprice;
-    bluefilterautomationprice = 5 * Math.pow(1.1, bluefilterautomationcount);
+    bluefilterautomationprice = 5 * Math.pow(1.3, bluefilterautomationcount);
     document.getElementById("bluefilterautomationprice").innerHTML =  Math.round(bluefilterautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2052,7 +2143,7 @@ function buybluepointerautomation(){
   if(blue > bluepointerautomationprice){
     bluepointerautomationcount ++;
     cyan -=bluepointerautomationprice;
-    bluepointerautomationprice = 5 * Math.pow(1.1, bluepointerautomationcount);
+    bluepointerautomationprice = 5 * Math.pow(1.3, bluepointerautomationcount);
     document.getElementById("bluepointerautomationprice").innerHTML =  Math.round(bluepointerautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2061,7 +2152,7 @@ function buybigbluefilterautomation(){
   if(blue > bigbluefilterautomationprice){
     bigbluefilterautomationcount ++;
     cyan -=bigbluefilterautomationprice;
-    bigbluefilterautomationprice = 5 * Math.pow(1.1, bigbluefilterautomationcount);
+    bigbluefilterautomationprice = 5 * Math.pow(1.3, bigbluefilterautomationcount);
     document.getElementById("bigbluefilterautomationprice").innerHTML =  Math.round(bigbluefilterautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2070,7 +2161,7 @@ function buybigbluepointerautomation(){
   if(blue > bigbluepointerautomationprice){
     bigbluepointerautomationcount ++;
     cyan -=bigbluepointerautomationprice;
-    bigbluepointerautomationprice = 5 * Math.pow(1.1, bigbluepointerautomationcount);
+    bigbluepointerautomationprice = 5 * Math.pow(1.3, bigbluepointerautomationcount);
     document.getElementById("bigbluepointerautomationprice").innerHTML =  Math.round(bigbluepointerautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
@@ -2079,7 +2170,7 @@ function buybluenanometerwaveautomation(){
   if(blue > bluenanometerwaveautomationprice){
     bluenanometerwaveautomationcount ++;
     cyan -=bluenanometerwaveautomationprice;
-    bluenanometerwaveautomationprice = 5 * Math.pow(1.1, bluenanometerwaveautomationcount);
+    bluenanometerwaveautomationprice = 5 * Math.pow(1.3, bluenanometerwaveautomationcount);
     document.getElementById("bluenanometerwaveautomationprice").innerHTML =  Math.round(bluenanometerwaveautomationprice) + " cyan";
     document.getElementById("cyancount").innerHTML = "cyan: "+Math.floor(cyan);
   }
