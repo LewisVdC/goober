@@ -1212,6 +1212,12 @@ function buyblueupgrade3() {
 
 //loop
 window.setInterval(function () {
+  //devmode tooltip
+  if (document.querySelector("#devmode:hover") != null) {
+    document.getElementById("devtooltip").style.display = "block";
+  }else{
+    document.getElementById("devtooltip").style.display = "none";
+  }
   //wuuuuuuuuuuuuuuugh
   document.getElementById("taskAmountRed").innerHTML = Math.floor(red);
   document.getElementById("taskAmountBlue").innerHTML = Math.floor(blue);

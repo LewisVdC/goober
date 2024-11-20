@@ -797,3 +797,10 @@ div#magenta {
   background: linear-gradient(45deg, #003e00, #32db32, #025202);
   height: 40px;
 }
+#devtooltip{
+  display: none;
+  position: absolute; 
+  margin-left: 73; 
+  color:white; 
+  padding-top: 10px;
+}
