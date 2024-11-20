@@ -2381,5 +2381,9 @@ function toggleblue() {
 
 //temp devmode (disables annoying coming soon signs)
 document.getElementById("devmode").addEventListener("change", function(){
-  document.getElementById('comingsoon').remove();
+  if(document.getElementById("devmode").checked === true){
+    document.getElementById('comingsoon').style.display = "none";
+  }else{
+    document.getElementById('comingsoon').style.display = "block";
+  }
 })
