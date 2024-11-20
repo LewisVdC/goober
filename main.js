@@ -2478,3 +2478,11 @@ function buydrink() {
 }
 
 //and stops here
+
+
+
+
+//temp devmode (disables annoying coming soon signs)
+document.getElementById("devmode").addEventListener("change", function(){
+  document.getElementById('comingsoon').remove();
+})

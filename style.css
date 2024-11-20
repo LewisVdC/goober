@@ -710,6 +710,10 @@ button {
 #reset {
   position: absolute;
 }
+#devmode{
+  position: absolute;
+  margin-left: 100px;
+}
 div#cyanbuildings {
   display: inline-flex;
   text-align: center;
