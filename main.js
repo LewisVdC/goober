@@ -1533,7 +1533,7 @@ window.setInterval(function () {
         (1+(2 * largerprismscount)) *
         // yellow color harmony
         (1 +
-          (yellow / 10) *
+          Math.log1p(yellow) / 10 *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
         // tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
@@ -1570,7 +1570,7 @@ window.setInterval(function () {
         (1+(2 * largerprismscount)) *
         // yellow color harmony
         (1 +
-          (yellow / 10) *
+          Math.log1p(yellow) / 10 *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
         // tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
@@ -1608,7 +1608,7 @@ window.setInterval(function () {
         (1+(2 * largerprismscount)) *
         // yellow color harmony
         (1 +
-          (yellow / 10) *
+          Math.log1p(yellow) / 10 *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
         // tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
@@ -2162,7 +2162,7 @@ window.setInterval(function () {
         taskBooster *
         (1+(2 * largerprismscount)) *
         (1 +
-          (yellow / 10) *
+          Math.log1p(yellow) / 10 *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 red
@@ -2188,7 +2188,7 @@ window.setInterval(function () {
         taskBooster *
         (1+(2 * largerprismscount)) *
         (1 +
-          (yellow / 10) *
+          Math.log1p(yellow) / 10 *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 green
@@ -2214,11 +2214,11 @@ window.setInterval(function () {
         taskBooster *
         (1+(2 * largerprismscount)) *
         (1 +
-          (yellow / 10) *
+          Math.log1p(yellow) / 10 *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 red
-    yellowGAIN = Math.min(10, yellowGAIN);
+    yellowGAIN = Math.min(4 * (1 + (redoverflowcount + greenoverflowcount + blueoverflowcount)), yellowGAIN);
     yellow += yellowGAIN;
     document.getElementById("yellowcount").innerHTML =
     "yellow: " + Math.round(yellow);
