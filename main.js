@@ -425,22 +425,28 @@ function load() {
       if(typeof savegame.redtogglestate !== "undefined")
         redtogglestate = savegame.redtogglestate;
         if(redtogglestate){
+          document.getElementById("redtogglestate").innerHTML = "on";
           document.getElementById("redtoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
         }else{
+          document.getElementById("redtogglestate").innerHTML = "off";
           document.getElementById("redtoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
         }
       if(typeof savegame.greentogglestate !== "undefined")
         greentogglestate = savegame.greentogglestate;
         if(greentogglestate){
+          document.getElementById("greentogglestate").innerHTML = "on";
           document.getElementById("greentoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
         }else{
+          document.getElementById("greentogglestate").innerHTML = "off";
           document.getElementById("greentoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
         }
       if(typeof savegame.bluetogglestate !== "undefined")
         bluetogglestate = savegame.bluetogglestate;
         if(bluetogglestate){
+          document.getElementById("bluetogglestate").innerHTML = "on";
           document.getElementById("bluetoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
         }else{
+          document.getElementById("bluetogglestate").innerHTML = "off";
           document.getElementById("bluetoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
         }
           
@@ -2209,23 +2215,29 @@ function togglered(){
   redtogglestate = !redtogglestate;
   if(redtogglestate){
     document.getElementById("redtoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    document.getElementById("redtogglestate").innerHTML = "on";
   }else{
     document.getElementById("redtoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
+    document.getElementById("redtogglestate").innerHTML = "off";
   }
 }
 function togglegreen(){
   greentogglestate = !greentogglestate;
   if(greentogglestate){
     document.getElementById("greentoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    document.getElementById("greentogglestate").innerHTML = "on";
   }else{
     document.getElementById("greentoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
+    document.getElementById("greentogglestate").innerHTML = "off";
   }
 }
 function toggleblue(){
   bluetogglestate = !bluetogglestate;
   if(bluetogglestate){
     document.getElementById("bluetoggle").style.background = "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    document.getElementById("bluetogglestate").innerHTML = "on";
   }else{
     document.getElementById("bluetoggle").style.background = "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))"
+    document.getElementById("bluetogglestate").innerHTML = "off";
   }
 }
