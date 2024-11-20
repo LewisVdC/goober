@@ -80,7 +80,7 @@ var taskmasteryprice = 20;
 var taskmasterycount = 0;
 var goldenmultiplierprice = 35;
 var goldenmultipliercount = 0;
-var colorsyphonprice = 1200;
+var colorsyphonprice = 12000;
 var colorsyphoncount = 0;
 var focussedpointersprice = 30;
 var focussedpointerscount = 0;
@@ -2084,7 +2084,7 @@ function buycolorsyphon() {
   ) {
     yellow -= colorsyphonprice;
     colorsyphoncount++;
-    colorsyphonprice = 1200;
+    colorsyphonprice = 12000;
     document.getElementById("yellowcount").innerHTML = "yellow: " + yellow;
     document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
     cyan += 10;
@@ -2448,6 +2448,8 @@ function toggleblue() {
 //also some kid behind me looked at my screen and went "😲 wa is da jong"
 //idk thought it was worthy of writing down
 //cauldron is spelled wrong but idc its in the code noones ognna see this
+
+//lol
 function buycouldron() {
   if (magenta >= couldroncost) {
     couldron++;
