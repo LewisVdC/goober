@@ -7,6 +7,17 @@ var bigredfilter = 0;
 var bigredpointer = 0;
 var rednanometerwave = 0;
 var redupgrade1 = 0;
+var magenta = 0;
+var couldron = 0;
+var study = 0;
+var feed = 0;
+var feedperson = 0;
+var drink = 0;
+var couldroncost = 10;
+var studycost = 100;
+var feedcost = 1000;
+var feedpersoncost = 10000;
+var drinkcost = 100000;
 var green = 0;
 var greenfilter = 0;
 var greenpointer = 0;
@@ -24,6 +35,7 @@ var blueupgrade1 = 0;
 var debugrednumber = 0;
 var debuggreennumber = 0;
 var debugbluenumber = 0;
+var debugmagicnumber = 0;
 var redupgrade2 = 0;
 var greenupgrade2 = 0;
 var blueupgrade2 = 0;
@@ -142,6 +154,7 @@ var tasksCompleted = 0;
 var taskRewardCount = 10;
 var taskRewardColor = "green";
 var taskBooster = 1;
+//can u explain to me what this is 😭??
 const hex = {
   0: "0",
   1: "1",
@@ -1197,6 +1210,8 @@ function buyblueupgrade3() {
   }
 }
 
+
+//loop
 window.setInterval(function () {
   //wuuuuuuuuuuuuuuugh
   document.getElementById("taskAmountRed").innerHTML = Math.floor(red);
@@ -1361,6 +1376,17 @@ window.setInterval(function () {
       redtogglestate: redtogglestate,
       greentogglestate: greentogglestate,
       bluetogglestate: bluetogglestate,
+      magenta: magenta,
+      couldron: couldron,
+      study: study,
+      feed: feed,
+      feedperson: feedperson,
+      drink: drink,
+      couldroncost: couldroncost,
+      studycost: studycost,
+      feedcost: feedcost,
+      feedpersoncost: feedpersoncost,
+      drinkcost: drinkcost,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -1440,6 +1466,12 @@ window.setInterval(function () {
       bluenanometerwaveautomationtimer = 0;
       buybluenanometerwave();
     }
+
+    //increase magic!! woo
+    calcmagic(
+      //how do i do this,,
+      (couldron*1+study*10+)
+    )
     //increase red
     calcred(
       // filter
@@ -2375,3 +2407,74 @@ function toggleblue() {
     document.getElementById("bluetogglestate").innerHTML = "off";
   }
 }
+
+//
+//code for magenta goes here
+//+notes
+//magenta doesnt get to be affected by governmentfundingcount bc i think itd make it too easy??
+//(i might forget to change it somewhere so pls fix)
+//woaw im so good at this watch me balancing my code
+//also some kid behind me looked at my screen and went "😲 wa is da jong"
+//idk thought it was worthy of writing down
+//cauldron is spelled wrong but idc its in the code noones ognna see this
+function buycouldron() {
+  if (magenta >= couldroncost) {
+    couldron++;
+    magenta -= couldroncost;
+    couldroncost = Math.floor((10 * Math.pow(1.1, couldron)) / 1);
+    document.getElementById("magentacount").innerHTML =
+      "magenta: " + Math.floor(magenta);
+    document.getElementById("couldroncount").innerHTML = couldron;
+    document.getElementById("couldroncost").innerHTML = couldroncost;
+  }
+}
+
+function buystudy() {
+  if (magenta >= studycost) {
+    study++;
+    magenta -= studycost;
+    studycost = Math.floor((100 * Math.pow(1.1, study)) / 1);
+    document.getElementById("magentacount").innerHTML =
+      "magenta: " + Math.floor(magenta);
+    document.getElementById("studycount").innerHTML = study;
+    document.getElementById("studycost").innerHTML = studycost;
+  }
+}
+
+function buyfeed() {
+  if (magenta >= feedcost) {
+    feed++;
+    magenta -= feedcost;
+    feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
+    document.getElementById("magentacount").innerHTML =
+      "magenta: " + Math.floor(magenta);
+    document.getElementById("feedcount").innerHTML = feed;
+    document.getElementById("feedcost").innerHTML = feedcost;
+  }
+}
+
+function buyfeedperson() {
+  if (magenta >= feedpersoncost) {
+    feedperson++;
+    magenta -= feedpersoncost;
+    feedpersoncost = Math.floor((10000 * Math.pow(1.1, feedperson)) / 1);
+    document.getElementById("magentacount").innerHTML =
+      "magenta: " + Math.floor(magenta);
+    document.getElementById("feedpersoncount").innerHTML = feedperson;
+    document.getElementById("feedpersoncost").innerHTML = feedpersoncost;
+  }
+}
+
+function buydrink() {
+  if (magenta >= drinkcost) {
+    drink++;
+    magenta -= drinkcost;
+    drinkcost = Math.floor((100000 * Math.pow(1.1, drink)) / 1);
+    document.getElementById("magentacount").innerHTML =
+      "magenta: " + Math.floor(magenta);
+    document.getElementById("drinkcount").innerHTML = drink;
+    document.getElementById("drinkcost").innerHTML = drinkcost;
+  }
+}
+
+//and stops here
