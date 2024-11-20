@@ -1210,7 +1210,6 @@ function buyblueupgrade3() {
   }
 }
 
-
 //loop
 window.setInterval(function () {
   //wuuuuuuuuuuuuuuugh
@@ -1470,8 +1469,8 @@ window.setInterval(function () {
     //increase magic!! woo
     calcmagic(
       //how do i do this,,
-      (couldron*1+study*10+)
-    )
+      couldron * 1 + study * 10 + feed * 100 + feedperson * 1000 + drink * 10000
+    );
     //increase red
     calcred(
       // filter
@@ -2479,10 +2478,7 @@ function buydrink() {
 
 //and stops here
 
-
-
-
 //temp devmode (disables annoying coming soon signs)
-document.getElementById("devmode").addEventListener("change", function(){
-  document.getElementById('comingsoon').remove();
-})
+document.getElementById("devmode").addEventListener("change", function () {
+  document.getElementById("comingsoon").remove();
+});
