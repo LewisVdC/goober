@@ -142,6 +142,7 @@ var bluetogglestate = true;
 var magic = 0;
 var loaded = 0;
 var tab = "red";
+var yellowGAIN = 0;
 
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
@@ -2139,7 +2140,8 @@ function buystrongersynergy() {
 }
 
 window.setInterval(function () {
-  yellow +=
+  yellowGAIN = 0;
+  yellowGAIN +=
     (redoverflowcount *
       ((((((redfilter *
         (redfilter * redupgrade1 + 1) *
@@ -2165,7 +2167,7 @@ window.setInterval(function () {
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 red
 
-  yellow +=
+  yellowGAIN +=
     (greenoverflowcount *
       ((((((greenfilter *
         (greenfilter * greenupgrade1 + 1) *
@@ -2191,7 +2193,7 @@ window.setInterval(function () {
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 green
 
-  yellow +=
+  yellowGAIN +=
     (blueoverflowcount *
       ((((((bluefilter *
         (bluefilter * blueupgrade1 + 1) *
@@ -2216,8 +2218,9 @@ window.setInterval(function () {
             (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
       (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 red
-
-  document.getElementById("yellowcount").innerHTML =
+    yellowGAIN = Math.min(10, yellowGAIN);
+    yellow += yellowGAIN;
+    document.getElementById("yellowcount").innerHTML =
     "yellow: " + Math.round(yellow);
 }, 20);
 
