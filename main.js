@@ -1530,7 +1530,7 @@ window.setInterval(function () {
         // task booster
         taskBooster *
         // yellow larger prisms
-        Math.pow(2, largerprismscount) *
+        (1+(2 * largerprismscount)) *
         // yellow color harmony
         (1 +
           (yellow / 10) *
@@ -1567,7 +1567,7 @@ window.setInterval(function () {
         // task booster
         taskBooster *
         // yellow larger prisms
-        Math.pow(2, largerprismscount) *
+        (1+(2 * largerprismscount)) *
         // yellow color harmony
         (1 +
           (yellow / 10) *
@@ -1605,7 +1605,7 @@ window.setInterval(function () {
         // task booster
         taskBooster *
         // yellow larger prisms
-        Math.pow(2, largerprismscount) *
+        (1+(2 * largerprismscount)) *
         // yellow color harmony
         (1 +
           (yellow / 10) *
@@ -1784,7 +1784,7 @@ function submitTask() {
       taskRewardCount =
         10 *
         (1 + yellowsynergycount * 0.25) *
-        (1 + (goldenmultipliercount * tasksCompleted) / 10);
+        (1 + (goldenmultipliercount * tasksCompleted) / 1000);
       if (Math.random() * 100 <= 5) {
         yellow += taskRewardCount * 10 * taskmasterycount;
       }
@@ -2000,7 +2000,7 @@ function buyyellowsynergy() {
     taskRewardCount =
       10 *
       (1 + yellowsynergycount * 0.25) *
-      (1 + (goldenmultipliercount * tasksCompleted) / 10);
+      (1 + (goldenmultipliercount * tasksCompleted) / 1000);
     document.getElementById("taskReward").innerHTML =
       String(Math.round(taskRewardCount)) + " " + taskRewardColor;
   }
@@ -2069,7 +2069,7 @@ function buygoldenmultiplier() {
     taskRewardCount =
       10 *
       (1 + yellowsynergycount * 0.25) *
-      (1 + (goldenmultipliercount * tasksCompleted) / 10);
+      (1 + (goldenmultipliercount * tasksCompleted) / 1000);
     document.getElementById("taskReward").innerHTML =
       Math.round(taskRewardCount) + " " + taskRewardColor;
   }
@@ -2159,7 +2159,7 @@ window.setInterval(function () {
         (10 * blueupgrade2 + 1)) *
         (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
-        Math.pow(2, largerprismscount) *
+        (1+(2 * largerprismscount)) *
         (1 +
           (yellow / 10) *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
@@ -2185,7 +2185,7 @@ window.setInterval(function () {
         (10 * blueupgrade2 + 1)) *
         (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
-        Math.pow(2, largerprismscount) *
+        (1+(2 * largerprismscount)) *
         (1 +
           (yellow / 10) *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
@@ -2211,7 +2211,7 @@ window.setInterval(function () {
         (10 * greenupgrade2 + 1)) *
         (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
-        Math.pow(2, largerprismscount) *
+        (1+(2 * largerprismscount)) *
         (1 +
           (yellow / 10) *
             (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
