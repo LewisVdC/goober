@@ -2505,8 +2505,8 @@ function buydrink() {
 //and stops here
 //now for magic,,
 
-function spell1() {
-  explode;
+function spell1(number) {
+  red = red + debugrednumber * number;
 }
 
 //no more magic it is banned
