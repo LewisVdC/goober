@@ -533,21 +533,21 @@ function load() {
     }
     if (typeof savegame.taskColorGoalRed !== "undefined")
       taskColorGoalRed = savegame.taskColorGoalRed;
-    document.getElementById("taskGoalAmountRed").innerHTML =
-      Math.floor(taskColorGoalRed);
+      document.getElementById("taskGoalAmountRed").innerHTML =
+      formatNumber(Math.floor(taskColorGoalRed));
     if (typeof savegame.taskColorGoalGreen !== "undefined")
       taskColorGoalGreen = savegame.taskColorGoalGreen;
-    document.getElementById("taskGoalAmountGreen").innerHTML =
-      Math.floor(taskColorGoalGreen);
+      document.getElementById("taskGoalAmountGreen").innerHTML =
+      formatNumber(Math.floor(taskColorGoalGreen));
     if (typeof savegame.taskColorGoalBlue !== "undefined")
       taskColorGoalBlue = savegame.taskColorGoalBlue;
-    document.getElementById("taskGoalAmountBlue").innerHTML =
-      Math.floor(taskColorGoalBlue);
+      document.getElementById("taskGoalAmountBlue").innerHTML =
+      formatNumber(Math.floor(taskColorGoalBlue));
     if (typeof savegame.taskRewardColor !== "undefined")
       taskRewardColor = savegame.taskRewardColor;
     if (typeof savegame.taskRewardCount !== "undefined")
       taskRewardCount = savegame.taskRewardCount;
-    document.getElementById("taskReward").innerHTML =
+      document.getElementById("taskReward").innerHTML =
       String(Math.round(savegame.taskRewardCount)) +
       " " +
       savegame.taskRewardColor;
@@ -702,9 +702,9 @@ function load() {
 //  redfilter: redfilter,
 //};
 
-document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
-document.getElementById("greencount").innerHTML = "green: " + Math.floor(green);
-document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
+document.getElementById("greencount").innerHTML = "green: " + formatNumber(Math.floor(green));
+document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
 document.getElementById("yellowcount").innerHTML =
   "yellow: " + Math.floor(yellow);
 
@@ -921,7 +921,7 @@ function buyredfilter() {
     redfiltercost = Math.floor(
       (10 * Math.pow(1.1, redfilter)) / (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
     document.getElementById("redfiltercount").innerHTML = redfilter;
     document.getElementById("redfiltercost").innerHTML = formatNumber(redfiltercost);
   }
@@ -934,7 +934,7 @@ function buyredpointer() {
     redpointercost = Math.floor(
       (100 * Math.pow(1.1, redpointer)) / (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
     document.getElementById("redpointercount").innerHTML = redpointer;
     document.getElementById("redpointercost").innerHTML = formatNumber(redpointercost);
   }
@@ -947,7 +947,7 @@ function buybigredfilter() {
     bigredfiltercost = Math.floor(
       (1000 * Math.pow(1.1, bigredfilter)) / (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
     document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
     document.getElementById("bigredfiltercost").innerHTML = formatNumber(bigredfiltercost);
   }
@@ -961,7 +961,7 @@ function buybigredpointer() {
       (10000 * Math.pow(1.1, bigredpointer)) /
         (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
     document.getElementById("bigredpointercount").innerHTML = bigredpointer;
     document.getElementById("bigredpointercost").innerHTML = formatNumber(bigredpointercost);
   }
@@ -975,7 +975,7 @@ function buyrednanometerwave() {
       (100000 * Math.pow(1.1, rednanometerwave)) /
         (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+    document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
     document.getElementById("rednanometerwavecount").innerHTML =
       rednanometerwave;
     document.getElementById("rednanometerwavecost").innerHTML =
@@ -991,7 +991,7 @@ function buygreenfilter() {
       (10 * Math.pow(1.1, greenfilter)) / (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+      "green: " + formatNumber(Math.floor(green));
     document.getElementById("greenfiltercount").innerHTML = greenfilter;
     document.getElementById("greenfiltercost").innerHTML = formatNumber(greenfiltercost);
   }
@@ -1005,7 +1005,7 @@ function buygreenpointer() {
       (100 * Math.pow(1.1, greenpointer)) / (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+      "green: " + formatNumber(Math.floor(green));
     document.getElementById("greenpointercount").innerHTML = greenpointer;
     document.getElementById("greenpointercost").innerHTML = formatNumber(greenpointercost);
   }
@@ -1020,7 +1020,7 @@ function buybiggreenfilter() {
         (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+      "green: " + formatNumber(Math.floor(green));
     document.getElementById("biggreenfiltercount").innerHTML = biggreenfilter;
     document.getElementById("biggreenfiltercost").innerHTML =
     formatNumber(biggreenfiltercost);
@@ -1036,7 +1036,7 @@ function buybiggreenpointer() {
         (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+      "green: " + formatNumber(Math.floor(green));
     document.getElementById("biggreenpointercount").innerHTML = biggreenpointer;
     document.getElementById("biggreenpointercost").innerHTML =
     formatNumber(biggreenpointercost);
@@ -1052,7 +1052,7 @@ function buygreennanometerwave() {
         (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("greencount").innerHTML =
-      "green: " + Math.floor(green);
+      "green: " + formatNumber(Math.floor(green));
     document.getElementById("greennanometerwavecount").innerHTML =
       greennanometerwave;
     document.getElementById("greennanometerwavecost").innerHTML =
@@ -1068,7 +1068,7 @@ function buybluefilter() {
       (10 * Math.pow(1.1, bluefilter)) / (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+      "blue: " + formatNumber(Math.floor(blue));
     document.getElementById("bluefiltercount").innerHTML = bluefilter;
     document.getElementById("bluefiltercost").innerHTML = formatNumber(bluefiltercost);
   }
@@ -1082,7 +1082,7 @@ function buybluepointer() {
       (100 * Math.pow(1.1, bluepointer)) / (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+      "blue: " + formatNumber(Math.floor(blue));
     document.getElementById("bluepointercount").innerHTML = bluepointer;
     document.getElementById("bluepointercost").innerHTML = formatNumber(bluepointercost);
   }
@@ -1096,7 +1096,7 @@ function buybigbluefilter() {
       (1000 * Math.pow(1.1, bigbluefilter)) / (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+      "blue: " + formatNumber(Math.floor(blue));
     document.getElementById("bigbluefiltercount").innerHTML = bigbluefilter;
     document.getElementById("bigbluefiltercost").innerHTML = formatNumber(bigbluefiltercost);
   }
@@ -1111,7 +1111,7 @@ function buybigbluepointer() {
         (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+      "blue: " + formatNumber(Math.floor(blue));
     document.getElementById("bigbluepointercount").innerHTML = bigbluepointer;
     document.getElementById("bigbluepointercost").innerHTML =
     formatNumber(bigbluepointercost);
@@ -1127,7 +1127,7 @@ function buybluenanometerwave() {
         (1 + 0.1 * governmentfundingcount)
     );
     document.getElementById("bluecount").innerHTML =
-      "blue: " + Math.floor(blue);
+      "blue: " + formatNumber(Math.floor(blue));
     document.getElementById("bluenanometerwavecount").innerHTML =
       bluenanometerwave;
     document.getElementById("bluenanometerwavecost").innerHTML =
@@ -1141,7 +1141,7 @@ function buybluenanometerwave() {
 //
 
 function buyredupgrade1() {
-  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+  document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
   if (red >= 150000 && redupgrade1 === 0) {
     redupgrade1 = 1;
     red = red - 150000;
@@ -1151,7 +1151,7 @@ function buyredupgrade1() {
 }
 
 function buyredupgrade2() {
-  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+  document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
   if (red >= 250000 && redupgrade2 === 0) {
     redupgrade2 = 1;
     red = red - 250000;
@@ -1161,7 +1161,7 @@ function buyredupgrade2() {
 }
 
 function buyredupgrade3() {
-  document.getElementById("redcount").innerHTML = "red: " + Math.floor(red);
+  document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(red));
   if (red >= 500000 && redupgrade3 === 0) {
     redupgrade3 = 1;
     red = red - 500000;
@@ -1172,7 +1172,7 @@ function buyredupgrade3() {
 
 function buygreenupgrade1() {
   document.getElementById("greencount").innerHTML =
-    "green: " + Math.floor(green);
+    "green: " + formatNumber(Math.floor(green));
   if (green >= 150000 && greenupgrade1 === 0) {
     greenupgrade1 = 1;
     green = green - 150000;
@@ -1183,7 +1183,7 @@ function buygreenupgrade1() {
 
 function buygreenupgrade2() {
   document.getElementById("greencount").innerHTML =
-    "green: " + Math.floor(green);
+    "green: " + formatNumber(Math.floor(green));
   if (green >= 250000 && greenupgrade2 === 0) {
     greenupgrade2 = 1;
     green = green - 250000;
@@ -1194,7 +1194,7 @@ function buygreenupgrade2() {
 
 function buygreenupgrade3() {
   document.getElementById("greencount").innerHTML =
-    "green: " + Math.floor(green);
+    "green: " + formatNumber(Math.floor(green));
   if (green >= 500000 && greenupgrade3 === 0) {
     greenupgrade3 = 1;
     green = green - 500000;
@@ -1204,7 +1204,7 @@ function buygreenupgrade3() {
 }
 
 function buyblueupgrade1() {
-  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
   if (blue >= 150000 && blueupgrade1 === 0) {
     blueupgrade1 = 1;
     blue = blue - 150000;
@@ -1214,7 +1214,7 @@ function buyblueupgrade1() {
 }
 
 function buyblueupgrade2() {
-  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
   if (blue >= 250000 && blueupgrade2 === 0) {
     blueupgrade2 = 1;
     blue = blue - 250000;
@@ -1224,7 +1224,7 @@ function buyblueupgrade2() {
 }
 
 function buyblueupgrade3() {
-  document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
   if (blue >= 250000 && blueupgrade3 === 0) {
     blueupgrade3 = 1;
     blue = blue - 250000;
@@ -1242,9 +1242,9 @@ window.setInterval(function () {
     document.getElementById("devtooltip").style.display = "none";
   }
   //wuuuuuuuuuuuuuuugh
-  document.getElementById("taskAmountRed").innerHTML = Math.floor(red);
-  document.getElementById("taskAmountBlue").innerHTML = Math.floor(blue);
-  document.getElementById("taskAmountGreen").innerHTML = Math.floor(green);
+  document.getElementById("taskAmountRed").innerHTML = formatNumber(Math.floor(red));
+  document.getElementById("taskAmountBlue").innerHTML = formatNumber(Math.floor(blue));
+  document.getElementById("taskAmountGreen").innerHTML = formatNumber(Math.floor(green));
   //ugh
   if (loaded === 1) {
     //unlocks
@@ -1647,11 +1647,11 @@ function submitTask() {
       taskColorGoalGreen = 255 / (1 + streamlinedtaskscount * 10);
       taskColorGoalBlue = 0;
       document.getElementById("taskGoalAmountRed").innerHTML =
-        Math.round(taskColorGoalRed);
+        formatNumber(Math.round(taskColorGoalRed));
       document.getElementById("taskGoalAmountGreen").innerHTML =
-        Math.round(taskColorGoalGreen);
+        formatNumber(Math.round(taskColorGoalGreen));
       document.getElementById("taskGoalAmountBlue").innerHTML =
-        Math.round(taskColorGoalBlue);
+        formatNumber(Math.round(taskColorGoalBlue));
       document.getElementById("taskColor").innerHTML = "#00FF00";
       document.getElementById("taskColor").style.color = "green";
       document.getElementById("taskColor").style.textShadow = "0 0 10px green";
@@ -1665,11 +1665,11 @@ function submitTask() {
       taskColorGoalGreen = 0;
       taskColorGoalBlue = 255 / (1 + streamlinedtaskscount * 10);
       document.getElementById("taskGoalAmountRed").innerHTML =
-        Math.round(taskColorGoalRed);
+      formatNumber(Math.round(taskColorGoalRed));
       document.getElementById("taskGoalAmountGreen").innerHTML =
-        Math.round(taskColorGoalGreen);
+      formatNumber(Math.round(taskColorGoalGreen));
       document.getElementById("taskGoalAmountBlue").innerHTML =
-        Math.round(taskColorGoalBlue);
+      formatNumber(Math.round(taskColorGoalBlue));
       document.getElementById("taskColor").innerHTML = "#0000FF";
       document.getElementById("taskColor").style.color = "blue";
       document.getElementById("taskColor").style.textShadow = "0 0 10px blue";
@@ -1683,11 +1683,11 @@ function submitTask() {
       taskColorGoalGreen = 11500 / (1 + streamlinedtaskscount * 10);
       taskColorGoalBlue = 4100 / (1 + streamlinedtaskscount * 10);
       document.getElementById("taskGoalAmountRed").innerHTML =
-        Math.round(taskColorGoalRed);
+      formatNumber(Math.round(taskColorGoalRed));
       document.getElementById("taskGoalAmountGreen").innerHTML =
-        Math.round(taskColorGoalGreen);
+      formatNumber(Math.round(taskColorGoalGreen));
       document.getElementById("taskGoalAmountBlue").innerHTML =
-        Math.round(taskColorGoalBlue);
+      formatNumber(Math.round(taskColorGoalBlue));
       document.getElementById("taskColor").innerHTML = "#6E7329";
       document.getElementById("taskColor").style.color = "rgb(153, 128, 0)";
       document.getElementById("taskColor").style.textShadow = "0 0 10px yellow";
@@ -1709,11 +1709,11 @@ function submitTask() {
           (1 + 10 * streamlinedtaskscount)
       );
       document.getElementById("taskGoalAmountRed").innerHTML =
-        Math.round(taskColorGoalRed);
+      formatNumber(Math.round(taskColorGoalRed));
       document.getElementById("taskGoalAmountGreen").innerHTML =
-        Math.round(taskColorGoalGreen);
+      formatNumber(Math.round(taskColorGoalGreen));
       document.getElementById("taskGoalAmountBlue").innerHTML =
-        Math.round(taskColorGoalBlue);
+      formatNumber(Math.round(taskColorGoalBlue));
       rgbToHex(
         Math.round(
           (taskColorGoalRed * (1 + 10 * streamlinedtaskscount)) /
@@ -1980,11 +1980,11 @@ function buystreamlinedtasks() {
     taskColorGoalBlue = taskColorGoalBlue / 10;
     taskColorGoalGreen = taskColorGoalGreen / 10;
     document.getElementById("taskGoalAmountRed").innerHTML =
-      Math.round(taskColorGoalRed);
+    formatNumber(Math.round(taskColorGoalRed));
     document.getElementById("taskGoalAmountGreen").innerHTML =
-      Math.round(taskColorGoalGreen);
+    formatNumber(Math.round(taskColorGoalGreen));
     document.getElementById("taskGoalAmountBlue").innerHTML =
-      Math.round(taskColorGoalBlue);
+    formatNumber(Math.round(taskColorGoalBlue));
   }
 }
 
