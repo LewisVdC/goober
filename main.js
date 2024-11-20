@@ -1544,9 +1544,9 @@ function submitTask() {
       document.getElementById("tabblue").style.display = "block";
       blue += 10;
     } else if (tasksCompleted === 3) {
-      taskColorGoalRed = 1100 / (1 + streamlinedtaskscount * 10);
-      taskColorGoalGreen = 1150 / (1 + streamlinedtaskscount * 10);
-      taskColorGoalBlue = 410 / (1 + streamlinedtaskscount * 10);
+      taskColorGoalRed = 11000 / (1 + streamlinedtaskscount * 10);
+      taskColorGoalGreen = 11500 / (1 + streamlinedtaskscount * 10);
+      taskColorGoalBlue = 4100 / (1 + streamlinedtaskscount * 10);
       document.getElementById("taskGoalAmountRed").innerHTML =
         Math.round(taskColorGoalRed);
       document.getElementById("taskGoalAmountGreen").innerHTML =
