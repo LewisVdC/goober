@@ -2503,10 +2503,10 @@ function buydrink() {
 //and stops here
 
 //temp devmode (disables annoying coming soon signs)
-document.getElementById("devmode").addEventListener("change", function(){
-  if(document.getElementById("devmode").checked === true){
-    document.getElementById('comingsoon').style.display = "none";
-  }else{
-    document.getElementById('comingsoon').style.display = "block";
+document.getElementById("devmode").addEventListener("change", function () {
+  if (document.getElementById("devmode").checked === true) {
+    document.getElementById("comingsoon").style.display = "none";
+  } else {
+    document.getElementById("comingsoon").style.display = "block";
   }
-})
+});
