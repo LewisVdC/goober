@@ -2241,3 +2241,11 @@ function toggleblue(){
     document.getElementById("bluetogglestate").innerHTML = "off";
   }
 }
+
+
+
+
+//temp devmode (disables annoying coming soon signs)
+document.getElementById("devmode").addEventListener("change", function(){
+  document.getElementById('comingsoon').remove();
+})

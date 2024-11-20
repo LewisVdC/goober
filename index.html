@@ -38,6 +38,7 @@
   </div>
   <div id="toptext"></div>
   <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
+  <input id="devmode" type="checkbox">
   <!-- tabs -->
   <div id="tabs">
     <button class="tab" id="tabred" onclick="showtab('red')">Red</button>
@@ -636,7 +637,7 @@
   </div>
   <div id="magenta" class="tab">
     <div id="top" style="margin-bottom: 10px">
-      <h1 style="color: magenta;">COMING SOON!</h1>
+      <h1 style="color: magenta;" id="comingsoon">COMING SOON!</h1>
       <span id="magentacount">magenta: 0</span>
     </div>
     <div id="magentabuildings">
