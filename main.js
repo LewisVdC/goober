@@ -1240,6 +1240,8 @@ window.setInterval(function () {
   document.getElementById("taskAmountRed").innerHTML = Math.floor(red);
   document.getElementById("taskAmountBlue").innerHTML = Math.floor(blue);
   document.getElementById("taskAmountGreen").innerHTML = Math.floor(green);
+  document.getElementById("magentacount").innerHTML =
+    "magenta: " + Math.floor(magenta);
   //ugh
   if (loaded === 1) {
     //unlocks
@@ -2501,6 +2503,13 @@ function buydrink() {
 }
 
 //and stops here
+//now for magic,,
+
+function spell1() {
+  explode;
+}
+
+//no more magic it is banned
 
 //temp devmode (disables annoying coming soon signs)
 document.getElementById("devmode").addEventListener("change", function () {
