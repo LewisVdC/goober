@@ -71,6 +71,9 @@ span#cyancount {
 span#magentacount {
   color: magenta;
 }
+span#magiccount {
+  color: magenta;
+}
 div#red {
   display: block;
   background-color: rgb(20, 0, 0);
@@ -710,7 +713,7 @@ button {
 #reset {
   position: absolute;
 }
-#devmode{
+#devmode {
   position: absolute;
   margin-left: 100px;
 }
@@ -773,27 +776,27 @@ button#blueautomation {
 }
 div#magenta {
   display: block;
-  background-color: rgb(44,0,44);
+  background-color: rgb(44, 0, 44);
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
-.cyansubmit{
+.cyansubmit {
   background: linear-gradient(45deg, #004f4f, #00ffff, #009a9a);
 }
-.toggle{
+.toggle {
   margin-top: 20px;
 }
-#redtoggle{
+#redtoggle {
   background: linear-gradient(45deg, #003e00, #32db32, #025202);
   height: 40px;
 }
-#greentoggle{
+#greentoggle {
   background: linear-gradient(45deg, #003e00, #32db32, #025202);
   height: 40px;
 }
-#bluetoggle{
+#bluetoggle {
   background: linear-gradient(45deg, #003e00, #32db32, #025202);
   height: 40px;
 }

@@ -139,7 +139,7 @@ var bluenanometerwaveautomationtimer = 0;
 var redtogglestate = true;
 var greentogglestate = true;
 var bluetogglestate = true;
-
+var magic = 0;
 var loaded = 0;
 var tab = "red";
 
@@ -489,6 +489,24 @@ function load() {
       document.getElementById("bluetoggle").style.background =
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
     }
+    //magic and magenta
+    if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
+    if (typeof savegame.magic !== "undefined") magic = savegame.magic;
+    if (typeof savegame.couldron !== "undefined") couldron = savegame.couldron;
+    if (typeof savegame.study !== "undefined") study = savegame.study;
+    if (typeof savegame.feed !== "undefined") feed = savegame.feed;
+    if (typeof savegame.feedperson !== "undefined")
+      feedperson = savegame.feedperson;
+    if (typeof savegame.drink !== "undefined") drink = savegame.drink;
+    if (typeof savegame.couldroncost !== "undefined")
+      couldroncost = savegame.couldroncost;
+    if (typeof savegame.studycost !== "undefined")
+      studycost = savegame.studycost;
+    if (typeof savegame.feedcost !== "undefined") feedcost = savegame.feedcost;
+    if (typeof savegame.feedpersoncost !== "undefined")
+      feedpersoncost = savegame.feedpersoncost;
+    if (typeof savegame.drinkcost !== "undefined")
+      drinkcost = savegame.drinkcost;
 
     //tasks
     if (typeof savegame.tasksCompleted !== "undefined")
@@ -868,7 +886,7 @@ function showtab(x) {
       .classList.add("magentaupgrades");
   }
 }
-
+//surprisingly small calc functions
 function calcred(number) {
   debugrednumber = number / 2;
   red = red + number / 200;
@@ -884,6 +902,12 @@ function calcblue(number) {
   debugbluenumber = number / 2;
   blue = blue + number / 200;
   document.getElementById("bluecount").innerHTML = "blue: " + Math.floor(blue);
+}
+function calcmagic(number) {
+  debugmagicnumber = number / 2;
+  magic = magic + number / 200;
+  document.getElementById("magiccount").innerHTML =
+    "magic: " + Math.floor(magic);
 }
 
 //
