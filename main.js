@@ -79,6 +79,54 @@ var micrometerwavecount = 0;
 var strongersynergyprice = 100;
 var strongersynergycount = 0;
 var cyan = 0;
+var redfilterautomationcount = 0;
+var redfilterautomationprice = 5;
+var redpointerautomationcount = 0;
+var redpointerautomationprice = 5;
+var bigredfilterautomationcount = 0;
+var bigredfilterautomationprice = 5;
+var bigredpointerautomationcount = 0;
+var bigredpointerautomationprice = 5;
+var rednanometerwaveautomationcount = 0;
+var rednanometerwaveautomationprice = 5;
+var greenfilterautomationcount = 0;
+var greenfilterautomationprice = 5;
+var greenpointerautomationcount = 0;
+var greenpointerautomationprice = 5;
+var biggreenfilterautomationcount = 0;
+var biggreenfilterautomationprice = 5;
+var biggreenpointerautomationcount = 0;
+var biggreenpointerautomationprice = 5;
+var greennanometerwaveautomationcount = 0;
+var greennanometerwaveautomationprice = 5;
+var bluefilterautomationcount = 0;
+var bluefilterautomationprice = 5;
+var bluepointerautomationcount = 0;
+var bluepointerautomationprice = 5;
+var bigbluefilterautomationcount = 0;
+var bigbluefilterautomationprice = 5;
+var bigbluepointerautomationcount = 0;
+var bigbluepointerautomationprice = 5;
+var bluenanometerwaveautomationcount = 0;
+var bluenanometerwaveautomationprice = 5;
+var redfilterautomationtimer = 0;
+var redpointerautomationtimer = 0;
+var bigredfilterautomationtimer = 0;
+var bigredpointerautomationtimer = 0;
+var rednanometerwaveautomationtimer = 0;
+var greenfilterautomationtimer = 0;
+var greenpointerautomationtimer = 0;
+var biggreenfilterautomationtimer = 0;
+var biggreenpointerautomationtimer = 0;
+var greennanometerwaveautomationtimer = 0;
+var bluefilterautomationtimer = 0;
+var bluepointerautomationtimer = 0;
+var bigbluefilterautomationtimer = 0;
+var bigbluepointerautomationtimer = 0;
+var bluenanometerwaveautomationtimer = 0;
+var redtogglestate = true;
+var greentogglestate = true;
+var bluetogglestate = true;
 
 var loaded = 0;
 var tab = "red";
@@ -297,7 +345,138 @@ function load() {
       strongersynergyprice;
     //cyan
     if (typeof savegame.cyan !== "undefined") cyan = savegame.cyan;
-    document.getElementById("cyancount").innerHTML = "cyan: " + cyan;
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.round(cyan);
+    if (typeof savegame.redfilterautomationcount !== "undefined")
+      redfilterautomationcount = savegame.redfilterautomationcount;
+    if (typeof savegame.redfilterautomationprice !== "undefined")
+      redfilterautomationprice = savegame.redfilterautomationprice;
+    document.getElementById("redfilterautomationprice").innerHTML =
+      Math.round(redfilterautomationprice) + " cyan";
+    if (typeof savegame.redpointerautomationcount !== "undefined")
+      redpointerautomationcount = savegame.redpointerautomationcount;
+    if (typeof savegame.redpointerautomationprice !== "undefined")
+      redpointerautomationprice = savegame.redpointerautomationprice;
+    document.getElementById("redpointerautomationprice").innerHTML =
+      Math.round(redpointerautomationprice) + " cyan";
+    if (typeof savegame.bigredfilterautomationcount !== "undefined")
+      bigredfilterautomationcount = savegame.bigredfilterautomationcount;
+    if (typeof savegame.bigredfilterautomationprice !== "undefined")
+      bigredfilterautomationprice = savegame.bigredfilterautomationprice;
+    document.getElementById("bigredfilterautomationprice").innerHTML =
+      Math.round(bigredfilterautomationprice) + " cyan";
+    if (typeof savegame.bigredpointerautomationcount !== "undefined")
+      bigredpointerautomationcount = savegame.bigredpointerautomationcount;
+    if (typeof savegame.bigredpointerautomationprice !== "undefined")
+      bigredpointerautomationprice = savegame.bigredpointerautomationprice;
+    document.getElementById("bigredpointerautomationprice").innerHTML =
+      Math.round(bigredpointerautomationprice) + " cyan";
+    if (typeof savegame.rednanometerwaveautomationcount !== "undefined")
+      rednanometerwaveautomationcount =
+        savegame.rednanometerwaveautomationcount;
+    if (typeof savegame.rednanometerwaveautomationprice !== "undefined")
+      rednanometerwaveautomationprice =
+        savegame.rednanometerwaveautomationprice;
+    document.getElementById("rednanometerwaveautomationprice").innerHTML =
+      Math.round(rednanometerwaveautomationprice) + " cyan";
+    if (typeof savegame.greenfilterautomationcount !== "undefined")
+      greenfilterautomationcount = savegame.greenfilterautomationcount;
+    if (typeof savegame.greenfilterautomationprice !== "undefined")
+      greenfilterautomationprice = savegame.greenfilterautomationprice;
+    document.getElementById("greenfilterautomationprice").innerHTML =
+      Math.round(greenfilterautomationprice) + " cyan";
+    if (typeof savegame.greenpointerautomationcount !== "undefined")
+      greenpointerautomationcount = savegame.greenpointerautomationcount;
+    if (typeof savegame.greenpointerautomationprice !== "undefined")
+      greenpointerautomationprice = savegame.greenpointerautomationprice;
+    document.getElementById("greenpointerautomationprice").innerHTML =
+      Math.round(greenpointerautomationprice) + " cyan";
+    if (typeof savegame.biggreenfilterautomationcount !== "undefined")
+      biggreenfilterautomationcount = savegame.biggreenfilterautomationcount;
+    if (typeof savegame.biggreenfilterautomationprice !== "undefined")
+      biggreenfilterautomationprice = savegame.biggreenfilterautomationprice;
+    document.getElementById("biggreenfilterautomationprice").innerHTML =
+      Math.round(biggreenfilterautomationprice) + " cyan";
+    if (typeof savegame.biggreenpointerautomationcount !== "undefined")
+      biggreenpointerautomationcount = savegame.biggreenpointerautomationcount;
+    if (typeof savegame.biggreenpointerautomationprice !== "undefined")
+      biggreenpointerautomationprice = savegame.biggreenpointerautomationprice;
+    document.getElementById("biggreenpointerautomationprice").innerHTML =
+      Math.round(biggreenpointerautomationprice) + " cyan";
+    if (typeof savegame.greennanometerwaveautomationcount !== "undefined")
+      greennanometerwaveautomationcount =
+        savegame.greennanometerwaveautomationcount;
+    if (typeof savegame.greennanometerwaveautomationprice !== "undefined")
+      greennanometerwaveautomationprice =
+        savegame.greennanometerwaveautomationprice;
+    document.getElementById("greennanometerwaveautomationprice").innerHTML =
+      Math.round(greennanometerwaveautomationprice) + " cyan";
+    if (typeof savegame.bluefilterautomationcount !== "undefined")
+      bluefilterautomationcount = savegame.bluefilterautomationcount;
+    if (typeof savegame.bluefilterautomationprice !== "undefined")
+      bluefilterautomationprice = savegame.bluefilterautomationprice;
+    document.getElementById("bluefilterautomationprice").innerHTML =
+      Math.round(bluefilterautomationprice) + " cyan";
+    if (typeof savegame.bluepointerautomationcount !== "undefined")
+      bluepointerautomationcount = savegame.bluepointerautomationcount;
+    if (typeof savegame.bluepointerautomationprice !== "undefined")
+      bluepointerautomationprice = savegame.bluepointerautomationprice;
+    document.getElementById("bluepointerautomationprice").innerHTML =
+      Math.round(bluepointerautomationprice) + " cyan";
+    if (typeof savegame.bigbluefilterautomationcount !== "undefined")
+      bigbluefilterautomationcount = savegame.bigbluefilterautomationcount;
+    if (typeof savegame.bigbluefilterautomationprice !== "undefined")
+      bigbluefilterautomationprice = savegame.bigbluefilterautomationprice;
+    document.getElementById("bigbluefilterautomationprice").innerHTML =
+      Math.round(bigbluefilterautomationprice) + " cyan";
+    if (typeof savegame.bigbluepointerautomationcount !== "undefined")
+      bigbluepointerautomationcount = savegame.bigbluepointerautomationcount;
+    if (typeof savegame.bigbluepointerautomationprice !== "undefined")
+      bigbluepointerautomationprice = savegame.bigbluepointerautomationprice;
+    document.getElementById("bigbluepointerautomationprice").innerHTML =
+      Math.round(bigbluepointerautomationprice) + " cyan";
+    if (typeof savegame.bluenanometerwaveautomationcount !== "undefined")
+      bluenanometerwaveautomationcount =
+        savegame.bluenanometerwaveautomationcount;
+    if (typeof savegame.bluenanometerwaveautomationprice !== "undefined")
+      bluenanometerwaveautomationprice =
+        savegame.bluenanometerwaveautomationprice;
+    document.getElementById("bluenanometerwaveautomationprice").innerHTML =
+      Math.round(bluenanometerwaveautomationprice) + " cyan";
+    if (typeof savegame.redtogglestate !== "undefined")
+      redtogglestate = savegame.redtogglestate;
+    if (redtogglestate) {
+      document.getElementById("redtogglestate").innerHTML = "on";
+      document.getElementById("redtoggle").style.background =
+        "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    } else {
+      document.getElementById("redtogglestate").innerHTML = "off";
+      document.getElementById("redtoggle").style.background =
+        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+    }
+    if (typeof savegame.greentogglestate !== "undefined")
+      greentogglestate = savegame.greentogglestate;
+    if (greentogglestate) {
+      document.getElementById("greentogglestate").innerHTML = "on";
+      document.getElementById("greentoggle").style.background =
+        "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    } else {
+      document.getElementById("greentogglestate").innerHTML = "off";
+      document.getElementById("greentoggle").style.background =
+        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+    }
+    if (typeof savegame.bluetogglestate !== "undefined")
+      bluetogglestate = savegame.bluetogglestate;
+    if (bluetogglestate) {
+      document.getElementById("bluetogglestate").innerHTML = "on";
+      document.getElementById("bluetoggle").style.background =
+        "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    } else {
+      document.getElementById("bluetogglestate").innerHTML = "off";
+      document.getElementById("bluetoggle").style.background =
+        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+    }
+
     //tasks
     if (typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -523,10 +702,11 @@ function showtab(x) {
     document
       .getElementById("submitTaskButton")
       .classList.remove("yellowupgrades");
+    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
+    document.getElementById("submitTaskButton").classList.add("redupgrades");
     document
       .getElementById("submitTaskButton")
-      .classList.remove("cyanupgrades");
-    document.getElementById("submitTaskButton").classList.add("redupgrades");
+      .classList.remove("magentaupgrades");
     document.getElementById("body").style.backgroundColor = "rgb(20, 0, 0)";
   }
   if (x === "green") {
@@ -543,7 +723,6 @@ function showtab(x) {
     document.getElementById("reward").style.borderColor = "green";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px green, 0 0 10px rgb(0,125,0)";
-    document.getElementById("submitTaskButton").style.backgroundColor = "green";
     document.getElementById("body").style.backgroundColor = "rgb(0, 20, 0)";
     document
       .getElementById("submitTaskButton")
@@ -552,10 +731,11 @@ function showtab(x) {
     document
       .getElementById("submitTaskButton")
       .classList.remove("yellowupgrades");
+    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
+    document.getElementById("submitTaskButton").classList.remove("redupgrades");
     document
       .getElementById("submitTaskButton")
-      .classList.remove("cyanupgrades");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
+      .classList.remove("magentaupgrades");
   }
   if (x === "blue") {
     tab = "blue";
@@ -571,7 +751,6 @@ function showtab(x) {
     document.getElementById("reward").style.borderColor = "blue";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px blue, 0 0 10px rgb(0,0,125)";
-    document.getElementById("submitTaskButton").style.backgroundColor = "blue";
     document.getElementById("body").style.backgroundColor = "rgb(0, 0, 20)";
     document.getElementById("submitTaskButton").classList.add("blueupgrades");
     document
@@ -580,16 +759,17 @@ function showtab(x) {
     document
       .getElementById("submitTaskButton")
       .classList.remove("yellowupgrades");
+    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
+    document.getElementById("submitTaskButton").classList.remove("redupgrades");
     document
       .getElementById("submitTaskButton")
-      .classList.remove("cyanupgrades");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
+      .classList.remove("magentaupgrades");
   }
   if (x === "yellow") {
     tab = "yellow";
     document.getElementById("yellow").style.display = "block";
     document.getElementById("red").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(20,20,0)";
+    document.getElementById("tabs").style.backgroundColor = "rgb(44,44,0)";
     document.getElementById("top").style.color = "rgb(153, 128, 0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
@@ -599,9 +779,7 @@ function showtab(x) {
     document.getElementById("reward").style.borderColor = "rgb(153, 128, 0)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)";
-    document.getElementById("submitTaskButton").style.backgroundColor =
-      "rgb(153, 128, 0)";
-    document.getElementById("body").style.backgroundColor = "rgb(20, 20, 0)";
+    document.getElementById("body").style.backgroundColor = "rgb(44, 44, 0)";
     document
       .getElementById("submitTaskButton")
       .classList.remove("blueupgrades");
@@ -609,16 +787,17 @@ function showtab(x) {
       .getElementById("submitTaskButton")
       .classList.remove("greenupgrades");
     document.getElementById("submitTaskButton").classList.add("yellowupgrades");
+    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
+    document.getElementById("submitTaskButton").classList.remove("redupgrades");
     document
       .getElementById("submitTaskButton")
-      .classList.remove("cyanupgrades");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
+      .classList.remove("magentaupgrades");
   }
   if (x === "cyan") {
     tab = "cyan";
     document.getElementById("cyan").style.display = "block";
     document.getElementById("red").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(0,20,20)";
+    document.getElementById("tabs").style.backgroundColor = "rgb(0,44,44)";
     document.getElementById("top").style.color = "rgb(0, 180, 190)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
@@ -628,9 +807,7 @@ function showtab(x) {
     document.getElementById("reward").style.borderColor = "rgb(0, 180, 190)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)";
-    document.getElementById("submitTaskButton").style.background =
-      "rgb(0, 180, 190)";
-    document.getElementById("body").style.backgroundColor = "rgb(0, 20, 20)";
+    document.getElementById("body").style.backgroundColor = "rgb(0, 44, 44)";
     document
       .getElementById("submitTaskButton")
       .classList.remove("blueupgrades");
@@ -640,27 +817,42 @@ function showtab(x) {
     document
       .getElementById("submitTaskButton")
       .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.add("cyanupgrades");
+    document.getElementById("submitTaskButton").classList.add("cyansubmit");
     document.getElementById("submitTaskButton").classList.remove("redupgrades");
+    document
+      .getElementById("submitTaskButton")
+      .classList.remove("magentaupgrades");
   }
   if (x === "magenta") {
     tab = "magenta";
     document.getElementById("cyan").style.display = "none";
     document.getElementById("magenta").style.display = "block";
     document.getElementById("red").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(0,20,20)";
-    document.getElementById("top").style.color = "rgb(0, 180, 190)";
+    document.getElementById("tabs").style.backgroundColor = "rgb(44,0,44)";
+    document.getElementById("top").style.color = "magenta";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
     document.getElementById("yellow").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(0, 180, 190)";
-    document.getElementById("tasks").style.borderColor = "rgb(0, 180, 190)";
-    document.getElementById("reward").style.borderColor = "rgb(0, 180, 190)";
+    document.getElementById("tasks").style.color = "magenta";
+    document.getElementById("tasks").style.borderColor = "magenta";
+    document.getElementById("reward").style.borderColor = "magenta";
     document.getElementById("body").style.textShadow =
-      "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)";
-    document.getElementById("submitTaskButton").style.background =
-      "rgb(0, 180, 190)";
-    document.getElementById("body").style.backgroundColor = "rgb(0, 20, 20)";
+      "rgb(255,0,73) 0px 0px 10px, rgb(255 126 126) 0px 0px 10px";
+    document.getElementById("body").style.backgroundColor = "rgb(44, 0, 44)";
+    document
+      .getElementById("submitTaskButton")
+      .classList.remove("blueupgrades");
+    document
+      .getElementById("submitTaskButton")
+      .classList.remove("greenupgrades");
+    document
+      .getElementById("submitTaskButton")
+      .classList.remove("yellowupgrades");
+    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
+    document.getElementById("submitTaskButton").classList.remove("redupgrades");
+    document
+      .getElementById("submitTaskButton")
+      .classList.add("magentaupgrades");
   }
 }
 
@@ -1136,116 +1328,228 @@ window.setInterval(function () {
       strongersynergycount: strongersynergycount,
       strongersynergyprice: strongersynergyprice,
       cyan: cyan,
+      redfilterautomationcount: redfilterautomationcount,
+      redfilterautomationprice: redfilterautomationprice,
+      redpointerautomationcount: redpointerautomationcount,
+      redpointerautomationprice: redpointerautomationprice,
+      bigredfilterautomationcount: bigredfilterautomationcount,
+      bigredfilterautomationprice: bigredfilterautomationprice,
+      bigredpointerautomationcount: bigredpointerautomationcount,
+      bigredpointerautomationprice: bigredpointerautomationprice,
+      rednanometerwaveautomationcount: rednanometerwaveautomationcount,
+      rednanometerwaveautomationprice: rednanometerwaveautomationprice,
+      greenfilterautomationcount: greenfilterautomationcount,
+      greenfilterautomationprice: greenfilterautomationprice,
+      greenpointerautomationcount: greenpointerautomationcount,
+      greenpointerautomationprice: greenpointerautomationprice,
+      biggreenfilterautomationcount: biggreenfilterautomationcount,
+      biggreenfilterautomationprice: biggreenfilterautomationprice,
+      biggreenpointerautomationcount: biggreenpointerautomationcount,
+      biggreenpointerautomationprice: biggreenpointerautomationprice,
+      greennanometerwaveautomationcount: greennanometerwaveautomationcount,
+      greennanometerwaveautomationprice: greennanometerwaveautomationprice,
+      bluefilterautomationcount: bluefilterautomationcount,
+      bluefilterautomationprice: bluefilterautomationprice,
+      bluepointerautomationcount: bluepointerautomationcount,
+      bluepointerautomationprice: bluepointerautomationprice,
+      bigbluefilterautomationcount: bigbluefilterautomationcount,
+      bigbluefilterautomationprice: bigbluefilterautomationprice,
+      bigbluepointerautomationcount: bigbluepointerautomationcount,
+      bigbluepointerautomationprice: bigbluepointerautomationprice,
+      bluenanometerwaveautomationcount: bluenanometerwaveautomationcount,
+      bluenanometerwaveautomationprice: bluenanometerwaveautomationprice,
+      redtogglestate: redtogglestate,
+      greentogglestate: greentogglestate,
+      bluetogglestate: bluetogglestate,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
+    //auto buy
+    redfilterautomationtimer += redfilterautomationcount;
+    redpointerautomationtimer += redpointerautomationcount;
+    bigredfilterautomationtimer += bigredfilterautomationcount;
+    bigredpointerautomationtimer += bigredpointerautomationcount;
+    rednanometerwaveautomationtimer += rednanometerwaveautomationcount;
+    greenfilterautomationtimer += greenfilterautomationcount;
+    greenpointerautomationtimer += greenpointerautomationcount;
+    biggreenfilterautomationtimer += biggreenfilterautomationcount;
+    biggreenpointerautomationtimer += biggreenpointerautomationcount;
+    greennanometerwaveautomationtimer += greennanometerwaveautomationcount;
+    bluefilterautomationtimer += bluefilterautomationcount;
+    bluepointerautomationtimer += bluepointerautomationcount;
+    bigbluefilterautomationtimer += bigbluefilterautomationcount;
+    bigbluepointerautomationtimer += bigbluepointerautomationcount;
+    bluenanometerwaveautomationtimer += bluenanometerwaveautomationcount;
+    if (redfilterautomationtimer >= 200 && redtogglestate) {
+      redfilterautomationtimer = 0;
+      buyredfilter();
+    }
+    if (greenfilterautomationtimer >= 200 && greentogglestate) {
+      greenfilterautomationtimer = 0;
+      buygreenfilter();
+    }
+    if (bluefilterautomationtimer >= 200 && bluetogglestate) {
+      bluefilterautomationtimer = 0;
+      buybluefilter();
+    }
+    if (redpointerautomationtimer >= 200 && redtogglestate) {
+      redpointerautomationtimer = 0;
+      buyredpointer();
+    }
+    if (greenpointerautomationtimer >= 200 && greentogglestate) {
+      greenpointerautomationtimer = 0;
+      buygreenpointer();
+    }
+    if (bluepointerautomationtimer >= 200 && bluetogglestate) {
+      bluepointerautomationtimer = 0;
+      buybluepointer();
+    }
+    if (bigredfilterautomationtimer >= 200 && redtogglestate) {
+      bigredfilterautomationtimer = 0;
+      buybigredfilter();
+    }
+    if (biggreenfilterautomationtimer >= 200 && greentogglestate) {
+      biggreenfilterautomationtimer = 0;
+      buybiggreenfilter();
+    }
+    if (bigbluefilterautomationtimer >= 200 && bluetogglestate) {
+      bigbluefilterautomationtimer = 0;
+      buybigbluefilter();
+    }
+    if (bigredpointerautomationtimer >= 200 && redtogglestate) {
+      bigredpointerautomationtimer = 0;
+      buybigredpointer();
+    }
+    if (biggreenpointerautomationtimer >= 200 && greentogglestate) {
+      biggreenpointerautomationtimer = 0;
+      buybiggreenpointer();
+    }
+    if (bigbluepointerautomationtimer >= 200 && bluetogglestate) {
+      bigbluepointerautomationtimer = 0;
+      buybigbluepointer();
+    }
+    if (rednanometerwaveautomationtimer >= 200 && redtogglestate) {
+      rednanometerwaveautomationtimer = 0;
+      buyrednanometerwave();
+    }
+    if (greennanometerwaveautomationtimer >= 200 && greentogglestate) {
+      greennanometerwaveautomationtimer = 0;
+      buygreennanometerwave();
+    }
+    if (bluenanometerwaveautomationtimer >= 200 && bluetogglestate) {
+      bluenanometerwaveautomationtimer = 0;
+      buybluenanometerwave();
+    }
     //increase red
     calcred(
-      //filter
+      // filter
       (((((redfilter *
         (redfilter * redupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
+        (1 + Math.sqrt(finerfilterscount) * 2) +
+        // pointer
         redpointer *
           10 *
           (redpointer * redupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigredfilter
-        bigredfilter * 100 * (1 + finerfilterscount * 3) +
-        //bigredpointer
-        bigredpointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //rednanometerwave
+          (1 + Math.sqrt(focussedpointerscount) * 2) +
+        // bigredfilter
+        bigredfilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+        // bigredpointer
+        bigredpointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+        // rednanometerwave
         (rednanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergygreen
-        (Math.log(green + 1) * greenupgrade2 + 1)) /
+        (1 + Math.log1p(micrometerwavecount) * 1.5) *
+        // weaksynergygreen
+        (Math.log1p(green) * greenupgrade2 + 1)) /
         (10 * greenupgrade2 + 1)) *
-        //weaksynergyblue
-        (Math.log(blue + 1) * blueupgrade2 + 1)) /
+        // weaksynergyblue
+        (Math.log1p(blue) * blueupgrade2 + 1)) /
         (10 * blueupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
+        // stronger synergy
+        (1 + Math.sqrt(strongersynergycount) * 5) *
+        // task booster
         taskBooster *
-        //yellow larger prisms
+        // yellow larger prisms
         Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount) *
-        //tri-color boost
+        // yellow color harmony
+        (1 +
+          (yellow / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+        // tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
-
     //increase green
     calcgreen(
-      //filter
+      // filter
       (((((greenfilter *
         (greenfilter * greenupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
+        (1 + Math.sqrt(finerfilterscount) * 2) +
+        // pointer
         greenpointer *
           10 *
-          (greenpointer * blueupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigfilter
-        biggreenfilter * 100 * (1 + finerfilterscount * 3) +
-        //bigpointer
-        biggreenpointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //nanometerwave
+          (greenpointer * greenupgrade3 + 1) *
+          (1 + Math.sqrt(focussedpointerscount) * 2) +
+        // biggreenfilter
+        biggreenfilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+        // biggreenpointer
+        biggreenpointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+        // greennanometerwave
         (greennanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergyred
-        (Math.log(red + 1) * redupgrade2 + 1)) /
+        (1 + Math.log1p(micrometerwavecount) * 1.5) *
+        // weaksynergyred
+        (Math.log1p(red) * redupgrade2 + 1)) /
         (10 * redupgrade2 + 1)) *
-        //weaksynergyblue
-        (Math.log(blue + 1) * blueupgrade2 + 1)) /
+        // weaksynergyblue
+        (Math.log1p(blue) * blueupgrade2 + 1)) /
         (10 * blueupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
+        // stronger synergy
+        (1 + Math.sqrt(strongersynergycount) * 5) *
+        // task booster
         taskBooster *
-        //yellow larger prisms
+        // yellow larger prisms
         Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount) *
-        //tri-color boost
+        // yellow color harmony
+        (1 +
+          (yellow / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+        // tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
-    //weaksynergyblue
-    Math.log(blue) * blueupgrade2 + 1;
 
     //increase blue
     calcblue(
-      //filter
+      // filter
       (((((bluefilter *
         (bluefilter * blueupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
+        (1 + Math.sqrt(finerfilterscount) * 2) +
+        // pointer
         bluepointer *
           10 *
           (bluepointer * blueupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigfilter
-        bigbluefilter * 100 * (1 + finerfilterscount * 3) +
-        //bigpointer
-        bigbluepointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //nanometerwave
+          (1 + Math.sqrt(focussedpointerscount) * 2) +
+        // bigbluefilter
+        bigbluefilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+        // bigbluepointer
+        bigbluepointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+        // bluenanometerwave
         (bluenanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergyred
-        (Math.log(red + 1) * redupgrade2 + 1)) /
-        (10 * redupgrade2 + 1)) *
-        //weaksynergygreen
-        (Math.log(red + 1) * redupgrade2 + 1)) /
+        (1 + Math.log1p(micrometerwavecount) * 1.5) *
+        // weaksynergygreen
+        (Math.log1p(green) * greenupgrade2 + 1)) /
         (10 * greenupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
+        // weaksynergyred
+        (Math.log1p(red) * redupgrade2 + 1)) /
+        (10 * redupgrade2 + 1)) *
+        // stronger synergy
+        (1 + Math.sqrt(strongersynergycount) * 5) *
+        // task booster
         taskBooster *
-        //yellow larger prisms
+        // yellow larger prisms
         Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount) *
-        //tri-color boost
+        // yellow color harmony
+        (1 +
+          (yellow / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+        // tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
   }
@@ -1310,14 +1614,14 @@ function submitTask() {
       document.getElementById("taskColor").style.color = "blue";
       document.getElementById("taskColor").style.textShadow = "0 0 10px blue";
       document.getElementById("taskReward").innerHTML = "2x color gain";
-      taskRewardCount = "2x color gain";
-      taskRewardColor = "";
+      taskRewardCount = 2;
+      taskRewardColor = "x color gain";
       document.getElementById("tabblue").style.display = "block";
       blue += 10;
     } else if (tasksCompleted === 3) {
-      taskColorGoalRed = 1100 / (1 + streamlinedtaskscount * 10);
-      taskColorGoalGreen = 1150 / (1 + streamlinedtaskscount * 10);
-      taskColorGoalBlue = 410 / (1 + streamlinedtaskscount * 10);
+      taskColorGoalRed = 11000 / (1 + streamlinedtaskscount * 10);
+      taskColorGoalGreen = 11500 / (1 + streamlinedtaskscount * 10);
+      taskColorGoalBlue = 4100 / (1 + streamlinedtaskscount * 10);
       document.getElementById("taskGoalAmountRed").innerHTML =
         Math.round(taskColorGoalRed);
       document.getElementById("taskGoalAmountGreen").innerHTML =
@@ -1776,110 +2080,298 @@ function buystrongersynergy() {
 
 window.setInterval(function () {
   yellow +=
-    (redoverflowcount * //filter
+    (redoverflowcount *
       ((((((redfilter *
         (redfilter * redupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
+        (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
         redpointer *
           10 *
           (redpointer * redupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigredfilter
-        bigredfilter * 100 * (1 + finerfilterscount * 3) +
-        //bigredpointer
-        bigredpointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //rednanometerwave
+          (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
+        bigredfilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+        bigredpointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
         (rednanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergygreen
-        (Math.log(green + 1) * greenupgrade2 + 1)) /
+        (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+        (Math.log1p(green) * greenupgrade2 + 1)) / // Controlled synergy with green
         (10 * greenupgrade2 + 1)) *
-        //weaksynergyblue
-        (Math.log(blue + 1) * blueupgrade2 + 1)) /
+        (Math.log1p(blue) * blueupgrade2 + 1)) / // Controlled synergy with blue
         (10 * blueupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
+        (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
-        //yellow larger prisms
         Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)) *
-      //tri-color boost
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
-    1000000000000;
+        (1 +
+          (yellow / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+    1e12; // Adjusted scaling factor for 1e10 red
 
   yellow +=
-    (greenoverflowcount * //filter
+    (greenoverflowcount *
       ((((((greenfilter *
         (greenfilter * greenupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
+        (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
         greenpointer *
           10 *
-          (greenpointer * blueupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigfilter
-        biggreenfilter * 100 * (1 + finerfilterscount * 3) +
-        //bigpointer
-        biggreenpointer * 1000) *
-        (1 + focussedpointerscount * 3) *
-        //nanometerwave
+          (greenpointer * greenupgrade3 + 1) *
+          (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
+        biggreenfilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+        biggreenpointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
         (greennanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergyred
-        (Math.log(red + 1) * redupgrade2 + 1)) /
+        (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+        (Math.log1p(red) * redupgrade2 + 1)) / // Controlled synergy with red
         (10 * redupgrade2 + 1)) *
-        //weaksynergyblue
-        (Math.log(blue + 1) * blueupgrade2 + 1)) /
+        (Math.log1p(blue) * blueupgrade2 + 1)) / // Controlled synergy with blue
         (10 * blueupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
+        (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
-        //yellow larger prisms
         Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)) *
-      //tri-color boost
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
-    1000000000000;
+        (1 +
+          (yellow / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+    1e12; // Adjusted scaling factor for 1e10 green
 
   yellow +=
-    (blueoverflowcount * //filter
+    (blueoverflowcount *
       ((((((bluefilter *
         (bluefilter * blueupgrade1 + 1) *
-        (1 + finerfilterscount * 3) +
-        //pointer
+        (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
         bluepointer *
           10 *
           (bluepointer * blueupgrade3 + 1) *
-          (1 + focussedpointerscount * 3) +
-        //bigfilter
-        bigbluefilter * 100 * (1 + finerfilterscount * 3) +
-        //bigpointer
-        bigbluepointer * 1000 * (1 + focussedpointerscount * 3)) *
-        //nanometerwave
+          (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
+        bigbluefilter * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+        bigbluepointer * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
         (bluenanometerwave * 0.5 + 1) *
-        (1 + micrometerwavecount * 2) *
-        //weaksynergyred
-        (Math.log(red + 1) * redupgrade2 + 1)) /
+        (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+        (Math.log1p(red) * redupgrade2 + 1)) / // Controlled synergy with red
         (10 * redupgrade2 + 1)) *
-        //weaksynergygreen
-        (Math.log(red + 1) * redupgrade2 + 1)) /
+        (Math.log1p(green) * greenupgrade2 + 1)) / // Controlled synergy with green
         (10 * greenupgrade2 + 1)) *
-        //stronger synergy
-        (1 + strongersynergycount * 10) *
-        //task booster
+        (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
-        //yellow larger prisms
         Math.pow(2, largerprismscount) *
-        //yellow color harmony
-        (1 + (yellow / 10) * colorharmonycount)) *
-      //tri-color boost
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) /
-    1000000000000;
+        (1 +
+          (yellow / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+    1e12; // Adjusted scaling factor for 1e10 red
+
   document.getElementById("yellowcount").innerHTML =
     "yellow: " + Math.round(yellow);
 }, 20);
+
+//cyan upgrades
+function buyredfilterautomation() {
+  if (red > redfilterautomationprice) {
+    redfilterautomationcount++;
+    cyan -= redfilterautomationprice;
+    redfilterautomationprice = 5 * Math.pow(1.3, redfilterautomationcount);
+    document.getElementById("redfilterautomationprice").innerHTML =
+      Math.round(redfilterautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buyredpointerautomation() {
+  if (red > redpointerautomationprice) {
+    redpointerautomationcount++;
+    cyan -= redpointerautomationprice;
+    redpointerautomationprice = 5 * Math.pow(1.3, redpointerautomationcount);
+    document.getElementById("redpointerautomationprice").innerHTML =
+      Math.round(redpointerautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybigredfilterautomation() {
+  if (red > bigredfilterautomationprice) {
+    bigredfilterautomationcount++;
+    cyan -= bigredfilterautomationprice;
+    bigredfilterautomationprice =
+      5 * Math.pow(1.3, bigredfilterautomationcount);
+    document.getElementById("bigredfilterautomationprice").innerHTML =
+      Math.round(bigredfilterautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybigredpointerautomation() {
+  if (red > bigredpointerautomationprice) {
+    bigredpointerautomationcount++;
+    cyan -= bigredpointerautomationprice;
+    bigredpointerautomationprice =
+      5 * Math.pow(1.3, bigredpointerautomationcount);
+    document.getElementById("bigredpointerautomationprice").innerHTML =
+      Math.round(bigredpointerautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buyrednanometerwaveautomation() {
+  if (red > rednanometerwaveautomationprice) {
+    rednanometerwaveautomationcount++;
+    cyan -= rednanometerwaveautomationprice;
+    rednanometerwaveautomationprice =
+      5 * Math.pow(1.3, rednanometerwaveautomationcount);
+    document.getElementById("rednanometerwaveautomationprice").innerHTML =
+      Math.round(rednanometerwaveautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buygreenfilterautomation() {
+  if (green > greenfilterautomationprice) {
+    greenfilterautomationcount++;
+    cyan -= greenfilterautomationprice;
+    greenfilterautomationprice = 5 * Math.pow(1.3, greenfilterautomationcount);
+    document.getElementById("greenfilterautomationprice").innerHTML =
+      Math.round(greenfilterautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buygreenpointerautomation() {
+  if (green > greenpointerautomationprice) {
+    greenpointerautomationcount++;
+    cyan -= greenpointerautomationprice;
+    greenpointerautomationprice =
+      5 * Math.pow(1.3, greenpointerautomationcount);
+    document.getElementById("greenpointerautomationprice").innerHTML =
+      Math.round(greenpointerautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybiggreenfilterautomation() {
+  if (green > biggreenfilterautomationprice) {
+    biggreenfilterautomationcount++;
+    cyan -= biggreenfilterautomationprice;
+    biggreenfilterautomationprice =
+      5 * Math.pow(1.3, biggreenfilterautomationcount);
+    document.getElementById("biggreenfilterautomationprice").innerHTML =
+      Math.round(biggreenfilterautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybiggreenpointerautomation() {
+  if (green > biggreenpointerautomationprice) {
+    biggreenpointerautomationcount++;
+    cyan -= biggreenpointerautomationprice;
+    biggreenpointerautomationprice =
+      5 * Math.pow(1.3, biggreenpointerautomationcount);
+    document.getElementById("biggreenpointerautomationprice").innerHTML =
+      Math.round(biggreenpointerautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buygreennanometerwaveautomation() {
+  if (green > greennanometerwaveautomationprice) {
+    greennanometerwaveautomationcount++;
+    cyan -= greennanometerwaveautomationprice;
+    greennanometerwaveautomationprice =
+      5 * Math.pow(1.3, greennanometerwaveautomationcount);
+    document.getElementById("greennanometerwaveautomationprice").innerHTML =
+      Math.round(greennanometerwaveautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybluefilterautomation() {
+  if (blue > bluefilterautomationprice) {
+    bluefilterautomationcount++;
+    cyan -= bluefilterautomationprice;
+    bluefilterautomationprice = 5 * Math.pow(1.3, bluefilterautomationcount);
+    document.getElementById("bluefilterautomationprice").innerHTML =
+      Math.round(bluefilterautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybluepointerautomation() {
+  if (blue > bluepointerautomationprice) {
+    bluepointerautomationcount++;
+    cyan -= bluepointerautomationprice;
+    bluepointerautomationprice = 5 * Math.pow(1.3, bluepointerautomationcount);
+    document.getElementById("bluepointerautomationprice").innerHTML =
+      Math.round(bluepointerautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybigbluefilterautomation() {
+  if (blue > bigbluefilterautomationprice) {
+    bigbluefilterautomationcount++;
+    cyan -= bigbluefilterautomationprice;
+    bigbluefilterautomationprice =
+      5 * Math.pow(1.3, bigbluefilterautomationcount);
+    document.getElementById("bigbluefilterautomationprice").innerHTML =
+      Math.round(bigbluefilterautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybigbluepointerautomation() {
+  if (blue > bigbluepointerautomationprice) {
+    bigbluepointerautomationcount++;
+    cyan -= bigbluepointerautomationprice;
+    bigbluepointerautomationprice =
+      5 * Math.pow(1.3, bigbluepointerautomationcount);
+    document.getElementById("bigbluepointerautomationprice").innerHTML =
+      Math.round(bigbluepointerautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+function buybluenanometerwaveautomation() {
+  if (blue > bluenanometerwaveautomationprice) {
+    bluenanometerwaveautomationcount++;
+    cyan -= bluenanometerwaveautomationprice;
+    bluenanometerwaveautomationprice =
+      5 * Math.pow(1.3, bluenanometerwaveautomationcount);
+    document.getElementById("bluenanometerwaveautomationprice").innerHTML =
+      Math.round(bluenanometerwaveautomationprice) + " cyan";
+    document.getElementById("cyancount").innerHTML =
+      "cyan: " + Math.floor(cyan);
+  }
+}
+
+//toggle automation
+function togglered() {
+  redtogglestate = !redtogglestate;
+  if (redtogglestate) {
+    document.getElementById("redtoggle").style.background =
+      "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    document.getElementById("redtogglestate").innerHTML = "on";
+  } else {
+    document.getElementById("redtoggle").style.background =
+      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+    document.getElementById("redtogglestate").innerHTML = "off";
+  }
+}
+function togglegreen() {
+  greentogglestate = !greentogglestate;
+  if (greentogglestate) {
+    document.getElementById("greentoggle").style.background =
+      "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    document.getElementById("greentogglestate").innerHTML = "on";
+  } else {
+    document.getElementById("greentoggle").style.background =
+      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+    document.getElementById("greentogglestate").innerHTML = "off";
+  }
+}
+function toggleblue() {
+  bluetogglestate = !bluetogglestate;
+  if (bluetogglestate) {
+    document.getElementById("bluetoggle").style.background =
+      "linear-gradient(45deg, #003e00, #32db32, #025202)";
+    document.getElementById("bluetogglestate").innerHTML = "on";
+  } else {
+    document.getElementById("bluetoggle").style.background =
+      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+    document.getElementById("bluetogglestate").innerHTML = "off";
+  }
+}
