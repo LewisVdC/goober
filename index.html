@@ -39,6 +39,7 @@
   <div id="toptext"></div>
   <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
   <input id="devmode" type="checkbox">
+  <p id="devtooltip">devmode</p>
   <!-- tabs -->
   <div id="tabs">
     <button class="tab" id="tabred" onclick="showtab('red')">Red</button>
@@ -414,7 +415,7 @@
       </button>
       <button class="yellowupgrades" onclick="buylargerprisms()">
         <strong>larger prisms</strong>
-        <p class="yellowdescription">multiply rgb gain by 2x</p>
+        <p class="yellowdescription">multiply rgb gain by +1x</p>
         <p class="yellowdescription">
           <span id="largerprismsprice">10</span> yellow
         </p>
@@ -436,21 +437,21 @@
       </button>
       <button class="yellowupgrades" onclick="buyredoverflow()">
         <strong>red overflow</strong>
-        <p class="yellowdescription">gain 1 yellow/s per 1e10 red/s</p>
+        <p class="yellowdescription">gain 1 yellow/s per 1e12 red/s</p>
         <p class="yellowdescription">
           <span id="redoverflowprice">100</span> yellow
         </p>
       </button>
       <button class="yellowupgrades" onclick="buygreenoverflow()">
         <strong>green overflow</strong>
-        <p class="yellowdescription">gain 1 yellow/s per 1e10 green/s</p>
+        <p class="yellowdescription">gain 1 yellow/s per 1e12 green/s</p>
         <p class="yellowdescription">
           <span id="greenoverflowprice">100</span> yellow
         </p>
       </button>
       <button class="yellowupgrades" onclick="buyblueoverflow()">
         <strong>blue overflow</strong>
-        <p class="yellowdescription">gain 1 yellow/s per 1e10 blue/s</p>
+        <p class="yellowdescription">gain 1 yellow/s per 1e12 blue/s</p>
         <p class="yellowdescription">
           <span id="blueoverflowprice">100</span> yellow
         </p>
@@ -510,7 +511,7 @@
         <strong>color syphon</strong>
         <p class="yellowdescription">mix 1e15 of each color to create 10 cyan</p>
         <p class="yellowdescription">
-          <span id="colorsyphonprice">1200</span> yellow
+          <span id="colorsyphonprice">12000</span> yellow
         </p>
       </button>
       <br />
