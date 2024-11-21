@@ -279,7 +279,7 @@ div#tabs {
   background-color: rgb(20, 0, 0);
   display: flex;
   justify-content: center;
-  width: 250px;
+  width: calc(250px/3);
   flex-wrap: wrap;
   margin: 0;
 }
@@ -826,7 +826,6 @@ div#magenta {
   padding-top: 10px;
 }
 #alltabs{
-  height: calc(64px / 3 * 2);
   display: flex;
   justify-content: center;
 }
