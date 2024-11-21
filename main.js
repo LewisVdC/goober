@@ -532,6 +532,13 @@ function load() {
     if (cyan > 0) {
       document.getElementById("tabcyan").style.display = "block";
     }
+    if(tasksCompleted === 0){
+      document.getElementById("tabs").style.width = "calc(250px/3)";
+    } else if(tasksCompleted === 1){
+      document.getElementById("tabs").style.width = "calc(250px/3*2)";
+    } else{
+      document.getElementById("tabs").style.width = "250px";
+    }
     if (typeof savegame.taskColorGoalRed !== "undefined")
       taskColorGoalRed = savegame.taskColorGoalRed;
     document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
@@ -2630,6 +2637,8 @@ document.getElementById("devmode").addEventListener("change", function () {
       document.getElementById("tabs").style.width = "calc(250px/3)";
     } else if(tasksCompleted === 1){
       document.getElementById("tabs").style.width = "calc(250px/3*2)";
+    } else{
+      document.getElementById("tabs").style.width = "250px";
     }
   }
 });
