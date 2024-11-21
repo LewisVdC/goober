@@ -17,7 +17,7 @@ body {
   margin-right: 15px;
 }
 .tab {
-  width: calc(100% / 3);
+  width: calc(250px / 3);
 }
 #reward {
   border-bottom: outset;
@@ -622,11 +622,12 @@ button#tabcyan {
   box-shadow: 0 0 50px 1px cyan;
 }
 button#tabmagenta {
-  display: block;
+  display: none;
   background-color: magenta;
   box-shadow: 0 0 50px 1px magenta;
 }
 button#tabwhite{
+  z-index: 2;
   background-color: white;
   box-shadow: 0 0 50px 1px white;
 }
@@ -825,6 +826,7 @@ div#magenta {
   padding-top: 10px;
 }
 #alltabs{
+  height: calc(64px / 3 * 2);
   display: flex;
   justify-content: center;
 }

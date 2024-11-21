@@ -2602,12 +2602,22 @@ function spell1(number) {
 
 //no more magic it is banned
 
-//temp devmode (disables annoying coming soon signs)
+//temp devmode (disables annoying coming soon signs and unlocks all tabs)
 document.getElementById("devmode").addEventListener("change", function () {
   if (document.getElementById("devmode").checked === true) {
     document.getElementById("comingsoon").style.display = "none";
+    document.getElementById("tabmagenta").style.display = "block";
+    document.getElementById("tabgreen").style.display = "block";
+    document.getElementById("tabblue").style.display = "block";
+    document.getElementById("tabyellow").style.display = "block";
+    document.getElementById("tabcyan").style.display = "block";
   } else {
     document.getElementById("comingsoon").style.display = "block";
+    document.getElementById("tabmagenta").style.display = "none";
+    document.getElementById("tabgreen").style.display = "none";
+    document.getElementById("tabblue").style.display = "none";
+    document.getElementById("tabyellow").style.display = "none";
+    document.getElementById("tabcyan").style.display = "none";
   }
 });
 
