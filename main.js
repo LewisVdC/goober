@@ -2596,6 +2596,20 @@ function buydrink() {
 //and stops here
 //now for magic,,
 
+//ok so some explanation is probably needed for how i kinda want spells to work
+//if u wanna say something heres some empty lines
+//
+//
+//
+//
+//back to me, i wanna add up all the buildings you have of magenta and then use that as your "magic power" which can make spells stronger,
+//works good for motivation to actually buy all the buildings bc otherwise ud only buy the last one bc its the only good one for making magic
+//synergy kinda helps make buildings 1 and 2 of the rgb buildings kinda decent and competitive with 4 but building 3 actually gets left in the dust
+//id say buff it but look at how op the rest is how about we nerf the rest instead
+
+//spell 1 just works as a get x amount of seconds of red production
+//but idk how to balance this bc like ?? what if you have tons of magic and get like 5 decades of red production
+//even if i softcap it or something you can just autoclick it or something idk
 function spell1(number) {
   red = red + debugrednumber * number;
 }
@@ -2612,6 +2626,7 @@ document.getElementById("devmode").addEventListener("change", function () {
 });
 
 //some number formatting
+//lol u can tell by the comments chatgpt wrote this
 function formatNumber(number) {
   // Check if the number has 10 or more digits
   if (Math.abs(number) >= 1e7) {
