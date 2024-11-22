@@ -38,7 +38,7 @@
   </div>
   <div id="toptext"></div>
   <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
-  <input id="devmode" type="checkbox">
+  <input id="devmode" type="checkbox" />
   <p id="devtooltip">devmode</p>
   <!-- tabs -->
   <div id="alltabs">
@@ -513,7 +513,9 @@
       </button>
       <button class="yellowupgrades" onclick="buycolorsyphon()">
         <strong>color syphon</strong>
-        <p class="yellowdescription">mix 1e15 of each color to create 10 cyan</p>
+        <p class="yellowdescription">
+          mix 1e15 of each color to create 10 cyan
+        </p>
         <p class="yellowdescription">
           <span id="colorsyphonprice">12000</span> yellow
         </p>
@@ -528,111 +530,168 @@
     </div>
     <div id="cyanbuildings">
       <div id="redautomation">
-        <button class="cyanupgrades redupgrades" onclick="buyredfilterautomation()">
+        <button
+          class="cyanupgrades redupgrades"
+          onclick="buyredfilterautomation()"
+        >
           Automate buy red filter
-          <br>
+          <br />
           <span id="redfilterautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades redupgrades" onclick="buyredpointerautomation()">
+        <button
+          class="cyanupgrades redupgrades"
+          onclick="buyredpointerautomation()"
+        >
           Automate buy red pointer
-          <br>
+          <br />
           <span id="redpointerautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades redupgrades" onclick="buybigredfilterautomation()">
+        <button
+          class="cyanupgrades redupgrades"
+          onclick="buybigredfilterautomation()"
+        >
           Automate buy big red filter
-          <br>
+          <br />
           <span id="bigredfilterautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades redupgrades" onclick="buybigredpointerautomation()">
+        <button
+          class="cyanupgrades redupgrades"
+          onclick="buybigredpointerautomation()"
+        >
           Automate buy big red pointer
-          <br>
+          <br />
           <span id="bigredpointerautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades redupgrades" onclick="buyrednanometerwaveautomation()">
+        <button
+          class="cyanupgrades redupgrades"
+          onclick="buyrednanometerwaveautomation()"
+        >
           Automate buy red nanometer wave
-          <br>
+          <br />
           <span id="rednanometerwaveautomationprice">5 cyan</span>
         </button>
         <br />
-        <button  class="cyanupgrades toggle" id="redtoggle" onclick="togglered()">
+        <button
+          class="cyanupgrades toggle"
+          id="redtoggle"
+          onclick="togglered()"
+        >
           toggle red automation
           <br />
           <span id="redtogglestate">on</span>
         </button>
       </div>
       <div id="greenautomation">
-        <button class="cyanupgrades greenupgrades" onclick="buygreenfilterautomation()">
+        <button
+          class="cyanupgrades greenupgrades"
+          onclick="buygreenfilterautomation()"
+        >
           Automate buy green filter
-          <br>
+          <br />
           <span id="greenfilterautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades greenupgrades" onclick="buygreenpointerautomation()">
+        <button
+          class="cyanupgrades greenupgrades"
+          onclick="buygreenpointerautomation()"
+        >
           Automate buy green pointer
-          <br>
+          <br />
           <span id="greenpointerautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades greenupgrades" onclick="buybiggreenfilterautomation()">
+        <button
+          class="cyanupgrades greenupgrades"
+          onclick="buybiggreenfilterautomation()"
+        >
           Automate buy big green filter
-          <br>
+          <br />
           <span id="biggreenfilterautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades greenupgrades" onclick="buybiggreenpointerautomation()">
+        <button
+          class="cyanupgrades greenupgrades"
+          onclick="buybiggreenpointerautomation()"
+        >
           Automate buy big green pointer
-          <br>
+          <br />
           <span id="biggreenpointerautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades greenupgrades" onclick="buygreennanometerwaveautomation()">
+        <button
+          class="cyanupgrades greenupgrades"
+          onclick="buygreennanometerwaveautomation()"
+        >
           Automate buy green nanometer wave
-          <br>
+          <br />
           <span id="greennanometerwaveautomationprice">5 cyan</span>
         </button>
         <br />
-        <button  class="cyanupgrades toggle" id="greentoggle" onclick="togglegreen()">
+        <button
+          class="cyanupgrades toggle"
+          id="greentoggle"
+          onclick="togglegreen()"
+        >
           toggle green automation
           <br />
           <span id="greentogglestate">on</span>
         </button>
       </div>
       <div id="blueautomation">
-        <button class="cyanupgrades blueupgrades" onclick="buybluefilterautomation()">
+        <button
+          class="cyanupgrades blueupgrades"
+          onclick="buybluefilterautomation()"
+        >
           Automate buy blue filter
-          <br>
+          <br />
           <span id="bluefilterautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades blueupgrades" onclick="buybluepointerautomation()">
+        <button
+          class="cyanupgrades blueupgrades"
+          onclick="buybluepointerautomation()"
+        >
           Automate buy blue pointer
-          <br>
+          <br />
           <span id="bluepointerautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades blueupgrades" onclick="buybigbluefilterautomation()">
+        <button
+          class="cyanupgrades blueupgrades"
+          onclick="buybigbluefilterautomation()"
+        >
           Automate buy big blue filter
-          <br>
+          <br />
           <span id="bigbluefilterautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades blueupgrades" onclick="buybigbluepointerautomation()">
+        <button
+          class="cyanupgrades blueupgrades"
+          onclick="buybigbluepointerautomation()"
+        >
           Automate buy big blue pointer
-          <br>
+          <br />
           <span id="bigbluepointerautomationprice">5 cyan</span>
         </button>
         <br />
-        <button class="cyanupgrades blueupgrades" onclick="buybluenanometerwaveautomation()">
+        <button
+          class="cyanupgrades blueupgrades"
+          onclick="buybluenanometerwaveautomation()"
+        >
           Automate buy blue nanometer wave
-          <br>
+          <br />
           <span id="bluenanometerwaveautomationprice">5 cyan</span>
         </button>
         <br />
-        <button  class="cyanupgrades toggle" id="bluetoggle" onclick="toggleblue()">
+        <button
+          class="cyanupgrades toggle"
+          id="bluetoggle"
+          onclick="toggleblue()"
+        >
           toggle blue automation
           <br />
           <span id="bluetogglestate">on</span>
@@ -642,15 +701,19 @@
   </div>
   <div id="magenta" class="tab">
     <div id="top" style="margin-bottom: 10px">
-      <h1 style="color: magenta;" id="comingsoon">COMING SOON!</h1>
+      <h1 style="color: magenta" id="comingsoon">COMING SOON!</h1>
       <span id="magentacount">magenta: 0</span>
-      <br>
-      <span id="magiccount"> if you can read this you are a human on earth</span>
+      <br />
+      <span id="magiccount">
+        if you can read this you are a human on earth</span
+      >
     </div>
     <div id="magentabuildings">
       <div id="magentabuild1" class="magentabuild">
         <div id="magentabuilding1text" class="magentatext">
-          <span>pour some magenta into a cauldron: <span id="couldroncount"></span></span>
+          <span
+            >pour some magenta into a cauldron: <span id="couldroncount"></span
+          ></span>
         </div>
         <div id="magentabuilding1" class="magentabuilding">
           <button id="couldron" class="magentaupgrades" onClick="buycouldron()">
@@ -664,7 +727,11 @@
           <span>study your mixture: <span id="studycount"></span></span>
         </div>
         <div id="magentabuilding2" class="magentabuilding">
-          <button id="studycouldron" class="magentaupgrades" onClick="buystudy()">
+          <button
+            id="studycouldron"
+            class="magentaupgrades"
+            onClick="buystudy()"
+          >
             cost:
             <span id="studycost">100</span>
           </button>
@@ -675,11 +742,7 @@
           <span>feed it to a test animal: <span id="feedcount"></span></span>
         </div>
         <div id="magentabuilding3" class="magentabuilding">
-          <button
-            id="feed"
-            class="magentaupgrades"
-            onClick="buyfeed()"
-          >
+          <button id="feed" class="magentaupgrades" onClick="buyfeed()">
             cost:
             <span id="feedcost">1000</span>
           </button>
@@ -687,9 +750,7 @@
       </div>
       <div id="magentabuild4" class="magentabuild">
         <div id="magentabuilding4text" class="magentatext">
-          <span
-            >feed it to a person: <span id="feedpersoncount"></span
-          ></span>
+          <span>feed it to a person: <span id="feedpersoncount"></span></span>
         </div>
         <div id="magentabuilding4" class="magentabuilding">
           <button
@@ -704,22 +765,28 @@
       </div>
       <div id="magentabuild5" class="magentabuild">
         <div id="magentabuilding5text" class="magentatext">
-          <span
-            >drink it yourself: <span id="drinkcount"></span
-          ></span>
+          <span>drink it yourself: <span id="drinkcount"></span></span>
         </div>
         <div id="magentabuilding5" class="magentabuilding">
-          <button
-            id="drink"
-            class="magentaupgrades"
-            onClick="buydrink()"
-          >
+          <button id="drink" class="magentaupgrades" onClick="buydrink()">
             cost:
             <span id="drinkcost">100000</span>
           </button>
         </div>
+        <!-- this is gonna be horrible -->
+      </div>
+      <div id="spellcasting">cast some spells!</div>
+      <div id="spellcastingbox">
+        <button class="spell" id="think" onClick="think()">
+          <span
+            >you dont have any yet,, ask around to see how to cast one</span
+          ></button
+        ><br />
+        <button class="spell" id="1">instant red</button>
+        <button class="spell" id="2">instant green</button>
+        <button class="spell" id="3">instant blue</button>
       </div>
     </div>
-  </div></div></div></div></div>
+  </div>
   <script type="text/javascript" src="main.js"></script>
 </body>

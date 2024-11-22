@@ -532,11 +532,11 @@ function load() {
     if (cyan > 0) {
       document.getElementById("tabcyan").style.display = "block";
     }
-    if(tasksCompleted === 0){
+    if (tasksCompleted === 0) {
       document.getElementById("tabs").style.width = "calc(250px/3)";
-    } else if(tasksCompleted === 1){
+    } else if (tasksCompleted === 1) {
       document.getElementById("tabs").style.width = "calc(250px/3*2)";
-    } else{
+    } else {
       document.getElementById("tabs").style.width = "250px";
     }
     if (typeof savegame.taskColorGoalRed !== "undefined")
@@ -1762,7 +1762,7 @@ function submitTask() {
       taskRewardColor = "blue";
       document.getElementById("tabgreen").style.display = "block";
       document.getElementById("tabs").style.width = "calc(250px/3*2)";
-      green += 10;  
+      green += 10;
     } else if (tasksCompleted === 2) {
       taskColorGoalRed = 0;
       taskColorGoalGreen = 0;
@@ -2656,10 +2656,33 @@ function buydrink() {
 //spell 1 just works as a get x amount of seconds of red production
 //but idk how to balance this bc like ?? what if you have tons of magic and get like 5 decades of red production
 //even if i softcap it or something you can just autoclick it or something idk
+
+//todo move these vars up to the massive list at the top
+var spellcount = 5;
+var spell1unlock = 0;
+var spell2unlock = 0;
+var spell3unlock = 0;
+var spell4unlock = 0;
+var spell5unlock = 0;
+
+//idea!! cooldown to the spells
+//and make the spell much less effective at higher magic usage but u still have to bc u needa make most of it bc of the cooldown
 function spell1(number) {
   red = red + debugrednumber * number;
 }
+//oh and make it so u have to unlock the spells that sounds silly
+function think() {
+  var randomspell = Math.floor(Math.random() * spellcount) + 1;
+  if (window[`spell${randomspell}unlock`] == 1) {
+    randomspell++;
+  }
+  window[`spell${randomspell}unlock`] = 1;
+  checkspell(randomspell);
+}
 
+function checkspell(number) {
+  document.getElementById(`${number}`).style.display = "block";
+}
 //no more magic it is banned
 
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
@@ -2674,21 +2697,18 @@ document.getElementById("devmode").addEventListener("change", function () {
     document.getElementById("tabs").style.width = "250px";
   } else {
     document.getElementById("comingsoon").style.display = "block";
-    if(magenta===0)
+    if (magenta === 0)
       document.getElementById("tabmagenta").style.display = "none";
-    if(green===0)
-      document.getElementById("tabgreen").style.display = "none";
-    if(blue===0)
-      document.getElementById("tabblue").style.display = "none";
-    if(yellow===0)
+    if (green === 0) document.getElementById("tabgreen").style.display = "none";
+    if (blue === 0) document.getElementById("tabblue").style.display = "none";
+    if (yellow === 0)
       document.getElementById("tabyellow").style.display = "none";
-    if(cyan===0)
-      document.getElementById("tabcyan").style.display = "none";
-    if(tasksCompleted === 0){
+    if (cyan === 0) document.getElementById("tabcyan").style.display = "none";
+    if (tasksCompleted === 0) {
       document.getElementById("tabs").style.width = "calc(250px/3)";
-    } else if(tasksCompleted === 1){
+    } else if (tasksCompleted === 1) {
       document.getElementById("tabs").style.width = "calc(250px/3*2)";
-    } else{
+    } else {
       document.getElementById("tabs").style.width = "250px";
     }
   }
