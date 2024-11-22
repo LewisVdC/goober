@@ -897,7 +897,7 @@ function showtab(x) {
     document.getElementById("tasks").style.borderColor = "magenta";
     document.getElementById("reward").style.borderColor = "magenta";
     document.getElementById("body").style.textShadow =
-      "rgb(255,0,73) 0px 0px 10px, rgb(255 126 126) 0px 0px 10px";
+      "rgb(255 0 238) 0px 0px 10px, rgb(255, 126, 126) 0px 0px 10px";
     document.getElementById("body").style.backgroundColor = "rgb(44, 0, 44)";
     document
       .getElementById("submitTaskButton")

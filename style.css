@@ -72,7 +72,8 @@ span#magentacount {
   color: magenta;
 }
 span#magiccount {
-  color: magenta;
+  color:#731dc8 !important;
+  text-shadow: #0003fc 0 0 10px, #834c85 0 0 10px !important;
 }
 div#red {
   display: block;
