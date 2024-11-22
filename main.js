@@ -742,6 +742,7 @@ function showtab(x) {
   if (x === "red") {
     tab = "red";
     document.getElementById("red").style.display = "block";
+    document.getElementById("magenta").style.display = "none";
     document.getElementById("yellow").style.display = "none";
     document.getElementById("cyan").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(20,0,0)";
@@ -772,6 +773,7 @@ function showtab(x) {
   if (x === "green") {
     tab = "green";
     document.getElementById("red").style.display = "none";
+    document.getElementById("magenta").style.display = "none";
     document.getElementById("yellow").style.display = "none";
     document.getElementById("cyan").style.display = "none";
     document.getElementById("green").style.display = "block";
@@ -800,6 +802,7 @@ function showtab(x) {
   if (x === "blue") {
     tab = "blue";
     document.getElementById("red").style.display = "none";
+    document.getElementById("magenta").style.display = "none";
     document.getElementById("yellow").style.display = "none";
     document.getElementById("green").style.display = "none";
     document.getElementById("cyan").style.display = "none";
@@ -828,6 +831,7 @@ function showtab(x) {
   if (x === "yellow") {
     tab = "yellow";
     document.getElementById("yellow").style.display = "block";
+    document.getElementById("magenta").style.display = "none";
     document.getElementById("red").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(44,44,0)";
     document.getElementById("top").style.color = "rgb(153, 128, 0)";
@@ -856,6 +860,7 @@ function showtab(x) {
   if (x === "cyan") {
     tab = "cyan";
     document.getElementById("cyan").style.display = "block";
+    document.getElementById("magenta").style.display = "none";
     document.getElementById("red").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,44,44)";
     document.getElementById("top").style.color = "rgb(0, 180, 190)";
@@ -913,6 +918,38 @@ function showtab(x) {
     document
       .getElementById("submitTaskButton")
       .classList.add("magentaupgrades");
+  }
+  if(x === 'black'){
+    tab = "black";
+    document.getElementById("red").style.display = "none";
+    document.getElementById("magenta").style.display = "none";
+    document.getElementById("yellow").style.display = "none";
+    document.getElementById("cyan").style.display = "none";
+    document.getElementById("tabs").style.backgroundColor = "rgb(0,0,0)";
+    document.getElementById("top").style.color = "black";
+    document.getElementById("green").style.display = "none";
+    document.getElementById("blue").style.display = "none";
+    document.getElementById("tasks").style.color = "white";
+    document.getElementById("tasks").style.borderColor = "white";
+    document.getElementById("reward").style.borderColor = "white";
+    document.getElementById("body").style.textShadow =
+      "0px 0px 10px red, 0 0 10px rgb(125,0,0)";
+    document
+      .getElementById("submitTaskButton")
+      .classList.remove("blueupgrades");
+    document
+      .getElementById("submitTaskButton")
+      .classList.remove("greenupgrades");
+    document
+      .getElementById("submitTaskButton")
+      .classList.remove("yellowupgrades");
+    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
+    document.getElementById("submitTaskButton").classList.remove("redupgrades");
+    document
+      .getElementById("submitTaskButton")
+      .classList.remove("magentaupgrades");
+    document.getElementById("submitTaskButton").classList.add("blackupgrades");
+    document.getElementById("body").style.backgroundColor = "rgb(0, 0, 0)";
   }
 }
 //surprisingly small calc functions
