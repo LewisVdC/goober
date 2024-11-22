@@ -956,8 +956,8 @@ function showtab(x) {
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
     document.getElementById("tasks").style.color = "black";
-    document.getElementById("tasks").style.borderColor = "white";
-    document.getElementById("reward").style.borderColor = "white";
+    document.getElementById("tasks").style.borderColor = "#868686";
+    document.getElementById("reward").style.borderColor = "#868686";
     document.getElementById("body").style.textShadow =
       "white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, 0 0 2px white";
     document

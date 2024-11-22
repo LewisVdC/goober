@@ -650,11 +650,12 @@ button#tabblack {
   background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
 }
 .blackupgrades{
-  background-color: white;
-  background: linear-gradient(45deg, black, white, gray);
+  color: white;
+  background-color: black;
+  background: linear-gradient(45deg, black, #2b2b2b, #626262);
 }
 .whiteupgrades{
-  background-color: black;
+  background-color: white;
   background: linear-gradient(45deg, white, #bdbdbd, gray);
 }
 .redtext {
