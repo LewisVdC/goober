@@ -919,7 +919,7 @@ function showtab(x) {
       .getElementById("submitTaskButton")
       .classList.add("magentaupgrades");
   }
-  if(x === 'black'){
+  if (x === "black") {
     tab = "black";
     document.getElementById("red").style.display = "none";
     document.getElementById("magenta").style.display = "none";
@@ -1522,17 +1522,35 @@ window.setInterval(function () {
     redpointerautomationtimer += Math.min(20, redpointerautomationcount);
     bigredfilterautomationtimer += Math.min(20, bigredfilterautomationcount);
     bigredpointerautomationtimer += Math.min(20, bigredpointerautomationcount);
-    rednanometerwaveautomationtimer += Math.min(20, rednanometerwaveautomationcount);
+    rednanometerwaveautomationtimer += Math.min(
+      20,
+      rednanometerwaveautomationcount
+    );
     greenfilterautomationtimer += Math.min(20, greenfilterautomationcount);
     greenpointerautomationtimer += Math.min(20, greenpointerautomationcount);
-    biggreenfilterautomationtimer += Math.min(20, biggreenfilterautomationcount);
-    biggreenpointerautomationtimer += Math.min(20, biggreenpointerautomationcount);
-    greennanometerwaveautomationtimer += Math.min(20, greennanometerwaveautomationcount);
+    biggreenfilterautomationtimer += Math.min(
+      20,
+      biggreenfilterautomationcount
+    );
+    biggreenpointerautomationtimer += Math.min(
+      20,
+      biggreenpointerautomationcount
+    );
+    greennanometerwaveautomationtimer += Math.min(
+      20,
+      greennanometerwaveautomationcount
+    );
     bluefilterautomationtimer += Math.min(20, bluefilterautomationcount);
     bluepointerautomationtimer += Math.min(20, bluepointerautomationcount);
     bigbluefilterautomationtimer += Math.min(20, bigbluefilterautomationcount);
-    bigbluepointerautomationtimer += Math.min(20, bigbluepointerautomationcount);
-    bluenanometerwaveautomationtimer += Math.min(20, bluenanometerwaveautomationcount);
+    bigbluepointerautomationtimer += Math.min(
+      20,
+      bigbluepointerautomationcount
+    );
+    bluenanometerwaveautomationtimer += Math.min(
+      20,
+      bluenanometerwaveautomationcount
+    );
     if (redfilterautomationtimer >= 200 && redtogglestate) {
       redfilterautomationtimer = 0;
       buyredfilter();
@@ -2658,7 +2676,7 @@ function buydrink() {
 //even if i softcap it or something you can just autoclick it or something idk
 
 //todo move these vars up to the massive list at the top
-var spellcount = 5;
+var spellcount = 3;
 var spell1unlock = 0;
 var spell2unlock = 0;
 var spell3unlock = 0;
