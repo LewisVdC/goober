@@ -943,7 +943,7 @@ function showtab(x) {
     document.getElementById("submitTaskButton").classList.remove("blackupgrades");
     document.getElementById("submitTaskButton").classList.remove("whiteupgrades");
   }
-  if (x === "black") {
+  if(x === "black"){
     tab = "black";
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "block";
@@ -1584,35 +1584,17 @@ window.setInterval(function () {
     redpointerautomationtimer += Math.min(20, redpointerautomationcount);
     bigredfilterautomationtimer += Math.min(20, bigredfilterautomationcount);
     bigredpointerautomationtimer += Math.min(20, bigredpointerautomationcount);
-    rednanometerwaveautomationtimer += Math.min(
-      20,
-      rednanometerwaveautomationcount
-    );
+    rednanometerwaveautomationtimer += Math.min(20, rednanometerwaveautomationcount);
     greenfilterautomationtimer += Math.min(20, greenfilterautomationcount);
     greenpointerautomationtimer += Math.min(20, greenpointerautomationcount);
-    biggreenfilterautomationtimer += Math.min(
-      20,
-      biggreenfilterautomationcount
-    );
-    biggreenpointerautomationtimer += Math.min(
-      20,
-      biggreenpointerautomationcount
-    );
-    greennanometerwaveautomationtimer += Math.min(
-      20,
-      greennanometerwaveautomationcount
-    );
+    biggreenfilterautomationtimer += Math.min(20, biggreenfilterautomationcount);
+    biggreenpointerautomationtimer += Math.min(20, biggreenpointerautomationcount);
+    greennanometerwaveautomationtimer += Math.min(20, greennanometerwaveautomationcount);
     bluefilterautomationtimer += Math.min(20, bluefilterautomationcount);
     bluepointerautomationtimer += Math.min(20, bluepointerautomationcount);
     bigbluefilterautomationtimer += Math.min(20, bigbluefilterautomationcount);
-    bigbluepointerautomationtimer += Math.min(
-      20,
-      bigbluepointerautomationcount
-    );
-    bluenanometerwaveautomationtimer += Math.min(
-      20,
-      bluenanometerwaveautomationcount
-    );
+    bigbluepointerautomationtimer += Math.min(20, bigbluepointerautomationcount);
+    bluenanometerwaveautomationtimer += Math.min(20, bluenanometerwaveautomationcount);
     if (redfilterautomationtimer >= 200 && redtogglestate) {
       redfilterautomationtimer = 0;
       buyredfilter();
@@ -2800,11 +2782,11 @@ document.getElementById("devmode").addEventListener("change", function () {
 
 //some number formatting
 //lol u can tell by the comments chatgpt wrote this
+//what comments?
 function formatNumber(number) {
-  // Check if the number has 10 or more digits
   if (Math.abs(number) >= 1e7) {
-    return number.toExponential(3); // Converts to scientific notation
+    return number.toExponential(3);
   } else {
-    return number.toString(); // Keeps regular notation
+    return number.toString();
   }
 }
