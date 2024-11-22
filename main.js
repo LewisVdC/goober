@@ -952,14 +952,14 @@ function showtab(x) {
     document.getElementById("yellow").style.display = "none";
     document.getElementById("cyan").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,0,0)";
-    document.getElementById("top").style.color = "white";
+    document.getElementById("top").style.color = "black";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "white";
+    document.getElementById("tasks").style.color = "black";
     document.getElementById("tasks").style.borderColor = "white";
     document.getElementById("reward").style.borderColor = "white";
     document.getElementById("body").style.textShadow =
-      "0px 0px 5px white, 0 0 10px rgb(255 255 255)";
+      "white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, 0 0 2px white";
     document
       .getElementById("submitTaskButton")
       .classList.remove("blueupgrades");
@@ -986,15 +986,15 @@ function showtab(x) {
     document.getElementById("magenta").style.display = "none";
     document.getElementById("yellow").style.display = "none";
     document.getElementById("cyan").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(255,255,255)";
-    document.getElementById("top").style.color = "black";
+    document.getElementById("tabs").style.backgroundColor = "rgb(80,80,80)";
+    document.getElementById("top").style.color = "white";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "black";
-    document.getElementById("tasks").style.borderColor = "black";
-    document.getElementById("reward").style.borderColor = "black";
+    document.getElementById("tasks").style.color = "white";
+    document.getElementById("tasks").style.borderColor = "white";
+    document.getElementById("reward").style.borderColor = "white";
     document.getElementById("body").style.textShadow =
-      "0px 0px 5px black, 0 0 10px rgb(255 255 255)";
+      "0px 0px 5px white, 0 0 10px white";
     document
       .getElementById("submitTaskButton")
       .classList.remove("blueupgrades");
@@ -1011,7 +1011,7 @@ function showtab(x) {
       .classList.remove("magentaupgrades");
     document.getElementById("submitTaskButton").classList.remove("blackupgrades");
     document.getElementById("submitTaskButton").classList.add("whiteupgrades");
-    document.getElementById("body").style.backgroundColor = "rgb(255, 255, 255)";
+    document.getElementById("body").style.backgroundColor = "rgb(80, 80, 80)";
   }
 }
 //surprisingly small calc functions

@@ -635,7 +635,7 @@ button#tabwhite {
 button#tabblack {
   background-color: black;
   color: white;
-  box-shadow: 0 0 50px 20px black;
+  box-shadow: 0 0 50px 5px black;
 }
 .redupgrades {
   background-color: rgb(155, 20, 20);
@@ -655,8 +655,7 @@ button#tabblack {
 }
 .whiteupgrades{
   background-color: black;
-  background: linear-gradient(45deg, white, black, gray);
-  color: white;
+  background: linear-gradient(45deg, white, #bdbdbd, gray);
 }
 .redtext {
   color: rgb(155, 20, 20);
@@ -736,7 +735,7 @@ button {
   box-shadow: 0 0 100px 20px white;
 }
 #tabblack:hover {
-  box-shadow: 0 0 100px 60px black;
+  box-shadow: 0 0 100px 20px black;
 }
 #reset {
   position: absolute;
@@ -866,8 +865,8 @@ div#spellcastingbox {
   height: 100%;
 }
 #blackcount{
-  color: white;
+  color: black;
 }
 #whitecount{
-  color: black;
+  color: white;
 }
