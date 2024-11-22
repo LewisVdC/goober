@@ -164,6 +164,12 @@
           >
             weak synergy<br /><span id="redupgrade2cost">cost:250000</span>
           </button>
+          
+          <button class="redupgrades" id="redscroll">
+            weird red scroll
+            <br />
+            cost: 1e22
+          </button>
         </div>
       </div>
     </div>
@@ -409,28 +415,28 @@
         <strong>government funding</strong>
         <p class="yellowdescription">divide upgrade cost by /1.1</p>
         <p class="yellowdescription">
-          <span id="governmentfundingprice">2</span> yellow
+          cost: <span id="governmentfundingprice">2</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buycolorharmony()">
         <strong>color harmony</strong>
         <p class="yellowdescription">multiply rgb gain by yellow/10</p>
         <p class="yellowdescription">
-          <span id="colorharmonyprice">2</span> yellow
+          cost: <span id="colorharmonyprice">2</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buylargerprisms()">
         <strong>larger prisms</strong>
         <p class="yellowdescription">multiply rgb gain by +1x</p>
         <p class="yellowdescription">
-          <span id="largerprismsprice">10</span> yellow
+          cost: <span id="largerprismsprice">10</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buystreamlinedtasks()">
         <strong>streamlined tasks</strong>
         <p class="yellowdescription">divide task goal by /10</p>
         <p class="yellowdescription">
-          <span id="streamlinedtasksprice">5</span> yellow
+          cost: <span id="streamlinedtasksprice">5</span>
         </p>
       </button>
       <br />
@@ -438,28 +444,28 @@
         <strong>yellow synergy</strong>
         <p class="yellowdescription">boost yellow output by 25%</p>
         <p class="yellowdescription">
-          <span id="yellowsynergyprice">12</span> yellow
+          cost: <span id="yellowsynergyprice">12</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buyredoverflow()">
         <strong>red overflow</strong>
         <p class="yellowdescription">gain 1 yellow/s per 1e12 red/s</p>
         <p class="yellowdescription">
-          <span id="redoverflowprice">100</span> yellow
+          cost: <span id="redoverflowprice">100</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buygreenoverflow()">
         <strong>green overflow</strong>
         <p class="yellowdescription">gain 1 yellow/s per 1e12 green/s</p>
         <p class="yellowdescription">
-          <span id="greenoverflowprice">100</span> yellow
+          cost: <span id="greenoverflowprice">100</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buyblueoverflow()">
         <strong>blue overflow</strong>
         <p class="yellowdescription">gain 1 yellow/s per 1e12 blue/s</p>
         <p class="yellowdescription">
-          <span id="blueoverflowprice">100</span> yellow
+          cost: <span id="blueoverflowprice">100</span>
         </p>
       </button>
       <br />
@@ -467,28 +473,28 @@
         <strong>tri-color boost</strong>
         <p class="yellowdescription">+50% rgb gain per 1000 yellow</p>
         <p class="yellowdescription">
-          <span id="tricolorboostprice">500</span> yellow
+          cost: <span id="tricolorboostprice">500</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buytaskmastery()">
         <strong>task mastery</strong>
         <p class="yellowdescription">get a small chance for 10x task reward</p>
         <p class="yellowdescription">
-          <span id="taskmasteryprice">20</span> yellow
+          cost: <span id="taskmasteryprice">20</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buygoldenmultiplier()">
         <strong>golden multiplier</strong>
         <p class="yellowdescription">boost yellow gain by tasks completed</p>
         <p class="yellowdescription">
-          <span id="goldenmultiplierprice">35</span> yellow
+          cost: <span id="goldenmultiplierprice">35</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buystrongersynergy()">
         <strong>stronger synergy</strong>
         <p class="yellowdescription">make weak synergy 10x stronger</p>
         <p class="yellowdescription">
-          <span id="strongersynergyprice">100</span> yellow
+          cost: <span id="strongersynergyprice">100</span>
         </p>
       </button>
       <br />
@@ -496,21 +502,21 @@
         <strong>fucussed pointers</strong>
         <p class="yellowdescription">boost pointers by 3x</p>
         <p class="yellowdescription">
-          <span id="focussedpointersprice">30</span> yellow
+          cost: <span id="focussedpointersprice">30</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buyfinerfilters()">
         <strong>finer filters</strong>
         <p class="yellowdescription">boost filters by 3x</p>
         <p class="yellowdescription">
-          <span id="finerfiltersprice">30</span> yellow
+          cost: <span id="finerfiltersprice">30</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buymicrometerwave()">
         <strong>micrometer wave</strong>
         <p class="yellowdescription">boost nanometer wave by 2x</p>
         <p class="yellowdescription">
-          <span id="micrometerwaveprice">60</span> yellow
+          cost: <span id="micrometerwaveprice">60</span>
         </p>
       </button>
       <button class="yellowupgrades" onclick="buycolorsyphon()">
@@ -519,7 +525,7 @@
           mix 1e15 of each color to create 10 cyan
         </p>
         <p class="yellowdescription">
-          <span id="colorsyphonprice">12000</span> yellow
+          cost: <span id="colorsyphonprice">12000</span>
         </p>
       </button>
       <br />
@@ -538,7 +544,7 @@
         >
           Automate buy red filter
           <br />
-          <span id="redfilterautomationprice">5 cyan</span>
+          cost: <span id="redfilterautomationprice">5</span>
         </button>
         <br />
         <button
@@ -547,7 +553,7 @@
         >
           Automate buy red pointer
           <br />
-          <span id="redpointerautomationprice">5 cyan</span>
+          cost: <span id="redpointerautomationprice">5</span>
         </button>
         <br />
         <button
@@ -556,7 +562,7 @@
         >
           Automate buy big red filter
           <br />
-          <span id="bigredfilterautomationprice">5 cyan</span>
+          cost: <span id="bigredfilterautomationprice">5</span>
         </button>
         <br />
         <button
@@ -565,7 +571,7 @@
         >
           Automate buy big red pointer
           <br />
-          <span id="bigredpointerautomationprice">5 cyan</span>
+          cost: <span id="bigredpointerautomationprice">5</span>
         </button>
         <br />
         <button
@@ -574,7 +580,7 @@
         >
           Automate buy red nanometer wave
           <br />
-          <span id="rednanometerwaveautomationprice">5 cyan</span>
+          cost: <span id="rednanometerwaveautomationprice">5</span>
         </button>
         <br />
         <button
@@ -594,7 +600,7 @@
         >
           Automate buy green filter
           <br />
-          <span id="greenfilterautomationprice">5 cyan</span>
+          cost: <span id="greenfilterautomationprice">5</span>
         </button>
         <br />
         <button
@@ -603,7 +609,7 @@
         >
           Automate buy green pointer
           <br />
-          <span id="greenpointerautomationprice">5 cyan</span>
+          cost: <span id="greenpointerautomationprice">5</span>
         </button>
         <br />
         <button
@@ -612,7 +618,7 @@
         >
           Automate buy big green filter
           <br />
-          <span id="biggreenfilterautomationprice">5 cyan</span>
+          cost: <span id="biggreenfilterautomationprice">5</span>
         </button>
         <br />
         <button
@@ -621,7 +627,7 @@
         >
           Automate buy big green pointer
           <br />
-          <span id="biggreenpointerautomationprice">5 cyan</span>
+          cost: <span id="biggreenpointerautomationprice">5</span>
         </button>
         <br />
         <button
@@ -630,7 +636,7 @@
         >
           Automate buy green nanometer wave
           <br />
-          <span id="greennanometerwaveautomationprice">5 cyan</span>
+          cost: <span id="greennanometerwaveautomationprice">5</span>
         </button>
         <br />
         <button
@@ -650,7 +656,7 @@
         >
           Automate buy blue filter
           <br />
-          <span id="bluefilterautomationprice">5 cyan</span>
+          cost: <span id="bluefilterautomationprice">5</span>
         </button>
         <br />
         <button
@@ -659,7 +665,7 @@
         >
           Automate buy blue pointer
           <br />
-          <span id="bluepointerautomationprice">5 cyan</span>
+          cost: <span id="bluepointerautomationprice">5</span>
         </button>
         <br />
         <button
@@ -668,7 +674,7 @@
         >
           Automate buy big blue filter
           <br />
-          <span id="bigbluefilterautomationprice">5 cyan</span>
+          cost: <span id="bigbluefilterautomationprice">5</span>
         </button>
         <br />
         <button
@@ -677,7 +683,7 @@
         >
           Automate buy big blue pointer
           <br />
-          <span id="bigbluepointerautomationprice">5 cyan</span>
+          cost: <span id="bigbluepointerautomationprice">5</span>
         </button>
         <br />
         <button
@@ -686,7 +692,7 @@
         >
           Automate buy blue nanometer wave
           <br />
-          <span id="bluenanometerwaveautomationprice">5 cyan</span>
+          cost: <span id="bluenanometerwaveautomationprice">5</span>
         </button>
         <br />
         <button

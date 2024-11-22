@@ -366,25 +366,25 @@ function load() {
     if (typeof savegame.redfilterautomationprice !== "undefined")
       redfilterautomationprice = savegame.redfilterautomationprice;
     document.getElementById("redfilterautomationprice").innerHTML =
-      Math.round(redfilterautomationprice) + " cyan";
+      Math.round(redfilterautomationprice) ;
     if (typeof savegame.redpointerautomationcount !== "undefined")
       redpointerautomationcount = savegame.redpointerautomationcount;
     if (typeof savegame.redpointerautomationprice !== "undefined")
       redpointerautomationprice = savegame.redpointerautomationprice;
     document.getElementById("redpointerautomationprice").innerHTML =
-      Math.round(redpointerautomationprice) + " cyan";
+      Math.round(redpointerautomationprice) ;
     if (typeof savegame.bigredfilterautomationcount !== "undefined")
       bigredfilterautomationcount = savegame.bigredfilterautomationcount;
     if (typeof savegame.bigredfilterautomationprice !== "undefined")
       bigredfilterautomationprice = savegame.bigredfilterautomationprice;
     document.getElementById("bigredfilterautomationprice").innerHTML =
-      Math.round(bigredfilterautomationprice) + " cyan";
+      Math.round(bigredfilterautomationprice) ;
     if (typeof savegame.bigredpointerautomationcount !== "undefined")
       bigredpointerautomationcount = savegame.bigredpointerautomationcount;
     if (typeof savegame.bigredpointerautomationprice !== "undefined")
       bigredpointerautomationprice = savegame.bigredpointerautomationprice;
     document.getElementById("bigredpointerautomationprice").innerHTML =
-      Math.round(bigredpointerautomationprice) + " cyan";
+      Math.round(bigredpointerautomationprice) ;
     if (typeof savegame.rednanometerwaveautomationcount !== "undefined")
       rednanometerwaveautomationcount =
         savegame.rednanometerwaveautomationcount;
@@ -392,31 +392,31 @@ function load() {
       rednanometerwaveautomationprice =
         savegame.rednanometerwaveautomationprice;
     document.getElementById("rednanometerwaveautomationprice").innerHTML =
-      Math.round(rednanometerwaveautomationprice) + " cyan";
+      Math.round(rednanometerwaveautomationprice) ;
     if (typeof savegame.greenfilterautomationcount !== "undefined")
       greenfilterautomationcount = savegame.greenfilterautomationcount;
     if (typeof savegame.greenfilterautomationprice !== "undefined")
       greenfilterautomationprice = savegame.greenfilterautomationprice;
     document.getElementById("greenfilterautomationprice").innerHTML =
-      Math.round(greenfilterautomationprice) + " cyan";
+      Math.round(greenfilterautomationprice) ;
     if (typeof savegame.greenpointerautomationcount !== "undefined")
       greenpointerautomationcount = savegame.greenpointerautomationcount;
     if (typeof savegame.greenpointerautomationprice !== "undefined")
       greenpointerautomationprice = savegame.greenpointerautomationprice;
     document.getElementById("greenpointerautomationprice").innerHTML =
-      Math.round(greenpointerautomationprice) + " cyan";
+      Math.round(greenpointerautomationprice) ;
     if (typeof savegame.biggreenfilterautomationcount !== "undefined")
       biggreenfilterautomationcount = savegame.biggreenfilterautomationcount;
     if (typeof savegame.biggreenfilterautomationprice !== "undefined")
       biggreenfilterautomationprice = savegame.biggreenfilterautomationprice;
     document.getElementById("biggreenfilterautomationprice").innerHTML =
-      Math.round(biggreenfilterautomationprice) + " cyan";
+      Math.round(biggreenfilterautomationprice) ;
     if (typeof savegame.biggreenpointerautomationcount !== "undefined")
       biggreenpointerautomationcount = savegame.biggreenpointerautomationcount;
     if (typeof savegame.biggreenpointerautomationprice !== "undefined")
       biggreenpointerautomationprice = savegame.biggreenpointerautomationprice;
     document.getElementById("biggreenpointerautomationprice").innerHTML =
-      Math.round(biggreenpointerautomationprice) + " cyan";
+      Math.round(biggreenpointerautomationprice) ;
     if (typeof savegame.greennanometerwaveautomationcount !== "undefined")
       greennanometerwaveautomationcount =
         savegame.greennanometerwaveautomationcount;
@@ -424,31 +424,31 @@ function load() {
       greennanometerwaveautomationprice =
         savegame.greennanometerwaveautomationprice;
     document.getElementById("greennanometerwaveautomationprice").innerHTML =
-      Math.round(greennanometerwaveautomationprice) + " cyan";
+      Math.round(greennanometerwaveautomationprice) ;
     if (typeof savegame.bluefilterautomationcount !== "undefined")
       bluefilterautomationcount = savegame.bluefilterautomationcount;
     if (typeof savegame.bluefilterautomationprice !== "undefined")
       bluefilterautomationprice = savegame.bluefilterautomationprice;
     document.getElementById("bluefilterautomationprice").innerHTML =
-      Math.round(bluefilterautomationprice) + " cyan";
+      Math.round(bluefilterautomationprice) ;
     if (typeof savegame.bluepointerautomationcount !== "undefined")
       bluepointerautomationcount = savegame.bluepointerautomationcount;
     if (typeof savegame.bluepointerautomationprice !== "undefined")
       bluepointerautomationprice = savegame.bluepointerautomationprice;
     document.getElementById("bluepointerautomationprice").innerHTML =
-      Math.round(bluepointerautomationprice) + " cyan";
+      Math.round(bluepointerautomationprice) ;
     if (typeof savegame.bigbluefilterautomationcount !== "undefined")
       bigbluefilterautomationcount = savegame.bigbluefilterautomationcount;
     if (typeof savegame.bigbluefilterautomationprice !== "undefined")
       bigbluefilterautomationprice = savegame.bigbluefilterautomationprice;
     document.getElementById("bigbluefilterautomationprice").innerHTML =
-      Math.round(bigbluefilterautomationprice) + " cyan";
+      Math.round(bigbluefilterautomationprice) ;
     if (typeof savegame.bigbluepointerautomationcount !== "undefined")
       bigbluepointerautomationcount = savegame.bigbluepointerautomationcount;
     if (typeof savegame.bigbluepointerautomationprice !== "undefined")
       bigbluepointerautomationprice = savegame.bigbluepointerautomationprice;
     document.getElementById("bigbluepointerautomationprice").innerHTML =
-      Math.round(bigbluepointerautomationprice) + " cyan";
+      Math.round(bigbluepointerautomationprice) ;
     if (typeof savegame.bluenanometerwaveautomationcount !== "undefined")
       bluenanometerwaveautomationcount =
         savegame.bluenanometerwaveautomationcount;
@@ -456,7 +456,7 @@ function load() {
       bluenanometerwaveautomationprice =
         savegame.bluenanometerwaveautomationprice;
     document.getElementById("bluenanometerwaveautomationprice").innerHTML =
-      Math.round(bluenanometerwaveautomationprice) + " cyan";
+      Math.round(bluenanometerwaveautomationprice) ;
     if (typeof savegame.redtogglestate !== "undefined")
       redtogglestate = savegame.redtogglestate;
     if (redtogglestate) {
@@ -1418,7 +1418,7 @@ window.setInterval(function () {
       document.getElementById("redupgrades").style.display = "flex";
       document.getElementById("redupgradesbox").style.display = "grid";
       document.getElementById("redupgrade2").style.display = "block";
-      document.getElementById("redupgrade3").style.display = "inline-block";
+      document.getElementById("redupgrade3").style.display = "inline-block"
     }
     if (green >= 50000) {
       document.getElementById("greenupgrades").style.display = "flex";
@@ -1442,7 +1442,9 @@ window.setInterval(function () {
       document.getElementById("blueupgrade2").style.display = "block";
       document.getElementById("blueupgrade3").style.display = "block";
     }
-
+    if(magenta > 0){
+      document.getElementById("redscroll").style.display = "inline-block";
+    }
     //and then make the unlocks work if they need extra code
 
     //save
@@ -2426,7 +2428,7 @@ function buyredfilterautomation() {
     cyan -= redfilterautomationprice;
     redfilterautomationprice = 5 * Math.pow(1.3, redfilterautomationcount);
     document.getElementById("redfilterautomationprice").innerHTML =
-      Math.round(redfilterautomationprice) + " cyan";
+      Math.round(redfilterautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2437,7 +2439,7 @@ function buyredpointerautomation() {
     cyan -= redpointerautomationprice;
     redpointerautomationprice = 5 * Math.pow(1.3, redpointerautomationcount);
     document.getElementById("redpointerautomationprice").innerHTML =
-      Math.round(redpointerautomationprice) + " cyan";
+      Math.round(redpointerautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2449,7 +2451,7 @@ function buybigredfilterautomation() {
     bigredfilterautomationprice =
       5 * Math.pow(1.3, bigredfilterautomationcount);
     document.getElementById("bigredfilterautomationprice").innerHTML =
-      Math.round(bigredfilterautomationprice) + " cyan";
+      Math.round(bigredfilterautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2461,7 +2463,7 @@ function buybigredpointerautomation() {
     bigredpointerautomationprice =
       5 * Math.pow(1.3, bigredpointerautomationcount);
     document.getElementById("bigredpointerautomationprice").innerHTML =
-      Math.round(bigredpointerautomationprice) + " cyan";
+      Math.round(bigredpointerautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2473,7 +2475,7 @@ function buyrednanometerwaveautomation() {
     rednanometerwaveautomationprice =
       5 * Math.pow(1.3, rednanometerwaveautomationcount);
     document.getElementById("rednanometerwaveautomationprice").innerHTML =
-      Math.round(rednanometerwaveautomationprice) + " cyan";
+      Math.round(rednanometerwaveautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2484,7 +2486,7 @@ function buygreenfilterautomation() {
     cyan -= greenfilterautomationprice;
     greenfilterautomationprice = 5 * Math.pow(1.3, greenfilterautomationcount);
     document.getElementById("greenfilterautomationprice").innerHTML =
-      Math.round(greenfilterautomationprice) + " cyan";
+      Math.round(greenfilterautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2496,7 +2498,7 @@ function buygreenpointerautomation() {
     greenpointerautomationprice =
       5 * Math.pow(1.3, greenpointerautomationcount);
     document.getElementById("greenpointerautomationprice").innerHTML =
-      Math.round(greenpointerautomationprice) + " cyan";
+      Math.round(greenpointerautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2508,7 +2510,7 @@ function buybiggreenfilterautomation() {
     biggreenfilterautomationprice =
       5 * Math.pow(1.3, biggreenfilterautomationcount);
     document.getElementById("biggreenfilterautomationprice").innerHTML =
-      Math.round(biggreenfilterautomationprice) + " cyan";
+      Math.round(biggreenfilterautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2520,7 +2522,7 @@ function buybiggreenpointerautomation() {
     biggreenpointerautomationprice =
       5 * Math.pow(1.3, biggreenpointerautomationcount);
     document.getElementById("biggreenpointerautomationprice").innerHTML =
-      Math.round(biggreenpointerautomationprice) + " cyan";
+      Math.round(biggreenpointerautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2532,7 +2534,7 @@ function buygreennanometerwaveautomation() {
     greennanometerwaveautomationprice =
       5 * Math.pow(1.3, greennanometerwaveautomationcount);
     document.getElementById("greennanometerwaveautomationprice").innerHTML =
-      Math.round(greennanometerwaveautomationprice) + " cyan";
+      Math.round(greennanometerwaveautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2543,7 +2545,7 @@ function buybluefilterautomation() {
     cyan -= bluefilterautomationprice;
     bluefilterautomationprice = 5 * Math.pow(1.3, bluefilterautomationcount);
     document.getElementById("bluefilterautomationprice").innerHTML =
-      Math.round(bluefilterautomationprice) + " cyan";
+      Math.round(bluefilterautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2554,7 +2556,7 @@ function buybluepointerautomation() {
     cyan -= bluepointerautomationprice;
     bluepointerautomationprice = 5 * Math.pow(1.3, bluepointerautomationcount);
     document.getElementById("bluepointerautomationprice").innerHTML =
-      Math.round(bluepointerautomationprice) + " cyan";
+      Math.round(bluepointerautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2566,7 +2568,7 @@ function buybigbluefilterautomation() {
     bigbluefilterautomationprice =
       5 * Math.pow(1.3, bigbluefilterautomationcount);
     document.getElementById("bigbluefilterautomationprice").innerHTML =
-      Math.round(bigbluefilterautomationprice) + " cyan";
+      Math.round(bigbluefilterautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2578,7 +2580,7 @@ function buybigbluepointerautomation() {
     bigbluepointerautomationprice =
       5 * Math.pow(1.3, bigbluepointerautomationcount);
     document.getElementById("bigbluepointerautomationprice").innerHTML =
-      Math.round(bigbluepointerautomationprice) + " cyan";
+      Math.round(bigbluepointerautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
@@ -2590,7 +2592,7 @@ function buybluenanometerwaveautomation() {
     bluenanometerwaveautomationprice =
       5 * Math.pow(1.3, bluenanometerwaveautomationcount);
     document.getElementById("bluenanometerwaveautomationprice").innerHTML =
-      Math.round(bluenanometerwaveautomationprice) + " cyan";
+      Math.round(bluenanometerwaveautomationprice) ;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.floor(cyan);
   }
