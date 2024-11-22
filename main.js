@@ -2756,7 +2756,9 @@ function checkspell(number) {
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 document.getElementById("devmode").addEventListener("change", function () {
   if (document.getElementById("devmode").checked === true) {
-    document.getElementById("comingsoon").style.display = "none";
+    document.getElementById("comingsoonmagenta").style.display = "none";
+    document.getElementById("comingsoonwhite").style.display = "none";
+    document.getElementById("comingsoonblack").style.display = "none";
     document.getElementById("tabmagenta").style.display = "block";
     document.getElementById("tabgreen").style.display = "block";
     document.getElementById("tabblue").style.display = "block";
@@ -2764,6 +2766,8 @@ document.getElementById("devmode").addEventListener("change", function () {
     document.getElementById("tabcyan").style.display = "block";
     document.getElementById("tabs").style.width = "250px";
   } else {
+    document.getElementById("comingsoonwhite").style.display = "block";
+    document.getElementById("comingsoonblack").style.display = "block";
     document.getElementById("comingsoon").style.display = "block";
     if (magenta === 0)
       document.getElementById("tabmagenta").style.display = "none";
