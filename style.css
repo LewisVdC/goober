@@ -17,7 +17,7 @@ body {
   margin-right: 15px;
 }
 .tab {
-  width: calc(100% / 3);
+  width: calc(250px / 3);
 }
 #reward {
   border-bottom: outset;
@@ -279,9 +279,9 @@ div#tabs {
   background-color: rgb(20, 0, 0);
   display: flex;
   justify-content: center;
-  width: 250px;
+  width: calc(250px/3);
   flex-wrap: wrap;
-  margin: auto;
+  margin: 0;
 }
 div#greenbuild1 {
   color: white;
@@ -599,18 +599,17 @@ button#blueupgrade3 {
 }
 button#tabred {
   background-color: rgb(155, 20, 20);
-  box-shadow: 0px 0px 50px 5px red;
+  box-shadow: 0px 0px 50px 1px red;
 }
 button#tabblue {
   display: none;
   background-color: blue;
-  box-shadow: 0px 0px 50px 5px blue;
+  box-shadow: 0px 0px 50px 1px blue;
 }
 button#tabgreen {
-  z-index: 9999999;
   display: none;
   background-color: green;
-  box-shadow: 0px 0px 50px 5px green;
+  box-shadow: 0px 0px 50px 1px green;
 }
 button#tabyellow {
   display: none;
@@ -620,12 +619,22 @@ button#tabyellow {
 button#tabcyan {
   display: none;
   background-color: cyan;
-  box-shadow: 0 0 50px 5px cyan;
+  box-shadow: 0 0 50px 1px cyan;
 }
 button#tabmagenta {
-  display: block;
+  display: none;
   background-color: magenta;
-  box-shadow: 0 0 50px 5px magenta;
+  box-shadow: 0 0 50px 1px magenta;
+}
+button#tabwhite{
+  z-index: 2;
+  background-color: white;
+  box-shadow: 0 0 50px 1px white;
+}
+button#tabblack{
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 50px 20px black;
 }
 .redupgrades {
   background-color: rgb(155, 20, 20);
@@ -696,19 +705,28 @@ button {
   transform: scale(1);
 }
 #tabred:hover {
-  box-shadow: 0px 0px 50px 8px red;
+  box-shadow: 0px 0px 50px 12px red;
 }
 #tabyellow:hover {
-  box-shadow: 0px 0px 50px 4px yellow;
+  box-shadow: 0px 0px 50px 5px yellow;
 }
 #tabgreen:hover {
-  box-shadow: 0px 0px 50px 12px green;
+  box-shadow: 0px 0px 40px 20px green;
 }
 #tabblue:hover {
-  box-shadow: 0px 0px 50px 12px blue;
+  box-shadow: 0px 0px 50px 14px blue;
 }
 #tabcyan:hover {
   box-shadow: 0 0 50px 8px cyan;
+}
+#tabmagenta:hover {
+  box-shadow: 0 0 50px 10px magenta;
+}
+#tabwhite:hover {
+  box-shadow: 0 0 100px 20px white;
+}
+#tabblack:hover {
+  box-shadow: 0 0 100px 60px black;
 }
 #reset {
   position: absolute;
@@ -806,4 +824,8 @@ div#magenta {
   margin-left: 73; 
   color:white; 
   padding-top: 10px;
+}
+#alltabs{
+  display: flex;
+  justify-content: center;
 }

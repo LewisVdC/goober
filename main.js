@@ -532,6 +532,13 @@ function load() {
     if (cyan > 0) {
       document.getElementById("tabcyan").style.display = "block";
     }
+    if(tasksCompleted === 0){
+      document.getElementById("tabs").style.width = "calc(250px/3)";
+    } else if(tasksCompleted === 1){
+      document.getElementById("tabs").style.width = "calc(250px/3*2)";
+    } else{
+      document.getElementById("tabs").style.width = "250px";
+    }
     if (typeof savegame.taskColorGoalRed !== "undefined")
       taskColorGoalRed = savegame.taskColorGoalRed;
     document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
@@ -1717,7 +1724,8 @@ function submitTask() {
       taskRewardCount = 10;
       taskRewardColor = "blue";
       document.getElementById("tabgreen").style.display = "block";
-      green += 10;
+      document.getElementById("tabs").style.width = "calc(250px/3*2)";
+      green += 10;  
     } else if (tasksCompleted === 2) {
       taskColorGoalRed = 0;
       taskColorGoalGreen = 0;
@@ -1737,6 +1745,7 @@ function submitTask() {
       document.getElementById("taskReward").innerHTML = "2x color gain";
       taskRewardCount = 2;
       taskRewardColor = "x color gain";
+      document.getElementById("tabs").style.width = "250px";
       document.getElementById("tabblue").style.display = "block";
       blue += 10;
     } else if (tasksCompleted === 3) {
@@ -2616,12 +2625,35 @@ function spell1(number) {
 
 //no more magic it is banned
 
-//temp devmode (disables annoying coming soon signs)
+//temp devmode (disables annoying coming soon signs and unlocks all tabs)
 document.getElementById("devmode").addEventListener("change", function () {
   if (document.getElementById("devmode").checked === true) {
     document.getElementById("comingsoon").style.display = "none";
+    document.getElementById("tabmagenta").style.display = "block";
+    document.getElementById("tabgreen").style.display = "block";
+    document.getElementById("tabblue").style.display = "block";
+    document.getElementById("tabyellow").style.display = "block";
+    document.getElementById("tabcyan").style.display = "block";
+    document.getElementById("tabs").style.width = "250px";
   } else {
     document.getElementById("comingsoon").style.display = "block";
+    if(magenta===0)
+      document.getElementById("tabmagenta").style.display = "none";
+    if(green===0)
+      document.getElementById("tabgreen").style.display = "none";
+    if(blue===0)
+      document.getElementById("tabblue").style.display = "none";
+    if(yellow===0)
+      document.getElementById("tabyellow").style.display = "none";
+    if(cyan===0)
+      document.getElementById("tabcyan").style.display = "none";
+    if(tasksCompleted === 0){
+      document.getElementById("tabs").style.width = "calc(250px/3)";
+    } else if(tasksCompleted === 1){
+      document.getElementById("tabs").style.width = "calc(250px/3*2)";
+    } else{
+      document.getElementById("tabs").style.width = "250px";
+    }
   }
 });
 
