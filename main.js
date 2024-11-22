@@ -741,6 +741,7 @@ document.getElementById("yellowcount").innerHTML =
 function showtab(x) {
   if (x === "red") {
     tab = "red";
+    document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "block";
     document.getElementById("black").style.display = "none";
     document.getElementById("magenta").style.display = "none";
@@ -776,6 +777,13 @@ function showtab(x) {
   }
   if (x === "green") {
     tab = "green";
+    if(magenta > 0){
+      document.getElementById("submitTaskButton").style.position = "absolute";
+      document.getElementById("submitTaskButton").style.width = "50%";
+      document.getElementById("submitTaskButton").style.borderRightStyle = "none";
+      document.getElementById("greenscroll").style.borderLeftStyle = "none";
+      document.getElementById("greenscroll").style.display = "inline-block";
+    }
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
     document.getElementById("magenta").style.display = "none";
@@ -806,9 +814,16 @@ function showtab(x) {
       .classList.remove("magentaupgrades");
     document.getElementById("submitTaskButton").classList.remove("blackupgrades");
     document.getElementById("submitTaskButton").classList.remove("whiteupgrades");
+  }else{
+    document.getElementById("submitTaskButton").style.position = "relative";
+    document.getElementById("submitTaskButton").style.width = "100%";
+    document.getElementById("submitTaskButton").style.borderRightStyle = "";
+    document.getElementById("greenscroll").style.borderLeftStyle = "";
+    document.getElementById("greenscroll").style.display = "none";
   }
   if (x === "blue") {
     tab = "blue";
+    document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
     document.getElementById("magenta").style.display = "none";
@@ -842,6 +857,7 @@ function showtab(x) {
   }
   if (x === "yellow") {
     tab = "yellow";
+    document.getElementById("greenscroll").style.display = "none";
     document.getElementById("yellow").style.display = "block";
     document.getElementById("black").style.display = "none";
     document.getElementById("magenta").style.display = "none";
@@ -875,6 +891,7 @@ function showtab(x) {
   }
   if (x === "cyan") {
     tab = "cyan";
+    document.getElementById("greenscroll").style.display = "none";
     document.getElementById("cyan").style.display = "block";
     document.getElementById("black").style.display = "none";
     document.getElementById("magenta").style.display = "none";
@@ -910,6 +927,7 @@ function showtab(x) {
   }
   if (x === "magenta") {
     tab = "magenta";
+    document.getElementById("greenscroll").style.display = "none";
     document.getElementById("cyan").style.display = "none";
     document.getElementById("black").style.display = "none";
     document.getElementById("magenta").style.display = "block";
@@ -945,6 +963,7 @@ function showtab(x) {
   }
   if(x === "black"){
     tab = "black";
+    document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "block";
     document.getElementById("white").style.display = "none";
@@ -980,6 +999,7 @@ function showtab(x) {
   }
   if(x === 'white'){
     tab = "white";
+    document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
     document.getElementById("white").style.display = "block";
@@ -2756,7 +2776,6 @@ function checkspell(number) {
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 document.getElementById("devmode").addEventListener("change", function () {
   if (document.getElementById("devmode").checked === true) {
-    document.getElementById("comingsoonmagenta").style.display = "none";
     document.getElementById("comingsoonwhite").style.display = "none";
     document.getElementById("comingsoonblack").style.display = "none";
     document.getElementById("tabmagenta").style.display = "block";
@@ -2768,7 +2787,6 @@ document.getElementById("devmode").addEventListener("change", function () {
   } else {
     document.getElementById("comingsoonwhite").style.display = "block";
     document.getElementById("comingsoonblack").style.display = "block";
-    document.getElementById("comingsoon").style.display = "block";
     if (magenta === 0)
       document.getElementById("tabmagenta").style.display = "none";
     if (green === 0) document.getElementById("tabgreen").style.display = "none";
