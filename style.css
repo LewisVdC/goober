@@ -279,7 +279,7 @@ div#tabs {
   background-color: rgb(20, 0, 0);
   display: flex;
   justify-content: center;
-  width: calc(250px/3);
+  width: calc(250px / 3);
   flex-wrap: wrap;
   margin: 0;
 }
@@ -626,12 +626,12 @@ button#tabmagenta {
   background-color: magenta;
   box-shadow: 0 0 50px 1px magenta;
 }
-button#tabwhite{
+button#tabwhite {
   z-index: 2;
   background-color: white;
   box-shadow: 0 0 50px 1px white;
 }
-button#tabblack{
+button#tabblack {
   background-color: black;
   color: white;
   box-shadow: 0 0 50px 20px black;
@@ -818,14 +818,30 @@ div#magenta {
   background: linear-gradient(45deg, #003e00, #32db32, #025202);
   height: 40px;
 }
-#devtooltip{
+#devtooltip {
   display: none;
-  position: absolute; 
-  margin-left: 73; 
-  color:white; 
+  position: absolute;
+  margin-left: 73;
+  color: white;
   padding-top: 10px;
 }
-#alltabs{
+#alltabs {
   display: flex;
   justify-content: center;
+}
+div#spellcasting {
+  margin-top: 10%;
+}
+.spell {
+  display: none;
+  justify-content: center;
+}
+button#think {
+  display: block;
+}
+div#spellcastingbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
