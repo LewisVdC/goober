@@ -635,7 +635,7 @@ button#tabwhite {
 button#tabblack {
   background-color: black;
   color: white;
-  box-shadow: 0 0 50px 20px black;
+  box-shadow: 0 0 50px 5px black;
 }
 .redupgrades {
   background-color: rgb(155, 20, 20);
@@ -650,8 +650,13 @@ button#tabblack {
   background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
 }
 .blackupgrades{
+  color: white;
+  background-color: black;
+  background: linear-gradient(45deg, black, #2b2b2b, #626262);
+}
+.whiteupgrades{
   background-color: white;
-  background: linear-gradient(45deg, black, white, gray);
+  background: linear-gradient(45deg, white, #bdbdbd, gray);
 }
 .redtext {
   color: rgb(155, 20, 20);
@@ -731,7 +736,7 @@ button {
   box-shadow: 0 0 100px 20px white;
 }
 #tabblack:hover {
-  box-shadow: 0 0 100px 60px black;
+  box-shadow: 0 0 100px 20px black;
 }
 #reset {
   position: absolute;
@@ -849,4 +854,20 @@ div#spellcastingbox {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+#black{
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+#white{
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+#blackcount{
+  color: black;
+}
+#whitecount{
+  color: white;
 }
