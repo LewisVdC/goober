@@ -1979,8 +1979,12 @@ document.addEventListener("keydown", function (event) {
     showtab("yellow");
   } else if (event.key === "c" && cyan > 0) {
     showtab("cyan");
-  } else if (event.key === "m" && true === true) {
+  } else if (event.key === "m" && true) {
     showtab("magenta");
+  } else if(event.key === "z" && true) {
+    showtab("black");
+  } else if(event.key === "w" && true) {
+    showtab('white');
   }
   if (event.code === "Digit1") {
     if (tab === "red") {
