@@ -2510,7 +2510,7 @@ window.setInterval(function () {
 
 //cyan upgrades
 function buyredfilterautomation() {
-  if (cyan > redfilterautomationprice) {
+  if (cyan >= redfilterautomationprice) {
     redfilterautomationcount++;
     cyan -= redfilterautomationprice;
     redfilterautomationprice = 5 * Math.pow(1.3, redfilterautomationcount);
@@ -2522,7 +2522,7 @@ function buyredfilterautomation() {
   }
 }
 function buyredpointerautomation() {
-  if (cyan > redpointerautomationprice) {
+  if (cyan >= redpointerautomationprice) {
     redpointerautomationcount++;
     cyan -= redpointerautomationprice;
     redpointerautomationprice = 5 * Math.pow(1.3, redpointerautomationcount);
@@ -2534,7 +2534,7 @@ function buyredpointerautomation() {
   }
 }
 function buybigredfilterautomation() {
-  if (cyan > bigredfilterautomationprice) {
+  if (cyan >= bigredfilterautomationprice) {
     bigredfilterautomationcount++;
     cyan -= bigredfilterautomationprice;
     bigredfilterautomationprice =
@@ -2546,7 +2546,7 @@ function buybigredfilterautomation() {
   }
 }
 function buybigredpointerautomation() {
-  if (cyan > bigredpointerautomationprice) {
+  if (cyan >= bigredpointerautomationprice) {
     bigredpointerautomationcount++;
     cyan -= bigredpointerautomationprice;
     bigredpointerautomationprice =
@@ -2558,7 +2558,7 @@ function buybigredpointerautomation() {
   }
 }
 function buyrednanometerwaveautomation() {
-  if (cyan > rednanometerwaveautomationprice) {
+  if (cyan >= rednanometerwaveautomationprice) {
     rednanometerwaveautomationcount++;
     cyan -= rednanometerwaveautomationprice;
     rednanometerwaveautomationprice =
@@ -2570,7 +2570,7 @@ function buyrednanometerwaveautomation() {
   }
 }
 function buygreenfilterautomation() {
-  if (cyan > greenfilterautomationprice) {
+  if (cyan >= greenfilterautomationprice) {
     greenfilterautomationcount++;
     cyan -= greenfilterautomationprice;
     greenfilterautomationprice = 5 * Math.pow(1.3, greenfilterautomationcount);
@@ -2581,7 +2581,7 @@ function buygreenfilterautomation() {
   }
 }
 function buygreenpointerautomation() {
-  if (cyan > greenpointerautomationprice) {
+  if (cyan >= greenpointerautomationprice) {
     greenpointerautomationcount++;
     cyan -= greenpointerautomationprice;
     greenpointerautomationprice =
@@ -2593,7 +2593,7 @@ function buygreenpointerautomation() {
   }
 }
 function buybiggreenfilterautomation() {
-  if (cyan > biggreenfilterautomationprice) {
+  if (cyan >= biggreenfilterautomationprice) {
     biggreenfilterautomationcount++;
     cyan -= biggreenfilterautomationprice;
     biggreenfilterautomationprice =
@@ -2605,7 +2605,7 @@ function buybiggreenfilterautomation() {
   }
 }
 function buybiggreenpointerautomation() {
-  if (cyan > biggreenpointerautomationprice) {
+  if (cyan >= biggreenpointerautomationprice) {
     biggreenpointerautomationcount++;
     cyan -= biggreenpointerautomationprice;
     biggreenpointerautomationprice =
@@ -2617,7 +2617,7 @@ function buybiggreenpointerautomation() {
   }
 }
 function buygreennanometerwaveautomation() {
-  if (cyan > greennanometerwaveautomationprice) {
+  if (cyan >= greennanometerwaveautomationprice) {
     greennanometerwaveautomationcount++;
     cyan -= greennanometerwaveautomationprice;
     greennanometerwaveautomationprice =
@@ -2629,7 +2629,7 @@ function buygreennanometerwaveautomation() {
   }
 }
 function buybluefilterautomation() {
-  if (cyan > bluefilterautomationprice) {
+  if (cyan >= bluefilterautomationprice) {
     bluefilterautomationcount++;
     cyan -= bluefilterautomationprice;
     bluefilterautomationprice = 5 * Math.pow(1.3, bluefilterautomationcount);
@@ -2641,7 +2641,7 @@ function buybluefilterautomation() {
   }
 }
 function buybluepointerautomation() {
-  if (cyan > bluepointerautomationprice) {
+  if (cyan >= bluepointerautomationprice) {
     bluepointerautomationcount++;
     cyan -= bluepointerautomationprice;
     bluepointerautomationprice = 5 * Math.pow(1.3, bluepointerautomationcount);
@@ -2652,7 +2652,7 @@ function buybluepointerautomation() {
   }
 }
 function buybigbluefilterautomation() {
-  if (cyan > bigbluefilterautomationprice) {
+  if (cyan >= bigbluefilterautomationprice) {
     bigbluefilterautomationcount++;
     cyan -= bigbluefilterautomationprice;
     bigbluefilterautomationprice =
@@ -2664,7 +2664,7 @@ function buybigbluefilterautomation() {
   }
 }
 function buybigbluepointerautomation() {
-  if (cyan > bigbluepointerautomationprice) {
+  if (cyan >= bigbluepointerautomationprice) {
     bigbluepointerautomationcount++;
     cyan -= bigbluepointerautomationprice;
     bigbluepointerautomationprice =
@@ -2676,7 +2676,7 @@ function buybigbluepointerautomation() {
   }
 }
 function buybluenanometerwaveautomation() {
-  if (cyan > bluenanometerwaveautomationprice) {
+  if (cyan >= bluenanometerwaveautomationprice) {
     bluenanometerwaveautomationcount++;
     cyan -= bluenanometerwaveautomationprice;
     bluenanometerwaveautomationprice =
