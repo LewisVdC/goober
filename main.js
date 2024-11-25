@@ -1464,6 +1464,7 @@ window.setInterval(function () {
     }
     if(magenta > 0){
       document.getElementById("redscroll").style.display = "inline-block";
+      document.getElementById("bluescroll").style.display = "flex";
     }
     //and then make the unlocks work if they need extra code
 
