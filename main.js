@@ -8,12 +8,12 @@ var bigredpointer = 0;
 var rednanometerwave = 0;
 var redupgrade1 = 0;
 var magenta = 0;
-var couldron = 0;
+var cauldron = 0;
 var study = 0;
 var feed = 0;
 var feedperson = 0;
 var drink = 0;
-var couldroncost = 10;
+var cauldroncost = 10;
 var studycost = 100;
 var feedcost = 1000;
 var feedpersoncost = 10000;
@@ -143,6 +143,12 @@ var magic = 0;
 var loaded = 0;
 var tab = "red";
 var yellowGAIN = 0;
+var spellcount = 3;
+var spell1unlock = 0;
+var spell2unlock = 0;
+var spell3unlock = 0;
+var spell4unlock = 0;
+var spell5unlock = 0;
 
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
@@ -493,14 +499,14 @@ function load() {
     //magic and magenta
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
-    if (typeof savegame.couldron !== "undefined") couldron = savegame.couldron;
+    if (typeof savegame.cauldron !== "undefined") cauldron = savegame.cauldron;
     if (typeof savegame.study !== "undefined") study = savegame.study;
     if (typeof savegame.feed !== "undefined") feed = savegame.feed;
     if (typeof savegame.feedperson !== "undefined")
       feedperson = savegame.feedperson;
     if (typeof savegame.drink !== "undefined") drink = savegame.drink;
-    if (typeof savegame.couldroncost !== "undefined")
-      couldroncost = savegame.couldroncost;
+    if (typeof savegame.cauldroncost !== "undefined")
+      cauldroncost = savegame.cauldroncost;
     if (typeof savegame.studycost !== "undefined")
       studycost = savegame.studycost;
     if (typeof savegame.feedcost !== "undefined") feedcost = savegame.feedcost;
@@ -1589,12 +1595,12 @@ window.setInterval(function () {
       greentogglestate: greentogglestate,
       bluetogglestate: bluetogglestate,
       magenta: magenta,
-      couldron: couldron,
+      cauldron: cauldron,
       study: study,
       feed: feed,
       feedperson: feedperson,
       drink: drink,
-      couldroncost: couldroncost,
+      cauldroncost: cauldroncost,
       studycost: studycost,
       feedcost: feedcost,
       feedpersoncost: feedpersoncost,
@@ -1682,7 +1688,7 @@ window.setInterval(function () {
     //increase magic!! woo
     calcmagic(
       //how do i do this,,
-      couldron * 1 + study * 10 + feed * 100 + feedperson * 1000 + drink * 10000
+      cauldron * 1 + study * 10 + feed * 100 + feedperson * 1000 + drink * 10000
     );
     //increase red
     calcred(
@@ -2665,18 +2671,18 @@ function toggleblue() {
 //woaw im so good at this watch me balancing my code
 //also some kid behind me looked at my screen and went "😲 wa is da jong"
 //idk thought it was worthy of writing down
-//cauldron is spelled wrong but idc its in the code noones ognna see this
+//fixed cauldron spelling error
 
 //lol
-function buycouldron() {
-  if (magenta >= couldroncost) {
-    couldron++;
-    magenta -= couldroncost;
-    couldroncost = Math.floor((10 * Math.pow(1.1, couldron)) / 1);
+function buycauldron() {
+  if (magenta >= cauldroncost) {
+    cauldron++;
+    magenta -= cauldroncost;
+    cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
     document.getElementById("magentacount").innerHTML =
       "magenta: " + Math.floor(magenta);
-    document.getElementById("couldroncount").innerHTML = couldron;
-    document.getElementById("couldroncost").innerHTML = couldroncost;
+    document.getElementById("cauldroncount").innerHTML = cauldron;
+    document.getElementById("cauldroncost").innerHTML = cauldroncost;
   }
 }
 
@@ -2733,29 +2739,32 @@ function buydrink() {
 
 //ok so some explanation is probably needed for how i kinda want spells to work
 //if u wanna say something heres some empty lines
-//
-//
-//
-//
+//       O         O
+//   |        V        |
+//     |             |
+//       -----------
 //back to me, i wanna add up all the buildings you have of magenta and then use that as your "magic power" which can make spells stronger,
 //works good for motivation to actually buy all the buildings bc otherwise ud only buy the last one bc its the only good one for making magic
 //synergy kinda helps make buildings 1 and 2 of the rgb buildings kinda decent and competitive with 4 but building 3 actually gets left in the dust
 //id say buff it but look at how op the rest is how about we nerf the rest instead
 
+//re: how about we have to sacrifice specific buildings (say 1 nr4, 3nr2 and 5nr 1) to get a specific spell, so there's a sacrifice slot where you can
+//sacrifice buildings of any amount you chose if you pay a certain number of magic, but you don't get the combinations until you find the scrolls i hid. these scrolls then give you combinations of
+//buildings to sacrifice that each give you an effect, and if you accidentally enter the wrong amount, there'll be a message that notifies you your spell does nothing but it still eats the buildings. the recipes can be randomised to eliminate the
+//chance that ppl go on the internet and search up the solution for the best spell. that way the early buildings have meaning aswell as the later ones.
+
 //spell 1 just works as a get x amount of seconds of red production
 //but idk how to balance this bc like ?? what if you have tons of magic and get like 5 decades of red production
 //even if i softcap it or something you can just autoclick it or something idk
 
-//todo move these vars up to the massive list at the top
-var spellcount = 3;
-var spell1unlock = 0;
-var spell2unlock = 0;
-var spell3unlock = 0;
-var spell4unlock = 0;
-var spell5unlock = 0;
+//sacrifice buildings and magic to be able to cast spells. that way it's kinda balanced ig?
+
 
 //idea!! cooldown to the spells
 //and make the spell much less effective at higher magic usage but u still have to bc u needa make most of it bc of the cooldown
+
+//cooldown: definitely, making the spell less effective at higher magic usage prolly not but we'll see if it's balanced w/o and if it isn't then ig we'll do that.
+
 function spell1(number) {
   red = red + debugrednumber * number;
 }
@@ -2773,6 +2782,11 @@ function checkspell(number) {
   document.getElementById(`${number}`).style.display = "block";
 }
 //no more magic it is banned
+
+//haha save go boom
+function explode(){
+  resetData();
+}
 
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 document.getElementById("devmode").addEventListener("change", function () {
