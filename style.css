@@ -72,7 +72,7 @@ span#magentacount {
   color: magenta;
 }
 span#magiccount {
-  color:#731dc8 !important;
+  color: #731dc8 !important;
   text-shadow: #0003fc 0 0 10px, #834c85 0 0 10px !important;
 }
 div#red {
@@ -650,23 +650,26 @@ button#tabblack {
   background-color: blue;
   background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
 }
-.blackupgrades{
+.blackupgrades {
   color: white;
   background-color: black;
   background: linear-gradient(45deg, black, #2b2b2b, #626262);
 }
-.whiteupgrades{
+.whiteupgrades {
   background-color: white;
   background: linear-gradient(45deg, white, #bdbdbd, gray);
 }
 .redtext {
   color: rgb(155, 20, 20);
+  text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
 }
 .bluetext {
   color: blue;
+  text-shadow: blue 0px 0px 10px, rgb(0, 0, 125) 0px 0px 10px;
 }
 .greentext {
   color: green;
+  text-shadow: green 0px 0px 10px, rgb(0, 125, 0) 0px 0px 10px;
 }
 #body {
   text-shadow: 0px 0px 10px red, 0 0 10px rgb(125, 0, 0);
@@ -859,28 +862,87 @@ div#spellcastingbox {
   justify-content: center;
   flex-direction: column;
 }
-#black{
+#black {
   display: none;
   width: 100%;
   height: 100%;
 }
-#white{
+#white {
   display: none;
   width: 100%;
   height: 100%;
 }
-#blackcount{
+#blackcount {
   color: black;
 }
-#whitecount{
+#whitecount {
   color: white;
 }
-#redscroll{
+#redscroll {
   display: none;
   height: 100px;
   width: 100px;
 }
-#greenscroll{
+#greenscroll {
   display: none;
   width: 50%;
+}
+span#blackholeintrocost {
+  display: flex;
+  flex-direction: column;
+}
+.yellowtext {
+  color: rgb(153, 128, 0);
+  text-shadow: rgb(148, 148, 0) 0px 0px 10px, rgb(125, 125, 0) 0px 0px 10px;
+}
+.cyantext {
+  color: rgb(0, 180, 190);
+  text-shadow: cyan 0px 0px 10px, rgb(0, 125, 125) 0px 0px 10px;
+}
+.magentatext2 {
+  color: magenta;
+  text-shadow: rgb(255, 0, 238) 0px 0px 10px, rgb(255, 126, 126) 0px 0px 10px;
+}
+div#blackholeintro {
+  margin-top: 10%;
+}
+div#blackholeintro:hover {
+  animation-name: shake;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, 1px) rotate(0deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
