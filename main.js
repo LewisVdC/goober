@@ -2814,6 +2814,7 @@ function buydrink() {
 //   |        V        |
 //     |             |
 //       -----------
+//hes beautiful
 //back to me, i wanna add up all the buildings you have of magenta and then use that as your "magic power" which can make spells stronger,
 //works good for motivation to actually buy all the buildings bc otherwise ud only buy the last one bc its the only good one for making magic
 //synergy kinda helps make buildings 1 and 2 of the rgb buildings kinda decent and competitive with 4 but building 3 actually gets left in the dust
