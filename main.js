@@ -2863,12 +2863,6 @@ function explode() {
 
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 document.getElementById("devmode").addEventListener("change", function () {
-  red += 15000;
-  green += 15000;
-  blue += 15000;
-  yellow += 15000;
-  cyan += 15000;
-  magenta += 15000;
   if (document.getElementById("devmode").checked === true) {
     document.getElementById("comingsoonwhite").style.display = "none";
     document.getElementById("comingsoonblack").style.display = "none";
