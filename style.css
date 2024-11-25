@@ -964,4 +964,8 @@ div#lewissucks:hover {
 }
 div#lewissucks {
   width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: white;
 }
