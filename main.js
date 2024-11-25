@@ -1464,6 +1464,7 @@ window.setInterval(function () {
   );
   document.getElementById("magentacount").innerHTML =
     "magenta: " + Math.floor(magenta);
+  document.getElementById("cyancount").innerHTML = "cyan: " + Math.round(cyan);
   //ugh
   if (loaded === 1) {
     //unlocks
@@ -2829,7 +2830,6 @@ function buydrink() {
 
 //sacrifice buildings and magic to be able to cast spells. that way it's kinda balanced ig?
 
-
 //idea!! cooldown to the spells
 //and make the spell much less effective at higher magic usage but u still have to bc u needa make most of it bc of the cooldown
 
@@ -2854,7 +2854,7 @@ function checkspell(number) {
 //no more magic it is banned
 
 //haha save go boom
-function explode(){
+function explode() {
   resetData();
 }
 
