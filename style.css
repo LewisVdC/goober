@@ -877,6 +877,7 @@ div#spellcastingbox {
   flex-direction: column;
 }
 #black {
+  font-weight: 600;
   display: none;
   width: 100%;
   height: 100%;

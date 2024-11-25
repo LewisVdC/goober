@@ -996,6 +996,7 @@ function showtab(x) {
       .classList.remove("whiteupgrades");
   }
   if (x === "black") {
+    document.getElementById("tasks").style.fontWeight = "600";
     tab = "black";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
@@ -1032,6 +1033,8 @@ function showtab(x) {
     document
       .getElementById("submitTaskButton")
       .classList.remove("whiteupgrades");
+  }else{
+    document.getElementById("tasks").style.fontWeight = "";
   }
   if (x === "white") {
     tab = "white";
