@@ -2825,6 +2825,8 @@ function buydrink() {
 //buildings to sacrifice that each give you an effect, and if you accidentally enter the wrong amount, there'll be a message that notifies you your spell does nothing but it still eats the buildings. the recipes can be randomised to eliminate the
 //chance that ppl go on the internet and search up the solution for the best spell. that way the early buildings have meaning aswell as the later ones.
 
+//>still eats the buildings
+//you are evil
 //spell 1 just works as a get x amount of seconds of red production
 //but idk how to balance this bc like ?? what if you have tons of magic and get like 5 decades of red production
 //even if i softcap it or something you can just autoclick it or something idk
