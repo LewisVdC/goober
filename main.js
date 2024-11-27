@@ -996,6 +996,8 @@ function showtab(x) {
       .classList.remove("whiteupgrades");
   }
   if (x === "black") {
+    document.getElementById("blackholecontainer").style.display = "flex";
+    document.getElementById("tasks").style.fontWeight = "600";
     tab = "black";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
@@ -1032,6 +1034,9 @@ function showtab(x) {
     document
       .getElementById("submitTaskButton")
       .classList.remove("whiteupgrades");
+  }else{
+    document.getElementById("tasks").style.fontWeight = "";
+    document.getElementById("blackholecontainer").style.display = "none";
   }
   if (x === "white") {
     tab = "white";
@@ -2863,12 +2868,6 @@ function explode() {
 
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 document.getElementById("devmode").addEventListener("change", function () {
-  red += 15000;
-  green += 15000;
-  blue += 15000;
-  yellow += 15000;
-  cyan += 15000;
-  magenta += 15000;
   if (document.getElementById("devmode").checked === true) {
     document.getElementById("comingsoonwhite").style.display = "none";
     document.getElementById("comingsoonblack").style.display = "none";
