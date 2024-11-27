@@ -978,7 +978,7 @@ div#lewissucks {
   align-items: center;
 }
 #blackhole{
-  box-shadow: 0 0 15px white;
+  box-shadow: 0 0 15px 5px white, 0 0 30px 10px orangered;
   border-style: solid;
   border-radius: 50%;
   height: 100px;
