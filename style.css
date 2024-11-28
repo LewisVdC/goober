@@ -864,6 +864,8 @@ div#spellcasting {
   margin-top: 10%;
 }
 .spell {
+  color: white;
+  background: round;
   height: 80px;
   width: 80px;
   display: none;
@@ -987,4 +989,13 @@ div#lewissucks {
   border-radius: 50%;
   height: 100px;
   width: 100px;
+}
+button#redspell{
+  background-image: url("images/spells/red_spell.png");
+}
+button#greenspell{
+  background-image: url("images/spells/green_spell.png");
+}
+button#bluespell{
+  background-image: url("images/spells/blue_spell.png");
 }

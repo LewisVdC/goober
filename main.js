@@ -506,17 +506,17 @@ function load() {
     if(typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
       if(redscrollcount === 1){
-        document.getElementById("1").style.display = "block";
+        document.getElementById("redspell").style.display = "block";
       }
     if(typeof savegame.greenscrollcount !== "undefined")
       greenscrollcount = savegame.greenscrollcount;
       if(greenscrollcount === 1){
-        document.getElementById("2").style.display = "block";
+        document.getElementById("greenspell").style.display = "block";
       }
     if(typeof savegame.bluescrollcount !== "undefined")
       bluescrollcount = savegame.bluescrollcount;
       if(bluescrollcount === 1){
-        document.getElementById("3").style.display = "block";
+        document.getElementById("bluespell").style.display = "block";
       }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -1777,6 +1777,22 @@ window.setInterval(function () {
       bluenanometerwaveautomationtimer = 0;
       buybluenanometerwave();
     }
+    //magic stuff
+    if(document.querySelector("#redspell:hover") != null){
+      document.getElementById("redspell").innerHTML = "60s of red";
+    }else{
+      document.getElementById("redspell").innerHTML = " ";
+    }
+    if(document.querySelector("#greenspell:hover") != null){
+      document.getElementById("greenspell").innerHTML = "60s of green";
+    }else{
+      document.getElementById("greenspell").innerHTML = " ";
+    }
+    if(document.querySelector("#bluespell:hover") != null){
+      document.getElementById("bluespell").innerHTML = "60s of blue";
+    }else{
+      document.getElementById("bluespell").innerHTML = " ";
+    }
 
     //increase magic!! woo
     calcmagic(
@@ -2965,7 +2981,7 @@ function buyredscroll(){
     red -= 1e22;
     redscrollcount ++;
     document.getElementById("redscroll").style.display = "none";
-    document.getElementById("1").style.display = "block";
+    document.getElementById("redspell").style.display = "block";
     if(redscrollcount+greenscrollcount+bluescrollcount === 1){
       document.getElementById("think").innerHTML = "you've found one, but can you find another?";
     } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
@@ -2986,7 +3002,7 @@ function buygreenscroll(){
     document.getElementById("submitTaskButton").style.borderRightStyle = "";
     document.getElementById("greenscroll").style.borderLeftStyle = "";
     document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("2").style.display = "block";
+    document.getElementById("greenspell").style.display = "block";
     if(redscrollcount+greenscrollcount+bluescrollcount === 1){
       document.getElementById("think").innerHTML = "you've found one, but can you find another?";
     } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
@@ -3002,7 +3018,7 @@ function buybluescroll(){
     blue -= 1e22;
     bluescrollcount ++;
     document.getElementById("bluescroll").style.display = "none";
-    document.getElementById("3").style.display = "block";
+    document.getElementById("bluespell").style.display = "block";
     if(redscrollcount+greenscrollcount+bluescrollcount === 1){
       document.getElementById("think").innerHTML = "you've found one, but can you find another?";
     } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
