@@ -1,5 +1,8 @@
 // ):
 
+var redscrollcount = 0;
+var greenscrollcount = 0;
+var bluescrollcount = 0;
 var red = 10;
 var redfilter = 0;
 var redpointer = 0;
@@ -500,6 +503,21 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
     }
     //magic and magenta
+    if(typeof savegame.redscrollcount !== "undefined")
+      redscrollcount = savegame.redscrollcount;
+      if(redscrollcount === 1){
+        document.getElementById("redspell").style.display = "block";
+      }
+    if(typeof savegame.greenscrollcount !== "undefined")
+      greenscrollcount = savegame.greenscrollcount;
+      if(greenscrollcount === 1){
+        document.getElementById("greenspell").style.display = "block";
+      }
+    if(typeof savegame.bluescrollcount !== "undefined")
+      bluescrollcount = savegame.bluescrollcount;
+      if(bluescrollcount === 1){
+        document.getElementById("bluespell").style.display = "block";
+      }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
     if (typeof savegame.cauldron !== "undefined") cauldron = savegame.cauldron;
@@ -517,7 +535,13 @@ function load() {
       feedpersoncost = savegame.feedpersoncost;
     if (typeof savegame.drinkcost !== "undefined")
       drinkcost = savegame.drinkcost;
-
+    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+      document.getElementById("think").innerHTML = "you've found all spells. for now.";
+    }
     //tasks
     if (typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -790,13 +814,19 @@ function showtab(x) {
   }
   if (x === "green") {
     tab = "green";
-    if (magenta > 0) {
+    if (magenta > 0 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle =
         "none";
       document.getElementById("greenscroll").style.borderLeftStyle = "none";
       document.getElementById("greenscroll").style.display = "inline-block";
+    }else{
+      document.getElementById("submitTaskButton").style.position = "relative";
+      document.getElementById("submitTaskButton").style.width = "100%";
+      document.getElementById("submitTaskButton").style.borderRightStyle = "";
+      document.getElementById("greenscroll").style.borderLeftStyle = "";
+      document.getElementById("greenscroll").style.display = "none";
     }
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
@@ -1507,13 +1537,20 @@ window.setInterval(function () {
       document.getElementById("blueupgrade3").style.display = "block";
     }
     if (magenta > 0) {
-      document.getElementById("redscroll").style.display = "inline-block";
-      document.getElementById("bluescroll").style.display = "flex";
+      if(redscrollcount === 0){
+        document.getElementById("redscroll").style.display = "inline-block";
+      }
+      if(bluescrollcount === 0){
+        document.getElementById("bluescroll").style.display = "flex";
+      }
     }
     //and then make the unlocks work if they need extra code
 
     //save
     var save = {
+      redscrollcount: redscrollcount,
+      greenscrollcount: greenscrollcount,
+      bluescrollcount: bluescrollcount,
       red: red,
       redfilter: redfilter,
       redpointer: redpointer,
@@ -1739,6 +1776,22 @@ window.setInterval(function () {
     if (bluenanometerwaveautomationtimer >= 200 && bluetogglestate) {
       bluenanometerwaveautomationtimer = 0;
       buybluenanometerwave();
+    }
+    //magic stuff
+    if(document.querySelector("#redspell:hover") != null){
+      document.getElementById("redspell").innerHTML = "60s of red";
+    }else{
+      document.getElementById("redspell").innerHTML = " ";
+    }
+    if(document.querySelector("#greenspell:hover") != null){
+      document.getElementById("greenspell").innerHTML = "60s of green";
+    }else{
+      document.getElementById("greenspell").innerHTML = " ";
+    }
+    if(document.querySelector("#bluespell:hover") != null){
+      document.getElementById("bluespell").innerHTML = "60s of blue";
+    }else{
+      document.getElementById("bluespell").innerHTML = " ";
     }
 
     //increase magic!! woo
@@ -2920,5 +2973,59 @@ function redscroll() {
       "magenta: " + Math.floor(magenta);
     document.getElementById("feedcount").innerHTML = feed;
     document.getElementById("feedcost").innerHTML = feedcost;
+  }
+}
+
+function buyredscroll(){
+  if(red >= 1e22){
+    spell1unlock ++;
+    red -= 1e22;
+    redscrollcount ++;
+    document.getElementById("redscroll").style.display = "none";
+    document.getElementById("redspell").style.display = "block";
+    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+      document.getElementById("think").innerHTML = "you've found all spells. for now.";
+    }
+  }
+}
+function buygreenscroll(){
+  if(green >= 1e22){
+    spell2unlock ++;
+    green -= 1e22;
+    greenscrollcount ++;
+    document.getElementById("greenscroll").style.display = "none";
+    document.getElementById("submitTaskButton").style.position = "relative";
+    document.getElementById("submitTaskButton").style.width = "100%";
+    document.getElementById("submitTaskButton").style.borderRightStyle = "";
+    document.getElementById("greenscroll").style.borderLeftStyle = "";
+    document.getElementById("greenscroll").style.display = "none";
+    document.getElementById("greenspell").style.display = "block";
+    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+      document.getElementById("think").innerHTML = "you've found all spells. for now.";
+    }
+  }
+}
+function buybluescroll(){
+  if(blue >= 1e22){
+    spell3unlock ++;
+    blue -= 1e22;
+    bluescrollcount ++;
+    document.getElementById("bluescroll").style.display = "none";
+    document.getElementById("bluespell").style.display = "block";
+    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+      document.getElementById("think").innerHTML = "you've found all spells. for now.";
+    }
   }
 }

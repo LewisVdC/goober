@@ -39,9 +39,7 @@
     >
       Submit
     </button>
-    <button id="greenscroll" class="greenupgrades" onclick="greenscroll()">
-      Green scroll
-    </button>
+    <button id="greenscroll" class="greenupgrades" onclick="buygreenscroll()">Green scroll</button>
   </div>
   <div id="toptext"></div>
   <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
@@ -172,7 +170,7 @@
             weak synergy<br /><span id="redupgrade2cost">cost:250000</span>
           </button>
 
-          <button class="redupgrades" id="redscroll" onclick="redscroll()">
+          <button class="redupgrades" id="redscroll" onclick="buyredscroll()">
             Red scroll
             <br />
             cost: 1e22
@@ -385,7 +383,10 @@
           <span>blue scroll: <span id="bluenanometerwavecount"></span></span>
         </div>
         <div id="bluebuilding5">
-          <button id="bluescroll" class="blueupgrades" onclick="bluescroll()">
+          <button onclick="buybluescroll()"
+            id="bluescroll"
+            class="blueupgrades"
+          >
             cost:
             <span id="bluenanometerwavecost">1e22</span>
           </button>
@@ -753,7 +754,7 @@
         </div>
         <div id="magentabuilding2" class="magentabuilding">
           <button
-            id="studycouldron"
+            id="studycauldron"
             class="magentaupgrades"
             onClick="buystudy()"
           >
@@ -802,14 +803,11 @@
       </div>
       <div id="spellcasting">cast some spells!</div>
       <div id="spellcastingbox">
-        <button class="spell" id="think" onClick="think()">
-          <span
-            >you dont have any yet,, ask around to see how to cast one</span
-          ></button
-        ><br />
-        <button class="spell" id="1">instant red</button>
-        <button class="spell" id="2">instant green</button>
-        <button class="spell" id="3">instant blue</button>
+        <p id="think">you dont have any yet, ask around to see how to cast one</p>
+        <br />
+        <button class="spell" id="redspell"></button>
+        <button class="spell" id="greenspell"></button>
+        <button class="spell" id="bluespell"></button>
       </div>
     </div>
   </div>
