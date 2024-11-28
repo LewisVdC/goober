@@ -864,17 +864,21 @@ div#spellcasting {
   margin-top: 10%;
 }
 .spell {
+  height: 80px;
+  width: 80px;
   display: none;
   justify-content: center;
 }
-button#think {
+p#think {
   display: block;
+  width: 100%;
 }
 div#spellcastingbox {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 #black {
   font-weight: 600;

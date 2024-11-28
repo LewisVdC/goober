@@ -515,7 +515,7 @@ function load() {
       }
     if(typeof savegame.bluescrollcount !== "undefined")
       bluescrollcount = savegame.bluescrollcount;
-      if(redscrollcount === 1){
+      if(bluescrollcount === 1){
         document.getElementById("3").style.display = "block";
       }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
