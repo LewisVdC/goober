@@ -39,7 +39,7 @@
     >
       Submit
     </button>
-    <button id="greenscroll" class="greenupgrades">Green scroll</button>
+    <button id="greenscroll" class="greenupgrades" onclick="buygreenscroll()">Green scroll</button>
   </div>
   <div id="toptext"></div>
   <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
@@ -170,7 +170,7 @@
             weak synergy<br /><span id="redupgrade2cost">cost:250000</span>
           </button>
 
-          <button class="redupgrades" id="redscroll">
+          <button class="redupgrades" id="redscroll" onclick="buyredscroll()">
             Red scroll
             <br />
             cost: 1e22
@@ -385,7 +385,7 @@
           ></span>
         </div>
         <div id="bluebuilding5">
-          <button
+          <button onclick="buybluescroll()"
             id="bluescroll"
             class="blueupgrades"
           >

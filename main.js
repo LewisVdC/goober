@@ -1,5 +1,8 @@
 // ):
 
+var redscrollcount = 0;
+var greenscrollcount = 0;
+var bluescrollcount = 0;
 var red = 10;
 var redfilter = 0;
 var redpointer = 0;
@@ -500,6 +503,12 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
     }
     //magic and magenta
+    if(typeof savegame.redscrollcount !== "undefined")
+      redscrollcount = savegame.redscrollcount;
+    if(typeof savegame.greenscrollcount !== "undefined")
+      greenscrollcount = savegame.greenscrollcount;
+    if(typeof savegame.bluescrollcount !== "undefined")
+      bluescrollcount = savegame.bluescrollcount;
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
     if (typeof savegame.cauldron !== "undefined") cauldron = savegame.cauldron;
@@ -790,13 +799,19 @@ function showtab(x) {
   }
   if (x === "green") {
     tab = "green";
-    if (magenta > 0) {
+    if (magenta > 0 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle =
         "none";
       document.getElementById("greenscroll").style.borderLeftStyle = "none";
       document.getElementById("greenscroll").style.display = "inline-block";
+    }else{
+      document.getElementById("submitTaskButton").style.position = "relative";
+      document.getElementById("submitTaskButton").style.width = "100%";
+      document.getElementById("submitTaskButton").style.borderRightStyle = "";
+      document.getElementById("greenscroll").style.borderLeftStyle = "";
+      document.getElementById("greenscroll").style.display = "none";
     }
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
@@ -1507,13 +1522,20 @@ window.setInterval(function () {
       document.getElementById("blueupgrade3").style.display = "block";
     }
     if (magenta > 0) {
-      document.getElementById("redscroll").style.display = "inline-block";
-      document.getElementById("bluescroll").style.display = "flex";
+      if(redscrollcount === 0){
+        document.getElementById("redscroll").style.display = "inline-block";
+      }
+      if(bluescrollcount === 0){
+        document.getElementById("bluescroll").style.display = "flex";
+      }
     }
     //and then make the unlocks work if they need extra code
 
     //save
     var save = {
+      redscrollcount: redscrollcount,
+      greenscrollcount: greenscrollcount,
+      bluescrollcount: bluescrollcount,
       red: red,
       redfilter: redfilter,
       redpointer: redpointer,
@@ -2909,3 +2931,30 @@ function formatNumber(number) {
 }
 //real
 //fake i give up
+
+function buyredscroll(){
+  if(red >= 1e22){
+    red -= 1e22;
+    redscrollcount ++;
+    document.getElementById("redscroll").style.display = "none";
+  }
+}
+function buygreenscroll(){
+  if(green >= 1e22){
+    green -= 1e22;
+    greenscrollcount ++;
+    document.getElementById("greenscroll").style.display = "none";
+    document.getElementById("submitTaskButton").style.position = "relative";
+    document.getElementById("submitTaskButton").style.width = "100%";
+    document.getElementById("submitTaskButton").style.borderRightStyle = "";
+    document.getElementById("greenscroll").style.borderLeftStyle = "";
+    document.getElementById("greenscroll").style.display = "none";
+  }
+}
+function buybluescroll(){
+  if(blue >= 1e22){
+    blue -= 1e22;
+    bluescrollcount ++;
+    document.getElementById("bluescroll").style.display = "none";
+  }
+}
