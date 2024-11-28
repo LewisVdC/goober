@@ -505,10 +505,19 @@ function load() {
     //magic and magenta
     if(typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
+      if(redscrollcount === 1){
+        document.getElementById("1").style.display = "block";
+      }
     if(typeof savegame.greenscrollcount !== "undefined")
       greenscrollcount = savegame.greenscrollcount;
+      if(greenscrollcount === 1){
+        document.getElementById("2").style.display = "block";
+      }
     if(typeof savegame.bluescrollcount !== "undefined")
       bluescrollcount = savegame.bluescrollcount;
+      if(redscrollcount === 1){
+        document.getElementById("3").style.display = "block";
+      }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
     if (typeof savegame.cauldron !== "undefined") cauldron = savegame.cauldron;
@@ -526,7 +535,13 @@ function load() {
       feedpersoncost = savegame.feedpersoncost;
     if (typeof savegame.drinkcost !== "undefined")
       drinkcost = savegame.drinkcost;
-
+    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+      document.getElementById("think").innerHTML = "you've found all spells. for now.";
+    }
     //tasks
     if (typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -2950,6 +2965,14 @@ function buyredscroll(){
     red -= 1e22;
     redscrollcount ++;
     document.getElementById("redscroll").style.display = "none";
+    document.getElementById("1").style.display = "block";
+    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+      document.getElementById("think").innerHTML = "you've found all spells. for now.";
+    }
   }
 }
 function buygreenscroll(){
@@ -2963,6 +2986,14 @@ function buygreenscroll(){
     document.getElementById("submitTaskButton").style.borderRightStyle = "";
     document.getElementById("greenscroll").style.borderLeftStyle = "";
     document.getElementById("greenscroll").style.display = "none";
+    document.getElementById("2").style.display = "block";
+    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+      document.getElementById("think").innerHTML = "you've found all spells. for now.";
+    }
   }
 }
 function buybluescroll(){
@@ -2971,5 +3002,13 @@ function buybluescroll(){
     blue -= 1e22;
     bluescrollcount ++;
     document.getElementById("bluescroll").style.display = "none";
+    document.getElementById("3").style.display = "block";
+    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+      document.getElementById("think").innerHTML = "you've found all spells. for now.";
+    }
   }
 }
