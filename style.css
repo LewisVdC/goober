@@ -974,7 +974,7 @@ div#lewissucks {
   width: 200px;
   height: 200px;
 }
-#blackholecontainer{
+#blackholecontainer {
   height: 100%;
   width: 100%;
   display: none;
@@ -983,19 +983,19 @@ div#lewissucks {
   justify-content: center;
   align-items: center;
 }
-#blackhole{
+#blackhole {
   box-shadow: 0 0 15px 5px white, 0 0 30px 10px orangered;
   border-style: solid;
   border-radius: 50%;
   height: 100px;
   width: 100px;
 }
-button#redspell{
-  background-image: url("images/spells/red_spell.png");
+button#redspell {
+  background-image: url("images/spells/red_spell.webp");
 }
-button#greenspell{
-  background-image: url("images/spells/green_spell.png");
+button#greenspell {
+  background-image: url("images/spells/green_spell.webp");
 }
-button#bluespell{
-  background-image: url("images/spells/blue_spell.png");
+button#bluespell {
+  background-image: url("images/spells/blue_spell.webp");
 }
