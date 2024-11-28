@@ -1034,7 +1034,7 @@ function showtab(x) {
     document
       .getElementById("submitTaskButton")
       .classList.remove("whiteupgrades");
-  }else{
+  } else {
     document.getElementById("tasks").style.fontWeight = "";
     document.getElementById("blackholecontainer").style.display = "none";
   }
@@ -2909,3 +2909,15 @@ function formatNumber(number) {
 }
 //real
 //fake i give up
+//scroll time!
+function redscroll() {
+  if (red >= 1e22 && spell1unlock == 0) {
+    spell1unlock = 1;
+    magenta -= feedcost;
+    feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
+    document.getElementById("magentacount").innerHTML =
+      "magenta: " + Math.floor(magenta);
+    document.getElementById("feedcount").innerHTML = feed;
+    document.getElementById("feedcost").innerHTML = feedcost;
+  }
+}
