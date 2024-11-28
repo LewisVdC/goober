@@ -2946,6 +2946,7 @@ function redscroll() {
 
 function buyredscroll(){
   if(red >= 1e22){
+    spell1unlock ++;
     red -= 1e22;
     redscrollcount ++;
     document.getElementById("redscroll").style.display = "none";
@@ -2953,6 +2954,7 @@ function buyredscroll(){
 }
 function buygreenscroll(){
   if(green >= 1e22){
+    spell2unlock ++;
     green -= 1e22;
     greenscrollcount ++;
     document.getElementById("greenscroll").style.display = "none";
@@ -2965,6 +2967,7 @@ function buygreenscroll(){
 }
 function buybluescroll(){
   if(blue >= 1e22){
+    spell3unlock ++;
     blue -= 1e22;
     bluescrollcount ++;
     document.getElementById("bluescroll").style.display = "none";
