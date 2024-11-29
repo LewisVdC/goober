@@ -1042,3 +1042,7 @@ div#lewissucks.animate {
     transform: scale(3);
   }
 }
+
+#Settings{
+  position: absolute;
+}
