@@ -1484,6 +1484,12 @@ function buyblueupgrade3() {
 //loop
 window.setInterval(function () {
   window.scrollTo(0,0);
+  //some nerdy stuff
+  if(document.querySelector("#redbuilding1text:hover") != null || document.querySelector("#redbuilding1:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives 1 red/2s";
+  }else{
+    document.getElementById("nerdmodetext").innerHTML = "hover over an upgrade to see what it does.";
+  }
   //wuuuuuuuuuuuuuuugh
   document.getElementById("taskAmountRed").innerHTML = formatNumber(
     Math.floor(red)
