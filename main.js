@@ -83,7 +83,7 @@ var taskmasteryprice = 20;
 var taskmasterycount = 0;
 var goldenmultiplierprice = 35;
 var goldenmultipliercount = 0;
-var colorsyphonprice = 12000;
+var colorsyphonprice = 1200;
 var colorsyphoncount = 0;
 var focussedpointersprice = 30;
 var focussedpointerscount = 0;
@@ -2417,7 +2417,7 @@ function buycolorsyphon() {
   ) {
     yellow -= colorsyphonprice;
     colorsyphoncount++;
-    colorsyphonprice = 12000;
+    colorsyphonprice = 1200;
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
     document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
