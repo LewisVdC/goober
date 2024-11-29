@@ -2411,9 +2411,9 @@ function buygoldenmultiplier() {
 function buycolorsyphon() {
   if (
     yellow >= colorsyphonprice &&
-    red >= 1000000000000000 &&
-    green >= 1000000000000000 &&
-    blue >= 1000000000000000
+    red >= 1e15 &&
+    green >= 1e15 &&
+    blue >= 1e15
   ) {
     yellow -= colorsyphonprice;
     colorsyphoncount++;
@@ -2422,9 +2422,9 @@ function buycolorsyphon() {
       "yellow: " + formatNumber(Math.floor(yellow));
     document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
     cyan += 10;
-    red -= 1000000000000000;
-    blue -= 1000000000000000;
-    green -= 1000000000000000;
+    red -= 1e15;
+    blue -= 1e15;
+    green -= 1e15;
     document.getElementById("cyancount").innerHTML = "cyan: " + cyan;
     document.getElementById("tabcyan").style.display = "block";
   }
