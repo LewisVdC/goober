@@ -2789,6 +2789,7 @@ function toggleblue() {
 //also some kid behind me looked at my screen and went "😲 wa is da jong"
 //idk thought it was worthy of writing down
 //fixed cauldron spelling error
+//^^ and broke the button itself lmao
 
 //lol
 function buycauldron() {
