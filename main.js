@@ -768,6 +768,7 @@ document.getElementById("yellowcount").innerHTML =
 function showtab(x) {
   if (x === "red") {
     tab = "red";
+    document.getElementById("nerdmodetext").style.color = "rgb(155,20,20)";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "block";
     document.getElementById("black").style.display = "none";
@@ -822,6 +823,7 @@ function showtab(x) {
       document.getElementById("greenscroll").style.borderLeftStyle = "";
       document.getElementById("greenscroll").style.display = "none";
     }
+    document.getElementById("nerdmodetext").style.color = "green";
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
     document.getElementById("magenta").style.display = "none";
@@ -865,6 +867,7 @@ function showtab(x) {
   }
   if (x === "blue") {
     tab = "blue";
+    document.getElementById("nerdmodetext").style.color = "blue";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
@@ -903,6 +906,7 @@ function showtab(x) {
   }
   if (x === "yellow") {
     tab = "yellow";
+    document.getElementById("nerdmodetext").style.color = "rgb(153,128,0)";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("yellow").style.display = "block";
     document.getElementById("black").style.display = "none";
@@ -941,6 +945,7 @@ function showtab(x) {
   }
   if (x === "cyan") {
     tab = "cyan";
+    document.getElementById("nerdmodetext").style.color = "rgb(0,180,190)";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("cyan").style.display = "block";
     document.getElementById("black").style.display = "none";
@@ -981,6 +986,7 @@ function showtab(x) {
   }
   if (x === "magenta") {
     tab = "magenta";
+    document.getElementById("nerdmodetext").style.color = "magenta";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("cyan").style.display = "none";
     document.getElementById("black").style.display = "none";
@@ -1020,6 +1026,7 @@ function showtab(x) {
       .classList.remove("whiteupgrades");
   }
   if (x === "black") {
+    document.getElementById("nerdmodetext").style.color = "black";
     document.getElementById("blackholecontainer").style.display = "flex";
     document.getElementById("tasks").style.fontWeight = "600";
     tab = "black";
@@ -1064,6 +1071,7 @@ function showtab(x) {
   }
   if (x === "white") {
     tab = "white";
+    document.getElementById("nerdmodetext").style.color = "white";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
@@ -2906,38 +2914,6 @@ function explode() {
   resetData();
 }
 
-//temp devmode (disables annoying coming soon signs and unlocks all tabs)
-function devmode() {
-  if (buttonpress === true) {
-    buttonpress = !buttonpress;
-    document.getElementById("comingsoonwhite").style.display = "none";
-    document.getElementById("comingsoonblack").style.display = "none";
-    document.getElementById("tabmagenta").style.display = "block";
-    document.getElementById("tabgreen").style.display = "block";
-    document.getElementById("tabblue").style.display = "block";
-    document.getElementById("tabyellow").style.display = "block";
-    document.getElementById("tabcyan").style.display = "block";
-    document.getElementById("tabs").style.width = "250px";
-  } else {
-    buttonpress = !buttonpress;
-    document.getElementById("comingsoonwhite").style.display = "block";
-    document.getElementById("comingsoonblack").style.display = "block";
-    if (magenta === 0)
-      document.getElementById("tabmagenta").style.display = "none";
-    if (green === 0) document.getElementById("tabgreen").style.display = "none";
-    if (blue === 0) document.getElementById("tabblue").style.display = "none";
-    if (yellow === 0)
-      document.getElementById("tabyellow").style.display = "none";
-    if (cyan === 0) document.getElementById("tabcyan").style.display = "none";
-    if (tasksCompleted === 0) {
-      document.getElementById("tabs").style.width = "calc(250px/3)";
-    } else if (tasksCompleted === 1) {
-      document.getElementById("tabs").style.width = "calc(250px/3*2)";
-    } else {
-      document.getElementById("tabs").style.width = "250px";
-    }
-  }
-};
 
 //some number formatting
 //lol u can tell by the comments chatgpt wrote this
@@ -3026,10 +3002,52 @@ function fancyblackhole() {
   //);
 }
 
+//settings
 function displaysettings(){
   if(document.getElementById("settingscontainer").style.display != "flex"){
     document.getElementById("settingscontainer").style.display = "flex";
   }else{
     document.getElementById("settingscontainer").style.display = "none";
+  }
+}
+
+//temp devmode (disables annoying coming soon signs and unlocks all tabs)
+function devmode() {
+  if (buttonpress === true) {
+    buttonpress = !buttonpress;
+    document.getElementById("comingsoonwhite").style.display = "none";
+    document.getElementById("comingsoonblack").style.display = "none";
+    document.getElementById("tabmagenta").style.display = "block";
+    document.getElementById("tabgreen").style.display = "block";
+    document.getElementById("tabblue").style.display = "block";
+    document.getElementById("tabyellow").style.display = "block";
+    document.getElementById("tabcyan").style.display = "block";
+    document.getElementById("tabs").style.width = "250px";
+  } else {
+    buttonpress = !buttonpress;
+    document.getElementById("comingsoonwhite").style.display = "block";
+    document.getElementById("comingsoonblack").style.display = "block";
+    if (magenta === 0)
+      document.getElementById("tabmagenta").style.display = "none";
+    if (green === 0) document.getElementById("tabgreen").style.display = "none";
+    if (blue === 0) document.getElementById("tabblue").style.display = "none";
+    if (yellow === 0)
+      document.getElementById("tabyellow").style.display = "none";
+    if (cyan === 0) document.getElementById("tabcyan").style.display = "none";
+    if (tasksCompleted === 0) {
+      document.getElementById("tabs").style.width = "calc(250px/3)";
+    } else if (tasksCompleted === 1) {
+      document.getElementById("tabs").style.width = "calc(250px/3*2)";
+    } else {
+      document.getElementById("tabs").style.width = "250px";
+    }
+  }
+};
+
+function nerdmode(){
+  if(document.getElementById("nerdmodetext").style.display === ""){
+    document.getElementById("nerdmodetext").style.display = "flex";
+  }else{
+    document.getElementById("nerdmodetext").style.display = "";
   }
 }
