@@ -675,7 +675,7 @@ button#tabblack {
 }
 .redtext {
   color: rgb(155, 20, 20);
-  text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
+  /*text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);*/
 }
 .bluetext {
   color: blue;
