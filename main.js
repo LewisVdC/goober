@@ -187,6 +187,7 @@ const hex = {
 document.getElementById("redcount").innerHTML = "red: " + red;
 
 function load() {
+  window.scrollTo(0,0);
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
     //red
