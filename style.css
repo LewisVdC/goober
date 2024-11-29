@@ -987,6 +987,7 @@ div#lewissucks {
   margin-top: 5%;
   box-shadow: 0 0 15px 5px white, 0 0 30px 10px orangered;
   border-style: solid;
+  border-width: thin;
   border-radius: 50%;
   height: 100px;
   width: 100px;
