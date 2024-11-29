@@ -984,11 +984,23 @@ div#lewissucks {
   align-items: center;
 }
 #blackhole {
+  margin-top: 5%;
   box-shadow: 0 0 15px 5px white, 0 0 30px 10px orangered;
   border-style: solid;
   border-radius: 50%;
   height: 100px;
   width: 100px;
+  animation: gostupid 2s infinite;
+}
+
+@keyframes gostupid {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 button#redspell {
   background-image: url("images/spells/red_spell.webp");
@@ -998,4 +1010,35 @@ button#greenspell {
 }
 button#bluespell {
   background-image: url("images/spells/blue_spell.webp");
+}
+div#lewissucks.animate {
+  animation: die 2s forwards;
+}
+@keyframes die {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-10px, 125%) scale(0.8) rotate(-10deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(0, 0) scale(0.1) rotate(-360deg);
+    opacity: -2;
+  }
+}
+#blackhole.animate {
+  animation: beeg 2s forwards;
+}
+@keyframes beeg {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(3);
+  }
 }
