@@ -1,5 +1,5 @@
 // ):
-
+var buttonpress = true
 var redscrollcount = 0;
 var greenscrollcount = 0;
 var bluescrollcount = 0;
@@ -1475,12 +1475,6 @@ function buyblueupgrade3() {
 
 //loop
 window.setInterval(function () {
-  //devmode tooltip
-  if (document.querySelector("#devmode:hover") != null) {
-    document.getElementById("devtooltip").style.display = "block";
-  } else {
-    document.getElementById("devtooltip").style.display = "none";
-  }
   //wuuuuuuuuuuuuuuugh
   document.getElementById("taskAmountRed").innerHTML = formatNumber(
     Math.floor(red)
@@ -2912,8 +2906,9 @@ function explode() {
 }
 
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
-document.getElementById("devmode").addEventListener("change", function () {
-  if (document.getElementById("devmode").checked === true) {
+function devmode() {
+  if (buttonpress === true) {
+    buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "none";
     document.getElementById("comingsoonblack").style.display = "none";
     document.getElementById("tabmagenta").style.display = "block";
@@ -2923,6 +2918,7 @@ document.getElementById("devmode").addEventListener("change", function () {
     document.getElementById("tabcyan").style.display = "block";
     document.getElementById("tabs").style.width = "250px";
   } else {
+    buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "block";
     document.getElementById("comingsoonblack").style.display = "block";
     if (magenta === 0)
@@ -2940,7 +2936,7 @@ document.getElementById("devmode").addEventListener("change", function () {
       document.getElementById("tabs").style.width = "250px";
     }
   }
-});
+};
 
 //some number formatting
 //lol u can tell by the comments chatgpt wrote this
@@ -3027,4 +3023,12 @@ function fancyblackhole() {
   //lewissucks.addEventListener("animationend", () =>
   //  lewissucks.classList.remove("animate")
   //);
+}
+
+function displaysettings(){
+  if(document.getElementById("settingscontainer").style.display != "flex"){
+    document.getElementById("settingscontainer").style.display = "flex";
+  }else{
+    document.getElementById("settingscontainer").style.display = "none";
+  }
 }

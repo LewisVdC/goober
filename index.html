@@ -48,10 +48,11 @@
     </button>
   </div>
   <div id="toptext"></div>
-  <button id="Settings" onclick="displaysetting()">Settings</button>
-  <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
-  <input id="devmode" type="checkbox" />
-  <p id="devtooltip">devmode</p>
+  <button id="Settings" onclick="displaysettings()" class="setting">Settings ⇅</button>
+  <div id="settingscontainer">
+  <button onClick="resetData()" id="reset" class="setting"><strong>reset data</strong></button>
+  <button id="devmode" onclick="devmode()" class="setting">devmode</button>
+  </div>
   <!-- tabs -->
   <div id="alltabs">
     <button id="tabwhite" onclick="showtab('white')">white</button>

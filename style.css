@@ -759,13 +759,6 @@ button:not(.submit) {
 #tabblack:hover {
   box-shadow: 0 0 100px 20px black;
 }
-#reset {
-  position: absolute;
-}
-#devmode {
-  position: absolute;
-  margin-left: 100px;
-}
 div#cyanbuildings {
   display: inline-flex;
   text-align: center;
@@ -1046,4 +1039,14 @@ div#lewissucks.animate {
 
 #Settings{
   position: absolute;
+  width: 79px;
+}
+#settingscontainer{
+  margin-top: 30px;
+  flex-direction: column;
+  display: none;
+  position: absolute;
+}
+.setting{
+  width: 79px;
 }
