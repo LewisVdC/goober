@@ -535,13 +535,7 @@ function load() {
       feedpersoncost = savegame.feedpersoncost;
     if (typeof savegame.drinkcost !== "undefined")
       drinkcost = savegame.drinkcost;
-    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
-      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
-    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
-      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
-    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
-      document.getElementById("think").innerHTML = "you've found all spells. for now.";
-    }
+    thinktext();
     //tasks
     if (typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -1779,19 +1773,13 @@ window.setInterval(function () {
     }
     //magic stuff
     if(document.querySelector("#redspell:hover") != null){
-      document.getElementById("redspell").innerHTML = "60s of red";
+      document.getElementById("think").innerHTML = "this spell appears to travel 1 minute to the future, but only for red.";
+    }else if(document.querySelector("#greenspell:hover") != null){
+      document.getElementById("think").innerHTML = "this spell appears to travel 1 minute to the future, but only for green.";
+    }else if(document.querySelector("#bluespell:hover") != null){
+      document.getElementById("think").innerHTML = "this spell appears to travel 1 minute to the future, but only for blue.";
     }else{
-      document.getElementById("redspell").innerHTML = " ";
-    }
-    if(document.querySelector("#greenspell:hover") != null){
-      document.getElementById("greenspell").innerHTML = "60s of green";
-    }else{
-      document.getElementById("greenspell").innerHTML = " ";
-    }
-    if(document.querySelector("#bluespell:hover") != null){
-      document.getElementById("bluespell").innerHTML = "60s of blue";
-    }else{
-      document.getElementById("bluespell").innerHTML = " ";
+      thinktext();
     }
 
     //increase magic!! woo
@@ -2982,13 +2970,7 @@ function buyredscroll(){
     redscrollcount ++;
     document.getElementById("redscroll").style.display = "none";
     document.getElementById("redspell").style.display = "block";
-    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
-      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
-    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
-      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
-    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
-      document.getElementById("think").innerHTML = "you've found all spells. for now.";
-    }
+    thinktext();
   }
 }
 function buygreenscroll(){
@@ -3003,13 +2985,7 @@ function buygreenscroll(){
     document.getElementById("greenscroll").style.borderLeftStyle = "";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("greenspell").style.display = "block";
-    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
-      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
-    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
-      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
-    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
-      document.getElementById("think").innerHTML = "you've found all spells. for now.";
-    }
+    thinktext();
   }
 }
 function buybluescroll(){
@@ -3019,12 +2995,15 @@ function buybluescroll(){
     bluescrollcount ++;
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.display = "block";
-    if(redscrollcount+greenscrollcount+bluescrollcount === 1){
-      document.getElementById("think").innerHTML = "you've found one, but can you find another?";
-    } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
-      document.getElementById("think").innerHTML = "you've found two, there's still one left.";
-    } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
-      document.getElementById("think").innerHTML = "you've found all spells. for now.";
-    }
+    thinktext();
+  }
+}
+function thinktext(){
+  if(redscrollcount+greenscrollcount+bluescrollcount === 1){
+    document.getElementById("think").innerHTML = "you've found one, but can you find another?";
+  } else if(redscrollcount+greenscrollcount+bluescrollcount === 2){
+    document.getElementById("think").innerHTML = "you've found two, there's still one left.";
+  } else if(redscrollcount+greenscrollcount+bluescrollcount === 3){
+    document.getElementById("think").innerHTML = "you've found all spells. for now.";
   }
 }
