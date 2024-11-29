@@ -187,7 +187,6 @@ const hex = {
 document.getElementById("redcount").innerHTML = "red: " + red;
 
 function load() {
-  window.scrollTo(0,0);
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
     //red
@@ -1476,6 +1475,7 @@ function buyblueupgrade3() {
 
 //loop
 window.setInterval(function () {
+  window.scrollTo(0,0);
   //wuuuuuuuuuuuuuuugh
   document.getElementById("taskAmountRed").innerHTML = formatNumber(
     Math.floor(red)
