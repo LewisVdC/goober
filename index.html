@@ -5,6 +5,10 @@
   <link rel="stylesheet" href="style.css" />
   <title>Red Green Blue</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="preload" as="image" href="images/spells/red_spell.webp" />
+  <link rel="preload" as="image" href="images/spells/green_spell.webp" />
+  <link rel="preload" as="image" href="images/spells/blue_spell.webp" />
+  <!-- preload images bc it looked horrible there were 150ms before the images loaded right it does throw a warning in console though -->
 </head>
 <body onload="load()" id="body">
   <div id="blackholecontainer">
@@ -39,7 +43,9 @@
     >
       Submit
     </button>
-    <button id="greenscroll" class="greenupgrades" onclick="buygreenscroll()">Green scroll</button>
+    <button id="greenscroll" class="greenupgrades" onclick="buygreenscroll()">
+      Green scroll
+    </button>
   </div>
   <div id="toptext"></div>
   <button onClick="resetData()" id="reset"><strong>Reset data</strong></button>
@@ -383,7 +389,8 @@
           <span>blue scroll: <span id="bluenanometerwavecount"></span></span>
         </div>
         <div id="bluebuilding5">
-          <button onclick="buybluescroll()"
+          <button
+            onclick="buybluescroll()"
             id="bluescroll"
             class="blueupgrades"
           >
@@ -803,7 +810,9 @@
       </div>
       <div id="spellcasting">cast some spells!</div>
       <div id="spellcastingbox">
-        <p id="think">you dont have any yet, ask around to see how to cast one</p>
+        <p id="think">
+          you dont have any yet, ask around to see how to cast one
+        </p>
         <br />
         <button class="spell" id="redspell"></button>
         <button class="spell" id="greenspell"></button>
