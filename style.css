@@ -50,6 +50,7 @@ div#toptext {
 }
 
 div#top {
+  padding-bottom: 5%;
   margin: auto;
   width: 50%;
   text-align: center;
@@ -117,7 +118,6 @@ div#redbuild1 {
   margin: auto;
   width: 50%;
   text-align: left;
-  padding-top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,7 +289,6 @@ div#greenbuild1 {
   margin: auto;
   width: 50%;
   text-align: left;
-  padding-top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -442,7 +441,6 @@ div#bluebuild1 {
   margin: auto;
   width: 50%;
   text-align: left;
-  padding-top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -702,7 +700,6 @@ button#tabblack {
 #yellowbuildings {
   text-align: center;
   justify-content: center;
-  margin-top: 10px;
 }
 #magentabuildings {
   text-align: center;

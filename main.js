@@ -1485,8 +1485,61 @@ function buyblueupgrade3() {
 window.setInterval(function () {
   window.scrollTo(0,0);
   //some nerdy stuff
-  if(document.querySelector("#redbuilding1text:hover") != null || document.querySelector("#redbuilding1:hover") != null){
+  //also Lewis please write exactly what upgrade 1, 2 and 3 do i have no idea
+  if(document.querySelector("#redbuild1:hover") != null){
     document.getElementById("nerdmodetext").innerHTML = "gives 0.5 red/s";
+  }else if(document.querySelector("#redbuild2:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  5 red/s";
+  }else if(document.querySelector("#redbuild3:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  50 red/s";
+  }else if(document.querySelector("#redbuild4:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  500 red/s";
+  }else if(document.querySelector("#redbuild5:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  5000 red/s";
+  }else if(document.querySelector("#greenbuild1:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives 0.5 green/s";
+  }else if(document.querySelector("#greenbuild2:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  5 green/s";
+  }else if(document.querySelector("#greenbuild3:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  50 green/s";
+  }else if(document.querySelector("#greenbuild4:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  500 green/s";
+  }else if(document.querySelector("#greenbuild5:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  5000 green/s";
+  }else if(document.querySelector("#bluebuild1:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives 0.5 blue/s";
+  }else if(document.querySelector("#bluebuild2:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  5 blue/s";
+  }else if(document.querySelector("#bluebuild3:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  50 blue/s";
+  }else if(document.querySelector("#bluebuild4:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  500 blue/s";
+  }else if(document.querySelector("#bluebuild5:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives  5000 blue/s";
+  }else if(document.querySelector("#redupgrade1:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "squares redfilter gain"; //maybe here
+  }else if(document.querySelector("#redupgrade3:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "squares redpointer gain"; //maybe here
+  }else if(document.querySelector("#redupgrade2:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "idk Lewis please take it from here"; //here
+  }else if(document.querySelector("#greenupgrade1:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "squares greenfilter gain"; //maybe here
+  }else if(document.querySelector("#greenupgrade3:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "squares greenpointer gain"; //maybe here
+  }else if(document.querySelector("#greenupgrade2:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "idk Lewis please take it from here"; //here
+  }else if(document.querySelector("#blueupgrade1:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "squares redfilter gain"; //maybe here
+  }else if(document.querySelector("#blueupgrade3:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "squares redpointer gain"; //maybe here
+  }else if(document.querySelector("#blueupgrade2:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "idk Lewis please take it from here"; //and here
+  }else if(document.querySelector("#redscroll:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "???";
+  }else if(document.querySelector("#greenscroll:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "???";
+  }else if(document.querySelector("#bluescroll:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "???";
   }else{
     document.getElementById("nerdmodetext").innerHTML = "hover over an upgrade to see what it does.";
   }
