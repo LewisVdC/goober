@@ -1063,3 +1063,12 @@ div#lewissucks.animate {
   margin-left: 95px;
   position: absolute;
 }
+
+@keyframes fadeout{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
