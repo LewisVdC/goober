@@ -2208,8 +2208,17 @@ function submitTask() {
       }
       document.getElementById("yellowcount").innerHTML =
         "yellow: " + formatNumber(Math.floor(yellow));
+      if(tasksCompleted === 99){
+        document.getElementById("taskReward").innerHTML =
+        String(Math.round(taskRewardCount)) + " " + taskRewardColor + " and 10 magenta";
+      }else{
       document.getElementById("taskReward").innerHTML =
         String(Math.round(taskRewardCount)) + " " + taskRewardColor;
+      }
+      if(tasksCompleted === 100){
+        magenta += 10;
+        document.getElementById("magentacount").innerHTML = "magenta: " + magenta;
+      }
     }
   }
 }
