@@ -1576,6 +1576,18 @@ window.setInterval(function () {
     document.getElementById("nerdmodetext").innerHTML = "multiply rgb gain by tricolorboostcount * 0.5 * (yellow / 1000)";
   }else if(document.querySelector("#yellowupgrade10:hover") != null){
     document.getElementById("nerdmodetext").innerHTML = "get a 5% chance to get a reward of taskReward * 10 * taskmasterycount";
+  }else if(document.querySelector("#yellowupgrade11:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "mulitply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
+  }else if(document.querySelector("#yellowupgrade12:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "multiply weak synergy effect by  √strongersynergycount * 5";
+  }else if(document.querySelector("#yellowupgrade13:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "multiply pointer gain by √focussedpointerscount * 2";
+  }else if(document.querySelector("#yellowupgrade14:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "multiply filter gain by √finerfilterscount * 2";
+  }else if(document.querySelector("#yellowupgrade15:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "multiply nanometerwave effect by Math.log1p(micrometerwavecount) * 1.5";
+  }else if(document.querySelector("#yellowupgrade16:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "buy 10 cyan for 1e15 red, green, blue and 1200 yellow";
   }else {
     document.getElementById("nerdmodetext").innerHTML =
       "hover over an upgrade to see what it does.";
