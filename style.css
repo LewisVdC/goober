@@ -694,7 +694,7 @@ button#tabblack {
   text-align: center;
   background-color: rgb(155, 20, 20);
   width: 100%;
-  height: 21.33 !important;
+  height: 10% !important;
   border-radius: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -898,6 +898,7 @@ div#spellcastingbox {
 #greenscroll {
   display: none;
   width: 50%;
+  height: 10%;
 }
 span#blackholeintrocost {
   display: flex;

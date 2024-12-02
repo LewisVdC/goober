@@ -817,7 +817,7 @@ function showtab(x) {
   }
   if (x === "green") {
     tab = "green";
-    if (magenta > 0 && greenscrollcount === 0) {
+    if (tasksCompleted > 99 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle =
@@ -2311,7 +2311,7 @@ document.addEventListener("keydown", function (event) {
     showtab("yellow");
   } else if (event.key === "c" && cyan > 0) {
     showtab("cyan");
-  } else if (event.key === "m" && true) {
+  } else if (event.key === "m" && tasksCompleted > 99) {
     showtab("magenta");
   } else if (event.key === "z" && true) {
     showtab("black");
