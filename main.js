@@ -1556,7 +1556,25 @@ window.setInterval(function () {
     document.getElementById("nerdmodetext").innerHTML = "???";
   } else if (document.querySelector("#bluescroll:hover") != null) {
     document.getElementById("nerdmodetext").innerHTML = "???";
-  } else {
+  } else if(document.querySelector("#yellowupgrade1:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "divide all upgrade prices by 0.1 * governmentfundingcount";
+  } else if(document.querySelector("#yellowupgrade2:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "mulitply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
+  } else if(document.querySelector("#yellowupgrade3:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "mulitply rgb gain by 2 * largerprismscount";
+  } else if(document.querySelector("#yellowupgrade4:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "divide task goal by streamlinedtaskscount * 10";
+  }else if(document.querySelector("#yellowupgrade5:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "multiply task reward by yellowsynergycount * 0.25";
+  }else if(document.querySelector("#yellowupgrade6:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives the lowest of the two values in yellow/s: 200 * redoverflowcount or redgain/s / 1e12";
+  }else if(document.querySelector("#yellowupgrade7:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives the lowest of the two values in yellow/s: 200 * greenoverflowcount or greengain/s / 1e12";
+  }else if(document.querySelector("#yellowupgrade8:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "gives the lowest of the two values in yellow/s: 200 * blueoverflowcount or bluegain/s / 1e12";
+  }else if(document.querySelector("#yellowupgrade9:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = " multiply rgb gain by tricolorboostcount * 0.5 * (yellow / 1000)";
+  }else {
     document.getElementById("nerdmodetext").innerHTML =
       "hover over an upgrade to see what it does.";
   }

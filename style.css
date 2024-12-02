@@ -1054,6 +1054,7 @@ div#lewissucks.animate {
   font-weight: 800;
 }
 #nerdmodetext{
+  word-break: break-word;
   color: rgb(155, 20, 20);
   height: 100%;
   width: calc(50% - 220px);
