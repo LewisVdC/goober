@@ -2294,6 +2294,7 @@ function submitTask() {
       }
       if(tasksCompleted === 100){
         magenta += 10;
+        document.getElementById("tabmagenta").style.display = "block";
         document.getElementById("magentacount").innerHTML = "magenta: " + magenta;
       }
     }
