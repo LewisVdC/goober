@@ -1485,6 +1485,7 @@ function buyblueupgrade3() {
 window.setInterval(function () {
   window.scrollTo(0, 0);
   //some nerdy stuff
+  document.getElementById("nerdmodetext").style.width = "calc(50% - 220px - "+ String(document.getElementById("tabwhite").getBoundingClientRect().width) +"px)";
   //also Lewis please write exactly what upgrade 1, 2 and 3 do i have no idea
   //timo building 5 does not give 5k of the stuff per second it boosts production
   //im rly struggling to read this code
