@@ -1573,7 +1573,9 @@ window.setInterval(function () {
   }else if(document.querySelector("#yellowupgrade8:hover") != null){
     document.getElementById("nerdmodetext").innerHTML = "gives the lowest of the two values in yellow/s: 200 * blueoverflowcount or bluegain/s / 1e12";
   }else if(document.querySelector("#yellowupgrade9:hover") != null){
-    document.getElementById("nerdmodetext").innerHTML = " multiply rgb gain by tricolorboostcount * 0.5 * (yellow / 1000)";
+    document.getElementById("nerdmodetext").innerHTML = "multiply rgb gain by tricolorboostcount * 0.5 * (yellow / 1000)";
+  }else if(document.querySelector("#yellowupgrade10:hover") != null){
+    document.getElementById("nerdmodetext").innerHTML = "get a 5% chance to get a reward of taskReward * 10 * taskmasterycount";
   }else {
     document.getElementById("nerdmodetext").innerHTML =
       "hover over an upgrade to see what it does.";
