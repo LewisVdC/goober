@@ -564,6 +564,9 @@ function load() {
     if (cyan > 0) {
       document.getElementById("tabcyan").style.display = "block";
     }
+    if(tasksCompleted > 99){
+      document.getElementById("tabmagenta").style.display = "block";
+    }
     if (tasksCompleted === 0) {
       document.getElementById("tabs").style.width = "calc(250px/3)";
     } else if (tasksCompleted === 1) {
