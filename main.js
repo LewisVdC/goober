@@ -1485,11 +1485,15 @@ function buyblueupgrade3() {
 window.setInterval(function () {
   window.scrollTo(0, 0);
   //some nerdy stuff
+  //nerdmode text "margins" (actually width in disguise)
   document.getElementById("nerdmodetext").style.width = "calc(50% - 220px - "+ String(document.getElementById("tabwhite").getBoundingClientRect().width) +"px)";
-  //also Lewis please write exactly what upgrade 1, 2 and 3 do i have no idea
   //timo building 5 does not give 5k of the stuff per second it boosts production
+  //mb
   //im rly struggling to read this code
-  //timo the nerdmode text overlaps with cyan upgrades
+  //yea idk any better way sry
+  //timo the nerdmode text overlaps with cyan upgrades 
+  //fixed
+  //for any onlookers, this is to change the nerdmode text for every. single. upgrade.
   if (document.querySelector("#redbuild1:hover") != null) {
     document.getElementById("nerdmodetext").innerHTML = "gives 0.5 red/s";
   } else if (document.querySelector("#redbuild2:hover") != null) {
