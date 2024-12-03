@@ -5,6 +5,7 @@ var buttonpress = true;
 var redscrollcount = 0;
 var greenscrollcount = 0;
 var bluescrollcount = 0;
+var magentaspellunlock = 0;
 var red = 10;
 var redfilter = 0;
 var redpointer = 0;
@@ -522,6 +523,11 @@ function load() {
       bluescrollcount = savegame.bluescrollcount;
     if (bluescrollcount === 1) {
       document.getElementById("bluespell").style.backgroundImage = "url(images/spells/blue_spell.webp)";
+    }
+    if(typeof savegame.magentaspellunlock !== "undefined")
+      magentaspellunlock = savegame.magentaspellunlock;
+    if(magentaspellunlock === 1){
+      document.getElementById("magentaspell").style.backgroundImage = "url(images/spells/magenta_spell)";
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -1736,6 +1742,7 @@ window.setInterval(function () {
       redscrollcount: redscrollcount,
       greenscrollcount: greenscrollcount,
       bluescrollcount: bluescrollcount,
+      magentaspellunlock: magentaspellunlock,
       red: red,
       redfilter: redfilter,
       redpointer: redpointer,
@@ -1973,7 +1980,9 @@ window.setInterval(function () {
     } else if (document.querySelector("#bluespell:hover") != null && bluescrollcount === 1) {
       document.getElementById("think").innerHTML =
         "this spell appears to travel 1 minute to the future, but only for blue.";
-    } else {
+    } else if(document.querySelector("#magentaspell:hover") != null && magentaspellunlock === 1){
+      document.getElementById("think").innerHTML = "this spell appears to do something."
+    }else {
       thinktext();
     }
 
