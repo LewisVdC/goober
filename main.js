@@ -3227,6 +3227,7 @@ function displaysettings() {
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 function devmode() {
   if (buttonpress === true) {
+    red = green = blue = yellow = cyan = magenta = 1e24;
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "none";
     document.getElementById("comingsoonblack").style.display = "none";
