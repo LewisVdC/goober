@@ -3272,6 +3272,7 @@ function displaysettings() {
 function devmode() {
   if (buttonpress === true) {
     red = green = blue = yellow = cyan = magenta = 1e24;
+    tasksCompleted = 100;
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "none";
     document.getElementById("comingsoonblack").style.display = "none";
