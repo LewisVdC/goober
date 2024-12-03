@@ -541,7 +541,7 @@ function load() {
       magentaspellunlock = savegame.magentaspellunlock;
     if (magentaspellunlock === 1) {
       document.getElementById("magentaspell").style.backgroundImage =
-        "url(images/spells/magenta_spell)";
+        "url(images/spells/magenta_spell.webp)";
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
