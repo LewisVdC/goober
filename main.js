@@ -511,17 +511,17 @@ function load() {
     if (typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
     if (redscrollcount === 1) {
-      document.getElementById("redspell").style.display = "block";
+      document.getElementById("redspell").style.backgroundImage = "url(images/spells/red_spell.webp)";
     }
     if (typeof savegame.greenscrollcount !== "undefined")
       greenscrollcount = savegame.greenscrollcount;
     if (greenscrollcount === 1) {
-      document.getElementById("greenspell").style.display = "block";
+      document.getElementById("greenspell").style.backgroundImage = "url(images/spells/green_spell.webp)";
     }
     if (typeof savegame.bluescrollcount !== "undefined")
       bluescrollcount = savegame.bluescrollcount;
     if (bluescrollcount === 1) {
-      document.getElementById("bluespell").style.display = "block";
+      document.getElementById("bluespell").style.backgroundImage = "url(images/spells/blue_spell.webp)";
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -1964,13 +1964,13 @@ window.setInterval(function () {
       buybluenanometerwave();
     }
     //magic stuff
-    if (document.querySelector("#redspell:hover") != null) {
+    if (document.querySelector("#redspell:hover") != null && redscrollcount === 1) {
       document.getElementById("think").innerHTML =
         "this spell appears to travel 1 minute to the future, but only for red.";
-    } else if (document.querySelector("#greenspell:hover") != null) {
+    } else if (document.querySelector("#greenspell:hover") != null && greenscrollcount === 1) {
       document.getElementById("think").innerHTML =
         "this spell appears to travel 1 minute to the future, but only for green.";
-    } else if (document.querySelector("#bluespell:hover") != null) {
+    } else if (document.querySelector("#bluespell:hover") != null && bluescrollcount === 1) {
       document.getElementById("think").innerHTML =
         "this spell appears to travel 1 minute to the future, but only for blue.";
     } else {
@@ -3144,7 +3144,7 @@ function buyredscroll() {
     red -= 1e22;
     redscrollcount++;
     document.getElementById("redscroll").style.display = "none";
-    document.getElementById("redspell").style.display = "block";
+    document.getElementById("redspell").style.backgroundImage = "url(images/spells/red_spell.webp)";
     thinktext();
   }
 }
@@ -3159,7 +3159,7 @@ function buygreenscroll() {
     document.getElementById("submitTaskButton").style.borderRightStyle = "";
     document.getElementById("greenscroll").style.borderLeftStyle = "";
     document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("greenspell").style.display = "block";
+    document.getElementById("greenspell").style.backgroundImage = "url(images/spells/green_spell.webp)";
     thinktext();
   }
 }
@@ -3169,7 +3169,7 @@ function buybluescroll() {
     blue -= 1e22;
     bluescrollcount++;
     document.getElementById("bluescroll").style.display = "none";
-    document.getElementById("bluespell").style.display = "block";
+    document.getElementById("bluespell").style.backgroundImage = "url(images/spells/blue_spell.webp)";
     thinktext();
   }
 }

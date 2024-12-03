@@ -855,11 +855,13 @@ div#spellcasting {
   margin-top: 10%;
 }
 .spell {
+  margin-left: 5px;
+  margin-right: 5px;
   color: white;
   background: round;
   height: 80px;
   width: 80px;
-  display: none;
+  display: block;
   justify-content: center;
 }
 p#think {
@@ -996,13 +998,16 @@ div#lewissucks {
   }
 }
 button#redspell {
-  background-image: url("images/spells/red_spell.webp");
+  background-image: url("images/locked_idiot.png");
 }
 button#greenspell {
-  background-image: url("images/spells/green_spell.webp");
+  background-image: url("images/locked_idiot.png");
 }
 button#bluespell {
-  background-image: url("images/spells/blue_spell.webp");
+  background-image: url("images/locked_idiot.png");
+}
+button#magentaspell{
+  background-image: url("images/locked_idiot.png");
 }
 div#lewissucks.animate {
   animation: die 2s forwards;
