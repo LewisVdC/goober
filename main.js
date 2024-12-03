@@ -3236,6 +3236,12 @@ function thinktext() {
   } else if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
     document.getElementById("think").innerHTML =
       "you've found all spells. for now.";
+  } else if (magentaspellunlock === 1) {
+    document.getElementById("think").innerHTML =
+      "that one was easy, but the next ones won't be. maybe ask around.";
+  } else {
+    document.getElementById("think").innerHTML =
+      "you dont have any yet, ask around to see how to cast one";
   }
 }
 function fancyblackhole() {
@@ -3265,6 +3271,7 @@ function displaysettings() {
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 function devmode() {
   if (buttonpress === true) {
+    red = green = blue = yellow = cyan = magenta = 1e24;
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "none";
     document.getElementById("comingsoonblack").style.display = "none";
