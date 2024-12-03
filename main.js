@@ -155,7 +155,7 @@ var spell2unlock = 0;
 var spell3unlock = 0;
 var spell4unlock = 0;
 var spell5unlock = 0;
-
+var dev = 0;
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
 var taskColorGoalHEX = "#ffff00";
@@ -167,6 +167,7 @@ var tasksCompleted = 0;
 var taskRewardCount = 10;
 var taskRewardColor = "green";
 var taskBooster = 1;
+var loaded2 = 0;
 //can u explain to me what this is 😭??
 const hex = {
   0: "0",
@@ -190,6 +191,15 @@ const hex = {
 document.getElementById("redcount").innerHTML = "red: " + red;
 
 function load() {
+  var savegame2 = JSON.parse(localStorage.getItem("save2"));
+  if (savegame2 != null) {
+    if (typeof savegame2.dev !== "undefined") {
+      dev = savegame2.dev;
+    }
+  } else {
+    console.log("no saved game2");
+    loaded2 = 1;
+  }
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
     if (typeof savegame.currentnerdmode !== "undefined")
@@ -512,22 +522,26 @@ function load() {
     if (typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
     if (redscrollcount === 1) {
-      document.getElementById("redspell").style.backgroundImage = "url(images/spells/red_spell.webp)";
+      document.getElementById("redspell").style.backgroundImage =
+        "url(images/spells/red_spell.webp)";
     }
     if (typeof savegame.greenscrollcount !== "undefined")
       greenscrollcount = savegame.greenscrollcount;
     if (greenscrollcount === 1) {
-      document.getElementById("greenspell").style.backgroundImage = "url(images/spells/green_spell.webp)";
+      document.getElementById("greenspell").style.backgroundImage =
+        "url(images/spells/green_spell.webp)";
     }
     if (typeof savegame.bluescrollcount !== "undefined")
       bluescrollcount = savegame.bluescrollcount;
     if (bluescrollcount === 1) {
-      document.getElementById("bluespell").style.backgroundImage = "url(images/spells/blue_spell.webp)";
+      document.getElementById("bluespell").style.backgroundImage =
+        "url(images/spells/blue_spell.webp)";
     }
-    if(typeof savegame.magentaspellunlock !== "undefined")
+    if (typeof savegame.magentaspellunlock !== "undefined")
       magentaspellunlock = savegame.magentaspellunlock;
-    if(magentaspellunlock === 1){
-      document.getElementById("magentaspell").style.backgroundImage = "url(images/spells/magenta_spell)";
+    if (magentaspellunlock === 1) {
+      document.getElementById("magentaspell").style.backgroundImage =
+        "url(images/spells/magenta_spell)";
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -570,7 +584,7 @@ function load() {
     if (cyan > 0) {
       document.getElementById("tabcyan").style.display = "block";
     }
-    if(tasksCompleted > 99){
+    if (tasksCompleted > 99) {
       document.getElementById("tabmagenta").style.display = "block";
     }
     if (tasksCompleted === 0) {
@@ -1504,6 +1518,13 @@ window.setInterval(function () {
     "calc(50% - 220px - " +
     String(document.getElementById("tabwhite").getBoundingClientRect().width) +
     "px)";
+
+  //devmode!!
+  if (dev == 1) {
+    document.getElementById("devmode").style.display = "block";
+  } else {
+    document.getElementById("devmode").style.display = "none";
+  }
   //timo building 5 does not give 5k of the stuff per second it boosts production
   //mb
   //im rly struggling to read this code
@@ -1736,7 +1757,10 @@ window.setInterval(function () {
       }
     }
     //and then make the unlocks work if they need extra code
-
+    var save2 = {
+      dev: dev,
+    };
+    localStorage.setItem("save2", JSON.stringify(save2));
     //save
     var save = {
       redscrollcount: redscrollcount,
@@ -1971,18 +1995,31 @@ window.setInterval(function () {
       buybluenanometerwave();
     }
     //magic stuff
-    if (document.querySelector("#redspell:hover") != null && redscrollcount === 1) {
+    if (
+      document.querySelector("#redspell:hover") != null &&
+      redscrollcount === 1
+    ) {
       document.getElementById("think").innerHTML =
         "this spell appears to travel 1 minute to the future, but only for red.";
-    } else if (document.querySelector("#greenspell:hover") != null && greenscrollcount === 1) {
+    } else if (
+      document.querySelector("#greenspell:hover") != null &&
+      greenscrollcount === 1
+    ) {
       document.getElementById("think").innerHTML =
         "this spell appears to travel 1 minute to the future, but only for green.";
-    } else if (document.querySelector("#bluespell:hover") != null && bluescrollcount === 1) {
+    } else if (
+      document.querySelector("#bluespell:hover") != null &&
+      bluescrollcount === 1
+    ) {
       document.getElementById("think").innerHTML =
         "this spell appears to travel 1 minute to the future, but only for blue.";
-    } else if(document.querySelector("#magentaspell:hover") != null && magentaspellunlock === 1){
-      document.getElementById("think").innerHTML = "this spell appears to do something."
-    }else {
+    } else if (
+      document.querySelector("#magentaspell:hover") != null &&
+      magentaspellunlock === 1
+    ) {
+      document.getElementById("think").innerHTML =
+        "this spell appears to do something.";
+    } else {
       thinktext();
     }
 
@@ -2294,17 +2331,21 @@ function submitTask() {
       }
       document.getElementById("yellowcount").innerHTML =
         "yellow: " + formatNumber(Math.floor(yellow));
-      if(tasksCompleted === 99){
+      if (tasksCompleted === 99) {
         document.getElementById("taskReward").innerHTML =
-        String(Math.round(taskRewardCount)) + " " + taskRewardColor + " and 10 magenta";
-      }else{
-      document.getElementById("taskReward").innerHTML =
-        String(Math.round(taskRewardCount)) + " " + taskRewardColor;
+          String(Math.round(taskRewardCount)) +
+          " " +
+          taskRewardColor +
+          " and 10 magenta";
+      } else {
+        document.getElementById("taskReward").innerHTML =
+          String(Math.round(taskRewardCount)) + " " + taskRewardColor;
       }
-      if(tasksCompleted === 100){
+      if (tasksCompleted === 100) {
         magenta += 10;
         document.getElementById("tabmagenta").style.display = "block";
-        document.getElementById("magentacount").innerHTML = "magenta: " + magenta;
+        document.getElementById("magentacount").innerHTML =
+          "magenta: " + magenta;
       }
     }
   }
@@ -3153,7 +3194,8 @@ function buyredscroll() {
     red -= 1e22;
     redscrollcount++;
     document.getElementById("redscroll").style.display = "none";
-    document.getElementById("redspell").style.backgroundImage = "url(images/spells/red_spell.webp)";
+    document.getElementById("redspell").style.backgroundImage =
+      "url(images/spells/red_spell.webp)";
     thinktext();
   }
 }
@@ -3168,7 +3210,8 @@ function buygreenscroll() {
     document.getElementById("submitTaskButton").style.borderRightStyle = "";
     document.getElementById("greenscroll").style.borderLeftStyle = "";
     document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("greenspell").style.backgroundImage = "url(images/spells/green_spell.webp)";
+    document.getElementById("greenspell").style.backgroundImage =
+      "url(images/spells/green_spell.webp)";
     thinktext();
   }
 }
@@ -3178,7 +3221,8 @@ function buybluescroll() {
     blue -= 1e22;
     bluescrollcount++;
     document.getElementById("bluescroll").style.display = "none";
-    document.getElementById("bluespell").style.backgroundImage = "url(images/spells/blue_spell.webp)";
+    document.getElementById("bluespell").style.backgroundImage =
+      "url(images/spells/blue_spell.webp)";
     thinktext();
   }
 }
@@ -3263,4 +3307,7 @@ function nerdmode(nerdnumber) {
 }
 function nerdmodechange() {
   nerdmode(!currentnerdmode);
+}
+function cheat() {
+  dev = !dev;
 }
