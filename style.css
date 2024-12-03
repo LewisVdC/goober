@@ -998,16 +998,16 @@ div#lewissucks {
   }
 }
 button#redspell {
-  background-image: url("images/locked_idiot.png");
+  background-image: url("images/locked_idiot.webp");
 }
 button#greenspell {
-  background-image: url("images/locked_idiot.png");
+  background-image: url("images/locked_idiot.webp");
 }
 button#bluespell {
-  background-image: url("images/locked_idiot.png");
+  background-image: url("images/locked_idiot.webp");
 }
 button#magentaspell{
-  background-image: url("images/locked_idiot.png");
+  background-image: url("images/locked_idiot.webp");
 }
 div#lewissucks.animate {
   animation: die 2s forwards;
