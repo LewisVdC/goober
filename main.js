@@ -527,7 +527,7 @@ function load() {
     if(typeof savegame.magentaspellunlock !== "undefined")
       magentaspellunlock = savegame.magentaspellunlock;
     if(magentaspellunlock === 1){
-      document.getElementById("magentaspell").style.backgroundImage = "url(images/spells/magenta_spell)";
+      document.getElementById("magentaspell").style.backgroundImage = "url(images/spells/magenta_spell.webp)";
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -3192,6 +3192,12 @@ function thinktext() {
   } else if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
     document.getElementById("think").innerHTML =
       "you've found all spells. for now.";
+  }else if(magentaspellunlock === 1){
+    document.getElementById("think").innerHTML =
+      "that one was easy, but the next ones won't be. maybe ask around.";
+  }else{
+    document.getElementById("think").innerHTML =
+      "you dont have any yet, ask around to see how to cast one";
   }
 }
 function fancyblackhole() {
