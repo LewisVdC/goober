@@ -3319,3 +3319,6 @@ function nerdmodechange() {
 function cheat() {
   dev = !dev;
 }
+function exportsave() {
+  navigator.clipboard.writeText(btoa(localStorage.getItem("save")));
+}
