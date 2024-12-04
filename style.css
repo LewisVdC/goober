@@ -865,6 +865,7 @@ div#spellcasting {
   justify-content: center;
 }
 p#think {
+  opacity: 0;
   display: block;
   width: 100%;
 }

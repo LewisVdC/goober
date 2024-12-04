@@ -1,4 +1,5 @@
 // ):
+var dialoguestate = 0;
 var currentnerdmode = 0;
 var nerdtimer = 0;
 var buttonpress = true;
@@ -205,6 +206,9 @@ function load() {
     if (typeof savegame.currentnerdmode !== "undefined")
       currentnerdmode = savegame.currentnerdmode;
     nerdmode(currentnerdmode);
+    //dialogue
+    if(typeof savegame.dialoguestate !== "undefined")
+      dialoguestate = savegame.dialoguestate;
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
     if (typeof savegame.redfilter !== "undefined")
@@ -560,7 +564,6 @@ function load() {
       feedpersoncost = savegame.feedpersoncost;
     if (typeof savegame.drinkcost !== "undefined")
       drinkcost = savegame.drinkcost;
-    thinktext();
     //tasks
     if (typeof savegame.tasksCompleted !== "undefined")
       tasksCompleted = savegame.tasksCompleted;
@@ -1897,6 +1900,7 @@ window.setInterval(function () {
       feedpersoncost: feedpersoncost,
       drinkcost: drinkcost,
       currentnerdmode: currentnerdmode,
+      dialoguestate: dialoguestate,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -1995,33 +1999,6 @@ window.setInterval(function () {
       buybluenanometerwave();
     }
     //magic stuff
-    if (
-      document.querySelector("#redspell:hover") != null &&
-      redscrollcount === 1
-    ) {
-      document.getElementById("think").innerHTML =
-        "this spell appears to travel 1 minute to the future, but only for red.";
-    } else if (
-      document.querySelector("#greenspell:hover") != null &&
-      greenscrollcount === 1
-    ) {
-      document.getElementById("think").innerHTML =
-        "this spell appears to travel 1 minute to the future, but only for green.";
-    } else if (
-      document.querySelector("#bluespell:hover") != null &&
-      bluescrollcount === 1
-    ) {
-      document.getElementById("think").innerHTML =
-        "this spell appears to travel 1 minute to the future, but only for blue.";
-    } else if (
-      document.querySelector("#magentaspell:hover") != null &&
-      magentaspellunlock === 1
-    ) {
-      document.getElementById("think").innerHTML =
-        "this spell appears to do something.";
-    } else {
-      thinktext();
-    }
 
     //increase magic!! woo
     calcmagic(
@@ -3196,7 +3173,6 @@ function buyredscroll() {
     document.getElementById("redscroll").style.display = "none";
     document.getElementById("redspell").style.backgroundImage =
       "url(images/spells/red_spell.webp)";
-    thinktext();
   }
 }
 function buygreenscroll() {
@@ -3212,7 +3188,6 @@ function buygreenscroll() {
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("greenspell").style.backgroundImage =
       "url(images/spells/green_spell.webp)";
-    thinktext();
   }
 }
 function buybluescroll() {
@@ -3223,27 +3198,9 @@ function buybluescroll() {
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.backgroundImage =
       "url(images/spells/blue_spell.webp)";
-    thinktext();
   }
 }
-function thinktext() {
-  if (redscrollcount + greenscrollcount + bluescrollcount === 1) {
-    document.getElementById("think").innerHTML =
-      "you've found one, but can you find another?";
-  } else if (redscrollcount + greenscrollcount + bluescrollcount === 2) {
-    document.getElementById("think").innerHTML =
-      "you've found two, there's still one left.";
-  } else if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
-    document.getElementById("think").innerHTML =
-      "you've found all spells. for now.";
-  } else if (magentaspellunlock === 1) {
-    document.getElementById("think").innerHTML =
-      "that one was easy, but the next ones won't be. maybe ask around.";
-  } else {
-    document.getElementById("think").innerHTML =
-      "you dont have any yet, ask around to see how to cast one";
-  }
-}
+
 function fancyblackhole() {
   const blackhole = document.getElementById("blackhole");
   const lewissucks = document.getElementById("lewissucks");
@@ -3318,4 +3275,21 @@ function nerdmodechange() {
 }
 function cheat() {
   dev = !dev;
+}
+//chat w alberto
+alberto = document.getElementById("think");
+
+function say(message){
+  if(alberto.style.opacity === "1"){
+    alberto.setAttribute("class", "fadeout");
+    alberto.innerHTML = "Alberto: " + String(message);
+  }else if(alberto.style.opacity === "0"){
+    alberto.setAttribute("class", "fadein");
+  }else{say()}
+}
+
+function chatupdate(){
+  if(dialoguestate === 0 && tab === "magenta"){
+    say("Greetings! My name is Alberto.");
+  }
 }
