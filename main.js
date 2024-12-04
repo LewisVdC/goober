@@ -3254,7 +3254,7 @@ function buymagentaspell(){
     magic -= 10;
     magentaspellunlock = 1;
     document.getElementById("magentaspell").style.backgroundImage = "url(images/spells/magenta_spell.webp)"
-    timer = 40;
+    timer = 60;
     chatupdate();
   }else if(magic < 10 && dialoguestate >= 5){
     say("you have insufficient magic right now. try saving up until you have 10.")
