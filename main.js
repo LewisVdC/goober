@@ -1030,7 +1030,6 @@ function showtab(x) {
   }
   if (x === "magenta") {
     tab = "magenta";
-    timer = 20;
     document.getElementById("nerdmodetext").style.color = "magenta";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("cyan").style.display = "none";
@@ -3055,6 +3054,7 @@ function toggleblue() {
 function buycauldron() {
   if (magenta >= cauldroncost && dialoguestate >= 4) {
     if(dialoguestate === 4){
+      timer = 30;
       chatupdate();
     }
     cauldron++;
@@ -3253,10 +3253,9 @@ function buymagentaspell(){
     magic -= 10;
     magentaspellunlock = 1;
     document.getElementById("magentaspell").style.backgroundImage = "url(images/spells/magenta_spell.webp)"
+    timer = 40;
     chatupdate();
-  }else if(dialoguestate < 5){
-    say("i haven't gotten to that part yet.");
-  }else{
+  }else if(magic < 10 && dialoguestate >= 5){
     say("you have insufficient magic right now. try saving up until you have 10.")
   }
 }
@@ -3355,7 +3354,7 @@ function chatupdate(){
     dialoguestate ++;
   }
   else if(dialoguestate === 1 && tab === "magenta"){
-    say("i hail from a faraway land where magic is as common as breathing.")
+    say("i hail from a faraway land where magic is almost as common as breathing.")
     dialoguestate ++;
   }
   else if(dialoguestate === 2 && tab === "magenta"){
@@ -3381,12 +3380,23 @@ function chatupdate(){
 }
 
 window.setInterval(function(){
-  timer --;
-  if(dialoguestate === 0 && tab === "magenta" && timer <= 0){
-    chatupdate();
-    timer = 40;
-  }else if(dialoguestate === 1 && tab === "magenta" && timer <= 0){
-    chatupdate();
-    timer = 80;
+  if(tab === "magenta"){
+    timer --;
+    if(dialoguestate === 0 && timer <= 0){
+      chatupdate();
+      timer = 40;
+    }else if(dialoguestate === 1 && timer <= 0){
+      chatupdate();
+      timer = 80;
+    }else if(dialoguestate === 2 && timer <= 0){
+      chatupdate();
+      timer = 60;
+    }else if(dialoguestate === 3 && timer <= 0){
+      chatupdate();
+      timer = 60;
+    }else if(dialoguestate === 6 && timer <= 0){
+      chatupdate();
+      timer = 40;
+    }
   }
 }, 100)
