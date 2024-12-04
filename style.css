@@ -676,6 +676,10 @@ button#tabblack {
   color: rgb(155, 20, 20);
   /*text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);*/
 }
+.redtext2 {
+  color: rgb(155, 20, 20);
+  text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
+}
 .bluetext {
   color: blue;
   text-shadow: blue 0px 0px 10px, rgb(0, 0, 125) 0px 0px 10px;
@@ -1007,7 +1011,7 @@ button#greenspell {
 button#bluespell {
   background-image: url("images/locked_idiot.webp");
 }
-button#magentaspell{
+button#magentaspell {
   background-image: url("images/locked_idiot.webp");
 }
 div#lewissucks.animate {
@@ -1042,25 +1046,25 @@ div#lewissucks.animate {
   }
 }
 
-#Settings{
+#Settings {
   position: absolute;
   width: 79px;
 }
-#settingscontainer{
+#settingscontainer {
   margin-top: 30px;
   flex-direction: column;
   display: none;
   position: absolute;
 }
-.setting{
+.setting {
   background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
   width: 90px;
 }
-#reset{
+#reset {
   font-size: 10px;
   font-weight: 800;
 }
-#nerdmodetext{
+#nerdmodetext {
   word-break: break-word;
   color: rgb(155, 20, 20);
   height: 100%;
@@ -1071,24 +1075,25 @@ div#lewissucks.animate {
   position: absolute;
 }
 
-@keyframes fadeout{
-  0%{
+@keyframes fadeout {
+  0% {
     opacity: 1;
   }
-  100%{
+  100% {
     opacity: 0;
   }
-}@keyframes fadein{
-  0%{
+}
+@keyframes fadein {
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
-p#think.fadeout{
+p#think.fadeout {
   animation: fadeout 1s forwards;
 }
-p#think.fadein{
+p#think.fadein {
   animation: fadein 1s forwards;
 }
