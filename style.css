@@ -1078,3 +1078,9 @@ div#lewissucks.animate {
     opacity: 0;
   }
 }
+p#think.fadeout{
+  animation: fadeout 1s forwards;
+}
+p#think.fadein{
+  animation: fadeout 1s backwards;
+}
