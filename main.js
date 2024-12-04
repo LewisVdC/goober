@@ -3340,15 +3340,15 @@ function chatupdate(){
     dialoguestate ++;
   }
   else if(dialoguestate === 2 && tab === "magenta"){
-    say("i have come here, to teach you magic.");
+    say("i have been called here by the great colors, to teach you magic.");
     dialoguestate ++;
   }
   else if(dialoguestate === 3 && tab === "magenta"){
-    say("pour some magenta into a cauldron.");
+    say("to begin, let's pour some magenta into a cauldron.");
     dialoguestate ++;
   }
   else if(dialoguestate === 4 && tab === "magenta"){
-    say("now buy your first spell for 10 magic!");
+    say("now purchase your first spell for 10 magic.");
     dialoguestate ++;
   }
   else if(dialoguestate === 5 && tab === "magenta"){
@@ -3356,7 +3356,7 @@ function chatupdate(){
     dialoguestate ++;
   }
   else if(dialoguestate === 6 && tab === "magenta"){
-    say("go ahead, try casting it!");
+    say("go ahead, try casting it.");
     dialoguestate ++;
   }
 }
