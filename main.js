@@ -1,4 +1,5 @@
 // ):
+var timer = 0;
 var dialoguestate = 0;
 var words = "";
 var currentnerdmode = 0;
@@ -1029,6 +1030,7 @@ function showtab(x) {
   }
   if (x === "magenta") {
     tab = "magenta";
+    timer = 20;
     document.getElementById("nerdmodetext").style.color = "magenta";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("cyan").style.display = "none";
@@ -3377,3 +3379,14 @@ function chatupdate(){
     dialoguestate ++;
   }
 }
+
+window.setInterval(function(){
+  timer --;
+  if(dialoguestate === 0 && tab === "magenta" && timer <= 0){
+    chatupdate();
+    timer = 40;
+  }else if(dialoguestate === 1 && tab === "magenta" && timer <= 0){
+    chatupdate();
+    timer = 80;
+  }
+}, 100)
