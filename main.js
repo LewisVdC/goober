@@ -3343,4 +3343,20 @@ function chatupdate(){
     say("i have come here, to teach you magic.");
     dialoguestate ++;
   }
+  else if(dialoguestate === 3 && tab === "magenta"){
+    say("pour some magenta into a cauldron.");
+    dialoguestate ++;
+  }
+  else if(dialoguestate === 4 && tab === "magenta"){
+    say("now buy your first spell for 10 magic!");
+    dialoguestate ++;
+  }
+  else if(dialoguestate === 5 && tab === "magenta"){
+    say("great! this spell takes some colors and gives you magenta for it.");
+    dialoguestate ++;
+  }
+  else if(dialoguestate === 6 && tab === "magenta"){
+    say("go ahead, try casting it!");
+    dialoguestate ++;
+  }
 }
