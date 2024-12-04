@@ -3322,3 +3322,13 @@ function cheat() {
 function exportsave() {
   navigator.clipboard.writeText(btoa(localStorage.getItem("save")));
 }
+
+function importsave() {
+  navigator.clipboard.readText().then((clipboardText) => {
+    const decodedtext = atob(clipboardText);
+    console.log(decodedtext);
+    loaded = 69420;
+    localStorage.setItem("save", decodedtext);
+    location.reload();
+  });
+}
