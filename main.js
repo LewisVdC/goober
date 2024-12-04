@@ -217,6 +217,10 @@ function load() {
     //dialogue
     if(typeof savegame.dialoguestate !== "undefined")
       dialoguestate = savegame.dialoguestate;
+    if(typeof savegame.words !== "undefined")
+      words = savegame.words;
+      alberto.style.opacity = "1";
+      alberto.innerHTML = words;
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
     if (typeof savegame.redfilter !== "undefined")
@@ -1922,6 +1926,7 @@ window.setInterval(function () {
       drinkcost: drinkcost,
       currentnerdmode: currentnerdmode,
       dialoguestate: dialoguestate,
+      words: words,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -3327,6 +3332,15 @@ function say(message){
 
 function chatupdate(){
   if(dialoguestate === 0 && tab === "magenta"){
-    say("Greetings! My name is Alberto.");
+    say("greetings! my name is alberto.");
+    dialoguestate ++;
+  }
+  else if(dialoguestate === 1 && tab === "magenta"){
+    say("i hail from a faraway land where magic is as common as breathing.")
+    dialoguestate ++;
+  }
+  else if(dialoguestate === 2 && tab === "magenta"){
+    say("i have come here, to teach you magic.");
+    dialoguestate ++;
   }
 }
