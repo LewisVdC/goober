@@ -3051,7 +3051,10 @@ function toggleblue() {
 
 //lol
 function buycauldron() {
-  if (magenta >= cauldroncost) {
+  if (magenta >= cauldroncost && dialoguestate >= 4) {
+    if(dialoguestate === 4){
+      chatupdate();
+    }
     cauldron++;
     magenta -= cauldroncost;
     cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
@@ -3240,6 +3243,20 @@ function fancyblackhole() {
   //lewissucks.addEventListener("animationend", () =>
   //  lewissucks.classList.remove("animate")
   //);
+}
+
+function buymagentaspell(){
+  if(magic >= 10 && dialoguestate === 5){
+    document.getElementById("magentaspell").setAttribute("onclick", "castmagentaspell()");
+    magic -= 10;
+    magentaspellunlock = 1;
+    document.getElementById("magentaspell").style.backgroundImage = "url(images/spells/magenta_spell.webp)"
+    chatupdate();
+  }else if(dialoguestate < 5){
+    say("i haven't gotten to that part yet.");
+  }else{
+    say("you have insufficient magic right now. try saving up until you have 10.")
+  }
 }
 
 //settings
