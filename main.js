@@ -1,5 +1,6 @@
 // ):
 var dialoguestate = 0;
+var words = "";
 var currentnerdmode = 0;
 var nerdtimer = 0;
 var buttonpress = true;
@@ -3313,14 +3314,15 @@ function importsave() {
 }
 //chat w alberto
 alberto = document.getElementById("think");
+alberto.innerHTML = "start";
 
 function say(message){
-  if(alberto.style.opacity === "1"){
+  words = message
+  if(alberto.innerHTML != "start"){
     alberto.setAttribute("class", "fadeout");
-    alberto.innerHTML = "Alberto: " + String(message);
-  }else if(alberto.style.opacity === "0"){
-    alberto.setAttribute("class", "fadein");
-  }else{say()}
+  }
+  setTimeout('alberto.innerHTML = String(words)', 1000);
+  setTimeout('alberto.setAttribute("class", "fadein")', 1000);
 }
 
 function chatupdate(){
