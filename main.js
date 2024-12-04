@@ -168,6 +168,8 @@ var taskRewardCount = 10;
 var taskRewardColor = "green";
 var taskBooster = 1;
 var loaded2 = 0;
+var whiteunlock = 0;
+var blackunlock = 0;
 //can u explain to me what this is 😭??
 const hex = {
   0: "0",
@@ -205,6 +207,11 @@ function load() {
     if (typeof savegame.currentnerdmode !== "undefined")
       currentnerdmode = savegame.currentnerdmode;
     nerdmode(currentnerdmode);
+    //white and black tabs
+    if (typeof savegame.whiteunlock !== "undefined")
+      whiteunlock = savegame.whiteunlock;
+    if (typeof savegame.blackunlock !== "undefined")
+      blackunlock = savegame.blackunlock;
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
     if (typeof savegame.redfilter !== "undefined")
@@ -1525,6 +1532,17 @@ window.setInterval(function () {
   } else {
     document.getElementById("devmode").style.display = "none";
   }
+  //white and black tabs
+  if (whiteunlock == 1) {
+    document.getElementById("tabwhite").style.display = "block";
+  } else {
+    document.getElementById("tabwhite").style.display = "none";
+  }
+  if (blackunlock == 1) {
+    document.getElementById("tabblack").style.display = "block";
+  } else {
+    document.getElementById("tabblack").style.display = "none";
+  }
   //timo building 5 does not give 5k of the stuff per second it boosts production
   //mb
   //im rly struggling to read this code
@@ -1804,6 +1822,8 @@ window.setInterval(function () {
       taskRewardColor: taskRewardColor,
       taskBooster: taskBooster,
       yellow: yellow,
+      whiteunlock: whiteunlock,
+      blackunlock: blackunlock,
       governmentfundingcount: governmentfundingcount,
       governmentfundingprice: governmentfundingprice,
       redfiltercost: redfiltercost,
@@ -3281,6 +3301,8 @@ function devmode() {
     document.getElementById("tabblue").style.display = "block";
     document.getElementById("tabyellow").style.display = "block";
     document.getElementById("tabcyan").style.display = "block";
+    whiteunlock = 1;
+    blackunlock = 1;
     document.getElementById("tabs").style.width = "250px";
   } else {
     buttonpress = !buttonpress;
