@@ -3246,7 +3246,7 @@ function fancyblackhole() {
 }
 
 function buymagentaspell(){
-  if(magic >= 10 && dialoguestate === 5){
+  if(magic >= 10 && dialoguestate >= 5){
     document.getElementById("magentaspell").setAttribute("onclick", "castmagentaspell()");
     magic -= 10;
     magentaspellunlock = 1;
