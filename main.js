@@ -216,6 +216,7 @@ function load() {
     if (typeof savegame.blackunlock !== "undefined")
       blackunlock = savegame.blackunlock;
     //dialogue
+    timer = 50;
     if(typeof savegame.dialoguestate !== "undefined")
       dialoguestate = savegame.dialoguestate;
     if(typeof savegame.words !== "undefined")
