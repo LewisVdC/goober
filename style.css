@@ -1077,10 +1077,17 @@ div#lewissucks.animate {
   100%{
     opacity: 0;
   }
+}@keyframes fadein{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 p#think.fadeout{
   animation: fadeout 1s forwards;
 }
 p#think.fadein{
-  animation: fadeout 1s backwards;
+  animation: fadein 1s forwards;
 }
