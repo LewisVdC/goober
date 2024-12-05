@@ -160,6 +160,10 @@ var spell2unlock = 0;
 var spell3unlock = 0;
 var spell4unlock = 0;
 var spell5unlock = 0;
+var magentaspellprice = 10;
+var redspellprice = 10;
+var greenspellprice = 10;
+var bluespellprice = 10;
 var dev = 0;
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
@@ -538,6 +542,22 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
     }
     //magic and magenta
+    if(typeof savegame.magentaspellprice !== "undefined")
+      magentaspellprice = savegame.magentaspellprice;
+    if(magentaspellunlock===1){
+      document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);}
+    if(typeof savegame.redspellprice !== "undefined")
+      redspellprice = savegame.redspellprice;
+    if(spell1unlock === 1){
+      document.getElementById("redspell").innerHTML = Math.round(redspellprice);}
+    if(typeof savegame.greenspellprice !== "undefined")
+      greenspellprice = savegame.greenspellprice;
+    if(spell2unlock){
+      document.getElementById("greenspell").innerHTML = Math.round(greenspellprice);}
+    if(typeof savegame.bluespellprice !== "undefined")
+      bluespellprice = savegame.bluespellprice;
+    if(spell3unlock){
+      document.getElementById("bluespell").innerHTML = Math.round(bluespellprice);}
     if (typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
     if (redscrollcount === 1) {
@@ -1942,6 +1962,10 @@ window.setInterval(function () {
       currentnerdmode: currentnerdmode,
       dialoguestate: dialoguestate,
       words: words,
+      magentaspellprice: magentaspellprice,
+      redspellprice: redspellprice,
+      greenspellprice: greenspellprice,
+      bluespellprice: bluespellprice,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
@@ -3289,7 +3313,13 @@ function buymagentaspell() {
   }
 }
 
-function castmagentaspell() {}
+function castmagentaspell() {
+  if(magic >= magentaspellprice){
+    magic -= magentaspellprice;
+    magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
+    document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
+  }
+}
 
 //settings
 function displaysettings() {
@@ -3403,6 +3433,7 @@ function chatupdate() {
   } else if (dialoguestate === 6 && tab === "magenta") {
     say("go ahead, try casting it. the first one's on me.");
     dialoguestate++;
+    magic += 10;
   } else if (dialoguestate === 7 && tab === "magenta") {
     say("amazing! you're a natural at this.");
     dialoguestate++;
