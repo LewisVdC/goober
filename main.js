@@ -1,4 +1,5 @@
 // ):
+var holyalbertostate = 0;
 var timer = 0;
 var dialoguestate = 0;
 var words = "";
@@ -1531,7 +1532,9 @@ function buyblueupgrade3() {
 
 //loop
 window.setInterval(function () {
-  window.scrollTo(0, 0);
+  if(holyalbertostate === 0){
+    window.scrollTo(0, 0);
+  }
   //some nerdy stuff
   //nerdmode text "margins" (actually width in disguise)
   document.getElementById("nerdmodetext").style.width =
@@ -3431,3 +3434,14 @@ window.setInterval(function () {
     }
   }
 }, 100);
+
+//funny
+function holyalberto(){
+  if(holyalbertostate === 0){
+    holyalbertostate = 1;
+    document.body.style.overflowY = "scroll";
+  }else{
+    holyalbertostate = 0;
+    say(words);
+  }
+}
