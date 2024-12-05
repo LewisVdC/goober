@@ -3280,20 +3280,20 @@ function buybluescroll() {
 //TODO BALANCING
 function fancyblackhole() {
   if (
-    red >= 1e20 &&
-    green >= 1e20 &&
-    blue >= 1e20 &&
-    yellow >= 1e16 &&
+    red >= 1e18 &&
+    green >= 1e18 &&
+    blue >= 1e18 &&
+    yellow >= 1e6 &&
     cyan >= 1500 &&
-    magenta >= 1e10
+    magenta >= 5000
   ) {
     fancyblackhole2();
-    red -= 1e20;
-    green -= 1e20;
-    blue -= 1e20;
-    yellow -= 1e16;
+    red -= 1e18;
+    green -= 1e18;
+    blue -= 1e18;
+    yellow -= 1e6;
     cyan -= 1500;
-    magenta -= 1e10;
+    magenta -= 5000;
   }
 }
 function fancyblackhole2() {
