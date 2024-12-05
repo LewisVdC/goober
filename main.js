@@ -3161,6 +3161,12 @@ function buydrink() {
 function spell1(number) {
   red = red + debugrednumber * number;
 }
+function spell2(number) {
+  green = green + debuggreennumber * number;
+}
+function spell3(number) {
+  blue = blue + debugbluenumber * number;
+}
 //oh and make it so u have to unlock the spells that sounds silly
 function think() {
   var randomspell = Math.floor(Math.random() * spellcount) + 1;
@@ -3279,9 +3285,7 @@ function buymagentaspell() {
   }
 }
 
-function castmagentaspell(){
-  
-}
+function castmagentaspell() {}
 
 //settings
 function displaysettings() {
