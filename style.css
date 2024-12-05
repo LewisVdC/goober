@@ -1060,14 +1060,16 @@ div#lewissucks.animate {
 }
 
 #Settings {
-  position: absolute;
+  z-index: 2;
+  position: fixed;
   width: 79px;
 }
 #settingscontainer {
+  z-index: 2;
   margin-top: 30px;
   flex-direction: column;
   display: none;
-  position: absolute;
+  position: fixed;
 }
 .setting {
   background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
