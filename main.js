@@ -201,8 +201,6 @@ const hex = {
   15: "F",
 };
 
-document.getElementById("redcount").innerHTML = "red: " + red;
-
 function load() {
   var savegame2 = JSON.parse(localStorage.getItem("save2"));
   if (savegame2 != null) {
@@ -547,26 +545,31 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
     }
     //magic and magenta
-    if(typeof savegame.spell1unlock !== "undefined")
+    if (typeof savegame.spell1unlock !== "undefined")
       spell1unlock = savegame.spell1unlock;
-    if(typeof savegame.spell2unlock !== "undefined")
+    if (typeof savegame.spell2unlock !== "undefined")
       spell1unlock = savegame.spell2unlock;
-    if(typeof savegame.spell3unlock !== "undefined")
+    if (typeof savegame.spell3unlock !== "undefined")
       spell1unlock = savegame.spell3unlock;
-    if(typeof savegame.magentaspellprice !== "undefined")
+    if (typeof savegame.magentaspellprice !== "undefined")
       magentaspellprice = savegame.magentaspellprice;
-    if(typeof savegame.redspellprice !== "undefined")
+    if (typeof savegame.redspellprice !== "undefined")
       redspellprice = savegame.redspellprice;
-    if(spell1unlock === 1){
-      document.getElementById("redspell").innerHTML = Math.round(redspellprice);}
-    if(typeof savegame.greenspellprice !== "undefined")
+    if (spell1unlock === 1) {
+      document.getElementById("redspell").innerHTML = Math.round(redspellprice);
+    }
+    if (typeof savegame.greenspellprice !== "undefined")
       greenspellprice = savegame.greenspellprice;
-    if(spell2unlock === 1){
-      document.getElementById("greenspell").innerHTML = Math.round(greenspellprice);}
-    if(typeof savegame.bluespellprice !== "undefined")
+    if (spell2unlock === 1) {
+      document.getElementById("greenspell").innerHTML =
+        Math.round(greenspellprice);
+    }
+    if (typeof savegame.bluespellprice !== "undefined")
       bluespellprice = savegame.bluespellprice;
-    if(spell3unlock === 1){
-      document.getElementById("bluespell").innerHTML = Math.round(bluespellprice);}
+    if (spell3unlock === 1) {
+      document.getElementById("bluespell").innerHTML =
+        Math.round(bluespellprice);
+    }
     if (typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
     if (redscrollcount === 1) {
@@ -591,11 +594,15 @@ function load() {
     if (typeof savegame.magentaspellunlock !== "undefined")
       magentaspellunlock = savegame.magentaspellunlock;
     if (magentaspellunlock === 1) {
-      document.getElementById("magentaspell").setAttribute("onclick", "castmagentaspell()");
-      document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
+      document
+        .getElementById("magentaspell")
+        .setAttribute("onclick", "castmagentaspell()");
+      document.getElementById("magentaspell").innerHTML =
+        Math.round(magentaspellprice);
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
-      document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
+      document.getElementById("magentaspell").innerHTML =
+        Math.round(magentaspellprice);
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -843,8 +850,6 @@ document.getElementById("greencount").innerHTML =
   "green: " + formatNumber(Math.floor(green));
 document.getElementById("bluecount").innerHTML =
   "blue: " + formatNumber(Math.floor(blue));
-document.getElementById("yellowcount").innerHTML =
-  "yellow: " + Math.floor(yellow);
 
 function showtab(x) {
   if (x === "red") {
@@ -1781,9 +1786,11 @@ window.setInterval(function () {
   document.getElementById("taskAmountGreen").innerHTML = formatNumber(
     Math.floor(green)
   );
+
   document.getElementById("magentacount").innerHTML =
-    "magenta: " + Math.floor(magenta);
-  document.getElementById("cyancount").innerHTML = "cyan: " + Math.round(cyan);
+    "magenta: " + formatNumber(Math.floor(magenta));
+  document.getElementById("cyancount").innerHTML =
+    "cyan: " + formatNumber(Math.floor(cyan));
   //ugh
   if (loaded === 1) {
     //unlocks
@@ -2879,8 +2886,6 @@ window.setInterval(function () {
     yellowGAIN
   );
   yellow += yellowGAIN;
-  document.getElementById("yellowcount").innerHTML =
-    "yellow: " + Math.round(yellow);
 }, 20);
 
 //cyan upgrades
@@ -2892,8 +2897,6 @@ function buyredfilterautomation() {
     document.getElementById("redfilterautomationprice").innerHTML = Math.round(
       redfilterautomationprice
     );
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buyredpointerautomation() {
@@ -2904,8 +2907,6 @@ function buyredpointerautomation() {
     document.getElementById("redpointerautomationprice").innerHTML = Math.round(
       redpointerautomationprice
     );
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybigredfilterautomation() {
@@ -2916,8 +2917,6 @@ function buybigredfilterautomation() {
       5 * Math.pow(1.3, bigredfilterautomationcount);
     document.getElementById("bigredfilterautomationprice").innerHTML =
       Math.round(bigredfilterautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybigredpointerautomation() {
@@ -2928,8 +2927,6 @@ function buybigredpointerautomation() {
       5 * Math.pow(1.3, bigredpointerautomationcount);
     document.getElementById("bigredpointerautomationprice").innerHTML =
       Math.round(bigredpointerautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buyrednanometerwaveautomation() {
@@ -2940,8 +2937,6 @@ function buyrednanometerwaveautomation() {
       5 * Math.pow(1.3, rednanometerwaveautomationcount);
     document.getElementById("rednanometerwaveautomationprice").innerHTML =
       Math.round(rednanometerwaveautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buygreenfilterautomation() {
@@ -2951,8 +2946,6 @@ function buygreenfilterautomation() {
     greenfilterautomationprice = 5 * Math.pow(1.3, greenfilterautomationcount);
     document.getElementById("greenfilterautomationprice").innerHTML =
       Math.round(greenfilterautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buygreenpointerautomation() {
@@ -2963,8 +2956,6 @@ function buygreenpointerautomation() {
       5 * Math.pow(1.3, greenpointerautomationcount);
     document.getElementById("greenpointerautomationprice").innerHTML =
       Math.round(greenpointerautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybiggreenfilterautomation() {
@@ -2975,8 +2966,6 @@ function buybiggreenfilterautomation() {
       5 * Math.pow(1.3, biggreenfilterautomationcount);
     document.getElementById("biggreenfilterautomationprice").innerHTML =
       Math.round(biggreenfilterautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybiggreenpointerautomation() {
@@ -2987,8 +2976,6 @@ function buybiggreenpointerautomation() {
       5 * Math.pow(1.3, biggreenpointerautomationcount);
     document.getElementById("biggreenpointerautomationprice").innerHTML =
       Math.round(biggreenpointerautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buygreennanometerwaveautomation() {
@@ -2999,8 +2986,6 @@ function buygreennanometerwaveautomation() {
       5 * Math.pow(1.3, greennanometerwaveautomationcount);
     document.getElementById("greennanometerwaveautomationprice").innerHTML =
       Math.round(greennanometerwaveautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybluefilterautomation() {
@@ -3011,8 +2996,6 @@ function buybluefilterautomation() {
     document.getElementById("bluefilterautomationprice").innerHTML = Math.round(
       bluefilterautomationprice
     );
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybluepointerautomation() {
@@ -3022,8 +3005,6 @@ function buybluepointerautomation() {
     bluepointerautomationprice = 5 * Math.pow(1.3, bluepointerautomationcount);
     document.getElementById("bluepointerautomationprice").innerHTML =
       Math.round(bluepointerautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybigbluefilterautomation() {
@@ -3034,8 +3015,6 @@ function buybigbluefilterautomation() {
       5 * Math.pow(1.3, bigbluefilterautomationcount);
     document.getElementById("bigbluefilterautomationprice").innerHTML =
       Math.round(bigbluefilterautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybigbluepointerautomation() {
@@ -3046,8 +3025,6 @@ function buybigbluepointerautomation() {
       5 * Math.pow(1.3, bigbluepointerautomationcount);
     document.getElementById("bigbluepointerautomationprice").innerHTML =
       Math.round(bigbluepointerautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 function buybluenanometerwaveautomation() {
@@ -3058,8 +3035,6 @@ function buybluenanometerwaveautomation() {
       5 * Math.pow(1.3, bluenanometerwaveautomationcount);
     document.getElementById("bluenanometerwaveautomationprice").innerHTML =
       Math.round(bluenanometerwaveautomationprice);
-    document.getElementById("cyancount").innerHTML =
-      "cyan: " + Math.floor(cyan);
   }
 }
 
@@ -3122,8 +3097,7 @@ function buycauldron() {
     cauldron++;
     magenta -= cauldroncost;
     cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
-    document.getElementById("magentacount").innerHTML =
-      "magenta: " + Math.floor(magenta);
+
     document.getElementById("cauldroncount").innerHTML = cauldron;
     document.getElementById("cauldroncost").innerHTML = cauldroncost;
   }
@@ -3134,8 +3108,7 @@ function buystudy() {
     study++;
     magenta -= studycost;
     studycost = Math.floor((100 * Math.pow(1.1, study)) / 1);
-    document.getElementById("magentacount").innerHTML =
-      "magenta: " + Math.floor(magenta);
+
     document.getElementById("studycount").innerHTML = study;
     document.getElementById("studycost").innerHTML = studycost;
   }
@@ -3146,8 +3119,7 @@ function buyfeed() {
     feed++;
     magenta -= feedcost;
     feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
-    document.getElementById("magentacount").innerHTML =
-      "magenta: " + Math.floor(magenta);
+
     document.getElementById("feedcount").innerHTML = feed;
     document.getElementById("feedcost").innerHTML = feedcost;
   }
@@ -3158,8 +3130,7 @@ function buyfeedperson() {
     feedperson++;
     magenta -= feedpersoncost;
     feedpersoncost = Math.floor((10000 * Math.pow(1.1, feedperson)) / 1);
-    document.getElementById("magentacount").innerHTML =
-      "magenta: " + Math.floor(magenta);
+
     document.getElementById("feedpersoncount").innerHTML = feedperson;
     document.getElementById("feedpersoncost").innerHTML = feedpersoncost;
   }
@@ -3170,8 +3141,7 @@ function buydrink() {
     drink++;
     magenta -= drinkcost;
     drinkcost = Math.floor((100000 * Math.pow(1.1, drink)) / 1);
-    document.getElementById("magentacount").innerHTML =
-      "magenta: " + Math.floor(magenta);
+
     document.getElementById("drinkcount").innerHTML = drink;
     document.getElementById("drinkcost").innerHTML = drinkcost;
   }
@@ -3257,8 +3227,7 @@ function redscroll() {
     spell1unlock = 1;
     magenta -= feedcost;
     feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
-    document.getElementById("magentacount").innerHTML =
-      "magenta: " + Math.floor(magenta);
+
     document.getElementById("feedcount").innerHTML = feed;
     document.getElementById("feedcost").innerHTML = feedcost;
   }
@@ -3363,10 +3332,11 @@ function buymagentaspell() {
 }
 
 function castmagentaspell() {
-  if(magic >= magentaspellprice){
+  if (magic >= magentaspellprice) {
     magic -= magentaspellprice;
     magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
-    document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
+    document.getElementById("magentaspell").innerHTML =
+      Math.round(magentaspellprice);
   }
 }
 
