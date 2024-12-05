@@ -1,5 +1,5 @@
 // ):
-var bible = '';
+var bible = "";
 var holyalbertostate = 0;
 var timer = 0;
 var dialoguestate = 0;
@@ -7,6 +7,8 @@ var words = "";
 var currentnerdmode = 0;
 var nerdtimer = 0;
 var buttonpress = true;
+var blackholeanimationdone = 0;
+var black = 0;
 var redscrollcount = 0;
 var greenscrollcount = 0;
 var bluescrollcount = 0;
@@ -221,6 +223,9 @@ function load() {
       whiteunlock = savegame.whiteunlock;
     if (typeof savegame.blackunlock !== "undefined")
       blackunlock = savegame.blackunlock;
+    if (typeof savegame.blackholeanimationdone !== "undefined")
+      blackholeanimationdone = savegame.blackholeanimationdone;
+    if (typeof savegame.black !== "undefined") black = savegame.black;
     //dialogue
     timer = 50;
     if (typeof savegame.dialoguestate !== "undefined")
@@ -1553,7 +1558,7 @@ function buyblueupgrade3() {
 
 //loop
 window.setInterval(function () {
-  if(holyalbertostate === 0){
+  if (holyalbertostate === 0) {
     window.scrollTo(0, 0);
   }
   //some nerdy stuff
@@ -1817,6 +1822,13 @@ window.setInterval(function () {
         document.getElementById("bluescroll").style.display = "flex";
       }
     }
+    //idk
+    if (blackholeanimationdone == 1) {
+      document.getElementById("blackholeintro").style.display = "none";
+      document.getElementById("blackhole").style.scale = "3";
+      document.getElementById("blackholecounter").style.display = "block";
+    }
+
     //and then make the unlocks work if they need extra code
     var save2 = {
       dev: dev,
@@ -1908,6 +1920,7 @@ window.setInterval(function () {
       colorsyphonprice: colorsyphonprice,
       focussedpointerscount: focussedpointerscount,
       focussedpointersprice: focussedpointersprice,
+      black: black,
       finerfilterscount: finerfilterscount,
       finerfiltersprice: finerfiltersprice,
       micrometerwavecount: micrometerwavecount,
@@ -1946,6 +1959,7 @@ window.setInterval(function () {
       bluenanometerwaveautomationcount: bluenanometerwaveautomationcount,
       bluenanometerwaveautomationprice: bluenanometerwaveautomationprice,
       redtogglestate: redtogglestate,
+      blackholeanimationdone: blackholeanimationdone,
       greentogglestate: greentogglestate,
       bluetogglestate: bluetogglestate,
       magenta: magenta,
@@ -2003,6 +2017,7 @@ window.setInterval(function () {
       20,
       bluenanometerwaveautomationcount
     );
+    document.getElementById("blackcount").innerHTML = black;
     if (redfilterautomationtimer >= 200 && redtogglestate) {
       redfilterautomationtimer = 0;
       buyredfilter();
@@ -3278,20 +3293,45 @@ function buybluescroll() {
       "url(images/spells/blue_spell.webp)";
   }
 }
-
+//TODO BALANCING
 function fancyblackhole() {
+  if (
+    red >= 1e20 &&
+    green >= 1e20 &&
+    blue >= 1e20 &&
+    yellow >= 1e16 &&
+    cyan >= 1500 &&
+    magenta >= 1e10
+  ) {
+    fancyblackhole2();
+    red -= 1e20;
+    green -= 1e20;
+    blue -= 1e20;
+    yellow -= 1e16;
+    cyan -= 1500;
+    magenta -= 1e10;
+  }
+}
+function fancyblackhole2() {
   const blackhole = document.getElementById("blackhole");
   const lewissucks = document.getElementById("lewissucks");
 
   blackhole.classList.add("animate");
   lewissucks.classList.add("animate");
 
-  //blackhole.addEventListener("animationend", () =>
-  //  blackhole.classList.remove("animate")
-  //);
-  //lewissucks.addEventListener("animationend", () =>
-  //  lewissucks.classList.remove("animate")
-  //);
+  blackhole.addEventListener("animationend", () =>
+    blackhole.classList.remove("animate")
+  );
+  lewissucks.addEventListener("animationend", () =>
+    lewissucks.classList.remove("animate")
+  );
+  setTimeout(() => {
+    document.getElementById("blackholeintro").style.display = "none";
+    document.getElementById("blackhole").style.scale = "3";
+    blackholeanimationdone = 1;
+    black = +1500000;
+    document.getElementById("blackholecounter").style.display = "block";
+  }, 2001);
 }
 
 function buymagentaspell() {
@@ -3337,7 +3377,7 @@ function devmode() {
     tasksCompleted = 100;
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "none";
-    document.getElementById("comingsoonblack").style.display = "none";
+
     document.getElementById("tabmagenta").style.display = "block";
     document.getElementById("tabgreen").style.display = "block";
     document.getElementById("tabblue").style.display = "block";
@@ -3349,7 +3389,7 @@ function devmode() {
   } else {
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "block";
-    document.getElementById("comingsoonblack").style.display = "block";
+
     if (magenta === 0)
       document.getElementById("tabmagenta").style.display = "none";
     if (green === 0) document.getElementById("tabgreen").style.display = "none";
@@ -3468,22 +3508,22 @@ window.setInterval(function () {
 }, 100);
 
 //funny
-function holyalberto(){
-  if(holyalbertostate === 0){
+function holyalberto() {
+  if (holyalbertostate === 0) {
     holyalbertostate = 1;
     document.body.style.overflowY = "scroll";
-    fetch('bible.txt')
-    .then(response => response.text()).then(data => {
-      bible = data;
-      alberto.setAttribute("class", "fadeout");
-      setTimeout("alberto.innerHTML = bible", 1000);
-      setTimeout('alberto.setAttribute("class", "fadein")', 1000);
-    })
-    .catch(error => console.error('Error fetching the file:', error));
-  }else{
+    fetch("bible.txt")
+      .then((response) => response.text())
+      .then((data) => {
+        bible = data;
+        alberto.setAttribute("class", "fadeout");
+        setTimeout("alberto.innerHTML = bible", 1000);
+        setTimeout('alberto.setAttribute("class", "fadein")', 1000);
+      })
+      .catch((error) => console.error("Error fetching the file:", error));
+  } else {
     document.body.style.overflowY = "hidden";
     holyalbertostate = 0;
     say(words);
   }
 }
-
