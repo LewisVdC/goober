@@ -3446,6 +3446,7 @@ function holyalberto(){
     })
     .catch(error => console.error('Error fetching the file:', error));
   }else{
+    document.body.style.overflowY = "hidden";
     holyalbertostate = 0;
     say(words);
   }
