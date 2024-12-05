@@ -934,6 +934,10 @@ div#lewissucks:hover {
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
 }
+p#blackholecounter {
+  z-index: 1000000;
+  /* z index a million */
+}
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
