@@ -541,24 +541,28 @@ function load() {
     if (redscrollcount === 1) {
       document.getElementById("redspell").style.backgroundImage =
         "url(images/spells/red_spell.webp)";
+      document.getElementById("redspell").innerHTML = "10";
     }
     if (typeof savegame.greenscrollcount !== "undefined")
       greenscrollcount = savegame.greenscrollcount;
     if (greenscrollcount === 1) {
       document.getElementById("greenspell").style.backgroundImage =
         "url(images/spells/green_spell.webp)";
+      document.getElementById("greenspell").innerHTML = "10";
     }
     if (typeof savegame.bluescrollcount !== "undefined")
       bluescrollcount = savegame.bluescrollcount;
     if (bluescrollcount === 1) {
       document.getElementById("bluespell").style.backgroundImage =
         "url(images/spells/blue_spell.webp)";
+      document.getElementById("bluespell").innerHTML = "10";
     }
     if (typeof savegame.magentaspellunlock !== "undefined")
       magentaspellunlock = savegame.magentaspellunlock;
     if (magentaspellunlock === 1) {
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
+      document.getElementById("magentaspell").innerHTML = "10";
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -3207,6 +3211,7 @@ function buyredscroll() {
     spell1unlock++;
     red -= 1e22;
     redscrollcount++;
+    document.getElementById("redspell").innerHTML = "10";
     document.getElementById("redscroll").style.display = "none";
     document.getElementById("redspell").style.backgroundImage =
       "url(images/spells/red_spell.webp)";
@@ -3217,6 +3222,7 @@ function buygreenscroll() {
     spell2unlock++;
     green -= 1e22;
     greenscrollcount++;
+    document.getElementById("greenspell").innerHTML = "10";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("submitTaskButton").style.position = "relative";
     document.getElementById("submitTaskButton").style.width = "100%";
@@ -3232,6 +3238,7 @@ function buybluescroll() {
     spell3unlock++;
     blue -= 1e22;
     bluescrollcount++;
+    document.getElementById("bluespell").innerHTML = "10";
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.backgroundImage =
       "url(images/spells/blue_spell.webp)";
@@ -3260,6 +3267,7 @@ function buymagentaspell() {
       .setAttribute("onclick", "castmagentaspell()");
     magic -= 10;
     magentaspellunlock = 1;
+    document.getElementById("magentaspell").innerHTML = "10";
     document.getElementById("magentaspell").style.backgroundImage =
       "url(images/spells/magenta_spell.webp)";
     timer = 60;
