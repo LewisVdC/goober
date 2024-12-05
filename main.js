@@ -3347,7 +3347,7 @@ function devmode() {
     tasksCompleted = 100;
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "none";
-    document.getElementById("comingsoonblack").style.display = "none";
+
     document.getElementById("tabmagenta").style.display = "block";
     document.getElementById("tabgreen").style.display = "block";
     document.getElementById("tabblue").style.display = "block";
@@ -3359,7 +3359,7 @@ function devmode() {
   } else {
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "block";
-    document.getElementById("comingsoonblack").style.display = "block";
+
     if (magenta === 0)
       document.getElementById("tabmagenta").style.display = "none";
     if (green === 0) document.getElementById("tabgreen").style.display = "none";
