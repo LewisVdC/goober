@@ -1,4 +1,5 @@
 // ):
+var bible = '';
 var holyalbertostate = 0;
 var timer = 0;
 var dialoguestate = 0;
@@ -3442,7 +3443,10 @@ function holyalberto(){
     document.body.style.overflowY = "scroll";
     fetch('bible.txt')
     .then(response => response.text()).then(data => {
-    alberto.innerHTML = data;
+      bible = data;
+      alberto.setAttribute("class", "fadeout");
+      setTimeout("alberto.innerHTML = bible", 1000);
+      setTimeout('alberto.setAttribute("class", "fadein")', 1000);
     })
     .catch(error => console.error('Error fetching the file:', error));
   }else{
