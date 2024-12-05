@@ -595,7 +595,7 @@ function load() {
       document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
-      document.getElementById("magentaspell").innerHTML = "10";
+      document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
