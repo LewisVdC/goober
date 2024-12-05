@@ -3355,7 +3355,7 @@ function chatupdate(){
     dialoguestate ++;
   }
   else if(dialoguestate === 1 && tab === "magenta"){
-    say("i hail from a faraway land where magic is almost as common as breathing.")
+    say("i hail from a faraway land where magic is almost as commonplace as breathing.")
     dialoguestate ++;
   }
   else if(dialoguestate === 2 && tab === "magenta"){
@@ -3375,7 +3375,15 @@ function chatupdate(){
     dialoguestate ++;
   }
   else if(dialoguestate === 6 && tab === "magenta"){
-    say("go ahead, try casting it.");
+    say("go ahead, try casting it. the first one's on me.");
+    dialoguestate ++;
+  }
+  else if(dialoguestate === 7 && tab === "magenta"){
+    say("amazing! you're a natural at this.");
+    dialoguestate ++;
+  }
+  else if(dialoguestate === 8 && tab === "magenta"){
+    say("now, go and find the three other spells the three main colors have hidden.");
     dialoguestate ++;
   }
 }
