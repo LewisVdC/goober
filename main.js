@@ -3261,6 +3261,10 @@ function buymagentaspell(){
   }
 }
 
+function castmagentaspell(){
+  
+}
+
 //settings
 function displaysettings() {
   if (document.getElementById("settingscontainer").style.display != "flex") {
