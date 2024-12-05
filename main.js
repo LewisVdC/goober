@@ -3414,7 +3414,7 @@ function chatupdate() {
 }
 
 window.setInterval(function () {
-  if (tab === "magenta") {
+  if (tab === "magenta" && holyalbertostate === 0) {
     timer--;
     if (dialoguestate === 0 && timer <= 0) {
       chatupdate();
@@ -3440,8 +3440,14 @@ function holyalberto(){
   if(holyalbertostate === 0){
     holyalbertostate = 1;
     document.body.style.overflowY = "scroll";
+    fetch('bible.txt')
+    .then(response => response.text()).then(data => {
+    alberto.innerHTML = data;
+    })
+    .catch(error => console.error('Error fetching the file:', error));
   }else{
     holyalbertostate = 0;
     say(words);
   }
 }
+
