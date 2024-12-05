@@ -1,4 +1,5 @@
 // ):
+var bible = "";
 var holyalbertostate = 0;
 var timer = 0;
 var dialoguestate = 0;
@@ -3446,7 +3447,7 @@ function chatupdate() {
 }
 
 window.setInterval(function () {
-  if (tab === "magenta") {
+  if (tab === "magenta" && holyalbertostate === 0) {
     timer--;
     if (dialoguestate === 0 && timer <= 0) {
       chatupdate();
@@ -3472,7 +3473,17 @@ function holyalberto() {
   if (holyalbertostate === 0) {
     holyalbertostate = 1;
     document.body.style.overflowY = "scroll";
+    fetch("bible.txt")
+      .then((response) => response.text())
+      .then((data) => {
+        bible = data;
+        alberto.setAttribute("class", "fadeout");
+        setTimeout("alberto.innerHTML = bible", 1000);
+        setTimeout('alberto.setAttribute("class", "fadein")', 1000);
+      })
+      .catch((error) => console.error("Error fetching the file:", error));
   } else {
+    document.body.style.overflowY = "hidden";
     holyalbertostate = 0;
     say(words);
   }
