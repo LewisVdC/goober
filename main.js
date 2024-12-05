@@ -547,21 +547,25 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
     }
     //magic and magenta
+    if(typeof savegame.spell1unlock !== "undefined")
+      spell1unlock = savegame.spell1unlock;
+    if(typeof savegame.spell2unlock !== "undefined")
+      spell1unlock = savegame.spell2unlock;
+    if(typeof savegame.spell3unlock !== "undefined")
+      spell1unlock = savegame.spell3unlock;
     if(typeof savegame.magentaspellprice !== "undefined")
       magentaspellprice = savegame.magentaspellprice;
-    if(magentaspellunlock===1){
-      document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);}
     if(typeof savegame.redspellprice !== "undefined")
       redspellprice = savegame.redspellprice;
     if(spell1unlock === 1){
       document.getElementById("redspell").innerHTML = Math.round(redspellprice);}
     if(typeof savegame.greenspellprice !== "undefined")
       greenspellprice = savegame.greenspellprice;
-    if(spell2unlock){
+    if(spell2unlock === 1){
       document.getElementById("greenspell").innerHTML = Math.round(greenspellprice);}
     if(typeof savegame.bluespellprice !== "undefined")
       bluespellprice = savegame.bluespellprice;
-    if(spell3unlock){
+    if(spell3unlock === 1){
       document.getElementById("bluespell").innerHTML = Math.round(bluespellprice);}
     if (typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
@@ -587,6 +591,8 @@ function load() {
     if (typeof savegame.magentaspellunlock !== "undefined")
       magentaspellunlock = savegame.magentaspellunlock;
     if (magentaspellunlock === 1) {
+      document.getElementById("magentaspell").setAttribute("onclick", "castmagentaspell()");
+      document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
       document.getElementById("magentaspell").innerHTML = "10";
@@ -1980,6 +1986,9 @@ window.setInterval(function () {
       redspellprice: redspellprice,
       greenspellprice: greenspellprice,
       bluespellprice: bluespellprice,
+      spell1unlock: spell1unlock,
+      spell2unlock: spell2unlock,
+      spell3unlock: spell3unlock,
     };
     localStorage.setItem("save", JSON.stringify(save));
 
