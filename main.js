@@ -217,12 +217,11 @@ function load() {
       blackunlock = savegame.blackunlock;
     //dialogue
     timer = 50;
-    if(typeof savegame.dialoguestate !== "undefined")
+    if (typeof savegame.dialoguestate !== "undefined")
       dialoguestate = savegame.dialoguestate;
-    if(typeof savegame.words !== "undefined")
-      words = savegame.words;
-      alberto.style.opacity = "1";
-      alberto.innerHTML = words;
+    if (typeof savegame.words !== "undefined") words = savegame.words;
+    alberto.style.opacity = "1";
+    alberto.innerHTML = words;
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
     if (typeof savegame.redfilter !== "undefined")
@@ -1553,6 +1552,12 @@ window.setInterval(function () {
   } else {
     document.getElementById("tabblack").style.display = "none";
   }
+  //update
+  document.getElementById("cauldroncount").innerHTML = cauldron;
+  document.getElementById("studycount").innerHTML = study;
+  document.getElementById("feedcount").innerHTML = feed;
+  document.getElementById("feedpersoncount").innerHTML = feedperson;
+  document.getElementById("drinkcount").innerHTML = drink;
   //timo building 5 does not give 5k of the stuff per second it boosts production
   //mb
   //im rly struggling to read this code
@@ -3054,7 +3059,7 @@ function toggleblue() {
 //lol
 function buycauldron() {
   if (magenta >= cauldroncost && dialoguestate >= 4) {
-    if(dialoguestate === 4){
+    if (dialoguestate === 4) {
       timer = 30;
       chatupdate();
     }
@@ -3248,16 +3253,21 @@ function fancyblackhole() {
   //);
 }
 
-function buymagentaspell(){
-  if(magic >= 10 && dialoguestate >= 5){
-    document.getElementById("magentaspell").setAttribute("onclick", "castmagentaspell()");
+function buymagentaspell() {
+  if (magic >= 10 && dialoguestate >= 5) {
+    document
+      .getElementById("magentaspell")
+      .setAttribute("onclick", "castmagentaspell()");
     magic -= 10;
     magentaspellunlock = 1;
-    document.getElementById("magentaspell").style.backgroundImage = "url(images/spells/magenta_spell.webp)"
+    document.getElementById("magentaspell").style.backgroundImage =
+      "url(images/spells/magenta_spell.webp)";
     timer = 60;
     chatupdate();
-  }else if(magic < 10 && dialoguestate >= 5){
-    say("you have insufficient magic right now. try saving up until you have 10.")
+  } else if (magic < 10 && dialoguestate >= 5) {
+    say(
+      "you have insufficient magic right now. try saving up until you have 10."
+    );
   }
 }
 
@@ -3344,72 +3354,68 @@ function importsave() {
 alberto = document.getElementById("think");
 alberto.innerHTML = "start";
 
-function say(message){
-  words = message
-  if(alberto.innerHTML != "start"){
+function say(message) {
+  words = message;
+  if (alberto.innerHTML != "start") {
     alberto.setAttribute("class", "fadeout");
   }
-  setTimeout('alberto.innerHTML = String(words)', 1000);
+  setTimeout("alberto.innerHTML = String(words)", 1000);
   setTimeout('alberto.setAttribute("class", "fadein")', 1000);
 }
 
-function chatupdate(){
-  if(dialoguestate === 0 && tab === "magenta"){
+function chatupdate() {
+  if (dialoguestate === 0 && tab === "magenta") {
     say("greetings! my name is alberto.");
-    dialoguestate ++;
-  }
-  else if(dialoguestate === 1 && tab === "magenta"){
-    say("i hail from a faraway land where magic is almost as commonplace as breathing.")
-    dialoguestate ++;
-  }
-  else if(dialoguestate === 2 && tab === "magenta"){
+    dialoguestate++;
+  } else if (dialoguestate === 1 && tab === "magenta") {
+    say(
+      "i hail from a faraway land where magic is almost as commonplace as breathing."
+    );
+    dialoguestate++;
+  } else if (dialoguestate === 2 && tab === "magenta") {
     say("i have been called here by the great colors, to teach you magic.");
-    dialoguestate ++;
-  }
-  else if(dialoguestate === 3 && tab === "magenta"){
+    dialoguestate++;
+  } else if (dialoguestate === 3 && tab === "magenta") {
     say("to begin, let's pour some magenta into a cauldron.");
-    dialoguestate ++;
-  }
-  else if(dialoguestate === 4 && tab === "magenta"){
+    dialoguestate++;
+  } else if (dialoguestate === 4 && tab === "magenta") {
     say("now purchase your first spell for 10 magic.");
-    dialoguestate ++;
-  }
-  else if(dialoguestate === 5 && tab === "magenta"){
+    dialoguestate++;
+  } else if (dialoguestate === 5 && tab === "magenta") {
     say("great! this spell takes some colors and gives you magenta for it.");
-    dialoguestate ++;
-  }
-  else if(dialoguestate === 6 && tab === "magenta"){
+    dialoguestate++;
+  } else if (dialoguestate === 6 && tab === "magenta") {
     say("go ahead, try casting it. the first one's on me.");
-    dialoguestate ++;
-  }
-  else if(dialoguestate === 7 && tab === "magenta"){
+    dialoguestate++;
+  } else if (dialoguestate === 7 && tab === "magenta") {
     say("amazing! you're a natural at this.");
-    dialoguestate ++;
-  }
-  else if(dialoguestate === 8 && tab === "magenta"){
-    say("now, go and find the three other spells the three main colors have hidden.");
-    dialoguestate ++;
+    dialoguestate++;
+  } else if (dialoguestate === 8 && tab === "magenta") {
+    say(
+      "now, go and find the three other spells the three main colors have hidden."
+    );
+    dialoguestate++;
   }
 }
 
-window.setInterval(function(){
-  if(tab === "magenta"){
-    timer --;
-    if(dialoguestate === 0 && timer <= 0){
+window.setInterval(function () {
+  if (tab === "magenta") {
+    timer--;
+    if (dialoguestate === 0 && timer <= 0) {
       chatupdate();
       timer = 40;
-    }else if(dialoguestate === 1 && timer <= 0){
+    } else if (dialoguestate === 1 && timer <= 0) {
       chatupdate();
       timer = 80;
-    }else if(dialoguestate === 2 && timer <= 0){
+    } else if (dialoguestate === 2 && timer <= 0) {
       chatupdate();
       timer = 60;
-    }else if(dialoguestate === 3 && timer <= 0){
+    } else if (dialoguestate === 3 && timer <= 0) {
       chatupdate();
       timer = 60;
-    }else if(dialoguestate === 6 && timer <= 0){
+    } else if (dialoguestate === 6 && timer <= 0) {
       chatupdate();
       timer = 40;
     }
   }
-}, 100)
+}, 100);
