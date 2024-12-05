@@ -3163,10 +3163,14 @@ function buydrink() {
 //synergy kinda helps make buildings 1 and 2 of the rgb buildings kinda decent and competitive with 4 but building 3 actually gets left in the dust
 //id say buff it but look at how op the rest is how about we nerf the rest instead
 
-//re: how about we have to sacrifice specific buildings (say 1 nr4, 3nr2 and 5nr 1) to get a specific spell, so there's a sacrifice slot where you can
-//sacrifice buildings of any amount you chose if you pay a certain number of magic, but you don't get the combinations until you find the scrolls i hid. these scrolls then give you combinations of
-//buildings to sacrifice that each give you an effect, and if you accidentally enter the wrong amount, there'll be a message that notifies you your spell does nothing but it still eats the buildings. the recipes can be randomised to eliminate the
-//chance that ppl go on the internet and search up the solution for the best spell. that way the early buildings have meaning aswell as the later ones.
+//re: how about we have to sacrifice specific buildings (say 1 nr4, 3nr2 and 5nr 1) to get a specific spell,
+//so there's a sacrifice slot where you can
+//sacrifice buildings of any amount you chose if you pay a certain number of magic, but you don't get the combinations until
+//you find the scrolls i hid. these scrolls then give you combinations of
+//buildings to sacrifice that each give you an effect, and if you accidentally enter the wrong amount, there'll be a message
+//that notifies you your spell does nothing but it still eats the buildings. the recipes can be randomised to eliminate the
+//chance that ppl go on the internet and search up the solution for the best spell. that way the early buildings have
+//meaning aswell as the later ones.
 
 //>still eats the buildings
 //you are evil
@@ -3179,7 +3183,8 @@ function buydrink() {
 //idea!! cooldown to the spells
 //and make the spell much less effective at higher magic usage but u still have to bc u needa make most of it bc of the cooldown
 
-//cooldown: definitely, making the spell less effective at higher magic usage prolly not but we'll see if it's balanced w/o and if it isn't then ig we'll do that.
+//cooldown: definitely, making the spell less effective at higher magic usage prolly not but we'll
+//see if it's balanced w/o and if it isn't then ig we'll do that.
 
 function spell1(number) {
   red = red + debugrednumber * number;
@@ -3331,7 +3336,8 @@ function buymagentaspell() {
     );
   }
 }
-
+//uhh if the price scales with the amount of magic u make then whats the point even,,?
+//the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
   if (magic >= magentaspellprice) {
     magic -= magentaspellprice;
