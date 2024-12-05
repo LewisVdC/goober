@@ -67,7 +67,9 @@
       <button id="nerdmode" onclick="nerdmodechange()" class="setting">
         nerd mode
       </button>
-      <button id="holyalbertomode" onclick="holyalberto()" class="setting">holy alberto</button>
+      <button id="holyalbertomode" onclick="holyalberto()" class="setting">
+        holy alberto
+      </button>
       <button id="export" onclick="exportsave()" class="setting">export</button>
       <button id="import" onclick="importsave()" class="setting">import</button>
     </div>
@@ -916,8 +918,11 @@
             you dont have any yet, ask around to see how to cast one
           </p>
           <br />
-          <button class="spell" id="magentaspell" onclick="buymagentaspell()">
-          </button>
+          <button
+            class="spell"
+            id="magentaspell"
+            onclick="buymagentaspell()"
+          ></button>
           <button class="spell" id="redspell" onclick="spell1(60)"></button>
           <button class="spell" id="greenspell" onclick="spell2(60)"></button>
           <button class="spell" id="bluespell" onclick="spell3(60)"></button>
@@ -926,8 +931,10 @@
     </div>
     <div id="black" class="tab">
       <div id="top" style="margin-bottom: 10px">
-        <h1 id="comingsoonblack" style="color: black">COMING SOONISH!</h1>
-        <p style="display: none">black: <span id="blackcount">0</span></p>
+        <!--<h1 id="comingsoonblack" style="color: black">COMING SOONISH!</h1>  its almost coming guys:tm: real !-->
+        <p style="display: none" id="blackholecounter">
+          black: <span id="blackcount">0</span>
+        </p>
         <div id="blackholeintro">
           <div id="lewissucks">
             <span id="blackholeintrotext">the black hole hungers</span><br />

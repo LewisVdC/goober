@@ -8,6 +8,7 @@ var currentnerdmode = 0;
 var nerdtimer = 0;
 var buttonpress = true;
 var blackholeanimationdone = 0;
+var black = 0;
 var redscrollcount = 0;
 var greenscrollcount = 0;
 var bluescrollcount = 0;
@@ -220,6 +221,7 @@ function load() {
       blackunlock = savegame.blackunlock;
     if (typeof savegame.blackholeanimationdone !== "undefined")
       blackholeanimationdone = savegame.blackholeanimationdone;
+    if (typeof savegame.black !== "undefined") black = savegame.black;
     //dialogue
     timer = 50;
     if (typeof savegame.dialoguestate !== "undefined")
@@ -1804,7 +1806,9 @@ window.setInterval(function () {
     if (blackholeanimationdone == 1) {
       document.getElementById("blackholeintro").style.display = "none";
       document.getElementById("blackhole").style.scale = "3";
+      document.getElementById("blackholecounter").style.display = "block";
     }
+
     //and then make the unlocks work if they need extra code
     var save2 = {
       dev: dev,
@@ -1896,6 +1900,7 @@ window.setInterval(function () {
       colorsyphonprice: colorsyphonprice,
       focussedpointerscount: focussedpointerscount,
       focussedpointersprice: focussedpointersprice,
+      black: black,
       finerfilterscount: finerfilterscount,
       finerfiltersprice: finerfiltersprice,
       micrometerwavecount: micrometerwavecount,
@@ -1988,6 +1993,7 @@ window.setInterval(function () {
       20,
       bluenanometerwaveautomationcount
     );
+    document.getElementById("blackcount").innerHTML = black;
     if (redfilterautomationtimer >= 200 && redtogglestate) {
       redfilterautomationtimer = 0;
       buyredfilter();
@@ -3299,7 +3305,9 @@ function fancyblackhole2() {
     document.getElementById("blackholeintro").style.display = "none";
     document.getElementById("blackhole").style.scale = "3";
     blackholeanimationdone = 1;
-  }, 1999);
+    black = +1500000;
+    document.getElementById("blackholecounter").style.display = "block";
+  }, 2001);
 }
 
 function buymagentaspell() {
