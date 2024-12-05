@@ -1786,7 +1786,8 @@ window.setInterval(function () {
   document.getElementById("taskAmountGreen").innerHTML = formatNumber(
     Math.floor(green)
   );
-
+  document.getElementById("yellowcount").innerHTML =
+    "yellow: " + formatNumber(Math.floor(yellow));
   document.getElementById("magentacount").innerHTML =
     "magenta: " + formatNumber(Math.floor(magenta));
   document.getElementById("cyancount").innerHTML =
