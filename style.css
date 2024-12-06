@@ -1119,3 +1119,23 @@ p#think.fadein {
 div#enterdiv {
   position: absolute;
 }
+button#enterbutton {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(192, 192, 192);
+  border-style: none;
+}
+div#blackhole.animate2 {
+  animation: animate2 10s forwards;
+  z-index: 10;
+  background-color: black;
+}
+@keyframes animate2 {
+  0% {
+    scale: 3;
+  }
+  100% {
+    scale: 30;
+  }
+}

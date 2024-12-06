@@ -1795,10 +1795,10 @@ window.setInterval(function () {
   blackholey = rect.top + rect.height / 2;
   const div2 = document.querySelector("button#enterbutton");
   const rect2 = div2.getBoundingClientRect();
-  enterbuttonx = rect2.width / 2;
-  enterbuttony = rect2.height / 2;
-  blackholex2 = blackholex - enterbuttonx;
-  blackholey2 = blackholex - enterbuttony;
+  enterbuttonx = rect2.width / 1;
+  enterbuttony = rect2.height / 1;
+  blackholex2 = blackholex - enterbuttonx / 2;
+  blackholey2 = blackholey - enterbuttony / 3;
   document.getElementById("enterdiv").style.left = `${blackholex2}px`;
   document.getElementById("enterdiv").style.top = `${blackholey2}px`;
 
@@ -3382,27 +3382,27 @@ function castmagentaspell() {
       Math.round(magentaspellprice)
     );
     //random nr between 0.1 and 0.9
-    randomnumber = Math.random() * 0.8 + 0.1; 
-    if(Math.random() < 0.5){
-      if(Math.random() < 0.5){
+    randomnumber = Math.random() * 0.8 + 0.1;
+    if (Math.random() < 0.5) {
+      if (Math.random() < 0.5) {
         console.log("red" + randomnumber);
-        red -= red*randomnumber;
+        red -= red * randomnumber;
         magenta += debugrednumber * 1e-13 * randomnumber;
-      }else{
-        console.log("green"+randomnumber);
-        green -= green*randomnumber;
+      } else {
+        console.log("green" + randomnumber);
+        green -= green * randomnumber;
         magenta += debuggreennumber * 1e-13 * randomnumber;
       }
-    }else{
-      if(Math.random() < 0.5){
-        console.log("blue"+randomnumber);
-        blue -= blue*randomnumber;
+    } else {
+      if (Math.random() < 0.5) {
+        console.log("blue" + randomnumber);
+        blue -= blue * randomnumber;
         magenta += debugrednumber * 1e-13 * randomnumber;
-      }else{
-        console.log("yellow"+randomnumber);
-        yellow -= yellow*randomnumber;
+      } else {
+        console.log("yellow" + randomnumber);
+        yellow -= yellow * randomnumber;
         magenta += yellowGAIN * 1e-1 * randomnumber;
-      } 
+      }
     }
   }
 }
@@ -3585,4 +3585,9 @@ function holyalberto() {
     holyalbertostate = 0;
     say(words);
   }
+}
+function enter() {
+  const blackhole = document.getElementById("blackhole");
+
+  blackhole.classList.add("animate2");
 }
