@@ -2,13 +2,21 @@
 var bible = "";
 var holyalbertostate = 0;
 var timer = 0;
+var enterbuttonx = 0;
+var blackholex = 0;
 var dialoguestate = 0;
 var words = "";
 var currentnerdmode = 0;
+var enterbuttony = 0;
 var nerdtimer = 0;
 var buttonpress = true;
+var blackholex = 0;
+var blackholey = 0;
 var blackholeanimationdone = 0;
 var black = 0;
+var blackholex2 = 0;
+var buttony = 0;
+var blackholey2 = 0;
 var redscrollcount = 0;
 var greenscrollcount = 0;
 var bluescrollcount = 0;
@@ -1776,6 +1784,22 @@ window.setInterval(function () {
       nerdtimer += 0.01;
     }
   }
+  //man
+
+  const div = document.querySelector("div#blackholecontainer");
+
+  const rect = div.getBoundingClientRect();
+  blackholex = rect.left + rect.width / 2;
+  blackholey = rect.top + rect.height / 2;
+  const div2 = document.querySelector("button#enterbutton");
+  const rect2 = div2.getBoundingClientRect();
+  enterbuttonx = rect2.width / 2;
+  enterbuttony = rect2.height / 2;
+  blackholex2 = blackholex - enterbuttonx;
+  blackholey2 = blackholex - enterbuttony;
+  document.getElementById("enterdiv").style.left = `${blackholex2}px`;
+  document.getElementById("enterdiv").style.top = `${blackholey2}px`;
+
   //wuuuuuuuuuuuuuuugh
   document.getElementById("taskAmountRed").innerHTML = formatNumber(
     Math.floor(red)

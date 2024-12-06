@@ -1117,8 +1117,5 @@ p#think.fadein {
   animation: fadein 1s forwards;
 }
 div#enterdiv {
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
 }
