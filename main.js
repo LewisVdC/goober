@@ -3381,37 +3381,28 @@ function castmagentaspell() {
     document.getElementById("magentaspell").innerHTML = formatSmallNumber(
       Math.round(magentaspellprice)
     );
-    randomnumber = Math.random() * 0.9 + 0.1; // Random multiplier between 0.1 and 1.0
-
-    let resourceSacrifice = 0;
-    if (Math.random() < 0.5) {
-      if (Math.random() < 0.5) {
-        // Sacrifice red
-        console.log("red");
-        resourceSacrifice = (randomnumber / 100) * Math.log1p(red); // Logarithmic scaling
-        magenta += resourceSacrifice;
-        red -= resourceSacrifice;
-      } else {
-        // Sacrifice green
-        console.log("green");
-        resourceSacrifice = (randomnumber / 100) * Math.log1p(green); // Logarithmic scaling
-        magenta += resourceSacrifice;
-        green -= resourceSacrifice;
+    //random nr between 0.1 and 0.9
+    randomnumber = Math.random() * 0.8 + 0.1; 
+    if(Math.random() < 0.5){
+      if(Math.random() < 0.5){
+        console.log("red" + randomnumber);
+        red -= red*randomnumber;
+        magenta += debugrednumber * 1e-13 * randomnumber;
+      }else{
+        console.log("green"+randomnumber);
+        green -= green*randomnumber;
+        magenta += debuggreennumber * 1e-13 * randomnumber;
       }
-    } else {
-      if (Math.random() < 0.5) {
-        // Sacrifice blue
-        console.log("blue");
-        resourceSacrifice = (randomnumber / 100) * Math.log1p(blue); // Logarithmic scaling
-        magenta += resourceSacrifice;
-        blue -= resourceSacrifice;
-      } else {
-        // Sacrifice yellow
-        console.log("yellow");
-        resourceSacrifice = (randomnumber / 100) * Math.log1p(yellow); // Logarithmic scaling
-        magenta += resourceSacrifice;
-        yellow -= resourceSacrifice;
-      }
+    }else{
+      if(Math.random() < 0.5){
+        console.log("blue"+randomnumber);
+        blue -= blue*randomnumber;
+        magenta += debugrednumber * 1e-13 * randomnumber;
+      }else{
+        console.log("yellow"+randomnumber);
+        yellow -= yellow*randomnumber;
+        magenta += yellowGAIN * 1e-1 * randomnumber;
+      } 
     }
   }
 }
