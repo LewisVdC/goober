@@ -174,6 +174,7 @@ var magentaspellprice = 10;
 var redspellprice = 10;
 var greenspellprice = 10;
 var bluespellprice = 10;
+var randomnumber = 0;
 var dev = 0;
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
@@ -609,8 +610,7 @@ function load() {
         Math.round(magentaspellprice);
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
-      document.getElementById("magentaspell").innerHTML =
-        Math.round(magentaspellprice);
+      document.getElementById("magentaspell").innerHTML = formatSmallNumber(Math.round(magentaspellprice));
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -3249,11 +3249,18 @@ function formatNumber(number) {
     return number.toString();
   }
 }
+function formatSmallNumber(number) {
+  if (Math.abs(number) >= 1000) {
+    return number.toExponential(0);
+  } else {
+    return number.toString();
+  }
+}
 //real
 //fake i give up
 //scroll time!
 function redscroll() {
-  if (red >= 1e22 && spell1unlock == 0) {
+  if (red >= 1e17 && spell1unlock == 0) {
     spell1unlock = 1;
     magenta -= feedcost;
     feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
@@ -3264,9 +3271,9 @@ function redscroll() {
 }
 
 function buyredscroll() {
-  if (red >= 1e22) {
+  if (red >= 1e17) {
     spell1unlock++;
-    red -= 1e22;
+    red -= 1e17;
     redscrollcount++;
     document.getElementById("redspell").innerHTML = "10";
     document.getElementById("redscroll").style.display = "none";
@@ -3275,9 +3282,9 @@ function buyredscroll() {
   }
 }
 function buygreenscroll() {
-  if (green >= 1e22) {
+  if (green >= 1e17) {
     spell2unlock++;
-    green -= 1e22;
+    green -= 1e17;
     greenscrollcount++;
     document.getElementById("greenspell").innerHTML = "10";
     document.getElementById("greenscroll").style.display = "none";
@@ -3291,9 +3298,9 @@ function buygreenscroll() {
   }
 }
 function buybluescroll() {
-  if (blue >= 1e22) {
+  if (blue >= 1e17) {
     spell3unlock++;
-    blue -= 1e22;
+    blue -= 1e17;
     bluescrollcount++;
     document.getElementById("bluespell").innerHTML = "10";
     document.getElementById("bluescroll").style.display = "none";
@@ -3363,11 +3370,45 @@ function buymagentaspell() {
 //uhh if the price scales with the amount of magic u make then whats the point even,,?
 //the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
-  if (magic >= magentaspellprice) {
+  if(magic >= magentaspellprice){
+    if(dialoguestate === 7){
+      chatupdate();
+    }
     magic -= magentaspellprice;
     magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
-    document.getElementById("magentaspell").innerHTML =
-      Math.round(magentaspellprice);
+    document.getElementById("magentaspell").innerHTML = formatSmallNumber(Math.round(magentaspellprice));
+    randomnumber = Math.random() * 0.9 + 0.1; // Random multiplier between 0.1 and 1.0
+
+let resourceSacrifice = 0;
+if (Math.random() < 0.5) {
+    if (Math.random() < 0.5) {
+        // Sacrifice red
+        console.log("red");
+        resourceSacrifice = (randomnumber / 100) * Math.log1p(red); // Logarithmic scaling
+        magenta += resourceSacrifice;
+        red -= resourceSacrifice;
+    } else {
+        // Sacrifice green
+        console.log("green");
+        resourceSacrifice = (randomnumber / 100) * Math.log1p(green); // Logarithmic scaling
+        magenta += resourceSacrifice;
+        green -= resourceSacrifice;
+    }
+} else {
+    if (Math.random() < 0.5) {
+        // Sacrifice blue
+        console.log("blue");
+        resourceSacrifice = (randomnumber / 100) * Math.log1p(blue); // Logarithmic scaling
+        magenta += resourceSacrifice;
+        blue -= resourceSacrifice;
+    } else {
+        // Sacrifice yellow
+        console.log("yellow");
+        resourceSacrifice = (randomnumber / 100) * Math.log1p(yellow); // Logarithmic scaling
+        magenta += resourceSacrifice;
+        yellow -= resourceSacrifice;
+    }
+
   }
 }
 
@@ -3488,9 +3529,13 @@ function chatupdate() {
     say("amazing! you're a natural at this.");
     dialoguestate++;
   } else if (dialoguestate === 8 && tab === "magenta") {
-    say(
-      "now, go and find the three other spells the three main colors have hidden."
-    );
+    say("that is all i can teach you for now.");
+    dialoguestate++;
+  } else if (dialoguestate === 9 && tab === "magenta") {
+    say("you can learn the rest by studying the hidden ancient scrolls.");
+    dialoguestate++;
+  } else if (dialoguestate === 10 && tab === "magenta") {
+    say("come back to me once you've found the first three.");
     dialoguestate++;
   }
 }
@@ -3513,6 +3558,15 @@ window.setInterval(function () {
     } else if (dialoguestate === 6 && timer <= 0) {
       chatupdate();
       timer = 40;
+    } else if (dialoguestate === 8 && timer <= 0) {
+      chatupdate();
+      timer = 40;
+    } else if (dialoguestate === 9 && timer <= 0) {
+      chatupdate();
+      timer = 40;
+    } else if (dialoguestate === 10 && timer <= 0) {
+      chatupdate();
+      timer = 45;
     }
   }
 }, 100);
@@ -3536,4 +3590,4 @@ function holyalberto() {
     holyalbertostate = 0;
     say(words);
   }
-}
+}}
