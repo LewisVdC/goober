@@ -592,10 +592,9 @@ function load() {
       magentaspellunlock = savegame.magentaspellunlock;
     if (magentaspellunlock === 1) {
       document.getElementById("magentaspell").setAttribute("onclick", "castmagentaspell()");
-      document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
-      document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
+      document.getElementById("magentaspell").innerHTML = formatSmallNumber(Math.round(magentaspellprice));
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -3249,11 +3248,18 @@ function formatNumber(number) {
     return number.toString();
   }
 }
+function formatSmallNumber(number) {
+  if (Math.abs(number) >= 1000) {
+    return number.toExponential(0);
+  } else {
+    return number.toString();
+  }
+}
 //real
 //fake i give up
 //scroll time!
 function redscroll() {
-  if (red >= 1e22 && spell1unlock == 0) {
+  if (red >= 1e17 && spell1unlock == 0) {
     spell1unlock = 1;
     magenta -= feedcost;
     feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
@@ -3265,9 +3271,9 @@ function redscroll() {
 }
 
 function buyredscroll() {
-  if (red >= 1e22) {
+  if (red >= 1e17) {
     spell1unlock++;
-    red -= 1e22;
+    red -= 1e17;
     redscrollcount++;
     document.getElementById("redspell").innerHTML = "10";
     document.getElementById("redscroll").style.display = "none";
@@ -3276,9 +3282,9 @@ function buyredscroll() {
   }
 }
 function buygreenscroll() {
-  if (green >= 1e22) {
+  if (green >= 1e17) {
     spell2unlock++;
-    green -= 1e22;
+    green -= 1e17;
     greenscrollcount++;
     document.getElementById("greenspell").innerHTML = "10";
     document.getElementById("greenscroll").style.display = "none";
@@ -3292,9 +3298,9 @@ function buygreenscroll() {
   }
 }
 function buybluescroll() {
-  if (blue >= 1e22) {
+  if (blue >= 1e17) {
     spell3unlock++;
-    blue -= 1e22;
+    blue -= 1e17;
     bluescrollcount++;
     document.getElementById("bluespell").innerHTML = "10";
     document.getElementById("bluescroll").style.display = "none";
@@ -3364,9 +3370,12 @@ function buymagentaspell() {
 
 function castmagentaspell() {
   if(magic >= magentaspellprice){
+    if(dialoguestate === 7){
+      chatupdate();
+    }
     magic -= magentaspellprice;
     magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
-    document.getElementById("magentaspell").innerHTML = Math.round(magentaspellprice);
+    document.getElementById("magentaspell").innerHTML = formatSmallNumber(Math.round(magentaspellprice));
   }
 }
 
@@ -3487,9 +3496,13 @@ function chatupdate() {
     say("amazing! you're a natural at this.");
     dialoguestate++;
   } else if (dialoguestate === 8 && tab === "magenta") {
-    say(
-      "now, go and find the three other spells the three main colors have hidden."
-    );
+    say("that is all i can teach you for now.");
+    dialoguestate++;
+  } else if (dialoguestate === 9 && tab === "magenta") {
+    say("you can learn the rest by studying the hidden ancient scrolls.");
+    dialoguestate++;
+  } else if (dialoguestate === 10 && tab === "magenta") {
+    say("come back to me once you've found the first three.");
     dialoguestate++;
   }
 }
@@ -3512,6 +3525,15 @@ window.setInterval(function () {
     } else if (dialoguestate === 6 && timer <= 0) {
       chatupdate();
       timer = 40;
+    } else if (dialoguestate === 8 && timer <= 0) {
+      chatupdate();
+      timer = 40;
+    } else if (dialoguestate === 9 && timer <= 0) {
+      chatupdate();
+      timer = 40;
+    } else if (dialoguestate === 10 && timer <= 0) {
+      chatupdate();
+      timer = 45;
     }
   }
 }, 100);

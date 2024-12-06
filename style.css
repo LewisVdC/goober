@@ -1009,26 +1009,26 @@ div#lewissucks {
 }
 button#redspell {
   color: #710000;
-  font-size: larger;
+  font-size: small;
   font-weight: 900;
   background-image: url("images/locked_idiot.webp");
 }
 button#greenspell {
   color: #004900;
-  font-size: larger;
+  font-size: small;
   font-weight: 900;
   background-image: url("images/locked_idiot.webp");
 }
 button#bluespell {
   color: #000257;
-  font-size: larger;
+  font-size: small;
   font-weight: 900;
   background-image: url("images/locked_idiot.webp");
 }
 button#magentaspell {
   color: #470047;
   font-weight: 900;
-  font-size: larger;
+  font-size: small;
   background-image: url("images/locked_idiot.webp");
 }
 div#lewissucks.animate {
