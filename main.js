@@ -166,6 +166,7 @@ var magentaspellprice = 10;
 var redspellprice = 10;
 var greenspellprice = 10;
 var bluespellprice = 10;
+var randomnumber = 0;
 var dev = 0;
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
@@ -3352,6 +3353,38 @@ function castmagentaspell() {
     magic -= magentaspellprice;
     magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
     document.getElementById("magentaspell").innerHTML = formatSmallNumber(Math.round(magentaspellprice));
+    randomnumber = Math.random() * 0.9 + 0.1; // Random multiplier between 0.1 and 1.0
+
+let resourceSacrifice = 0;
+if (Math.random() < 0.5) {
+    if (Math.random() < 0.5) {
+        // Sacrifice red
+        console.log("red");
+        resourceSacrifice = (randomnumber / 100) * Math.log1p(red); // Logarithmic scaling
+        magenta += resourceSacrifice;
+        red -= resourceSacrifice;
+    } else {
+        // Sacrifice green
+        console.log("green");
+        resourceSacrifice = (randomnumber / 100) * Math.log1p(green); // Logarithmic scaling
+        magenta += resourceSacrifice;
+        green -= resourceSacrifice;
+    }
+} else {
+    if (Math.random() < 0.5) {
+        // Sacrifice blue
+        console.log("blue");
+        resourceSacrifice = (randomnumber / 100) * Math.log1p(blue); // Logarithmic scaling
+        magenta += resourceSacrifice;
+        blue -= resourceSacrifice;
+    } else {
+        // Sacrifice yellow
+        console.log("yellow");
+        resourceSacrifice = (randomnumber / 100) * Math.log1p(yellow); // Logarithmic scaling
+        magenta += resourceSacrifice;
+        yellow -= resourceSacrifice;
+    }
+
   }
 }
 
@@ -3533,4 +3566,4 @@ function holyalberto() {
     holyalbertostate = 0;
     say(words);
   }
-}
+}}
