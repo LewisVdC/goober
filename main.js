@@ -610,7 +610,9 @@ function load() {
         Math.round(magentaspellprice);
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
-      document.getElementById("magentaspell").innerHTML = formatSmallNumber(Math.round(magentaspellprice));
+      document.getElementById("magentaspell").innerHTML = formatSmallNumber(
+        Math.round(magentaspellprice)
+      );
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -3370,45 +3372,47 @@ function buymagentaspell() {
 //uhh if the price scales with the amount of magic u make then whats the point even,,?
 //the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
-  if(magic >= magentaspellprice){
-    if(dialoguestate === 7){
+  if (magic >= magentaspellprice) {
+    if (dialoguestate === 7) {
       chatupdate();
     }
     magic -= magentaspellprice;
     magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
-    document.getElementById("magentaspell").innerHTML = formatSmallNumber(Math.round(magentaspellprice));
+    document.getElementById("magentaspell").innerHTML = formatSmallNumber(
+      Math.round(magentaspellprice)
+    );
     randomnumber = Math.random() * 0.9 + 0.1; // Random multiplier between 0.1 and 1.0
 
-let resourceSacrifice = 0;
-if (Math.random() < 0.5) {
+    let resourceSacrifice = 0;
     if (Math.random() < 0.5) {
+      if (Math.random() < 0.5) {
         // Sacrifice red
         console.log("red");
         resourceSacrifice = (randomnumber / 100) * Math.log1p(red); // Logarithmic scaling
         magenta += resourceSacrifice;
         red -= resourceSacrifice;
-    } else {
+      } else {
         // Sacrifice green
         console.log("green");
         resourceSacrifice = (randomnumber / 100) * Math.log1p(green); // Logarithmic scaling
         magenta += resourceSacrifice;
         green -= resourceSacrifice;
-    }
-} else {
-    if (Math.random() < 0.5) {
+      }
+    } else {
+      if (Math.random() < 0.5) {
         // Sacrifice blue
         console.log("blue");
         resourceSacrifice = (randomnumber / 100) * Math.log1p(blue); // Logarithmic scaling
         magenta += resourceSacrifice;
         blue -= resourceSacrifice;
-    } else {
+      } else {
         // Sacrifice yellow
         console.log("yellow");
         resourceSacrifice = (randomnumber / 100) * Math.log1p(yellow); // Logarithmic scaling
         magenta += resourceSacrifice;
         yellow -= resourceSacrifice;
+      }
     }
-
   }
 }
 
@@ -3590,4 +3594,4 @@ function holyalberto() {
     holyalbertostate = 0;
     say(words);
   }
-}}
+}
