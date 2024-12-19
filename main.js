@@ -2595,9 +2595,11 @@ document.addEventListener("keydown", function (event) {
   }
 });
 function resetData() {
-  loaded = 69420;
-  localStorage.removeItem("save");
-  location.reload();
+  if (confirm("whoa are you sure you wanna delete your save?") == true) {
+    loaded = 69420;
+    localStorage.removeItem("save");
+    location.reload();
+  }
 }
 
 //yellow upgrades
