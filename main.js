@@ -2595,6 +2595,8 @@ document.addEventListener("keydown", function (event) {
   }
 });
 function resetData() {
+  //galaxy says not to use things like alert and confirm for anything because it kicks you out of fullscreen
+  //but i think deleting your save is serious enough that you want a confirmation that pulls you out the game for a second
   if (confirm("whoa are you sure you wanna delete your save?") == true) {
     loaded = 69420;
     localStorage.removeItem("save");
@@ -3675,4 +3677,52 @@ function enter() {
   setTimeout(() => {
     showtab("black2");
   }, 2000);
+}
+
+//black!! finally!!
+//magenta isnt even done lol but eh idk
+function pour(x) {
+  if (x == "red") {
+    black += 0.5 * 0.1 * red;
+    red = 0.9 * red;
+  }
+  if (x == "green") {
+    black += 0.5 * 0.1 * green;
+    green = 0.9 * green;
+  }
+  if (x == "blue") {
+    black += 0.5 * 0.1 * blue;
+    blue = 0.9 * blue;
+  }
+  if (x == "yellow") {
+    black += 5 * 0.1 * yellow;
+    yellow = 0.9 * yellow;
+  }
+  if (x == "cyan") {
+    black += 250 * 0.1 * cyan;
+    cyan = 0.9 * cyan;
+  }
+  if (x == "magenta") {
+    black += 25 * 0.1 * magenta; //TODO BALANCE THIS MAYBE??
+    magenta = 0.9 * magenta;
+  }
+} //todo balance this for sure actually this sucks
+//or at least i think so i need magenta to be done first and then do a playtest of the game
+//then with those numbers balance this
+//but maybe go through the rest of the game and balance the early game first
+//because first starting out
+//your first red filter will take 20 seconds to make another
+//the ui isnt that interesting to keep you busy those 20 seconds
+//and i dont think thats possible so
+//idk man
+//maybe boost the first redfilters you buy secretly?? seems a bit weird though
+
+var blackboost = 0; // doesnt need to be saved its ok dw
+
+function calcblack() {
+  if (black != 0) {
+    blackboost = Math.log10(black); //TODO i dont know how to balance this, this is so bad it makes me cry
+  } else {
+    blackboost = 0;
+  } //make sure i dont blow everything up on accident when you dont have any black yet
 }
