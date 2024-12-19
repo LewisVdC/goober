@@ -1139,3 +1139,22 @@ div#blackhole.animate2 {
     scale: 30;
   }
 }
+div#pourbox {
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+div#pourred {
+  z-index: 2000;
+}
+button#pourredbutton {
+  z-index: 2000;
+}
+div#black2 {
+  z-index: 2000;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}

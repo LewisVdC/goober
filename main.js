@@ -730,6 +730,7 @@ function load() {
       document.getElementById("blueupgrade3cost").innerHTML = "bought";
       //document.getElementById("blueupgrade3").style.border = "outset";
     }
+
     document.getElementById("redcount").innerHTML =
       "red: " + formatNumber(Math.floor(red));
     document.getElementById("greencount").innerHTML =
@@ -1168,7 +1169,8 @@ function showtab(x) {
     tab = "black2";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
-    document.getElementById("black").style.display = "block";
+    document.getElementById("black").style.display = "none";
+    document.getElementById("black2").style.display = "block";
     document.getElementById("white").style.display = "none";
     document.getElementById("magenta").style.display = "none";
     document.getElementById("yellow").style.display = "none";
@@ -1658,6 +1660,35 @@ window.setInterval(function () {
     document.getElementById("feedcount").innerHTML = feed;
     document.getElementById("feedpersoncount").innerHTML = feedperson;
     document.getElementById("drinkcount").innerHTML = drink;
+
+    //support for multiple counters !! use classes !!
+    const redcounters = document.querySelectorAll(".redcount");
+    redcounters.forEach((counter) => {
+      counter.textContent = "red: " + formatNumber(Math.floor(red));
+    });
+    const greencounters = document.querySelectorAll(".greencount");
+    greencounters.forEach((counter) => {
+      counter.textContent = "green: " + formatNumber(Math.floor(green));
+    });
+    const bluecounters = document.querySelectorAll(".bluecount");
+    bluecounters.forEach((counter) => {
+      counter.textContent = "blue: " + formatNumber(Math.floor(blue));
+    });
+
+    const yellowcounters = document.querySelectorAll(".yellowcount");
+    yellowcounters.forEach((counter) => {
+      counter.textContent = "yellow: " + formatNumber(Math.floor(yellow));
+    });
+
+    const cyancounters = document.querySelectorAll(".cyancount");
+    cyancounters.forEach((counter) => {
+      counter.textContent = "cyan: " + formatNumber(Math.floor(cyan));
+    });
+
+    const magentacounters = document.querySelectorAll(".magentacount");
+    magentacounters.forEach((counter) => {
+      counter.textContent = "magenta: " + formatNumber(Math.floor(magenta));
+    });
     //timo building 5 does not give 5k of the stuff per second it boosts production
     //mb
     //im rly struggling to read this code
@@ -3639,4 +3670,7 @@ function enter() {
   const blackhole = document.getElementById("blackhole");
 
   blackhole.classList.add("animate2");
+  setTimeout(() => {
+    showtab("black2");
+  }, 2000);
 }
