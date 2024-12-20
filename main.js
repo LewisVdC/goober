@@ -3542,6 +3542,7 @@ function nerdmode(nerdnumber) {
     document.getElementById("nerdmodetext").style.display === "";
     document.getElementById("nerdmodetext").style.display = "flex";
     currentnerdmode = 1;
+    document.getElementById("confusion").style.display = "none";
   } else {
     document.getElementById("nerdmodetext").style.display = "";
     currentnerdmode = 0;
