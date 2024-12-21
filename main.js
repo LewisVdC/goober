@@ -2088,6 +2088,7 @@ window.setInterval(function () {
       feed: feed,
       feedperson: feedperson,
       drink: drink,
+      magic:magic,
       cauldroncost: cauldroncost,
       studycost: studycost,
       feedcost: feedcost,
