@@ -1636,7 +1636,13 @@ window.setInterval(function () {
         document.getElementById("tabwhite").getBoundingClientRect().width
       ) +
       "px)";
-
+    //feed the users info
+    document.getElementById("redcountup").innerHTML =
+      "per second: " + formatNumber(debugrednumber);
+    document.getElementById("greencountup").innerHTML =
+      "per second: " + formatNumber(debuggreennumber);
+    document.getElementById("bluecountup").innerHTML =
+      "per second:" + formatNumber(debugbluenumber);
     //devmode!!
     if (dev == 1) {
       document.getElementById("devmode").style.display = "block";
@@ -3543,6 +3549,7 @@ function nerdmode(nerdnumber) {
     document.getElementById("nerdmodetext").style.display === "";
     document.getElementById("nerdmodetext").style.display = "flex";
     currentnerdmode = 1;
+    document.getElementById("confusion").style.display = "none";
   } else {
     document.getElementById("nerdmodetext").style.display = "";
     currentnerdmode = 0;
