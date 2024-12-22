@@ -1,4 +1,5 @@
 // ):
+// TODO MAGENTA BUILDINGS DONT VISUALLY CHANGE PRICE ON PAGE LOAD
 var bible = "";
 var holyalbertostate = 0;
 var timer = 0;
@@ -1903,6 +1904,8 @@ window.setInterval(function () {
       "cyan: " + formatNumber(Math.floor(cyan));
     //ugh
 
+    //im moving the yellow upgrades update function somewhere else
+    updateyellow();
     //unlocks
     if (red >= 50000) {
       document.getElementById("redupgrades").style.display = "flex";
@@ -2094,7 +2097,7 @@ window.setInterval(function () {
       feed: feed,
       feedperson: feedperson,
       drink: drink,
-      magic:magic,
+      magic: magic,
       cauldroncost: cauldroncost,
       studycost: studycost,
       feedcost: feedcost,
@@ -3733,4 +3736,87 @@ function calcblack() {
   } else {
     blackboost = 0;
   } //make sure i dont blow everything up on accident when you dont have any black yet
+}
+function updateyellow() {
+  //bazinga
+  //1
+  document.getElementById("yellowupgrade1amount").innerHTML =
+    "level: " + governmentfundingcount;
+  document.getElementById("yellowupgrade1cost").innerHTML =
+    "cost: " + governmentfundingprice;
+  //2
+  document.getElementById("yellowupgrade2amount").innerHTML =
+    "level: " + colorharmonycount;
+  document.getElementById("yellowupgrade2cost").innerHTML =
+    "cost: " + colorharmonyprice;
+  //3
+  document.getElementById("yellowupgrade3amount").innerHTML =
+    "level: " + largerprismscount;
+  document.getElementById("yellowupgrade3cost").innerHTML =
+    "cost: " + largerprismsprice;
+  //4
+  document.getElementById("yellowupgrade4amount").innerHTML =
+    "level: " + streamlinedtaskscount;
+  document.getElementById("yellowupgrade4cost").innerHTML =
+    "cost: " + streamlinedtasksprice;
+  //5
+  document.getElementById("yellowupgrade5amount").innerHTML =
+    "level: " + yellowsynergycount;
+  document.getElementById("yellowupgrade5cost").innerHTML =
+    "cost: " + yellowsynergyprice;
+  //6
+  document.getElementById("yellowupgrade6amount").innerHTML =
+    "level: " + redoverflowcount;
+  document.getElementById("yellowupgrade6cost").innerHTML =
+    "cost: " + redoverflowprice;
+  //7
+  document.getElementById("yellowupgrade7amount").innerHTML =
+    "level: " + greenoverflowcount;
+  document.getElementById("yellowupgrade7cost").innerHTML =
+    "cost: " + greenoverflowprice;
+  //8
+  document.getElementById("yellowupgrade8amount").innerHTML =
+    "level: " + blueoverflowcount;
+  document.getElementById("yellowupgrade8cost").innerHTML =
+    "cost: " + blueoverflowprice;
+  //9
+  document.getElementById("yellowupgrade9amount").innerHTML =
+    "level: " + tricolorboostcount;
+  document.getElementById("yellowupgrade9cost").innerHTML =
+    "cost: " + tricolorboostprice;
+  //10
+  document.getElementById("yellowupgrade10amount").innerHTML =
+    "level: " + taskmasterycount;
+  document.getElementById("yellowupgrade10cost").innerHTML =
+    "cost: " + taskmasteryprice;
+  //11
+  document.getElementById("yellowupgrade11amount").innerHTML =
+    "level: " + goldenmultipliercount;
+  document.getElementById("yellowupgrade11cost").innerHTML =
+    "cost: " + goldenmultiplierprice;
+  //12
+  document.getElementById("yellowupgrade12amount").innerHTML =
+    "level: " + strongersynergycount;
+  document.getElementById("yellowupgrade12cost").innerHTML =
+    "cost: " + strongersynergyprice;
+  //13
+  document.getElementById("yellowupgrade13amount").innerHTML =
+    "level: " + focussedpointerscount;
+  document.getElementById("yellowupgrade13cost").innerHTML =
+    "cost: " + focussedpointersprice;
+  //14
+  document.getElementById("yellowupgrade14amount").innerHTML =
+    "level: " + finerfilterscount;
+  document.getElementById("yellowupgrade14cost").innerHTML =
+    "cost: " + finerfiltersprice;
+  //15
+  document.getElementById("yellowupgrade15amount").innerHTML =
+    "level: " + micrometerwavecount;
+  document.getElementById("yellowupgrade15cost").innerHTML =
+    "cost: " + micrometerwaveprice;
+  //16
+  document.getElementById("yellowupgrade16amount").innerHTML =
+    "level: " + colorsyphoncount;
+  document.getElementById("yellowupgrade16cost").innerHTML =
+    "cost: " + colorsyphonprice;
 }
