@@ -8,7 +8,6 @@ body {
   padding: 0;
   background-color: rgb(20, 0, 0);
   overflow-x: hidden;
-  overflow-y: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -1171,4 +1170,7 @@ div#black2 {
 }
 div#pourmagenta {
   margin-bottom: 25%;
+}
+body::-webkit-scrollbar {
+  display: none;
 }

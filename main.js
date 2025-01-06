@@ -1626,9 +1626,7 @@ window.setInterval(function () {
   if (loaded === 1) {
     //if loaded === 1 is important for keeping everything from
     //doing stuff its not supposed to before gameload
-    if (holyalbertostate === 0) {
-      window.scrollTo(0, 0);
-    }
+    window.scrollBy(-window.innerWidth, 0);
     //some nerdy stuff
     //nerdmode text "margins" (actually width in disguise)
     document.getElementById("nerdmodetext").style.width =
