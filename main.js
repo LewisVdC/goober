@@ -558,9 +558,9 @@ function load() {
     if (typeof savegame.spell1unlock !== "undefined")
       spell1unlock = savegame.spell1unlock;
     if (typeof savegame.spell2unlock !== "undefined")
-      spell1unlock = savegame.spell2unlock;
+      spell2unlock = savegame.spell2unlock;
     if (typeof savegame.spell3unlock !== "undefined")
-      spell1unlock = savegame.spell3unlock;
+      spell3unlock = savegame.spell3unlock;
     if (typeof savegame.magentaspellprice !== "undefined")
       magentaspellprice = savegame.magentaspellprice;
     if (typeof savegame.redspellprice !== "undefined")
@@ -1941,7 +1941,12 @@ window.setInterval(function () {
     document.getElementById("cyancount").innerHTML =
       "cyan: " + formatNumber(Math.floor(cyan));
     //ugh
-
+    if(spell1unlock === 1){
+    document.getElementById("redspell").innerHTML = formatSmallNumber(Math.round(redspellprice));}
+    if(spell2unlock === 1){
+    document.getElementById("greenspell").innerHTML = formatSmallNumber(Math.round(greenspellprice));}
+    if(spell3unlock === 1){
+    document.getElementById("bluespell").innerHTML = formatSmallNumber(Math.round(bluespellprice));}
     //im moving the yellow upgrades update function somewhere else
     updateyellow();
     //unlocks
@@ -3345,13 +3350,28 @@ function buydrink() {
 //see if it's balanced w/o and if it isn't then ig we'll do that.
 
 function spell1(number) {
-  red = red + debugrednumber * number;
+  if(magic >= redspellprice){
+    magic -= redspellprice;
+    redspellprice += debugmagicnumber * 2.5;
+    document.getElementById("redspell").innerHTML = formatSmallNumber(Math.round(redspellprice));
+    red = red + debugrednumber * number;
+  }
 }
 function spell2(number) {
-  green = green + debuggreennumber * number;
+  if(magic >= greenspellprice){
+    magic -= greenspellprice;
+    greenspellprice += debugmagicnumber * 2.6;
+    document.getElementById("greenspell").innerHTML = formatSmallNumber(Math.round(greenspellprice));
+    green = green + debuggreennumber * number;
+  }
 }
 function spell3(number) {
-  blue = blue + debugbluenumber * number;
+  if(magic >= bluespellprice){
+    magic -= bluespellprice;
+    bluespellprice += debugmagicnumber * 2.7;
+    document.getElementById("bluespell").innerHTML = formatSmallNumber(Math.round(bluespellprice));
+    blue = blue + debugbluenumber * number;
+  }
 }
 //oh and make it so u have to unlock the spells that sounds silly
 function think() {
@@ -3384,7 +3404,7 @@ function formatNumber(number) {
   }
 }
 function formatSmallNumber(number) {
-  if (Math.abs(number) >= 1000) {
+  if (Math.abs(number) >= 100) {
     return number.toExponential(0);
   } else {
     return number.toString();
