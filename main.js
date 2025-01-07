@@ -558,9 +558,9 @@ function load() {
     if (typeof savegame.spell1unlock !== "undefined")
       spell1unlock = savegame.spell1unlock;
     if (typeof savegame.spell2unlock !== "undefined")
-      spell1unlock = savegame.spell2unlock;
+      spell2unlock = savegame.spell2unlock;
     if (typeof savegame.spell3unlock !== "undefined")
-      spell1unlock = savegame.spell3unlock;
+      spell3unlock = savegame.spell3unlock;
     if (typeof savegame.magentaspellprice !== "undefined")
       magentaspellprice = savegame.magentaspellprice;
     if (typeof savegame.redspellprice !== "undefined")
@@ -1626,9 +1626,7 @@ window.setInterval(function () {
   if (loaded === 1) {
     //if loaded === 1 is important for keeping everything from
     //doing stuff its not supposed to before gameload
-    if (holyalbertostate === 0) {
-      window.scrollTo(0, 0);
-    }
+    window.scrollBy(-window.innerWidth, 0);
     //some nerdy stuff
     //nerdmode text "margins" (actually width in disguise)
     document.getElementById("nerdmodetext").style.width =
@@ -1807,11 +1805,11 @@ window.setInterval(function () {
     } else if (document.querySelector("#yellowupgrade2:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
-        "mulitply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
+        "multiply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
     } else if (document.querySelector("#yellowupgrade3:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
-        "mulitply rgb gain by 2 * largerprismscount";
+        "multiply rgb gain by 2 * largerprismscount";
     } else if (document.querySelector("#yellowupgrade4:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
@@ -1843,7 +1841,7 @@ window.setInterval(function () {
     } else if (document.querySelector("#yellowupgrade11:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
-        "mulitply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
+        "multiply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
     } else if (document.querySelector("#yellowupgrade12:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
@@ -1864,6 +1862,46 @@ window.setInterval(function () {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
         "buy 10 cyan for 1e15 red, green, blue and 1200 yellow";
+    } else if (document.querySelector("#cyanbuildings:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "buy 0.5 upgrades/s for every level of this upgrade if you have enough money";
+    } else if (document.querySelector("#magentabuild1:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 0.5 magic/s";
+    } else if (document.querySelector("#magentabuild2:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 5 magic/s";
+    } else if (document.querySelector("#magentabuild3:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 50 magic/s";
+    } else if (document.querySelector("#magentabuild4:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 500 magic/s";
+    } else if (document.querySelector("#magentabuild5:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 5000 magic/s";
+    } else if (document.querySelector("#magentaspell:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives between 10% and 90% of your magic gain multiplied by 10 magenta and takes between 10% and 90% of a random color.";
+    } else if (document.querySelector("#redspell:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 1 minute worth of red.";
+    } else if (document.querySelector("#greenspell:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 1 minute worth of green.";
+    } else if (document.querySelector("#bluespell:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 1 minute worth of blue.";
     } else {
       if (nerdtimer > 1) {
         document.getElementById("nerdmodetext").innerHTML =
@@ -1902,11 +1940,16 @@ window.setInterval(function () {
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
     document.getElementById("magentacount").innerHTML =
-      "magenta: " + formatNumber(Math.floor(magenta));
+      "magenta: " + formatNumber(Math.floor(magenta*10))/10;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + formatNumber(Math.floor(cyan));
     //ugh
-
+    if(spell1unlock === 1){
+    document.getElementById("redspell").innerHTML = formatSmallNumber(Math.round(redspellprice));}
+    if(spell2unlock === 1){
+    document.getElementById("greenspell").innerHTML = formatSmallNumber(Math.round(greenspellprice));}
+    if(spell3unlock === 1){
+    document.getElementById("bluespell").innerHTML = formatSmallNumber(Math.round(bluespellprice));}
     //im moving the yellow upgrades update function somewhere else
     updateyellow();
     //unlocks
@@ -2866,7 +2909,7 @@ function buycolorsyphon() {
   ) {
     yellow -= colorsyphonprice;
     colorsyphoncount++;
-    colorsyphonprice = 1200;
+    colorsyphonprice = 1200 + 100 * colorsyphoncount;
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
     document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
@@ -3310,13 +3353,28 @@ function buydrink() {
 //see if it's balanced w/o and if it isn't then ig we'll do that.
 
 function spell1(number) {
-  red = red + debugrednumber * number;
+  if(magic >= redspellprice){
+    magic -= redspellprice;
+    redspellprice += debugmagicnumber * 2.5;
+    document.getElementById("redspell").innerHTML = formatSmallNumber(Math.round(redspellprice));
+    red = red + debugrednumber * number;
+  }
 }
 function spell2(number) {
-  green = green + debuggreennumber * number;
+  if(magic >= greenspellprice){
+    magic -= greenspellprice;
+    greenspellprice += debugmagicnumber * 2.6;
+    document.getElementById("greenspell").innerHTML = formatSmallNumber(Math.round(greenspellprice));
+    green = green + debuggreennumber * number;
+  }
 }
 function spell3(number) {
-  blue = blue + debugbluenumber * number;
+  if(magic >= bluespellprice){
+    magic -= bluespellprice;
+    bluespellprice += debugmagicnumber * 2.7;
+    document.getElementById("bluespell").innerHTML = formatSmallNumber(Math.round(bluespellprice));
+    blue = blue + debugbluenumber * number;
+  }
 }
 //oh and make it so u have to unlock the spells that sounds silly
 function think() {
@@ -3349,7 +3407,7 @@ function formatNumber(number) {
   }
 }
 function formatSmallNumber(number) {
-  if (Math.abs(number) >= 1000) {
+  if (Math.abs(number) >= 100) {
     return number.toExponential(0);
   } else {
     return number.toString();
@@ -3484,21 +3542,21 @@ function castmagentaspell() {
       if (Math.random() < 0.5) {
         console.log("red" + randomnumber);
         red -= red * randomnumber;
-        magenta += debugrednumber * 1e-13 * randomnumber;
+        magenta += debugmagicnumber * randomnumber * 10;
       } else {
         console.log("green" + randomnumber);
         green -= green * randomnumber;
-        magenta += debuggreennumber * 1e-13 * randomnumber;
+        magenta += debugmagicnumber * randomnumber * 10;
       }
     } else {
       if (Math.random() < 0.5) {
         console.log("blue" + randomnumber);
         blue -= blue * randomnumber;
-        magenta += debugrednumber * 1e-13 * randomnumber;
+        magenta += debugmagicnumber * randomnumber * 10;
       } else {
         console.log("yellow" + randomnumber);
         yellow -= yellow * randomnumber;
-        magenta += yellowGAIN * 1e-1 * randomnumber;
+        magenta += debugmagicnumber * randomnumber * 10;
       }
     }
   }
@@ -3629,6 +3687,9 @@ function chatupdate() {
     dialoguestate++;
   } else if (dialoguestate === 10 && tab === "magenta") {
     say("come back to me once you've found the first three.");
+    dialoguestate++;
+  } else if (dialoguestate === 11 && tab === "magenta") {
+    say("great! i'll tell you what these spells do.");
     dialoguestate++;
   }
 }
