@@ -1802,11 +1802,11 @@ window.setInterval(function () {
     } else if (document.querySelector("#yellowupgrade2:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
-        "mulitply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
+        "multiply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
     } else if (document.querySelector("#yellowupgrade3:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
-        "mulitply rgb gain by 2 * largerprismscount";
+        "multiply rgb gain by 2 * largerprismscount";
     } else if (document.querySelector("#yellowupgrade4:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
@@ -1838,7 +1838,7 @@ window.setInterval(function () {
     } else if (document.querySelector("#yellowupgrade11:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
-        "mulitply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
+        "multiply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
     } else if (document.querySelector("#yellowupgrade12:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
@@ -1859,6 +1859,46 @@ window.setInterval(function () {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
         "buy 10 cyan for 1e15 red, green, blue and 1200 yellow";
+    } else if (document.querySelector("#cyanbuildings:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "buy 0.5 upgrades/s for every level of this upgrade if you have enough money";
+    } else if (document.querySelector("#magentabuild1:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 0.5 magic/s";
+    } else if (document.querySelector("#magentabuild2:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 5 magic/s";
+    } else if (document.querySelector("#magentabuild3:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 50 magic/s";
+    } else if (document.querySelector("#magentabuild4:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 500 magic/s";
+    } else if (document.querySelector("#magentabuild5:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 5000 magic/s";
+    } else if (document.querySelector("#magentaspell:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives between 10% and 90% of your magic gain multiplied by 10 magenta and takes between 10% and 90% of a random color.";
+    } else if (document.querySelector("#redspell:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 1 minute worth of red.";
+    } else if (document.querySelector("#greenspell:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 1 minute worth of green.";
+    } else if (document.querySelector("#bluespell:hover") != null) {
+      nerdtimer = 0;
+      document.getElementById("nerdmodetext").innerHTML =
+        "gives 1 minute worth of blue.";
     } else {
       if (nerdtimer > 1) {
         document.getElementById("nerdmodetext").innerHTML =
@@ -1897,7 +1937,7 @@ window.setInterval(function () {
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
     document.getElementById("magentacount").innerHTML =
-      "magenta: " + formatNumber(Math.floor(magenta));
+      "magenta: " + formatNumber(Math.floor(magenta*10))/10;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + formatNumber(Math.floor(cyan));
     //ugh
@@ -2861,7 +2901,7 @@ function buycolorsyphon() {
   ) {
     yellow -= colorsyphonprice;
     colorsyphoncount++;
-    colorsyphonprice = 1200;
+    colorsyphonprice = 1200 + 100 * colorsyphoncount;
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
     document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
@@ -3479,21 +3519,21 @@ function castmagentaspell() {
       if (Math.random() < 0.5) {
         console.log("red" + randomnumber);
         red -= red * randomnumber;
-        magenta += debugrednumber * 1e-13 * randomnumber;
+        magenta += debugmagicnumber * randomnumber * 10;
       } else {
         console.log("green" + randomnumber);
         green -= green * randomnumber;
-        magenta += debuggreennumber * 1e-13 * randomnumber;
+        magenta += debugmagicnumber * randomnumber * 10;
       }
     } else {
       if (Math.random() < 0.5) {
         console.log("blue" + randomnumber);
         blue -= blue * randomnumber;
-        magenta += debugrednumber * 1e-13 * randomnumber;
+        magenta += debugmagicnumber * randomnumber * 10;
       } else {
         console.log("yellow" + randomnumber);
         yellow -= yellow * randomnumber;
-        magenta += yellowGAIN * 1e-1 * randomnumber;
+        magenta += debugmagicnumber * randomnumber * 10;
       }
     }
   }
