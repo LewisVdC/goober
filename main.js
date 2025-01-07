@@ -3783,7 +3783,6 @@ function pour(x) {
     black += 25 * 0.1 * magenta; //TODO BALANCE THIS MAYBE??
     magenta = 0.9 * magenta;
   }
-  calcblack();
 } //todo balance this for sure actually this sucks
 //or at least i think so i need magenta to be done first and then do a playtest of the game
 //then with those numbers balance this
