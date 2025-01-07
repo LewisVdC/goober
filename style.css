@@ -1174,3 +1174,6 @@ div#pourmagenta {
 body::-webkit-scrollbar {
   display: none;
 }
+span#blackboost {
+  font-size: 5em;
+}
