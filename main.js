@@ -3685,6 +3685,9 @@ function chatupdate() {
   } else if (dialoguestate === 10 && tab === "magenta") {
     say("come back to me once you've found the first three.");
     dialoguestate++;
+  } else if (dialoguestate === 11 && tab === "magenta") {
+    say("great! i'll tell you what these spells do.");
+    dialoguestate++;
   }
 }
 
