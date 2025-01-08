@@ -2377,7 +2377,7 @@ window.setInterval(function () {
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
 
-    calcblack();
+ 
   }
 }, 10);
 
@@ -3805,7 +3805,7 @@ function calcblack() {
   } else {
     blackboost = 0;
   } //make sure i dont blow everything up on accident when you dont have any black yet
-  document.getElementById("blackboost").innerHTML = blackboost;
+
 }
 function updateyellow() {
   //bazinga
