@@ -2377,7 +2377,7 @@ window.setInterval(function () {
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
 
-    calcblack();
+ 
   }
 }, 10);
 
