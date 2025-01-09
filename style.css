@@ -1168,13 +1168,16 @@ div#pourbox {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 50%;
-  box-shadow: 0 0 40px 40px #cefffe;
-  background-color: #cefffe;
 }
 .pourbutton{
-  border: none;
-  background-color: transparent;
+}
+#useless{
+  color: transparent;
+  text-shadow: none;
+}
+#singularity{
+  box-shadow: 0 0 0px 0px white;
+  background-color: white;
 }
 div#pourred {
   z-index: 2000;
