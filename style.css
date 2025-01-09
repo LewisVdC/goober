@@ -1183,7 +1183,7 @@ div#pourbox {
   position: absolute;
   background-color: white;
   animation: squigglycircle 0.2s ease-out forwards alternate infinite;
-}
+} 
 @keyframes squigglycircle {
   0% {
     transform: translate(0, 0) scale(1);
