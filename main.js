@@ -1641,7 +1641,7 @@ window.setInterval(function () {
     document.getElementById("greencountup").innerHTML =
       "per second: " + formatNumber(debuggreennumber);
     document.getElementById("bluecountup").innerHTML =
-      "per second:" + formatNumber(debugbluenumber);
+      "per second: " + formatNumber(debugbluenumber);
     //calc the black
     calcblack();
 
@@ -1868,24 +1868,19 @@ window.setInterval(function () {
         "buy 0.5 upgrades/s for every level of this upgrade if you have enough money";
     } else if (document.querySelector("#magentabuild1:hover") != null) {
       nerdtimer = 0;
-      document.getElementById("nerdmodetext").innerHTML =
-        "gives 0.5 magic/s";
+      document.getElementById("nerdmodetext").innerHTML = "gives 0.5 magic/s";
     } else if (document.querySelector("#magentabuild2:hover") != null) {
       nerdtimer = 0;
-      document.getElementById("nerdmodetext").innerHTML =
-        "gives 5 magic/s";
+      document.getElementById("nerdmodetext").innerHTML = "gives 5 magic/s";
     } else if (document.querySelector("#magentabuild3:hover") != null) {
       nerdtimer = 0;
-      document.getElementById("nerdmodetext").innerHTML =
-        "gives 50 magic/s";
+      document.getElementById("nerdmodetext").innerHTML = "gives 50 magic/s";
     } else if (document.querySelector("#magentabuild4:hover") != null) {
       nerdtimer = 0;
-      document.getElementById("nerdmodetext").innerHTML =
-        "gives 500 magic/s";
+      document.getElementById("nerdmodetext").innerHTML = "gives 500 magic/s";
     } else if (document.querySelector("#magentabuild5:hover") != null) {
       nerdtimer = 0;
-      document.getElementById("nerdmodetext").innerHTML =
-        "gives 5000 magic/s";
+      document.getElementById("nerdmodetext").innerHTML = "gives 5000 magic/s";
     } else if (document.querySelector("#magentaspell:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
@@ -1940,16 +1935,25 @@ window.setInterval(function () {
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
     document.getElementById("magentacount").innerHTML =
-      "magenta: " + formatNumber(Math.floor(magenta*10))/10;
+      "magenta: " + formatNumber(Math.floor(magenta * 10)) / 10;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + formatNumber(Math.floor(cyan));
     //ugh
-    if(spell1unlock === 1){
-    document.getElementById("redspell").innerHTML = formatSmallNumber(Math.round(redspellprice));}
-    if(spell2unlock === 1){
-    document.getElementById("greenspell").innerHTML = formatSmallNumber(Math.round(greenspellprice));}
-    if(spell3unlock === 1){
-    document.getElementById("bluespell").innerHTML = formatSmallNumber(Math.round(bluespellprice));}
+    if (spell1unlock === 1) {
+      document.getElementById("redspell").innerHTML = formatSmallNumber(
+        Math.round(redspellprice)
+      );
+    }
+    if (spell2unlock === 1) {
+      document.getElementById("greenspell").innerHTML = formatSmallNumber(
+        Math.round(greenspellprice)
+      );
+    }
+    if (spell3unlock === 1) {
+      document.getElementById("bluespell").innerHTML = formatSmallNumber(
+        Math.round(bluespellprice)
+      );
+    }
     //im moving the yellow upgrades update function somewhere else
     updateyellow();
     //unlocks
@@ -2376,8 +2380,6 @@ window.setInterval(function () {
         // tri-color boost
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
-
- 
   }
 }, 10);
 
@@ -3355,26 +3357,32 @@ function buydrink() {
 //see if it's balanced w/o and if it isn't then ig we'll do that.
 
 function spell1(number) {
-  if(magic >= redspellprice){
+  if (magic >= redspellprice) {
     magic -= redspellprice;
     redspellprice += debugmagicnumber * 2.5;
-    document.getElementById("redspell").innerHTML = formatSmallNumber(Math.round(redspellprice));
+    document.getElementById("redspell").innerHTML = formatSmallNumber(
+      Math.round(redspellprice)
+    );
     red = red + debugrednumber * number;
   }
 }
 function spell2(number) {
-  if(magic >= greenspellprice){
+  if (magic >= greenspellprice) {
     magic -= greenspellprice;
     greenspellprice += debugmagicnumber * 2.6;
-    document.getElementById("greenspell").innerHTML = formatSmallNumber(Math.round(greenspellprice));
+    document.getElementById("greenspell").innerHTML = formatSmallNumber(
+      Math.round(greenspellprice)
+    );
     green = green + debuggreennumber * number;
   }
 }
 function spell3(number) {
-  if(magic >= bluespellprice){
+  if (magic >= bluespellprice) {
     magic -= bluespellprice;
     bluespellprice += debugmagicnumber * 2.7;
-    document.getElementById("bluespell").innerHTML = formatSmallNumber(Math.round(bluespellprice));
+    document.getElementById("bluespell").innerHTML = formatSmallNumber(
+      Math.round(bluespellprice)
+    );
     blue = blue + debugbluenumber * number;
   }
 }
@@ -3805,7 +3813,6 @@ function calcblack() {
   } else {
     blackboost = 0;
   } //make sure i dont blow everything up on accident when you dont have any black yet
-
 }
 function updateyellow() {
   //bazinga
