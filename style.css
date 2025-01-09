@@ -749,14 +749,14 @@ button:not(.submit) {
   transform: scale(1);
   transform-origin: center;
 }
-#enterbutton:hover{
+#enterbutton:hover {
   animation: expandtext 0.2s ease-out both;
 }
 @keyframes expandtext {
-  0%{
+  0% {
     font-size: smaller;
   }
-  100%{
+  100% {
     font-size: medium;
   }
 }
@@ -1169,13 +1169,13 @@ div#pourbox {
   align-items: center;
   flex-direction: column;
 }
-.pourbutton{
+.pourbutton {
 }
-#useless{
+#useless {
   color: transparent;
   text-shadow: none;
 }
-#singularity{
+#singularity {
   width: 10px;
   height: 10px;
   border-radius: 50%;
