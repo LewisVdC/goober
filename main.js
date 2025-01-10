@@ -3938,14 +3938,11 @@ function save() {
 
 //ofline stuff
 window.addEventListener("blur", function(){
-  console.log("gone");
   time = Date.now();
 });
 
 window.addEventListener("focus", function(){
-  console.log("back");
   offlineTime = Date.now() - time;
-  console.log(offlineTime);
   if(offlineTime > 60000){
     offlineTime = 60000;
   }
