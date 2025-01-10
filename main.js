@@ -2591,66 +2591,68 @@ function submitTask() {
   }
 }
 document.addEventListener("keydown", function (event) {
-  if (event.key === "r") {
-    showtab("red");
-  } else if (event.key === "g" && tasksCompleted >= 1) {
-    showtab("green");
-  } else if (event.key === "b" && tasksCompleted >= 2) {
-    showtab("blue");
-  } else if (event.key === "y" && tasksCompleted >= 4) {
-    showtab("yellow");
-  } else if (event.key === "c" && cyan > 0) {
-    showtab("cyan");
-  } else if (event.key === "m" && tasksCompleted > 99) {
-    showtab("magenta");
-  } else if (event.key === "z" && true) {
-    showtab("black");
-  } else if (event.key === "w" && true) {
-    showtab("white");
-  }
-  if (event.code === "Digit1") {
-    if (tab === "red") {
-      buyredfilter();
-    } else if (tab === "green") {
-      buygreenfilter();
-    } else if (tab === "blue") {
-      buybluefilter();
+  if (tab != "black2") {
+    if (event.key === "r") {
+      showtab("red");
+    } else if (event.key === "g" && tasksCompleted >= 1) {
+      showtab("green");
+    } else if (event.key === "b" && tasksCompleted >= 2) {
+      showtab("blue");
+    } else if (event.key === "y" && tasksCompleted >= 4) {
+      showtab("yellow");
+    } else if (event.key === "c" && cyan > 0) {
+      showtab("cyan");
+    } else if (event.key === "m" && tasksCompleted > 99) {
+      showtab("magenta");
+    } else if (event.key === "z" && true) {
+      showtab("black");
+    } else if (event.key === "w" && true) {
+      showtab("white");
     }
-  }
-  if (event.code === "Digit2") {
-    if (tab === "red") {
-      buyredpointer();
-    } else if (tab === "green") {
-      buygreenpointer();
-    } else if (tab === "blue") {
-      buybluepointer();
+    if (event.code === "Digit1") {
+      if (tab === "red") {
+        buyredfilter();
+      } else if (tab === "green") {
+        buygreenfilter();
+      } else if (tab === "blue") {
+        buybluefilter();
+      }
     }
-  }
-  if (event.code === "Digit3") {
-    if (tab === "red") {
-      buybigredfilter();
-    } else if (tab === "green") {
-      buybiggreenfilter();
-    } else if (tab === "blue") {
-      buybigbluefilter();
+    if (event.code === "Digit2") {
+      if (tab === "red") {
+        buyredpointer();
+      } else if (tab === "green") {
+        buygreenpointer();
+      } else if (tab === "blue") {
+        buybluepointer();
+      }
     }
-  }
-  if (event.code === "Digit4") {
-    if (tab === "red") {
-      buybigredpointer();
-    } else if (tab === "green") {
-      buybiggreenpointer();
-    } else if (tab === "blue") {
-      buybigbluepointer();
+    if (event.code === "Digit3") {
+      if (tab === "red") {
+        buybigredfilter();
+      } else if (tab === "green") {
+        buybiggreenfilter();
+      } else if (tab === "blue") {
+        buybigbluefilter();
+      }
     }
-  }
-  if (event.code === "Digit5") {
-    if (tab === "red") {
-      buyrednanometerwave();
-    } else if (tab === "green") {
-      buygreennanometerwave();
-    } else if (tab === "blue") {
-      buybluenanometerwave();
+    if (event.code === "Digit4") {
+      if (tab === "red") {
+        buybigredpointer();
+      } else if (tab === "green") {
+        buybiggreenpointer();
+      } else if (tab === "blue") {
+        buybigbluepointer();
+      }
+    }
+    if (event.code === "Digit5") {
+      if (tab === "red") {
+        buyrednanometerwave();
+      } else if (tab === "green") {
+        buygreennanometerwave();
+      } else if (tab === "blue") {
+        buybluenanometerwave();
+      }
     }
   }
 });
