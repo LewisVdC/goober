@@ -1,5 +1,8 @@
 // ):
 // TODO MAGENTA BUILDINGS DONT VISUALLY CHANGE PRICE ON PAGE LOAD
+var offlineTime = 0;
+var time = Date.now();
+var visibilityState = "visible"
 var bible = "";
 var holyalbertostate = 0;
 var timer = 0;
@@ -3897,3 +3900,24 @@ function updateyellow() {
   document.getElementById("yellowupgrade16cost").innerHTML =
     "cost: " + formatNumber(colorsyphonprice);
 }
+
+//ofline stuff
+window.addEventListener("blur", function(){
+  console.log("gone");
+  time = Date.now();
+});
+
+window.addEventListener("focus", function(){
+  console.log("back");
+  offlineTime = Date.now() - time;
+  console.log(offlineTime);
+  if(offlineTime > 60000){
+    offlineTime = 60000;
+  }
+  if(offlineTime <= 60000){
+    red += debugrednumber * (offlineTime/1000);
+    green += debuggreennumber * (offlineTime/1000);
+    blue += debugbluenumber * (offlineTime/1000);
+    magic += debugmagicnumber * (offlineTime/1000);
+  }
+});
