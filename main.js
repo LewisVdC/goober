@@ -1,5 +1,8 @@
 // ):
 // TODO MAGENTA BUILDINGS DONT VISUALLY CHANGE PRICE ON PAGE LOAD
+var offlineTime = 0;
+var time = Date.now();
+var visibilityState = "visible"
 var bible = "";
 var holyalbertostate = 0;
 var timer = 0;
@@ -1625,6 +1628,7 @@ function buyblueupgrade3() {
 
 //loop
 window.setInterval(function () {
+  if(visibilityState === "visible" || buttonpress === false){
   if (loaded === 1) {
     //if loaded === 1 is important for keeping everything from
     //doing stuff its not supposed to before gameload
@@ -2240,7 +2244,7 @@ window.setInterval(function () {
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
   }
-}, 10);
+}}, 10);
 
 function rgbToHex(rgb) {
   let rgbColor = rgb.split(", ");
@@ -4028,3 +4032,23 @@ function save() {
   };
   localStorage.setItem("save", JSON.stringify(save));
 }
+
+//ofline stuff
+window.addEventListener("blur", function(){
+  visibilityState = "invisible";
+  time = Date.now();
+});
+
+window.addEventListener("focus", function(){
+  visibilityState = "visible";
+  offlineTime = Date.now() - time;
+  if(offlineTime > 60000){
+    offlineTime = 60000;
+  }
+  if(offlineTime <= 60000){
+    red += debugrednumber * (offlineTime/1000);
+    green += debuggreennumber * (offlineTime/1000);
+    blue += debugbluenumber * (offlineTime/1000);
+    magic += debugmagicnumber * (offlineTime/1000);
+  }
+});
