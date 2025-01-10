@@ -1162,6 +1162,19 @@ div#blackhole.animate2 {
     scale: 30;
   }
 }
+div#blackhole.animate3 {
+  animation: animate3 5s forwards;
+  background-color: black;
+}
+@keyframes animate3 {
+  0% {
+    scale: 30;
+    z-index: 10;
+  }
+  100% {
+    scale: 3;
+  }
+}
 div#pourbox {
   z-index: 2000;
   display: flex;
@@ -1171,7 +1184,9 @@ div#pourbox {
 }
 .pourbutton {
   border: none;
-  box-shadow: white 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px, white 0px 0px 1px, white 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px, white 0px 0px 1px inset;
+  box-shadow: white 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px,
+    white 0px 0px 1px, white 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px,
+    white 0px 0px 1px inset;
   background-color: black;
   color: white;
   border-radius: 5px;
@@ -1188,7 +1203,7 @@ div#pourbox {
   position: absolute;
   background-color: white;
   animation: squigglycircle 0.2s ease-out forwards alternate infinite;
-} 
+}
 @keyframes squigglycircle {
   0% {
     transform: translate(0, 0) scale(1);

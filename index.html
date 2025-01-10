@@ -70,8 +70,18 @@
       <button id="holyalbertomode" onclick="holyalberto()" class="setting">
         holy alberto
       </button>
-      <button id="export" onclick="exportsave()" class="setting">export</button>
-      <button id="import" onclick="importsave()" class="setting">import</button>
+      <button id="export" onclick="exportsave('copy')" class="setting">
+        export (clipboard)
+      </button>
+      <button id="export" onclick="exportsave('file')" class="setting">
+        export (file)
+      </button>
+      <button id="import" onclick="importsave('copy')" class="setting">
+        import (clipboard)
+      </button>
+      <button id="import" onclick="importsave('file')" class="setting">
+        import (file)
+      </button>
     </div>
 
     <!-- tabs -->
@@ -1159,6 +1169,16 @@
           </div>
           your black is boosting rgb production by<br />
           <span id="blackboost"></span>
+        </div>
+        <div id="blackholeexit">
+          <button
+            id="blackholeexit"
+            style="margin-top: 10vh"
+            class="pourbutton"
+            onclick="leaveblackhole()"
+          >
+            leave
+          </button>
         </div>
       </div>
     </div>

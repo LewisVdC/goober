@@ -116,6 +116,7 @@ var micrometerwavecount = 0;
 var strongersynergyprice = 100;
 var strongersynergycount = 0;
 var cyan = 0;
+var savecounter = 0;
 var redfilterautomationcount = 0;
 var redfilterautomationprice = 5;
 var redpointerautomationcount = 0;
@@ -2017,157 +2018,14 @@ window.setInterval(function () {
     };
     localStorage.setItem("save2", JSON.stringify(save2));
     //save
-    var save = {
-      redscrollcount: redscrollcount,
-      greenscrollcount: greenscrollcount,
-      bluescrollcount: bluescrollcount,
-      magentaspellunlock: magentaspellunlock,
-      red: red,
-      redfilter: redfilter,
-      redpointer: redpointer,
-      bigredfilter: bigredfilter,
-      bigredpointer: bigredpointer,
-      rednanometerwave: rednanometerwave,
-      redupgrade1: redupgrade1,
-      redupgrade2: redupgrade2,
-      redupgrade3: redupgrade3,
-      green: green,
-      greenfilter: greenfilter,
-      greenpointer: greenpointer,
-      biggreenfilter: biggreenfilter,
-      biggreenpointer: biggreenpointer,
-      greennanometerwave: greennanometerwave,
-      greenupgrade1: greenupgrade1,
-      greenupgrade2: greenupgrade2,
-      greenupgrade3: greenupgrade3,
-      blue: blue,
-      bluefilter: bluefilter,
-      bluepointer: bluepointer,
-      bigbluefilter: bigbluefilter,
-      bigbluepointer: bigbluepointer,
-      bluenanometerwave: bluenanometerwave,
-      blueupgrade1: blueupgrade1,
-      blueupgrade2: blueupgrade2,
-      blueupgrade3: blueupgrade3,
-      tasksCompleted: tasksCompleted,
-      colorGoal: document.getElementById("taskColor").innerHTML,
-      colorGoalColor: document.getElementById("taskColor").style.color,
-      taskColorGoalBlue: taskColorGoalBlue,
-      taskColorGoalGreen: taskColorGoalGreen,
-      taskColorGoalRed: taskColorGoalRed,
-      taskRewardCount: taskRewardCount,
-      taskRewardColor: taskRewardColor,
-      taskBooster: taskBooster,
-      yellow: yellow,
-      whiteunlock: whiteunlock,
-      blackunlock: blackunlock,
-      governmentfundingcount: governmentfundingcount,
-      governmentfundingprice: governmentfundingprice,
-      redfiltercost: redfiltercost,
-      redpointercost: redpointercost,
-      bigredfiltercost: bigredfiltercost,
-      bigredpointercost: bigredpointercost,
-      rednanometerwavecost: rednanometerwavecost,
-      greenfiltercost: greenfiltercost,
-      greenpointercost: greenpointercost,
-      biggreenfiltercost: biggreenfiltercost,
-      biggreenpointercost: biggreenpointercost,
-      greennanometerwavecost: greennanometerwavecost,
-      bluefiltercost: bluefiltercost,
-      bluepointercost: bluepointercost,
-      bigbluefiltercost: bigbluefiltercost,
-      bigbluepointercost: bigbluepointercost,
-      bluenanometerwavecost: bluenanometerwavecost,
-      largerprismscount: largerprismscount,
-      largerprismsprice: largerprismsprice,
-      colorharmonycount: colorharmonycount,
-      colorharmonyprice: colorharmonyprice,
-      streamlinedtaskscount: streamlinedtaskscount,
-      streamlinedtasksprice: streamlinedtasksprice,
-      yellowsynergycount: yellowsynergycount,
-      yellowsynergyprice: yellowsynergyprice,
-      redoverflowcount: redoverflowcount,
-      redoverflowprice: redoverflowprice,
-      greenoverflowcount: greenoverflowcount,
-      greenoverflowprice: greenoverflowprice,
-      blueoverflowcount: blueoverflowcount,
-      blueoverflowprice: blueoverflowprice,
-      tricolorboostcount: tricolorboostcount,
-      tricolorboostprice: tricolorboostprice,
-      taskmasterycount: taskmasterycount,
-      taskmasteryprice: taskmasteryprice,
-      goldenmultipliercount: goldenmultipliercount,
-      goldenmultiplierprice: goldenmultiplierprice,
-      colorsyphoncount: colorsyphoncount,
-      colorsyphonprice: colorsyphonprice,
-      focussedpointerscount: focussedpointerscount,
-      focussedpointersprice: focussedpointersprice,
-      black: black,
-      finerfilterscount: finerfilterscount,
-      finerfiltersprice: finerfiltersprice,
-      micrometerwavecount: micrometerwavecount,
-      micrometerwaveprice: micrometerwaveprice,
-      strongersynergycount: strongersynergycount,
-      strongersynergyprice: strongersynergyprice,
-      cyan: cyan,
-      redfilterautomationcount: redfilterautomationcount,
-      redfilterautomationprice: redfilterautomationprice,
-      redpointerautomationcount: redpointerautomationcount,
-      redpointerautomationprice: redpointerautomationprice,
-      bigredfilterautomationcount: bigredfilterautomationcount,
-      bigredfilterautomationprice: bigredfilterautomationprice,
-      bigredpointerautomationcount: bigredpointerautomationcount,
-      bigredpointerautomationprice: bigredpointerautomationprice,
-      rednanometerwaveautomationcount: rednanometerwaveautomationcount,
-      rednanometerwaveautomationprice: rednanometerwaveautomationprice,
-      greenfilterautomationcount: greenfilterautomationcount,
-      greenfilterautomationprice: greenfilterautomationprice,
-      greenpointerautomationcount: greenpointerautomationcount,
-      greenpointerautomationprice: greenpointerautomationprice,
-      biggreenfilterautomationcount: biggreenfilterautomationcount,
-      biggreenfilterautomationprice: biggreenfilterautomationprice,
-      biggreenpointerautomationcount: biggreenpointerautomationcount,
-      biggreenpointerautomationprice: biggreenpointerautomationprice,
-      greennanometerwaveautomationcount: greennanometerwaveautomationcount,
-      greennanometerwaveautomationprice: greennanometerwaveautomationprice,
-      bluefilterautomationcount: bluefilterautomationcount,
-      bluefilterautomationprice: bluefilterautomationprice,
-      bluepointerautomationcount: bluepointerautomationcount,
-      bluepointerautomationprice: bluepointerautomationprice,
-      bigbluefilterautomationcount: bigbluefilterautomationcount,
-      bigbluefilterautomationprice: bigbluefilterautomationprice,
-      bigbluepointerautomationcount: bigbluepointerautomationcount,
-      bigbluepointerautomationprice: bigbluepointerautomationprice,
-      bluenanometerwaveautomationcount: bluenanometerwaveautomationcount,
-      bluenanometerwaveautomationprice: bluenanometerwaveautomationprice,
-      redtogglestate: redtogglestate,
-      blackholeanimationdone: blackholeanimationdone,
-      greentogglestate: greentogglestate,
-      bluetogglestate: bluetogglestate,
-      magenta: magenta,
-      cauldron: cauldron,
-      study: study,
-      feed: feed,
-      feedperson: feedperson,
-      drink: drink,
-      magic: magic,
-      cauldroncost: cauldroncost,
-      studycost: studycost,
-      feedcost: feedcost,
-      feedpersoncost: feedpersoncost,
-      drinkcost: drinkcost,
-      currentnerdmode: currentnerdmode,
-      dialoguestate: dialoguestate,
-      words: words,
-      magentaspellprice: magentaspellprice,
-      redspellprice: redspellprice,
-      greenspellprice: greenspellprice,
-      bluespellprice: bluespellprice,
-      spell1unlock: spell1unlock,
-      spell2unlock: spell2unlock,
-      spell3unlock: spell3unlock,
-    };
-    localStorage.setItem("save", JSON.stringify(save));
+    savecounter++;
+    if (savecounter > 1500) {
+      save();
+      if (buttonpress === true) {
+        console.log("saved");
+      }
+      savecounter = 0;
+    }
 
     //auto buy
     redfilterautomationtimer += Math.min(20, redfilterautomationcount);
@@ -2594,66 +2452,68 @@ function submitTask() {
   }
 }
 document.addEventListener("keydown", function (event) {
-  if (event.key === "r") {
-    showtab("red");
-  } else if (event.key === "g" && tasksCompleted >= 1) {
-    showtab("green");
-  } else if (event.key === "b" && tasksCompleted >= 2) {
-    showtab("blue");
-  } else if (event.key === "y" && tasksCompleted >= 4) {
-    showtab("yellow");
-  } else if (event.key === "c" && cyan > 0) {
-    showtab("cyan");
-  } else if (event.key === "m" && tasksCompleted > 99) {
-    showtab("magenta");
-  } else if (event.key === "z" && true) {
-    showtab("black");
-  } else if (event.key === "w" && true) {
-    showtab("white");
-  }
-  if (event.code === "Digit1") {
-    if (tab === "red") {
-      buyredfilter();
-    } else if (tab === "green") {
-      buygreenfilter();
-    } else if (tab === "blue") {
-      buybluefilter();
+  if (tab != "black2") {
+    if (event.key === "r") {
+      showtab("red");
+    } else if (event.key === "g" && tasksCompleted >= 1) {
+      showtab("green");
+    } else if (event.key === "b" && tasksCompleted >= 2) {
+      showtab("blue");
+    } else if (event.key === "y" && tasksCompleted >= 4) {
+      showtab("yellow");
+    } else if (event.key === "c" && cyan > 0) {
+      showtab("cyan");
+    } else if (event.key === "m" && tasksCompleted > 99) {
+      showtab("magenta");
+    } else if (event.key === "z" && true) {
+      showtab("black");
+    } else if (event.key === "w" && true) {
+      showtab("white");
     }
-  }
-  if (event.code === "Digit2") {
-    if (tab === "red") {
-      buyredpointer();
-    } else if (tab === "green") {
-      buygreenpointer();
-    } else if (tab === "blue") {
-      buybluepointer();
+    if (event.code === "Digit1") {
+      if (tab === "red") {
+        buyredfilter();
+      } else if (tab === "green") {
+        buygreenfilter();
+      } else if (tab === "blue") {
+        buybluefilter();
+      }
     }
-  }
-  if (event.code === "Digit3") {
-    if (tab === "red") {
-      buybigredfilter();
-    } else if (tab === "green") {
-      buybiggreenfilter();
-    } else if (tab === "blue") {
-      buybigbluefilter();
+    if (event.code === "Digit2") {
+      if (tab === "red") {
+        buyredpointer();
+      } else if (tab === "green") {
+        buygreenpointer();
+      } else if (tab === "blue") {
+        buybluepointer();
+      }
     }
-  }
-  if (event.code === "Digit4") {
-    if (tab === "red") {
-      buybigredpointer();
-    } else if (tab === "green") {
-      buybiggreenpointer();
-    } else if (tab === "blue") {
-      buybigbluepointer();
+    if (event.code === "Digit3") {
+      if (tab === "red") {
+        buybigredfilter();
+      } else if (tab === "green") {
+        buybiggreenfilter();
+      } else if (tab === "blue") {
+        buybigbluefilter();
+      }
     }
-  }
-  if (event.code === "Digit5") {
-    if (tab === "red") {
-      buyrednanometerwave();
-    } else if (tab === "green") {
-      buygreennanometerwave();
-    } else if (tab === "blue") {
-      buybluenanometerwave();
+    if (event.code === "Digit4") {
+      if (tab === "red") {
+        buybigredpointer();
+      } else if (tab === "green") {
+        buybiggreenpointer();
+      } else if (tab === "blue") {
+        buybigbluepointer();
+      }
+    }
+    if (event.code === "Digit5") {
+      if (tab === "red") {
+        buyrednanometerwave();
+      } else if (tab === "green") {
+        buygreennanometerwave();
+      } else if (tab === "blue") {
+        buybluenanometerwave();
+      }
     }
   }
 });
@@ -3638,8 +3498,12 @@ function nerdmodechange() {
 function cheat() {
   dev = !dev;
 }
-function exportsave() {
-  navigator.clipboard.writeText(btoa(localStorage.getItem("save")));
+function exportsave(x) {
+  if (x == "copy") {
+    navigator.clipboard.writeText(btoa(localStorage.getItem("save")));
+  }
+  if (x == "file") {
+  }
 }
 
 function importsave() {
@@ -3760,7 +3624,7 @@ function holyalberto() {
 }
 function enter() {
   const blackhole = document.getElementById("blackhole");
-
+  blackhole.classList.remove("animate3");
   blackhole.classList.add("animate2");
   setTimeout(() => {
     showtab("black2");
@@ -3899,6 +3763,177 @@ function updateyellow() {
     "level: " + colorsyphoncount;
   document.getElementById("yellowupgrade16cost").innerHTML =
     "cost: " + formatNumber(colorsyphonprice);
+}
+function leaveblackhole() {
+  blackhole.classList.remove("animate2");
+  blackhole.classList.add("animate3");
+  setTimeout(() => {
+    showtab("black");
+  }, 2000);
+}
+
+//copy of the enter function to help write the leave function
+//function enter() {
+//  const blackhole = document.getElementById("blackhole");
+//
+//  blackhole.classList.add("animate2");
+//  setTimeout(() => {
+//    showtab("black2");
+//  }, 2000);
+//}
+
+function save() {
+  var save = {
+    redscrollcount: redscrollcount,
+    greenscrollcount: greenscrollcount,
+    bluescrollcount: bluescrollcount,
+    magentaspellunlock: magentaspellunlock,
+    red: red,
+    redfilter: redfilter,
+    redpointer: redpointer,
+    bigredfilter: bigredfilter,
+    bigredpointer: bigredpointer,
+    rednanometerwave: rednanometerwave,
+    redupgrade1: redupgrade1,
+    redupgrade2: redupgrade2,
+    redupgrade3: redupgrade3,
+    green: green,
+    greenfilter: greenfilter,
+    greenpointer: greenpointer,
+    biggreenfilter: biggreenfilter,
+    biggreenpointer: biggreenpointer,
+    greennanometerwave: greennanometerwave,
+    greenupgrade1: greenupgrade1,
+    greenupgrade2: greenupgrade2,
+    greenupgrade3: greenupgrade3,
+    blue: blue,
+    bluefilter: bluefilter,
+    bluepointer: bluepointer,
+    bigbluefilter: bigbluefilter,
+    bigbluepointer: bigbluepointer,
+    bluenanometerwave: bluenanometerwave,
+    blueupgrade1: blueupgrade1,
+    blueupgrade2: blueupgrade2,
+    blueupgrade3: blueupgrade3,
+    tasksCompleted: tasksCompleted,
+    colorGoal: document.getElementById("taskColor").innerHTML,
+    colorGoalColor: document.getElementById("taskColor").style.color,
+    taskColorGoalBlue: taskColorGoalBlue,
+    taskColorGoalGreen: taskColorGoalGreen,
+    taskColorGoalRed: taskColorGoalRed,
+    taskRewardCount: taskRewardCount,
+    taskRewardColor: taskRewardColor,
+    taskBooster: taskBooster,
+    yellow: yellow,
+    whiteunlock: whiteunlock,
+    blackunlock: blackunlock,
+    governmentfundingcount: governmentfundingcount,
+    governmentfundingprice: governmentfundingprice,
+    redfiltercost: redfiltercost,
+    redpointercost: redpointercost,
+    bigredfiltercost: bigredfiltercost,
+    bigredpointercost: bigredpointercost,
+    rednanometerwavecost: rednanometerwavecost,
+    greenfiltercost: greenfiltercost,
+    greenpointercost: greenpointercost,
+    biggreenfiltercost: biggreenfiltercost,
+    biggreenpointercost: biggreenpointercost,
+    greennanometerwavecost: greennanometerwavecost,
+    bluefiltercost: bluefiltercost,
+    bluepointercost: bluepointercost,
+    bigbluefiltercost: bigbluefiltercost,
+    bigbluepointercost: bigbluepointercost,
+    bluenanometerwavecost: bluenanometerwavecost,
+    largerprismscount: largerprismscount,
+    largerprismsprice: largerprismsprice,
+    colorharmonycount: colorharmonycount,
+    colorharmonyprice: colorharmonyprice,
+    streamlinedtaskscount: streamlinedtaskscount,
+    streamlinedtasksprice: streamlinedtasksprice,
+    yellowsynergycount: yellowsynergycount,
+    yellowsynergyprice: yellowsynergyprice,
+    redoverflowcount: redoverflowcount,
+    redoverflowprice: redoverflowprice,
+    greenoverflowcount: greenoverflowcount,
+    greenoverflowprice: greenoverflowprice,
+    blueoverflowcount: blueoverflowcount,
+    blueoverflowprice: blueoverflowprice,
+    tricolorboostcount: tricolorboostcount,
+    tricolorboostprice: tricolorboostprice,
+    taskmasterycount: taskmasterycount,
+    taskmasteryprice: taskmasteryprice,
+    goldenmultipliercount: goldenmultipliercount,
+    goldenmultiplierprice: goldenmultiplierprice,
+    colorsyphoncount: colorsyphoncount,
+    colorsyphonprice: colorsyphonprice,
+    focussedpointerscount: focussedpointerscount,
+    focussedpointersprice: focussedpointersprice,
+    black: black,
+    finerfilterscount: finerfilterscount,
+    finerfiltersprice: finerfiltersprice,
+    micrometerwavecount: micrometerwavecount,
+    micrometerwaveprice: micrometerwaveprice,
+    strongersynergycount: strongersynergycount,
+    strongersynergyprice: strongersynergyprice,
+    cyan: cyan,
+    redfilterautomationcount: redfilterautomationcount,
+    redfilterautomationprice: redfilterautomationprice,
+    redpointerautomationcount: redpointerautomationcount,
+    redpointerautomationprice: redpointerautomationprice,
+    bigredfilterautomationcount: bigredfilterautomationcount,
+    bigredfilterautomationprice: bigredfilterautomationprice,
+    bigredpointerautomationcount: bigredpointerautomationcount,
+    bigredpointerautomationprice: bigredpointerautomationprice,
+    rednanometerwaveautomationcount: rednanometerwaveautomationcount,
+    rednanometerwaveautomationprice: rednanometerwaveautomationprice,
+    greenfilterautomationcount: greenfilterautomationcount,
+    greenfilterautomationprice: greenfilterautomationprice,
+    greenpointerautomationcount: greenpointerautomationcount,
+    greenpointerautomationprice: greenpointerautomationprice,
+    biggreenfilterautomationcount: biggreenfilterautomationcount,
+    biggreenfilterautomationprice: biggreenfilterautomationprice,
+    biggreenpointerautomationcount: biggreenpointerautomationcount,
+    biggreenpointerautomationprice: biggreenpointerautomationprice,
+    greennanometerwaveautomationcount: greennanometerwaveautomationcount,
+    greennanometerwaveautomationprice: greennanometerwaveautomationprice,
+    bluefilterautomationcount: bluefilterautomationcount,
+    bluefilterautomationprice: bluefilterautomationprice,
+    bluepointerautomationcount: bluepointerautomationcount,
+    bluepointerautomationprice: bluepointerautomationprice,
+    bigbluefilterautomationcount: bigbluefilterautomationcount,
+    bigbluefilterautomationprice: bigbluefilterautomationprice,
+    bigbluepointerautomationcount: bigbluepointerautomationcount,
+    bigbluepointerautomationprice: bigbluepointerautomationprice,
+    bluenanometerwaveautomationcount: bluenanometerwaveautomationcount,
+    bluenanometerwaveautomationprice: bluenanometerwaveautomationprice,
+    redtogglestate: redtogglestate,
+    blackholeanimationdone: blackholeanimationdone,
+    greentogglestate: greentogglestate,
+    bluetogglestate: bluetogglestate,
+    magenta: magenta,
+    cauldron: cauldron,
+    study: study,
+    feed: feed,
+    feedperson: feedperson,
+    drink: drink,
+    magic: magic,
+    cauldroncost: cauldroncost,
+    studycost: studycost,
+    feedcost: feedcost,
+    feedpersoncost: feedpersoncost,
+    drinkcost: drinkcost,
+    currentnerdmode: currentnerdmode,
+    dialoguestate: dialoguestate,
+    words: words,
+    magentaspellprice: magentaspellprice,
+    redspellprice: redspellprice,
+    greenspellprice: greenspellprice,
+    bluespellprice: bluespellprice,
+    spell1unlock: spell1unlock,
+    spell2unlock: spell2unlock,
+    spell3unlock: spell3unlock,
+  };
+  localStorage.setItem("save", JSON.stringify(save));
 }
 
 //ofline stuff
