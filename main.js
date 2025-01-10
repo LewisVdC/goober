@@ -1627,7 +1627,8 @@ function buyblueupgrade3() {
 
 //loop
 window.setInterval(function () {
-  if (loaded === 1 && visibilityState === "visible") {
+  if(visibilityState === "visible" || buttonpress === false){
+  if (loaded === 1) {
     //if loaded === 1 is important for keeping everything from
     //doing stuff its not supposed to before gameload
     window.scrollBy(-window.innerWidth, 0);
@@ -2242,7 +2243,7 @@ window.setInterval(function () {
         (1 + tricolorboostcount * 0.5 * (yellow / 1000))
     );
   }
-}, 10);
+}}, 10);
 
 function rgbToHex(rgb) {
   let rgbColor = rgb.split(", ");
