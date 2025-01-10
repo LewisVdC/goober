@@ -1627,7 +1627,7 @@ function buyblueupgrade3() {
 
 //loop
 window.setInterval(function () {
-  if (loaded === 1) {
+  if (loaded === 1 && visibilityState === "visible") {
     //if loaded === 1 is important for keeping everything from
     //doing stuff its not supposed to before gameload
     window.scrollBy(-window.innerWidth, 0);
@@ -3938,10 +3938,12 @@ function save() {
 
 //ofline stuff
 window.addEventListener("blur", function(){
+  visibilityState = "invisible";
   time = Date.now();
 });
 
 window.addEventListener("focus", function(){
+  visibilityState = "visible";
   offlineTime = Date.now() - time;
   if(offlineTime > 60000){
     offlineTime = 60000;
