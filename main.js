@@ -1020,8 +1020,8 @@ function showtab(x) {
   }
   if (x === "yellow") {
     tab = "yellow";
-    document.getElementById("saving").style.color = "rgb(153, 128, 0)";
-    document.getElementById("nerdmodetext").style.color = "rgb(153,128,0)";
+    document.getElementById("saving").style.color = "rgb(168, 140, 0)";
+    document.getElementById("nerdmodetext").style.color = "rgb(168,140,0)";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("yellow").style.display = "block";
     document.getElementById("black").style.display = "none";
@@ -1029,13 +1029,13 @@ function showtab(x) {
     document.getElementById("white").style.display = "none";
     document.getElementById("red").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(44,44,0)";
-    document.getElementById("top").style.color = "rgb(153, 128, 0)";
+    document.getElementById("top").style.color = "rgb(168, 140, 0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
     document.getElementById("cyan").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(153, 128, 0)";
-    document.getElementById("tasks").style.borderColor = "rgb(153, 128, 0)";
-    document.getElementById("reward").style.borderColor = "rgb(153, 128, 0)";
+    document.getElementById("tasks").style.color = "rgb(168, 140, 0)";
+    document.getElementById("tasks").style.borderColor = "rgb(168, 140, 0)";
+    document.getElementById("reward").style.borderColor = "rgb(168, 140, 0)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)";
     document.getElementById("body").style.backgroundColor = "rgb(44, 44, 0)";
@@ -2359,7 +2359,7 @@ function submitTask() {
         Math.round(taskColorGoalBlue)
       );
       document.getElementById("taskColor").innerHTML = "#6E7329";
-      document.getElementById("taskColor").style.color = "rgb(153, 128, 0)";
+      document.getElementById("taskColor").style.color = "rgb(168, 140, 0)";
       document.getElementById("taskColor").style.textShadow = "0 0 10px yellow";
       document.getElementById("taskReward").innerHTML = "10 yellow";
       taskRewardCount = 10;

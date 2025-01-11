@@ -722,12 +722,12 @@ div#confusion {
   height: 15vh;
   width: 20vh;
   margin-bottom: 4px;
-  background-color: rgb(153, 128, 0);
+  background-color: rgb(168, 140, 0);
   display: inline-grid;
   text-align: center;
   border-radius: 10px;
   font-size: 1em;
-  background: linear-gradient(45deg, rgb(101 84 0), yellow, rgb(153, 128, 0));
+  background: linear-gradient(45deg, rgb(101 84 0), yellow, rgb(168, 140, 0));
 }
 .yellowdescription {
   margin-top: 0;
@@ -739,7 +739,7 @@ div#confusion {
   margin-bottom: 0;
 }
 #yellowcount {
-  color: rgb(153, 128, 0);
+  color: rgb(168, 140, 0);
 }
 button:hover:not(.submit, #enterbutton) {
   scale: 1.1;
@@ -936,7 +936,7 @@ span#blackholeintrocost {
   flex-direction: column;
 }
 .yellowtext {
-  color: rgb(153, 128, 0);
+  color: rgb(168, 140, 0);
   text-shadow: rgb(148, 148, 0) 0px 0px 10px, rgb(125, 125, 0) 0px 0px 10px;
 }
 .cyantext {
