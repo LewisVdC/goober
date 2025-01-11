@@ -947,9 +947,9 @@ function showtab(x) {
     document.getElementById("tabs").style.backgroundColor = "rgb(0,20,0)";
     document.getElementById("top").style.color = "rgb(0,255,0)";
     document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "green";
-    document.getElementById("tasks").style.borderColor = "green";
-    document.getElementById("reward").style.borderColor = "green";
+    document.getElementById("tasks").style.color = "rgb(0, 219, 0)";
+    document.getElementById("tasks").style.borderColor = "rgb(0, 219, 0)";
+    document.getElementById("reward").style.borderColor = "rgb(0, 219, 0)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px green, 0 0 10px rgb(0,125,0)";
     document.getElementById("body").style.backgroundColor = "rgb(0, 20, 0)";
@@ -993,9 +993,9 @@ function showtab(x) {
     document.getElementById("blue").style.display = "block";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,0,20)";
     document.getElementById("top").style.color = "blue";
-    document.getElementById("tasks").style.color = "blue";
-    document.getElementById("tasks").style.borderColor = "blue";
-    document.getElementById("reward").style.borderColor = "blue";
+    document.getElementById("tasks").style.color = "rgb(50, 50, 255)";
+    document.getElementById("tasks").style.borderColor = "rgb(50, 50, 255)";
+    document.getElementById("reward").style.borderColor = "rgb(50, 50, 255)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px blue, 0 0 10px rgb(0,0,125)";
     document.getElementById("body").style.backgroundColor = "rgb(0, 0, 20)";

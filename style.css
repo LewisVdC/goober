@@ -64,7 +64,7 @@ span#greencount {
 color:#00db00
 }
 span#bluecount {
-  color: blue;
+  color: rgb(50, 50, 255);
 }
 span#cyancount {
   color: rgb(0, 180, 190);
@@ -569,6 +569,7 @@ div#blueupgrades {
   justify-content: center;
   align-items: center;
   padding-top: 5%;
+  color:rgb(50, 50, 255);
 }
 div#blueupgradesbox {
   padding-top: 2%;
@@ -682,11 +683,11 @@ button#tabblack {
   text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
 }
 .bluetext {
-  color: blue;
+  color: rgb(50, 50, 255);
   text-shadow: blue 0px 0px 10px, rgb(0, 0, 125) 0px 0px 10px;
 }
 .greentext {
-  color: #00db00;
+  color: rgb(0, 219, 0);
   text-shadow: green 0px 0px 10px, rgb(0, 125, 0) 0px 0px 10px;
 }
 #body {
