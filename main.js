@@ -535,7 +535,7 @@ function load() {
     } else {
       document.getElementById("redtogglestate").innerHTML = "off";
       document.getElementById("redtoggle").style.background =
-        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     }
     if (typeof savegame.greentogglestate !== "undefined")
       greentogglestate = savegame.greentogglestate;
@@ -546,7 +546,7 @@ function load() {
     } else {
       document.getElementById("greentogglestate").innerHTML = "off";
       document.getElementById("greentoggle").style.background =
-        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     }
     if (typeof savegame.bluetogglestate !== "undefined")
       bluetogglestate = savegame.bluetogglestate;
@@ -557,7 +557,7 @@ function load() {
     } else {
       document.getElementById("bluetogglestate").innerHTML = "off";
       document.getElementById("bluetoggle").style.background =
-        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     }
     //magic and magenta
     if (typeof savegame.spell1unlock !== "undefined")
@@ -871,7 +871,7 @@ document.getElementById("bluecount").innerHTML =
 function showtab(x) {
   if (x === "red") {
     tab = "red";
-    document.getElementById("nerdmodetext").style.color = "rgb(155,20,20)";
+    document.getElementById("nerdmodetext").style.color = "rgb(200, 25, 25)";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "block";
     document.getElementById("black").style.display = "none";
@@ -883,9 +883,9 @@ function showtab(x) {
     document.getElementById("top").style.color = "rgb(255,0,0)";
     document.getElementById("green").style.display = "none";
     document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(155,20,20)";
-    document.getElementById("tasks").style.borderColor = "rgb(155,20,20)";
-    document.getElementById("reward").style.borderColor = "rgb(155,20,20)";
+    document.getElementById("tasks").style.color = "rgb(200, 25, 25)";
+    document.getElementById("tasks").style.borderColor = "rgb(200, 25, 25)";
+    document.getElementById("reward").style.borderColor = "rgb(200, 25, 25)";
     document.getElementById("body").style.textShadow =
       "0px 0px 10px red, 0 0 10px rgb(125,0,0)";
     document
@@ -3083,7 +3083,7 @@ function togglered() {
     document.getElementById("redtogglestate").innerHTML = "on";
   } else {
     document.getElementById("redtoggle").style.background =
-      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     document.getElementById("redtogglestate").innerHTML = "off";
   }
 }
@@ -3095,7 +3095,7 @@ function togglegreen() {
     document.getElementById("greentogglestate").innerHTML = "on";
   } else {
     document.getElementById("greentoggle").style.background =
-      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     document.getElementById("greentogglestate").innerHTML = "off";
   }
 }
@@ -3107,7 +3107,7 @@ function toggleblue() {
     document.getElementById("bluetogglestate").innerHTML = "on";
   } else {
     document.getElementById("bluetoggle").style.background =
-      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(155, 20, 20))";
+      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     document.getElementById("bluetogglestate").innerHTML = "off";
   }
 }
