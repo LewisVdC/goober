@@ -1098,6 +1098,7 @@ div#lewissucks.animate {
   position: fixed;
 }
 .setting {
+  color: white;
   background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
   width: 90px;
 }
