@@ -1847,7 +1847,7 @@ window.setInterval(function () {
     } else if (document.querySelector("#yellowupgrade4:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
-        "divide task goal by streamlinedtaskscount * 10";
+        "divide task goal by 2^streamlinedtaskscount";
     } else if (document.querySelector("#yellowupgrade5:hover") != null) {
       nerdtimer = 0;
       document.getElementById("nerdmodetext").innerHTML =
