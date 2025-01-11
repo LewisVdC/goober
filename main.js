@@ -878,6 +878,7 @@ document.getElementById("bluecount").innerHTML =
 function showtab(x) {
   if (x === "red") {
     tab = "red";
+    document.getElementById("saving").style.color = "rgb(200, 25, 25)";
     document.getElementById("nerdmodetext").style.color = "rgb(200, 25, 25)";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "block";
@@ -933,6 +934,7 @@ function showtab(x) {
       document.getElementById("greenscroll").style.borderLeftStyle = "";
       document.getElementById("greenscroll").style.display = "none";
     }
+    document.getElementById("saving").style.color = "rgb(0, 255, 0)";
     document.getElementById("nerdmodetext").style.color = "green";
     document.getElementById("red").style.display = "none";
     document.getElementById("black").style.display = "none";
@@ -977,6 +979,7 @@ function showtab(x) {
   }
   if (x === "blue") {
     tab = "blue";
+    document.getElementById("saving").style.color = "blue";
     document.getElementById("nerdmodetext").style.color = "blue";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("red").style.display = "none";
@@ -1016,6 +1019,7 @@ function showtab(x) {
   }
   if (x === "yellow") {
     tab = "yellow";
+    document.getElementById("saving").style.color = "rgb(153, 128, 0)";
     document.getElementById("nerdmodetext").style.color = "rgb(153,128,0)";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("yellow").style.display = "block";
@@ -1055,6 +1059,7 @@ function showtab(x) {
   }
   if (x === "cyan") {
     tab = "cyan";
+    document.getElementById("saving").style.color = "rgb(0, 180, 190)";
     document.getElementById("nerdmodetext").style.color = "rgb(0,180,190)";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("cyan").style.display = "block";
@@ -1096,6 +1101,7 @@ function showtab(x) {
   }
   if (x === "magenta") {
     tab = "magenta";
+    document.getElementById("saving").style.color = "magenta";
     document.getElementById("nerdmodetext").style.color = "magenta";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("cyan").style.display = "none";
@@ -1136,6 +1142,7 @@ function showtab(x) {
       .classList.remove("whiteupgrades");
   }
   if (x === "black") {
+    document.getElementById("saving").style.color = "black";
     document.getElementById("nerdmodetext").style.color = "black";
     document.getElementById("blackholecontainer").style.display = "flex";
     document.getElementById("tasks").style.fontWeight = "600";
@@ -4041,6 +4048,11 @@ function save() {
     streamlinedTaskColorGoal: streamlinedTaskColorGoal,
   };
   localStorage.setItem("save", JSON.stringify(save));
+  document.getElementById("saving").setAttribute("class", "");
+  document.getElementById("saving").style.opacity = 1;
+  window.setTimeout(function(){
+    document.getElementById("saving").setAttribute("class", "fadeout");
+  }, 3000);
 }
 
 //ofline stuff

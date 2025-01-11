@@ -1263,3 +1263,14 @@ span#blackboost {
     opacity: 0;
   }
 }
+#saving{
+  color: rgb(200, 25, 25);
+  opacity: 0;
+  font-size: small;
+  margin-left: 2vh;
+  margin-top: 95vh;
+  position: fixed;
+}
+div#saving.fadeout{
+  animation: fadeout 1s forwards;
+}
