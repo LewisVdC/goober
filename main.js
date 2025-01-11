@@ -118,6 +118,7 @@ var strongersynergyprice = 100;
 var strongersynergycount = 0;
 var cyan = 0;
 var savecounter = 0;
+var savetime = 15000;
 var redfilterautomationcount = 0;
 var redfilterautomationprice = 5;
 var redpointerautomationcount = 0;
@@ -2048,7 +2049,7 @@ window.setInterval(function () {
     localStorage.setItem("save2", JSON.stringify(save2));
     //save
     savecounter++;
-    if (savecounter > 1500) {
+    if (savecounter > savetime / 10) {
       save();
       if (buttonpress === true) {
         console.log("saved");
