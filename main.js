@@ -11,6 +11,7 @@ var blackholex = 0;
 var dialoguestate = 0;
 var words = "";
 var currentnerdmode = 0;
+var decodedtext = 0;
 var enterbuttony = 0;
 var nerdtimer = 0;
 var buttonpress = true;
@@ -3504,18 +3505,113 @@ function exportsave(x) {
     navigator.clipboard.writeText(btoa(localStorage.getItem("save")));
   }
   if (x == "file") {
+    downloadSavegame("red green blue");
+  }
+}
+//i deffo wrote this
+function downloadSavegame(filename) {
+  // Retrieve the savegame data from localStorage
+  const save = localStorage.getItem("save");
+  if (!save) {
+    console.error("Savegame not found in localStorage.");
+    return;
+  }
+
+  // Encrypt the savegame data in Base64
+  const base64Data = btoa(save);
+
+  // Create a Blob with the Base64-encoded data
+  const blob = new Blob([base64Data], { type: "text/plain" });
+
+  // Create an invisible anchor element for download
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); // Create a URL for the Blob
+  a.download = filename; // Set the filename for download
+
+  // Append the anchor to the document, click it, then remove it
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  // Release the URL object
+  URL.revokeObjectURL(a.href);
+}
+
+function importsave(x) {
+  if (x == "copy") {
+    navigator.clipboard.readText().then((clipboardText) => {
+      const decodedtext = atob(clipboardText);
+      console.log(decodedtext);
+      loaded = 69420;
+      localStorage.setItem("save", decodedtext);
+      location.reload();
+    });
+  }
+  if (x == "file") {
+    loadSavegame("file");
+  }
+}
+//i deffo also wrote this
+function loadSavegame(x) {
+  if (x === "file") {
+    // Create a hidden file input dynamically
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = ".txt"; // Only accept .txt files
+
+    // Listen for file selection
+    fileInput.addEventListener("change", function () {
+      const file = fileInput.files[0];
+      if (!file) {
+        console.error("No file selected.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      // Read the file as text
+      reader.onload = function (event) {
+        try {
+          // Get the file content as text
+          const fileContent = event.target.result;
+
+          // Check if the file content is Base64 encoded (optional, you can skip this part if not needed)
+          let decodedData = fileContent;
+          if (isBase64(fileContent)) {
+            decodedData = atob(fileContent); // Decode Base64
+          }
+
+          // Save the decoded (or plain) content to localStorage
+          localStorage.setItem("save", decodedData);
+
+          // Log success
+          console.log("Savegame loaded successfully!");
+
+          // Optional: Reload the page if necessary
+          location.reload();
+        } catch (error) {
+          console.error("Error loading savegame:", error);
+        }
+      };
+
+      // Read the file content as a text
+      reader.readAsText(file);
+    });
+
+    // Programmatically click the file input to trigger the upload dialog
+    fileInput.click();
   }
 }
 
-function importsave() {
-  navigator.clipboard.readText().then((clipboardText) => {
-    const decodedtext = atob(clipboardText);
-    console.log(decodedtext);
-    loaded = 69420;
-    localStorage.setItem("save", decodedtext);
-    location.reload();
-  });
+// Check if the content is Base64 encoded
+function isBase64(str) {
+  try {
+    return btoa(atob(str)) === str;
+  } catch (err) {
+    return false;
+  }
 }
+
 //chat w alberto
 alberto = document.getElementById("think");
 alberto.innerHTML = "start";
