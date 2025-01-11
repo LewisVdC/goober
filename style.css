@@ -61,7 +61,7 @@ span#redcount {
   color: rgb(200, 25, 25);
 }
 span#greencount {
-  color: green;
+color:#00db00
 }
 span#bluecount {
   color: blue;
@@ -686,7 +686,7 @@ button#tabblack {
   text-shadow: blue 0px 0px 10px, rgb(0, 0, 125) 0px 0px 10px;
 }
 .greentext {
-  color: green;
+  color: #00db00;
   text-shadow: green 0px 0px 10px, rgb(0, 125, 0) 0px 0px 10px;
 }
 #body {
