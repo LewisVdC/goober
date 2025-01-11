@@ -2496,6 +2496,8 @@ document.addEventListener("keydown", function (event) {
         buygreenfilter();
       } else if (tab === "blue") {
         buybluefilter();
+      } else if (tab === "magenta") {
+        buycauldron();
       }
     }
     if (event.code === "Digit2") {
@@ -2505,6 +2507,8 @@ document.addEventListener("keydown", function (event) {
         buygreenpointer();
       } else if (tab === "blue") {
         buybluepointer();
+      } else if (tab === "magenta") {
+        buystudy();
       }
     }
     if (event.code === "Digit3") {
@@ -2514,6 +2518,8 @@ document.addEventListener("keydown", function (event) {
         buybiggreenfilter();
       } else if (tab === "blue") {
         buybigbluefilter();
+      } else if (tab === "magenta") {
+        buyfeed();
       }
     }
     if (event.code === "Digit4") {
@@ -2523,6 +2529,8 @@ document.addEventListener("keydown", function (event) {
         buybiggreenpointer();
       } else if (tab === "blue") {
         buybigbluepointer();
+      } else if (tab === "magenta") {
+        buyfeedperson();
       }
     }
     if (event.code === "Digit5") {
@@ -2532,6 +2540,8 @@ document.addEventListener("keydown", function (event) {
         buygreennanometerwave();
       } else if (tab === "blue") {
         buybluenanometerwave();
+      } else if (tab === "magenta") {
+        buydrink();
       }
     }
   }
