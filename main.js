@@ -3956,3 +3956,17 @@ window.addEventListener("focus", function(){
     magic += debugmagicnumber * (offlineTime/1000);
   }
 });
+
+//explode
+const singularity = document.querySelector('#singularity');
+
+// Define a function to trigger the explode animation
+function triggerExplosion() {
+  // Temporarily set the animation to 'explode'
+  singularity.style.animation = 'explode 2s ease-out forwards';
+
+  // Reset to original animation after 2 seconds
+  setTimeout(() => {
+    singularity.style.animation = 'squigglycircle 0.2s ease-out forwards alternate infinite';
+  }, 2000); // Duration matches the explode animation
+}
