@@ -1,31 +1,21 @@
 // ):
-// TODO MAGENTA BUILDINGS DONT VISUALLY CHANGE PRICE ON PAGE LOAD
+//VARIABLES
+
+//general
+var debugrednumber = 0;
+var debuggreennumber = 0;
+var debugbluenumber = 0;
+var debugmagicnumber = 0;
+var tab = "red";
+var whiteunlock = 0;
+var blackunlock = 0;
+
+//offline
 var offlineTime = 0;
 var time = Date.now();
 var visibilityState = "visible"
-var bible = "";
-var holyalbertostate = 0;
-var timer = 0;
-var enterbuttonx = 0;
-var blackholex = 0;
-var dialoguestate = 0;
-var words = "";
-var currentnerdmode = 0;
-var decodedtext = 0;
-var enterbuttony = 0;
-var nerdtimer = 0;
-var buttonpress = true;
-var blackholex = 0;
-var blackholey = 0;
-var blackholeanimationdone = 0;
-var black = 0;
-var blackholex2 = 0;
-var buttony = 0;
-var blackholey2 = 0;
-var redscrollcount = 0;
-var greenscrollcount = 0;
-var bluescrollcount = 0;
-var magentaspellunlock = 0;
+
+//red
 var red = 10;
 var redfilter = 0;
 var redpointer = 0;
@@ -33,17 +23,15 @@ var bigredfilter = 0;
 var bigredpointer = 0;
 var rednanometerwave = 0;
 var redupgrade1 = 0;
-var magenta = 0;
-var cauldron = 0;
-var study = 0;
-var feed = 0;
-var feedperson = 0;
-var drink = 0;
-var cauldroncost = 10;
-var studycost = 100;
-var feedcost = 1000;
-var feedpersoncost = 10000;
-var drinkcost = 100000;
+var redupgrade2 = 0;
+var redupgrade3 = 0;
+var redfiltercost = 10;
+var redpointercost = 100;
+var bigredfiltercost = 1000;
+var bigredpointercost = 10000;
+var rednanometerwavecost = 100000;
+
+//green
 var green = 0;
 var greenfilter = 0;
 var greenpointer = 0;
@@ -51,6 +39,15 @@ var biggreenfilter = 0;
 var biggreenpointer = 0;
 var greennanometerwave = 0;
 var greenupgrade1 = 0;
+var greenupgrade2 = 0;
+var greenupgrade3 = 0;
+var greenfiltercost = 10;
+var greenpointercost = 100;
+var biggreenfiltercost = 1000;
+var biggreenpointercost = 10000;
+var greennanometerwavecost = 100000;
+
+//blue
 var blue = 0;
 var bluefilter = 0;
 var bluepointer = 0;
@@ -58,34 +55,18 @@ var bigbluefilter = 0;
 var bigbluepointer = 0;
 var bluenanometerwave = 0;
 var blueupgrade1 = 0;
-var debugrednumber = 0;
-var debuggreennumber = 0;
-var debugbluenumber = 0;
-var debugmagicnumber = 0;
-var redupgrade2 = 0;
-var greenupgrade2 = 0;
 var blueupgrade2 = 0;
-var redupgrade3 = 0;
-var greenupgrade3 = 0;
 var blueupgrade3 = 0;
-var yellow = 0;
-var governmentfundingcount = 0;
-var governmentfundingprice = 2;
-var redfiltercost = 10;
-var redpointercost = 100;
-var bigredfiltercost = 1000;
-var bigredpointercost = 10000;
-var rednanometerwavecost = 100000;
-var greenfiltercost = 10;
-var greenpointercost = 100;
-var biggreenfiltercost = 1000;
-var biggreenpointercost = 10000;
-var greennanometerwavecost = 100000;
 var bluefiltercost = 10;
 var bluepointercost = 100;
 var bigbluefiltercost = 1000;
 var bigbluepointercost = 10000;
 var bluenanometerwavecost = 100000;
+
+//yellow
+var yellow = 0;
+var governmentfundingcount = 0;
+var governmentfundingprice = 2;
 var largerprismsprice = 10;
 var largerprismscount = 0;
 var colorharmonyprice = 4;
@@ -116,9 +97,10 @@ var micrometerwaveprice = 60;
 var micrometerwavecount = 0;
 var strongersynergyprice = 100;
 var strongersynergycount = 0;
+var yellowGAIN = 0;
+
+//cyan
 var cyan = 0;
-var savecounter = 0;
-var savetime = 15000;
 var redfilterautomationcount = 0;
 var redfilterautomationprice = 5;
 var redpointerautomationcount = 0;
@@ -167,10 +149,29 @@ var bluenanometerwaveautomationtimer = 0;
 var redtogglestate = true;
 var greentogglestate = true;
 var bluetogglestate = true;
+
+//magenta
 var magic = 0;
-var loaded = 0;
-var tab = "red";
-var yellowGAIN = 0;
+var magenta = 0;
+var bible = "";
+var holyalbertostate = 0;
+var timer = 0;
+var dialoguestate = 0;
+var words = "";
+var redscrollcount = 0;
+var greenscrollcount = 0;
+var bluescrollcount = 0;
+var magentaspellunlock = 0;
+var cauldron = 0;
+var study = 0;
+var feed = 0;
+var feedperson = 0;
+var drink = 0;
+var cauldroncost = 10;
+var studycost = 100;
+var feedcost = 1000;
+var feedpersoncost = 10000;
+var drinkcost = 100000;
 var spellcount = 3;
 var spell1unlock = 0;
 var spell2unlock = 0;
@@ -182,7 +183,35 @@ var redspellprice = 10;
 var greenspellprice = 10;
 var bluespellprice = 10;
 var randomnumber = 0;
+
+//black
+var black = 0;
+var enterbuttonx = 0;
+var enterbuttony = 0;
+var blackholex = 0;
+var blackholex = 0;
+var blackholey = 0;
+var blackholeanimationdone = 0;
+var blackholex2 = 0;
+var buttony = 0;
+var blackholey2 = 0;
+
+//nerdmode
+var currentnerdmode = 0;
+var nerdtimer = 0;
+
+//saving
+var decodedtext = 0;
+var savecounter = 0;
+var savetime = 15000;
+var loaded = 0;
+var loaded2 = 0;
+
+//devmode
+var buttonpress = true;
 var dev = 0;
+
+//tasks
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
 var taskColorGoalHEX = "#ffff00";
@@ -199,10 +228,8 @@ var tasksCompleted = 0;
 var taskRewardCount = 10;
 var taskRewardColor = "green";
 var taskBooster = 1;
-var loaded2 = 0;
-var whiteunlock = 0;
-var blackunlock = 0;
 //can u explain to me what this is 😭??
+//idk best not to touch it
 const hex = {
   0: "0",
   1: "1",
@@ -222,6 +249,9 @@ const hex = {
   15: "F",
 };
 
+//END VARIABLES
+
+//LOADING (VARIABLES)
 function load() {
   var savegame2 = JSON.parse(localStorage.getItem("save2"));
   if (savegame2 != null) {
