@@ -3249,7 +3249,7 @@ function buydrink() {
 //see if it's balanced w/o and if it isn't then ig we'll do that.
 
 function spell1(number) {
-  if (magic >= redspellprice) {
+  if (magic >= redspellprice && spell1unlock === 1) {
     magic -= redspellprice;
     redspellprice += debugmagicnumber * 2.5;
     document.getElementById("redspell").innerHTML = formatSmallNumber(
@@ -3259,7 +3259,7 @@ function spell1(number) {
   }
 }
 function spell2(number) {
-  if (magic >= greenspellprice) {
+  if (magic >= greenspellprice && spell2unlock === 1) {
     magic -= greenspellprice;
     greenspellprice += debugmagicnumber * 2.6;
     document.getElementById("greenspell").innerHTML = formatSmallNumber(
@@ -3269,7 +3269,7 @@ function spell2(number) {
   }
 }
 function spell3(number) {
-  if (magic >= bluespellprice) {
+  if (magic >= bluespellprice && spell3unlock === 1) {
     magic -= bluespellprice;
     bluespellprice += debugmagicnumber * 2.7;
     document.getElementById("bluespell").innerHTML = formatSmallNumber(
