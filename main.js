@@ -1658,11 +1658,11 @@ window.setInterval(function () {
       "px)";
     //feed the users info
     document.getElementById("redcountup").innerHTML =
-      "per second: " + formatNumber(Math.round(debugrednumber));
+      "per second: " + formatNumber(Math.round(debugrednumber * 10) / 10);
     document.getElementById("greencountup").innerHTML =
-      "per second: " + formatNumber(Math.round(debuggreennumber));
+      "per second: " + formatNumber(Math.round(debuggreennumber * 10) / 10);
     document.getElementById("bluecountup").innerHTML =
-      "per second: " + formatNumber(Math.round(debugbluenumber));
+      "per second: " + formatNumber(Math.round(debugbluenumber * 10) / 10);
     //calc the black
     calcblack();
     //change task goal w streamlined tasks
