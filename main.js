@@ -737,7 +737,7 @@ function load() {
     //
     //
     //
-    //
+    //red, green & blue
     if (redupgrade1 === 1) {
       document.getElementById("redupgrade1cost").innerHTML = "bought";
       //document.getElementById("redupgrade1").style.border = "outset";
