@@ -1115,7 +1115,7 @@ div#lewissucks.animate {
   display: none;
   align-items: flex-start;
   margin-left: 95px;
-  position: absolute;
+  position: fixed;
 }
 
 @keyframes fadeout {
