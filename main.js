@@ -2293,13 +2293,13 @@ function rgbToHex(rgb) {
 
 function submitTask() {
   if (
-    red >= taskColorGoalRed &&
-    green >= taskColorGoalGreen &&
-    blue >= taskColorGoalBlue
+    red >= streamlinedTaskColorGoal.red &&
+    green >= streamlinedTaskColorGoal.green &&
+    blue >= streamlinedTaskColorGoal.blue
   ) {
-    red -= taskColorGoalRed;
-    green -= taskColorGoalGreen;
-    blue -= taskColorGoalBlue;
+    red -= streamlinedTaskColorGoal.red;
+    green -= streamlinedTaskColorGoal.green;
+    blue -= streamlinedTaskColorGoal.blue;
     tasksCompleted++;
     if (tasksCompleted === 1) {
       taskColorGoalRed = 0;
@@ -2346,9 +2346,9 @@ function submitTask() {
       document.getElementById("tabblue").style.display = "block";
       blue += 10;
     } else if (tasksCompleted === 3) {
-      taskColorGoalRed = 110000;
+      taskColorGoalRed = 1100000;
       taskColorGoalGreen = 115000;
-      taskColorGoalBlue = 41000;
+      taskColorGoalBlue = 4100;
       document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
         Math.round(taskColorGoalRed)
       );
