@@ -1675,6 +1675,10 @@ function buyblueupgrade3() {
 window.setInterval(function () {
   if(visibilityState === "visible" || buttonpress === false){
   if (loaded === 1) {
+    //"update" game for ppl
+    if(document.getElementById("tabmagenta").style.display === "block" && redscrollcount + greenscrollcount + bluescrollcount === 3 && dialoguestate === 11){
+      chatupdate();
+    }
     //if loaded === 1 is important for keeping everything from
     //doing stuff its not supposed to before gameload
     window.scrollBy(-window.innerWidth, 0);
@@ -3368,6 +3372,13 @@ function buyredscroll() {
     document.getElementById("redscroll").style.display = "none";
     document.getElementById("redspell").style.backgroundImage =
       "url(images/spells/red_spell.webp)";
+      window.setTimeout("showtab('magenta')",1000);
+    if(redscrollcount + greenscrollcount + bluescrollcount === 3){
+      window.setTimeout("chatupdate()", 1500);
+      window.setTimeout("timer = 50", 1400);
+    }else{
+    say("great! you've got the red scroll. only "+ (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +" to go.");
+    }
   }
 }
 function buygreenscroll() {
@@ -3384,6 +3395,13 @@ function buygreenscroll() {
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("greenspell").style.backgroundImage =
       "url(images/spells/green_spell.webp)";
+      window.setTimeout("showtab('magenta')",1000);
+      if(redscrollcount + greenscrollcount + bluescrollcount === 3){
+        window.setTimeout("chatupdate()", 1500);
+        window.setTimeout("timer = 50", 1400);
+      }else{
+      say("you've got the green scroll down. only "+ (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +" more.");
+      }
   }
 }
 function buybluescroll() {
@@ -3395,6 +3413,13 @@ function buybluescroll() {
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.backgroundImage =
       "url(images/spells/blue_spell.webp)";
+      window.setTimeout("showtab('magenta')",1000);
+      if(redscrollcount + greenscrollcount + bluescrollcount === 3){
+        window.setTimeout("chatupdate()", 1500);
+        window.setTimeout("timer = 50", 1400);
+      }else{
+      say("now you have the blue scroll. "+ (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +" more and then you're done.");
+      }
   }
 }
 //TODO BALANCING
@@ -3462,6 +3487,7 @@ function castmagentaspell() {
   if (magic >= magentaspellprice) {
     if (dialoguestate === 7) {
       chatupdate();
+      timer = 30;
     }
     magic -= magentaspellprice;
     magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
@@ -3717,10 +3743,13 @@ function chatupdate() {
     say("you can learn the rest by studying the hidden ancient scrolls.");
     dialoguestate++;
   } else if (dialoguestate === 10 && tab === "magenta") {
-    say("come back to me once you've found the first three.");
+    say("come back to me once you've found some.");
     dialoguestate++;
   } else if (dialoguestate === 11 && tab === "magenta") {
     say("great! i'll tell you what these spells do.");
+    dialoguestate++;
+  } else if (dialoguestate === 12 && tab === "magenta") {
+    say("these spells all travel one minute into the future, but only for their colors.");
     dialoguestate++;
   }
 }
@@ -3752,6 +3781,9 @@ window.setInterval(function () {
     } else if (dialoguestate === 10 && timer <= 0) {
       chatupdate();
       timer = 45;
+    } else if (dialoguestate === 12 && timer <= 0) {
+      chatupdate();
+      timer = 50;
     }
   }
 }, 100);
