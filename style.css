@@ -61,7 +61,7 @@ span#redcount {
   color: rgb(200, 25, 25);
 }
 span#greencount {
-color:#00db00
+  color: #00db00;
 }
 span#bluecount {
   color: rgb(50, 50, 255);
@@ -569,7 +569,7 @@ div#blueupgrades {
   justify-content: center;
   align-items: center;
   padding-top: 5%;
-  color:rgb(50, 50, 255);
+  color: rgb(50, 50, 255);
 }
 div#blueupgradesbox {
   padding-top: 2%;
@@ -1264,7 +1264,7 @@ span#blackboost {
     opacity: 0;
   }
 }
-#saving{
+#saving {
   color: rgb(200, 25, 25);
   opacity: 0;
   font-size: small;
@@ -1272,6 +1272,6 @@ span#blackboost {
   margin-top: 95vh;
   position: fixed;
 }
-div#saving.fadeout{
+div#saving.fadeout {
   animation: fadeout 1s forwards;
 }
