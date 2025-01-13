@@ -3792,7 +3792,6 @@ window.setInterval(function () {
 function holyalberto() {
   if (holyalbertostate === 0) {
     holyalbertostate = 1;
-    document.body.style.overflowY = "scroll";
     fetch("bible.txt")
       .then((response) => response.text())
       .then((data) => {
@@ -3803,7 +3802,6 @@ function holyalberto() {
       })
       .catch((error) => console.error("Error fetching the file:", error));
   } else {
-    document.body.style.overflowY = "hidden";
     holyalbertostate = 0;
     say(words);
   }
