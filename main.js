@@ -3783,7 +3783,7 @@ window.setInterval(function () {
       timer = 45;
     } else if (dialoguestate === 12 && timer <= 0) {
       chatupdate();
-      timer = 50;
+      timer = 40;
     }
   }
 }, 100);
