@@ -1285,3 +1285,11 @@ span#blackboost {
 div#saving.fadeout{
   animation: fadeout 1s forwards;
 }
+#achievementsbox{
+  bottom: 0;
+  right: 0;
+  color: red;
+  position: fixed;
+  border: solid 2px;
+  padding: 5px;
+}
