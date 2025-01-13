@@ -3484,7 +3484,7 @@ function buymagentaspell() {
 //uhh if the price scales with the amount of magic u make then whats the point even,,?
 //the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
-  if (magic >= magentaspellprice) {
+  if (magic >= magentaspellprice && dialoguestate >= 7) {
     if (dialoguestate === 7) {
       chatupdate();
       timer = 30;
