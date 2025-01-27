@@ -1683,6 +1683,7 @@ window.setInterval(function () {
       ) {
         chatupdate();
       }
+
       //if loaded === 1 is important for keeping everything from
       //doing stuff its not supposed to before gameload
       window.scrollBy(-window.innerWidth, 0);
@@ -1856,6 +1857,7 @@ window.setInterval(function () {
           "multiplies gain of other colors by log1p(green)"; //here
       } else if (document.querySelector("#blueupgrade1:hover") != null) {
         nerdtimer = 0;
+
         document.getElementById("nerdmodetext").innerHTML =
           "multiplies blue filter gain by the amount of blue filters"; //maybe here
       } else if (document.querySelector("#blueupgrade3:hover") != null) {
@@ -1953,6 +1955,104 @@ window.setInterval(function () {
         document.getElementById("nerdmodetext").innerHTML = "gives 50 magic/s";
       } else if (document.querySelector("#magentabuild4:hover") != null) {
         nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiplies blue filter gain by the amount of blue filters"; //maybe here
+      } else if (document.querySelector("#blueupgrade3:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiplies blue pointer gain by the amount of blue pointers"; //maybe here
+      } else if (document.querySelector("#blueupgrade2:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiplies gain of other colors by log1p(blue)"; //and here
+      } else if (document.querySelector("#redscroll:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "???";
+      } else if (document.querySelector("#greenscroll:hover") != null) {
+        document.getElementById("nerdmodetext").innerHTML = "???";
+        nerdtimer = 0;
+      } else if (document.querySelector("#bluescroll:hover") != null) {
+        document.getElementById("nerdmodetext").innerHTML = "???";
+      } else if (document.querySelector("#yellowupgrade1:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "divide all upgrade prices by 0.1 * governmentfundingcount";
+      } else if (document.querySelector("#yellowupgrade2:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
+      } else if (document.querySelector("#yellowupgrade3:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply rgb gain by 2 * largerprismscount";
+      } else if (document.querySelector("#yellowupgrade4:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "divide task goal by 2^streamlinedtaskscount";
+      } else if (document.querySelector("#yellowupgrade5:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply task reward by yellowsynergycount * 0.25";
+      } else if (document.querySelector("#yellowupgrade6:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "gives the lowest of the two values in yellow/s: 200 * redoverflowcount or redgain/s / 1e12";
+      } else if (document.querySelector("#yellowupgrade7:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "gives the lowest of the two values in yellow/s: 200 * greenoverflowcount or greengain/s / 1e12";
+      } else if (document.querySelector("#yellowupgrade8:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "gives the lowest of the two values in yellow/s: 200 * blueoverflowcount or bluegain/s / 1e12";
+      } else if (document.querySelector("#yellowupgrade9:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply rgb gain by tricolorboostcount * 0.5 * (yellow / 1000)";
+      } else if (document.querySelector("#yellowupgrade10:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "get a 5% chance to get a reward of taskReward * 10 * taskmasterycount";
+      } else if (document.querySelector("#yellowupgrade11:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
+      } else if (document.querySelector("#yellowupgrade12:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply weak synergy effect by  √strongersynergycount * 5";
+      } else if (document.querySelector("#yellowupgrade13:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply pointer gain by √focussedpointerscount * 2";
+      } else if (document.querySelector("#yellowupgrade14:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply filter gain by √finerfilterscount * 2";
+      } else if (document.querySelector("#yellowupgrade15:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply nanometerwave effect by Math.log1p(micrometerwavecount) * 1.5";
+      } else if (document.querySelector("#yellowupgrade16:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "buy 10 cyan for 1e15 red, green, blue and 1200 yellow";
+      } else if (document.querySelector("#cyanbuildings:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "buy 0.5 upgrades/s for every level of this upgrade if you have enough money";
+      } else if (document.querySelector("#magentabuild1:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "gives 0.5 magic/s";
+      } else if (document.querySelector("#magentabuild2:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "gives 5 magic/s";
+      } else if (document.querySelector("#magentabuild3:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "gives 50 magic/s";
+      } else if (document.querySelector("#magentabuild4:hover") != null) {
+        nerdtimer = 0;
+
         document.getElementById("nerdmodetext").innerHTML = "gives 500 magic/s";
       } else if (document.querySelector("#magentabuild5:hover") != null) {
         nerdtimer = 0;
