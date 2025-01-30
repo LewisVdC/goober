@@ -713,14 +713,10 @@ div#confusion {
   justify-content: center;
 }
 #magentabuildings {
+  text-align: center;
+  justify-content: center;
   margin-top: 10px;
   color: magenta;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
 }
 .yellowupgrades {
   height: 15vh;
@@ -887,7 +883,8 @@ div#spellcasting {
   margin-top: 10%;
 }
 .spell {
-  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   color: white;
   background: round;
   height: 80px;
@@ -906,7 +903,6 @@ div#spellcastingbox {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 540px;
 }
 #black {
   font-weight: 600;
@@ -1056,12 +1052,6 @@ button#magentaspell {
   color: #470047;
   font-weight: 900;
   font-size: small;
-  background-image: url("images/locked_idiot.webp");
-}
-button#vacant {
-  color: white;
-  font-size: small;
-  font-weight: 900;
   background-image: url("images/locked_idiot.webp");
 }
 div#lewissucks.animate {
@@ -1285,13 +1275,3 @@ span#blackboost {
 div#saving.fadeout {
   animation: fadeout 1s forwards;
 }
-
-#achievementsbox{
-  bottom: 0;
-  right: 0;
-  color: red;
-  position: fixed;
-  border: solid 2px;
-  padding: 5px;
-}
-
