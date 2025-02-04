@@ -1879,63 +1879,63 @@ window.setInterval(function () {
       } else if (document.querySelector("#yellowupgrade1:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "divide all upgrade prices by 0.1 * governmentfundingcount";
+          "divide all upgrade prices by 10 * governmentfundinglevel";
       } else if (document.querySelector("#yellowupgrade2:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
+          "multiply rgb gain by (log(yellow) / 10) * √colorharmonylevel";
       } else if (document.querySelector("#yellowupgrade3:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by 2 * largerprismscount";
+          "multiply rgb gain by 2 * largerprismslevel";
       } else if (document.querySelector("#yellowupgrade4:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "divide task goal by 2^streamlinedtaskscount";
+          "divide task goal by 2^streamlinedtaskslevel";
       } else if (document.querySelector("#yellowupgrade5:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply task reward by yellowsynergycount * 0.25";
+          "multiply task reward by yellowsynergylevel/4";
       } else if (document.querySelector("#yellowupgrade6:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * redoverflowcount or redgain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * redoverflowlevel or redgain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade7:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * greenoverflowcount or greengain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * greenoverflowlevel or greengain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade8:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * blueoverflowcount or bluegain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * blueoverflowlevel or bluegain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade9:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by tricolorboostcount * 0.5 * (yellow / 1000)";
+          "multiply rgb gain by tricolorboostlevel * yellow / 2000)";
       } else if (document.querySelector("#yellowupgrade10:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "get a 5% chance to get a reward of taskReward * 10 * taskmasterycount";
+          "get a 5% chance to get a reward of taskReward * 10 * taskmasterylevel";
       } else if (document.querySelector("#yellowupgrade11:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
+          "multiply task reward by (goldenmultiplierlevel * tasksCompleted) / 1000";
       } else if (document.querySelector("#yellowupgrade12:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply weak synergy effect by  √strongersynergycount * 5";
+          "multiply weak synergy effect by  5√strongersynergylevel";
       } else if (document.querySelector("#yellowupgrade13:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply pointer gain by √focussedpointerscount * 2";
+          "multiply pointer gain by 2√focussedpointerslevel";
       } else if (document.querySelector("#yellowupgrade14:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply filter gain by √finerfilterscount * 2";
+          "multiply filter gain by 2√finerfilterslevel";
       } else if (document.querySelector("#yellowupgrade15:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply nanometerwave effect by Math.log1p(micrometerwavecount) * 1.5";
+          "multiply nanometerwave effect by Math.log(micrometerwavelevel) * 1.5";
       } else if (document.querySelector("#yellowupgrade16:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -1976,63 +1976,63 @@ window.setInterval(function () {
       } else if (document.querySelector("#yellowupgrade1:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "divide all upgrade prices by 0.1 * governmentfundingcount";
+          "divide all upgrade prices by 0.1 * governmentfundinglevel";
       } else if (document.querySelector("#yellowupgrade2:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
+          "multiply rgb gain by (log1p(yellow) / 10) * (colorharmonylevel / √colorharmonylevel)";
       } else if (document.querySelector("#yellowupgrade3:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by 2 * largerprismscount";
+          "multiply rgb gain by 2 * largerprismslevel";
       } else if (document.querySelector("#yellowupgrade4:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "divide task goal by 2^streamlinedtaskscount";
+          "divide task goal by 2^streamlinedtaskslevel";
       } else if (document.querySelector("#yellowupgrade5:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply task reward by yellowsynergycount * 0.25";
+          "multiply task reward by yellowsynergylevel * 0.25";
       } else if (document.querySelector("#yellowupgrade6:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * redoverflowcount or redgain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * redoverflowlevel or redgain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade7:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * greenoverflowcount or greengain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * greenoverflowlevel or greengain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade8:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * blueoverflowcount or bluegain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * blueoverflowlevel or bluegain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade9:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by tricolorboostcount * 0.5 * (yellow / 1000)";
+          "multiply rgb gain by tricolorboostlevel * 0.5 * (yellow / 1000)";
       } else if (document.querySelector("#yellowupgrade10:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "get a 5% chance to get a reward of taskReward * 10 * taskmasterycount";
+          "get a 5% chance to get a reward of taskReward * 10 * taskmasterylevel";
       } else if (document.querySelector("#yellowupgrade11:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
+          "multiply task reward by (goldenmultiplierlevel * tasksCompleted) / 1000";
       } else if (document.querySelector("#yellowupgrade12:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply weak synergy effect by  √strongersynergycount * 5";
+          "multiply weak synergy effect by  √strongersynergylevel * 5";
       } else if (document.querySelector("#yellowupgrade13:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply pointer gain by √focussedpointerscount * 2";
+          "multiply pointer gain by √focussedpointerslevel * 2";
       } else if (document.querySelector("#yellowupgrade14:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply filter gain by √finerfilterscount * 2";
+          "multiply filter gain by √finerfilterslevel * 2";
       } else if (document.querySelector("#yellowupgrade15:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply nanometerwave effect by Math.log1p(micrometerwavecount) * 1.5";
+          "multiply nanometerwave effect by Math.log1p(micrometerwavelevel) * 1.5";
       } else if (document.querySelector("#yellowupgrade16:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
