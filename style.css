@@ -896,6 +896,7 @@ div#spellcasting {
   justify-content: center;
 }
 p#think {
+  text-align: center;
   display: flex;
   justify-content: center;
   opacity: 0;

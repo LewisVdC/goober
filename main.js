@@ -3865,6 +3865,21 @@ function chatupdate() {
       "these spells all travel one minute into the future, but only for their colors."
     );
     dialoguestate++;
+  } else if (dialoguestate === 13 && tab === "magenta") {
+    say(
+      "the time has come for me to go. continue getting stronger my friend!"
+    );
+    dialoguestate++;
+  } else if (dialoguestate === 14 && tab === "magenta") {
+    say(
+      "i will see you again soon..."
+    );
+    dialoguestate++;
+  } else if (dialoguestate === 15 && tab === "magenta") {
+    say(
+      ""
+    );
+    dialoguestate++;
   }
 }
 
@@ -3896,6 +3911,15 @@ window.setInterval(function () {
       chatupdate();
       timer = 45;
     } else if (dialoguestate === 12 && timer <= 0) {
+      chatupdate();
+      timer = 60;
+    } else if (dialoguestate === 13 && timer <= 0) {
+      chatupdate();
+      timer = 40;
+    } else if (dialoguestate === 14 && timer <= 0) {
+      chatupdate();
+      timer = 40;
+    } else if (dialoguestate === 15 && timer <= 0) {
       chatupdate();
       timer = 40;
     }
@@ -4273,4 +4297,8 @@ function triggerExplosion() {
     singularity.style.animation =
       "squigglycircle 0.2s ease-out forwards alternate infinite";
   }, 2000); // Duration matches the explode animation
+}
+
+function buy_spell(){
+  say("coming soon!");
 }
