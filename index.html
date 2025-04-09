@@ -16,6 +16,11 @@
     <!-- preload images bc it looked horrible there were 150ms before the images loaded right it does throw a warning in console though -->
   </head>
   <body onload="load()" id="body">
+    <div id="helpmenu">
+      <span id="magentaresettext">do you want to reset magenta?</span>
+      <button class="yesno" id="yes" onclick="resetMagenta()">yes</button>
+      <button class="yesno" id="no" onclick="stuck()">no</button>
+    </div>
     <div id="blackholecontainer">
       <div id="blackhole" class="dot"></div>
     </div>
@@ -83,6 +88,9 @@
       </button>
       <button id="import2" onclick="importsave('file')" class="setting">
         import (file)
+      </button>
+      <button id="stuck" onclick="stuck()" class="setting">
+        stuck?
       </button>
     </div>
 

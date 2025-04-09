@@ -4263,7 +4263,32 @@ window.setInterval(function () {
 document.getElementById("magicslider").oninput = function(){
   document.getElementById("magicinput").value = this.value;
 };
-
 document.getElementById("magicinput").oninput = function(){
   document.getElementById("magicslider").value = this.value;
+}
+
+//stuck
+function stuck(){
+  if(document.getElementById("helpmenu").style.display === "flex"){
+    document.getElementById("helpmenu").style.display = "none";
+  }else{
+    document.getElementById("helpmenu").style.display = "flex";
+  }
+}
+
+function resetMagenta(){
+  stuck();
+  document.getElementById("magentaspell").setAttribute("onclick", "buymagentaspell()");
+  cauldron=study=feed=feedperson=drink=magic=0;
+  magenta=cauldroncost=10;
+  studycost=100;
+  feedcost=1000;
+  feedpersoncost=10000;
+  drinkcost=100000;
+  spell1unlock=spell2unlock=spell3unlock=magentaspellunlock=redscrollcount=greenscrollcount=bluescrollcount=0;
+  dialoguestate=0;
+  say('');
+  save();
+  document.body.style.display = "none";
+  window.setTimeout(function(){location.reload();}, 2000);
 }
