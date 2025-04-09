@@ -3341,8 +3341,9 @@ function buydrink() {
 function spell1() {
   if (spell1unlock === 1) {
     if(document.getElementById("redshell").style.background === ''){
-      red = red + debugrednumber * magic;
-      magic = 0;
+      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      red = red + debugrednumber * tribute;
+      magic -= tribute;
       spellCoolDown("#redshell",4000);
     }
   }
@@ -3350,8 +3351,9 @@ function spell1() {
 function spell2() {
   if (spell2unlock === 1) {
     if(document.getElementById("greenshell").style.background === ''){
-      green = green + debuggreennumber * magic;
-      magic = 0;
+      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      green = green + debuggreennumber * tribute;
+      magic -= tribute;
       spellCoolDown("#greenshell",4000);
     }
   }
@@ -3359,8 +3361,9 @@ function spell2() {
 function spell3() {
   if (spell3unlock === 1) {
     if(document.getElementById("blueshell").style.background === ''){
-      blue = blue + debugbluenumber * magic;
-      magic = 0;
+      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      blue = blue + debugbluenumber * tribute;
+      magic -= tribute;
       spellCoolDown("#blueshell",4000);
     }
   }
@@ -3551,9 +3554,10 @@ function castmagentaspell() {
       timer = 30;
     }
     if(document.getElementById("magentashell").style.background === ''){
-    magenta += magic/3;
-    magic = 0;
-    spellCoolDown("#magentashell", 1000);
+      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      magenta += tribute/3;
+      magic -= tribute;
+      spellCoolDown("#magentashell", 1000);
     }
   }
 }
@@ -4255,3 +4259,11 @@ window.setInterval(function () {
     }
   }
 }, 50);
+
+document.getElementById("magicslider").oninput = function(){
+  document.getElementById("magicinput").value = this.value;
+};
+
+document.getElementById("magicinput").oninput = function(){
+  document.getElementById("magicslider").value = this.value;
+}
