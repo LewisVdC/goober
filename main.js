@@ -3338,20 +3338,29 @@ function buydrink() {
 
 function spell1() {
   if (spell1unlock === 1) {
-    red = red + debugrednumber * magic;
-    magic = 0;
+    if(document.getElementById("redshell").style.background === ''){
+      red = red + debugrednumber * magic;
+      magic = 0;
+      spellCoolDown("#redshell",4000);
+    }
   }
 }
 function spell2() {
   if (spell2unlock === 1) {
-    green = green + debuggreennumber * magic;
-    magic = 0;
+    if(document.getElementById("greenshell").style.background === ''){
+      green = green + debuggreennumber * magic;
+      magic = 0;
+      spellCoolDown("#greenshell",4000);
+    }
   }
 }
 function spell3() {
   if (spell3unlock === 1) {
-    blue = blue + debugbluenumber * magic;
-    magic = 0
+    if(document.getElementById("blueshell").style.background === ''){
+      blue = blue + debugbluenumber * magic;
+      magic = 0;
+      spellCoolDown("#blueshell",4000);
+    }
   }
 }
 //oh and make it so u have to unlock the spells that sounds silly
@@ -3539,8 +3548,11 @@ function castmagentaspell() {
       chatupdate();
       timer = 30;
     }
+    if(document.getElementById("magentashell").style.background === ''){
     magenta += magic/3;
     magic = 0;
+    spellCoolDown("#magentashell", 1000);
+    }
   }
 }
 
@@ -4214,3 +4226,36 @@ function buy_spell(){
   }, 3000)
   say("coming soon!");
 }
+
+
+//cooldown shenanigains
+let cooldownspells = [];
+let cooldowntimes = [];
+let cooldowntimeleft = [];
+
+function spellCoolDown(queryselector, cooldowntime){
+  cooldownspells.push(queryselector);
+  cooldowntimes.push(cooldowntime);
+  cooldowntimeleft.push(cooldowntime);
+  document.querySelector(queryselector+" > button").style.opacity = "0.5";
+  window.setTimeout(function(){
+    document.querySelector(queryselector+" > button").style.opacity = "1";
+  },cooldowntime)
+}
+
+window.setInterval(function () {
+  for (let i = cooldownspells.length - 1; i >= 0; i--) {
+    let fillPercent = cooldowntimeleft[i] / cooldowntimes[i] * 100;
+    document.querySelector(cooldownspells[i]).style.background =
+      "linear-gradient(360deg, gray " + fillPercent + "%, transparent " + fillPercent + "%)";
+    
+    cooldowntimeleft[i] -= 50;
+    
+    if (cooldowntimeleft[i] <= 0) {
+      document.querySelector(cooldownspells[i]).style.background = '';
+      cooldownspells.splice(i, 1);
+      cooldowntimes.splice(i, 1);
+      cooldowntimeleft.splice(i, 1);
+    }
+  }
+}, 50);
