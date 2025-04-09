@@ -1771,7 +1771,9 @@ window.setInterval(function () {
 
       const magentacounters = document.querySelectorAll(".magentacount");
       magentacounters.forEach((counter) => {
-        counter.textContent = "magenta: " + formatNumber(Math.floor(magenta));
+        counter.textContent = document.getElementById(
+          "magentacount"
+        ).innerHTML = "magenta: " + formatNumber(Math.floor(magenta));
       });
       //timo building 5 does not give 5k of the stuff per second it boosts production
       //mb
@@ -2112,7 +2114,7 @@ window.setInterval(function () {
       document.getElementById("yellowcount").innerHTML =
         "yellow: " + formatNumber(Math.floor(yellow));
       document.getElementById("magentacount").innerHTML =
-        "magenta: " + formatNumber(Math.floor(magenta * 10)) / 10;
+        "magenta: " + formatNumber(Math.floor(magenta));
       document.getElementById("cyancount").innerHTML =
         "cyan: " + formatNumber(Math.floor(cyan));
       //ugh
@@ -2599,7 +2601,7 @@ function submitTask() {
         magenta += 10;
         document.getElementById("tabmagenta").style.display = "block";
         document.getElementById("magentacount").innerHTML =
-          "magenta: " + magenta;
+          "magenta: " + formatNumber(Math.floor(magenta));
       }
     }
   }
@@ -3866,19 +3868,13 @@ function chatupdate() {
     );
     dialoguestate++;
   } else if (dialoguestate === 13 && tab === "magenta") {
-    say(
-      "the time has come for me to go. continue getting stronger my friend!"
-    );
+    say("the time has come for me to go. continue getting stronger my friend!");
     dialoguestate++;
   } else if (dialoguestate === 14 && tab === "magenta") {
-    say(
-      "i will see you again soon..."
-    );
+    say("i will see you again soon...");
     dialoguestate++;
   } else if (dialoguestate === 15 && tab === "magenta") {
-    say(
-      ""
-    );
+    say("");
     dialoguestate++;
   }
 }
@@ -4299,6 +4295,6 @@ function triggerExplosion() {
   }, 2000); // Duration matches the explode animation
 }
 
-function buy_spell(){
+function buy_spell() {
   say("coming soon!");
 }
