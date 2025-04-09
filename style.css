@@ -745,7 +745,7 @@ div#confusion {
 #yellowcount {
   color: rgb(168, 140, 0);
 }
-button:hover:not(.submit, #enterbutton) {
+button:hover:not(.submit, #enterbutton, .spell) {
   scale: 1.1;
   z-index: 9999;
 }
@@ -887,13 +887,19 @@ div#spellcasting {
   margin-top: 10%;
 }
 .spell {
-  margin: 5px;
   color: white;
   background: round;
   height: 80px;
   width: 80px;
   display: block;
   justify-content: center;
+}
+.spellshell {
+  transition: 0.2s;
+  margin: 5px;
+}
+.spellshell:hover {
+  transform: scale(1.1);
 }
 p#think {
   text-align: center;
