@@ -3751,7 +3751,7 @@ function chatupdate() {
     say("now purchase your first spell for 10 magic.");
     dialoguestate++;
   } else if (dialoguestate === 5 && tab === "magenta") {
-    say("great! this spell converts magic into magento at a 3:1 ratio.");
+    say("great! this spell converts magic into magenta at a 3:1 ratio.");
     dialoguestate++;
   } else if (dialoguestate === 6 && tab === "magenta") {
     say("go ahead, try casting it. the first one's on me.");
