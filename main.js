@@ -178,10 +178,6 @@ var spell2unlock = 0;
 var spell3unlock = 0;
 var spell4unlock = 0;
 var spell5unlock = 0;
-var magentaspellprice = 10;
-var redspellprice = 10;
-var greenspellprice = 10;
-var bluespellprice = 10;
 var randomnumber = 0;
 
 //black
@@ -602,45 +598,23 @@ function load() {
       spell2unlock = savegame.spell2unlock;
     if (typeof savegame.spell3unlock !== "undefined")
       spell3unlock = savegame.spell3unlock;
-    if (typeof savegame.magentaspellprice !== "undefined")
-      magentaspellprice = savegame.magentaspellprice;
-    if (typeof savegame.redspellprice !== "undefined")
-      redspellprice = savegame.redspellprice;
-    if (spell1unlock === 1) {
-      document.getElementById("redspell").innerHTML = Math.round(redspellprice);
-    }
-    if (typeof savegame.greenspellprice !== "undefined")
-      greenspellprice = savegame.greenspellprice;
-    if (spell2unlock === 1) {
-      document.getElementById("greenspell").innerHTML =
-        Math.round(greenspellprice);
-    }
-    if (typeof savegame.bluespellprice !== "undefined")
-      bluespellprice = savegame.bluespellprice;
-    if (spell3unlock === 1) {
-      document.getElementById("bluespell").innerHTML =
-        Math.round(bluespellprice);
-    }
     if (typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
     if (redscrollcount === 1) {
       document.getElementById("redspell").style.backgroundImage =
         "url(images/spells/red_spell.webp)";
-      document.getElementById("redspell").innerHTML = "10";
     }
     if (typeof savegame.greenscrollcount !== "undefined")
       greenscrollcount = savegame.greenscrollcount;
     if (greenscrollcount === 1) {
       document.getElementById("greenspell").style.backgroundImage =
         "url(images/spells/green_spell.webp)";
-      document.getElementById("greenspell").innerHTML = "10";
     }
     if (typeof savegame.bluescrollcount !== "undefined")
       bluescrollcount = savegame.bluescrollcount;
     if (bluescrollcount === 1) {
       document.getElementById("bluespell").style.backgroundImage =
         "url(images/spells/blue_spell.webp)";
-      document.getElementById("bluespell").innerHTML = "10";
     }
     if (typeof savegame.magentaspellunlock !== "undefined")
       magentaspellunlock = savegame.magentaspellunlock;
@@ -648,13 +622,8 @@ function load() {
       document
         .getElementById("magentaspell")
         .setAttribute("onclick", "castmagentaspell()");
-      document.getElementById("magentaspell").innerHTML =
-        Math.round(magentaspellprice);
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
-      document.getElementById("magentaspell").innerHTML = formatSmallNumber(
-        Math.round(magentaspellprice)
-      );
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -2061,19 +2030,19 @@ window.setInterval(function () {
       } else if (document.querySelector("#magentaspell:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives between 10% and 90% of your magic gain multiplied by 10 magenta and takes between 10% and 90% of a random color.";
+          "converts all your magic into magenta at a ratio of 3 magic to 1 magenta";
       } else if (document.querySelector("#redspell:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives 1 minute worth of red.";
+          "gives 1 second worth of red for every magic put into it";
       } else if (document.querySelector("#greenspell:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives 1 minute worth of green.";
+          "gives 1 second worth of green for every magic put into it";
       } else if (document.querySelector("#bluespell:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives 1 minute worth of blue.";
+          "gives 1 second worth of blue for every magic put into it";
       } else {
         if (nerdtimer > 1) {
           document.getElementById("nerdmodetext").innerHTML =
@@ -2116,21 +2085,6 @@ window.setInterval(function () {
       document.getElementById("cyancount").innerHTML =
         "cyan: " + formatNumber(Math.floor(cyan));
       //ugh
-      if (spell1unlock === 1) {
-        document.getElementById("redspell").innerHTML = formatSmallNumber(
-          Math.round(redspellprice)
-        );
-      }
-      if (spell2unlock === 1) {
-        document.getElementById("greenspell").innerHTML = formatSmallNumber(
-          Math.round(greenspellprice)
-        );
-      }
-      if (spell3unlock === 1) {
-        document.getElementById("bluespell").innerHTML = formatSmallNumber(
-          Math.round(bluespellprice)
-        );
-      }
       //im moving the yellow upgrades update function somewhere else
       updateyellow();
       //unlocks
@@ -3382,34 +3336,22 @@ function buydrink() {
 //cooldown: definitely, making the spell less effective at higher magic usage prolly not but we'll
 //see if it's balanced w/o and if it isn't then ig we'll do that.
 
-function spell1(number) {
-  if (magic >= redspellprice && spell1unlock === 1) {
-    magic -= redspellprice;
-    redspellprice += debugmagicnumber * 2.5;
-    document.getElementById("redspell").innerHTML = formatSmallNumber(
-      Math.round(redspellprice)
-    );
-    red = red + debugrednumber * number;
+function spell1() {
+  if (spell1unlock === 1) {
+    red = red + debugrednumber * magic;
+    magic = 0;
   }
 }
-function spell2(number) {
-  if (magic >= greenspellprice && spell2unlock === 1) {
-    magic -= greenspellprice;
-    greenspellprice += debugmagicnumber * 2.6;
-    document.getElementById("greenspell").innerHTML = formatSmallNumber(
-      Math.round(greenspellprice)
-    );
-    green = green + debuggreennumber * number;
+function spell2() {
+  if (spell2unlock === 1) {
+    green = green + debuggreennumber * magic;
+    magic = 0;
   }
 }
-function spell3(number) {
-  if (magic >= bluespellprice && spell3unlock === 1) {
-    magic -= bluespellprice;
-    bluespellprice += debugmagicnumber * 2.7;
-    document.getElementById("bluespell").innerHTML = formatSmallNumber(
-      Math.round(bluespellprice)
-    );
-    blue = blue + debugbluenumber * number;
+function spell3() {
+  if (spell3unlock === 1) {
+    blue = blue + debugbluenumber * magic;
+    magic = 0
   }
 }
 //oh and make it so u have to unlock the spells that sounds silly
@@ -3468,7 +3410,6 @@ function buyredscroll() {
     spell1unlock++;
     red -= 1e17;
     redscrollcount++;
-    document.getElementById("redspell").innerHTML = "10";
     document.getElementById("redscroll").style.display = "none";
     document.getElementById("redspell").style.backgroundImage =
       "url(images/spells/red_spell.webp)";
@@ -3490,7 +3431,6 @@ function buygreenscroll() {
     spell2unlock++;
     green -= 1e17;
     greenscrollcount++;
-    document.getElementById("greenspell").innerHTML = "10";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("submitTaskButton").style.position = "relative";
     document.getElementById("submitTaskButton").style.width = "100%";
@@ -3517,7 +3457,6 @@ function buybluescroll() {
     spell3unlock++;
     blue -= 1e17;
     bluescrollcount++;
-    document.getElementById("bluespell").innerHTML = "10";
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.backgroundImage =
       "url(images/spells/blue_spell.webp)";
@@ -3582,7 +3521,6 @@ function buymagentaspell() {
       .setAttribute("onclick", "castmagentaspell()");
     magic -= 10;
     magentaspellunlock = 1;
-    document.getElementById("magentaspell").innerHTML = "10";
     document.getElementById("magentaspell").style.backgroundImage =
       "url(images/spells/magenta_spell.webp)";
     timer = 60;
@@ -3596,39 +3534,13 @@ function buymagentaspell() {
 //uhh if the price scales with the amount of magic u make then whats the point even,,?
 //the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
-  if (magic >= magentaspellprice && dialoguestate >= 7) {
+  if (dialoguestate >= 7) {
     if (dialoguestate === 7) {
       chatupdate();
       timer = 30;
     }
-    magic -= magentaspellprice;
-    magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
-    document.getElementById("magentaspell").innerHTML = formatSmallNumber(
-      Math.round(magentaspellprice)
-    );
-    //random nr between 0.1 and 0.9
-    randomnumber = Math.random() * 0.8 + 0.1;
-    if (Math.random() < 0.5) {
-      if (Math.random() < 0.5) {
-        console.log("red" + randomnumber);
-        red -= red * randomnumber;
-        magenta += debugmagicnumber * randomnumber * 10;
-      } else {
-        console.log("green" + randomnumber);
-        green -= green * randomnumber;
-        magenta += debugmagicnumber * randomnumber * 10;
-      }
-    } else {
-      if (Math.random() < 0.5) {
-        console.log("blue" + randomnumber);
-        blue -= blue * randomnumber;
-        magenta += debugmagicnumber * randomnumber * 10;
-      } else {
-        console.log("yellow" + randomnumber);
-        yellow -= yellow * randomnumber;
-        magenta += debugmagicnumber * randomnumber * 10;
-      }
-    }
+    magenta += magic/3;
+    magic = 0;
   }
 }
 
@@ -3839,7 +3751,7 @@ function chatupdate() {
     say("now purchase your first spell for 10 magic.");
     dialoguestate++;
   } else if (dialoguestate === 5 && tab === "magenta") {
-    say("great! this spell takes some colors and gives you magenta for it.");
+    say("great! this spell converts magic into magento at a 3:1 ratio.");
     dialoguestate++;
   } else if (dialoguestate === 6 && tab === "magenta") {
     say("go ahead, try casting it. the first one's on me.");
@@ -3862,7 +3774,7 @@ function chatupdate() {
     dialoguestate++;
   } else if (dialoguestate === 12 && tab === "magenta") {
     say(
-      "these spells all travel one minute into the future, but only for their colors."
+      "these spells all exchange magic for colors. 1 magic for 1 second worth."
     );
     dialoguestate++;
   } else if (dialoguestate === 13 && tab === "magenta") {
@@ -4247,10 +4159,6 @@ function save() {
     currentnerdmode: currentnerdmode,
     dialoguestate: dialoguestate,
     words: words,
-    magentaspellprice: magentaspellprice,
-    redspellprice: redspellprice,
-    greenspellprice: greenspellprice,
-    bluespellprice: bluespellprice,
     spell1unlock: spell1unlock,
     spell2unlock: spell2unlock,
     spell3unlock: spell3unlock,
@@ -4300,5 +4208,9 @@ function triggerExplosion() {
 }
 
 function buy_spell(){
+  var tempwords = words;
+  window.setTimeout(function(){
+    say(tempwords);
+  }, 3000)
   say("coming soon!");
 }
