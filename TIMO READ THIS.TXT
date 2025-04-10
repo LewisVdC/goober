@@ -8,11 +8,15 @@ achievements maybe?? idk
 sounds fun
 
 any ideas for the 8 spells left?
-1: something that costs yellow?
-2: idem
-3: cyan absolutely sucks to get so maybe something for that
-4: temporary boost to all production?? weaker version of all 3 of the first spells combined or temporary increased production
-5: 
-6:
-7:
-8:
+blue spell: gives 1s worth of blue
+green spell: gives 1s worth of green
+red spell: gives 1s worth of red
+cyan spell: transmute magic into cyan
+cyan spell 2: boost upgrade buyer in some way (maybe it gets cheaper or buys faster for some time)
+magenta spell: gives magenta for magic
+orange spell: makes game go faster
+pink spell: lowers risk in black hole
+purple spell: boosts random resource
+rainbow spell: boosts all resources
+yellow spell: gives 1s worth of yellow
+yellow spell 2: increases yellow effects?
