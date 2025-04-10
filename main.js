@@ -920,7 +920,7 @@ function showtab(x) {
   }
   if (x === "green") {
     tab = "green";
-    if (tasksCompleted > 99 && greenscrollcount === 0) {
+    if (dialoguestate >= 11 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle =
@@ -1927,7 +1927,7 @@ window.setInterval(function () {
       } else if (document.querySelector("#magentabuild4:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiplies blue filter gain by the amount of blue filters"; //maybe here
+          "gives 500 magic/s"; //maybe here
       } else if (document.querySelector("#blueupgrade3:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -2123,7 +2123,7 @@ window.setInterval(function () {
         document.getElementById("blueupgrade2").style.display = "block";
         document.getElementById("blueupgrade3").style.display = "block";
       }
-      if (magenta > 0) {
+      if (dialoguestate >= 11) {
         if (redscrollcount === 0) {
           document.getElementById("redscroll").style.display = "inline-block";
         }
@@ -3420,7 +3420,7 @@ function redscroll() {
 }
 
 function buyredscroll() {
-  if (red >= 1e17) {
+  if (red >= 1e17 && dialoguestate >= 11) {
     spell1unlock++;
     red -= 1e17;
     redscrollcount++;
@@ -3438,12 +3438,17 @@ function buyredscroll() {
           " to go."
       );
     }
+  }else{
+    window.setTimeout(function(){
+      showtab("magenta");
+      say("you need at least 1e17 red to grasp that scroll.");
+    }, 500);
   }
 }
 function buygreenscroll() {
-  if (green >= 1e17) {
+  if (green >= 1e18 && dialoguestate >= 11) {
     spell2unlock++;
-    green -= 1e17;
+    green -= 1e18;
     greenscrollcount++;
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("submitTaskButton").style.position = "relative";
@@ -3464,12 +3469,17 @@ function buygreenscroll() {
           " more."
       );
     }
+  }else{
+    window.setTimeout(function(){
+      showtab("magenta");
+      say("you need at least 1e18 green to grasp that scroll.");
+    }, 500);
   }
 }
 function buybluescroll() {
-  if (blue >= 1e17) {
+  if (blue >= 1e19 && dialoguestate >= 11) {
     spell3unlock++;
-    blue -= 1e17;
+    blue -= 1e19;
     bluescrollcount++;
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.backgroundImage =
@@ -3485,6 +3495,11 @@ function buybluescroll() {
           " more and then you're done."
       );
     }
+  }else{
+    window.setTimeout(function(){
+      showtab("magenta");
+      say("you need at least 1e19 blue to grasp that scroll.");
+    }, 500);
   }
 }
 //TODO BALANCING
