@@ -592,6 +592,12 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     }
     //magic and magenta
+    if(typeof savegame.cooldownspells !== "undefined")
+      cooldownspells = savegame.cooldownspells;
+    if(typeof savegame.cooldowntimes !== "undefined")
+      cooldowntimes = savegame.cooldowntimes;
+    if(typeof savegame.cooldowntimeleft !== "undefined")
+      cooldowntimeleft = savegame.cooldowntimeleft;
     if (typeof savegame.spell1unlock !== "undefined")
       spell1unlock = savegame.spell1unlock;
     if (typeof savegame.spell2unlock !== "undefined")
@@ -4190,6 +4196,9 @@ function save() {
     spell2unlock: spell2unlock,
     spell3unlock: spell3unlock,
     streamlinedTaskColorGoal: streamlinedTaskColorGoal,
+    cooldownspells: cooldownspells,
+    cooldowntimeleft: cooldowntimeleft,
+    cooldowntimes: cooldowntimes,
   };
   localStorage.setItem("save", JSON.stringify(save));
   document.getElementById("saving").setAttribute("class", "");
