@@ -1658,7 +1658,6 @@ window.setInterval(function () {
       ) {
         chatupdate();
       }
-
       //if loaded === 1 is important for keeping everything from
       //doing stuff its not supposed to before gameload
       window.scrollBy(-window.innerWidth, 0);
@@ -2387,6 +2386,7 @@ window.setInterval(function () {
           (1 + tricolorboostcount * 0.5 * (yellow / 1000))
       );
     }
+
   }
 }, 10);
 
