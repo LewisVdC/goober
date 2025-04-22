@@ -4316,3 +4316,12 @@ function resetMagenta(){
   document.body.style.display = "none";
   window.setTimeout(function(){location.reload();}, 2000);
 }
+
+//achievements
+function displayAchievements(){
+  if(document.getElementById("achievementsTab").style.display !== "flex"){
+    document.getElementById("achievementsTab").style.display = "flex";
+  }else{
+    document.getElementById("achievementsTab").style.display = "none";
+  }
+}

@@ -1369,3 +1369,23 @@ div#saving.fadeout {
 #no{
   background: linear-gradient(45deg, #003e00, #32db32, #025202);
 }
+#achievementsButton{
+  position: fixed;
+  margin-top: 0;
+  margin-left: 79px;
+  width: auto;
+}
+#achievementsTab{
+  position: fixed;
+  border: inset black 2px;
+  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+  width: 70vh;
+  height: 60vh;
+  margin-left: calc(50vw - 35vh);
+  margin-top: 20vh;
+  z-index: 19;
+  display: none;
+  color: white;
+  text-shadow: none;
+  justify-content: center;
+}
