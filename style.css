@@ -1437,6 +1437,7 @@ div#saving.fadeout {
   display: none;
 }
 #achievementNotification{
+  z-index: 22;
   color: rgb(200, 25, 25);
   border-color: rgb(200, 25, 25);
   position: fixed;
@@ -1452,4 +1453,13 @@ div#saving.fadeout {
 }
 #notificationImage{
   height: 100%;
+}
+
+@keyframes achievementMsg{
+  0%{
+    transform: translateX(30vw);
+  }
+  100%{
+    transform: translateX(0);
+  }
 }

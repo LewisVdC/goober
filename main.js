@@ -866,10 +866,6 @@ function load() {
     console.log("no saved game");
     loaded = 1;
   }
-  document.getElementById("achievementNotification").style.borderColor = document.getElementById("tasks").style.borderColor;
-  document.getElementById("achievementNotification").style.color = document.getElementById("tasks").style.color;
-  getImageColor("notificationImage", 1,1);
-  document.getElementById("achievementNotification").style.backgroundColor = imageColor;
 }
 
 // most important one bc yea oh nvm this is kinda useless
@@ -1277,11 +1273,6 @@ function showtab(x) {
     document.getElementById("submitTaskButton").classList.add("whiteupgrades");
     document.getElementById("body").style.backgroundColor = "rgb(80, 80, 80)";
   }
-  //achievement notification
-  document.getElementById("achievementNotification").style.borderColor = document.getElementById("tasks").style.borderColor;
-  document.getElementById("achievementNotification").style.color = document.getElementById("tasks").style.color;
-  getImageColor("notificationImage", 1,1);
-  document.getElementById("achievementNotification").style.backgroundColor = imageColor;
 }
 //surprisingly small calc functions
 function calcred(number) {
@@ -4327,10 +4318,6 @@ function resetMagenta(){
 }
 
 //achievement
-let achievement = {
-  one: 0,
-  two: 0,
-}
 
 //achievement menu
 function displayachievement(){
@@ -4365,58 +4352,14 @@ document.querySelectorAll(".achievement-item").forEach(item => {
   })
 });
 
+//achievements
+let achievement = {
+  redfilter1: false,
+  redPerSec10: false,
+}
 //achievement checking loop
 window.setInterval(function(){
-  //empty for now 
+  if(achievement.redfilter1 === false && redfilter === 1){
+    achievement.redfilter1 = true;
+  }
 },500);
-
-
-
-//chatgpt
-let imageColor;
-
-// Get image color
-function getImageColor(imageId, xper, yper) {
-  const img = document.getElementById(imageId);
-  const canvas = document.getElementById('notificationCanvas');
-  
-  if (!img || !canvas) {
-    console.error("Image or Canvas element not found.");
-    return;
-  }
-
-  const ctx = canvas.getContext('2d');
-
-  // Ensure the image is loaded
-  if (img.complete) {
-    drawAndExtractColor();
-  } else {
-    img.onload = drawAndExtractColor;
-  }
-
-  function drawAndExtractColor() {
-    // Set canvas dimensions to match the image
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    // Draw the image on the canvas
-    ctx.drawImage(img, 0, 0);
-
-    // Calculate the pixel position based on percentages
-    const x = Math.round(img.width / 100 * xper); // Round to nearest whole pixel
-    const y = Math.round(img.height / 100 * yper); // Round to nearest whole pixel
-
-    console.log(`x: ${x}, y: ${y}`); // Log calculated coordinates
-
-    // Get pixel data at (x, y)
-    const pixel = ctx.getImageData(x, y, 1, 1).data;
-    const r = pixel[0]; // Red channel
-    const g = pixel[1]; // Green channel
-    const b = pixel[2]; // Blue channel
-    const a = pixel[3]; // Alpha channel (transparency)
-
-    // Convert RGBA to a CSS color string
-    imageColor = `rgba(${r}, ${g}, ${b}, ${a / 255})`;
-    console.log(imageColor); // Log the RGBA color
-  }
-}
