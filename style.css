@@ -653,6 +653,9 @@ button#tabblack {
   color: white;
   box-shadow: 0 0 50px 5px black;
 }
+button {
+  background-color: unset;
+}
 .redupgrades {
   background-color: rgb(200, 25, 25);
   background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
@@ -1293,4 +1296,3 @@ span#blackboost {
 div#saving.fadeout {
   animation: fadeout 1s forwards;
 }
-
