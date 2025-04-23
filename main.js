@@ -592,11 +592,11 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     }
     //magic and magenta
-    if(typeof savegame.cooldownspells !== "undefined")
+    if (typeof savegame.cooldownspells !== "undefined")
       cooldownspells = savegame.cooldownspells;
-    if(typeof savegame.cooldowntimes !== "undefined")
+    if (typeof savegame.cooldowntimes !== "undefined")
       cooldowntimes = savegame.cooldowntimes;
-    if(typeof savegame.cooldowntimeleft !== "undefined")
+    if (typeof savegame.cooldowntimeleft !== "undefined")
       cooldowntimeleft = savegame.cooldowntimeleft;
     if (typeof savegame.spell1unlock !== "undefined")
       spell1unlock = savegame.spell1unlock;
@@ -1931,8 +1931,7 @@ window.setInterval(function () {
         document.getElementById("nerdmodetext").innerHTML = "gives 50 magic/s";
       } else if (document.querySelector("#magentabuild4:hover") != null) {
         nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "gives 500 magic/s"; //maybe here
+        document.getElementById("nerdmodetext").innerHTML = "gives 500 magic/s"; //maybe here
       } else if (document.querySelector("#blueupgrade3:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -2386,7 +2385,6 @@ window.setInterval(function () {
           (1 + tricolorboostcount * 0.5 * (yellow / 1000))
       );
     }
-
   }
 }, 10);
 
@@ -3346,31 +3344,34 @@ function buydrink() {
 
 function spell1() {
   if (spell1unlock === 1) {
-    if(document.getElementById("redshell").style.background === ''){
-      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+    if (document.getElementById("redshell").style.background === "") {
+      let tribute =
+        (document.getElementById("magicslider").value / 100) * magic;
       red = red + debugrednumber * tribute;
       magic -= tribute;
-      spellCoolDown("#redshell",4000);
+      spellCoolDown("#redshell", 4000);
     }
   }
 }
 function spell2() {
   if (spell2unlock === 1) {
-    if(document.getElementById("greenshell").style.background === ''){
-      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+    if (document.getElementById("greenshell").style.background === "") {
+      let tribute =
+        (document.getElementById("magicslider").value / 100) * magic;
       green = green + debuggreennumber * tribute;
       magic -= tribute;
-      spellCoolDown("#greenshell",4000);
+      spellCoolDown("#greenshell", 4000);
     }
   }
 }
 function spell3() {
   if (spell3unlock === 1) {
-    if(document.getElementById("blueshell").style.background === ''){
-      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+    if (document.getElementById("blueshell").style.background === "") {
+      let tribute =
+        (document.getElementById("magicslider").value / 100) * magic;
       blue = blue + debugbluenumber * tribute;
       magic -= tribute;
-      spellCoolDown("#blueshell",4000);
+      spellCoolDown("#blueshell", 4000);
     }
   }
 }
@@ -3444,8 +3445,8 @@ function buyredscroll() {
           " to go."
       );
     }
-  }else{
-    window.setTimeout(function(){
+  } else {
+    window.setTimeout(function () {
       showtab("magenta");
       say("you need at least 1e17 red to grasp that scroll.");
     }, 500);
@@ -3475,8 +3476,8 @@ function buygreenscroll() {
           " more."
       );
     }
-  }else{
-    window.setTimeout(function(){
+  } else {
+    window.setTimeout(function () {
       showtab("magenta");
       say("you need at least 1e18 green to grasp that scroll.");
     }, 500);
@@ -3501,8 +3502,8 @@ function buybluescroll() {
           " more and then you're done."
       );
     }
-  }else{
-    window.setTimeout(function(){
+  } else {
+    window.setTimeout(function () {
       showtab("magenta");
       say("you need at least 1e19 blue to grasp that scroll.");
     }, 500);
@@ -3574,9 +3575,10 @@ function castmagentaspell() {
       chatupdate();
       timer = 30;
     }
-    if(document.getElementById("magentashell").style.background === ''){
-      let tribute = (document.getElementById("magicslider").value / 100) * magic;
-      magenta += tribute/3;
+    if (document.getElementById("magentashell").style.background === "") {
+      let tribute =
+        (document.getElementById("magicslider").value / 100) * magic;
+      magenta += tribute / 3;
       magic -= tribute;
       spellCoolDown("#magentashell", 1000);
     }
@@ -4251,32 +4253,35 @@ function buy_spell() {
   say("coming soon!");
 }
 
-
 //cooldown shenanigains
 let cooldownspells = [];
 let cooldowntimes = [];
 let cooldowntimeleft = [];
 
-function spellCoolDown(queryselector, cooldowntime){
+function spellCoolDown(queryselector, cooldowntime) {
   cooldownspells.push(queryselector);
   cooldowntimes.push(cooldowntime);
   cooldowntimeleft.push(cooldowntime);
-  document.querySelector(queryselector+" > button").style.opacity = "0.5";
-  window.setTimeout(function(){
-    document.querySelector(queryselector+" > button").style.opacity = "1";
-  },cooldowntime)
+  document.querySelector(queryselector + " > button").style.opacity = "0.5";
+  window.setTimeout(function () {
+    document.querySelector(queryselector + " > button").style.opacity = "1";
+  }, cooldowntime);
 }
 
 window.setInterval(function () {
   for (let i = cooldownspells.length - 1; i >= 0; i--) {
-    let fillPercent = cooldowntimeleft[i] / cooldowntimes[i] * 100;
+    let fillPercent = (cooldowntimeleft[i] / cooldowntimes[i]) * 100;
     document.querySelector(cooldownspells[i]).style.background =
-      "linear-gradient(360deg, gray " + fillPercent + "%, transparent " + fillPercent + "%)";
-    
+      "linear-gradient(360deg, gray " +
+      fillPercent +
+      "%, transparent " +
+      fillPercent +
+      "%)";
+
     cooldowntimeleft[i] -= 50;
-    
+
     if (cooldowntimeleft[i] <= 0) {
-      document.querySelector(cooldownspells[i]).style.background = '';
+      document.querySelector(cooldownspells[i]).style.background = "";
       cooldownspells.splice(i, 1);
       cooldowntimes.splice(i, 1);
       cooldowntimeleft.splice(i, 1);
@@ -4284,46 +4289,57 @@ window.setInterval(function () {
   }
 }, 50);
 
-document.getElementById("magicslider").oninput = function(){
+document.getElementById("magicslider").oninput = function () {
   document.getElementById("magicinput").value = this.value;
 };
-document.getElementById("magicinput").oninput = function(){
+document.getElementById("magicinput").oninput = function () {
   document.getElementById("magicslider").value = this.value;
-}
+};
 
 //stuck
-function stuck(){
-  if(document.getElementById("helpmenu").style.display === "flex"){
+function stuck() {
+  if (document.getElementById("helpmenu").style.display === "flex") {
     document.getElementById("helpmenu").style.display = "none";
-  }else{
+  } else {
     document.getElementById("helpmenu").style.display = "flex";
   }
 }
 
-function resetMagenta(){
+function resetMagenta() {
   stuck();
-  document.getElementById("magentaspell").setAttribute("onclick", "buymagentaspell()");
-  cauldron=study=feed=feedperson=drink=magic=0;
-  magenta=cauldroncost=10;
-  studycost=100;
-  feedcost=1000;
-  feedpersoncost=10000;
-  drinkcost=100000;
-  spell1unlock=spell2unlock=spell3unlock=magentaspellunlock=redscrollcount=greenscrollcount=bluescrollcount=0;
-  dialoguestate=0;
-  say('');
+  document
+    .getElementById("magentaspell")
+    .setAttribute("onclick", "buymagentaspell()");
+  cauldron = study = feed = feedperson = drink = magic = 0;
+  magenta = cauldroncost = 10;
+  studycost = 100;
+  feedcost = 1000;
+  feedpersoncost = 10000;
+  drinkcost = 100000;
+  spell1unlock =
+    spell2unlock =
+    spell3unlock =
+    magentaspellunlock =
+    redscrollcount =
+    greenscrollcount =
+    bluescrollcount =
+      0;
+  dialoguestate = 0;
+  say("");
   save();
   document.body.style.display = "none";
-  window.setTimeout(function(){location.reload();}, 2000);
+  window.setTimeout(function () {
+    location.reload();
+  }, 2000);
 }
 
 //achievement
 
 //achievement menu
-function displayachievement(){
-  if(document.getElementById("achievementTab").style.display !== "flex"){
+function displayachievement() {
+  if (document.getElementById("achievementTab").style.display !== "flex") {
     document.getElementById("achievementTab").style.display = "flex";
-  }else{
+  } else {
     document.getElementById("achievementTab").style.display = "none";
   }
 }
@@ -4331,25 +4347,38 @@ function displayachievement(){
 //info follows mouse
 let infoXpos = 0;
 let infoYpos = 0;
-window.addEventListener("mousemove", function(e){
+window.addEventListener("mousemove", function (e) {
   infoXpos = e.clientX;
   infoYpos = e.clientY;
-  this.document.getElementById("achievementInfo").style.top = "calc(" + infoYpos + "px - "+ document.getElementById("achievementInfo").offsetHeight +"px - 7.5vh)";
-  this.document.getElementById("achievementInfo").style.left = "calc(" + infoXpos + "px" + " - 7.5vw)";
+  this.document.getElementById("achievementInfo").style.top =
+    "calc(" +
+    infoYpos +
+    "px - " +
+    document.getElementById("achievementInfo").offsetHeight +
+    "px - 7.5vh)";
+  this.document.getElementById("achievementInfo").style.left =
+    "calc(" + infoXpos + "px" + " - 7.5vw)";
 });
 
+const achievementinfo = document.getElementById("achievementInfo");
+
 //add detecting abilities to all achievement buttons
-document.querySelectorAll(".achievement-item").forEach(item => {
+document.querySelectorAll(".achievement-item").forEach((item) => {
   //info appears on hover
-  item.addEventListener("mouseover", function(){
+  item.addEventListener("mouseover", function () {
     document.getElementById("achievementInfo").style.display = "block";
-    document.getElementById("requirementInfo").innerHTML = this.dataset.achievement;
+    document.getElementById("requirementInfo").innerHTML =
+      this.dataset.achievement;
     document.getElementById("rewardInfo").innerHTML = this.dataset.reward;
-  })
+
+    achievementinfo.classList.add("achievementfade");
+    achievementinfo.classList.remove("achievementfadeaway");
+  });
   //info dissapears after hover
-  item.addEventListener("mouseout", function(){
-    document.getElementById("achievementInfo").style.display = "none";
-  })
+  item.addEventListener("mouseout", function () {
+    achievementinfo.classList.add("achievementfadeaway");
+    achievementinfo.classList.remove("achievementfade");
+  });
 });
 
 //achievements
