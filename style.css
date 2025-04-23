@@ -717,7 +717,7 @@ div#confusion {
 }
 #magentabuildings {
   margin-top: 10px;
-  color: magenta;
+  color: rgb(255, 55, 255);
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
