@@ -1421,6 +1421,7 @@ div#saving.fadeout {
   text-shadow: 0 0 3px white;
 }
 #achievementsInfo{
+  background: black;
   padding: 3px;
   border: solid gray 1px;
   border-radius: 7px;
