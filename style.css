@@ -750,7 +750,7 @@ div#confusion {
 }
 button:hover:not(.submit, #enterbutton, .spell) {
   scale: 1.1;
-  z-index: 9999;
+  z-index: 18;
 }
 button:not(.submit) {
   transition: 0.2s ease-out !important;
@@ -903,6 +903,43 @@ div#spellcasting {
 }
 .spellshell:hover {
   transform: scale(1.1);
+}
+#magicslider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #510b68;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+#magicslider:hover {
+  opacity: 1;
+}
+#magicslider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(black 20%, magenta);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#magicslider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04aa6d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+#magicinput {
+  background: linear-gradient(45deg, darkmagenta, magenta, darkmagenta);
+  width: 3.2vh;
+}
+#magicinputbox {
+  margin-left: 3vh;
 }
 p#think {
   text-align: center;
@@ -1108,12 +1145,12 @@ div#lewissucks.animate {
 }
 
 #Settings {
-  z-index: 20;
+  z-index: 17;
   position: fixed;
   width: 79px;
 }
 #settingscontainer {
-  z-index: 20;
+  z-index: 17;
   margin-top: 30px;
   flex-direction: column;
   display: none;
@@ -1295,4 +1332,91 @@ span#blackboost {
 }
 div#saving.fadeout {
   animation: fadeout 1s forwards;
+}
+
+#helpmenu {
+  box-shadow: inset 0 0 15vh #2f2f2f;
+  text-shadow: 0 0 5px white;
+  border: inset black;
+  color: white;
+  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+  flex-wrap: wrap;
+  display: none;
+  position: fixed;
+  z-index: 99;
+  height: 40%;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30vw;
+  margin-top: 30vh;
+  border-radius: 2%;
+}
+#magentaresettext {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 4vh;
+  text-align: center;
+}
+.yesno {
+  border-radius: 5%;
+  font-size: large;
+  margin: 1vh;
+  width: 10vw;
+  height: 10vh;
+}
+#yes {
+  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
+}
+#no {
+  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+}
+#achievementsButton {
+  position: fixed;
+  margin-top: 0;
+  margin-left: 79px;
+  width: auto;
+}
+#achievementsTab {
+  overflow-y: scroll;
+  position: fixed;
+  border: inset black 2px;
+  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+  width: 65vh;
+  height: 55vh;
+  margin-left: calc(50vw - 37.5vh - 1px);
+  margin-top: calc(22.5vh - 1px);
+  z-index: 19;
+  display: none;
+  color: white;
+  text-shadow: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5vh;
+}
+#achievementsTab::-webkit-scrollbar {
+  display: none;
+}
+#achievementHolder {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.achievement-item {
+  background-image: "images/locked_idiot.webp";
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.achievement-item > img {
+  width: 100%;
+  height: 100%;
+}
+#achievementsText {
+  margin: 5%;
+  width: 70vh;
+  text-align: center;
+}
+.achievement-item:hover {
 }

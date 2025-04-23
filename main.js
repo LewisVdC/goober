@@ -592,6 +592,12 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     }
     //magic and magenta
+    if(typeof savegame.cooldownspells !== "undefined")
+      cooldownspells = savegame.cooldownspells;
+    if(typeof savegame.cooldowntimes !== "undefined")
+      cooldowntimes = savegame.cooldowntimes;
+    if(typeof savegame.cooldowntimeleft !== "undefined")
+      cooldowntimeleft = savegame.cooldowntimeleft;
     if (typeof savegame.spell1unlock !== "undefined")
       spell1unlock = savegame.spell1unlock;
     if (typeof savegame.spell2unlock !== "undefined")
@@ -920,7 +926,7 @@ function showtab(x) {
   }
   if (x === "green") {
     tab = "green";
-    if (tasksCompleted > 99 && greenscrollcount === 0) {
+    if (dialoguestate >= 11 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle =
@@ -1652,7 +1658,6 @@ window.setInterval(function () {
       ) {
         chatupdate();
       }
-
       //if loaded === 1 is important for keeping everything from
       //doing stuff its not supposed to before gameload
       window.scrollBy(-window.innerWidth, 0);
@@ -1927,7 +1932,7 @@ window.setInterval(function () {
       } else if (document.querySelector("#magentabuild4:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiplies blue filter gain by the amount of blue filters"; //maybe here
+          "gives 500 magic/s"; //maybe here
       } else if (document.querySelector("#blueupgrade3:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -2123,7 +2128,7 @@ window.setInterval(function () {
         document.getElementById("blueupgrade2").style.display = "block";
         document.getElementById("blueupgrade3").style.display = "block";
       }
-      if (magenta > 0) {
+      if (dialoguestate >= 11) {
         if (redscrollcount === 0) {
           document.getElementById("redscroll").style.display = "inline-block";
         }
@@ -2381,6 +2386,7 @@ window.setInterval(function () {
           (1 + tricolorboostcount * 0.5 * (yellow / 1000))
       );
     }
+
   }
 }, 10);
 
@@ -3340,20 +3346,32 @@ function buydrink() {
 
 function spell1() {
   if (spell1unlock === 1) {
-    red = red + debugrednumber * magic;
-    magic = 0;
+    if(document.getElementById("redshell").style.background === ''){
+      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      red = red + debugrednumber * tribute;
+      magic -= tribute;
+      spellCoolDown("#redshell",4000);
+    }
   }
 }
 function spell2() {
   if (spell2unlock === 1) {
-    green = green + debuggreennumber * magic;
-    magic = 0;
+    if(document.getElementById("greenshell").style.background === ''){
+      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      green = green + debuggreennumber * tribute;
+      magic -= tribute;
+      spellCoolDown("#greenshell",4000);
+    }
   }
 }
 function spell3() {
   if (spell3unlock === 1) {
-    blue = blue + debugbluenumber * magic;
-    magic = 0;
+    if(document.getElementById("blueshell").style.background === ''){
+      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      blue = blue + debugbluenumber * tribute;
+      magic -= tribute;
+      spellCoolDown("#blueshell",4000);
+    }
   }
 }
 //oh and make it so u have to unlock the spells that sounds silly
@@ -3408,7 +3426,7 @@ function redscroll() {
 }
 
 function buyredscroll() {
-  if (red >= 1e17) {
+  if (red >= 1e17 && dialoguestate >= 11) {
     spell1unlock++;
     red -= 1e17;
     redscrollcount++;
@@ -3426,12 +3444,17 @@ function buyredscroll() {
           " to go."
       );
     }
+  }else{
+    window.setTimeout(function(){
+      showtab("magenta");
+      say("you need at least 1e17 red to grasp that scroll.");
+    }, 500);
   }
 }
 function buygreenscroll() {
-  if (green >= 1e17) {
+  if (green >= 1e18 && dialoguestate >= 11) {
     spell2unlock++;
-    green -= 1e17;
+    green -= 1e18;
     greenscrollcount++;
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("submitTaskButton").style.position = "relative";
@@ -3452,12 +3475,17 @@ function buygreenscroll() {
           " more."
       );
     }
+  }else{
+    window.setTimeout(function(){
+      showtab("magenta");
+      say("you need at least 1e18 green to grasp that scroll.");
+    }, 500);
   }
 }
 function buybluescroll() {
-  if (blue >= 1e17) {
+  if (blue >= 1e19 && dialoguestate >= 11) {
     spell3unlock++;
-    blue -= 1e17;
+    blue -= 1e19;
     bluescrollcount++;
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.backgroundImage =
@@ -3473,6 +3501,11 @@ function buybluescroll() {
           " more and then you're done."
       );
     }
+  }else{
+    window.setTimeout(function(){
+      showtab("magenta");
+      say("you need at least 1e19 blue to grasp that scroll.");
+    }, 500);
   }
 }
 //TODO BALANCING
@@ -3541,8 +3574,12 @@ function castmagentaspell() {
       chatupdate();
       timer = 30;
     }
-    magenta += magic / 3;
-    magic = 0;
+    if(document.getElementById("magentashell").style.background === ''){
+      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      magenta += tribute/3;
+      magic -= tribute;
+      spellCoolDown("#magentashell", 1000);
+    }
   }
 }
 
@@ -4159,6 +4196,9 @@ function save() {
     spell2unlock: spell2unlock,
     spell3unlock: spell3unlock,
     streamlinedTaskColorGoal: streamlinedTaskColorGoal,
+    cooldownspells: cooldownspells,
+    cooldowntimeleft: cooldowntimeleft,
+    cooldowntimes: cooldowntimes,
   };
   localStorage.setItem("save", JSON.stringify(save));
   document.getElementById("saving").setAttribute("class", "");
@@ -4209,4 +4249,79 @@ function buy_spell() {
     say(tempwords);
   }, 3000);
   say("coming soon!");
+}
+
+
+//cooldown shenanigains
+let cooldownspells = [];
+let cooldowntimes = [];
+let cooldowntimeleft = [];
+
+function spellCoolDown(queryselector, cooldowntime){
+  cooldownspells.push(queryselector);
+  cooldowntimes.push(cooldowntime);
+  cooldowntimeleft.push(cooldowntime);
+  document.querySelector(queryselector+" > button").style.opacity = "0.5";
+  window.setTimeout(function(){
+    document.querySelector(queryselector+" > button").style.opacity = "1";
+  },cooldowntime)
+}
+
+window.setInterval(function () {
+  for (let i = cooldownspells.length - 1; i >= 0; i--) {
+    let fillPercent = cooldowntimeleft[i] / cooldowntimes[i] * 100;
+    document.querySelector(cooldownspells[i]).style.background =
+      "linear-gradient(360deg, gray " + fillPercent + "%, transparent " + fillPercent + "%)";
+    
+    cooldowntimeleft[i] -= 50;
+    
+    if (cooldowntimeleft[i] <= 0) {
+      document.querySelector(cooldownspells[i]).style.background = '';
+      cooldownspells.splice(i, 1);
+      cooldowntimes.splice(i, 1);
+      cooldowntimeleft.splice(i, 1);
+    }
+  }
+}, 50);
+
+document.getElementById("magicslider").oninput = function(){
+  document.getElementById("magicinput").value = this.value;
+};
+document.getElementById("magicinput").oninput = function(){
+  document.getElementById("magicslider").value = this.value;
+}
+
+//stuck
+function stuck(){
+  if(document.getElementById("helpmenu").style.display === "flex"){
+    document.getElementById("helpmenu").style.display = "none";
+  }else{
+    document.getElementById("helpmenu").style.display = "flex";
+  }
+}
+
+function resetMagenta(){
+  stuck();
+  document.getElementById("magentaspell").setAttribute("onclick", "buymagentaspell()");
+  cauldron=study=feed=feedperson=drink=magic=0;
+  magenta=cauldroncost=10;
+  studycost=100;
+  feedcost=1000;
+  feedpersoncost=10000;
+  drinkcost=100000;
+  spell1unlock=spell2unlock=spell3unlock=magentaspellunlock=redscrollcount=greenscrollcount=bluescrollcount=0;
+  dialoguestate=0;
+  say('');
+  save();
+  document.body.style.display = "none";
+  window.setTimeout(function(){location.reload();}, 2000);
+}
+
+//achievements
+function displayAchievements(){
+  if(document.getElementById("achievementsTab").style.display !== "flex"){
+    document.getElementById("achievementsTab").style.display = "flex";
+  }else{
+    document.getElementById("achievementsTab").style.display = "none";
+  }
 }
