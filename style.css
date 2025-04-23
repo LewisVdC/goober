@@ -35,6 +35,7 @@ body {
   text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
 }
 div#tasks {
+  display: none;
   color: rgb(200, 25, 25);
   position: absolute;
   text-align: right;
@@ -1411,15 +1412,17 @@ div#saving.fadeout {
   height: 100%;
 }
 .achievement-item > img {
+  border: inset black;
   border-radius: 5%;
   width: 95%;
   height: 95%;
 }
 #achievementText {
+  color: white;
   margin: 0 5% 5% 5%;
   width: 70vh;
   text-align: center;
-  text-shadow: 0 0 3px white;
+  text-shadow: none !important;
 }
 #achievementInfo {
   text-align: center;
@@ -1448,7 +1451,7 @@ div#saving.fadeout {
   padding: 0;
   width: 20vw;
   height: 10vh;
-  display: flex;
+  display: none;
   align-items: center;
 }
 #notificationImage {
@@ -1459,33 +1462,17 @@ div#saving.fadeout {
   0% {
     transform: translateX(30vw);
   }
-  100% {
+  20% {
     transform: translateX(0);
   }
-}
-div#achievementInfo.achievementfade {
-  animation: achievementboxfade 0.2s ease-in;
-}
-
-@keyframes achievementboxfade {
-  0% {
-    opacity: 0%;
+  80%{
+    transform: translateX(0);
   }
-  100% {
-    opacity: 100%;
+  100%{
+    transform: translateX(30vw);
   }
 }
-div#achievementInfo.achievementfadeaway {
-  animation: achievementboxfadeaway 1s ease-in forwards;
-}
-@keyframes achievementboxfadeaway {
-  0% {
-    opacity: 100%;
-  }
-  80% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 0%;
-  }
+#achievementNotification.slide{
+  display: flex !important;
+  animation: achievementMsg 6s ease-out forwards;
 }

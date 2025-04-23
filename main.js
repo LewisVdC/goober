@@ -260,6 +260,18 @@ function load() {
   }
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
+    //achievement and nerdmode
+    if(typeof savegame.achievement !== "undefined")
+      achievement = savegame.achievement;
+    if(achievement.redfilter1 === true){
+      achievementItemImg[0].src = achievementNotificationImg.src = "images/achievements/redfilter1.webp";
+    }
+    if(achievement.redPerSec10 === true){
+      achievementItemImg[1].src = achievementNotificationImg.src = "images/achievements/redPerSec10.webp";
+      document.getElementById("tasks").style.display = "block";
+    }
+
+
     if (typeof savegame.currentnerdmode !== "undefined")
       currentnerdmode = savegame.currentnerdmode;
     nerdmode(currentnerdmode);
@@ -275,9 +287,9 @@ function load() {
     timer = 50;
     if (typeof savegame.dialoguestate !== "undefined")
       dialoguestate = savegame.dialoguestate;
-    if (typeof savegame.words !== "undefined") words = savegame.words;
+    if (typeof savegame.words !== "undefined"){words = savegame.words;
     alberto.style.opacity = "1";
-    alberto.innerHTML = words;
+    alberto.innerHTML = words;}
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
     if (typeof savegame.redfilter !== "undefined")
@@ -368,196 +380,196 @@ function load() {
     if (typeof savegame.yellow !== "undefined") yellow = savegame.yellow;
     if (typeof savegame.governmentfundingcount !== "undefined")
       governmentfundingcount = savegame.governmentfundingcount;
-    if (typeof savegame.governmentfundingprice !== "undefined")
+    if (typeof savegame.governmentfundingprice !== "undefined"){
       governmentfundingprice = savegame.governmentfundingprice;
     document.getElementById("governmentfundingprice").innerHTML =
-      governmentfundingprice;
+      governmentfundingprice;}
     if (typeof savegame.largerprismscount !== "undefined")
       largerprismscount = savegame.largerprismscount;
-    if (typeof savegame.largerprismsprice !== "undefined")
+    if (typeof savegame.largerprismsprice !== "undefined"){
       largerprismsprice = savegame.largerprismsprice;
-    document.getElementById("largerprismsprice").innerHTML = largerprismsprice;
+    document.getElementById("largerprismsprice").innerHTML = largerprismsprice;}
     if (typeof savegame.colorharmonycount !== "undefined")
       colorharmonycount = savegame.colorharmonycount;
-    if (typeof savegame.colorharmonyprice !== "undefined")
+    if (typeof savegame.colorharmonyprice !== "undefined"){
       colorharmonyprice = savegame.colorharmonyprice;
-    document.getElementById("colorharmonyprice").innerHTML = colorharmonyprice;
+    document.getElementById("colorharmonyprice").innerHTML = colorharmonyprice;}
     if (typeof savegame.streamlinedtaskscount !== "undefined")
       streamlinedtaskscount = savegame.streamlinedtaskscount;
-    if (typeof savegame.streamlinedtasksprice !== "undefined")
+    if (typeof savegame.streamlinedtasksprice !== "undefined"){
       streamlinedtasksprice = savegame.streamlinedtasksprice;
     document.getElementById("streamlinedtasksprice").innerHTML =
-      streamlinedtasksprice;
+      streamlinedtasksprice;}
     if (typeof savegame.yellowsynergycount !== "undefined")
       yellowsynergycount = savegame.yellowsynergycount;
-    if (typeof savegame.yellowsynergyprice !== "undefined")
+    if (typeof savegame.yellowsynergyprice !== "undefined"){
       yellowsynergyprice = savegame.yellowsynergyprice;
     document.getElementById("yellowsynergyprice").innerHTML =
-      yellowsynergyprice;
+      yellowsynergyprice;}
     if (typeof savegame.redoverflowcount !== "undefined")
       redoverflowcount = savegame.redoverflowcount;
-    if (typeof savegame.redoverflowprice !== "undefined")
+    if (typeof savegame.redoverflowprice !== "undefined"){
       redoverflowprice = savegame.redoverflowprice;
-    document.getElementById("redoverflowprice").innerHTML = redoverflowprice;
+    document.getElementById("redoverflowprice").innerHTML = redoverflowprice;}
     if (typeof savegame.greenoverflowcount !== "undefined")
       greenoverflowcount = savegame.greenoverflowcount;
-    if (typeof savegame.greenoverflowprice !== "undefined")
+    if (typeof savegame.greenoverflowprice !== "undefined"){
       greenoverflowprice = savegame.greenoverflowprice;
     document.getElementById("greenoverflowprice").innerHTML =
-      greenoverflowprice;
+      greenoverflowprice;}
     if (typeof savegame.blueoverflowcount !== "undefined")
       blueoverflowcount = savegame.blueoverflowcount;
-    if (typeof savegame.blueoverflowprice !== "undefined")
-      blueoverflowprice = savegame.blueoverflowprice;
-    document.getElementById("blueoverflowprice").innerHTML = blueoverflowprice;
+    if (typeof savegame.blueoverflowprice !== "undefined"){
+       blueoverflowprice = savegame.blueoverflowprice;
+    document.getElementById("blueoverflowprice").innerHTML = blueoverflowprice;}
     if (typeof savegame.tricolorboostcount !== "undefined")
       tricolorboostcount = savegame.tricolorboostcount;
-    if (typeof savegame.tricolorboostprice !== "undefined")
+    if (typeof savegame.tricolorboostprice !== "undefined"){
       tricolorboostprice = savegame.tricolorboostprice;
     document.getElementById("tricolorboostprice").innerHTML =
-      tricolorboostprice;
+      tricolorboostprice;}
     if (typeof savegame.taskmasterycount !== "undefined")
       taskmasterycount = savegame.taskmasterycount;
-    if (typeof savegame.taskmasteryprice !== "undefined")
+    if (typeof savegame.taskmasteryprice !== "undefined"){
       taskmasteryprice = savegame.taskmasteryprice;
-    document.getElementById("taskmasteryprice").innerHTML = taskmasteryprice;
+    document.getElementById("taskmasteryprice").innerHTML = taskmasteryprice;}
     if (typeof savegame.goldenmultipliercount !== "undefined")
       goldenmultipliercount = savegame.goldenmultipliercount;
-    if (typeof savegame.goldenmultiplierprice !== "undefined")
+    if (typeof savegame.goldenmultiplierprice !== "undefined"){
       goldenmultiplierprice = savegame.goldenmultiplierprice;
     document.getElementById("goldenmultiplierprice").innerHTML =
-      goldenmultiplierprice;
+      goldenmultiplierprice;}
     if (typeof savegame.colorsyphoncount !== "undefined")
       colorsyphoncount = savegame.colorsyphoncount;
-    if (typeof savegame.colorsyphonprice !== "undefined")
+    if (typeof savegame.colorsyphonprice !== "undefined"){
       colorsyphonprice = savegame.colorsyphonprice;
-    document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
+    document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;}
     if (typeof savegame.focussedpointerscount !== "undefined")
       focussedpointerscount = savegame.focussedpointerscount;
-    if (typeof savegame.focussedpointersprice !== "undefined")
+    if (typeof savegame.focussedpointersprice !== "undefined"){
       focussedpointersprice = savegame.focussedpointersprice;
     document.getElementById("focussedpointersprice").innerHTML =
-      focussedpointersprice;
+      focussedpointersprice;}
     if (typeof savegame.finerfilterscount !== "undefined")
       finerfilterscount = savegame.finerfilterscount;
-    if (typeof savegame.finerfiltersprice !== "undefined")
+    if (typeof savegame.finerfiltersprice !== "undefined"){
       finerfiltersprice = savegame.finerfiltersprice;
-    document.getElementById("finerfiltersprice").innerHTML = finerfiltersprice;
+    document.getElementById("finerfiltersprice").innerHTML = finerfiltersprice;}
     if (typeof savegame.micrometerwavecount !== "undefined")
       micrometerwavecount = savegame.micrometerwavecount;
-    if (typeof savegame.micrometerwaveprice !== "undefined")
+    if (typeof savegame.micrometerwaveprice !== "undefined"){
       micrometerwaveprice = savegame.micrometerwaveprice;
     document.getElementById("micrometerwaveprice").innerHTML =
-      micrometerwaveprice;
+      micrometerwaveprice;}
     if (typeof savegame.strongersynergycount !== "undefined")
       strongersynergycount = savegame.strongersynergycount;
-    if (typeof savegame.strongersynergyprice !== "undefined")
+    if (typeof savegame.strongersynergyprice !== "undefined"){
       strongersynergyprice = savegame.strongersynergyprice;
     document.getElementById("strongersynergyprice").innerHTML =
-      strongersynergyprice;
+      strongersynergyprice;}
     //cyan
     if (typeof savegame.cyan !== "undefined") cyan = savegame.cyan;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.round(cyan);
     if (typeof savegame.redfilterautomationcount !== "undefined")
       redfilterautomationcount = savegame.redfilterautomationcount;
-    if (typeof savegame.redfilterautomationprice !== "undefined")
+    if (typeof savegame.redfilterautomationprice !== "undefined"){
       redfilterautomationprice = savegame.redfilterautomationprice;
     document.getElementById("redfilterautomationprice").innerHTML = Math.round(
       redfilterautomationprice
-    );
+    );}
     if (typeof savegame.redpointerautomationcount !== "undefined")
       redpointerautomationcount = savegame.redpointerautomationcount;
-    if (typeof savegame.redpointerautomationprice !== "undefined")
+    if (typeof savegame.redpointerautomationprice !== "undefined"){
       redpointerautomationprice = savegame.redpointerautomationprice;
     document.getElementById("redpointerautomationprice").innerHTML = Math.round(
       redpointerautomationprice
-    );
+    );}
     if (typeof savegame.bigredfilterautomationcount !== "undefined")
       bigredfilterautomationcount = savegame.bigredfilterautomationcount;
-    if (typeof savegame.bigredfilterautomationprice !== "undefined")
+    if (typeof savegame.bigredfilterautomationprice !== "undefined"){
       bigredfilterautomationprice = savegame.bigredfilterautomationprice;
     document.getElementById("bigredfilterautomationprice").innerHTML =
-      Math.round(bigredfilterautomationprice);
+      Math.round(bigredfilterautomationprice);}
     if (typeof savegame.bigredpointerautomationcount !== "undefined")
       bigredpointerautomationcount = savegame.bigredpointerautomationcount;
-    if (typeof savegame.bigredpointerautomationprice !== "undefined")
+    if (typeof savegame.bigredpointerautomationprice !== "undefined"){
       bigredpointerautomationprice = savegame.bigredpointerautomationprice;
     document.getElementById("bigredpointerautomationprice").innerHTML =
-      Math.round(bigredpointerautomationprice);
-    if (typeof savegame.rednanometerwaveautomationcount !== "undefined")
+      Math.round(bigredpointerautomationprice);}
+    if (typeof savegame.rednanometerwaveautomationcount !== "undefined"){
       rednanometerwaveautomationcount =
-        savegame.rednanometerwaveautomationcount;
-    if (typeof savegame.rednanometerwaveautomationprice !== "undefined")
+        savegame.rednanometerwaveautomationcount;}
+    if (typeof savegame.rednanometerwaveautomationprice !== "undefined"){
       rednanometerwaveautomationprice =
         savegame.rednanometerwaveautomationprice;
     document.getElementById("rednanometerwaveautomationprice").innerHTML =
-      Math.round(rednanometerwaveautomationprice);
+      Math.round(rednanometerwaveautomationprice);}
     if (typeof savegame.greenfilterautomationcount !== "undefined")
       greenfilterautomationcount = savegame.greenfilterautomationcount;
-    if (typeof savegame.greenfilterautomationprice !== "undefined")
+    if (typeof savegame.greenfilterautomationprice !== "undefined"){
       greenfilterautomationprice = savegame.greenfilterautomationprice;
     document.getElementById("greenfilterautomationprice").innerHTML =
-      Math.round(greenfilterautomationprice);
+      Math.round(greenfilterautomationprice);}
     if (typeof savegame.greenpointerautomationcount !== "undefined")
       greenpointerautomationcount = savegame.greenpointerautomationcount;
-    if (typeof savegame.greenpointerautomationprice !== "undefined")
+    if (typeof savegame.greenpointerautomationprice !== "undefined"){
       greenpointerautomationprice = savegame.greenpointerautomationprice;
     document.getElementById("greenpointerautomationprice").innerHTML =
-      Math.round(greenpointerautomationprice);
+      Math.round(greenpointerautomationprice);}
     if (typeof savegame.biggreenfilterautomationcount !== "undefined")
       biggreenfilterautomationcount = savegame.biggreenfilterautomationcount;
-    if (typeof savegame.biggreenfilterautomationprice !== "undefined")
+    if (typeof savegame.biggreenfilterautomationprice !== "undefined"){
       biggreenfilterautomationprice = savegame.biggreenfilterautomationprice;
     document.getElementById("biggreenfilterautomationprice").innerHTML =
-      Math.round(biggreenfilterautomationprice);
+      Math.round(biggreenfilterautomationprice);}
     if (typeof savegame.biggreenpointerautomationcount !== "undefined")
       biggreenpointerautomationcount = savegame.biggreenpointerautomationcount;
-    if (typeof savegame.biggreenpointerautomationprice !== "undefined")
+    if (typeof savegame.biggreenpointerautomationprice !== "undefined"){
       biggreenpointerautomationprice = savegame.biggreenpointerautomationprice;
     document.getElementById("biggreenpointerautomationprice").innerHTML =
-      Math.round(biggreenpointerautomationprice);
-    if (typeof savegame.greennanometerwaveautomationcount !== "undefined")
+      Math.round(biggreenpointerautomationprice);}
+    if (typeof savegame.greennanometerwaveautomationcount !== "undefined"){
       greennanometerwaveautomationcount =
-        savegame.greennanometerwaveautomationcount;
-    if (typeof savegame.greennanometerwaveautomationprice !== "undefined")
+        savegame.greennanometerwaveautomationcount;}
+    if (typeof savegame.greennanometerwaveautomationprice !== "undefined"){
       greennanometerwaveautomationprice =
         savegame.greennanometerwaveautomationprice;
     document.getElementById("greennanometerwaveautomationprice").innerHTML =
-      Math.round(greennanometerwaveautomationprice);
+      Math.round(greennanometerwaveautomationprice);}
     if (typeof savegame.bluefilterautomationcount !== "undefined")
       bluefilterautomationcount = savegame.bluefilterautomationcount;
-    if (typeof savegame.bluefilterautomationprice !== "undefined")
+    if (typeof savegame.bluefilterautomationprice !== "undefined"){
       bluefilterautomationprice = savegame.bluefilterautomationprice;
     document.getElementById("bluefilterautomationprice").innerHTML = Math.round(
       bluefilterautomationprice
-    );
+    );}
     if (typeof savegame.bluepointerautomationcount !== "undefined")
       bluepointerautomationcount = savegame.bluepointerautomationcount;
-    if (typeof savegame.bluepointerautomationprice !== "undefined")
+    if (typeof savegame.bluepointerautomationprice !== "undefined"){
       bluepointerautomationprice = savegame.bluepointerautomationprice;
     document.getElementById("bluepointerautomationprice").innerHTML =
-      Math.round(bluepointerautomationprice);
+      Math.round(bluepointerautomationprice);}
     if (typeof savegame.bigbluefilterautomationcount !== "undefined")
       bigbluefilterautomationcount = savegame.bigbluefilterautomationcount;
-    if (typeof savegame.bigbluefilterautomationprice !== "undefined")
+    if (typeof savegame.bigbluefilterautomationprice !== "undefined"){
       bigbluefilterautomationprice = savegame.bigbluefilterautomationprice;
     document.getElementById("bigbluefilterautomationprice").innerHTML =
-      Math.round(bigbluefilterautomationprice);
+      Math.round(bigbluefilterautomationprice);}
     if (typeof savegame.bigbluepointerautomationcount !== "undefined")
       bigbluepointerautomationcount = savegame.bigbluepointerautomationcount;
-    if (typeof savegame.bigbluepointerautomationprice !== "undefined")
+    if (typeof savegame.bigbluepointerautomationprice !== "undefined"){
       bigbluepointerautomationprice = savegame.bigbluepointerautomationprice;
     document.getElementById("bigbluepointerautomationprice").innerHTML =
-      Math.round(bigbluepointerautomationprice);
-    if (typeof savegame.bluenanometerwaveautomationcount !== "undefined")
+      Math.round(bigbluepointerautomationprice);}
+    if (typeof savegame.bluenanometerwaveautomationcount !== "undefined"){
       bluenanometerwaveautomationcount =
-        savegame.bluenanometerwaveautomationcount;
-    if (typeof savegame.bluenanometerwaveautomationprice !== "undefined")
+        savegame.bluenanometerwaveautomationcount;}
+    if (typeof savegame.bluenanometerwaveautomationprice !== "undefined"){
       bluenanometerwaveautomationprice =
         savegame.bluenanometerwaveautomationprice;
     document.getElementById("bluenanometerwaveautomationprice").innerHTML =
-      Math.round(bluenanometerwaveautomationprice);
+      Math.round(bluenanometerwaveautomationprice);}
     if (typeof savegame.redtogglestate !== "undefined")
       redtogglestate = savegame.redtogglestate;
     if (redtogglestate) {
@@ -4201,6 +4213,7 @@ function save() {
     cooldownspells: cooldownspells,
     cooldowntimeleft: cooldowntimeleft,
     cooldowntimes: cooldowntimes,
+    achievement: achievement,
   };
   localStorage.setItem("save", JSON.stringify(save));
   document.getElementById("saving").setAttribute("class", "");
@@ -4360,7 +4373,6 @@ window.addEventListener("mousemove", function (e) {
     "calc(" + infoXpos + "px" + " - 7.5vw)";
 });
 
-const achievementinfo = document.getElementById("achievementInfo");
 
 //add detecting abilities to all achievement buttons
 document.querySelectorAll(".achievement-item").forEach((item) => {
@@ -4370,14 +4382,10 @@ document.querySelectorAll(".achievement-item").forEach((item) => {
     document.getElementById("requirementInfo").innerHTML =
       this.dataset.achievement;
     document.getElementById("rewardInfo").innerHTML = this.dataset.reward;
-
-    achievementinfo.classList.add("achievementfade");
-    achievementinfo.classList.remove("achievementfadeaway");
   });
   //info dissapears after hover
   item.addEventListener("mouseout", function () {
-    achievementinfo.classList.add("achievementfadeaway");
-    achievementinfo.classList.remove("achievementfade");
+    document.getElementById("achievementInfo").style.display = "none";
   });
 });
 
@@ -4387,6 +4395,7 @@ let achievement = {
   redPerSec10: false,
 }
 
+const achievementNotification = document.getElementById("achievementNotification");
 const achievementItemImg = document.querySelectorAll(".achievement-item>img");
 const achievementNotificationImg = document.querySelector("#achievementNotification>img");
 
@@ -4396,9 +4405,32 @@ window.setInterval(function(){
 },500);
 
 function checkAchievement(){
-  if(achievement.redfilter1 === false && redfilter === 1){
+  if(achievement.redfilter1 === false && redfilter >= 1){
     achievement.redfilter1 = true;
     achievementItemImg[0].src = achievementNotificationImg.src = "images/achievements/redfilter1.webp";
-    //trigger animation
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout("achievementNotification.classList.remove('slide');", 6000);
   }
+  if(achievement.redPerSec10 === false && debugrednumber >= 10){
+    achievement.redPerSec10 = true;
+    achievementItemImg[1].src = achievementNotificationImg.src = "images/achievements/redPerSec10.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout("achievementNotification.classList.remove('slide');", 6000);
+    document.getElementById("tasks").style.display = "block";
+  }
+
+  /*achievement template
+  if(achievement.namebi === false && condition){
+    achievement.namebi = true;
+    achievementItemImg[0].src = achievementNotificationImg.src = "images/achievements/namebi.webp";
+    achievementNotification.classList.add("slide");
+    window.setTimeout("achievementNotification.classList.remove('slide');", 6000);
+  }
+  */
 }
