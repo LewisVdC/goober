@@ -1372,13 +1372,13 @@ div#saving.fadeout {
 #no {
   background: linear-gradient(45deg, #003e00, #32db32, #025202);
 }
-#achievementsButton {
+#achievementButton {
   position: fixed;
   margin-top: 0;
   margin-left: 79px;
   width: auto;
 }
-#achievementsTab {
+#achievementTab {
   box-shadow: black 0px 0px 20px 2px;
   overflow-y: scroll;
   position: fixed;
@@ -1396,7 +1396,7 @@ div#saving.fadeout {
   flex-wrap: wrap;
   padding: 5vh;
 }
-#achievementsTab::-webkit-scrollbar {
+#achievementTab::-webkit-scrollbar {
   display: none;
 }
 #achievementHolder {
@@ -1415,13 +1415,13 @@ div#saving.fadeout {
   width: 95%;
   height: 95%;
 }
-#achievementsText {
+#achievementText {
   margin: 0 5% 5% 5%;
   width: 70vh;
   text-align: center;
   text-shadow: 0 0 3px white;
 }
-#achievementsInfo{
+#achievementInfo{
   text-align: center;
   background: black;
   padding: 3px;
@@ -1435,4 +1435,21 @@ div#saving.fadeout {
   color: white;
   text-shadow: 0 0 3px white;
   display: none;
+}
+#achievementNotification{
+  color: rgb(200, 25, 25);
+  border-color: rgb(200, 25, 25);
+  position: fixed;
+  border-width: medium;
+  border-style: outset none none outset;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  width: 20vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+#notificationImage{
+  height: 100%;
 }
