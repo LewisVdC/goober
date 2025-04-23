@@ -4346,8 +4346,8 @@ let infoXpos = 0;
 let infoYpos = 0;
 window.addEventListener("mousemove", function(e){
   infoXpos = e.clientX;
-  infoYpos = e.clientY - 60;
-  this.document.getElementById("achievementInfo").style.top = "calc(" + infoYpos + "px" + " - "+ document.getElementById("achievementInfo").offsetHeight +"px + "+this.window.scrollY+"px + 7.5vh)";
+  infoYpos = e.clientY;
+  this.document.getElementById("achievementInfo").style.top = "calc(" + infoYpos + "px - "+ document.getElementById("achievementInfo").offsetHeight +"px - 7.5vh)";
   this.document.getElementById("achievementInfo").style.left = "calc(" + infoXpos + "px" + " - 7.5vw)";
 });
 

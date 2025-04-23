@@ -1429,7 +1429,7 @@ div#saving.fadeout {
   border-radius: 7px;
   width: 15vw;
   z-index: 21;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   color: white;
