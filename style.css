@@ -1465,14 +1465,41 @@ div#saving.fadeout {
   20% {
     transform: translateX(0);
   }
-  80%{
+  80% {
     transform: translateX(0);
   }
-  100%{
+  100% {
     transform: translateX(30vw);
   }
 }
-#achievementNotification.slide{
+#achievementNotification.slide {
   display: flex !important;
   animation: achievementMsg 6s ease-out forwards;
+}
+
+div#achievementInfo.achievementfade {
+  animation: achievementboxfade 0.2s ease-in;
+}
+
+@keyframes achievementboxfade {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+div#achievementInfo.achievementfadeaway {
+  animation: achievementboxfadeaway 1s ease-in forwards;
+}
+@keyframes achievementboxfadeaway {
+  0% {
+    opacity: 100%;
+  }
+  80% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
 }
