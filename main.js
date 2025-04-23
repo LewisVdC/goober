@@ -4398,6 +4398,7 @@ let achievement = {
 const achievementNotification = document.getElementById("achievementNotification");
 const achievementItemImg = document.querySelectorAll(".achievement-item>img");
 const achievementNotificationImg = document.querySelector("#achievementNotification>img");
+const achievementNotificationText = document.querySelector("#achievementNotification>p");
 
 //achievement checking loop
 window.setInterval(function(){
