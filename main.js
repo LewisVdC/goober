@@ -1664,7 +1664,7 @@ window.setInterval(function () {
       //some nerdy stuff
       //nerdmode text "margins" (actually width in disguise)
       document.getElementById("nerdmodetext").style.width =
-        "calc(50% - 220px - " +
+        "calc(50% - 320px - " +
         String(
           document.getElementById("tabwhite").getBoundingClientRect().width
         ) +
@@ -4325,3 +4325,26 @@ function displayAchievements(){
     document.getElementById("achievementsTab").style.display = "none";
   }
 }
+
+//info follows mouse
+let infoXpos = 0;
+let infoYpos = 0;
+window.addEventListener("mousemove", function(e){
+  infoXpos = e.clientX;
+  infoYpos = e.clientY - 60;
+  this.document.getElementById("achievementsInfo").style.top = infoYpos + "px";
+  this.document.getElementById("achievementsInfo").style.left = "calc(" + infoXpos + "px" + " - 7.5vw)";
+});
+
+//add detecting abilities to all achievement buttons
+document.querySelectorAll(".achievement-item").forEach(item => {
+  //info appears on hover
+  item.addEventListener("mouseover", function(){
+    document.getElementById("achievementsInfo").style.display = "block";
+    document.getElementById("achievementsInfo").innerHTML = this.dataset.achievement;
+  })
+  //info dissapears after hover
+  item.addEventListener("mouseout", function(){
+    document.getElementById("achievementsInfo").style.display = "none";
+  })
+});
