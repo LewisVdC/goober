@@ -1415,7 +1415,7 @@ div#saving.fadeout {
   height: 95%;
 }
 #achievementsText {
-  margin: 5%;
+  margin: 0 5% 5% 5%;
   width: 70vh;
   text-align: center;
   text-shadow: 0 0 3px white;
