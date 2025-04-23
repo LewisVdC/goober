@@ -4406,9 +4406,9 @@ window.addEventListener("mousemove", function (e) {
     infoYpos +
     "px - " +
     document.getElementById("achievementInfo").offsetHeight +
-    "px - 7.5vh)";
+    "px - 1vh)";
   this.document.getElementById("achievementInfo").style.left =
-    "calc(" + infoXpos + "px" + " - 7.5vw)";
+    "calc(" + infoXpos + "px" + " - 1vw)";
 });
 
 //add detecting abilities to all achievement buttons
