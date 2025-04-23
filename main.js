@@ -4357,9 +4357,19 @@ let achievement = {
   redfilter1: false,
   redPerSec10: false,
 }
+
+const achievementItemImg = document.querySelectorAll(".achievement-item>img");
+const achievementNotificationImg = document.querySelector("#achievementNotification>img");
+
 //achievement checking loop
 window.setInterval(function(){
+  checkAchievement();
+},500);
+
+function checkAchievement(){
   if(achievement.redfilter1 === false && redfilter === 1){
     achievement.redfilter1 = true;
+    achievementItemImg[0].src = achievementNotificationImg.src = "images/achievements/redfilter1.webp";
+    //trigger animation
   }
-},500);
+}
