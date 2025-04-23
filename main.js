@@ -4318,6 +4318,12 @@ function resetMagenta(){
 }
 
 //achievements
+let achievements = {
+  one: 0,
+  two: 0,
+}
+
+//achievement menu
 function displayAchievements(){
   if(document.getElementById("achievementsTab").style.display !== "flex"){
     document.getElementById("achievementsTab").style.display = "flex";
@@ -4332,7 +4338,7 @@ let infoYpos = 0;
 window.addEventListener("mousemove", function(e){
   infoXpos = e.clientX;
   infoYpos = e.clientY - 60;
-  this.document.getElementById("achievementsInfo").style.top = infoYpos + "px";
+  this.document.getElementById("achievementsInfo").style.top = "calc(" + infoYpos + "px" + " - "+ document.getElementById("achievementsInfo").offsetHeight +"px + 7.5vh)";
   this.document.getElementById("achievementsInfo").style.left = "calc(" + infoXpos + "px" + " - 7.5vw)";
 });
 
@@ -4341,7 +4347,8 @@ document.querySelectorAll(".achievement-item").forEach(item => {
   //info appears on hover
   item.addEventListener("mouseover", function(){
     document.getElementById("achievementsInfo").style.display = "block";
-    document.getElementById("achievementsInfo").innerHTML = this.dataset.achievement;
+    document.getElementById("requirementInfo").innerHTML = this.dataset.achievement;
+    document.getElementById("rewardInfo").innerHTML = this.dataset.reward;
   })
   //info dissapears after hover
   item.addEventListener("mouseout", function(){

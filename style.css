@@ -1379,6 +1379,7 @@ div#saving.fadeout {
   width: auto;
 }
 #achievementsTab {
+  box-shadow: black 0px 0px 20px 2px;
   overflow-y: scroll;
   position: fixed;
   border: inset black 2px;
@@ -1421,6 +1422,7 @@ div#saving.fadeout {
   text-shadow: 0 0 3px white;
 }
 #achievementsInfo{
+  text-align: center;
   background: black;
   padding: 3px;
   border: solid gray 1px;
