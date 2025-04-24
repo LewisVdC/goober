@@ -15,6 +15,14 @@ var offlineTime = 0;
 var time = Date.now();
 var visibilityState = "visible";
 
+//achievements
+let achievement = {
+  redfilter1: false,
+  redPerSec10: false,
+  greenfilter1: false,
+  bluefilter1: false,
+};
+
 //red
 var red = 10;
 var redfilter = 0;
@@ -271,6 +279,14 @@ function load() {
       achievementItemImg[1].src = achievementNotificationImg.src =
         "images/achievements/redPerSec10.webp";
       document.getElementById("tasks").style.display = "block";
+    }
+    if (achievement.greenfilter1 === true) {
+      achievementItemImg[4].src = achievementNotificationImg.src =
+        "images/achievements/greenfilter1.webp";
+    }
+    if (achievement.bluefilter1 === true) {
+      achievementItemImg[8].src = achievementNotificationImg.src =
+        "images/achievements/bluefilter1.webp";
     }
 
     if (typeof savegame.currentnerdmode !== "undefined")
@@ -4430,10 +4446,6 @@ document.querySelectorAll(".achievement-item").forEach((item) => {
 });
 
 //achievements
-let achievement = {
-  redfilter1: false,
-  redPerSec10: false,
-};
 
 const achievementNotification = document.getElementById(
   "achievementNotification"
@@ -4481,13 +4493,30 @@ function checkAchievement() {
     );
     document.getElementById("tasks").style.display = "block";
   }
-
-  /*achievement template
-  if(achievement.namebi === false && condition){
-    achievement.namebi = true;
-    achievementItemImg[0].src = achievementNotificationImg.src = "images/achievements/namebi.webp";
+  if (achievement.greenfilter1 === false && greenfilter >= 1) {
+    achievement.greenfilter1 = true;
+    achievementItemImg[4].src = achievementNotificationImg.src =
+      "images/achievements/greenfilter1.webp";
     achievementNotification.classList.add("slide");
-    window.setTimeout("achievementNotification.classList.remove('slide');", 6000);
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
   }
-  */
+  if (achievement.bluefilter1 === false && bluefilter >= 1) {
+    achievement.bluefilter1 = true;
+    achievementItemImg[8].src = achievementNotificationImg.src =
+      "images/achievements/bluefilter1.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
 }
