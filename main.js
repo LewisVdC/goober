@@ -4443,6 +4443,8 @@ document.querySelectorAll(".achievement-item").forEach((item) => {
     document.getElementById("rewardInfo").innerHTML = this.dataset.reward;
     achievementinfo.classList.add("achievementfade");
     achievementinfo.classList.remove("achievementfadeaway");
+    document.getElementById("achievementInfo").style.background =
+      this.dataset.color;
   });
   //info dissapears after hover
   item.addEventListener("mouseout", function () {
