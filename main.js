@@ -281,11 +281,11 @@ function load() {
       document.getElementById("tasks").style.display = "block";
     }
     if (achievement.greenfilter1 === true) {
-      achievementItemImg[4].src = achievementNotificationImg.src =
+      achievementItemImg[6].src = achievementNotificationImg.src =
         "images/achievements/greenfilter1.webp";
     }
     if (achievement.bluefilter1 === true) {
-      achievementItemImg[8].src = achievementNotificationImg.src =
+      achievementItemImg[12].src = achievementNotificationImg.src =
         "images/achievements/bluefilter1.webp";
     }
 
@@ -4495,7 +4495,7 @@ function checkAchievement() {
   }
   if (achievement.greenfilter1 === false && greenfilter >= 1) {
     achievement.greenfilter1 = true;
-    achievementItemImg[4].src = achievementNotificationImg.src =
+    achievementItemImg[6].src = achievementNotificationImg.src =
       "images/achievements/greenfilter1.webp";
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = "#172311";
@@ -4508,7 +4508,7 @@ function checkAchievement() {
   }
   if (achievement.bluefilter1 === false && bluefilter >= 1) {
     achievement.bluefilter1 = true;
-    achievementItemImg[8].src = achievementNotificationImg.src =
+    achievementItemImg[12].src = achievementNotificationImg.src =
       "images/achievements/bluefilter1.webp";
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = "#100F22";
