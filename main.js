@@ -22,8 +22,10 @@ let achievement = {
   have1e5red: false,
   greenfilter1: false,
   greenPerSec100: false,
+  have1e6green: false,
   bluefilter1: false,
   bluePerSec1000: false,
+  have1e7blue: false,
 };
 
 //red
@@ -295,6 +297,10 @@ function load() {
       achievementItemImg[7].src = achievementNotificationImg.src =
         "images/achievements/greenPerSec100.webp";
     }
+    if (achievement.have1e6green === true) {
+      achievementItemImg[8].src = achievementNotificationImg.src =
+        "images/achievements/have1e6green.webp";
+    }
     if (achievement.bluefilter1 === true) {
       achievementItemImg[12].src = achievementNotificationImg.src =
         "images/achievements/bluefilter1.webp";
@@ -302,6 +308,10 @@ function load() {
     if (achievement.bluePerSec1000 === true) {
       achievementItemImg[13].src = achievementNotificationImg.src =
         "images/achievements/bluePerSec1000.webp";
+    }
+    if (achievement.have1e7blue === true) {
+      achievementItemImg[14].src = achievementNotificationImg.src =
+        "images/achievements/have1e7blue.webp";
     }
 
     if (typeof savegame.currentnerdmode !== "undefined")
@@ -2186,23 +2196,23 @@ window.setInterval(function () {
         document.getElementById("redupgrade2").style.display = "block";
         document.getElementById("redupgrade3").style.display = "inline-block";
       }
-      if (green >= 50000) {
+      if (debuggreennumber >= 5000 && achievement.have1e6green === true) {
         document.getElementById("greenupgrades").style.display = "flex";
         document.getElementById("greenupgradesbox").style.display = "grid";
         document.getElementById("greenupgrade1").style.display = "block";
       }
-      if (green >= 100000) {
+      if (debuggreennumber >= 50000 && achievement.have1e6green === true) {
         document.getElementById("greenupgrades").style.display = "flex";
         document.getElementById("greenupgradesbox").style.display = "grid";
         document.getElementById("greenupgrade2").style.display = "block";
         document.getElementById("greenupgrade3").style.display = "block";
       }
-      if (blue >= 50000) {
+      if (debugbluenumber >= 5000 && achievement.have1e7blue === true) {
         document.getElementById("blueupgrades").style.display = "flex";
         document.getElementById("blueupgradesbox").style.display = "grid";
         document.getElementById("blueupgrade1").style.display = "block";
       }
-      if (blue >= 100000) {
+      if (debugbluenumber >= 50000 && achievement.have1e7blue === true) {
         document.getElementById("blueupgrades").style.display = "flex";
         document.getElementById("blueupgradesbox").style.display = "grid";
         document.getElementById("blueupgrade2").style.display = "block";
@@ -4558,6 +4568,19 @@ function checkAchievement() {
       6000
     );
   }
+  if (achievement.have1e6green === false && green >= 1000000) {
+    achievement.have1e6green = true;
+    achievementItemImg[8].src = achievementNotificationImg.src =
+      "images/achievements/have1e6green.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
   //blue
   if (achievement.bluefilter1 === false && bluefilter >= 1) {
     achievement.bluefilter1 = true;
@@ -4576,6 +4599,19 @@ function checkAchievement() {
     achievement.bluePerSec1000 = true;
     achievementItemImg[13].src = achievementNotificationImg.src =
       "images/achievements/bluePerSec1000.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.have1e7blue === false && blue >= 10000000) {
+    achievement.have1e7blue = true;
+    achievementItemImg[14].src = achievementNotificationImg.src =
+      "images/achievements/have1e7blue.webp";
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = "#100F22";
     achievementNotification.style.color = "#0B1EED";
