@@ -20,12 +20,15 @@ let achievement = {
   redfilter1: false,
   redPerSec10: false,
   have1e5red: false,
+  buyAllRedUpgrades: false,
   greenfilter1: false,
   greenPerSec100: false,
   have1e6green: false,
+  buyAllGreenUpgrades: false,
   bluefilter1: false,
   bluePerSec1000: false,
   have1e7blue: false,
+  buyAllBlueUpgrades: false,
 };
 
 //red
@@ -289,6 +292,10 @@ function load() {
       achievementItemImg[2].src = achievementNotificationImg.src =
         "images/achievements/have1e5red.webp";
     }
+    if (achievement.buyAllRedUpgrades === true) {
+      achievementItemImg[3].src = achievementNotificationImg.src =
+        "images/achievements/buyAllRedUpgrades.webp";
+    }
     if (achievement.greenfilter1 === true) {
       achievementItemImg[6].src = achievementNotificationImg.src =
         "images/achievements/greenfilter1.webp";
@@ -301,6 +308,10 @@ function load() {
       achievementItemImg[8].src = achievementNotificationImg.src =
         "images/achievements/have1e6green.webp";
     }
+    if (achievement.buyAllGreenUpgrades === true) {
+      achievementItemImg[9].src = achievementNotificationImg.src =
+        "images/achievements/buyAllGreenUpgrades.webp";
+    }
     if (achievement.bluefilter1 === true) {
       achievementItemImg[12].src = achievementNotificationImg.src =
         "images/achievements/bluefilter1.webp";
@@ -312,6 +323,10 @@ function load() {
     if (achievement.have1e7blue === true) {
       achievementItemImg[14].src = achievementNotificationImg.src =
         "images/achievements/have1e7blue.webp";
+    }
+    if (achievement.buyAllBlueUpgrades === true) {
+      achievementItemImg[15].src = achievementNotificationImg.src =
+        "images/achievements/buyAllBlueUpgrades.webp";
     }
 
     if (typeof savegame.currentnerdmode !== "undefined")
@@ -4541,6 +4556,19 @@ function checkAchievement() {
       6000
     );
   }
+  if (achievement.buyAllRedUpgrades === false && redupgrade1===1 && redupgrade2 ===1 && redupgrade3===1) {
+    achievement.buyAllRedUpgrades = true;
+    achievementItemImg[3].src = achievementNotificationImg.src =
+      "images/achievements/buyAllRedUpgrades.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
   //green
   if (achievement.greenfilter1 === false && greenfilter >= 1) {
     achievement.greenfilter1 = true;
@@ -4581,6 +4609,19 @@ function checkAchievement() {
       6000
     );
   }
+  if (achievement.buyAllGreenUpgrades === false && greenupgrade1===1 && greenupgrade2 ===1 && greenupgrade3===1) {
+    achievement.buyAllGreenUpgrades = true;
+    achievementItemImg[15].src = achievementNotificationImg.src =
+      "images/achievements/buyAllGreenUpgrades.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
   //blue
   if (achievement.bluefilter1 === false && bluefilter >= 1) {
     achievement.bluefilter1 = true;
@@ -4612,6 +4653,19 @@ function checkAchievement() {
     achievement.have1e7blue = true;
     achievementItemImg[14].src = achievementNotificationImg.src =
       "images/achievements/have1e7blue.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.buyAllBlueUpgrades === false && blueupgrade1===1 && blueupgrade2 ===1 && blueupgrade3===1) {
+    achievement.buyAllBlueUpgrades = true;
+    achievementItemImg[15].src = achievementNotificationImg.src =
+      "images/achievements/buyAllBlueUpgrades.webp";
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = "#100F22";
     achievementNotification.style.color = "#0B1EED";
