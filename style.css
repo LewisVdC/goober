@@ -1011,7 +1011,7 @@ div#lewissucks:hover {
   animation-iteration-count: infinite;
 }
 p#blackholecounter {
-  z-index: 1000000;
+  z-index: 10;
   /* z index a million */
 }
 @keyframes shake {
@@ -1237,7 +1237,7 @@ div#blackhole.animate3 {
   }
 }
 div#pourbox {
-  z-index: 2000;
+  z-index: 11;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1286,13 +1286,13 @@ div#pourbox {
   }
 }
 div#pourred {
-  z-index: 2000;
+  z-index: 11;
 }
 button#pourredbutton {
-  z-index: 2000;
+  z-index: 11;
 }
 div#black2 {
-  z-index: 2000;
+  z-index: 10;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -1378,6 +1378,7 @@ div#saving.fadeout {
   margin-top: 0;
   margin-left: 79px;
   width: auto;
+  z-index: 11;
 }
 #achievementTab {
   box-shadow: black 0px 0px 20px 2px;

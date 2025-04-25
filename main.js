@@ -2373,7 +2373,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
       //increase green
       calcgreen(
@@ -2410,7 +2412,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
 
       //increase blue
@@ -2448,7 +2452,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
     }
   }
