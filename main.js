@@ -4611,7 +4611,7 @@ function checkAchievement() {
   }
   if (achievement.buyAllGreenUpgrades === false && greenupgrade1===1 && greenupgrade2 ===1 && greenupgrade3===1) {
     achievement.buyAllGreenUpgrades = true;
-    achievementItemImg[15].src = achievementNotificationImg.src =
+    achievementItemImg[9].src = achievementNotificationImg.src =
       "images/achievements/buyAllGreenUpgrades.webp";
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = "#172311";
