@@ -4315,6 +4315,7 @@ window.addEventListener("focus", function () {
     green += debuggreennumber * (offlineTime / 1000);
     blue += debugbluenumber * (offlineTime / 1000);
     magic += debugmagicnumber * (offlineTime / 1000);
+    yellow += yellowGAIN * 20 * (offlineTime / 1000);
   }
 });
 
