@@ -72,7 +72,6 @@
       <button id="greenscroll" class="greenupgrades" onclick="buygreenscroll()">
         Green scroll: 1e18
       </button>
-
     </div>
 
     <!--counter-->
@@ -117,9 +116,7 @@
         import (file)
       </button>
 
-      <button id="stuck" onclick="stuck()" class="setting">
-        stuck?
-      </button>
+      <button id="stuck" onclick="stuck()" class="setting">stuck?</button>
     </div>
 
     <!--achievement-->
@@ -129,20 +126,20 @@
       <div id="achievementText"><b>Achievements</b></div>
 
       <div id="achievementHolder">
-        <div class="achievement-item" data-achievement="buy your first red filter" data-reward=""><img src="images/locked_idiot.webp"></div>
-        <div class="achievement-item" data-achievement="make 10 red/s" data-reward="<b>reward</b>: unlock tasks"><img src="images/locked_idiot.webp"></div>
-        <div class="achievement-item" data-achievement="have 100000 red" data-reward="<b>reward</b>: unlock red upgrades"><img src="images/locked_idiot.webp"></div>
+        <div class="achievement-item" data-achievement="buy your first red filter" data-reward="" data-color="#261711"><img src="images/locked_idiot.webp"></div>
+        <div class="achievement-item" data-achievement="make 10 red/s" data-reward="<b>reward</b>: unlock tasks" data-color="#261711"><img src="images/locked_idiot.webp"></div>
+        <div class="achievement-item" data-achievement="have 100000 red" data-reward="<b>reward</b>: unlock red upgrades" data-color="#261711"><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
-        <div class="achievement-item" data-achievement="buy your first green filter" data-reward=""><img src="images/locked_idiot.webp"></div>
-        <div class="achievement-item" data-achievement="make 100 green/s" data-reward=""><img src="images/locked_idiot.webp"></div>
+        <div class="achievement-item" data-achievement="buy your first green filter" data-reward="" data-color="#172311"><img src="images/locked_idiot.webp"></div>
+        <div class="achievement-item" data-achievement="make 100 green/s" data-reward="" data-color="#172311"><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
-        <div class="achievement-item" data-achievement="buy your first blue filter" data-reward=""><img src="images/locked_idiot.webp"></div>
-        <div class="achievement-item" data-achievement="make 1000 blue/s" data-reward=""><img src="images/locked_idiot.webp"></div>
+        <div class="achievement-item" data-achievement="buy your first blue filter" data-reward="" data-color="#100F22"><img src="images/locked_idiot.webp"></div>
+        <div class="achievement-item" data-achievement="make 1000 blue/s" data-reward="" data-color="#100F22"><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
         <div class="achievement-item" data-achievement="" data-reward=""><img src="images/locked_idiot.webp"></div>
@@ -168,14 +165,13 @@
     </div>
 
     <div id="achievementNotification">
-      <img src="images/spells/red_spell.webp" id="notificationImage">
-      <canvas id="notificationCanvas" style="display:none;"></canvas>
+      <img src="images/spells/red_spell.webp" id="notificationImage" />
+      <canvas id="notificationCanvas" style="display: none"></canvas>
       <p>You got an achievement!</p>
     </div>
 
     <!-- tabs -->
     <div id="alltabs">
-
       <button id="tabwhite" onclick="showtab('white')">white</button>
 
       <div id="tabs">
@@ -196,7 +192,6 @@
         <button class="tab" id="tabmagenta" onclick="showtab('magenta')">
           Magenta
         </button>
-
       </div>
 
       <button id="tabblack" onclick="showtab('black')">black</button>
@@ -1148,9 +1143,9 @@
           <!-- this is gonna be horrible -->
         </div>
         <div id="spellcasting">cast some spells!</div>
-        <div style="display: flex;">
-          <div id="magicsliderbox"><input type="range" id="magicslider"></div>
-          <div id="magicinputbox"><input value="50" id="magicinput"></div>
+        <div style="display: flex">
+          <div id="magicsliderbox"><input type="range" id="magicslider" /></div>
+          <div id="magicinputbox"><input value="50" id="magicinput" /></div>
         </div>
         <div id="spellcastingbox">
           <p id="think">
@@ -1158,23 +1153,46 @@
           </p>
           <br />
           <div class="spellshell" id="magentashell">
-          <button
-            class="spell"
-            id="magentaspell"
-            onclick="buymagentaspell()"
-          ></button></div>
-          <div class="spellshell" id="redshell"><button class="spell" id="redspell" onclick="spell1()"></button></div>
-          <div class="spellshell" id="greenshell"><button class="spell" id="greenspell" onclick="spell2()"></button></div>
-          <div class="spellshell" id="blueshell"><button class="spell" id="bluespell" onclick="spell3()"></button></div>
-          <div class="spellshell" id="shell"><button class="spell" id="vacant" onclick="buy_spell()"></button></div>
-          <div class="spellshell" id="shell"><button class="spell" id="vacant" onclick="buy_spell()"></button></div>
-          <br>
-          <div class="spellshell" id="shell"><button class="spell" id="vacant" onclick="buy_spell()"></button></div>
-          <div class="spellshell" id="shell"><button class="spell" id="vacant" onclick="buy_spell()"></button></div>
-          <div class="spellshell" id="shell"><button class="spell" id="vacant" onclick="buy_spell()"></button></div>
-          <div class="spellshell" id="shell"><button class="spell" id="vacant" onclick="buy_spell()"></button></div>
-          <div class="spellshell" id="shell"><button class="spell" id="vacant" onclick="buy_spell()"></button></div>
-          <div class="spellshell" id="shell"><button class="spell" id="vacant" onclick="buy_spell()"></button></div>
+            <button
+              class="spell"
+              id="magentaspell"
+              onclick="buymagentaspell()"
+            ></button>
+          </div>
+          <div class="spellshell" id="redshell">
+            <button class="spell" id="redspell" onclick="spell1()"></button>
+          </div>
+          <div class="spellshell" id="greenshell">
+            <button class="spell" id="greenspell" onclick="spell2()"></button>
+          </div>
+          <div class="spellshell" id="blueshell">
+            <button class="spell" id="bluespell" onclick="spell3()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <br />
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
         </div>
       </div>
     </div>

@@ -1972,7 +1972,7 @@ window.setInterval(function () {
       } else if (document.querySelector("#yellowupgrade10:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "get a 5% chance to get a reward of taskReward * 10 * taskmasterylevel";
+          "increase the chance with +1% to get a reward of taskReward * 10 * taskmasterylevel";
       } else if (document.querySelector("#yellowupgrade11:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -2068,7 +2068,7 @@ window.setInterval(function () {
       } else if (document.querySelector("#yellowupgrade10:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "get a 5% chance to get a reward of taskReward * 10 * taskmasterylevel";
+          "increase the chance with +1% to get a reward of taskReward * 10 * taskmasterylevel";
       } else if (document.querySelector("#yellowupgrade11:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -2388,7 +2388,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
       //increase green
       calcgreen(
@@ -2425,7 +2427,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
 
       //increase blue
@@ -2463,7 +2467,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
     }
   }
@@ -2621,7 +2627,7 @@ function submitTask() {
         10 *
         (1 + yellowsynergycount * 0.25) *
         (1 + (goldenmultipliercount * tasksCompleted) / 1000);
-      if (Math.random() * 100 <= 5) {
+      if (Math.random() * 100 <= taskmasterycount) {
         yellow += taskRewardCount * 10 * taskmasterycount;
       }
       document.getElementById("yellowcount").innerHTML =
@@ -4452,6 +4458,8 @@ document.querySelectorAll(".achievement-item").forEach((item) => {
     document.getElementById("rewardInfo").innerHTML = this.dataset.reward;
     achievementinfo.classList.add("achievementfade");
     achievementinfo.classList.remove("achievementfadeaway");
+    document.getElementById("achievementInfo").style.background =
+      this.dataset.color;
   });
   //info dissapears after hover
   item.addEventListener("mouseout", function () {
