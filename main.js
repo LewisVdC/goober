@@ -21,20 +21,38 @@ let achievement = {
   redPerSec10: false,
   have1e5red: false,
   buyAllRedUpgrades: false,
-  make1e15red: false,
+  redPerSec1e15: false,
   have1e20red: false,
   greenfilter1: false,
   greenPerSec100: false,
   have1e6green: false,
   buyAllGreenUpgrades: false,
-  make1e16green: false,
+  greenPerSec1e16: false,
   have1e21green: false,
   bluefilter1: false,
   bluePerSec1000: false,
   have1e7blue: false,
   buyAllBlueUpgrades: false,
-  make1e17blue: false,
+  bluePerSec1e17: false,
   have1e22blue: false,
+  yellow1: false,
+  yellow100: false,
+  triggertaskmastery: false,
+  yellowPerSec10: false,
+  yellowAllUpgrades10: false,
+  have1e7yellow: false,
+  yellowCyan1: false,
+  automation1: false,
+  everyAutomation: false,
+  magicCyan1: false,
+  spellAutomation: false,
+  prestiegeAutomation: false,
+  buyCauldron1: false,
+  castSpell1: false,
+  magicPerSec1e4: false,
+  buyAllScrolls: false,
+  earn1e9magenta: false,
+  allSpellsUnlocked: false,
 };
 
 //red
@@ -302,9 +320,9 @@ function load() {
       achievementItemImg[3].src = achievementNotificationImg.src =
         "images/achievements/buyAllRedUpgrades.webp";
     }
-    if (achievement.make1e15red === true) {
+    if (achievement.redPerSec1e15 === true) {
       achievementItemImg[4].src = achievementNotificationImg.src =
-        "images/achievements/make1e15red.webp";
+        "images/achievements/redPerSec1e15.webp";
     }
     if (achievement.have1e20red === true) {
       achievementItemImg[5].src = achievementNotificationImg.src =
@@ -326,9 +344,9 @@ function load() {
       achievementItemImg[9].src = achievementNotificationImg.src =
         "images/achievements/buyAllGreenUpgrades.webp";
     }
-    if (achievement.make1e16green === true) {
+    if (achievement.greenPerSec1e16 === true) {
       achievementItemImg[10].src = achievementNotificationImg.src =
-        "images/achievements/make1e16green.webp";
+        "images/achievements/greenPerSec1e16.webp";
     }
     if (achievement.have1e21green === true) {
       achievementItemImg[11].src = achievementNotificationImg.src =
@@ -350,9 +368,9 @@ function load() {
       achievementItemImg[15].src = achievementNotificationImg.src =
         "images/achievements/buyAllBlueUpgrades.webp";
     }
-    if (achievement.make1e17blue === true) {
+    if (achievement.bluePerSec1e17 === true) {
       achievementItemImg[16].src = achievementNotificationImg.src =
-        "images/achievements/make1e17blue.webp";
+        "images/achievements/bluePerSec1e17.webp";
     }
     if (achievement.have1e22blue === true) {
       achievementItemImg[17].src = achievementNotificationImg.src =
@@ -4604,10 +4622,10 @@ function checkAchievement() {
       6000
     );}
 
-  if (achievement.make1e15red === false && debugrednumber >= 1e15) {
-    achievement.make1e15red = true;
+  if (achievement.redPerSec1e15 === false && debugrednumber >= 1e15) {
+    achievement.redPerSec1e15 = true;
     achievementItemImg[4].src = achievementNotificationImg.src =
-      "images/achievements/make1e15red.webp";
+      "images/achievements/redPerSec1e15.webp";
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = "#261711";
     achievementNotification.style.color = "#F20C0C";
@@ -4688,10 +4706,10 @@ function checkAchievement() {
       6000
     );
   }
-  if (achievement.make1e16green === false && debuggreennumber >= 1e16) {
-    achievement.make1e16green = true;
+  if (achievement.greenPerSec1e16 === false && debuggreennumber >= 1e16) {
+    achievement.greenPerSec1e16 = true;
     achievementItemImg[10].src = achievementNotificationImg.src =
-      "images/achievements/make1e16green.webp";
+      "images/achievements/greenPerSec1e16.webp";
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = "#172311";
     achievementNotification.style.color = "#19FF00";
@@ -4772,10 +4790,10 @@ function checkAchievement() {
       6000
     );
   }
-  if (achievement.make1e17blue === false && debugbluenumber >= 1e17) {
-    achievement.make1e17blue = true;
+  if (achievement.bluePerSec1e17 === false && debugbluenumber >= 1e17) {
+    achievement.bluePerSec1e17 = true;
     achievementItemImg[16].src = achievementNotificationImg.src =
-      "images/achievements/make1e17blue.webp";
+      "images/achievements/bluePerSec1e17.webp";
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = "#100F22";
     achievementNotification.style.color = "#0B1EED";
