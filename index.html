@@ -15,34 +15,52 @@
     <link rel="preload" as="image" href="images/locked_idiot.webp" />
     <!-- preload images bc it looked horrible there were 150ms before the images loaded right it does throw a warning in console though -->
   </head>
+
   <body onload="load()" id="body">
+    <!--help menu for players updating-->
+    <div id="helpmenu">
+      <span id="magentaresettext">do you want to reset magenta?</span>
+      <button class="yesno" id="yes" onclick="resetMagenta()">yes</button>
+      <button class="yesno" id="no" onclick="stuck()">no</button>
+    </div>
+
+    <!--black hole stuff-->
     <div id="blackholecontainer">
       <div id="blackhole" class="dot"></div>
     </div>
+
+    <!--nerd mode-->
     <div id="nerdmodetext">hover over an upgrade to see what it does.</div>
+
+    <!--tasks-->
     <div id="tasks">
       <p class="timosucks" style="margin-bottom: 0px">
         <strong>Current task: <span id="taskColor">#FF0000</span></strong>
       </p>
+
       <p class="timosucks" id="reward">
         Reward: <span id="taskReward">10 green</span>
       </p>
+
       <p class="timosucks">
         red: <span id="taskAmountRed">0</span>/<span id="taskGoalAmountRed"
           >255</span
         >
       </p>
+
       <p class="timosucks">
         green: <span id="taskAmountGreen">0</span>/<span
           id="taskGoalAmountGreen"
           >0</span
         >
       </p>
+
       <p class="timosucks">
         blue: <span id="taskAmountBlue">0</span>/<span id="taskGoalAmountBlue"
           >0</span
         >
       </p>
+
       <button
         id="submitTaskButton"
         class="redupgrades submit"
@@ -50,62 +68,265 @@
       >
         Submit
       </button>
+
       <button id="greenscroll" class="greenupgrades" onclick="buygreenscroll()">
-        Green scroll
+        Green scroll: 1e18
       </button>
     </div>
+
+    <!--counter-->
     <div id="toptext"></div>
+
     <div id="saving" class="">Saved!</div>
     <!--settings-->
     <button id="Settings" onclick="displaysettings()" class="setting">
       Settings ⇅
     </button>
+
     <div id="settingscontainer">
       <button onClick="resetData()" id="reset" class="setting">
         <strong>RESET DATA</strong>
       </button>
+
       <button onclick="save()" class="setting">save game</button>
+
       <button id="devmode" onclick="devmode()" class="setting">devmode</button>
+
       <button id="nerdmode" onclick="nerdmodechange()" class="setting">
         nerd mode
       </button>
+
       <button id="holyalbertomode" onclick="holyalberto()" class="setting">
         holy alberto
       </button>
+
       <button id="export" onclick="exportsave('copy')" class="setting">
         export (clipboard)
       </button>
+
       <button id="export2" onclick="exportsave('file')" class="setting">
         export (file)
       </button>
+
       <button id="import" onclick="importsave('copy')" class="setting">
         import (clipboard)
       </button>
+
       <button id="import2" onclick="importsave('file')" class="setting">
         import (file)
       </button>
+
+      <button id="stuck" onclick="stuck()" class="setting">stuck?</button>
+    </div>
+
+    <!--achievement-->
+    <button
+      id="achievementButton"
+      class="setting"
+      onclick="displayachievement()"
+    >
+      Achievement
+    </button>
+
+    <div id="achievementTab">
+      <div id="achievementText"><b>Achievements</b></div>
+
+      <div id="achievementHolder">
+        <div
+          class="achievement-item"
+          data-achievement="buy your first red filter"
+          data-reward=""
+          data-color="#261711"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div
+          class="achievement-item"
+          data-achievement="make 10 red/s"
+          data-reward="<b>reward</b>: unlock tasks"
+          data-color="#261711"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div
+          class="achievement-item"
+          data-achievement="have 100000 red"
+          data-reward="<b>reward</b>: unlock red upgrades"
+          data-color="#261711"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="buy all red upgrades" data-reward="" data-color="#261711">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="make 1e15 red/s" data-reward="todo" data-color="#261711">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="have 1e20 red" data-reward="todo" data-color="#261711">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div
+          class="achievement-item"
+          data-achievement="buy your first green filter"
+          data-reward=""
+          data-color="#172311"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div
+          class="achievement-item"
+          data-achievement="make 100 green/s"
+          data-reward=""
+          data-color="#172311"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div
+          class="achievement-item"
+          data-achievement="have 1000000 green"
+          data-reward="<b>reward</b>: unlock green upgrades"
+          data-color="#172311"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="buy all green upgrades" data-reward="" data-color="#172311">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="make 1e16 green/s" data-reward="todo" data-color="#172311">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="have 1e21 green/s" data-reward="todo" data-color="#172311">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div
+          class="achievement-item"
+          data-achievement="buy your first blue filter"
+          data-reward=""
+          data-color="#100F22"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div
+          class="achievement-item"
+          data-achievement="make 1000 blue/s"
+          data-reward=""
+          data-color="#100F22"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div
+          class="achievement-item"
+          data-achievement="have 1e7 blue"
+          data-reward="<b>reward</b>: unlock blue upgrades"
+          data-color="#100F22"
+        >
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="buy all blue upgrades" data-reward="" data-color="#100F22">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="make 1e17 blue/s" data-reward="todo" data-color="#100F22">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="have 1e22 blue/s" data-reward="todo" data-color="#100F22">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="get your first yellow" data-reward="todo" data-color="#222310">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="have 100 yellow" data-reward="todo" data-color="#222310">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="trigger task mastery for the first time" data-reward="todo" data-color="#222310">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="make 10 yellow/s" data-reward="todo" data-color="#222310">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="have 10 levels on every upgrade" data-reward="todo" data-color="#222310">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="have 1e7 yellow" data-reward="todo" data-color="#222310">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="get your first cyan from yellow" data-reward="todo" data-color="#132322">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="buy your first automation" data-reward="todo" data-color="#132322">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="have 1 of every automation" data-reward="todo" data-color="#132322">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="get your first cyan from magic" data-reward="todo" data-color="#132322">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="automate your first spell" data-reward="todo" data-color="#132322">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="automate prestiege" data-reward="todo" data-color="#132322">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="buy your first cauldron" data-reward="" data-color="#211023">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="cast your first spell" data-reward="todo" data-color="#211023">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="make 10000 magic/s" data-reward="todo" data-color="#211023">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="buy all scrolls" data-reward="todo" data-color="#211023">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="make 1e9 magenta with one spell" data-reward="todo" data-color="#211023">
+          <img src="images/locked_idiot.webp" />
+        </div>
+        <div class="achievement-item" data-achievement="unlock all spells" data-reward="todo" data-color="#211023">
+          <img src="images/locked_idiot.webp" />
+        </div>
+      </div>
+    </div>
+
+    <div id="achievementInfo">
+      <p id="requirementInfo">help</p>
+      <p id="rewardInfo">reward: none</p>
+    </div>
+
+    <div id="achievementNotification">
+      <img src="images/spells/red_spell.webp" id="notificationImage" />
+      <canvas id="notificationCanvas" style="display: none"></canvas>
+      <p>You got an achievement!</p>
     </div>
 
     <!-- tabs -->
     <div id="alltabs">
       <button id="tabwhite" onclick="showtab('white')">white</button>
+
       <div id="tabs">
         <button class="tab" id="tabred" onclick="showtab('red')">Red</button>
+
         <button class="tab" id="tabgreen" onclick="showtab('green')">
           Green
         </button>
+
         <button class="tab" id="tabblue" onclick="showtab('blue')">Blue</button>
+
         <button class="tab" id="tabyellow" onclick="showtab('yellow')">
           Yellow
         </button>
+
         <button class="tab" id="tabcyan" onclick="showtab('cyan')">Cyan</button>
+
         <button class="tab" id="tabmagenta" onclick="showtab('magenta')">
           Magenta
         </button>
       </div>
+
       <button id="tabblack" onclick="showtab('black')">black</button>
     </div>
 
+    <!--red-->
     <div id="red" class="tab">
       <div id="top">
         <span id="redcount"></span><br /><span
@@ -233,6 +454,7 @@
       </div>
     </div>
 
+    <!--green-->
     <div id="green" class="tab" style="display: none">
       <div id="top">
         <span id="greencount"></span><br /><span
@@ -358,6 +580,8 @@
         </div>
       </div>
     </div>
+
+    <!--blue-->
     <div id="blue" class="tab" style="display: none">
       <div id="top">
         <span id="bluecount"></span><br /><span
@@ -456,7 +680,7 @@
               class="blueupgrades"
             >
               cost:
-              <span id="bluenanometerwavecost">1e17</span>
+              <span id="bluenanometerwavecost">1e19</span>
             </button>
           </div>
         </div>
@@ -496,6 +720,8 @@
         </div>
       </div>
     </div>
+
+    <!--yellow-->
     <!-- heey timo i think we should remove the descriptions of the upgrades or replace them with reaaaly basic descriptions then point to nerd mode for mode info -->
     <!-- especially because some of this stuff isnt even true lmao the focussed pointers upgrade doesnt even do that -->
     <div id="yellow" class="tab" style="display: none">
@@ -787,6 +1013,7 @@
       </div>
     </div>
 
+    <!--cyan-->
     <div id="cyan" class="tab">
       <div id="top" style="margin-bottom: 10px">
         <span id="cyancount">cyan: 0</span>
@@ -962,6 +1189,8 @@
         </div>
       </div>
     </div>
+
+    <!--magenta-->
     <div id="magenta" class="tab">
       <div id="top" style="margin-bottom: 10px">
         <span id="magentacount">magenta: 0</span>
@@ -1043,22 +1272,61 @@
           <!-- this is gonna be horrible -->
         </div>
         <div id="spellcasting">cast some spells!</div>
+        <div style="display: flex">
+          <div id="magicsliderbox"><input type="range" id="magicslider" /></div>
+          <div id="magicinputbox"><input value="50" id="magicinput" /></div>
+        </div>
         <div id="spellcastingbox">
           <p id="think">
             you dont have any yet, ask around to see how to cast one
           </p>
           <br />
-          <button
-            class="spell"
-            id="magentaspell"
-            onclick="buymagentaspell()"
-          ></button>
-          <button class="spell" id="redspell" onclick="spell1(60)"></button>
-          <button class="spell" id="greenspell" onclick="spell2(60)"></button>
-          <button class="spell" id="bluespell" onclick="spell3(60)"></button>
+          <div class="spellshell" id="magentashell">
+            <button
+              class="spell"
+              id="magentaspell"
+              onclick="buymagentaspell()"
+            ></button>
+          </div>
+          <div class="spellshell" id="redshell">
+            <button class="spell" id="redspell" onclick="spell1()"></button>
+          </div>
+          <div class="spellshell" id="greenshell">
+            <button class="spell" id="greenspell" onclick="spell2()"></button>
+          </div>
+          <div class="spellshell" id="blueshell">
+            <button class="spell" id="bluespell" onclick="spell3()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="spell('cyan1')"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <br />
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
         </div>
       </div>
     </div>
+
+    <!--black-->
     <div id="black" class="tab">
       <div id="top" style="margin-bottom: 10px">
         <!--<h1 id="comingsoonblack" style="color: black">COMING SOONISH!</h1>  its almost coming guys:tm: real !-->

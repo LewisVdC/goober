@@ -15,6 +15,46 @@ var offlineTime = 0;
 var time = Date.now();
 var visibilityState = "visible";
 
+//achievements
+let achievement = {
+  redfilter1: false,
+  redPerSec10: false,
+  have1e5red: false,
+  buyAllRedUpgrades: false,
+  redPerSec1e15: false,
+  have1e20red: false,
+  greenfilter1: false,
+  greenPerSec100: false,
+  have1e6green: false,
+  buyAllGreenUpgrades: false,
+  greenPerSec1e16: false,
+  have1e21green: false,
+  bluefilter1: false,
+  bluePerSec1000: false,
+  have1e7blue: false,
+  buyAllBlueUpgrades: false,
+  bluePerSec1e17: false,
+  have1e22blue: false,
+  yellow1: false,
+  yellow100: false,
+  triggertaskmastery: false,
+  yellowPerSec10: false,
+  yellowAllUpgrades10: false,
+  have1e7yellow: false,
+  yellowCyan1: false,
+  automation1: false,
+  everyAutomation: false,
+  magicCyan1: false,
+  spellAutomation: false,
+  prestiegeAutomation: false,
+  buyCauldron1: false,
+  castSpell1: false,
+  magicPerSec1e4: false,
+  buyAllScrolls: false,
+  earn1e9magenta: false,
+  allSpellsUnlocked: false,
+};
+
 //red
 var red = 10;
 var redfilter = 0;
@@ -178,10 +218,6 @@ var spell2unlock = 0;
 var spell3unlock = 0;
 var spell4unlock = 0;
 var spell5unlock = 0;
-var magentaspellprice = 10;
-var redspellprice = 10;
-var greenspellprice = 10;
-var bluespellprice = 10;
 var randomnumber = 0;
 
 //black
@@ -264,6 +300,83 @@ function load() {
   }
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
+    //achievement and nerdmode
+    if (typeof savegame.achievement !== "undefined")
+      achievement = savegame.achievement;
+    if (achievement.redfilter1 === true) {
+      achievementItemImg[0].src = achievementNotificationImg.src =
+        "images/achievements/redfilter1.webp";
+    }
+    if (achievement.redPerSec10 === true) {
+      achievementItemImg[1].src = achievementNotificationImg.src =
+        "images/achievements/redPerSec10.webp";
+      document.getElementById("tasks").style.display = "block";
+    }
+    if (achievement.have1e5red === true) {
+      achievementItemImg[2].src = achievementNotificationImg.src =
+        "images/achievements/have1e5red.webp";
+    }
+    if (achievement.buyAllRedUpgrades === true) {
+      achievementItemImg[3].src = achievementNotificationImg.src =
+        "images/achievements/buyAllRedUpgrades.webp";
+    }
+    if (achievement.redPerSec1e15 === true) {
+      achievementItemImg[4].src = achievementNotificationImg.src =
+        "images/achievements/redPerSec1e15.webp";
+    }
+    if (achievement.have1e20red === true) {
+      achievementItemImg[5].src = achievementNotificationImg.src =
+        "images/achievements/have1e20red.webp";
+    }
+    if (achievement.greenfilter1 === true) {
+      achievementItemImg[6].src = achievementNotificationImg.src =
+        "images/achievements/greenfilter1.webp";
+    }
+    if (achievement.greenPerSec100 === true) {
+      achievementItemImg[7].src = achievementNotificationImg.src =
+        "images/achievements/greenPerSec100.webp";
+    }
+    if (achievement.have1e6green === true) {
+      achievementItemImg[8].src = achievementNotificationImg.src =
+        "images/achievements/have1e6green.webp";
+    }
+    if (achievement.buyAllGreenUpgrades === true) {
+      achievementItemImg[9].src = achievementNotificationImg.src =
+        "images/achievements/buyAllGreenUpgrades.webp";
+    }
+    if (achievement.greenPerSec1e16 === true) {
+      achievementItemImg[10].src = achievementNotificationImg.src =
+        "images/achievements/greenPerSec1e16.webp";
+    }
+    if (achievement.have1e21green === true) {
+      achievementItemImg[11].src = achievementNotificationImg.src =
+        "images/achievements/have1e21green.webp";
+    }
+    if (achievement.bluefilter1 === true) {
+      achievementItemImg[12].src = achievementNotificationImg.src =
+        "images/achievements/bluefilter1.webp";
+    }
+    if (achievement.bluePerSec1000 === true) {
+      achievementItemImg[13].src = achievementNotificationImg.src =
+        "images/achievements/bluePerSec1000.webp";
+    }
+    if (achievement.have1e7blue === true) {
+      achievementItemImg[14].src = achievementNotificationImg.src =
+        "images/achievements/have1e7blue.webp";
+    }
+    if (achievement.buyAllBlueUpgrades === true) {
+      achievementItemImg[15].src = achievementNotificationImg.src =
+        "images/achievements/buyAllBlueUpgrades.webp";
+    }
+    if (achievement.bluePerSec1e17 === true) {
+      achievementItemImg[16].src = achievementNotificationImg.src =
+        "images/achievements/bluePerSec1e17.webp";
+    }
+    if (achievement.have1e22blue === true) {
+      achievementItemImg[17].src = achievementNotificationImg.src =
+        "images/achievements/have1e22blue.webp";
+    }
+
     if (typeof savegame.currentnerdmode !== "undefined")
       currentnerdmode = savegame.currentnerdmode;
     nerdmode(currentnerdmode);
@@ -279,9 +392,11 @@ function load() {
     timer = 50;
     if (typeof savegame.dialoguestate !== "undefined")
       dialoguestate = savegame.dialoguestate;
-    if (typeof savegame.words !== "undefined") words = savegame.words;
-    alberto.style.opacity = "1";
-    alberto.innerHTML = words;
+    if (typeof savegame.words !== "undefined") {
+      words = savegame.words;
+      alberto.style.opacity = "1";
+      alberto.innerHTML = words;
+    }
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
     if (typeof savegame.redfilter !== "undefined")
@@ -372,196 +487,231 @@ function load() {
     if (typeof savegame.yellow !== "undefined") yellow = savegame.yellow;
     if (typeof savegame.governmentfundingcount !== "undefined")
       governmentfundingcount = savegame.governmentfundingcount;
-    if (typeof savegame.governmentfundingprice !== "undefined")
+    if (typeof savegame.governmentfundingprice !== "undefined") {
       governmentfundingprice = savegame.governmentfundingprice;
-    document.getElementById("governmentfundingprice").innerHTML =
-      governmentfundingprice;
+      document.getElementById("governmentfundingprice").innerHTML =
+        governmentfundingprice;
+    }
     if (typeof savegame.largerprismscount !== "undefined")
       largerprismscount = savegame.largerprismscount;
-    if (typeof savegame.largerprismsprice !== "undefined")
+    if (typeof savegame.largerprismsprice !== "undefined") {
       largerprismsprice = savegame.largerprismsprice;
-    document.getElementById("largerprismsprice").innerHTML = largerprismsprice;
+      document.getElementById("largerprismsprice").innerHTML =
+        largerprismsprice;
+    }
     if (typeof savegame.colorharmonycount !== "undefined")
       colorharmonycount = savegame.colorharmonycount;
-    if (typeof savegame.colorharmonyprice !== "undefined")
+    if (typeof savegame.colorharmonyprice !== "undefined") {
       colorharmonyprice = savegame.colorharmonyprice;
-    document.getElementById("colorharmonyprice").innerHTML = colorharmonyprice;
+      document.getElementById("colorharmonyprice").innerHTML =
+        colorharmonyprice;
+    }
     if (typeof savegame.streamlinedtaskscount !== "undefined")
       streamlinedtaskscount = savegame.streamlinedtaskscount;
-    if (typeof savegame.streamlinedtasksprice !== "undefined")
+    if (typeof savegame.streamlinedtasksprice !== "undefined") {
       streamlinedtasksprice = savegame.streamlinedtasksprice;
-    document.getElementById("streamlinedtasksprice").innerHTML =
-      streamlinedtasksprice;
+      document.getElementById("streamlinedtasksprice").innerHTML =
+        streamlinedtasksprice;
+    }
     if (typeof savegame.yellowsynergycount !== "undefined")
       yellowsynergycount = savegame.yellowsynergycount;
-    if (typeof savegame.yellowsynergyprice !== "undefined")
+    if (typeof savegame.yellowsynergyprice !== "undefined") {
       yellowsynergyprice = savegame.yellowsynergyprice;
-    document.getElementById("yellowsynergyprice").innerHTML =
-      yellowsynergyprice;
+      document.getElementById("yellowsynergyprice").innerHTML =
+        yellowsynergyprice;
+    }
     if (typeof savegame.redoverflowcount !== "undefined")
       redoverflowcount = savegame.redoverflowcount;
-    if (typeof savegame.redoverflowprice !== "undefined")
+    if (typeof savegame.redoverflowprice !== "undefined") {
       redoverflowprice = savegame.redoverflowprice;
-    document.getElementById("redoverflowprice").innerHTML = redoverflowprice;
+      document.getElementById("redoverflowprice").innerHTML = redoverflowprice;
+    }
     if (typeof savegame.greenoverflowcount !== "undefined")
       greenoverflowcount = savegame.greenoverflowcount;
-    if (typeof savegame.greenoverflowprice !== "undefined")
+    if (typeof savegame.greenoverflowprice !== "undefined") {
       greenoverflowprice = savegame.greenoverflowprice;
-    document.getElementById("greenoverflowprice").innerHTML =
-      greenoverflowprice;
+      document.getElementById("greenoverflowprice").innerHTML =
+        greenoverflowprice;
+    }
     if (typeof savegame.blueoverflowcount !== "undefined")
       blueoverflowcount = savegame.blueoverflowcount;
-    if (typeof savegame.blueoverflowprice !== "undefined")
+    if (typeof savegame.blueoverflowprice !== "undefined") {
       blueoverflowprice = savegame.blueoverflowprice;
-    document.getElementById("blueoverflowprice").innerHTML = blueoverflowprice;
+      document.getElementById("blueoverflowprice").innerHTML =
+        blueoverflowprice;
+    }
     if (typeof savegame.tricolorboostcount !== "undefined")
       tricolorboostcount = savegame.tricolorboostcount;
-    if (typeof savegame.tricolorboostprice !== "undefined")
+    if (typeof savegame.tricolorboostprice !== "undefined") {
       tricolorboostprice = savegame.tricolorboostprice;
-    document.getElementById("tricolorboostprice").innerHTML =
-      tricolorboostprice;
+      document.getElementById("tricolorboostprice").innerHTML =
+        tricolorboostprice;
+    }
     if (typeof savegame.taskmasterycount !== "undefined")
       taskmasterycount = savegame.taskmasterycount;
-    if (typeof savegame.taskmasteryprice !== "undefined")
+    if (typeof savegame.taskmasteryprice !== "undefined") {
       taskmasteryprice = savegame.taskmasteryprice;
-    document.getElementById("taskmasteryprice").innerHTML = taskmasteryprice;
+      document.getElementById("taskmasteryprice").innerHTML = taskmasteryprice;
+    }
     if (typeof savegame.goldenmultipliercount !== "undefined")
       goldenmultipliercount = savegame.goldenmultipliercount;
-    if (typeof savegame.goldenmultiplierprice !== "undefined")
+    if (typeof savegame.goldenmultiplierprice !== "undefined") {
       goldenmultiplierprice = savegame.goldenmultiplierprice;
-    document.getElementById("goldenmultiplierprice").innerHTML =
-      goldenmultiplierprice;
+      document.getElementById("goldenmultiplierprice").innerHTML =
+        goldenmultiplierprice;
+    }
     if (typeof savegame.colorsyphoncount !== "undefined")
       colorsyphoncount = savegame.colorsyphoncount;
-    if (typeof savegame.colorsyphonprice !== "undefined")
+    if (typeof savegame.colorsyphonprice !== "undefined") {
       colorsyphonprice = savegame.colorsyphonprice;
-    document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
+      document.getElementById("colorsyphonprice").innerHTML = colorsyphonprice;
+    }
     if (typeof savegame.focussedpointerscount !== "undefined")
       focussedpointerscount = savegame.focussedpointerscount;
-    if (typeof savegame.focussedpointersprice !== "undefined")
+    if (typeof savegame.focussedpointersprice !== "undefined") {
       focussedpointersprice = savegame.focussedpointersprice;
-    document.getElementById("focussedpointersprice").innerHTML =
-      focussedpointersprice;
+      document.getElementById("focussedpointersprice").innerHTML =
+        focussedpointersprice;
+    }
     if (typeof savegame.finerfilterscount !== "undefined")
       finerfilterscount = savegame.finerfilterscount;
-    if (typeof savegame.finerfiltersprice !== "undefined")
+    if (typeof savegame.finerfiltersprice !== "undefined") {
       finerfiltersprice = savegame.finerfiltersprice;
-    document.getElementById("finerfiltersprice").innerHTML = finerfiltersprice;
+      document.getElementById("finerfiltersprice").innerHTML =
+        finerfiltersprice;
+    }
     if (typeof savegame.micrometerwavecount !== "undefined")
       micrometerwavecount = savegame.micrometerwavecount;
-    if (typeof savegame.micrometerwaveprice !== "undefined")
+    if (typeof savegame.micrometerwaveprice !== "undefined") {
       micrometerwaveprice = savegame.micrometerwaveprice;
-    document.getElementById("micrometerwaveprice").innerHTML =
-      micrometerwaveprice;
+      document.getElementById("micrometerwaveprice").innerHTML =
+        micrometerwaveprice;
+    }
     if (typeof savegame.strongersynergycount !== "undefined")
       strongersynergycount = savegame.strongersynergycount;
-    if (typeof savegame.strongersynergyprice !== "undefined")
+    if (typeof savegame.strongersynergyprice !== "undefined") {
       strongersynergyprice = savegame.strongersynergyprice;
-    document.getElementById("strongersynergyprice").innerHTML =
-      strongersynergyprice;
+      document.getElementById("strongersynergyprice").innerHTML =
+        strongersynergyprice;
+    }
     //cyan
     if (typeof savegame.cyan !== "undefined") cyan = savegame.cyan;
     document.getElementById("cyancount").innerHTML =
       "cyan: " + Math.round(cyan);
     if (typeof savegame.redfilterautomationcount !== "undefined")
       redfilterautomationcount = savegame.redfilterautomationcount;
-    if (typeof savegame.redfilterautomationprice !== "undefined")
+    if (typeof savegame.redfilterautomationprice !== "undefined") {
       redfilterautomationprice = savegame.redfilterautomationprice;
-    document.getElementById("redfilterautomationprice").innerHTML = Math.round(
-      redfilterautomationprice
-    );
+      document.getElementById("redfilterautomationprice").innerHTML =
+        Math.round(redfilterautomationprice);
+    }
     if (typeof savegame.redpointerautomationcount !== "undefined")
       redpointerautomationcount = savegame.redpointerautomationcount;
-    if (typeof savegame.redpointerautomationprice !== "undefined")
+    if (typeof savegame.redpointerautomationprice !== "undefined") {
       redpointerautomationprice = savegame.redpointerautomationprice;
-    document.getElementById("redpointerautomationprice").innerHTML = Math.round(
-      redpointerautomationprice
-    );
+      document.getElementById("redpointerautomationprice").innerHTML =
+        Math.round(redpointerautomationprice);
+    }
     if (typeof savegame.bigredfilterautomationcount !== "undefined")
       bigredfilterautomationcount = savegame.bigredfilterautomationcount;
-    if (typeof savegame.bigredfilterautomationprice !== "undefined")
+    if (typeof savegame.bigredfilterautomationprice !== "undefined") {
       bigredfilterautomationprice = savegame.bigredfilterautomationprice;
-    document.getElementById("bigredfilterautomationprice").innerHTML =
-      Math.round(bigredfilterautomationprice);
+      document.getElementById("bigredfilterautomationprice").innerHTML =
+        Math.round(bigredfilterautomationprice);
+    }
     if (typeof savegame.bigredpointerautomationcount !== "undefined")
       bigredpointerautomationcount = savegame.bigredpointerautomationcount;
-    if (typeof savegame.bigredpointerautomationprice !== "undefined")
+    if (typeof savegame.bigredpointerautomationprice !== "undefined") {
       bigredpointerautomationprice = savegame.bigredpointerautomationprice;
-    document.getElementById("bigredpointerautomationprice").innerHTML =
-      Math.round(bigredpointerautomationprice);
-    if (typeof savegame.rednanometerwaveautomationcount !== "undefined")
+      document.getElementById("bigredpointerautomationprice").innerHTML =
+        Math.round(bigredpointerautomationprice);
+    }
+    if (typeof savegame.rednanometerwaveautomationcount !== "undefined") {
       rednanometerwaveautomationcount =
         savegame.rednanometerwaveautomationcount;
-    if (typeof savegame.rednanometerwaveautomationprice !== "undefined")
+    }
+    if (typeof savegame.rednanometerwaveautomationprice !== "undefined") {
       rednanometerwaveautomationprice =
         savegame.rednanometerwaveautomationprice;
-    document.getElementById("rednanometerwaveautomationprice").innerHTML =
-      Math.round(rednanometerwaveautomationprice);
+      document.getElementById("rednanometerwaveautomationprice").innerHTML =
+        Math.round(rednanometerwaveautomationprice);
+    }
     if (typeof savegame.greenfilterautomationcount !== "undefined")
       greenfilterautomationcount = savegame.greenfilterautomationcount;
-    if (typeof savegame.greenfilterautomationprice !== "undefined")
+    if (typeof savegame.greenfilterautomationprice !== "undefined") {
       greenfilterautomationprice = savegame.greenfilterautomationprice;
-    document.getElementById("greenfilterautomationprice").innerHTML =
-      Math.round(greenfilterautomationprice);
+      document.getElementById("greenfilterautomationprice").innerHTML =
+        Math.round(greenfilterautomationprice);
+    }
     if (typeof savegame.greenpointerautomationcount !== "undefined")
       greenpointerautomationcount = savegame.greenpointerautomationcount;
-    if (typeof savegame.greenpointerautomationprice !== "undefined")
+    if (typeof savegame.greenpointerautomationprice !== "undefined") {
       greenpointerautomationprice = savegame.greenpointerautomationprice;
-    document.getElementById("greenpointerautomationprice").innerHTML =
-      Math.round(greenpointerautomationprice);
+      document.getElementById("greenpointerautomationprice").innerHTML =
+        Math.round(greenpointerautomationprice);
+    }
     if (typeof savegame.biggreenfilterautomationcount !== "undefined")
       biggreenfilterautomationcount = savegame.biggreenfilterautomationcount;
-    if (typeof savegame.biggreenfilterautomationprice !== "undefined")
+    if (typeof savegame.biggreenfilterautomationprice !== "undefined") {
       biggreenfilterautomationprice = savegame.biggreenfilterautomationprice;
-    document.getElementById("biggreenfilterautomationprice").innerHTML =
-      Math.round(biggreenfilterautomationprice);
+      document.getElementById("biggreenfilterautomationprice").innerHTML =
+        Math.round(biggreenfilterautomationprice);
+    }
     if (typeof savegame.biggreenpointerautomationcount !== "undefined")
       biggreenpointerautomationcount = savegame.biggreenpointerautomationcount;
-    if (typeof savegame.biggreenpointerautomationprice !== "undefined")
+    if (typeof savegame.biggreenpointerautomationprice !== "undefined") {
       biggreenpointerautomationprice = savegame.biggreenpointerautomationprice;
-    document.getElementById("biggreenpointerautomationprice").innerHTML =
-      Math.round(biggreenpointerautomationprice);
-    if (typeof savegame.greennanometerwaveautomationcount !== "undefined")
+      document.getElementById("biggreenpointerautomationprice").innerHTML =
+        Math.round(biggreenpointerautomationprice);
+    }
+    if (typeof savegame.greennanometerwaveautomationcount !== "undefined") {
       greennanometerwaveautomationcount =
         savegame.greennanometerwaveautomationcount;
-    if (typeof savegame.greennanometerwaveautomationprice !== "undefined")
+    }
+    if (typeof savegame.greennanometerwaveautomationprice !== "undefined") {
       greennanometerwaveautomationprice =
         savegame.greennanometerwaveautomationprice;
-    document.getElementById("greennanometerwaveautomationprice").innerHTML =
-      Math.round(greennanometerwaveautomationprice);
+      document.getElementById("greennanometerwaveautomationprice").innerHTML =
+        Math.round(greennanometerwaveautomationprice);
+    }
     if (typeof savegame.bluefilterautomationcount !== "undefined")
       bluefilterautomationcount = savegame.bluefilterautomationcount;
-    if (typeof savegame.bluefilterautomationprice !== "undefined")
+    if (typeof savegame.bluefilterautomationprice !== "undefined") {
       bluefilterautomationprice = savegame.bluefilterautomationprice;
-    document.getElementById("bluefilterautomationprice").innerHTML = Math.round(
-      bluefilterautomationprice
-    );
+      document.getElementById("bluefilterautomationprice").innerHTML =
+        Math.round(bluefilterautomationprice);
+    }
     if (typeof savegame.bluepointerautomationcount !== "undefined")
       bluepointerautomationcount = savegame.bluepointerautomationcount;
-    if (typeof savegame.bluepointerautomationprice !== "undefined")
+    if (typeof savegame.bluepointerautomationprice !== "undefined") {
       bluepointerautomationprice = savegame.bluepointerautomationprice;
-    document.getElementById("bluepointerautomationprice").innerHTML =
-      Math.round(bluepointerautomationprice);
+      document.getElementById("bluepointerautomationprice").innerHTML =
+        Math.round(bluepointerautomationprice);
+    }
     if (typeof savegame.bigbluefilterautomationcount !== "undefined")
       bigbluefilterautomationcount = savegame.bigbluefilterautomationcount;
-    if (typeof savegame.bigbluefilterautomationprice !== "undefined")
+    if (typeof savegame.bigbluefilterautomationprice !== "undefined") {
       bigbluefilterautomationprice = savegame.bigbluefilterautomationprice;
-    document.getElementById("bigbluefilterautomationprice").innerHTML =
-      Math.round(bigbluefilterautomationprice);
+      document.getElementById("bigbluefilterautomationprice").innerHTML =
+        Math.round(bigbluefilterautomationprice);
+    }
     if (typeof savegame.bigbluepointerautomationcount !== "undefined")
       bigbluepointerautomationcount = savegame.bigbluepointerautomationcount;
-    if (typeof savegame.bigbluepointerautomationprice !== "undefined")
+    if (typeof savegame.bigbluepointerautomationprice !== "undefined") {
       bigbluepointerautomationprice = savegame.bigbluepointerautomationprice;
-    document.getElementById("bigbluepointerautomationprice").innerHTML =
-      Math.round(bigbluepointerautomationprice);
-    if (typeof savegame.bluenanometerwaveautomationcount !== "undefined")
+      document.getElementById("bigbluepointerautomationprice").innerHTML =
+        Math.round(bigbluepointerautomationprice);
+    }
+    if (typeof savegame.bluenanometerwaveautomationcount !== "undefined") {
       bluenanometerwaveautomationcount =
         savegame.bluenanometerwaveautomationcount;
-    if (typeof savegame.bluenanometerwaveautomationprice !== "undefined")
+    }
+    if (typeof savegame.bluenanometerwaveautomationprice !== "undefined") {
       bluenanometerwaveautomationprice =
         savegame.bluenanometerwaveautomationprice;
-    document.getElementById("bluenanometerwaveautomationprice").innerHTML =
-      Math.round(bluenanometerwaveautomationprice);
+      document.getElementById("bluenanometerwaveautomationprice").innerHTML =
+        Math.round(bluenanometerwaveautomationprice);
+    }
     if (typeof savegame.redtogglestate !== "undefined")
       redtogglestate = savegame.redtogglestate;
     if (redtogglestate) {
@@ -596,51 +746,35 @@ function load() {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
     }
     //magic and magenta
+    if (typeof savegame.cooldownspells !== "undefined")
+      cooldownspells = savegame.cooldownspells;
+    if (typeof savegame.cooldowntimes !== "undefined")
+      cooldowntimes = savegame.cooldowntimes;
+    if (typeof savegame.cooldowntimeleft !== "undefined")
+      cooldowntimeleft = savegame.cooldowntimeleft;
     if (typeof savegame.spell1unlock !== "undefined")
       spell1unlock = savegame.spell1unlock;
     if (typeof savegame.spell2unlock !== "undefined")
       spell2unlock = savegame.spell2unlock;
     if (typeof savegame.spell3unlock !== "undefined")
       spell3unlock = savegame.spell3unlock;
-    if (typeof savegame.magentaspellprice !== "undefined")
-      magentaspellprice = savegame.magentaspellprice;
-    if (typeof savegame.redspellprice !== "undefined")
-      redspellprice = savegame.redspellprice;
-    if (spell1unlock === 1) {
-      document.getElementById("redspell").innerHTML = Math.round(redspellprice);
-    }
-    if (typeof savegame.greenspellprice !== "undefined")
-      greenspellprice = savegame.greenspellprice;
-    if (spell2unlock === 1) {
-      document.getElementById("greenspell").innerHTML =
-        Math.round(greenspellprice);
-    }
-    if (typeof savegame.bluespellprice !== "undefined")
-      bluespellprice = savegame.bluespellprice;
-    if (spell3unlock === 1) {
-      document.getElementById("bluespell").innerHTML =
-        Math.round(bluespellprice);
-    }
     if (typeof savegame.redscrollcount !== "undefined")
       redscrollcount = savegame.redscrollcount;
     if (redscrollcount === 1) {
       document.getElementById("redspell").style.backgroundImage =
         "url(images/spells/red_spell.webp)";
-      document.getElementById("redspell").innerHTML = "10";
     }
     if (typeof savegame.greenscrollcount !== "undefined")
       greenscrollcount = savegame.greenscrollcount;
     if (greenscrollcount === 1) {
       document.getElementById("greenspell").style.backgroundImage =
         "url(images/spells/green_spell.webp)";
-      document.getElementById("greenspell").innerHTML = "10";
     }
     if (typeof savegame.bluescrollcount !== "undefined")
       bluescrollcount = savegame.bluescrollcount;
     if (bluescrollcount === 1) {
       document.getElementById("bluespell").style.backgroundImage =
         "url(images/spells/blue_spell.webp)";
-      document.getElementById("bluespell").innerHTML = "10";
     }
     if (typeof savegame.magentaspellunlock !== "undefined")
       magentaspellunlock = savegame.magentaspellunlock;
@@ -648,13 +782,8 @@ function load() {
       document
         .getElementById("magentaspell")
         .setAttribute("onclick", "castmagentaspell()");
-      document.getElementById("magentaspell").innerHTML =
-        Math.round(magentaspellprice);
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
-      document.getElementById("magentaspell").innerHTML = formatSmallNumber(
-        Math.round(magentaspellprice)
-      );
     }
     if (typeof savegame.magenta !== "undefined") magenta = savegame.magenta;
     if (typeof savegame.magic !== "undefined") magic = savegame.magic;
@@ -951,7 +1080,7 @@ function showtab(x) {
   }
   if (x === "green") {
     tab = "green";
-    if (tasksCompleted > 99 && greenscrollcount === 0) {
+    if (dialoguestate >= 11 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle =
@@ -1675,13 +1804,21 @@ function buyblueupgrade3() {
 window.setInterval(function () {
   if (visibilityState === "visible" || buttonpress === false) {
     if (loaded === 1) {
+      //"update" game for ppl
+      if (
+        document.getElementById("tabmagenta").style.display === "block" &&
+        redscrollcount + greenscrollcount + bluescrollcount === 3 &&
+        dialoguestate === 11
+      ) {
+        chatupdate();
+      }
       //if loaded === 1 is important for keeping everything from
       //doing stuff its not supposed to before gameload
       window.scrollBy(-window.innerWidth, 0);
       //some nerdy stuff
       //nerdmode text "margins" (actually width in disguise)
       document.getElementById("nerdmodetext").style.width =
-        "calc(50% - 220px - " +
+        "calc(50% - 320px - " +
         String(
           document.getElementById("tabwhite").getBoundingClientRect().width
         ) +
@@ -1762,7 +1899,9 @@ window.setInterval(function () {
 
       const magentacounters = document.querySelectorAll(".magentacount");
       magentacounters.forEach((counter) => {
-        counter.textContent = "magenta: " + formatNumber(Math.floor(magenta));
+        counter.textContent = document.getElementById(
+          "magentacount"
+        ).innerHTML = "magenta: " + formatNumber(Math.floor(magenta));
       });
       //timo building 5 does not give 5k of the stuff per second it boosts production
       //mb
@@ -1869,63 +2008,63 @@ window.setInterval(function () {
       } else if (document.querySelector("#yellowupgrade1:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "divide all upgrade prices by 0.1 * governmentfundingcount";
+          "divide all upgrade prices by 10 * governmentfundinglevel";
       } else if (document.querySelector("#yellowupgrade2:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by (log1p(yellow) / 10) * (colorharmonycount / √colorharmonycount)";
+          "multiply rgb gain by (log(yellow) / 10) * √colorharmonylevel";
       } else if (document.querySelector("#yellowupgrade3:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by 2 * largerprismscount";
+          "multiply rgb gain by 2 * largerprismslevel";
       } else if (document.querySelector("#yellowupgrade4:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "divide task goal by 2^streamlinedtaskscount";
+          "divide task goal by 2^streamlinedtaskslevel";
       } else if (document.querySelector("#yellowupgrade5:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply task reward by yellowsynergycount * 0.25";
+          "multiply task reward by yellowsynergylevel/4";
       } else if (document.querySelector("#yellowupgrade6:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * redoverflowcount or redgain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * redoverflowlevel or redgain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade7:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * greenoverflowcount or greengain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * greenoverflowlevel or greengain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade8:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives the lowest of the two values in yellow/s: 200 * blueoverflowcount or bluegain/s / 1e12";
+          "gives the lowest of the two values in yellow/s: 200 * blueoverflowlevel or bluegain/s / 1e12";
       } else if (document.querySelector("#yellowupgrade9:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply rgb gain by tricolorboostcount * 0.5 * (yellow / 1000)";
+          "multiply rgb gain by tricolorboostlevel * yellow / 2000)";
       } else if (document.querySelector("#yellowupgrade10:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "get a 5% chance to get a reward of taskReward * 10 * taskmasterycount";
+          "increase the chance with +1% to get a reward of taskReward * 10 * taskmasterylevel";
       } else if (document.querySelector("#yellowupgrade11:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply task reward by (goldenmultipliercount * tasksCompleted) / 1000";
+          "multiply task reward by (goldenmultiplierlevel * tasksCompleted) / 1000";
       } else if (document.querySelector("#yellowupgrade12:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply weak synergy effect by  √strongersynergycount * 5";
+          "multiply weak synergy effect by  5√strongersynergylevel";
       } else if (document.querySelector("#yellowupgrade13:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply pointer gain by √focussedpointerscount * 2";
+          "multiply pointer gain by 2√focussedpointerslevel";
       } else if (document.querySelector("#yellowupgrade14:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply filter gain by √finerfilterscount * 2";
+          "multiply filter gain by 2√finerfilterslevel";
       } else if (document.querySelector("#yellowupgrade15:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply nanometerwave effect by Math.log1p(micrometerwavecount) * 1.5";
+          "multiply nanometerwave effect by Math.log(micrometerwavelevel) * 1.5";
       } else if (document.querySelector("#yellowupgrade16:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -1945,6 +2084,103 @@ window.setInterval(function () {
         document.getElementById("nerdmodetext").innerHTML = "gives 50 magic/s";
       } else if (document.querySelector("#magentabuild4:hover") != null) {
         nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "gives 500 magic/s"; //maybe here
+      } else if (document.querySelector("#blueupgrade3:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiplies blue pointer gain by the amount of blue pointers"; //maybe here
+      } else if (document.querySelector("#blueupgrade2:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiplies gain of other colors by log1p(blue)"; //and here
+      } else if (document.querySelector("#redscroll:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "???";
+      } else if (document.querySelector("#greenscroll:hover") != null) {
+        document.getElementById("nerdmodetext").innerHTML = "???";
+        nerdtimer = 0;
+      } else if (document.querySelector("#bluescroll:hover") != null) {
+        document.getElementById("nerdmodetext").innerHTML = "???";
+      } else if (document.querySelector("#yellowupgrade1:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "divide all upgrade prices by 0.1 * governmentfundinglevel";
+      } else if (document.querySelector("#yellowupgrade2:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply rgb gain by (log1p(yellow) / 10) * (colorharmonylevel / √colorharmonylevel)";
+      } else if (document.querySelector("#yellowupgrade3:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply rgb gain by 2 * largerprismslevel";
+      } else if (document.querySelector("#yellowupgrade4:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "divide task goal by 2^streamlinedtaskslevel";
+      } else if (document.querySelector("#yellowupgrade5:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply task reward by yellowsynergylevel * 0.25";
+      } else if (document.querySelector("#yellowupgrade6:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "gives the lowest of the two values in yellow/s: 200 * redoverflowlevel or redgain/s / 1e12";
+      } else if (document.querySelector("#yellowupgrade7:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "gives the lowest of the two values in yellow/s: 200 * greenoverflowlevel or greengain/s / 1e12";
+      } else if (document.querySelector("#yellowupgrade8:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "gives the lowest of the two values in yellow/s: 200 * blueoverflowlevel or bluegain/s / 1e12";
+      } else if (document.querySelector("#yellowupgrade9:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply rgb gain by tricolorboostlevel * 0.5 * (yellow / 1000)";
+      } else if (document.querySelector("#yellowupgrade10:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "increase the chance with +1% to get a reward of taskReward * 10 * taskmasterylevel";
+      } else if (document.querySelector("#yellowupgrade11:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply task reward by (goldenmultiplierlevel * tasksCompleted) / 1000";
+      } else if (document.querySelector("#yellowupgrade12:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply weak synergy effect by  √strongersynergylevel * 5";
+      } else if (document.querySelector("#yellowupgrade13:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply pointer gain by √focussedpointerslevel * 2";
+      } else if (document.querySelector("#yellowupgrade14:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply filter gain by √finerfilterslevel * 2";
+      } else if (document.querySelector("#yellowupgrade15:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "multiply nanometerwave effect by Math.log1p(micrometerwavelevel) * 1.5";
+      } else if (document.querySelector("#yellowupgrade16:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "buy 10 cyan for 1e15 red, green, blue and 1200 yellow";
+      } else if (document.querySelector("#cyanbuildings:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "buy 0.5 upgrades/s for every level of this upgrade if you have enough money";
+      } else if (document.querySelector("#magentabuild1:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "gives 0.5 magic/s";
+      } else if (document.querySelector("#magentabuild2:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "gives 5 magic/s";
+      } else if (document.querySelector("#magentabuild3:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML = "gives 50 magic/s";
+      } else if (document.querySelector("#magentabuild4:hover") != null) {
+        nerdtimer = 0;
+
         document.getElementById("nerdmodetext").innerHTML = "gives 500 magic/s";
       } else if (document.querySelector("#magentabuild5:hover") != null) {
         nerdtimer = 0;
@@ -1953,19 +2189,19 @@ window.setInterval(function () {
       } else if (document.querySelector("#magentaspell:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives between 10% and 90% of your magic gain multiplied by 10 magenta and takes between 10% and 90% of a random color.";
+          "converts all your magic into magenta at a ratio of 3 magic to 1 magenta";
       } else if (document.querySelector("#redspell:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives 1 minute worth of red.";
+          "gives 1 second worth of red for every magic put into it";
       } else if (document.querySelector("#greenspell:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives 1 minute worth of green.";
+          "gives 1 second worth of green for every magic put into it";
       } else if (document.querySelector("#bluespell:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "gives 1 minute worth of blue.";
+          "gives 1 second worth of blue for every magic put into it";
       } else {
         if (nerdtimer > 1) {
           document.getElementById("nerdmodetext").innerHTML =
@@ -2004,62 +2240,47 @@ window.setInterval(function () {
       document.getElementById("yellowcount").innerHTML =
         "yellow: " + formatNumber(Math.floor(yellow));
       document.getElementById("magentacount").innerHTML =
-        "magenta: " + formatNumber(Math.floor(magenta * 10)) / 10;
+        "magenta: " + formatNumber(Math.floor(magenta));
       document.getElementById("cyancount").innerHTML =
         "cyan: " + formatNumber(Math.floor(cyan));
       //ugh
-      if (spell1unlock === 1) {
-        document.getElementById("redspell").innerHTML = formatSmallNumber(
-          Math.round(redspellprice)
-        );
-      }
-      if (spell2unlock === 1) {
-        document.getElementById("greenspell").innerHTML = formatSmallNumber(
-          Math.round(greenspellprice)
-        );
-      }
-      if (spell3unlock === 1) {
-        document.getElementById("bluespell").innerHTML = formatSmallNumber(
-          Math.round(bluespellprice)
-        );
-      }
       //im moving the yellow upgrades update function somewhere else
       updateyellow();
       //unlocks
-      if (red >= 50000) {
+      if (debugrednumber >= 5000 && achievement.have1e5red === true) {
         document.getElementById("redupgrades").style.display = "flex";
         document.getElementById("redupgradesbox").style.display = "grid";
         document.getElementById("redupgrade1").style.display = "block";
       }
-      if (red >= 100000) {
+      if (debugrednumber >= 50000 && achievement.have1e5red === true) {
         document.getElementById("redupgrades").style.display = "flex";
         document.getElementById("redupgradesbox").style.display = "grid";
         document.getElementById("redupgrade2").style.display = "block";
         document.getElementById("redupgrade3").style.display = "inline-block";
       }
-      if (green >= 50000) {
+      if (debuggreennumber >= 5000 && achievement.have1e6green === true) {
         document.getElementById("greenupgrades").style.display = "flex";
         document.getElementById("greenupgradesbox").style.display = "grid";
         document.getElementById("greenupgrade1").style.display = "block";
       }
-      if (green >= 100000) {
+      if (debuggreennumber >= 50000 && achievement.have1e6green === true) {
         document.getElementById("greenupgrades").style.display = "flex";
         document.getElementById("greenupgradesbox").style.display = "grid";
         document.getElementById("greenupgrade2").style.display = "block";
         document.getElementById("greenupgrade3").style.display = "block";
       }
-      if (blue >= 50000) {
+      if (debugbluenumber >= 5000 && achievement.have1e7blue === true) {
         document.getElementById("blueupgrades").style.display = "flex";
         document.getElementById("blueupgradesbox").style.display = "grid";
         document.getElementById("blueupgrade1").style.display = "block";
       }
-      if (blue >= 100000) {
+      if (debugbluenumber >= 50000 && achievement.have1e7blue === true) {
         document.getElementById("blueupgrades").style.display = "flex";
         document.getElementById("blueupgradesbox").style.display = "grid";
         document.getElementById("blueupgrade2").style.display = "block";
         document.getElementById("blueupgrade3").style.display = "block";
       }
-      if (magenta > 0) {
+      if (dialoguestate >= 11) {
         if (redscrollcount === 0) {
           document.getElementById("redscroll").style.display = "inline-block";
         }
@@ -2239,7 +2460,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
       //increase green
       calcgreen(
@@ -2276,7 +2499,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
 
       //increase blue
@@ -2314,7 +2539,9 @@ window.setInterval(function () {
             (Math.log1p(yellow) / 10) *
               (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000))
+          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          // black
+          (blackboost + 1)
       );
     }
   }
@@ -2472,7 +2699,7 @@ function submitTask() {
         10 *
         (1 + yellowsynergycount * 0.25) *
         (1 + (goldenmultipliercount * tasksCompleted) / 1000);
-      if (Math.random() * 100 <= 5) {
+      if (Math.random() * 100 <= taskmasterycount) {
         yellow += taskRewardCount * 10 * taskmasterycount;
       }
       document.getElementById("yellowcount").innerHTML =
@@ -2491,7 +2718,7 @@ function submitTask() {
         magenta += 10;
         document.getElementById("tabmagenta").style.display = "block";
         document.getElementById("magentacount").innerHTML =
-          "magenta: " + magenta;
+          "magenta: " + formatNumber(Math.floor(magenta));
       }
     }
   }
@@ -3274,34 +3501,37 @@ function buydrink() {
 //cooldown: definitely, making the spell less effective at higher magic usage prolly not but we'll
 //see if it's balanced w/o and if it isn't then ig we'll do that.
 
-function spell1(number) {
-  if (magic >= redspellprice && spell1unlock === 1) {
-    magic -= redspellprice;
-    redspellprice += debugmagicnumber * 2.5;
-    document.getElementById("redspell").innerHTML = formatSmallNumber(
-      Math.round(redspellprice)
-    );
-    red = red + debugrednumber * number;
+function spell1() {
+  if (spell1unlock === 1) {
+    if (document.getElementById("redshell").style.background === "") {
+      let tribute =
+        (document.getElementById("magicslider").value / 100) * magic;
+      red = red + debugrednumber * tribute;
+      magic -= tribute;
+      spellCoolDown("#redshell", 4000);
+    }
   }
 }
-function spell2(number) {
-  if (magic >= greenspellprice && spell2unlock === 1) {
-    magic -= greenspellprice;
-    greenspellprice += debugmagicnumber * 2.6;
-    document.getElementById("greenspell").innerHTML = formatSmallNumber(
-      Math.round(greenspellprice)
-    );
-    green = green + debuggreennumber * number;
+function spell2() {
+  if (spell2unlock === 1) {
+    if (document.getElementById("greenshell").style.background === "") {
+      let tribute =
+        (document.getElementById("magicslider").value / 100) * magic;
+      green = green + debuggreennumber * tribute;
+      magic -= tribute;
+      spellCoolDown("#greenshell", 4000);
+    }
   }
 }
-function spell3(number) {
-  if (magic >= bluespellprice && spell3unlock === 1) {
-    magic -= bluespellprice;
-    bluespellprice += debugmagicnumber * 2.7;
-    document.getElementById("bluespell").innerHTML = formatSmallNumber(
-      Math.round(bluespellprice)
-    );
-    blue = blue + debugbluenumber * number;
+function spell3() {
+  if (spell3unlock === 1) {
+    if (document.getElementById("blueshell").style.background === "") {
+      let tribute =
+        (document.getElementById("magicslider").value / 100) * magic;
+      blue = blue + debugbluenumber * tribute;
+      magic -= tribute;
+      spellCoolDown("#blueshell", 4000);
+    }
   }
 }
 //oh and make it so u have to unlock the spells that sounds silly
@@ -3356,22 +3586,36 @@ function redscroll() {
 }
 
 function buyredscroll() {
-  if (red >= 1e17) {
+  if (red >= 1e17 && dialoguestate >= 11) {
     spell1unlock++;
     red -= 1e17;
     redscrollcount++;
-    document.getElementById("redspell").innerHTML = "10";
     document.getElementById("redscroll").style.display = "none";
     document.getElementById("redspell").style.backgroundImage =
       "url(images/spells/red_spell.webp)";
+    window.setTimeout("showtab('magenta')", 1000);
+    if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
+      window.setTimeout("chatupdate()", 1500);
+      window.setTimeout("timer = 50", 1400);
+    } else {
+      say(
+        "great! you've got the red scroll. only " +
+          (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +
+          " to go."
+      );
+    }
+  } else {
+    window.setTimeout(function () {
+      showtab("magenta");
+      say("you need at least 1e17 red to grasp that scroll.");
+    }, 500);
   }
 }
 function buygreenscroll() {
-  if (green >= 1e17) {
+  if (green >= 1e18 && dialoguestate >= 11) {
     spell2unlock++;
-    green -= 1e17;
+    green -= 1e18;
     greenscrollcount++;
-    document.getElementById("greenspell").innerHTML = "10";
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("submitTaskButton").style.position = "relative";
     document.getElementById("submitTaskButton").style.width = "100%";
@@ -3380,17 +3624,48 @@ function buygreenscroll() {
     document.getElementById("greenscroll").style.display = "none";
     document.getElementById("greenspell").style.backgroundImage =
       "url(images/spells/green_spell.webp)";
+    window.setTimeout("showtab('magenta')", 1000);
+    if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
+      window.setTimeout("chatupdate()", 1500);
+      window.setTimeout("timer = 50", 1400);
+    } else {
+      say(
+        "you've got the green scroll down. only " +
+          (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +
+          " more."
+      );
+    }
+  } else {
+    window.setTimeout(function () {
+      showtab("magenta");
+      say("you need at least 1e18 green to grasp that scroll.");
+    }, 500);
   }
 }
 function buybluescroll() {
-  if (blue >= 1e17) {
+  if (blue >= 1e19 && dialoguestate >= 11) {
     spell3unlock++;
-    blue -= 1e17;
+    blue -= 1e19;
     bluescrollcount++;
-    document.getElementById("bluespell").innerHTML = "10";
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.backgroundImage =
       "url(images/spells/blue_spell.webp)";
+    window.setTimeout("showtab('magenta')", 1000);
+    if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
+      window.setTimeout("chatupdate()", 1500);
+      window.setTimeout("timer = 50", 1400);
+    } else {
+      say(
+        "now you have the blue scroll. " +
+          (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +
+          " more and then you're done."
+      );
+    }
+  } else {
+    window.setTimeout(function () {
+      showtab("magenta");
+      say("you need at least 1e19 blue to grasp that scroll.");
+    }, 500);
   }
 }
 //TODO BALANCING
@@ -3441,7 +3716,6 @@ function buymagentaspell() {
       .setAttribute("onclick", "castmagentaspell()");
     magic -= 10;
     magentaspellunlock = 1;
-    document.getElementById("magentaspell").innerHTML = "10";
     document.getElementById("magentaspell").style.backgroundImage =
       "url(images/spells/magenta_spell.webp)";
     timer = 60;
@@ -3455,37 +3729,16 @@ function buymagentaspell() {
 //uhh if the price scales with the amount of magic u make then whats the point even,,?
 //the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
-  if (magic >= magentaspellprice) {
+  if (dialoguestate >= 7) {
     if (dialoguestate === 7) {
       chatupdate();
     }
-    magic -= magentaspellprice;
-    magentaspellprice = 10 * Math.pow(1 + debugmagicnumber, 0.7);
-    document.getElementById("magentaspell").innerHTML = formatSmallNumber(
-      Math.round(magentaspellprice)
-    );
-    //random nr between 0.1 and 0.9
-    randomnumber = Math.random() * 0.8 + 0.1;
-    if (Math.random() < 0.5) {
-      if (Math.random() < 0.5) {
-        console.log("red" + randomnumber);
-        red -= red * randomnumber;
-        magenta += debugmagicnumber * randomnumber * 10;
-      } else {
-        console.log("green" + randomnumber);
-        green -= green * randomnumber;
-        magenta += debugmagicnumber * randomnumber * 10;
-      }
-    } else {
-      if (Math.random() < 0.5) {
-        console.log("blue" + randomnumber);
-        blue -= blue * randomnumber;
-        magenta += debugmagicnumber * randomnumber * 10;
-      } else {
-        console.log("yellow" + randomnumber);
-        yellow -= yellow * randomnumber;
-        magenta += debugmagicnumber * randomnumber * 10;
-      }
+    if (document.getElementById("magentashell").style.background === "") {
+      let tribute =
+        (document.getElementById("magicslider").value / 100) * magic;
+      magenta += tribute / 3;
+      magic -= tribute;
+      spellCoolDown("#magentashell", 1000);
     }
   }
 }
@@ -3697,7 +3950,7 @@ function chatupdate() {
     say("now purchase your first spell for 10 magic.");
     dialoguestate++;
   } else if (dialoguestate === 5 && tab === "magenta") {
-    say("great! this spell takes some colors and gives you magenta for it.");
+    say("great! this spell converts magic into magenta at a 3:1 ratio.");
     dialoguestate++;
   } else if (dialoguestate === 6 && tab === "magenta") {
     say("go ahead, try casting it. the first one's on me.");
@@ -3717,6 +3970,20 @@ function chatupdate() {
     dialoguestate++;
   } else if (dialoguestate === 11 && tab === "magenta") {
     say("great! i'll tell you what these spells do.");
+    dialoguestate++;
+  } else if (dialoguestate === 12 && tab === "magenta") {
+    say(
+      "these spells all exchange magic for colors. 1 magic for 1 second worth."
+    );
+    dialoguestate++;
+  } else if (dialoguestate === 13 && tab === "magenta") {
+    say("the time has come for me to go. continue getting stronger my friend!");
+    dialoguestate++;
+  } else if (dialoguestate === 14 && tab === "magenta") {
+    say("i will see you again soon...");
+    dialoguestate++;
+  } else if (dialoguestate === 15 && tab === "magenta") {
+    say("");
     dialoguestate++;
   }
 }
@@ -3748,6 +4015,18 @@ window.setInterval(function () {
     } else if (dialoguestate === 10 && timer <= 0) {
       chatupdate();
       timer = 45;
+    } else if (dialoguestate === 12 && timer <= 0) {
+      chatupdate();
+      timer = 60;
+    } else if (dialoguestate === 13 && timer <= 0) {
+      chatupdate();
+      timer = 40;
+    } else if (dialoguestate === 14 && timer <= 0) {
+      chatupdate();
+      timer = 40;
+    } else if (dialoguestate === 15 && timer <= 0) {
+      chatupdate();
+      timer = 40;
     }
   }
 }, 100);
@@ -4075,14 +4354,14 @@ function save() {
     currentnerdmode: currentnerdmode,
     dialoguestate: dialoguestate,
     words: words,
-    magentaspellprice: magentaspellprice,
-    redspellprice: redspellprice,
-    greenspellprice: greenspellprice,
-    bluespellprice: bluespellprice,
     spell1unlock: spell1unlock,
     spell2unlock: spell2unlock,
     spell3unlock: spell3unlock,
     streamlinedTaskColorGoal: streamlinedTaskColorGoal,
+    cooldownspells: cooldownspells,
+    cooldowntimeleft: cooldowntimeleft,
+    cooldowntimes: cooldowntimes,
+    achievement: achievement,
   };
   localStorage.setItem("save", JSON.stringify(save));
   document.getElementById("saving").setAttribute("class", "");
@@ -4109,6 +4388,7 @@ window.addEventListener("focus", function () {
     green += debuggreennumber * (offlineTime / 1000);
     blue += debugbluenumber * (offlineTime / 1000);
     magic += debugmagicnumber * (offlineTime / 1000);
+    yellow += yellowGAIN * 50 * (offlineTime / 1000);
   }
 });
 
@@ -4125,4 +4405,430 @@ function triggerExplosion() {
     singularity.style.animation =
       "squigglycircle 0.2s ease-out forwards alternate infinite";
   }, 2000); // Duration matches the explode animation
+}
+
+function buy_spell() {
+  var tempwords = words;
+  window.setTimeout(function () {
+    say(tempwords);
+  }, 3000);
+  say("coming soon!");
+}
+
+//cooldown shenanigains
+let cooldownspells = [];
+let cooldowntimes = [];
+let cooldowntimeleft = [];
+
+function spellCoolDown(queryselector, cooldowntime) {
+  cooldownspells.push(queryselector);
+  cooldowntimes.push(cooldowntime);
+  cooldowntimeleft.push(cooldowntime);
+  document.querySelector(queryselector + " > button").style.opacity = "0.5";
+  window.setTimeout(function () {
+    document.querySelector(queryselector + " > button").style.opacity = "1";
+  }, cooldowntime);
+}
+
+window.setInterval(function () {
+  for (let i = cooldownspells.length - 1; i >= 0; i--) {
+    let fillPercent = (cooldowntimeleft[i] / cooldowntimes[i]) * 100;
+    document.querySelector(cooldownspells[i]).style.background =
+      "linear-gradient(360deg, gray " +
+      fillPercent +
+      "%, transparent " +
+      fillPercent +
+      "%)";
+
+    cooldowntimeleft[i] -= 50;
+
+    if (cooldowntimeleft[i] <= 0) {
+      document.querySelector(cooldownspells[i]).style.background = "";
+      cooldownspells.splice(i, 1);
+      cooldowntimes.splice(i, 1);
+      cooldowntimeleft.splice(i, 1);
+    }
+  }
+}, 50);
+
+document.getElementById("magicslider").oninput = function () {
+  document.getElementById("magicinput").value = this.value;
+};
+document.getElementById("magicinput").oninput = function () {
+  document.getElementById("magicslider").value = this.value;
+};
+
+//stuck
+function stuck() {
+  if (document.getElementById("helpmenu").style.display === "flex") {
+    document.getElementById("helpmenu").style.display = "none";
+  } else {
+    document.getElementById("helpmenu").style.display = "flex";
+  }
+}
+
+function resetMagenta() {
+  stuck();
+  document
+    .getElementById("magentaspell")
+    .setAttribute("onclick", "buymagentaspell()");
+  cauldron = study = feed = feedperson = drink = magic = 0;
+  magenta = cauldroncost = 10;
+  studycost = 100;
+  feedcost = 1000;
+  feedpersoncost = 10000;
+  drinkcost = 100000;
+  spell1unlock =
+    spell2unlock =
+    spell3unlock =
+    magentaspellunlock =
+    redscrollcount =
+    greenscrollcount =
+    bluescrollcount =
+      0;
+  dialoguestate = 0;
+  say("");
+  save();
+  document.body.style.display = "none";
+  window.setTimeout(function () {
+    location.reload();
+  }, 2000);
+}
+
+//achievement
+
+//achievement menu
+function displayachievement() {
+  if (document.getElementById("achievementTab").style.display !== "flex") {
+    document.getElementById("achievementTab").style.display = "flex";
+  } else {
+    document.getElementById("achievementTab").style.display = "none";
+  }
+}
+
+//info follows mouse
+let infoXpos = 0;
+let infoYpos = 0;
+window.addEventListener("mousemove", function (e) {
+  infoXpos = e.clientX;
+  infoYpos = e.clientY;
+  this.document.getElementById("achievementInfo").style.top =
+    "calc(" +
+    infoYpos +
+    "px - " +
+    document.getElementById("achievementInfo").offsetHeight +
+    "px - 1vh)";
+  this.document.getElementById("achievementInfo").style.left =
+    "calc(" + infoXpos + "px" + " - 1vw)";
+});
+
+//add detecting abilities to all achievement buttons
+document.querySelectorAll(".achievement-item").forEach((item) => {
+  //info appears on hover
+  item.addEventListener("mouseover", function () {
+    document.getElementById("achievementInfo").style.display = "block";
+    document.getElementById("requirementInfo").innerHTML =
+      this.dataset.achievement;
+    document.getElementById("rewardInfo").innerHTML = this.dataset.reward;
+    achievementinfo.classList.add("achievementfade");
+    achievementinfo.classList.remove("achievementfadeaway");
+    document.getElementById("achievementInfo").style.background =
+      this.dataset.color;
+  });
+  //info dissapears after hover
+  item.addEventListener("mouseout", function () {
+    achievementinfo.classList.add("achievementfadeaway");
+    achievementinfo.classList.remove("achievementfade");
+  });
+});
+
+//achievements
+
+const achievementNotification = document.getElementById(
+  "achievementNotification"
+);
+const achievementItemImg = document.querySelectorAll(".achievement-item>img");
+const achievementNotificationImg = document.querySelector(
+  "#achievementNotification>img"
+);
+const achievementNotificationText = document.querySelector(
+  "#achievementNotification>p"
+);
+
+//achievement checking loop
+window.setInterval(function () {
+  checkAchievement();
+}, 500);
+
+const achievementinfo = document.getElementById("achievementInfo");
+
+function checkAchievement() {
+  //red
+  if (achievement.redfilter1 === false && redfilter >= 1) {
+    achievement.redfilter1 = true;
+    achievementItemImg[0].src = achievementNotificationImg.src =
+      "images/achievements/redfilter1.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.redPerSec10 === false && debugrednumber >= 10) {
+    achievement.redPerSec10 = true;
+    achievementItemImg[1].src = achievementNotificationImg.src =
+      "images/achievements/redPerSec10.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+    document.getElementById("tasks").style.display = "block";
+  }
+  if (achievement.have1e5red === false && red >= 100000) {
+    achievement.have1e5red = true;
+    achievementItemImg[2].src = achievementNotificationImg.src =
+      "images/achievements/have1e5red.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (
+    achievement.buyAllRedUpgrades === false &&
+    redupgrade1 === 1 &&
+    redupgrade2 === 1 &&
+    redupgrade3 === 1
+  ) {
+    achievement.buyAllRedUpgrades = true;
+    achievementItemImg[3].src = achievementNotificationImg.src =
+      "images/achievements/buyAllRedUpgrades.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );}
+
+  if (achievement.redPerSec1e15 === false && debugrednumber >= 1e15) {
+    achievement.redPerSec1e15 = true;
+    achievementItemImg[4].src = achievementNotificationImg.src =
+      "images/achievements/redPerSec1e15.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.have1e20red === false && red >= 1e20) {
+    achievement.have1e20red = true;
+    achievementItemImg[5].src = achievementNotificationImg.src =
+      "images/achievements/have1e20red.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#261711";
+    achievementNotification.style.color = "#F20C0C";
+    achievementNotification.style.borderColor = "#F20C0C";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  //green
+  if (achievement.greenfilter1 === false && greenfilter >= 1) {
+    achievement.greenfilter1 = true;
+    achievementItemImg[6].src = achievementNotificationImg.src =
+      "images/achievements/greenfilter1.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.greenPerSec100 === false && debuggreennumber >= 100) {
+    achievement.greenPerSec100 = true;
+    achievementItemImg[7].src = achievementNotificationImg.src =
+      "images/achievements/greenPerSec100.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.have1e6green === false && green >= 1000000) {
+    achievement.have1e6green = true;
+    achievementItemImg[8].src = achievementNotificationImg.src =
+      "images/achievements/have1e6green.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (
+    achievement.buyAllGreenUpgrades === false &&
+    greenupgrade1 === 1 &&
+    greenupgrade2 === 1 &&
+    greenupgrade3 === 1
+  ) {
+    achievement.buyAllGreenUpgrades = true;
+    achievementItemImg[9].src = achievementNotificationImg.src =
+      "images/achievements/buyAllGreenUpgrades.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.greenPerSec1e16 === false && debuggreennumber >= 1e16) {
+    achievement.greenPerSec1e16 = true;
+    achievementItemImg[10].src = achievementNotificationImg.src =
+      "images/achievements/greenPerSec1e16.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.have1e21green === false && green >= 1e21) {
+    achievement.have1e21green = true;
+    achievementItemImg[11].src = achievementNotificationImg.src =
+      "images/achievements/have1e21green.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#172311";
+    achievementNotification.style.color = "#19FF00";
+    achievementNotification.style.borderColor = "#19FF00";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  //blue
+  if (achievement.bluefilter1 === false && bluefilter >= 1) {
+    achievement.bluefilter1 = true;
+    achievementItemImg[12].src = achievementNotificationImg.src =
+      "images/achievements/bluefilter1.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.bluePerSec1000 === false && debugbluenumber >= 1000) {
+    achievement.bluePerSec1000 = true;
+    achievementItemImg[13].src = achievementNotificationImg.src =
+      "images/achievements/bluePerSec1000.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.have1e7blue === false && blue >= 10000000) {
+    achievement.have1e7blue = true;
+    achievementItemImg[14].src = achievementNotificationImg.src =
+      "images/achievements/have1e7blue.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (
+    achievement.buyAllBlueUpgrades === false &&
+    blueupgrade1 === 1 &&
+    blueupgrade2 === 1 &&
+    blueupgrade3 === 1
+  ) {
+    achievement.buyAllBlueUpgrades = true;
+    achievementItemImg[15].src = achievementNotificationImg.src =
+      "images/achievements/buyAllBlueUpgrades.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.bluePerSec1e17 === false && debugbluenumber >= 1e17) {
+    achievement.bluePerSec1e17 = true;
+    achievementItemImg[16].src = achievementNotificationImg.src =
+      "images/achievements/bluePerSec1e17.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+  if (achievement.have1e22blue === false && blue >= 1e22) {
+    achievement.have1e22blue = true;
+    achievementItemImg[17].src = achievementNotificationImg.src =
+      "images/achievements/have1e22blue.webp";
+    achievementNotification.classList.add("slide");
+    achievementNotification.style.backgroundColor = "#100F22";
+    achievementNotification.style.color = "#0B1EED";
+    achievementNotification.style.borderColor = "#0B1EED";
+    window.setTimeout(
+      "achievementNotification.classList.remove('slide');",
+      6000
+    );
+  }
+}
+
+//
+//
+//
+//
+//
+
+// spells
+// and
+// stuff
+
+function spell(spelltype) {
+  if (spelltype == 1) {
+  }
 }
