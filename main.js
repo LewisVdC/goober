@@ -301,81 +301,24 @@ function load() {
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
     //achievement and nerdmode
-    if (typeof savegame.achievement !== "undefined")
+    if (typeof savegame.achievement !== "undefined"){
       achievement = savegame.achievement;
-    if (achievement.redfilter1 === true) {
-      achievementItemImg[0].src = achievementNotificationImg.src =
-        "images/achievements/redfilter1.webp";
+      //get all achievement names from achievement obj
+      let keys = Object.keys(achievement);
+      //loop through all achievements
+      for(let i = 0; i <= keys.length-1; i++){
+        //if the achievement has been unlocked
+        if(achievement[keys[i]] === true){
+          //set achievement img to proper img
+          achievementItemImg[i].src = "images/achievements/"+keys[i]+".webp";
+          //unlocks
+          if(keys[i] === "redPerSec10"){
+            document.getElementById("tasks").style.display = "block";
+          }
+        }
+      }
     }
-    if (achievement.redPerSec10 === true) {
-      achievementItemImg[1].src = achievementNotificationImg.src =
-        "images/achievements/redPerSec10.webp";
-      document.getElementById("tasks").style.display = "block";
-    }
-    if (achievement.have1e5red === true) {
-      achievementItemImg[2].src = achievementNotificationImg.src =
-        "images/achievements/have1e5red.webp";
-    }
-    if (achievement.buyAllRedUpgrades === true) {
-      achievementItemImg[3].src = achievementNotificationImg.src =
-        "images/achievements/buyAllRedUpgrades.webp";
-    }
-    if (achievement.redPerSec1e15 === true) {
-      achievementItemImg[4].src = achievementNotificationImg.src =
-        "images/achievements/redPerSec1e15.webp";
-    }
-    if (achievement.have1e20red === true) {
-      achievementItemImg[5].src = achievementNotificationImg.src =
-        "images/achievements/have1e20red.webp";
-    }
-    if (achievement.greenfilter1 === true) {
-      achievementItemImg[6].src = achievementNotificationImg.src =
-        "images/achievements/greenfilter1.webp";
-    }
-    if (achievement.greenPerSec100 === true) {
-      achievementItemImg[7].src = achievementNotificationImg.src =
-        "images/achievements/greenPerSec100.webp";
-    }
-    if (achievement.have1e6green === true) {
-      achievementItemImg[8].src = achievementNotificationImg.src =
-        "images/achievements/have1e6green.webp";
-    }
-    if (achievement.buyAllGreenUpgrades === true) {
-      achievementItemImg[9].src = achievementNotificationImg.src =
-        "images/achievements/buyAllGreenUpgrades.webp";
-    }
-    if (achievement.greenPerSec1e16 === true) {
-      achievementItemImg[10].src = achievementNotificationImg.src =
-        "images/achievements/greenPerSec1e16.webp";
-    }
-    if (achievement.have1e21green === true) {
-      achievementItemImg[11].src = achievementNotificationImg.src =
-        "images/achievements/have1e21green.webp";
-    }
-    if (achievement.bluefilter1 === true) {
-      achievementItemImg[12].src = achievementNotificationImg.src =
-        "images/achievements/bluefilter1.webp";
-    }
-    if (achievement.bluePerSec1000 === true) {
-      achievementItemImg[13].src = achievementNotificationImg.src =
-        "images/achievements/bluePerSec1000.webp";
-    }
-    if (achievement.have1e7blue === true) {
-      achievementItemImg[14].src = achievementNotificationImg.src =
-        "images/achievements/have1e7blue.webp";
-    }
-    if (achievement.buyAllBlueUpgrades === true) {
-      achievementItemImg[15].src = achievementNotificationImg.src =
-        "images/achievements/buyAllBlueUpgrades.webp";
-    }
-    if (achievement.bluePerSec1e17 === true) {
-      achievementItemImg[16].src = achievementNotificationImg.src =
-        "images/achievements/bluePerSec1e17.webp";
-    }
-    if (achievement.have1e22blue === true) {
-      achievementItemImg[17].src = achievementNotificationImg.src =
-        "images/achievements/have1e22blue.webp";
-    }
+    
 
     if (typeof savegame.currentnerdmode !== "undefined")
       currentnerdmode = savegame.currentnerdmode;
@@ -4561,48 +4504,30 @@ window.setInterval(function () {
 }, 500);
 
 const achievementinfo = document.getElementById("achievementInfo");
+let achQBackgColor = [];
+let achQForgColor = [];
+let achQImg = [];
+
+//function for reused code
+function achievementCall(achievementName, achievementIndex, background_Color, foreground_Color){
+  achievement[achievementName] = true;
+  achievementItemImg[achievementIndex].src = "images/achievements/"+achievementName+".webp";
+  achQBackgColor.push(background_Color);
+  achQForgColor.push(foreground_Color);
+  achQImg.push("images/achievements/"+achievementName+".webp");
+}
 
 function checkAchievement() {
   //red
   if (achievement.redfilter1 === false && redfilter >= 1) {
-    achievement.redfilter1 = true;
-    achievementItemImg[0].src = achievementNotificationImg.src =
-      "images/achievements/redfilter1.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#261711";
-    achievementNotification.style.color = "#F20C0C";
-    achievementNotification.style.borderColor = "#F20C0C";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("redfilter1", 0, "#261711", "#F20C0C");
   }
   if (achievement.redPerSec10 === false && debugrednumber >= 10) {
-    achievement.redPerSec10 = true;
-    achievementItemImg[1].src = achievementNotificationImg.src =
-      "images/achievements/redPerSec10.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#261711";
-    achievementNotification.style.color = "#F20C0C";
-    achievementNotification.style.borderColor = "#F20C0C";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("redPerSec10", 1, "#261711", "#F20C0C");
     document.getElementById("tasks").style.display = "block";
   }
   if (achievement.have1e5red === false && red >= 100000) {
-    achievement.have1e5red = true;
-    achievementItemImg[2].src = achievementNotificationImg.src =
-      "images/achievements/have1e5red.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#261711";
-    achievementNotification.style.color = "#F20C0C";
-    achievementNotification.style.borderColor = "#F20C0C";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("have1e5red", 2, "#261711", "#F20C0C");
   }
   if (
     achievement.buyAllRedUpgrades === false &&
@@ -4610,83 +4535,24 @@ function checkAchievement() {
     redupgrade2 === 1 &&
     redupgrade3 === 1
   ) {
-    achievement.buyAllRedUpgrades = true;
-    achievementItemImg[3].src = achievementNotificationImg.src =
-      "images/achievements/buyAllRedUpgrades.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#261711";
-    achievementNotification.style.color = "#F20C0C";
-    achievementNotification.style.borderColor = "#F20C0C";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );}
+    achievementCall("buyAllRedUpgrades", 3, "#261711", "#F20C0C");
+  }
 
   if (achievement.redPerSec1e15 === false && debugrednumber >= 1e15) {
-    achievement.redPerSec1e15 = true;
-    achievementItemImg[4].src = achievementNotificationImg.src =
-      "images/achievements/redPerSec1e15.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#261711";
-    achievementNotification.style.color = "#F20C0C";
-    achievementNotification.style.borderColor = "#F20C0C";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("redPerSec1e15", 4, "#261711", "#F20C0C");
   }
   if (achievement.have1e20red === false && red >= 1e20) {
-    achievement.have1e20red = true;
-    achievementItemImg[5].src = achievementNotificationImg.src =
-      "images/achievements/have1e20red.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#261711";
-    achievementNotification.style.color = "#F20C0C";
-    achievementNotification.style.borderColor = "#F20C0C";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("have1e20red", 5, "#261711", "#F20C0C");
   }
   //green
   if (achievement.greenfilter1 === false && greenfilter >= 1) {
-    achievement.greenfilter1 = true;
-    achievementItemImg[6].src = achievementNotificationImg.src =
-      "images/achievements/greenfilter1.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#172311";
-    achievementNotification.style.color = "#19FF00";
-    achievementNotification.style.borderColor = "#19FF00";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("greenfilter1", 6, "#172311", "#19FF00");
   }
   if (achievement.greenPerSec100 === false && debuggreennumber >= 100) {
-    achievement.greenPerSec100 = true;
-    achievementItemImg[7].src = achievementNotificationImg.src =
-      "images/achievements/greenPerSec100.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#172311";
-    achievementNotification.style.color = "#19FF00";
-    achievementNotification.style.borderColor = "#19FF00";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("greenPerSec100", 7, "#172311", "#19FF00");
   }
   if (achievement.have1e6green === false && green >= 1000000) {
-    achievement.have1e6green = true;
-    achievementItemImg[8].src = achievementNotificationImg.src =
-      "images/achievements/have1e6green.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#172311";
-    achievementNotification.style.color = "#19FF00";
-    achievementNotification.style.borderColor = "#19FF00";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("have1e6green", 8, "#172311", "#19FF00");
   }
   if (
     achievement.buyAllGreenUpgrades === false &&
@@ -4694,83 +4560,23 @@ function checkAchievement() {
     greenupgrade2 === 1 &&
     greenupgrade3 === 1
   ) {
-    achievement.buyAllGreenUpgrades = true;
-    achievementItemImg[9].src = achievementNotificationImg.src =
-      "images/achievements/buyAllGreenUpgrades.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#172311";
-    achievementNotification.style.color = "#19FF00";
-    achievementNotification.style.borderColor = "#19FF00";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("buyAllGreenUpgrades", 9, "#172311", "#19FF00");
   }
   if (achievement.greenPerSec1e16 === false && debuggreennumber >= 1e16) {
-    achievement.greenPerSec1e16 = true;
-    achievementItemImg[10].src = achievementNotificationImg.src =
-      "images/achievements/greenPerSec1e16.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#172311";
-    achievementNotification.style.color = "#19FF00";
-    achievementNotification.style.borderColor = "#19FF00";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("greenPerSec1e16", 10, "#172311", "#19FF00");
   }
   if (achievement.have1e21green === false && green >= 1e21) {
-    achievement.have1e21green = true;
-    achievementItemImg[11].src = achievementNotificationImg.src =
-      "images/achievements/have1e21green.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#172311";
-    achievementNotification.style.color = "#19FF00";
-    achievementNotification.style.borderColor = "#19FF00";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("have1e21green", 11, "#172311", "#19FF00");
   }
   //blue
   if (achievement.bluefilter1 === false && bluefilter >= 1) {
-    achievement.bluefilter1 = true;
-    achievementItemImg[12].src = achievementNotificationImg.src =
-      "images/achievements/bluefilter1.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#100F22";
-    achievementNotification.style.color = "#0B1EED";
-    achievementNotification.style.borderColor = "#0B1EED";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("bluefilter1", 12, "#100F22", "#0B1EED");
   }
   if (achievement.bluePerSec1000 === false && debugbluenumber >= 1000) {
-    achievement.bluePerSec1000 = true;
-    achievementItemImg[13].src = achievementNotificationImg.src =
-      "images/achievements/bluePerSec1000.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#100F22";
-    achievementNotification.style.color = "#0B1EED";
-    achievementNotification.style.borderColor = "#0B1EED";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("bluePerSec1000", 13, "#100F22", "#0B1EED");
   }
   if (achievement.have1e7blue === false && blue >= 10000000) {
-    achievement.have1e7blue = true;
-    achievementItemImg[14].src = achievementNotificationImg.src =
-      "images/achievements/have1e7blue.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#100F22";
-    achievementNotification.style.color = "#0B1EED";
-    achievementNotification.style.borderColor = "#0B1EED";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("have1e7blue", 14, "#100F22", "#0B1EED");
   }
   if (
     achievement.buyAllBlueUpgrades === false &&
@@ -4778,39 +4584,111 @@ function checkAchievement() {
     blueupgrade2 === 1 &&
     blueupgrade3 === 1
   ) {
-    achievement.buyAllBlueUpgrades = true;
-    achievementItemImg[15].src = achievementNotificationImg.src =
-      "images/achievements/buyAllBlueUpgrades.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#100F22";
-    achievementNotification.style.color = "#0B1EED";
-    achievementNotification.style.borderColor = "#0B1EED";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("buyAllBlueUpgrades", 15, "#100F22", "#0B1EED");
   }
   if (achievement.bluePerSec1e17 === false && debugbluenumber >= 1e17) {
-    achievement.bluePerSec1e17 = true;
-    achievementItemImg[16].src = achievementNotificationImg.src =
-      "images/achievements/bluePerSec1e17.webp";
-    achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#100F22";
-    achievementNotification.style.color = "#0B1EED";
-    achievementNotification.style.borderColor = "#0B1EED";
-    window.setTimeout(
-      "achievementNotification.classList.remove('slide');",
-      6000
-    );
+    achievementCall("bluePerSec1e17", 16, "#100F22", "#0B1EED");
   }
   if (achievement.have1e22blue === false && blue >= 1e22) {
-    achievement.have1e22blue = true;
-    achievementItemImg[17].src = achievementNotificationImg.src =
-      "images/achievements/have1e22blue.webp";
+    achievementCall("have1e22blue", 17, "#100F22", "#0B1EED");
+  }
+  if (achievement.yellow1 === false && yellow >= 1) {
+    achievementCall("yellow1", 18, "#222310", "#FFFF00");
+  }
+  if (achievement.yellow100 === false && yellow >= 100) {
+    achievementCall("yellow100", 19, "#222310", "#FFFF00");
+  }
+  if (achievement.triggertaskmastery === false && false) {
+    achievementCall("triggertaskmastery", 20, "#222310", "#FFFF00");
+  }
+  if (achievement.yellowPerSec10 === false && yellowGAIN*50 >= 10) {
+    achievementCall("yellowPerSec10", 21, "#222310", "#FFFF00");
+  }
+  if (achievement.yellowAllUpgrades10 === false && false) {
+    achievementCall("yellowAllUpgrades10", 22, "#222310", "#FFFF00");
+  }
+  if (achievement.have1e7yellow === false && yellow >= 1e7) {
+    achievementCall("have1e7yellow", 23, "#222310", "#FFFF00");
+  }
+  if (achievement.yellowCyan1 === false && colorsyphoncount >= 1) {
+    achievementCall("yellowCyan1", 24, "#132322", "#01FFFF");
+  }
+  if (achievement.automation1 === false && 
+    redfilterautomationcount +
+    redpointerautomationcount +
+    bigredfilterautomationcount +
+    bigredpointerautomationcount +
+    rednanometerwaveautomationcount +
+    greenfilterautomationcount +
+    greenpointerautomationcount +
+    biggreenfilterautomationcount +
+    biggreenpointerautomationcount +
+    greennanometerwaveautomationcount +
+    bluefilterautomationcount +
+    bluepointerautomationcount +
+    bigbluefilterautomationcount +
+    bigbluepointerautomationcount +
+    bluenanometerwaveautomationcount >= 1
+  ) {
+    achievementCall("automation1", 25, "#132322", "#01FFFF");
+  }
+  if (achievement.everyAutomation === false && 
+    redfilterautomationcount >= 1 &&
+    redpointerautomationcount >= 1 &&
+    bigredfilterautomationcount >= 1 &&
+    bigredpointerautomationcount >= 1 &&
+    rednanometerwaveautomationcount >= 1 &&
+    greenfilterautomationcount >= 1 &&
+    greenpointerautomationcount >= 1 &&
+    biggreenfilterautomationcount >= 1 &&
+    biggreenpointerautomationcount >= 1 &&
+    greennanometerwaveautomationcount >= 1 &&
+    bluefilterautomationcount >= 1 &&
+    bluepointerautomationcount >= 1 &&
+    bigbluefilterautomationcount >= 1 &&
+    bigbluepointerautomationcount >= 1 &&
+    bluenanometerwaveautomationcount >= 1
+  ) {
+    achievementCall("everyAutomation", 26, "#132322", "#01FFFF");
+  }
+  if (achievement.magicCyan1 === false && false) {
+    achievementCall("magicCyan1", 27, "#132322", "#01FFFF");
+  }
+  if (achievement.spellAutomation === false && false) {
+    achievementCall("spellAutomation", 28, "#132322", "#01FFFF");
+  }
+  if (achievement.prestiegeAutomation === false && false) {
+    achievementCall("prestiegeAutomation", 29, "#132322", "#01FFFF");
+  }
+  if (achievement.buyCauldron1 === false && cauldron >=1) {
+    achievementCall("buyCauldron1", 30, "#211023", "#FF01FF");
+  }
+  if (achievement.castSpell1 === false && dialoguestate >= 8) {
+    achievementCall("castSpell1", 31, "#211023", "#FF01FF");
+  }
+  if (achievement.magicPerSec1e4 === false && debugmagicnumber >= 1e4) {
+    achievementCall("magicPerSec1e4", 32, "#211023", "#FF01FF");
+  }
+  if (achievement.buyAllScrolls === false && redscrollcount+greenscrollcount+bluescrollcount === 3) {
+    achievementCall("buyAllScrolls", 33, "#211023", "#FF01FF");
+  }
+  if (achievement.earn1e9magenta === false && false) {
+    achievementCall("earn1e9magenta", 34, "#211023", "#FF01FF");
+  }
+  if (achievement.allSpellsUnlocked === false && false) {
+    achievementCall("allSpellsUnlocked", 35, "#211023", "#FF01FF");
+  }
+
+  //notification
+  if(achQImg.length !== 0 && achievementNotification.classList.length === 0){
+    let tempColF = achQForgColor.shift();
+    let tempColB = achQBackgColor.shift()
+    achievementNotificationImg.src = achQImg.shift()
     achievementNotification.classList.add("slide");
-    achievementNotification.style.backgroundColor = "#100F22";
-    achievementNotification.style.color = "#0B1EED";
-    achievementNotification.style.borderColor = "#0B1EED";
+    achievementNotification.style.backgroundColor = tempColB;
+    achievementNotification.style.color = tempColF;
+    achievementNotification.style.borderColor = tempColF;
+    achievementNotification.style.textShadow = tempColF+" 0 0 10px, "+tempColB+" 0 0 10px";
     window.setTimeout(
       "achievementNotification.classList.remove('slide');",
       6000
@@ -4832,3 +4710,4 @@ function spell(spelltype) {
   if (spelltype == 1) {
   }
 }
+
