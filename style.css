@@ -35,7 +35,6 @@ body {
   text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
 }
 div#tasks {
-  display: none;
   color: rgb(200, 25, 25);
   position: absolute;
   text-align: right;
@@ -654,9 +653,6 @@ button#tabblack {
   color: white;
   box-shadow: 0 0 50px 5px black;
 }
-button {
-  background-color: unset;
-}
 .redupgrades {
   background-color: rgb(200, 25, 25);
   background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
@@ -720,13 +716,7 @@ div#confusion {
   text-align: center;
   justify-content: center;
   margin-top: 10px;
-  color: rgb(255, 55, 255);
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
+  color: magenta;
 }
 .yellowupgrades {
   height: 15vh;
@@ -751,9 +741,9 @@ div#confusion {
 #yellowcount {
   color: rgb(168, 140, 0);
 }
-button:hover:not(.submit, #enterbutton, .spell) {
+button:hover:not(.submit, #enterbutton) {
   scale: 1.1;
-  z-index: 18;
+  z-index: 9999;
 }
 button:not(.submit) {
   transition: 0.2s ease-out !important;
@@ -893,6 +883,8 @@ div#spellcasting {
   margin-top: 10%;
 }
 .spell {
+  margin-left: 5px;
+  margin-right: 5px;
   color: white;
   background: round;
   height: 80px;
@@ -900,55 +892,9 @@ div#spellcasting {
   display: block;
   justify-content: center;
 }
-.spellshell {
-  transition: 0.2s;
-  margin: 5px;
-}
-.spellshell:hover {
-  transform: scale(1.1);
-}
-#magicslider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 5px;
-  background: #510b68;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-}
-#magicslider:hover {
-  opacity: 1;
-}
-#magicslider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(black 20%, magenta);
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-#magicslider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-#magicinput {
-  background: linear-gradient(45deg, darkmagenta, magenta, darkmagenta);
-  width: 3.2vh;
-}
-#magicinputbox {
-  margin-left: 3vh;
-}
 p#think {
-  text-align: center;
-  display: flex;
-  justify-content: center;
   opacity: 0;
+  display: block;
   width: 100%;
 }
 div#spellcastingbox {
@@ -1012,7 +958,7 @@ div#lewissucks:hover {
   animation-iteration-count: infinite;
 }
 p#blackholecounter {
-  z-index: 10;
+  z-index: 1000000;
   /* z index a million */
 }
 @keyframes shake {
@@ -1141,12 +1087,12 @@ div#lewissucks.animate {
 }
 
 #Settings {
-  z-index: 17;
+  z-index: 20;
   position: fixed;
   width: 79px;
 }
 #settingscontainer {
-  z-index: 17;
+  z-index: 20;
   margin-top: 30px;
   flex-direction: column;
   display: none;
@@ -1168,7 +1114,7 @@ div#lewissucks.animate {
   width: calc(50% - 220px);
   display: none;
   align-items: flex-start;
-  margin-left: 190px;
+  margin-left: 95px;
   position: fixed;
 }
 
@@ -1232,7 +1178,7 @@ div#blackhole.animate3 {
   }
 }
 div#pourbox {
-  z-index: 11;
+  z-index: 2000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1281,13 +1227,13 @@ div#pourbox {
   }
 }
 div#pourred {
-  z-index: 11;
+  z-index: 2000;
 }
 button#pourredbutton {
-  z-index: 11;
+  z-index: 2000;
 }
 div#black2 {
-  z-index: 10;
+  z-index: 2000;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -1328,175 +1274,4 @@ span#blackboost {
 }
 div#saving.fadeout {
   animation: fadeout 1s forwards;
-}
-
-#helpmenu {
-  box-shadow: inset 0 0 15vh #2f2f2f;
-  text-shadow: 0 0 5px white;
-  border: inset black;
-  color: white;
-  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
-  flex-wrap: wrap;
-  display: none;
-  position: fixed;
-  z-index: 99;
-  height: 40%;
-  width: 40%;
-  justify-content: center;
-  align-items: center;
-  margin-left: 30vw;
-  margin-top: 30vh;
-  border-radius: 2%;
-}
-#magentaresettext {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  font-size: 4vh;
-  text-align: center;
-}
-.yesno {
-  border-radius: 5%;
-  font-size: large;
-  margin: 1vh;
-  width: 10vw;
-  height: 10vh;
-}
-#yes {
-  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
-}
-#no {
-  background: linear-gradient(45deg, #003e00, #32db32, #025202);
-}
-#achievementButton {
-  position: fixed;
-  margin-top: 0;
-  margin-left: 79px;
-  width: auto;
-  z-index: 11;
-}
-#achievementTab {
-  box-shadow: black 0px 0px 20px 2px;
-  overflow-y: scroll;
-  position: fixed;
-  border: inset black 2px;
-  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
-  width: 65vh;
-  height: 55vh;
-  margin-left: calc(50vw - 37.5vh - 1px);
-  margin-top: calc(22.5vh - 1px);
-  z-index: 19;
-  display: none;
-  color: white;
-  text-shadow: none;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 5vh;
-}
-#achievementTab::-webkit-scrollbar {
-  display: none;
-}
-#achievementHolder {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 2px;
-  align-content: center;
-}
-.achievement-item {
-  background-image: "images/locked_idiot.webp";
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
-.achievement-item > img {
-  border: inset black;
-  border-radius: 5%;
-  width: 95%;
-  height: 95%;
-}
-#achievementText {
-  color: white;
-  margin: 0 5% 5% 5%;
-  width: 70vh;
-  text-align: center;
-  text-shadow: none !important;
-}
-#achievementInfo {
-  text-align: center;
-  background: black;
-  padding: 3px;
-  border: solid gray 1px;
-  border-radius: 7px;
-  width: 15vw;
-  z-index: 21;
-  position: fixed;
-  top: 0;
-  left: 0;
-  color: white;
-  text-shadow: 0 0 3px white;
-  display: none;
-}
-#achievementNotification {
-  z-index: 22;
-  color: rgb(200, 25, 25);
-  border-color: rgb(200, 25, 25);
-  position: fixed;
-  border-width: medium;
-  border-style: outset none none outset;
-  bottom: 0;
-  right: 0;
-  padding: 0;
-  width: 20vw;
-  height: 10vh;
-  display: none;
-  align-items: center;
-}
-#notificationImage {
-  height: 100%;
-}
-
-@keyframes achievementMsg {
-  0% {
-    transform: translateX(30vw);
-  }
-  20% {
-    transform: translateX(0);
-  }
-  80% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(30vw);
-  }
-}
-#achievementNotification.slide {
-  display: flex !important;
-  animation: achievementMsg 6s ease-out forwards;
-}
-
-div#achievementInfo.achievementfade {
-  animation: achievementboxfade 0.2s ease-in;
-}
-
-@keyframes achievementboxfade {
-  0% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-div#achievementInfo.achievementfadeaway {
-  animation: achievementboxfadeaway 1s ease-in forwards;
-}
-@keyframes achievementboxfadeaway {
-  0% {
-    opacity: 100%;
-  }
-  80% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 0%;
-  }
 }
