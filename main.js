@@ -4586,7 +4586,12 @@ function checkAchievement() {
       6000
     );
   }
-  if (achievement.buyAllRedUpgrades === false && redupgrade1===1 && redupgrade2 ===1 && redupgrade3===1) {
+  if (
+    achievement.buyAllRedUpgrades === false &&
+    redupgrade1 === 1 &&
+    redupgrade2 === 1 &&
+    redupgrade3 === 1
+  ) {
     achievement.buyAllRedUpgrades = true;
     achievementItemImg[3].src = achievementNotificationImg.src =
       "images/achievements/buyAllRedUpgrades.webp";
@@ -4665,7 +4670,12 @@ function checkAchievement() {
       6000
     );
   }
-  if (achievement.buyAllGreenUpgrades === false && greenupgrade1===1 && greenupgrade2 ===1 && greenupgrade3===1) {
+  if (
+    achievement.buyAllGreenUpgrades === false &&
+    greenupgrade1 === 1 &&
+    greenupgrade2 === 1 &&
+    greenupgrade3 === 1
+  ) {
     achievement.buyAllGreenUpgrades = true;
     achievementItemImg[9].src = achievementNotificationImg.src =
       "images/achievements/buyAllGreenUpgrades.webp";
@@ -4744,7 +4754,12 @@ function checkAchievement() {
       6000
     );
   }
-  if (achievement.buyAllBlueUpgrades === false && blueupgrade1===1 && blueupgrade2 ===1 && blueupgrade3===1) {
+  if (
+    achievement.buyAllBlueUpgrades === false &&
+    blueupgrade1 === 1 &&
+    blueupgrade2 === 1 &&
+    blueupgrade3 === 1
+  ) {
     achievement.buyAllBlueUpgrades = true;
     achievementItemImg[15].src = achievementNotificationImg.src =
       "images/achievements/buyAllBlueUpgrades.webp";
@@ -4782,5 +4797,20 @@ function checkAchievement() {
       "achievementNotification.classList.remove('slide');",
       6000
     );
+  }
+}
+
+//
+//
+//
+//
+//
+
+// spells
+// and
+// stuff
+
+function spell(spelltype) {
+  if (spelltype == 1) {
   }
 }
