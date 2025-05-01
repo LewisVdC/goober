@@ -16,6 +16,7 @@ var time = Date.now();
 var visibilityState = "visible";
 
 //achievements
+let taskMasteryTrigger = false;
 let achievement = {
   redfilter1: false,
   redPerSec10: false,
@@ -978,51 +979,43 @@ document.getElementById("greencount").innerHTML =
 document.getElementById("bluecount").innerHTML =
   "blue: " + formatNumber(Math.floor(blue));
 
-function showtab(x) {
-  if (x === "red") {
-    tab = "red";
-    document.getElementById("saving").style.color = "rgb(200, 25, 25)";
-    document.getElementById("nerdmodetext").style.color = "rgb(200, 25, 25)";
-    document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("red").style.display = "block";
-    document.getElementById("black").style.display = "none";
-    document.getElementById("magenta").style.display = "none";
-    document.getElementById("white").style.display = "none";
-    document.getElementById("yellow").style.display = "none";
-    document.getElementById("cyan").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(20,0,0)";
-    document.getElementById("top").style.color = "rgb(255,0,0)";
-    document.getElementById("green").style.display = "none";
-    document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(200, 25, 25)";
-    document.getElementById("tasks").style.borderColor = "rgb(200, 25, 25)";
-    document.getElementById("reward").style.borderColor = "rgb(200, 25, 25)";
-    document.getElementById("body").style.textShadow =
-      "0px 0px 10px red, 0 0 10px rgb(125,0,0)";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blueupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("greenupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    document.getElementById("submitTaskButton").classList.add("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("magentaupgrades");
-    document.getElementById("body").style.backgroundColor = "rgb(20, 0, 0)";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blackupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("whiteupgrades");
+// tabCall("red","rgb(200, 25, 25)", "rgb(20,0,0)", "0px 0px 10px red, 0 0 10px rgb(125,0,0)");
+
+let colorNames = ["red", "green", "blue", "yellow", "cyan", "magenta", "black", "white"];
+  
+function tabCall(color, textColorDark, textColorBright, backgroundColor, textShadow, borderColor){
+  tab = color;
+  document.getElementById("saving").style.color = textColorBright;
+  document.getElementById("nerdmodetext").style.color = textColorBright;
+  document.getElementById("tabs").style.backgroundColor = backgroundColor;
+  document.getElementById("top").style.color = color;
+  document.getElementById("tasks").style.color = textColorDark;
+  document.getElementById("tasks").style.borderColor = borderColor;
+  document.getElementById("reward").style.borderColor = borderColor;
+  document.getElementById("body").style.textShadow = textShadow;
+  document.getElementById("body").style.backgroundColor = backgroundColor;
+
+  for(let i = 0; i<= colorNames.length - 1; i++){
+    document.getElementById(colorNames[i]).style.display = "none";
+    if(colorNames[i] === "cyan"){
+      document.getElementById("submitTaskButton").classList.remove("cyansubmit");
+    }else{
+      document.getElementById("submitTaskButton").classList.remove(colorNames[i]+"upgrades");
+    }
   }
+  document.getElementById(color).style.display = "block";
+  document.getElementById("submitTaskButton").classList.add(color+"upgrades");
+}
+
+function showtab(x) {
+  //red
+  if (x === "red") {
+    tabCall("red","rgb(200, 25, 25)", "rgb(200, 25, 25)", "rgb(20,0,0)", "0px 0px 10px red, 0 0 10px rgb(125,0,0)", "rgb(200, 25, 25)");
+  }
+  //green
   if (x === "green") {
-    tab = "green";
+    tabCall("green", "rgb(0, 219, 0)", "green", "rgb(0, 20, 0)", "0px 0px 10px green, 0 0 10px rgb(0,125,0)", "rgb(0, 219, 0)");
+    //green scroll interferes with tasks
     if (dialoguestate >= 11 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
@@ -1037,338 +1030,67 @@ function showtab(x) {
       document.getElementById("greenscroll").style.borderLeftStyle = "";
       document.getElementById("greenscroll").style.display = "none";
     }
-    document.getElementById("saving").style.color = "rgb(0, 255, 0)";
-    document.getElementById("nerdmodetext").style.color = "green";
-    document.getElementById("red").style.display = "none";
-    document.getElementById("black").style.display = "none";
-    document.getElementById("magenta").style.display = "none";
-    document.getElementById("white").style.display = "none";
-    document.getElementById("yellow").style.display = "none";
-    document.getElementById("cyan").style.display = "none";
-    document.getElementById("green").style.display = "block";
-    document.getElementById("tabs").style.backgroundColor = "rgb(0,20,0)";
-    document.getElementById("top").style.color = "rgb(0,255,0)";
-    document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(0, 219, 0)";
-    document.getElementById("tasks").style.borderColor = "rgb(0, 219, 0)";
-    document.getElementById("reward").style.borderColor = "rgb(0, 219, 0)";
-    document.getElementById("body").style.textShadow =
-      "0px 0px 10px green, 0 0 10px rgb(0,125,0)";
-    document.getElementById("body").style.backgroundColor = "rgb(0, 20, 0)";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blueupgrades");
-    document.getElementById("submitTaskButton").classList.add("greenupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("magentaupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blackupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("whiteupgrades");
-  } else {
+  } else {//no greenscroll if no green tab
     document.getElementById("submitTaskButton").style.position = "relative";
     document.getElementById("submitTaskButton").style.width = "100%";
     document.getElementById("submitTaskButton").style.borderRightStyle = "";
     document.getElementById("greenscroll").style.borderLeftStyle = "";
     document.getElementById("greenscroll").style.display = "none";
   }
+  //blue
   if (x === "blue") {
-    tab = "blue";
-    document.getElementById("saving").style.color = "blue";
-    document.getElementById("nerdmodetext").style.color = "blue";
-    document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("red").style.display = "none";
-    document.getElementById("black").style.display = "none";
-    document.getElementById("magenta").style.display = "none";
-    document.getElementById("white").style.display = "none";
-    document.getElementById("yellow").style.display = "none";
-    document.getElementById("green").style.display = "none";
-    document.getElementById("cyan").style.display = "none";
-    document.getElementById("blue").style.display = "block";
-    document.getElementById("tabs").style.backgroundColor = "rgb(0,0,20)";
-    document.getElementById("top").style.color = "blue";
-    document.getElementById("tasks").style.color = "rgb(50, 50, 255)";
-    document.getElementById("tasks").style.borderColor = "rgb(50, 50, 255)";
-    document.getElementById("reward").style.borderColor = "rgb(50, 50, 255)";
-    document.getElementById("body").style.textShadow =
-      "0px 0px 10px blue, 0 0 10px rgb(0,0,125)";
-    document.getElementById("body").style.backgroundColor = "rgb(0, 0, 20)";
-    document.getElementById("submitTaskButton").classList.add("blueupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("greenupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("magentaupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blackupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("whiteupgrades");
+    tabCall("blue"," rgb(50, 50, 255)", "blue", "rgb(0,0,20)", "0px 0px 10px blue, 0 0 10px rgb(0,0,125)", " rgb(50, 50, 255)");
   }
+  //yellow
   if (x === "yellow") {
-    tab = "yellow";
-    document.getElementById("saving").style.color = "rgb(168, 140, 0)";
-    document.getElementById("nerdmodetext").style.color = "rgb(168,140,0)";
-    document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("yellow").style.display = "block";
-    document.getElementById("black").style.display = "none";
-    document.getElementById("magenta").style.display = "none";
-    document.getElementById("white").style.display = "none";
-    document.getElementById("red").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(44,44,0)";
-    document.getElementById("top").style.color = "rgb(168, 140, 0)";
-    document.getElementById("green").style.display = "none";
-    document.getElementById("blue").style.display = "none";
-    document.getElementById("cyan").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(168, 140, 0)";
-    document.getElementById("tasks").style.borderColor = "rgb(168, 140, 0)";
-    document.getElementById("reward").style.borderColor = "rgb(168, 140, 0)";
-    document.getElementById("body").style.textShadow =
-      "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)";
-    document.getElementById("body").style.backgroundColor = "rgb(44, 44, 0)";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blueupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("greenupgrades");
-    document.getElementById("submitTaskButton").classList.add("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("magentaupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blackupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("whiteupgrades");
+    tabCall("yellow", "rgb(168, 140, 0)", "rgb(168, 140, 0)", "rgb(44, 44, 0)", "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)", "rgb(168, 140, 0)");
   }
+  //cyan
   if (x === "cyan") {
-    tab = "cyan";
-    document.getElementById("saving").style.color = "rgb(0, 180, 190)";
-    document.getElementById("nerdmodetext").style.color = "rgb(0,180,190)";
-    document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("cyan").style.display = "block";
-    document.getElementById("black").style.display = "none";
-    document.getElementById("magenta").style.display = "none";
-    document.getElementById("white").style.display = "none";
-    document.getElementById("red").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(0,44,44)";
-    document.getElementById("top").style.color = "rgb(0, 180, 190)";
-    document.getElementById("green").style.display = "none";
-    document.getElementById("blue").style.display = "none";
-    document.getElementById("yellow").style.display = "none";
-    document.getElementById("tasks").style.color = "rgb(0, 180, 190)";
-    document.getElementById("tasks").style.borderColor = "rgb(0, 180, 190)";
-    document.getElementById("reward").style.borderColor = "rgb(0, 180, 190)";
-    document.getElementById("body").style.textShadow =
-      "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)";
-    document.getElementById("body").style.backgroundColor = "rgb(0, 44, 44)";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blueupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("greenupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.add("cyansubmit");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("magentaupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blackupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("whiteupgrades");
+    tabCall("cyan", "rgb(0, 180, 190)", "rgb(0, 180, 190)", "rgb(0, 44, 44)", "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)", "rgb(0, 180, 190)");
   }
+  //magenta
   if (x === "magenta") {
-    tab = "magenta";
-    document.getElementById("saving").style.color = "magenta";
-    document.getElementById("nerdmodetext").style.color = "magenta";
-    document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("cyan").style.display = "none";
-    document.getElementById("black").style.display = "none";
-    document.getElementById("magenta").style.display = "block";
-    document.getElementById("white").style.display = "none";
-    document.getElementById("red").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(44,0,44)";
-    document.getElementById("top").style.color = "magenta";
-    document.getElementById("green").style.display = "none";
-    document.getElementById("blue").style.display = "none";
-    document.getElementById("yellow").style.display = "none";
-    document.getElementById("tasks").style.color = "magenta";
-    document.getElementById("tasks").style.borderColor = "magenta";
-    document.getElementById("reward").style.borderColor = "magenta";
-    document.getElementById("body").style.textShadow =
-      "rgb(255 0 238) 0px 0px 10px, rgb(255, 126, 126) 0px 0px 10px";
-    document.getElementById("body").style.backgroundColor = "rgb(44, 0, 44)";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blueupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("greenupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.add("magentaupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blackupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("whiteupgrades");
+    tabCall("magenta", "magenta", "magenta", "rgb(44, 0, 44)", "rgb(255 0 238) 0px 0px 10px, rgb(255, 126, 126) 0px 0px 10px", "magenta");
   }
+  //black
   if (x === "black") {
-    document.getElementById("saving").style.color = "black";
-    document.getElementById("nerdmodetext").style.color = "black";
+    tabCall("black", "black", "black", "black", "white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, 0 0 2px white", "#868686");
     document.getElementById("blackholecontainer").style.display = "flex";
     document.getElementById("tasks").style.fontWeight = "600";
-    tab = "black";
-    document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("red").style.display = "none";
-    document.getElementById("black").style.display = "block";
-    document.getElementById("white").style.display = "none";
-    document.getElementById("magenta").style.display = "none";
-    document.getElementById("yellow").style.display = "none";
-    document.getElementById("cyan").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(0,0,0)";
-    document.getElementById("top").style.color = "black";
-    document.getElementById("green").style.display = "none";
-    document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "black";
-    document.getElementById("tasks").style.borderColor = "#868686";
-    document.getElementById("reward").style.borderColor = "#868686";
-    document.getElementById("body").style.textShadow =
-      "white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, 0 0 2px white";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blueupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("greenupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("magentaupgrades");
-    document.getElementById("submitTaskButton").classList.add("blackupgrades");
-    document.getElementById("body").style.backgroundColor = "rgb(0, 0, 0)";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("whiteupgrades");
   } else if (x === "black2") {
+    //i aint touching this, this is outta my league
     document.getElementById("nerdmodetext").style.color = "black";
     document.getElementById("blackholecontainer").style.display = "flex";
     document.getElementById("tasks").style.fontWeight = "600";
     tab = "black2";
-    document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("red").style.display = "none";
-    document.getElementById("black").style.display = "none";
+
+    for(let i = 0; i<= colorNames.length - 1; i++){
+      document.getElementById(colorNames[i]).style.display = "none";
+      if(colorNames[i] === "cyan"){
+        document.getElementById("submitTaskButton").classList.remove("cyansubmit");
+      }else{
+        document.getElementById("submitTaskButton").classList.remove(colorNames[i]+"upgrades");
+      }
+    }
     document.getElementById("black2").style.display = "block";
-    document.getElementById("white").style.display = "none";
-    document.getElementById("magenta").style.display = "none";
-    document.getElementById("yellow").style.display = "none";
-    document.getElementById("cyan").style.display = "none";
     document.getElementById("tabs").style.backgroundColor = "rgb(0,0,0)";
     document.getElementById("top").style.color = "black";
-    document.getElementById("green").style.display = "none";
-    document.getElementById("blue").style.display = "none";
     document.getElementById("tasks").style.color = "black";
     document.getElementById("tasks").style.borderColor = "#868686";
     document.getElementById("reward").style.borderColor = "#868686";
     document.getElementById("body").style.textShadow =
       "white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, 0 0 2px white";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blueupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("greenupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("magentaupgrades");
     document.getElementById("submitTaskButton").classList.add("blackupgrades");
     document.getElementById("body").style.backgroundColor = "rgb(0, 0, 0)";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("whiteupgrades");
   } else {
+    document.getElementById("black2").style.display = "none";
     document.getElementById("tasks").style.fontWeight = "";
     document.getElementById("blackholecontainer").style.display = "none";
   }
 
   if (x === "white") {
-    tab = "white";
-    document.getElementById("nerdmodetext").style.color = "white";
-    document.getElementById("greenscroll").style.display = "none";
-    document.getElementById("red").style.display = "none";
-    document.getElementById("black").style.display = "none";
-    document.getElementById("white").style.display = "block";
-    document.getElementById("magenta").style.display = "none";
-    document.getElementById("yellow").style.display = "none";
-    document.getElementById("cyan").style.display = "none";
-    document.getElementById("tabs").style.backgroundColor = "rgb(80,80,80)";
-    document.getElementById("top").style.color = "white";
-    document.getElementById("green").style.display = "none";
-    document.getElementById("blue").style.display = "none";
-    document.getElementById("tasks").style.color = "white";
-    document.getElementById("tasks").style.borderColor = "white";
-    document.getElementById("reward").style.borderColor = "white";
-    document.getElementById("body").style.textShadow =
-      "0px 0px 5px white, 0 0 10px white";
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blueupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("greenupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("yellowupgrades");
-    document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    document.getElementById("submitTaskButton").classList.remove("redupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("magentaupgrades");
-    document
-      .getElementById("submitTaskButton")
-      .classList.remove("blackupgrades");
-    document.getElementById("submitTaskButton").classList.add("whiteupgrades");
-    document.getElementById("body").style.backgroundColor = "rgb(80, 80, 80)";
+    tabCall("white", "white", "white", "rgb(80, 80, 80)", "0px 0px 5px white, 0 0 10px white", "white");
   }
 }
 //surprisingly small calc functions
@@ -2645,6 +2367,7 @@ function submitTask() {
         (1 + (goldenmultipliercount * tasksCompleted) / 1000);
       if (Math.random() * 100 <= taskmasterycount) {
         yellow += taskRewardCount * 10 * taskmasterycount;
+        taskMasteryTrigger = true;
       }
       document.getElementById("yellowcount").innerHTML =
         "yellow: " + formatNumber(Math.floor(yellow));
@@ -4592,24 +4315,43 @@ function checkAchievement() {
   if (achievement.have1e22blue === false && blue >= 1e22) {
     achievementCall("have1e22blue", 17, "#100F22", "#0B1EED");
   }
+  //yellow
   if (achievement.yellow1 === false && yellow >= 1) {
     achievementCall("yellow1", 18, "#222310", "#FFFF00");
   }
   if (achievement.yellow100 === false && yellow >= 100) {
     achievementCall("yellow100", 19, "#222310", "#FFFF00");
   }
-  if (achievement.triggertaskmastery === false && false) {
+  if (achievement.triggertaskmastery === false && taskMasteryTrigger === true) {
     achievementCall("triggertaskmastery", 20, "#222310", "#FFFF00");
   }
   if (achievement.yellowPerSec10 === false && yellowGAIN*50 >= 10) {
     achievementCall("yellowPerSec10", 21, "#222310", "#FFFF00");
   }
-  if (achievement.yellowAllUpgrades10 === false && false) {
+  if (achievement.yellowAllUpgrades10 === false && 
+    governmentfundingcount >= 10 &&
+    largerprismscount >= 10 &&
+    colorharmonycount >= 10 &&
+    streamlinedtaskscount >= 10 &&
+    yellowsynergycount >= 10 &&
+    redoverflowcount >= 10 &&
+    greenoverflowcount >= 10 &&
+    blueoverflowcount >= 10 &&
+    tricolorboostcount >= 10 &&
+    taskmasterycount >= 10 &&
+    goldenmultipliercount >= 10 &&
+    colorsyphoncount >= 10 &&
+    focussedpointerscount >= 10 &&
+    finerfilterscount >= 10 &&
+    micrometerwavecount >= 10 &&
+    strongersynergycount >= 10 
+  ) {
     achievementCall("yellowAllUpgrades10", 22, "#222310", "#FFFF00");
   }
   if (achievement.have1e7yellow === false && yellow >= 1e7) {
     achievementCall("have1e7yellow", 23, "#222310", "#FFFF00");
   }
+  //cyan
   if (achievement.yellowCyan1 === false && colorsyphoncount >= 1) {
     achievementCall("yellowCyan1", 24, "#132322", "#01FFFF");
   }
@@ -4660,6 +4402,7 @@ function checkAchievement() {
   if (achievement.prestiegeAutomation === false && false) {
     achievementCall("prestiegeAutomation", 29, "#132322", "#01FFFF");
   }
+  //magenta
   if (achievement.buyCauldron1 === false && cauldron >=1) {
     achievementCall("buyCauldron1", 30, "#211023", "#FF01FF");
   }
