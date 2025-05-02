@@ -302,24 +302,24 @@ function load() {
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
     //achievement and nerdmode
-    if (typeof savegame.achievement !== "undefined"){
+    if (typeof savegame.achievement !== "undefined") {
       achievement = savegame.achievement;
       //get all achievement names from achievement obj
       let keys = Object.keys(achievement);
       //loop through all achievements
-      for(let i = 0; i <= keys.length-1; i++){
+      for (let i = 0; i <= keys.length - 1; i++) {
         //if the achievement has been unlocked
-        if(achievement[keys[i]] === true){
+        if (achievement[keys[i]] === true) {
           //set achievement img to proper img
-          achievementItemImg[i].src = "images/achievements/"+keys[i]+".webp";
+          achievementItemImg[i].src =
+            "images/achievements/" + keys[i] + ".webp";
           //unlocks
-          if(keys[i] === "redPerSec10"){
+          if (keys[i] === "redPerSec10") {
             document.getElementById("tasks").style.display = "block";
           }
         }
       }
     }
-    
 
     if (typeof savegame.currentnerdmode !== "undefined")
       currentnerdmode = savegame.currentnerdmode;
@@ -981,9 +981,25 @@ document.getElementById("bluecount").innerHTML =
 
 // tabCall("red","rgb(200, 25, 25)", "rgb(20,0,0)", "0px 0px 10px red, 0 0 10px rgb(125,0,0)");
 
-let colorNames = ["red", "green", "blue", "yellow", "cyan", "magenta", "black", "white"];
-  
-function tabCall(color, textColorDark, textColorBright, backgroundColor, textShadow, borderColor){
+let colorNames = [
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "cyan",
+  "magenta",
+  "black",
+  "white",
+];
+
+function tabCall(
+  color,
+  textColorDark,
+  textColorBright,
+  backgroundColor,
+  textShadow,
+  borderColor
+) {
   tab = color;
   document.getElementById("saving").style.color = textColorBright;
   document.getElementById("nerdmodetext").style.color = textColorBright;
@@ -995,26 +1011,44 @@ function tabCall(color, textColorDark, textColorBright, backgroundColor, textSha
   document.getElementById("body").style.textShadow = textShadow;
   document.getElementById("body").style.backgroundColor = backgroundColor;
 
-  for(let i = 0; i<= colorNames.length - 1; i++){
+  for (let i = 0; i <= colorNames.length - 1; i++) {
     document.getElementById(colorNames[i]).style.display = "none";
-    if(colorNames[i] === "cyan"){
-      document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-    }else{
-      document.getElementById("submitTaskButton").classList.remove(colorNames[i]+"upgrades");
+    if (colorNames[i] === "cyan") {
+      document
+        .getElementById("submitTaskButton")
+        .classList.remove("cyansubmit");
+    } else {
+      document
+        .getElementById("submitTaskButton")
+        .classList.remove(colorNames[i] + "upgrades");
     }
   }
   document.getElementById(color).style.display = "block";
-  document.getElementById("submitTaskButton").classList.add(color+"upgrades");
+  document.getElementById("submitTaskButton").classList.add(color + "upgrades");
 }
 
 function showtab(x) {
   //red
   if (x === "red") {
-    tabCall("red","rgb(200, 25, 25)", "rgb(200, 25, 25)", "rgb(20,0,0)", "0px 0px 10px red, 0 0 10px rgb(125,0,0)", "rgb(200, 25, 25)");
+    tabCall(
+      "red",
+      "rgb(200, 25, 25)",
+      "rgb(200, 25, 25)",
+      "rgb(20,0,0)",
+      "0px 0px 10px red, 0 0 10px rgb(125,0,0)",
+      "rgb(200, 25, 25)"
+    );
   }
   //green
   if (x === "green") {
-    tabCall("green", "rgb(0, 219, 0)", "green", "rgb(0, 20, 0)", "0px 0px 10px green, 0 0 10px rgb(0,125,0)", "rgb(0, 219, 0)");
+    tabCall(
+      "green",
+      "rgb(0, 219, 0)",
+      "green",
+      "rgb(0, 20, 0)",
+      "0px 0px 10px green, 0 0 10px rgb(0,125,0)",
+      "rgb(0, 219, 0)"
+    );
     //green scroll interferes with tasks
     if (dialoguestate >= 11 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
@@ -1030,7 +1064,8 @@ function showtab(x) {
       document.getElementById("greenscroll").style.borderLeftStyle = "";
       document.getElementById("greenscroll").style.display = "none";
     }
-  } else {//no greenscroll if no green tab
+  } else {
+    //no greenscroll if no green tab
     document.getElementById("submitTaskButton").style.position = "relative";
     document.getElementById("submitTaskButton").style.width = "100%";
     document.getElementById("submitTaskButton").style.borderRightStyle = "";
@@ -1039,23 +1074,58 @@ function showtab(x) {
   }
   //blue
   if (x === "blue") {
-    tabCall("blue"," rgb(50, 50, 255)", "blue", "rgb(0,0,20)", "0px 0px 10px blue, 0 0 10px rgb(0,0,125)", " rgb(50, 50, 255)");
+    tabCall(
+      "blue",
+      " rgb(50, 50, 255)",
+      "blue",
+      "rgb(0,0,20)",
+      "0px 0px 10px blue, 0 0 10px rgb(0,0,125)",
+      " rgb(50, 50, 255)"
+    );
   }
   //yellow
   if (x === "yellow") {
-    tabCall("yellow", "rgb(168, 140, 0)", "rgb(168, 140, 0)", "rgb(44, 44, 0)", "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)", "rgb(168, 140, 0)");
+    tabCall(
+      "yellow",
+      "rgb(168, 140, 0)",
+      "rgb(168, 140, 0)",
+      "rgb(44, 44, 0)",
+      "0px 0px 10px rgb(148, 148, 0), 0 0 10px rgb(125,125,0)",
+      "rgb(168, 140, 0)"
+    );
   }
   //cyan
   if (x === "cyan") {
-    tabCall("cyan", "rgb(0, 180, 190)", "rgb(0, 180, 190)", "rgb(0, 44, 44)", "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)", "rgb(0, 180, 190)");
+    tabCall(
+      "cyan",
+      "rgb(0, 180, 190)",
+      "rgb(0, 180, 190)",
+      "rgb(0, 44, 44)",
+      "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)",
+      "rgb(0, 180, 190)"
+    );
   }
   //magenta
   if (x === "magenta") {
-    tabCall("magenta", "magenta", "magenta", "rgb(44, 0, 44)", "rgb(255 0 238) 0px 0px 10px, rgb(255, 126, 126) 0px 0px 10px", "magenta");
+    tabCall(
+      "magenta",
+      "magenta",
+      "magenta",
+      "rgb(44, 0, 44)",
+      "rgb(255 0 238) 0px 0px 10px, rgb(255, 126, 126) 0px 0px 10px",
+      "magenta"
+    );
   }
   //black
   if (x === "black") {
-    tabCall("black", "black", "black", "black", "white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, 0 0 2px white", "#868686");
+    tabCall(
+      "black",
+      "black",
+      "black",
+      "black",
+      "white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, 0 0 2px white",
+      "#868686"
+    );
     document.getElementById("blackholecontainer").style.display = "flex";
     document.getElementById("tasks").style.fontWeight = "600";
   } else if (x === "black2") {
@@ -1065,12 +1135,16 @@ function showtab(x) {
     document.getElementById("tasks").style.fontWeight = "600";
     tab = "black2";
 
-    for(let i = 0; i<= colorNames.length - 1; i++){
+    for (let i = 0; i <= colorNames.length - 1; i++) {
       document.getElementById(colorNames[i]).style.display = "none";
-      if(colorNames[i] === "cyan"){
-        document.getElementById("submitTaskButton").classList.remove("cyansubmit");
-      }else{
-        document.getElementById("submitTaskButton").classList.remove(colorNames[i]+"upgrades");
+      if (colorNames[i] === "cyan") {
+        document
+          .getElementById("submitTaskButton")
+          .classList.remove("cyansubmit");
+      } else {
+        document
+          .getElementById("submitTaskButton")
+          .classList.remove(colorNames[i] + "upgrades");
       }
     }
     document.getElementById("black2").style.display = "block";
@@ -1090,7 +1164,14 @@ function showtab(x) {
   }
 
   if (x === "white") {
-    tabCall("white", "white", "white", "rgb(80, 80, 80)", "0px 0px 5px white, 0 0 10px white", "white");
+    tabCall(
+      "white",
+      "white",
+      "white",
+      "rgb(80, 80, 80)",
+      "0px 0px 5px white, 0 0 10px white",
+      "white"
+    );
   }
 }
 //surprisingly small calc functions
@@ -4234,12 +4315,18 @@ let achQForgColor = [];
 let achQImg = [];
 
 //function for reused code
-function achievementCall(achievementName, achievementIndex, background_Color, foreground_Color){
+function achievementCall(
+  achievementName,
+  achievementIndex,
+  background_Color,
+  foreground_Color
+) {
   achievement[achievementName] = true;
-  achievementItemImg[achievementIndex].src = "images/achievements/"+achievementName+".webp";
+  achievementItemImg[achievementIndex].src =
+    "images/achievements/" + achievementName + ".webp";
   achQBackgColor.push(background_Color);
   achQForgColor.push(foreground_Color);
-  achQImg.push("images/achievements/"+achievementName+".webp");
+  achQImg.push("images/achievements/" + achievementName + ".webp");
 }
 
 function checkAchievement() {
@@ -4327,10 +4414,11 @@ function checkAchievement() {
   if (achievement.triggertaskmastery === false && taskMasteryTrigger === true) {
     achievementCall("triggertaskmastery", 20, "#222310", "#FFFF00");
   }
-  if (achievement.yellowPerSec10 === false && yellowGAIN*50 >= 10) {
+  if (achievement.yellowPerSec10 === false && yellowGAIN * 50 >= 10) {
     achievementCall("yellowPerSec10", 21, "#222310", "#FFFF00");
   }
-  if (achievement.yellowAllUpgrades10 === false && 
+  if (
+    achievement.yellowAllUpgrades10 === false &&
     governmentfundingcount >= 10 &&
     largerprismscount >= 10 &&
     colorharmonycount >= 10 &&
@@ -4346,7 +4434,7 @@ function checkAchievement() {
     focussedpointerscount >= 10 &&
     finerfilterscount >= 10 &&
     micrometerwavecount >= 10 &&
-    strongersynergycount >= 10 
+    strongersynergycount >= 10
   ) {
     achievementCall("yellowAllUpgrades10", 22, "#222310", "#FFFF00");
   }
@@ -4357,26 +4445,29 @@ function checkAchievement() {
   if (achievement.yellowCyan1 === false && colorsyphoncount >= 1) {
     achievementCall("yellowCyan1", 24, "#132322", "#01FFFF");
   }
-  if (achievement.automation1 === false && 
+  if (
+    achievement.automation1 === false &&
     redfilterautomationcount +
-    redpointerautomationcount +
-    bigredfilterautomationcount +
-    bigredpointerautomationcount +
-    rednanometerwaveautomationcount +
-    greenfilterautomationcount +
-    greenpointerautomationcount +
-    biggreenfilterautomationcount +
-    biggreenpointerautomationcount +
-    greennanometerwaveautomationcount +
-    bluefilterautomationcount +
-    bluepointerautomationcount +
-    bigbluefilterautomationcount +
-    bigbluepointerautomationcount +
-    bluenanometerwaveautomationcount >= 1
+      redpointerautomationcount +
+      bigredfilterautomationcount +
+      bigredpointerautomationcount +
+      rednanometerwaveautomationcount +
+      greenfilterautomationcount +
+      greenpointerautomationcount +
+      biggreenfilterautomationcount +
+      biggreenpointerautomationcount +
+      greennanometerwaveautomationcount +
+      bluefilterautomationcount +
+      bluepointerautomationcount +
+      bigbluefilterautomationcount +
+      bigbluepointerautomationcount +
+      bluenanometerwaveautomationcount >=
+      1
   ) {
     achievementCall("automation1", 25, "#132322", "#01FFFF");
   }
-  if (achievement.everyAutomation === false && 
+  if (
+    achievement.everyAutomation === false &&
     redfilterautomationcount >= 1 &&
     redpointerautomationcount >= 1 &&
     bigredfilterautomationcount >= 1 &&
@@ -4405,7 +4496,7 @@ function checkAchievement() {
     achievementCall("prestiegeAutomation", 29, "#132322", "#01FFFF");
   }
   //magenta
-  if (achievement.buyCauldron1 === false && cauldron >=1) {
+  if (achievement.buyCauldron1 === false && cauldron >= 1) {
     achievementCall("buyCauldron1", 30, "#211023", "#FF01FF");
   }
   if (achievement.castSpell1 === false && dialoguestate >= 8) {
@@ -4414,7 +4505,10 @@ function checkAchievement() {
   if (achievement.magicPerSec1e4 === false && debugmagicnumber >= 1e4) {
     achievementCall("magicPerSec1e4", 32, "#211023", "#FF01FF");
   }
-  if (achievement.buyAllScrolls === false && redscrollcount+greenscrollcount+bluescrollcount === 3) {
+  if (
+    achievement.buyAllScrolls === false &&
+    redscrollcount + greenscrollcount + bluescrollcount === 3
+  ) {
     achievementCall("buyAllScrolls", 33, "#211023", "#FF01FF");
   }
   if (achievement.earn1e9magenta === false && false) {
@@ -4425,15 +4519,16 @@ function checkAchievement() {
   }
 
   //notification
-  if(achQImg.length !== 0 && achievementNotification.classList.length === 0){
+  if (achQImg.length !== 0 && achievementNotification.classList.length === 0) {
     let tempColF = achQForgColor.shift();
-    let tempColB = achQBackgColor.shift()
-    achievementNotificationImg.src = achQImg.shift()
+    let tempColB = achQBackgColor.shift();
+    achievementNotificationImg.src = achQImg.shift();
     achievementNotification.classList.add("slide");
     achievementNotification.style.backgroundColor = tempColB;
     achievementNotification.style.color = tempColF;
     achievementNotification.style.borderColor = tempColF;
-    achievementNotification.style.textShadow = tempColF+" 0 0 10px, "+tempColB+" 0 0 10px";
+    achievementNotification.style.textShadow =
+      tempColF + " 0 0 10px, " + tempColB + " 0 0 10px";
     window.setTimeout(
       "achievementNotification.classList.remove('slide');",
       6000
@@ -4446,20 +4541,41 @@ function checkAchievement() {
 //
 //
 // quick varlist, if theres still vars here and u wanna push dont bc these dont save yet
-var cyanspell1owned = 0;
-
+var cyan1spellowned = 0;
+var cyan2spellowned = 0;
+var yellow1spellowned = 0;
+var yellow2spellowned = 0;
 // spells
 // and
 // stuff
 
+// preset for new spells
+// if(spelltype == "spell"){if((spellowned=1)){}else{}}
+
 function spell(spelltype) {
   if (spelltype == "cyan1") {
-    if ((cyanspell1owned = 1)) {
+    // no clue if i just consider this finished bc idk how to let the player get this one
+    if ((cyan1spellowned = 1)) {
       cyan += magic / 20;
       magic = magic / 2;
     } else {
       //buy it gng
     }
   }
+  if (spelltype == "cyan2") {
+    if ((cyan2spellowned = 1)) {
+      //clueless on how this ones gonna work,,? is it just a more efficient cyanspell, thatd make the original one look stupid
+    } else {
+    }
+  }
+  if (spelltype == "yellow1") {
+    if ((yellow1spellowned = 1)) {
+    } else {
+    }
+  }
+  if (spelltype == "yellow2") {
+    if ((yellow2spellowned = 1)) {
+    } else {
+    }
+  }
 }
-
