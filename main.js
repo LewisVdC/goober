@@ -1756,6 +1756,8 @@ function buyblueupgrade3() {
 window.setInterval(function () {
   if (visibilityState === "visible" || buttonpress === false) {
     if (loaded === 1) {
+      // if u showed this code to me when i was starting this i would have died on the spot
+
       //"update" game for ppl
       if (
         document.getElementById("tabmagenta").style.display === "block" &&
@@ -4696,13 +4698,20 @@ function checkAchievement() {
 //
 //
 //
-//
+// quick varlist, if theres still vars here and u wanna push dont bc these dont save yet
+var cyanspell1owned = 0;
 
 // spells
 // and
 // stuff
 
 function spell(spelltype) {
-  if (spelltype == 1) {
+  if (spelltype == "cyan1") {
+    if ((cyanspell1owned = 1)) {
+      cyan += magic / 20;
+      magic = magic / 2;
+    } else {
+      //buy it gng
+    }
   }
 }
