@@ -4558,6 +4558,7 @@ function spell(spelltype) {
     if ((cyan1spellowned = 1)) {
       cyan += magic / 20;
       magic = magic / 2;
+      spellCoolDown("#cyan1shell", 4000);
     } else {
       //buy it gng
     }
@@ -4565,16 +4566,19 @@ function spell(spelltype) {
   if (spelltype == "cyan2") {
     if ((cyan2spellowned = 1)) {
       //clueless on how this ones gonna work,,? is it just a more efficient cyanspell, thatd make the original one look stupid
+      spellCoolDown("#cyan2shell", 6000);
     } else {
     }
   }
   if (spelltype == "yellow1") {
     if ((yellow1spellowned = 1)) {
+      spellCoolDown("#yellow1shell", 4000);
     } else {
     }
   }
   if (spelltype == "yellow2") {
     if ((yellow2spellowned = 1)) {
+      spellCoolDown("#yellow2shell", 6000);
     } else {
     }
   }
