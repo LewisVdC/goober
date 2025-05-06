@@ -317,6 +317,12 @@ function load() {
           if (keys[i] === "redPerSec10") {
             document.getElementById("tasks").style.display = "block";
           }
+          if (keys[i] === "yellowCyan1") {
+            document.getElementById("cyan1spell").style.backgroundImage = "url('images/spells/cyan_spell.webp')";
+          }
+          if(keys[i] === "yellowAllUpgrades10"){
+            document.getElementById("yellow1spell").style.backgroundImage = "url('images/spells/yellow_spell.webp')";
+          }
         }
       }
     }
@@ -1951,6 +1957,14 @@ window.setInterval(function () {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
           "gives 1 second worth of blue for every magic put into it";
+      } else if (document.querySelector("#yellow1spell:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "gives 1 millisecond worth of yellow for every magic put into it";
+      } else if (document.querySelector("#cyan1spell:hover") != null) {
+        nerdtimer = 0;
+        document.getElementById("nerdmodetext").innerHTML =
+          "converts magic into cyan at a 100:1 ratio";
       } else {
         if (nerdtimer > 1) {
           document.getElementById("nerdmodetext").innerHTML =
@@ -4437,6 +4451,7 @@ function checkAchievement() {
     strongersynergycount >= 10
   ) {
     achievementCall("yellowAllUpgrades10", 22, "#222310", "#FFFF00");
+    document.getElementById("yellow1spell").style.backgroundImage = "url('images/spells/yellow_spell.webp')";
   }
   if (achievement.have1e7yellow === false && yellow >= 1e7) {
     achievementCall("have1e7yellow", 23, "#222310", "#FFFF00");
@@ -4444,6 +4459,7 @@ function checkAchievement() {
   //cyan
   if (achievement.yellowCyan1 === false && colorsyphoncount >= 1) {
     achievementCall("yellowCyan1", 24, "#132322", "#01FFFF");
+    document.getElementById("cyan1spell").style.backgroundImage = "url('images/spells/cyan_spell.webp')";
   }
   if (
     achievement.automation1 === false &&
@@ -4486,9 +4502,10 @@ function checkAchievement() {
   ) {
     achievementCall("everyAutomation", 26, "#132322", "#01FFFF");
   }
-  if (achievement.magicCyan1 === false && false) {
+  //this one is handled by the cyan spell 1 function, it is unneccesary to check every time.
+  /*if (achievement.magicCyan1 === false && comere) {
     achievementCall("magicCyan1", 27, "#132322", "#01FFFF");
-  }
+  }*/
   if (achievement.spellAutomation === false && false) {
     achievementCall("spellAutomation", 28, "#132322", "#01FFFF");
   }
@@ -4554,30 +4571,43 @@ var yellow2spellowned = 0;
 
 function spell(spelltype) {
   if (spelltype == "cyan1") {
+    //line directly below VERY IMPORTANT lewis, else u can just spam spells even though cooldown still going.
+    if (document.getElementById("cyan1shell").style.background === "") {
     // no clue if i just consider this finished bc idk how to let the player get this one
-    if ((cyan1spellowned = 1)) {
-      cyan += magic / 20;
-      magic = magic / 2;
-      spellCoolDown("#cyan1shell", 4000);
-    } else {
-      //buy it gng
+      if ((achievement.yellowCyan1 === true)) {
+        if (achievement.magicCyan1 === false) {
+          achievementCall("magicCyan1", 27, "#132322", "#01FFFF");
+        }
+        let tribute =
+          (document.getElementById("magicslider").value / 100) * magic;
+        cyan += tribute / 100;
+        magic -= tribute;
+        spellCoolDown("#cyan1shell", 4000);
+      } else {
+        //buy it gng
+      }
     }
   }
   if (spelltype == "cyan2") {
-    if ((cyan2spellowned = 1)) {
+    if ((cyan2spellowned === 1)) {
       //clueless on how this ones gonna work,,? is it just a more efficient cyanspell, thatd make the original one look stupid
       spellCoolDown("#cyan2shell", 6000);
     } else {
     }
   }
   if (spelltype == "yellow1") {
-    if ((yellow1spellowned = 1)) {
-      spellCoolDown("#yellow1shell", 4000);
-    } else {
+    if (document.getElementById("yellow1shell").style.background === "") {
+      if(achievement.yellowAllUpgrades10 === true){
+        let tribute =
+          (document.getElementById("magicslider").value / 100) * magic;
+        yellow += (yellowGAIN * 50) * tribute / 1000;
+        magic -= tribute;
+        spellCoolDown("#yellow1shell", 20000);
+      }
     }
   }
   if (spelltype == "yellow2") {
-    if ((yellow2spellowned = 1)) {
+    if ((yellow2spellowned === 1)) {
       spellCoolDown("#yellow2shell", 6000);
     } else {
     }

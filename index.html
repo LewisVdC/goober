@@ -311,7 +311,7 @@
         <div
           class="achievement-item"
           data-achievement="have 10 levels on every upgrade"
-          data-reward="todo"
+          data-reward="<b>reward</b>: unlock yellow time manipulation spell"
           data-color="#222310"
         >
           <img src="images/locked_idiot.webp" />
@@ -327,7 +327,7 @@
         <div
           class="achievement-item"
           data-achievement="get your first cyan from yellow"
-          data-reward="todo"
+          data-reward="<b>reward</b>: unlock cyan transmutation spell"
           data-color="#132322"
         >
           <img src="images/locked_idiot.webp" />
@@ -375,7 +375,7 @@
         <div class="achievement-item" data-achievement="buy your first cauldron" data-reward="todo" data-color="#211023">
           <img src="images/locked_idiot.webp" />
         </div>
-        <div class="achievement-item" data-achievement="cast your first spell" data-reward="<b>reward</b>: unlock cyan transmutation spell" data-color="#211023">
+        <div class="achievement-item" data-achievement="cast your first spell" data-reward="" data-color="#211023">
           <img src="images/locked_idiot.webp" />
         </div>
         <div
@@ -1406,13 +1406,7 @@
             you dont have any yet, ask around to see how to cast one
           </p>
           <br />
-          <div class="spellshell" id="magentashell">
-            <button
-              class="spell"
-              id="magentaspell"
-              onclick="buymagentaspell()"
-            ></button>
-          </div>
+          <!--spells-->
           <div class="spellshell" id="redshell">
             <button class="spell" id="redspell" onclick="spell1()"></button>
           </div>
@@ -1422,11 +1416,42 @@
           <div class="spellshell" id="blueshell">
             <button class="spell" id="bluespell" onclick="spell3()"></button>
           </div>
+          <div class="spellshell" id="yellow1shell">
+            <button
+              class="spell"
+              id="yellow1spell"
+              onclick="spell('yellow1')"
+            ></button>
+          </div>
           <div class="spellshell" id="cyan1shell">
             <button
               class="spell"
               id="cyan1spell"
               onclick="spell('cyan1')"
+            ></button>
+          </div>
+          <div class="spellshell" id="magentashell">
+            <button
+              class="spell"
+              id="magentaspell"
+              onclick="buymagentaspell()"
+            ></button>
+          </div>
+          <br />
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="shell">
+            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          </div>
+          <div class="spellshell" id="yellow2shell">
+            <button
+              class="spell"
+              id="yellow2spell"
+              onclick="spell('yellow2')"
             ></button>
           </div>
           <div class="spellshell" id="cyan2shell">
@@ -1436,32 +1461,8 @@
               onclick="spell('cyan2')"
             ></button>
           </div>
-          <br />
-          <div class="spellshell" id="yellow1shell">
-            <button
-              class="spell"
-              id="yellow1spell"
-              onclick="spell('yellow1')"
-            ></button>
-          </div>
-          <div class="spellshell" id="yellow2shell">
-            <button
-              class="spell"
-              id="yellow2spell"
-              onclick="spell('yellow2')"
-            ></button>
-          </div>
-          <div class="spellshell" id="shell">
-            <button class="spell" id="vacant" onclick="buy_spell()"></button>
-          </div>
-          <div class="spellshell" id="shell">
-            <button class="spell" id="vacant" onclick="buy_spell()"></button>
-          </div>
-          <div class="spellshell" id="shell">
-            <button class="spell" id="vacant" onclick="buy_spell()"></button>
-          </div>
-          <div class="spellshell" id="shell">
-            <button class="spell" id="vacant" onclick="buy_spell()"></button>
+          <div class="spellshell" id="pinkshell">
+            <button class="spell" id="pinkspell" onclick="buy_spell()"></button>
           </div>
         </div>
       </div>

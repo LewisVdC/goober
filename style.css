@@ -1089,6 +1089,21 @@ button#redspell {
   font-weight: 900;
   background-image: url("images/locked_idiot.webp");
 }
+button#cyan1spell {
+  background-image: url("images/locked_idiot.webp");
+}
+button#cyan2spell {
+  background-image: url("images/locked_idiot.webp");
+}
+button#yellow1spell {
+  background-image: url("images/locked_idiot.webp");
+}
+button#yellow2spell {
+  background-image: url("images/locked_idiot.webp");
+}
+button#pinkspell {
+  background-image: url("images/locked_idiot.webp");
+}
 button#greenspell {
   color: #004900;
   font-size: small;
