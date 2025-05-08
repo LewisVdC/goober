@@ -3712,7 +3712,7 @@ function chatupdate() {
     say("to begin, let's pour some magenta into a cauldron.");
     dialoguestate++;
   } else if (dialoguestate === 4 && tab === "magenta") {
-    say("now purchase your first spell for 10 magic.");
+    say("now purchase your first spell (sixth slot) for 10 magic.");
     dialoguestate++;
   } else if (dialoguestate === 5 && tab === "magenta") {
     say("great! this spell converts magic into magenta at a 3:1 ratio.");
