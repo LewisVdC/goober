@@ -3804,16 +3804,21 @@ window.setInterval(function () {
 //funny
 function holyalberto() {
   if (holyalbertostate === 0) {
-    holyalbertostate = 1;
-    fetch("bible.txt")
-      .then((response) => response.text())
-      .then((data) => {
-        bible = data;
-        alberto.setAttribute("class", "fadeout");
-        setTimeout("alberto.innerHTML = bible", 1000);
-        setTimeout('alberto.setAttribute("class", "fadein")', 1000);
-      })
+    if(window.confirm("Warning! This feature might trigger you in some way. \nAre you sure you want to proceed?")){
+      window.alert("This feature is available in magenta tab.\nClick the button again to disable");
+      holyalbertostate = 1;
+      fetch("bible.txt")
+        .then((response) => response.text())
+        .then((data) => {
+          bible = data;
+          alberto.setAttribute("class", "fadeout");
+          setTimeout("alberto.innerHTML = bible", 1000);
+          setTimeout('alberto.setAttribute("class", "fadein")', 1000);
+        })
       .catch((error) => console.error("Error fetching the file:", error));
+    }else{
+      window.alert("The text remains... waiting. Come back when you're prepared.");
+    }
   } else {
     holyalbertostate = 0;
     say(words);
