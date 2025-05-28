@@ -4183,11 +4183,7 @@ function triggerExplosion() {
 }
 
 function buy_spell() {
-  var tempwords = words;
-  window.setTimeout(function () {
-    say(tempwords);
-  }, 3000);
-  say("coming soon!");
+  alert("sorry, the bottom row of spells is coming next update!");
 }
 
 //cooldown shenanigains
@@ -4469,7 +4465,7 @@ function checkAchievement() {
     achievementCall("have1e7yellow", 23, "#222310", "#FFFF00");
   }
   //cyan
-  if (achievement.yellowCyan1 === false && colorsyphoncount >= 1) {
+  if (achievement.yellowCyan1 === false && colorsyphoncount >= 1 && dialoguestate >= 16) {
     achievementCall("yellowCyan1", 24, "#132322", "#01FFFF");
     document.getElementById("cyan1spell").style.backgroundImage = "url('images/spells/cyan_spell.webp')";
   }
