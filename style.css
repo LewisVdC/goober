@@ -1159,7 +1159,9 @@ div#lewissucks.animate {
     transform: scale(3);
   }
 }
-
+#holyalbertomode{
+  display: none;
+}
 #Settings {
   z-index: 17;
   position: fixed;

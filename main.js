@@ -782,6 +782,7 @@ function load() {
     }
     if (tasksCompleted > 99) {
       document.getElementById("tabmagenta").style.display = "block";
+      document.getElementById("holyalbertomode").style.display = "block";
     }
     if (tasksCompleted === 0) {
       document.getElementById("tabs").style.width = "calc(250px/3)";
@@ -2486,6 +2487,7 @@ function submitTask() {
       if (tasksCompleted === 100) {
         magenta += 10;
         document.getElementById("tabmagenta").style.display = "block";
+        document.getElementById("holyalbertomode").style.display = "block";
         document.getElementById("magentacount").innerHTML =
           "magenta: " + formatNumber(Math.floor(magenta));
       }
