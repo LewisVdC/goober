@@ -324,6 +324,10 @@ function load() {
           if(keys[i] === "yellowAllUpgrades10"){
             document.getElementById("yellow1spell").style.backgroundImage = "url('images/spells/yellow_spell.webp')";
           }
+          if(keys[i] === "redPerSec1e15" || keys[i] === "have1e20red" || keys[i] === "greenPerSec1e16" || keys[i] === "have1e21green" || keys[i] === "bluePerSec1e17" || keys[i] === "have1e22blue" || keys[i] === "yellowAllUpgrades10" || keys[i] === "have1e7yellow"){
+            achievementItemImg[i].src =
+            "images/placeholder.webp";
+          }
         }
       }
     }
