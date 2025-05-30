@@ -1,24 +1,5 @@
 black hole should be unlockable through alberto going oh woaw ur cool hereu  go a black hole
 can u add that in albertos code ill already start with making black hole a functional things
-i'll add that once i'm done w spells
 
 heey
 achievements maybe?? idk
-
-ola maybe news ticker if we're rlly bored
-
-sounds fun
-
-any ideas for the 8 spells left?
-blue spell: gives 1s worth of blue
-green spell: gives 1s worth of green
-red spell: gives 1s worth of red
-cyan spell: transmute magic into cyan
-cyan spell 2: boost upgrade buyer in some way (maybe it gets cheaper or buys faster for some time)
-magenta spell: gives magenta for magic
-orange spell: makes game go faster
-pink spell: lowers risk in black hole
-purple spell: boosts random resource
-rainbow spell: boosts all resources
-yellow spell: gives 1s worth of yellow
-yellow spell 2: increases yellow effects?
