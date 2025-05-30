@@ -1360,6 +1360,7 @@ div#saving.fadeout {
   background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
   flex-wrap: wrap;
   display: none;
+  
   position: fixed;
   z-index: 99;
   height: 40%;

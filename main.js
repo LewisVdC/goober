@@ -319,14 +319,24 @@ function load() {
             document.getElementById("tasks").style.display = "block";
           }
           if (keys[i] === "yellowCyan1") {
-            document.getElementById("cyan1spell").style.backgroundImage = "url('images/spells/cyan_spell.webp')";
+            document.getElementById("cyan1spell").style.backgroundImage =
+              "url('images/spells/cyan_spell.webp')";
           }
-          if(keys[i] === "yellowAllUpgrades10"){
-            document.getElementById("yellow1spell").style.backgroundImage = "url('images/spells/yellow_spell.webp')";
+          if (keys[i] === "yellowAllUpgrades10") {
+            document.getElementById("yellow1spell").style.backgroundImage =
+              "url('images/spells/yellow_spell.webp')";
           }
-          if(keys[i] === "redPerSec1e15" || keys[i] === "have1e20red" || keys[i] === "greenPerSec1e16" || keys[i] === "have1e21green" || keys[i] === "bluePerSec1e17" || keys[i] === "have1e22blue" || keys[i] === "yellowAllUpgrades10" || keys[i] === "have1e7yellow"){
-            achievementItemImg[i].src =
-            "images/placeholder.webp";
+          if (
+            keys[i] === "redPerSec1e15" ||
+            keys[i] === "have1e20red" ||
+            keys[i] === "greenPerSec1e16" ||
+            keys[i] === "have1e21green" ||
+            keys[i] === "bluePerSec1e17" ||
+            keys[i] === "have1e22blue" ||
+            keys[i] === "yellowAllUpgrades10" ||
+            keys[i] === "have1e7yellow"
+          ) {
+            achievementItemImg[i].src = "images/placeholder.webp";
           }
         }
       }
@@ -2083,43 +2093,64 @@ window.setInterval(function () {
       }
 
       //auto buy
-      redfilterautomationtimer += Math.min(20*cyanBuyTimeBoost, redfilterautomationcount);
-      redpointerautomationtimer += Math.min(20*cyanBuyTimeBoost, redpointerautomationcount);
-      bigredfilterautomationtimer += Math.min(20*cyanBuyTimeBoost, bigredfilterautomationcount);
+      redfilterautomationtimer += Math.min(
+        20 * cyanBuyTimeBoost,
+        redfilterautomationcount
+      );
+      redpointerautomationtimer += Math.min(
+        20 * cyanBuyTimeBoost,
+        redpointerautomationcount
+      );
+      bigredfilterautomationtimer += Math.min(
+        20 * cyanBuyTimeBoost,
+        bigredfilterautomationcount
+      );
       bigredpointerautomationtimer += Math.min(
-        20*cyanBuyTimeBoost,
+        20 * cyanBuyTimeBoost,
         bigredpointerautomationcount
       );
       rednanometerwaveautomationtimer += Math.min(
-        20*cyanBuyTimeBoost,
+        20 * cyanBuyTimeBoost,
         rednanometerwaveautomationcount
       );
-      greenfilterautomationtimer += Math.min(20*cyanBuyTimeBoost, greenfilterautomationcount);
-      greenpointerautomationtimer += Math.min(20*cyanBuyTimeBoost, greenpointerautomationcount);
+      greenfilterautomationtimer += Math.min(
+        20 * cyanBuyTimeBoost,
+        greenfilterautomationcount
+      );
+      greenpointerautomationtimer += Math.min(
+        20 * cyanBuyTimeBoost,
+        greenpointerautomationcount
+      );
       biggreenfilterautomationtimer += Math.min(
-        20*cyanBuyTimeBoost,
+        20 * cyanBuyTimeBoost,
         biggreenfilterautomationcount
       );
       biggreenpointerautomationtimer += Math.min(
-        20*cyanBuyTimeBoost,
+        20 * cyanBuyTimeBoost,
         biggreenpointerautomationcount
       );
       greennanometerwaveautomationtimer += Math.min(
-        20*cyanBuyTimeBoost,
+        20 * cyanBuyTimeBoost,
         greennanometerwaveautomationcount
       );
-      bluefilterautomationtimer += Math.min(20*cyanBuyTimeBoost, bluefilterautomationcount);
-      bluepointerautomationtimer += Math.min(20*cyanBuyTimeBoost, bluepointerautomationcount);
+      bluefilterautomationtimer += Math.min(
+        20 * cyanBuyTimeBoost,
+        bluefilterautomationcount
+      );
+      bluepointerautomationtimer += Math.min(
+        20 * cyanBuyTimeBoost,
+        bluepointerautomationcount
+      );
       bigbluefilterautomationtimer += Math.min(
-        20*cyanBuyTimeBoost,
+        20 * cyanBuyTimeBoost,
         bigbluefilterautomationcount
       );
       bigbluepointerautomationtimer += Math.min(
-        20*cyanBuyTimeBoost,
+        20 * cyanBuyTimeBoost,
         bigbluepointerautomationcount
       );
       bluenanometerwaveautomationtimer += Math.min(
-        20*cyanBuyTimeBoost,
+        20 * cyanBuyTimeBoost,
         bluenanometerwaveautomationcount
       );
       document.getElementById("blackcount").innerHTML = black;
@@ -2592,8 +2623,9 @@ function buygovernmentfunding() {
       "yellow: " + formatNumber(Math.floor(yellow));
     governmentfundingcount++;
     governmentfundingprice = Math.round(governmentfundingprice * 1.35);
-    document.getElementById("governmentfundingprice").innerHTML =
-      formatNumber(Math.floor(governmentfundingprice));
+    document.getElementById("governmentfundingprice").innerHTML = formatNumber(
+      Math.floor(governmentfundingprice)
+    );
     redfiltercost = Math.floor(
       (10 * Math.pow(1.1, redfilter)) / (1 + 0.1 * governmentfundingcount)
     );
@@ -2688,7 +2720,9 @@ function buylargerprisms() {
     largerprismsprice = Math.round(largerprismsprice * 1.85);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("largerprismsprice").innerHTML = formatNumber(Math.floor(largerprismsprice));
+    document.getElementById("largerprismsprice").innerHTML = formatNumber(
+      Math.floor(largerprismsprice)
+    );
   }
 }
 
@@ -2699,7 +2733,9 @@ function buycolorharmony() {
     colorharmonyprice = Math.round(colorharmonyprice * 1.43);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("colorharmonyprice").innerHTML = formatNumber(Math.floor(colorharmonyprice));
+    document.getElementById("colorharmonyprice").innerHTML = formatNumber(
+      Math.floor(colorharmonyprice)
+    );
   }
 }
 
@@ -2710,8 +2746,9 @@ function buystreamlinedtasks() {
     streamlinedtasksprice = Math.round(streamlinedtasksprice * 1.32);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("streamlinedtasksprice").innerHTML =
-      formatNumber(Math.floor(streamlinedtasksprice));
+    document.getElementById("streamlinedtasksprice").innerHTML = formatNumber(
+      Math.floor(streamlinedtasksprice)
+    );
     taskColorGoalRed = taskColorGoalRed / 2;
     taskColorGoalBlue = taskColorGoalBlue / 2;
     taskColorGoalGreen = taskColorGoalGreen / 2;
@@ -2734,8 +2771,9 @@ function buyyellowsynergy() {
     yellowsynergyprice = Math.round(yellowsynergyprice * 1.61);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("yellowsynergyprice").innerHTML =
-      formatNumber(Math.floor(yellowsynergyprice));
+    document.getElementById("yellowsynergyprice").innerHTML = formatNumber(
+      Math.floor(yellowsynergyprice)
+    );
     taskRewardCount =
       10 *
       (1 + yellowsynergycount * 0.25) *
@@ -2752,7 +2790,9 @@ function buyredoverflow() {
     redoverflowprice = Math.round(redoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("redoverflowprice").innerHTML = formatNumber(Math.floor(redoverflowprice));
+    document.getElementById("redoverflowprice").innerHTML = formatNumber(
+      Math.floor(redoverflowprice)
+    );
   }
 }
 
@@ -2763,8 +2803,9 @@ function buygreenoverflow() {
     greenoverflowprice = Math.round(greenoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("greenoverflowprice").innerHTML =
-      formatNumber(Math.floor(greenoverflowprice));
+    document.getElementById("greenoverflowprice").innerHTML = formatNumber(
+      Math.floor(greenoverflowprice)
+    );
   }
 }
 
@@ -2775,7 +2816,9 @@ function buyblueoverflow() {
     blueoverflowprice = Math.round(blueoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("blueoverflowprice").innerHTML = formatNumber(Math.floor(blueoverflowprice));
+    document.getElementById("blueoverflowprice").innerHTML = formatNumber(
+      Math.floor(blueoverflowprice)
+    );
   }
 }
 
@@ -2786,8 +2829,9 @@ function buytricolorboost() {
     tricolorboostprice = Math.round(tricolorboostprice * 1.68);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("tricolorboostprice").innerHTML =
-      formatNumber(Math.floor(tricolorboostprice));
+    document.getElementById("tricolorboostprice").innerHTML = formatNumber(
+      Math.floor(tricolorboostprice)
+    );
   }
 }
 
@@ -2798,7 +2842,9 @@ function buytaskmastery() {
     taskmasteryprice = Math.round(taskmasteryprice * 1.44);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("taskmasteryprice").innerHTML = formatNumber(Math.floor(taskmasteryprice));
+    document.getElementById("taskmasteryprice").innerHTML = formatNumber(
+      Math.floor(taskmasteryprice)
+    );
   }
 }
 
@@ -2809,8 +2855,9 @@ function buygoldenmultiplier() {
     goldenmultiplierprice = Math.round(goldenmultiplierprice * 1.91);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("goldenmultiplierprice").innerHTML =
-      formatNumber(Math.floor(goldenmultiplierprice));
+    document.getElementById("goldenmultiplierprice").innerHTML = formatNumber(
+      Math.floor(goldenmultiplierprice)
+    );
     taskRewardCount =
       10 *
       (1 + yellowsynergycount * 0.25) *
@@ -2832,7 +2879,9 @@ function buycolorsyphon() {
     colorsyphonprice = 1200 + 100 * colorsyphoncount;
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("colorsyphonprice").innerHTML = formatNumber(Math.floor(colorsyphonprice));
+    document.getElementById("colorsyphonprice").innerHTML = formatNumber(
+      Math.floor(colorsyphonprice)
+    );
     cyan += 10;
     red -= 1e15;
     blue -= 1e15;
@@ -2849,8 +2898,9 @@ function buyfocussedpointers() {
     focussedpointersprice = Math.round(focussedpointersprice * 1.53);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("focussedpointersprice").innerHTML =
-      formatNumber(Math.floor(focussedpointersprice));
+    document.getElementById("focussedpointersprice").innerHTML = formatNumber(
+      Math.floor(focussedpointersprice)
+    );
   }
 }
 
@@ -2861,7 +2911,9 @@ function buyfinerfilters() {
     finerfiltersprice = Math.round(finerfiltersprice * 1.43);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("finerfiltersprice").innerHTML = formatNumber(Math.floor(finerfiltersprice));
+    document.getElementById("finerfiltersprice").innerHTML = formatNumber(
+      Math.floor(finerfiltersprice)
+    );
   }
 }
 
@@ -2872,8 +2924,9 @@ function buymicrometerwave() {
     micrometerwaveprice = Math.round(micrometerwaveprice * 1.51);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("micrometerwaveprice").innerHTML =
-      formatNumber(Math.floor(micrometerwaveprice));
+    document.getElementById("micrometerwaveprice").innerHTML = formatNumber(
+      Math.floor(micrometerwaveprice)
+    );
   }
 }
 
@@ -2884,8 +2937,9 @@ function buystrongersynergy() {
     strongersynergyprice = Math.round(strongersynergyprice * 1.4);
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("strongersynergyprice").innerHTML =
-      formatNumber(Math.floor(strongersynergyprice));
+    document.getElementById("strongersynergyprice").innerHTML = formatNumber(
+      Math.floor(strongersynergyprice)
+    );
   }
 }
 
@@ -3806,8 +3860,14 @@ window.setInterval(function () {
 //funny
 function holyalberto() {
   if (holyalbertostate === 0) {
-    if(window.confirm("Warning! This feature might trigger you in some way. \nAre you sure you want to proceed?")){
-      window.alert("This feature is available in magenta tab.\nClick the button again to disable");
+    if (
+      window.confirm(
+        "Warning! This feature might trigger you in some way. \nAre you sure you want to proceed?"
+      )
+    ) {
+      window.alert(
+        "This feature is available in magenta tab.\nClick the button again to disable"
+      );
       holyalbertostate = 1;
       fetch("bible.txt")
         .then((response) => response.text())
@@ -3817,9 +3877,11 @@ function holyalberto() {
           setTimeout("alberto.innerHTML = bible", 1000);
           setTimeout('alberto.setAttribute("class", "fadein")', 1000);
         })
-      .catch((error) => console.error("Error fetching the file:", error));
-    }else{
-      window.alert("The text remains... waiting. Come back when you're prepared.");
+        .catch((error) => console.error("Error fetching the file:", error));
+    } else {
+      window.alert(
+        "The text remains... waiting. Come back when you're prepared."
+      );
     }
   } else {
     holyalbertostate = 0;
@@ -4459,15 +4521,21 @@ function checkAchievement() {
     strongersynergycount >= 10
   ) {
     achievementCall("yellowAllUpgrades10", 22, "#222310", "#FFFF00");
-    document.getElementById("yellow1spell").style.backgroundImage = "url('images/spells/yellow_spell.webp')";
+    document.getElementById("yellow1spell").style.backgroundImage =
+      "url('images/spells/yellow_spell.webp')";
   }
   if (achievement.have1e7yellow === false && yellow >= 1e7) {
     achievementCall("have1e7yellow", 23, "#222310", "#FFFF00");
   }
   //cyan
-  if (achievement.yellowCyan1 === false && colorsyphoncount >= 1 && dialoguestate >= 16) {
+  if (
+    achievement.yellowCyan1 === false &&
+    colorsyphoncount >= 1 &&
+    dialoguestate >= 16
+  ) {
     achievementCall("yellowCyan1", 24, "#132322", "#01FFFF");
-    document.getElementById("cyan1spell").style.backgroundImage = "url('images/spells/cyan_spell.webp')";
+    document.getElementById("cyan1spell").style.backgroundImage =
+      "url('images/spells/cyan_spell.webp')";
   }
   if (
     achievement.automation1 === false &&
@@ -4581,8 +4649,8 @@ function spell(spelltype) {
   if (spelltype == "cyan1") {
     //line directly below VERY IMPORTANT lewis, else u can just spam spells even though cooldown still going.
     if (document.getElementById("cyan1shell").style.background === "") {
-    // no clue if i just consider this finished bc idk how to let the player get this one
-      if ((achievement.yellowCyan1 === true)) {
+      // no clue if i just consider this finished bc idk how to let the player get this one
+      if (achievement.yellowCyan1 === true) {
         if (achievement.magicCyan1 === false) {
           achievementCall("magicCyan1", 27, "#132322", "#01FFFF");
         }
@@ -4598,28 +4666,29 @@ function spell(spelltype) {
   }
   if (spelltype == "cyan2") {
     if (document.getElementById("cyan2shell").style.background === "") {
-      if(achievement.spellAutomation === true){
+      if (achievement.spellAutomation === true) {
         let tribute =
           (document.getElementById("magicslider").value / 100) * magic;
-        cyanBuyTimeBoost = 1+tribute/1000;
+        cyanBuyTimeBoost = 1 + tribute / 1000;
         magic -= tribute;
-        window.setTimeout(function(){cyanBuyTimeBoost=1}, 2000);
+        window.setTimeout(function () {
+          cyanBuyTimeBoost = 1;
+        }, 2000);
         spellCoolDown("#cyan1shell", 4000);
       }
     }
   }
   if (spelltype == "yellow1") {
     if (document.getElementById("yellow1shell").style.background === "") {
-      if(achievement.yellowAllUpgrades10 === true){
+      if (achievement.yellowAllUpgrades10 === true) {
         let tribute =
           (document.getElementById("magicslider").value / 100) * magic;
-        yellow += (yellowGAIN * 50) * tribute / 1000;
+        yellow += (yellowGAIN * 50 * tribute) / 1000;
         magic -= tribute;
         spellCoolDown("#yellow1shell", 20000);
       }
     }
   }
   if (spelltype == "yellow2") {
-    
   }
 }
