@@ -1757,7 +1757,6 @@ window.setInterval(function () {
           "multiplies gain of other colors by log1p(green)"; //here
       } else if (document.querySelector("#blueupgrade1:hover") != null) {
         nerdtimer = 0;
-
         document.getElementById("nerdmodetext").innerHTML =
           "multiplies blue filter gain by the amount of blue filters"; //maybe here
       } else if (document.querySelector("#blueupgrade3:hover") != null) {
@@ -3557,7 +3556,6 @@ function castmagentaspell() {
   if (dialoguestate >= 7) {
     if (dialoguestate === 7) {
       chatupdate();
-      timer = 30;
     }
     if (document.getElementById("magentashell").style.background === "") {
       let tribute =
@@ -3792,7 +3790,7 @@ function chatupdate() {
     say("you can learn the rest by studying the hidden ancient scrolls.");
     dialoguestate++;
   } else if (dialoguestate === 10 && tab === "magenta") {
-    say("come back to me once you've found some.");
+    say("come back to me once you've found the first three.");
     dialoguestate++;
   } else if (dialoguestate === 11 && tab === "magenta") {
     say("great! i'll tell you what these spells do.");
@@ -3884,6 +3882,7 @@ function holyalberto() {
       );
     }
   } else {
+    document.body.style.overflowY = "hidden";
     holyalbertostate = 0;
     say(words);
   }
