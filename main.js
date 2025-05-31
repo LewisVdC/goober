@@ -1826,7 +1826,7 @@ window.setInterval(function () {
       } else if (document.querySelector("#yellowupgrade13:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply pointer gain by 2√focussedpointerslevel";
+          "multiply pointer gain by 2√focusedpointerslevel";
       } else if (document.querySelector("#yellowupgrade14:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -1922,7 +1922,7 @@ window.setInterval(function () {
       } else if (document.querySelector("#yellowupgrade13:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
-          "multiply pointer gain by √focussedpointerslevel * 2";
+          "multiply pointer gain by √focusedpointerslevel * 2";
       } else if (document.querySelector("#yellowupgrade14:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
