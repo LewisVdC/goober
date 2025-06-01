@@ -8,7 +8,9 @@ var debugbluenumber = 0;
 var debugmagicnumber = 0;
 var tab = "red";
 var whiteunlock = 0;
+var whiteunlocked = 0;
 var blackunlock = 0;
+var blackunlocked = 0;
 
 //offline
 var offlineTime = 0;
@@ -2538,9 +2540,9 @@ document.addEventListener("keydown", function (event) {
       showtab("cyan");
     } else if (event.key === "m" && tasksCompleted > 99) {
       showtab("magenta");
-    } else if (event.key === "z" && true) {
+    } else if (event.key === "z" && blackunlocked == 1) {
       showtab("black");
-    } else if (event.key === "w" && true) {
+    } else if (event.key === "w" && whiteunlocked == 1) {
       showtab("white");
     }
     if (event.code === "Digit1") {
