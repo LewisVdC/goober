@@ -4246,7 +4246,7 @@ function triggerExplosion() {
 }
 
 function buy_spell() {
-  alert("sorry, the bottom row of spells is coming next update!");
+  alert("sorry, the last few of spells is coming next update!");
 }
 
 //cooldown shenanigains

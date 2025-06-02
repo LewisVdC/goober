@@ -1105,6 +1105,9 @@ button#yellow2spell {
 button#pinkspell {
   background-image: url("images/locked_idiot.webp");
 }
+button#vacant {
+  background-image: url("images/locked_idiot.webp");
+}
 button#greenspell {
   color: #004900;
   font-size: small;
