@@ -1063,10 +1063,9 @@ div#lewissucks {
   color: white;
   justify-content: center;
   align-items: center;
-  z-index: 2;
 }
 #blackhole {
-  z-index: 999;
+  z-index: 2;
   margin-top: 5%;
   box-shadow: 0 0 15px 5px white, 0 0 30px 10px orangered;
   border-style: solid;
@@ -1075,6 +1074,7 @@ div#lewissucks {
   height: 100px;
   width: 100px;
   animation: gostupid 2s infinite;
+  background: black;
 }
 
 @keyframes gostupid {
@@ -1218,8 +1218,10 @@ p#think.fadein {
 }
 div#enterdiv {
   position: absolute;
+  z-index: 3;
 }
 button#enterbutton {
+  z-index: 3;
   font-size: smaller;
   height: 100px;
   width: 100px;

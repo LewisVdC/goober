@@ -4706,7 +4706,7 @@ function star(x,y,size,duration){
     star.classList.add("star");
     star.style.width = star.style.height = size+'px';
     star.style.left = x+'vw';
-    star.style.bottom = y+'vh';
+    star.style.top = y+'vh';
     star.opacity = 1;
     star.dataset.duration = duration;
     star.dataset.totalDuration = duration;
@@ -4725,6 +4725,6 @@ function starFadeOut(){
 }
 function starSpawn(){
   if(Math.random()<0.1){
-    star(Math.random()*110-5, Math.random()*110-5, Math.random()*10, Math.random()*3000);
+    star(Math.random()*110-5, Math.random()*110-5, Math.random()*10, Math.random()*3000+500);
   }
 }
