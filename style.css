@@ -1550,3 +1550,9 @@ div#achievementInfo.achievementfadeaway {
   background: white;
   border-radius: 50%;
 }
+#spellcontainer{
+  width: 560px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
