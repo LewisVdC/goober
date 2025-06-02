@@ -4741,6 +4741,8 @@ function starFadeOut() {
     stars[i].dataset.duration = Number(stars[i].dataset.duration) - 20;
     stars[i].style.opacity =
       stars[i].dataset.duration / stars[i].dataset.totalDuration;
+    stars[i].style.left = String(((parseFloat(stars[i].style.left)-50) * 0.99)+50)+"vw";
+    stars[i].style.top = String(((parseFloat(stars[i].style.top)-50) * 0.99)+50)+"vh";
   }
 }
 function starSpawn() {
