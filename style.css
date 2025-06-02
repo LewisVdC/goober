@@ -717,6 +717,8 @@ div#confusion {
   justify-content: center;
 }
 #magentabuildings {
+  text-align: center;
+  justify-content: center;
   margin-top: 10px;
   color: rgb(255, 55, 255);
   display: flex;
@@ -955,7 +957,6 @@ div#spellcastingbox {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 540px;
 }
 #black {
   font-weight: 600;
@@ -1106,6 +1107,9 @@ button#yellow2spell {
 button#pinkspell {
   background-image: url("images/locked_idiot.webp");
 }
+button#vacant {
+  background-image: url("images/locked_idiot.webp");
+}
 button#greenspell {
   color: #004900;
   font-size: small;
@@ -1122,12 +1126,6 @@ button#magentaspell {
   color: #470047;
   font-weight: 900;
   font-size: small;
-  background-image: url("images/locked_idiot.webp");
-}
-button#vacant {
-  color: white;
-  font-size: small;
-  font-weight: 900;
   background-image: url("images/locked_idiot.webp");
 }
 div#lewissucks.animate {
@@ -1161,7 +1159,7 @@ div#lewissucks.animate {
     transform: scale(3);
   }
 }
-#holyalbertomode{
+#holyalbertomode {
   display: none;
 }
 #Settings {
@@ -1362,6 +1360,7 @@ div#saving.fadeout {
   background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
   flex-wrap: wrap;
   display: none;
+
   position: fixed;
   z-index: 99;
   height: 40%;
