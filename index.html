@@ -1527,72 +1527,91 @@
           <div id="singularity">
             <span id="useless">o</span>
           </div>
-          <div id="pourred">
-            <button id="pourredbutton" class="pourbutton" onclick="pour('red')">
-              <span id="pourredspan" class="pourspan"
-                >pour 10% of your red (<span class="redcount"></span>)</span
+          <div id="pourbuttonbox">
+            <div id="pourred">
+              <button
+                id="pourredbutton"
+                class="pourbutton"
+                onclick="pour('red')"
               >
-            </button>
-          </div>
-          <div id="pourgreen">
-            <button
-              id="pourgreenbutton"
-              class="pourbutton"
-              onclick="pour('green')"
-            >
-              <span id="pourgreenspan" class="pourspan"
-                >pour 10% of your green (<span class="greencount"></span>)</span
+                <span id="pourredspan" class="pourspan"
+                  >pour 10% of your red (<span class="redcount"></span>)</span
+                >
+              </button>
+            </div>
+            <div id="pourgreen">
+              <button
+                id="pourgreenbutton"
+                class="pourbutton"
+                onclick="pour('green')"
               >
-            </button>
-          </div>
-          <div id="pourblue">
-            <button
-              id="pourbluebutton"
-              class="pourbutton"
-              onclick="pour('blue')"
-            >
-              <span id="pourbluespan" class="pourspan"
-                >pour 10% of your blue (<span class="bluecount"></span>)</span
+                <span id="pourgreenspan" class="pourspan"
+                  >pour 10% of your green (<span class="greencount"></span
+                  >)</span
+                >
+              </button>
+            </div>
+            <div id="pourblue">
+              <button
+                id="pourbluebutton"
+                class="pourbutton"
+                onclick="pour('blue')"
               >
-            </button>
-          </div>
-          <div id="pouryellow">
-            <button
-              id="pouryellowbutton"
-              class="pourbutton"
-              onclick="pour('yellow')"
-            >
-              <span id="pouryellowspan" class="pourspan"
-                >pour 10% of your yellow (<span class="yellowcount"></span
-                >)</span
+                <span id="pourbluespan" class="pourspan"
+                  >pour 10% of your blue (<span class="bluecount"></span>)</span
+                >
+              </button>
+            </div>
+            <div id="pouryellow">
+              <button
+                id="pouryellowbutton"
+                class="pourbutton"
+                onclick="pour('yellow')"
               >
-            </button>
-          </div>
-          <div id="pourcyan">
-            <button
-              id="pourcyanbutton"
-              class="pourbutton"
-              onclick="pour('cyan')"
-            >
-              <span id="pourcyanspan" class="pourspan"
-                >pour 10% of your cyan (<span class="cyancount"></span>)</span
+                <span id="pouryellowspan" class="pourspan"
+                  >pour 10% of your yellow (<span class="yellowcount"></span
+                  >)</span
+                >
+              </button>
+            </div>
+            <div id="pourcyan">
+              <button
+                id="pourcyanbutton"
+                class="pourbutton"
+                onclick="pour('cyan')"
               >
-            </button>
-          </div>
-          <div id="pourmagenta">
-            <button
-              id="pourmagentabutton"
-              class="pourbutton"
-              onclick="pour('magenta')"
-            >
-              <span id="pourmagentaspan" class="pourspan"
-                >pour 10% of your magenta (<span class="magentacount"></span
-                >)</span
+                <span id="pourcyanspan" class="pourspan"
+                  >pour 10% of your cyan (<span class="cyancount"></span>)</span
+                >
+              </button>
+            </div>
+            <div id="pourmagenta">
+              <button
+                id="pourmagentabutton"
+                class="pourbutton"
+                onclick="pour('magenta')"
               >
-            </button>
+                <span id="pourmagentaspan" class="pourspan"
+                  >pour 10% of your magenta (<span class="magentacount"></span
+                  >)</span
+                >
+              </button>
+            </div>
           </div>
           your black is boosting rgb production by<br />
           <span id="blackboost"></span>
+        </div>
+        <div id="blackholemerchantgrr">
+          <div id="blackholemerchant">
+            <button
+              id="merchantbutton"
+              class="pourbutton"
+              style="margin-top: 10vh"
+              onclick="merchanttalk()"
+            >
+              merchant
+            </button>
+          </div>
         </div>
         <div id="blackholeexit">
           <button

@@ -1063,6 +1063,7 @@ div#lewissucks {
   color: white;
   justify-content: center;
   align-items: center;
+  z-index: 1.5;
 }
 #blackhole {
   margin-top: 5%;
@@ -1190,6 +1191,7 @@ div#lewissucks.animate {
   align-items: flex-start;
   margin-left: 190px;
   position: fixed;
+  z-index: 17;
 }
 
 @keyframes fadeout {
@@ -1258,15 +1260,25 @@ div#pourbox {
   align-items: center;
   flex-direction: column;
 }
+button#merchantbutton {
+  color: white;
+}
+div#pourbuttonbox {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
 .pourbutton {
   border: none;
-  box-shadow: white 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px,
-    white 0px 0px 1px, white 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px,
-    white 0px 0px 1px inset;
+  box-shadow: black 0px 0px 2px, rgb(0, 0, 0) 0px 0px 4px, black 0px 0px 1px,
+    black 0px 0px 2px, rgb(0, 0, 0) 0px 0px 4px, black 0px 0px 1px inset;
   background-color: black;
   color: white;
-  border-radius: 5px;
+  border-radius: 0px;
+  border-color: black;
+  text-align: left;
 }
+
 #useless {
   color: transparent;
   text-shadow: none;

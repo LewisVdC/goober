@@ -2154,7 +2154,7 @@ window.setInterval(function () {
         20 * cyanBuyTimeBoost,
         bluenanometerwaveautomationcount
       );
-      document.getElementById("blackcount").innerHTML = black;
+      document.getElementById("blackcount").innerHTML = formatNumber(black);
       if (redfilterautomationtimer >= 200 && redtogglestate) {
         redfilterautomationtimer = 0;
         buyredfilter();
@@ -4693,3 +4693,12 @@ function spell(spelltype) {
   if (spelltype == "yellow2") {
   }
 }
+
+//yippee black hole merchant stuff
+//
+//var list! anything here is not saved! save then move up!
+
+//
+//go!
+
+function merchanttalk() {}
