@@ -1588,6 +1588,11 @@ window.setInterval(function () {
       //doing stuff its not supposed to before gameload
       window.scrollBy(-window.innerWidth, 0);
       //some nerdy stuff
+      //stars fading and spawning
+      if (tab === "black") {
+        starFadeOut();
+        starSpawn();
+      }
       //nerdmode text "margins" (actually width in disguise)
       document.getElementById("nerdmodetext").style.width =
         "calc(50% - 320px - " +
@@ -2154,7 +2159,7 @@ window.setInterval(function () {
         20 * cyanBuyTimeBoost,
         bluenanometerwaveautomationcount
       );
-      document.getElementById("blackcount").innerHTML = black;
+      document.getElementById("blackcount").innerHTML = formatNumber(black);
       if (redfilterautomationtimer >= 200 && redtogglestate) {
         redfilterautomationtimer = 0;
         buyredfilter();
@@ -4246,7 +4251,7 @@ function triggerExplosion() {
 }
 
 function buy_spell() {
-  alert("sorry, the bottom row of spells is coming next update!");
+  alert("sorry, the last few of spells is coming next update!");
 }
 
 //cooldown shenanigains
@@ -4691,5 +4696,60 @@ function spell(spelltype) {
     }
   }
   if (spelltype == "yellow2") {
+  }
+}
+
+//yippee black hole merchant stuff
+//
+//var list! anything here is not saved! save then move up!
+
+//
+//go!
+
+function merchanttalk() {}
+
+//yippee black hole merchant stuff
+//
+//var list! anything here is not saved! save then move up!
+
+//
+//go!
+
+function merchanttalk() {}
+
+//no more black hole im sicka it
+//funny stars
+function star(x, y, size, duration) {
+  if (tab === "black") {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.width = star.style.height = size + "px";
+    star.style.left = x + "vw";
+    star.style.top = y + "vh";
+    star.opacity = 1;
+    star.dataset.duration = duration;
+    star.dataset.totalDuration = duration;
+    document.getElementById("starcontainer").appendChild(star);
+  }
+}
+function starFadeOut() {
+  let stars = document.querySelectorAll(".star");
+  for (let i = 0; i <= stars.length - 1; i++) {
+    if (Number(stars[i].dataset.duration) <= 0) {
+      stars[i].remove();
+    }
+    stars[i].dataset.duration = Number(stars[i].dataset.duration) - 20;
+    stars[i].style.opacity =
+      stars[i].dataset.duration / stars[i].dataset.totalDuration;
+  }
+}
+function starSpawn() {
+  if (Math.random() < 0.1) {
+    star(
+      Math.random() * 110 - 5,
+      Math.random() * 110 - 5,
+      Math.random() * 10,
+      Math.random() * 3000 + 500
+    );
   }
 }

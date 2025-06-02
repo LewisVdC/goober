@@ -1063,8 +1063,10 @@ div#lewissucks {
   color: white;
   justify-content: center;
   align-items: center;
+  z-index: 1.5;
 }
 #blackhole {
+  z-index: 2;
   margin-top: 5%;
   box-shadow: 0 0 15px 5px white, 0 0 30px 10px orangered;
   border-style: solid;
@@ -1073,6 +1075,7 @@ div#lewissucks {
   height: 100px;
   width: 100px;
   animation: gostupid 2s infinite;
+  background: black;
 }
 
 @keyframes gostupid {
@@ -1103,6 +1106,9 @@ button#yellow2spell {
   background-image: url("images/locked_idiot.webp");
 }
 button#pinkspell {
+  background-image: url("images/locked_idiot.webp");
+}
+button#vacant {
   background-image: url("images/locked_idiot.webp");
 }
 button#greenspell {
@@ -1187,6 +1193,7 @@ div#lewissucks.animate {
   align-items: flex-start;
   margin-left: 190px;
   position: fixed;
+  z-index: 17;
 }
 
 @keyframes fadeout {
@@ -1213,8 +1220,10 @@ p#think.fadein {
 }
 div#enterdiv {
   position: absolute;
+  z-index: 3;
 }
 button#enterbutton {
+  z-index: 3;
   font-size: smaller;
   height: 100px;
   width: 100px;
@@ -1255,15 +1264,25 @@ div#pourbox {
   align-items: center;
   flex-direction: column;
 }
+button#merchantbutton {
+  color: white;
+}
+div#pourbuttonbox {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
 .pourbutton {
   border: none;
-  box-shadow: white 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px,
-    white 0px 0px 1px, white 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px,
-    white 0px 0px 1px inset;
+  box-shadow: black 0px 0px 2px, rgb(0, 0, 0) 0px 0px 4px, black 0px 0px 1px,
+    black 0px 0px 2px, rgb(0, 0, 0) 0px 0px 4px, black 0px 0px 1px inset;
   background-color: black;
   color: white;
-  border-radius: 5px;
+  border-radius: 0px;
+  border-color: black;
+  text-align: left;
 }
+
 #useless {
   color: transparent;
   text-shadow: none;
@@ -1517,4 +1536,17 @@ div#achievementInfo.achievementfadeaway {
   100% {
     opacity: 0%;
   }
+}
+#starcontainer{
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+}
+.star{
+  z-index: 1;
+  position: absolute;
+  background: white;
+  border-radius: 50%;
 }
