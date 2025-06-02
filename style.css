@@ -1062,8 +1062,10 @@ div#lewissucks {
   color: white;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 #blackhole {
+  z-index: 999;
   margin-top: 5%;
   box-shadow: 0 0 15px 5px white, 0 0 30px 10px orangered;
   border-style: solid;
@@ -1521,4 +1523,17 @@ div#achievementInfo.achievementfadeaway {
   100% {
     opacity: 0%;
   }
+}
+#starcontainer{
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+}
+.star{
+  z-index: 1;
+  position: absolute;
+  background: white;
+  border-radius: 50%;
 }
