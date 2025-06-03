@@ -121,34 +121,7 @@ var greentogglestate = true;
 var bluetogglestate = true;
 
 //magenta
-var magic = 0;
-var magenta = 0;
-var bible = "";
-var holyalbertostate = 0;
-var timer = 0;
-var dialoguestate = 0;
-var words = "";
-var redscrollcount = 0;
-var greenscrollcount = 0;
-var bluescrollcount = 0;
-var magentaspellunlock = 0;
-var cauldron = 0;
-var study = 0;
-var feed = 0;
-var feedperson = 0;
-var drink = 0;
-var cauldroncost = 10;
-var studycost = 100;
-var feedcost = 1000;
-var feedpersoncost = 10000;
-var drinkcost = 100000;
-var spellcount = 3;
-var spell1unlock = 0;
-var spell2unlock = 0;
-var spell3unlock = 0;
-var spell4unlock = 0;
-var spell5unlock = 0;
-var randomnumber = 0;
+
 
 //black
 var black = 0;
@@ -2496,64 +2469,7 @@ function toggleblue() {
 //^^ and broke the button itself lmao
 
 //lol
-function buycauldron() {
-  if (magenta >= cauldroncost && dialoguestate >= 4) {
-    if (dialoguestate === 4) {
-      timer = 30;
-      chatupdate();
-    }
-    cauldron++;
-    magenta -= cauldroncost;
-    cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
 
-    document.getElementById("cauldroncount").innerHTML = cauldron;
-    document.getElementById("cauldroncost").innerHTML = cauldroncost;
-  }
-}
-
-function buystudy() {
-  if (magenta >= studycost) {
-    study++;
-    magenta -= studycost;
-    studycost = Math.floor((100 * Math.pow(1.1, study)) / 1);
-
-    document.getElementById("studycount").innerHTML = study;
-    document.getElementById("studycost").innerHTML = studycost;
-  }
-}
-
-function buyfeed() {
-  if (magenta >= feedcost) {
-    feed++;
-    magenta -= feedcost;
-    feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
-
-    document.getElementById("feedcount").innerHTML = feed;
-    document.getElementById("feedcost").innerHTML = feedcost;
-  }
-}
-
-function buyfeedperson() {
-  if (magenta >= feedpersoncost) {
-    feedperson++;
-    magenta -= feedpersoncost;
-    feedpersoncost = Math.floor((10000 * Math.pow(1.1, feedperson)) / 1);
-
-    document.getElementById("feedpersoncount").innerHTML = feedperson;
-    document.getElementById("feedpersoncost").innerHTML = feedpersoncost;
-  }
-}
-
-function buydrink() {
-  if (magenta >= drinkcost) {
-    drink++;
-    magenta -= drinkcost;
-    drinkcost = Math.floor((100000 * Math.pow(1.1, drink)) / 1);
-
-    document.getElementById("drinkcount").innerHTML = drink;
-    document.getElementById("drinkcost").innerHTML = drinkcost;
-  }
-}
 
 //and stops here
 //now for magic,,
@@ -4827,16 +4743,112 @@ function buystrongersynergy() {
 //1: cyan variables
 //2: cyan buy functions
 //3: cyan calculation functions
+
+
 //MAGENTA
 //contents:
 //1: magenta variables
 //2: magenta buy functions
 //3: magenta calculation functions
+
+//1: magenta variables
+var magic = 0;
+var magenta = 0;
+var bible = "";
+var holyalbertostate = 0;
+var timer = 0;
+var dialoguestate = 0;
+var words = "";
+var redscrollcount = 0;
+var greenscrollcount = 0;
+var bluescrollcount = 0;
+var magentaspellunlock = 0;
+var cauldron = 0;
+var study = 0;
+var feed = 0;
+var feedperson = 0;
+var drink = 0;
+var cauldroncost = 10;
+var studycost = 100;
+var feedcost = 1000;
+var feedpersoncost = 10000;
+var drinkcost = 100000;
+var spellcount = 3;
+var spell1unlock = 0;
+var spell2unlock = 0;
+var spell3unlock = 0;
+var spell4unlock = 0;
+var spell5unlock = 0;
+var randomnumber = 0;
+
+//magenta buy functions
+function buycauldron() {
+  if (magenta >= cauldroncost && dialoguestate >= 4) {
+    if (dialoguestate === 4) {
+      timer = 30;
+      chatupdate();
+    }
+    cauldron++;
+    magenta -= cauldroncost;
+    cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
+
+    document.getElementById("cauldroncount").innerHTML = cauldron;
+    document.getElementById("cauldroncost").innerHTML = cauldroncost;
+  }
+}
+
+function buystudy() {
+  if (magenta >= studycost) {
+    study++;
+    magenta -= studycost;
+    studycost = Math.floor((100 * Math.pow(1.1, study)) / 1);
+
+    document.getElementById("studycount").innerHTML = study;
+    document.getElementById("studycost").innerHTML = studycost;
+  }
+}
+
+function buyfeed() {
+  if (magenta >= feedcost) {
+    feed++;
+    magenta -= feedcost;
+    feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
+
+    document.getElementById("feedcount").innerHTML = feed;
+    document.getElementById("feedcost").innerHTML = feedcost;
+  }
+}
+
+function buyfeedperson() {
+  if (magenta >= feedpersoncost) {
+    feedperson++;
+    magenta -= feedpersoncost;
+    feedpersoncost = Math.floor((10000 * Math.pow(1.1, feedperson)) / 1);
+
+    document.getElementById("feedpersoncount").innerHTML = feedperson;
+    document.getElementById("feedpersoncost").innerHTML = feedpersoncost;
+  }
+}
+
+function buydrink() {
+  if (magenta >= drinkcost) {
+    drink++;
+    magenta -= drinkcost;
+    drinkcost = Math.floor((100000 * Math.pow(1.1, drink)) / 1);
+
+    document.getElementById("drinkcount").innerHTML = drink;
+    document.getElementById("drinkcost").innerHTML = drinkcost;
+  }
+}
+
+//magenta calculation functions
+
+
 //BLACK
 //contents:
-//1: blue variables
-//2: blue buy functions
-//3: blue calculation functions
+//1: black variables
+//2: black buy functions
+//3: black calculation functions
 //WHITE
 //contents:
 //1: blue variables
