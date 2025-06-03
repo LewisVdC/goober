@@ -261,7 +261,7 @@ function load() {
     if (typeof savegame.words !== "undefined") {
       words = savegame.words;
       alberto.style.opacity = "1";
-      alberto.innerHTML = words;
+      alberto.innerHTML = "𓆩⟡𓆪"+words+"𓆩⟡𓆪";
     }
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
