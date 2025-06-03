@@ -2926,19 +2926,39 @@ function isBase64(str) {
   }
 }
 
+//advanced chatting
+let albertoLines;
+let timeouts = [1];
+
+fetch("texts/alberto.txt")
+  .then(response => response.text())
+  .then(albertoText => {
+    albertoLines = albertoText.replaceAll("\r", "").split("\n");
+  });
+
+document.getElementById("magenta").addEventListener("mousedown", function(){
+  words = albertoLines[dialoguestate];
+  for(let i = 0; i < timeouts.length; i++){
+    clearTimeout(timeouts[i]);
+  }
+  
+  let letters = albertoLines[dialoguestate].split("");
+  console.log(letters);
+  for(let i = 0; i < letters.length; i++){
+    const id = setTimeout(() => {
+    alberto.innerHTML = "𓆩⟡𓆪" + alberto.innerHTML.replaceAll("𓆩⟡𓆪","") + letters[i] + "𓆩⟡𓆪";
+    }, i * 50);
+    timeouts.push(id);
+  }
+  dialoguestate++;
+});
+
 //chat w alberto
 alberto = document.getElementById("think");
-alberto.innerHTML = "start";
+alberto.innerHTML = "𓆩⟡𓆪";
 
-function say(message) {
-  words = message;
-  if (alberto.innerHTML != "start") {
-    alberto.setAttribute("class", "fadeout");
-  }
-  setTimeout("alberto.innerHTML = String(words)", 1000);
-  setTimeout('alberto.setAttribute("class", "fadein")', 1000);
-}
 
+/*
 function chatupdate() {
   if (dialoguestate === 0 && tab === "magenta") {
     say("greetings! my name is alberto.");
@@ -2994,8 +3014,8 @@ function chatupdate() {
     say("");
     dialoguestate++;
   }
-}
-
+}*/
+/*
 window.setInterval(function () {
   if (tab === "magenta" && holyalbertostate === 0) {
     timer--;
@@ -3038,6 +3058,7 @@ window.setInterval(function () {
     }
   }
 }, 100);
+*/
 
 //funny
 function holyalberto() {
@@ -3051,7 +3072,7 @@ function holyalberto() {
         "This feature is available in magenta tab.\nClick the button again to disable"
       );
       holyalbertostate = 1;
-      fetch("bible.txt")
+      fetch("texts/bible.txt")
         .then((response) => response.text())
         .then((data) => {
           bible = data;
@@ -4842,7 +4863,7 @@ function buydrink() {
 }
 
 //magenta calculation functions
-
+//magenta alberto
 
 //BLACK
 //contents:
