@@ -2929,6 +2929,7 @@ function isBase64(str) {
 //advanced chatting
 let albertoLines;
 let timeouts = [1];
+let albertoRequirement = false;
 
 fetch("texts/alberto.txt")
   .then(response => response.text())
@@ -2937,12 +2938,23 @@ fetch("texts/alberto.txt")
   });
 
 document.getElementById("magenta").addEventListener("mousedown", function(){
+if(albertoLines[dialoguestate] !== 'break' || albertoRequirement === true){
+  albertoRequirement = false;
+  if(albertoLines[dialoguestate] === 'break'){
+    dialoguestate ++;
+  }
   words = albertoLines[dialoguestate];
+  say(albertoLines[dialoguestate]);
+  dialoguestate++;
+}
+});
+
+function say(message){
   for(let i = 0; i < timeouts.length; i++){
     clearTimeout(timeouts[i]);
   }
   alberto.innerHTML = "𓆩⟡𓆪𓆩⟡𓆪";
-  let letters = albertoLines[dialoguestate].split("");
+  let letters = message.split("");
   console.log(letters);
   for(let i = 0; i < letters.length; i++){
     const id = setTimeout(() => {
@@ -2950,8 +2962,11 @@ document.getElementById("magenta").addEventListener("mousedown", function(){
     }, i * 50);
     timeouts.push(id);
   }
-  dialoguestate++;
-});
+}
+
+function chatupdate(){
+  albertoRequirement = true;
+}
 
 //chat w alberto
 alberto = document.getElementById("think");
