@@ -2941,7 +2941,7 @@ document.getElementById("magenta").addEventListener("mousedown", function(){
   for(let i = 0; i < timeouts.length; i++){
     clearTimeout(timeouts[i]);
   }
-  
+  alberto.innerHTML = "𓆩⟡𓆪𓆩⟡𓆪";
   let letters = albertoLines[dialoguestate].split("");
   console.log(letters);
   for(let i = 0; i < letters.length; i++){
