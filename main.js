@@ -973,7 +973,7 @@ function showtab(x) {
       "rgb(0, 219, 0)"
     );
     //green scroll interferes with tasks
-    if (dialoguestate >= 11 && greenscrollcount === 0) {
+    if (dialoguestate >= 14 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle =
@@ -1134,7 +1134,7 @@ window.setInterval(function () {
       if (
         document.getElementById("tabmagenta").style.display === "block" &&
         redscrollcount + greenscrollcount + bluescrollcount === 3 &&
-        dialoguestate === 11
+        dialoguestate === 14
       ) {
         chatupdate();
       }
@@ -1619,7 +1619,7 @@ window.setInterval(function () {
         document.getElementById("blueupgrade2").style.display = "block";
         document.getElementById("blueupgrade3").style.display = "block";
       }
-      if (dialoguestate >= 11) {
+      if (dialoguestate >= 14) {
         if (redscrollcount === 0) {
           document.getElementById("redscroll").style.display = "inline-block";
         }
@@ -2589,7 +2589,7 @@ function redscroll() {
 }
 
 function buyredscroll() {
-  if (red >= 1e17 && dialoguestate >= 11) {
+  if (red >= 1e17 && dialoguestate >= 14) {
     spell1unlock++;
     red -= 1e17;
     redscrollcount++;
@@ -2599,7 +2599,6 @@ function buyredscroll() {
     window.setTimeout("showtab('magenta')", 1000);
     if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
       window.setTimeout("chatupdate()", 1500);
-      window.setTimeout("timer = 50", 1400);
     } else {
       say(
         "great! you've got the red scroll. only " +
@@ -2615,7 +2614,7 @@ function buyredscroll() {
   }
 }
 function buygreenscroll() {
-  if (green >= 1e18 && dialoguestate >= 11) {
+  if (green >= 1e18 && dialoguestate >= 14) {
     spell2unlock++;
     green -= 1e18;
     greenscrollcount++;
@@ -2646,7 +2645,7 @@ function buygreenscroll() {
   }
 }
 function buybluescroll() {
-  if (blue >= 1e19 && dialoguestate >= 11) {
+  if (blue >= 1e19 && dialoguestate >= 14) {
     spell3unlock++;
     blue -= 1e19;
     bluescrollcount++;
@@ -2967,108 +2966,6 @@ alberto = document.getElementById("think");
 alberto.innerHTML = "𓆩⟡𓆪";
 
 
-/*
-function chatupdate() {
-  if (dialoguestate === 0 && tab === "magenta") {
-    say("greetings! my name is alberto.");
-    dialoguestate++;
-  } else if (dialoguestate === 1 && tab === "magenta") {
-    say(
-      "i hail from a faraway land where magic is almost as commonplace as breathing."
-    );
-    dialoguestate++;
-  } else if (dialoguestate === 2 && tab === "magenta") {
-    say("i have been called here by the great colors, to teach you magic.");
-    dialoguestate++;
-  } else if (dialoguestate === 3 && tab === "magenta") {
-    say("to begin, let's pour some magenta into a cauldron.");
-    dialoguestate++;
-  } else if (dialoguestate === 4 && tab === "magenta") {
-    say("now purchase your first spell (sixth slot) for 10 magic.");
-    dialoguestate++;
-  } else if (dialoguestate === 5 && tab === "magenta") {
-    say("great! this spell converts magic into magenta at a 3:1 ratio.");
-    dialoguestate++;
-  } else if (dialoguestate === 6 && tab === "magenta") {
-    say("go ahead, try casting it. the first one's on me.");
-    dialoguestate++;
-    magic += 10;
-  } else if (dialoguestate === 7 && tab === "magenta") {
-    say("amazing! you're a natural at this.");
-    dialoguestate++;
-  } else if (dialoguestate === 8 && tab === "magenta") {
-    say("that is all i can teach you for now.");
-    dialoguestate++;
-  } else if (dialoguestate === 9 && tab === "magenta") {
-    say("you can learn the rest by studying the hidden ancient scrolls.");
-    dialoguestate++;
-  } else if (dialoguestate === 10 && tab === "magenta") {
-    say("come back to me once you've found the first three.");
-    dialoguestate++;
-  } else if (dialoguestate === 11 && tab === "magenta") {
-    say("great! i'll tell you what these spells do.");
-    dialoguestate++;
-  } else if (dialoguestate === 12 && tab === "magenta") {
-    say(
-      "these spells all exchange magic for colors. 1 magic for 1 second worth."
-    );
-    dialoguestate++;
-  } else if (dialoguestate === 13 && tab === "magenta") {
-    say("the time has come for me to go. continue getting stronger my friend!");
-    dialoguestate++;
-  } else if (dialoguestate === 14 && tab === "magenta") {
-    say("i will see you again soon...");
-    dialoguestate++;
-  } else if (dialoguestate === 15 && tab === "magenta") {
-    say("");
-    dialoguestate++;
-  }
-}*/
-/*
-window.setInterval(function () {
-  if (tab === "magenta" && holyalbertostate === 0) {
-    timer--;
-    if (dialoguestate === 0 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 1 && timer <= 0) {
-      chatupdate();
-      timer = 80;
-    } else if (dialoguestate === 2 && timer <= 0) {
-      chatupdate();
-      timer = 60;
-    } else if (dialoguestate === 3 && timer <= 0) {
-      chatupdate();
-      timer = 60;
-    } else if (dialoguestate === 6 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 8 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 9 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 10 && timer <= 0) {
-      chatupdate();
-      timer = 45;
-    } else if (dialoguestate === 12 && timer <= 0) {
-      chatupdate();
-      timer = 60;
-    } else if (dialoguestate === 13 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 14 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 15 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    }
-  }
-}, 100);
-*/
-
 //funny
 function holyalberto() {
   if (holyalbertostate === 0) {
@@ -3142,8 +3039,8 @@ function pour(x) {
 //then with those numbers balance this
 //but maybe go through the rest of the game and balance the early game first
 //because first starting out
-//your first red filter will take 20 seconds to make another
-//the ui isnt that interesting to keep you busy those 20 seconds
+//your first red filter will take 14 seconds to make another
+//the ui isnt that interesting to keep you busy those 14 seconds
 //and i dont think thats possible so
 //idk man
 //maybe boost the first redfilters you buy secretly?? seems a bit weird though
