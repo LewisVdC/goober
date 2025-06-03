@@ -1101,12 +1101,7 @@ function showtab(x) {
 
 
 
-function calcmagic(number) {
-  debugmagicnumber = number / 2;
-  magic = magic + number / 200;
-  document.getElementById("magiccount").innerHTML =
-    "magic: " + formatNumber(Math.floor(magic));
-}
+
 
 //
 //
@@ -1233,7 +1228,7 @@ window.setInterval(function () {
         counter.textContent = "cyan: " + formatNumber(Math.floor(cyan));
       });
 
-      const magentacounters = document.querySelectorAll(".magentacount");
+      const magentacounters = document.querySelectorAll("#magentacount");
       magentacounters.forEach((counter) => {
         counter.textContent = document.getElementById(
           "magentacount"
@@ -2737,8 +2732,8 @@ function buymagentaspell() {
 //uhh if the price scales with the amount of magic u make then whats the point even,,?
 //the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
-  if (dialoguestate >= 7) {
-    if (dialoguestate === 7) {
+  if (dialoguestate >= 9) {
+    if (dialoguestate === 9) {
       chatupdate();
     }
     if (document.getElementById("magentashell").style.background === "") {
@@ -2955,7 +2950,6 @@ function say(message){
   }
   alberto.innerHTML = "𓆩⟡𓆪𓆩⟡𓆪";
   let letters = message.split("");
-  console.log(letters);
   for(let i = 0; i < letters.length; i++){
     const id = setTimeout(() => {
     alberto.innerHTML = "𓆩⟡𓆪" + alberto.innerHTML.replaceAll("𓆩⟡𓆪","") + letters[i] + "𓆩⟡𓆪";
@@ -4878,6 +4872,13 @@ function buydrink() {
 }
 
 //magenta calculation functions
+function calcmagic(number) {
+  debugmagicnumber = number / 2;
+  magic = magic + number / 200;
+  document.getElementById("magiccount").innerHTML =
+    "magic: " + formatNumber(Math.floor(magic));
+}
+
 //magenta alberto
 
 //BLACK
