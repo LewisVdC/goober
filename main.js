@@ -3424,11 +3424,7 @@ function resetMagenta() {
 
 //achievement menu
 function displayachievement() {
-  if (document.getElementById("achievementTab").style.display !== "flex") {
-    document.getElementById("achievementTab").style.display = "flex";
-  } else {
-    document.getElementById("achievementTab").style.display = "none";
-  }
+  document.getElementById("achievementTab").style.display = "flex";
 }
 
 //info follows mouse
@@ -3491,13 +3487,13 @@ let achQForgColor = [];
 let achQImg = [];
 
 //function for closing achievementstab
-window.addEventListener("mouseup", function () {
+window.addEventListener("mousedown", function () {
   if (
     this.document.querySelector("#achievementTab:hover") === null &&
     this.document.querySelector("#achievementTab").style.display === "flex" &&
     this.document.querySelector("#achievementNotification:hover") === null
   ) {
-    displayachievement();
+    document.getElementById("achievementTab").style.display = "none";
   }
 });
 
@@ -3508,7 +3504,7 @@ document
     achQImg = [];
     achQBackgColor = [];
     achQForgColor = [];
-    displayachievement();
+    document.getElementById("achievementTab").style.display = "flex";
     achievementNotification.classList.remove("slide");
   });
 
