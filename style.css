@@ -1537,20 +1537,22 @@ div#achievementInfo.achievementfadeaway {
     opacity: 0%;
   }
 }
-#starcontainer{
+#starcontainer {
   z-index: 1;
   width: 100%;
   height: 100%;
   position: absolute;
   display: flex;
+  pointer-events: none;
 }
-.star{
+.star {
   z-index: 1;
   position: absolute;
   background: white;
   border-radius: 50%;
+  pointer-events: none;
 }
-#spellcontainer{
+#spellcontainer {
   width: 560px;
   display: inline-flex;
   flex-wrap: wrap;
