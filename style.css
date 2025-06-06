@@ -1189,11 +1189,12 @@ div#lewissucks.animate {
   color: rgb(200, 25, 25);
   height: 100%;
   width: calc(50% - 220px);
-  display: none;
+  display: flex;
   align-items: flex-start;
   margin-left: 190px;
   position: fixed;
   z-index: 17;
+  pointer-events: none;
 }
 
 @keyframes fadeout {
