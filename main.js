@@ -58,15 +58,11 @@ let achievement = {
   allSpellsUnlocked: false,
 };
 
-
 //green
-
 
 //blue
 
-
 //yellow
-
 
 //cyan
 var cyanBuyTimeBoost = 1;
@@ -121,7 +117,6 @@ var greentogglestate = true;
 var bluetogglestate = true;
 
 //magenta
-
 
 //black
 var black = 0;
@@ -261,7 +256,7 @@ function load() {
     if (typeof savegame.words !== "undefined") {
       words = savegame.words;
       alberto.style.opacity = "1";
-      alberto.innerHTML = "𓆩⟡𓆪"+words+"𓆩⟡𓆪";
+      alberto.innerHTML = "𓆩⟡𓆪" + words + "𓆩⟡𓆪";
     }
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
@@ -1099,33 +1094,19 @@ function showtab(x) {
 }
 //surprisingly small calc functions
 
-
-
-
-
 //
 //
 //
 //
 
-
-
-
-
-
-
 //
 //
 //
 //
-
-
-
-
-
 
 //loop
-window.setInterval(function () {
+const loopID = window.setInterval(function () {
+  console.log("looping");
   if (visibilityState === "visible" || buttonpress === false) {
     if (loaded === 1) {
       // if u showed this code to me when i was starting this i would have died on the spot
@@ -2176,8 +2157,6 @@ function resetData() {
 //
 //
 
-
-
 window.setInterval(function () {
   yellowGAIN = 0;
   yellowGAIN +=
@@ -2465,7 +2444,6 @@ function toggleblue() {
 
 //lol
 
-
 //and stops here
 //now for magic,,
 
@@ -2731,8 +2709,8 @@ function buymagentaspell() {
 //uhh if the price scales with the amount of magic u make then whats the point even,,?
 //the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
-  if (dialoguestate >= 9) {
-    if (dialoguestate === 9) {
+  if (dialoguestate >= 10) {
+    if (dialoguestate === 10) {
       chatupdate();
     }
     if (document.getElementById("magentashell").style.background === "") {
@@ -2922,49 +2900,49 @@ function isBase64(str) {
 
 //advanced chatting
 let albertoLines;
-let timeouts = [1];
+let timeouts = [];
 let albertoRequirement = false;
 
 fetch("texts/alberto.txt")
-  .then(response => response.text())
-  .then(albertoText => {
+  .then((response) => response.text())
+  .then((albertoText) => {
     albertoLines = albertoText.replaceAll("\r", "").split("\n");
   });
 
-document.getElementById("magenta").addEventListener("mousedown", function(){
-if(albertoLines[dialoguestate] !== 'break' || albertoRequirement === true){
-  albertoRequirement = false;
-  if(albertoLines[dialoguestate] === 'break'){
-    dialoguestate ++;
+document.getElementById("magenta").addEventListener("mousedown", function () {
+  if (albertoLines[dialoguestate] !== "break" || albertoRequirement === true) {
+    albertoRequirement = false;
+    if (albertoLines[dialoguestate] === "break") {
+      dialoguestate++;
+    }
+    words = albertoLines[dialoguestate];
+    say(albertoLines[dialoguestate]);
+    dialoguestate++;
   }
-  words = albertoLines[dialoguestate];
-  say(albertoLines[dialoguestate]);
-  dialoguestate++;
-}
 });
 
-function say(message){
-  for(let i = 0; i < timeouts.length; i++){
+function say(message) {
+  for (let i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
   }
   alberto.innerHTML = "𓆩⟡𓆪𓆩⟡𓆪";
   let letters = message.split("");
-  for(let i = 0; i < letters.length; i++){
+  for (let i = 0; i < letters.length; i++) {
     const id = setTimeout(() => {
-    alberto.innerHTML = "𓆩⟡𓆪" + alberto.innerHTML.replaceAll("𓆩⟡𓆪","") + letters[i] + "𓆩⟡𓆪";
+      alberto.innerHTML =
+        "𓆩⟡𓆪" + alberto.innerHTML.replaceAll("𓆩⟡𓆪", "") + letters[i] + "𓆩⟡𓆪";
     }, i * 50);
     timeouts.push(id);
   }
 }
 
-function chatupdate(){
+function chatupdate() {
   albertoRequirement = true;
 }
 
 //chat w alberto
 alberto = document.getElementById("think");
 alberto.innerHTML = "𓆩⟡𓆪";
-
 
 //funny
 function holyalberto() {
@@ -3416,6 +3394,8 @@ function resetMagenta() {
     .getElementById("magentaspell")
     .setAttribute("onclick", "buymagentaspell()");
   cauldron = study = feed = feedperson = drink = magic = 0;
+  timeouts = [];
+  albertoRequirement = false;
   magenta = cauldroncost = 10;
   studycost = 100;
   feedcost = 1000;
@@ -3429,8 +3409,8 @@ function resetMagenta() {
     greenscrollcount =
     bluescrollcount =
       0;
-  dialoguestate = 0;
-  say("");
+  dialoguestate = 1;
+
   save();
   document.body.style.display = "none";
   window.setTimeout(function () {
@@ -3845,8 +3825,10 @@ function starFadeOut() {
     stars[i].dataset.duration = Number(stars[i].dataset.duration) - 20;
     stars[i].style.opacity =
       stars[i].dataset.duration / stars[i].dataset.totalDuration;
-    stars[i].style.left = String(((parseFloat(stars[i].style.left)-50) * 0.99)+50)+"vw";
-    stars[i].style.top = String(((parseFloat(stars[i].style.top)-50) * 0.99)+50)+"vh";
+    stars[i].style.left =
+      String((parseFloat(stars[i].style.left) - 50) * 0.99 + 50) + "vw";
+    stars[i].style.top =
+      String((parseFloat(stars[i].style.top) - 50) * 0.99 + 50) + "vh";
   }
 }
 function starSpawn() {
@@ -3859,7 +3841,6 @@ function starSpawn() {
     );
   }
 }
-
 
 //RED
 //contents:
@@ -4002,7 +3983,6 @@ function calcred(number) {
   document.getElementById("redcount").innerHTML =
     "red: " + formatNumber(Math.floor(red));
 }
-
 
 //GREEN
 //contents:
@@ -4148,7 +4128,6 @@ function calcgreen(number) {
     "green: " + formatNumber(Math.floor(green));
 }
 
-
 //BLUE
 //contents:
 //1: blue variables
@@ -4291,7 +4270,6 @@ function calcblue(number) {
   document.getElementById("bluecount").innerHTML =
     "blue: " + formatNumber(Math.floor(blue));
 }
-
 
 //YELLOW
 //contents:
@@ -4671,7 +4649,6 @@ function buystrongersynergy() {
 //2: cyan buy functions
 //3: cyan calculation functions
 
-
 //MAGENTA
 //contents:
 //1: magenta variables
@@ -4711,7 +4688,7 @@ var randomnumber = 0;
 //magenta buy functions
 function buycauldron() {
   if (magenta >= cauldroncost && dialoguestate >= 4) {
-    if (dialoguestate === 4) {
+    if (dialoguestate === 5) {
       timer = 30;
       chatupdate();
     }
