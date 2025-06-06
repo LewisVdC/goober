@@ -1106,7 +1106,6 @@ function showtab(x) {
 
 //loop
 const loopID = window.setInterval(function () {
-  console.log("looping");
   if (visibilityState === "visible" || buttonpress === false) {
     if (loaded === 1) {
       // if u showed this code to me when i was starting this i would have died on the spot
@@ -3487,6 +3486,16 @@ const achievementinfo = document.getElementById("achievementInfo");
 let achQBackgColor = [];
 let achQForgColor = [];
 let achQImg = [];
+
+//function for closing achievementstab
+window.addEventListener("mouseup", function () {
+  if (
+    this.document.querySelector("#achievementTab:hover") === null &&
+    this.document.querySelector("#achievementTab").style.display === "flex"
+  ) {
+    displayachievement();
+  }
+});
 
 //function for reused code
 function achievementCall(
