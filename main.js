@@ -58,89 +58,11 @@ let achievement = {
   allSpellsUnlocked: false,
 };
 
-//red
-var red = 10;
-var redfilter = 0;
-var redpointer = 0;
-var bigredfilter = 0;
-var bigredpointer = 0;
-var rednanometerwave = 0;
-var redupgrade1 = 0;
-var redupgrade2 = 0;
-var redupgrade3 = 0;
-var redfiltercost = 10;
-var redpointercost = 100;
-var bigredfiltercost = 1000;
-var bigredpointercost = 10000;
-var rednanometerwavecost = 100000;
-
 //green
-var green = 0;
-var greenfilter = 0;
-var greenpointer = 0;
-var biggreenfilter = 0;
-var biggreenpointer = 0;
-var greennanometerwave = 0;
-var greenupgrade1 = 0;
-var greenupgrade2 = 0;
-var greenupgrade3 = 0;
-var greenfiltercost = 10;
-var greenpointercost = 100;
-var biggreenfiltercost = 1000;
-var biggreenpointercost = 10000;
-var greennanometerwavecost = 100000;
 
 //blue
-var blue = 0;
-var bluefilter = 0;
-var bluepointer = 0;
-var bigbluefilter = 0;
-var bigbluepointer = 0;
-var bluenanometerwave = 0;
-var blueupgrade1 = 0;
-var blueupgrade2 = 0;
-var blueupgrade3 = 0;
-var bluefiltercost = 10;
-var bluepointercost = 100;
-var bigbluefiltercost = 1000;
-var bigbluepointercost = 10000;
-var bluenanometerwavecost = 100000;
 
 //yellow
-var yellow = 0;
-var governmentfundingcount = 0;
-var governmentfundingprice = 2;
-var largerprismsprice = 10;
-var largerprismscount = 0;
-var colorharmonyprice = 4;
-var colorharmonycount = 0;
-var streamlinedtasksprice = 5;
-var streamlinedtaskscount = 0;
-var yellowsynergyprice = 12;
-var yellowsynergycount = 0;
-var redoverflowprice = 100;
-var redoverflowcount = 0;
-var greenoverflowprice = 100;
-var greenoverflowcount = 0;
-var blueoverflowprice = 100;
-var blueoverflowcount = 0;
-var tricolorboostprice = 500;
-var tricolorboostcount = 0;
-var taskmasteryprice = 20;
-var taskmasterycount = 0;
-var goldenmultiplierprice = 35;
-var goldenmultipliercount = 0;
-var colorsyphonprice = 1200;
-var colorsyphoncount = 0;
-var focussedpointersprice = 30;
-var focussedpointerscount = 0;
-var finerfiltersprice = 30;
-var finerfilterscount = 0;
-var micrometerwaveprice = 60;
-var micrometerwavecount = 0;
-var strongersynergyprice = 100;
-var strongersynergycount = 0;
-var yellowGAIN = 0;
 
 //cyan
 var cyanBuyTimeBoost = 1;
@@ -195,34 +117,6 @@ var greentogglestate = true;
 var bluetogglestate = true;
 
 //magenta
-var magic = 0;
-var magenta = 0;
-var bible = "";
-var holyalbertostate = 0;
-var timer = 0;
-var dialoguestate = 0;
-var words = "";
-var redscrollcount = 0;
-var greenscrollcount = 0;
-var bluescrollcount = 0;
-var magentaspellunlock = 0;
-var cauldron = 0;
-var study = 0;
-var feed = 0;
-var feedperson = 0;
-var drink = 0;
-var cauldroncost = 10;
-var studycost = 100;
-var feedcost = 1000;
-var feedpersoncost = 10000;
-var drinkcost = 100000;
-var spellcount = 3;
-var spell1unlock = 0;
-var spell2unlock = 0;
-var spell3unlock = 0;
-var spell4unlock = 0;
-var spell5unlock = 0;
-var randomnumber = 0;
 
 //black
 var black = 0;
@@ -362,7 +256,7 @@ function load() {
     if (typeof savegame.words !== "undefined") {
       words = savegame.words;
       alberto.style.opacity = "1";
-      alberto.innerHTML = words;
+      alberto.innerHTML = "𓆩⟡𓆪" + words + "𓆩⟡𓆪";
     }
     //red
     if (typeof savegame.red !== "undefined") red = savegame.red;
@@ -1074,7 +968,7 @@ function showtab(x) {
       "rgb(0, 219, 0)"
     );
     //green scroll interferes with tasks
-    if (dialoguestate >= 11 && greenscrollcount === 0) {
+    if (dialoguestate >= 14 && greenscrollcount === 0) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle =
@@ -1199,379 +1093,19 @@ function showtab(x) {
   }
 }
 //surprisingly small calc functions
-function calcred(number) {
-  debugrednumber = number / 2;
-  red = red + number / 200;
-  document.getElementById("redcount").innerHTML =
-    "red: " + formatNumber(Math.floor(red));
-}
-function calcgreen(number) {
-  debuggreennumber = number / 2;
-  green = green + number / 200;
-  document.getElementById("greencount").innerHTML =
-    "green: " + formatNumber(Math.floor(green));
-}
-function calcblue(number) {
-  debugbluenumber = number / 2;
-  blue = blue + number / 200;
-  document.getElementById("bluecount").innerHTML =
-    "blue: " + formatNumber(Math.floor(blue));
-}
-function calcmagic(number) {
-  debugmagicnumber = number / 2;
-  magic = magic + number / 200;
-  document.getElementById("magiccount").innerHTML =
-    "magic: " + formatNumber(Math.floor(magic));
-}
 
 //
 //
 //
 //
 
-function buyredfilter() {
-  if (red >= redfiltercost) {
-    redfilter++;
-    red -= redfiltercost;
-    redfiltercost = Math.floor(
-      (10 * Math.pow(1.1, redfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("redcount").innerHTML =
-      "red: " + formatNumber(Math.floor(red));
-    document.getElementById("redfiltercount").innerHTML = redfilter;
-    document.getElementById("redfiltercost").innerHTML =
-      formatNumber(redfiltercost);
-  }
-}
-
-function buyredpointer() {
-  if (red >= redpointercost) {
-    redpointer++;
-    red -= redpointercost;
-    redpointercost = Math.floor(
-      (100 * Math.pow(1.1, redpointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("redcount").innerHTML =
-      "red: " + formatNumber(Math.floor(red));
-    document.getElementById("redpointercount").innerHTML = redpointer;
-    document.getElementById("redpointercost").innerHTML =
-      formatNumber(redpointercost);
-  }
-}
-
-function buybigredfilter() {
-  if (red >= bigredfiltercost) {
-    bigredfilter++;
-    red -= bigredfiltercost;
-    bigredfiltercost = Math.floor(
-      (1000 * Math.pow(1.1, bigredfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("redcount").innerHTML =
-      "red: " + formatNumber(Math.floor(red));
-    document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
-    document.getElementById("bigredfiltercost").innerHTML =
-      formatNumber(bigredfiltercost);
-  }
-}
-
-function buybigredpointer() {
-  if (red >= bigredpointercost) {
-    bigredpointer++;
-    red -= bigredpointercost;
-    bigredpointercost = Math.floor(
-      (10000 * Math.pow(1.1, bigredpointer)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("redcount").innerHTML =
-      "red: " + formatNumber(Math.floor(red));
-    document.getElementById("bigredpointercount").innerHTML = bigredpointer;
-    document.getElementById("bigredpointercost").innerHTML =
-      formatNumber(bigredpointercost);
-  }
-}
-
-function buyrednanometerwave() {
-  if (red >= rednanometerwavecost) {
-    rednanometerwave++;
-    red -= rednanometerwavecost;
-    rednanometerwavecost = Math.floor(
-      (100000 * Math.pow(1.1, rednanometerwave)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("redcount").innerHTML =
-      "red: " + formatNumber(Math.floor(red));
-    document.getElementById("rednanometerwavecount").innerHTML =
-      rednanometerwave;
-    document.getElementById("rednanometerwavecost").innerHTML =
-      formatNumber(rednanometerwavecost);
-  }
-}
-
-function buygreenfilter() {
-  if (green >= greenfiltercost) {
-    greenfilter++;
-    green -= greenfiltercost;
-    greenfiltercost = Math.floor(
-      (10 * Math.pow(1.1, greenfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("greencount").innerHTML =
-      "green: " + formatNumber(Math.floor(green));
-    document.getElementById("greenfiltercount").innerHTML = greenfilter;
-    document.getElementById("greenfiltercost").innerHTML =
-      formatNumber(greenfiltercost);
-  }
-}
-
-function buygreenpointer() {
-  if (green >= greenpointercost) {
-    greenpointer++;
-    green -= greenpointercost;
-    greenpointercost = Math.floor(
-      (100 * Math.pow(1.1, greenpointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("greencount").innerHTML =
-      "green: " + formatNumber(Math.floor(green));
-    document.getElementById("greenpointercount").innerHTML = greenpointer;
-    document.getElementById("greenpointercost").innerHTML =
-      formatNumber(greenpointercost);
-  }
-}
-
-function buybiggreenfilter() {
-  if (green >= biggreenfiltercost) {
-    biggreenfilter++;
-    green -= biggreenfiltercost;
-    biggreenfiltercost = Math.floor(
-      (1000 * Math.pow(1.1, biggreenfilter)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("greencount").innerHTML =
-      "green: " + formatNumber(Math.floor(green));
-    document.getElementById("biggreenfiltercount").innerHTML = biggreenfilter;
-    document.getElementById("biggreenfiltercost").innerHTML =
-      formatNumber(biggreenfiltercost);
-  }
-}
-
-function buybiggreenpointer() {
-  if (green >= biggreenpointercost) {
-    biggreenpointer++;
-    green -= biggreenpointercost;
-    biggreenpointercost = Math.floor(
-      (10000 * Math.pow(1.1, biggreenpointer)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("greencount").innerHTML =
-      "green: " + formatNumber(Math.floor(green));
-    document.getElementById("biggreenpointercount").innerHTML = biggreenpointer;
-    document.getElementById("biggreenpointercost").innerHTML =
-      formatNumber(biggreenpointercost);
-  }
-}
-
-function buygreennanometerwave() {
-  if (green >= greennanometerwavecost) {
-    greennanometerwave++;
-    green -= greennanometerwavecost;
-    greennanometerwavecost = Math.floor(
-      (100000 * Math.pow(1.1, greennanometerwave)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("greencount").innerHTML =
-      "green: " + formatNumber(Math.floor(green));
-    document.getElementById("greennanometerwavecount").innerHTML =
-      greennanometerwave;
-    document.getElementById("greennanometerwavecost").innerHTML = formatNumber(
-      greennanometerwavecost
-    );
-  }
-}
-
-function buybluefilter() {
-  if (blue >= bluefiltercost) {
-    bluefilter++;
-    blue -= bluefiltercost;
-    bluefiltercost = Math.floor(
-      (10 * Math.pow(1.1, bluefilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + formatNumber(Math.floor(blue));
-    document.getElementById("bluefiltercount").innerHTML = bluefilter;
-    document.getElementById("bluefiltercost").innerHTML =
-      formatNumber(bluefiltercost);
-  }
-}
-
-function buybluepointer() {
-  if (blue >= bluepointercost) {
-    bluepointer++;
-    blue -= bluepointercost;
-    bluepointercost = Math.floor(
-      (100 * Math.pow(1.1, bluepointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + formatNumber(Math.floor(blue));
-    document.getElementById("bluepointercount").innerHTML = bluepointer;
-    document.getElementById("bluepointercost").innerHTML =
-      formatNumber(bluepointercost);
-  }
-}
-
-function buybigbluefilter() {
-  if (blue >= bigbluefiltercost) {
-    bigbluefilter++;
-    blue -= bigbluefiltercost;
-    bigbluefiltercost = Math.floor(
-      (1000 * Math.pow(1.1, bigbluefilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + formatNumber(Math.floor(blue));
-    document.getElementById("bigbluefiltercount").innerHTML = bigbluefilter;
-    document.getElementById("bigbluefiltercost").innerHTML =
-      formatNumber(bigbluefiltercost);
-  }
-}
-
-function buybigbluepointer() {
-  if (blue >= bigbluepointercost) {
-    bigbluepointer++;
-    blue -= bigbluepointercost;
-    bigbluepointercost = Math.floor(
-      (10000 * Math.pow(1.1, bigbluepointer)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + formatNumber(Math.floor(blue));
-    document.getElementById("bigbluepointercount").innerHTML = bigbluepointer;
-    document.getElementById("bigbluepointercost").innerHTML =
-      formatNumber(bigbluepointercost);
-  }
-}
-
-function buybluenanometerwave() {
-  if (blue >= bluenanometerwavecost) {
-    bluenanometerwave++;
-    blue -= bluenanometerwavecost;
-    bluenanometerwavecost = Math.floor(
-      (100000 * Math.pow(1.1, bluenanometerwave)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("bluecount").innerHTML =
-      "blue: " + formatNumber(Math.floor(blue));
-    document.getElementById("bluenanometerwavecount").innerHTML =
-      bluenanometerwave;
-    document.getElementById("bluenanometerwavecost").innerHTML = formatNumber(
-      bluenanometerwavecost
-    );
-  }
-}
-
 //
 //
 //
 //
-
-function buyredupgrade1() {
-  document.getElementById("redcount").innerHTML =
-    "red: " + formatNumber(Math.floor(red));
-  if (red >= 150000 && redupgrade1 === 0) {
-    redupgrade1 = 1;
-    red = red - 150000;
-    document.getElementById("redupgrade1cost").innerHTML = "bought";
-    //document.getElementById("redupgrade1").style.border = "outset";
-  }
-}
-
-function buyredupgrade2() {
-  document.getElementById("redcount").innerHTML =
-    "red: " + formatNumber(Math.floor(red));
-  if (red >= 250000 && redupgrade2 === 0) {
-    redupgrade2 = 1;
-    red = red - 250000;
-    document.getElementById("redupgrade2cost").innerHTML = "bought";
-    //document.getElementById("redupgrade2").style.border = "outset";
-  }
-}
-
-function buyredupgrade3() {
-  document.getElementById("redcount").innerHTML =
-    "red: " + formatNumber(Math.floor(red));
-  if (red >= 500000 && redupgrade3 === 0) {
-    redupgrade3 = 1;
-    red = red - 500000;
-    document.getElementById("redupgrade3cost").innerHTML = "bought";
-    //document.getElementById("redupgrade3").style.border = "outset";
-  }
-}
-
-function buygreenupgrade1() {
-  document.getElementById("greencount").innerHTML =
-    "green: " + formatNumber(Math.floor(green));
-  if (green >= 150000 && greenupgrade1 === 0) {
-    greenupgrade1 = 1;
-    green = green - 150000;
-    document.getElementById("greenupgrade1cost").innerHTML = "bought";
-    //document.getElementById("greenupgrade1").style.border = "outset";
-  }
-}
-
-function buygreenupgrade2() {
-  document.getElementById("greencount").innerHTML =
-    "green: " + formatNumber(Math.floor(green));
-  if (green >= 250000 && greenupgrade2 === 0) {
-    greenupgrade2 = 1;
-    green = green - 250000;
-    document.getElementById("greenupgrade2cost").innerHTML = "bought";
-    //document.getElementById("greenupgrade2").style.border = "outset";
-  }
-}
-
-function buygreenupgrade3() {
-  document.getElementById("greencount").innerHTML =
-    "green: " + formatNumber(Math.floor(green));
-  if (green >= 500000 && greenupgrade3 === 0) {
-    greenupgrade3 = 1;
-    green = green - 500000;
-    document.getElementById("greenupgrade3cost").innerHTML = "bought";
-    //document.getElementById("greenupgrade3").style.border = "outset";
-  }
-}
-
-function buyblueupgrade1() {
-  document.getElementById("bluecount").innerHTML =
-    "blue: " + formatNumber(Math.floor(blue));
-  if (blue >= 150000 && blueupgrade1 === 0) {
-    blueupgrade1 = 1;
-    blue = blue - 150000;
-    document.getElementById("blueupgrade1cost").innerHTML = "bought";
-    //document.getElementById("blueupgrade1").style.border = "outset";
-  }
-}
-
-function buyblueupgrade2() {
-  document.getElementById("bluecount").innerHTML =
-    "blue: " + formatNumber(Math.floor(blue));
-  if (blue >= 250000 && blueupgrade2 === 0) {
-    blueupgrade2 = 1;
-    blue = blue - 250000;
-    document.getElementById("blueupgrade2cost").innerHTML = "bought";
-    //document.getElementById("blueupgrade2").style.border = "outset";
-  }
-}
-
-function buyblueupgrade3() {
-  document.getElementById("bluecount").innerHTML =
-    "blue: " + formatNumber(Math.floor(blue));
-  if (blue >= 250000 && blueupgrade3 === 0) {
-    blueupgrade3 = 1;
-    blue = blue - 250000;
-    document.getElementById("blueupgrade3cost").innerHTML = "bought";
-    //document.getElementById("blueupgrade3").style.border = "outset";
-  }
-}
 
 //loop
-window.setInterval(function () {
+const loopID = window.setInterval(function () {
   if (visibilityState === "visible" || buttonpress === false) {
     if (loaded === 1) {
       // if u showed this code to me when i was starting this i would have died on the spot
@@ -1580,7 +1114,7 @@ window.setInterval(function () {
       if (
         document.getElementById("tabmagenta").style.display === "block" &&
         redscrollcount + greenscrollcount + bluescrollcount === 3 &&
-        dialoguestate === 11
+        dialoguestate === 14
       ) {
         chatupdate();
       }
@@ -1674,7 +1208,7 @@ window.setInterval(function () {
         counter.textContent = "cyan: " + formatNumber(Math.floor(cyan));
       });
 
-      const magentacounters = document.querySelectorAll(".magentacount");
+      const magentacounters = document.querySelectorAll("#magentacount");
       magentacounters.forEach((counter) => {
         counter.textContent = document.getElementById(
           "magentacount"
@@ -2065,7 +1599,7 @@ window.setInterval(function () {
         document.getElementById("blueupgrade2").style.display = "block";
         document.getElementById("blueupgrade3").style.display = "block";
       }
-      if (dialoguestate >= 11) {
+      if (dialoguestate >= 14) {
         if (redscrollcount === 0) {
           document.getElementById("redscroll").style.display = "inline-block";
         }
@@ -2622,333 +2156,6 @@ function resetData() {
 //
 //
 
-function buygovernmentfunding() {
-  if (yellow >= governmentfundingprice) {
-    yellow -= governmentfundingprice;
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    governmentfundingcount++;
-    governmentfundingprice = Math.round(governmentfundingprice * 1.35);
-    document.getElementById("governmentfundingprice").innerHTML = formatNumber(
-      Math.floor(governmentfundingprice)
-    );
-    redfiltercost = Math.floor(
-      (10 * Math.pow(1.1, redfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    redpointercost = Math.floor(
-      (100 * Math.pow(1.1, redpointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    bigredfiltercost = Math.floor(
-      (1000 * Math.pow(1.1, bigredfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    bigredpointercost = Math.floor(
-      (10000 * Math.pow(1.1, bigredpointer)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    rednanometerwavecost = Math.floor(
-      (100000 * Math.pow(1.1, rednanometerwave)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    greenfiltercost = Math.floor(
-      (10 * Math.pow(1.1, greenfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    greenpointercost = Math.floor(
-      (100 * Math.pow(1.1, greenpointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    biggreenfiltercost = Math.floor(
-      (1000 * Math.pow(1.1, biggreenfilter)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    biggreenpointercost = Math.floor(
-      (10000 * Math.pow(1.1, biggreenpointer)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    greennanometerwavecost = Math.floor(
-      (100000 * Math.pow(1.1, greennanometerwave)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    bluefiltercost = Math.floor(
-      (10 * Math.pow(1.1, bluefilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    bluepointercost = Math.floor(
-      (100 * Math.pow(1.1, bluepointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    bigbluefiltercost = Math.floor(
-      (1000 * Math.pow(1.1, bigbluefilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    bigbluepointercost = Math.floor(
-      (10000 * Math.pow(1.1, bigbluepointer)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    bluenanometerwavecost = Math.floor(
-      (100000 * Math.pow(1.1, bluenanometerwave)) /
-        (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("redfiltercost").innerHTML =
-      formatNumber(redfiltercost);
-    document.getElementById("redpointercost").innerHTML =
-      formatNumber(redpointercost);
-    document.getElementById("bigredfiltercost").innerHTML =
-      formatNumber(bigredfiltercost);
-    document.getElementById("bigredpointercost").innerHTML =
-      formatNumber(bigredpointercost);
-    document.getElementById("rednanometerwavecost").innerHTML =
-      formatNumber(rednanometerwavecost);
-    document.getElementById("greenfiltercost").innerHTML =
-      formatNumber(greenfiltercost);
-    document.getElementById("greenpointercost").innerHTML =
-      formatNumber(greenpointercost);
-    document.getElementById("biggreenfiltercost").innerHTML =
-      formatNumber(biggreenfiltercost);
-    document.getElementById("biggreenpointercost").innerHTML =
-      formatNumber(biggreenpointercost);
-    document.getElementById("greennanometerwavecost").innerHTML = formatNumber(
-      greennanometerwavecost
-    );
-    document.getElementById("bluefiltercost").innerHTML =
-      formatNumber(bluefiltercost);
-    document.getElementById("bluepointercost").innerHTML =
-      formatNumber(bluepointercost);
-    document.getElementById("bigbluefiltercost").innerHTML =
-      formatNumber(bigbluefiltercost);
-    document.getElementById("bigbluepointercost").innerHTML =
-      formatNumber(bigbluepointercost);
-    document.getElementById("bluenanometerwavecost").innerHTML = formatNumber(
-      bluenanometerwavecost
-    );
-  }
-}
-
-function buylargerprisms() {
-  if (yellow >= largerprismsprice) {
-    yellow -= largerprismsprice;
-    largerprismscount++;
-    largerprismsprice = Math.round(largerprismsprice * 1.85);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("largerprismsprice").innerHTML = formatNumber(
-      Math.floor(largerprismsprice)
-    );
-  }
-}
-
-function buycolorharmony() {
-  if (yellow >= colorharmonyprice) {
-    yellow -= colorharmonyprice;
-    colorharmonycount++;
-    colorharmonyprice = Math.round(colorharmonyprice * 1.43);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("colorharmonyprice").innerHTML = formatNumber(
-      Math.floor(colorharmonyprice)
-    );
-  }
-}
-
-function buystreamlinedtasks() {
-  if (yellow >= streamlinedtasksprice) {
-    yellow -= streamlinedtasksprice;
-    streamlinedtaskscount++;
-    streamlinedtasksprice = Math.round(streamlinedtasksprice * 1.32);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("streamlinedtasksprice").innerHTML = formatNumber(
-      Math.floor(streamlinedtasksprice)
-    );
-    taskColorGoalRed = taskColorGoalRed / 2;
-    taskColorGoalBlue = taskColorGoalBlue / 2;
-    taskColorGoalGreen = taskColorGoalGreen / 2;
-    document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
-      Math.round(taskColorGoalRed)
-    );
-    document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
-      Math.round(taskColorGoalGreen)
-    );
-    document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
-      Math.round(taskColorGoalBlue)
-    );
-  }
-}
-
-function buyyellowsynergy() {
-  if (yellow >= yellowsynergyprice) {
-    yellow -= yellowsynergyprice;
-    yellowsynergycount++;
-    yellowsynergyprice = Math.round(yellowsynergyprice * 1.61);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("yellowsynergyprice").innerHTML = formatNumber(
-      Math.floor(yellowsynergyprice)
-    );
-    taskRewardCount =
-      10 *
-      (1 + yellowsynergycount * 0.25) *
-      (1 + (goldenmultipliercount * tasksCompleted) / 1000);
-    document.getElementById("taskReward").innerHTML =
-      String(Math.round(taskRewardCount)) + " " + taskRewardColor;
-  }
-}
-
-function buyredoverflow() {
-  if (yellow >= redoverflowprice) {
-    yellow -= redoverflowprice;
-    redoverflowcount++;
-    redoverflowprice = Math.round(redoverflowprice * 1.8);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("redoverflowprice").innerHTML = formatNumber(
-      Math.floor(redoverflowprice)
-    );
-  }
-}
-
-function buygreenoverflow() {
-  if (yellow >= greenoverflowprice) {
-    yellow -= greenoverflowprice;
-    greenoverflowcount++;
-    greenoverflowprice = Math.round(greenoverflowprice * 1.8);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("greenoverflowprice").innerHTML = formatNumber(
-      Math.floor(greenoverflowprice)
-    );
-  }
-}
-
-function buyblueoverflow() {
-  if (yellow >= blueoverflowprice) {
-    yellow -= blueoverflowprice;
-    blueoverflowcount++;
-    blueoverflowprice = Math.round(blueoverflowprice * 1.8);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("blueoverflowprice").innerHTML = formatNumber(
-      Math.floor(blueoverflowprice)
-    );
-  }
-}
-
-function buytricolorboost() {
-  if (yellow >= tricolorboostprice) {
-    yellow -= tricolorboostprice;
-    tricolorboostcount++;
-    tricolorboostprice = Math.round(tricolorboostprice * 1.68);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("tricolorboostprice").innerHTML = formatNumber(
-      Math.floor(tricolorboostprice)
-    );
-  }
-}
-
-function buytaskmastery() {
-  if (yellow >= taskmasteryprice) {
-    yellow -= taskmasteryprice;
-    taskmasterycount++;
-    taskmasteryprice = Math.round(taskmasteryprice * 1.44);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("taskmasteryprice").innerHTML = formatNumber(
-      Math.floor(taskmasteryprice)
-    );
-  }
-}
-
-function buygoldenmultiplier() {
-  if (yellow >= goldenmultiplierprice) {
-    yellow -= goldenmultiplierprice;
-    goldenmultipliercount++;
-    goldenmultiplierprice = Math.round(goldenmultiplierprice * 1.91);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("goldenmultiplierprice").innerHTML = formatNumber(
-      Math.floor(goldenmultiplierprice)
-    );
-    taskRewardCount =
-      10 *
-      (1 + yellowsynergycount * 0.25) *
-      (1 + (goldenmultipliercount * tasksCompleted) / 1000);
-    document.getElementById("taskReward").innerHTML =
-      Math.round(taskRewardCount) + " " + taskRewardColor;
-  }
-}
-
-function buycolorsyphon() {
-  if (
-    yellow >= colorsyphonprice &&
-    red >= 1e15 &&
-    green >= 1e15 &&
-    blue >= 1e15
-  ) {
-    yellow -= colorsyphonprice;
-    colorsyphoncount++;
-    colorsyphonprice = 1200 + 100 * colorsyphoncount;
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("colorsyphonprice").innerHTML = formatNumber(
-      Math.floor(colorsyphonprice)
-    );
-    cyan += 10;
-    red -= 1e15;
-    blue -= 1e15;
-    green -= 1e15;
-    document.getElementById("cyancount").innerHTML = "cyan: " + cyan;
-    document.getElementById("tabcyan").style.display = "block";
-  }
-}
-
-function buyfocussedpointers() {
-  if (yellow >= focussedpointersprice) {
-    yellow -= focussedpointersprice;
-    focussedpointerscount++;
-    focussedpointersprice = Math.round(focussedpointersprice * 1.53);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("focussedpointersprice").innerHTML = formatNumber(
-      Math.floor(focussedpointersprice)
-    );
-  }
-}
-
-function buyfinerfilters() {
-  if (yellow >= finerfiltersprice) {
-    yellow -= finerfiltersprice;
-    finerfilterscount++;
-    finerfiltersprice = Math.round(finerfiltersprice * 1.43);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("finerfiltersprice").innerHTML = formatNumber(
-      Math.floor(finerfiltersprice)
-    );
-  }
-}
-
-function buymicrometerwave() {
-  if (yellow >= micrometerwaveprice) {
-    yellow -= micrometerwaveprice;
-    micrometerwavecount++;
-    micrometerwaveprice = Math.round(micrometerwaveprice * 1.51);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("micrometerwaveprice").innerHTML = formatNumber(
-      Math.floor(micrometerwaveprice)
-    );
-  }
-}
-
-function buystrongersynergy() {
-  if (yellow >= strongersynergyprice) {
-    yellow -= strongersynergyprice;
-    strongersynergycount++;
-    strongersynergyprice = Math.round(strongersynergyprice * 1.4);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
-    document.getElementById("strongersynergyprice").innerHTML = formatNumber(
-      Math.floor(strongersynergyprice)
-    );
-  }
-}
-
 window.setInterval(function () {
   yellowGAIN = 0;
   yellowGAIN +=
@@ -3235,64 +2442,6 @@ function toggleblue() {
 //^^ and broke the button itself lmao
 
 //lol
-function buycauldron() {
-  if (magenta >= cauldroncost && dialoguestate >= 4) {
-    if (dialoguestate === 4) {
-      timer = 30;
-      chatupdate();
-    }
-    cauldron++;
-    magenta -= cauldroncost;
-    cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
-
-    document.getElementById("cauldroncount").innerHTML = cauldron;
-    document.getElementById("cauldroncost").innerHTML = cauldroncost;
-  }
-}
-
-function buystudy() {
-  if (magenta >= studycost) {
-    study++;
-    magenta -= studycost;
-    studycost = Math.floor((100 * Math.pow(1.1, study)) / 1);
-
-    document.getElementById("studycount").innerHTML = study;
-    document.getElementById("studycost").innerHTML = studycost;
-  }
-}
-
-function buyfeed() {
-  if (magenta >= feedcost) {
-    feed++;
-    magenta -= feedcost;
-    feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
-
-    document.getElementById("feedcount").innerHTML = feed;
-    document.getElementById("feedcost").innerHTML = feedcost;
-  }
-}
-
-function buyfeedperson() {
-  if (magenta >= feedpersoncost) {
-    feedperson++;
-    magenta -= feedpersoncost;
-    feedpersoncost = Math.floor((10000 * Math.pow(1.1, feedperson)) / 1);
-
-    document.getElementById("feedpersoncount").innerHTML = feedperson;
-    document.getElementById("feedpersoncost").innerHTML = feedpersoncost;
-  }
-}
-
-function buydrink() {
-  if (magenta >= drinkcost) {
-    drink++;
-    magenta -= drinkcost;
-    drinkcost = Math.floor((100000 * Math.pow(1.1, drink)) / 1);
-
-    document.getElementById("drinkcount").innerHTML = drink;
-    document.getElementById("drinkcost").innerHTML = drinkcost;
-  }
-}
 
 //and stops here
 //now for magic,,
@@ -3417,7 +2566,7 @@ function redscroll() {
 }
 
 function buyredscroll() {
-  if (red >= 1e17 && dialoguestate >= 11) {
+  if (red >= 1e17 && dialoguestate >= 14) {
     spell1unlock++;
     red -= 1e17;
     redscrollcount++;
@@ -3427,7 +2576,6 @@ function buyredscroll() {
     window.setTimeout("showtab('magenta')", 1000);
     if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
       window.setTimeout("chatupdate()", 1500);
-      window.setTimeout("timer = 50", 1400);
     } else {
       say(
         "great! you've got the red scroll. only " +
@@ -3443,7 +2591,7 @@ function buyredscroll() {
   }
 }
 function buygreenscroll() {
-  if (green >= 1e18 && dialoguestate >= 11) {
+  if (green >= 1e18 && dialoguestate >= 14) {
     spell2unlock++;
     green -= 1e18;
     greenscrollcount++;
@@ -3474,7 +2622,7 @@ function buygreenscroll() {
   }
 }
 function buybluescroll() {
-  if (blue >= 1e19 && dialoguestate >= 11) {
+  if (blue >= 1e19 && dialoguestate >= 14) {
     spell3unlock++;
     blue -= 1e19;
     bluescrollcount++;
@@ -3560,8 +2708,8 @@ function buymagentaspell() {
 //uhh if the price scales with the amount of magic u make then whats the point even,,?
 //the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
 function castmagentaspell() {
-  if (dialoguestate >= 7) {
-    if (dialoguestate === 7) {
+  if (dialoguestate >= 10) {
+    if (dialoguestate === 10) {
       chatupdate();
     }
     if (document.getElementById("magentashell").style.background === "") {
@@ -3749,118 +2897,51 @@ function isBase64(str) {
   }
 }
 
-//chat w alberto
-alberto = document.getElementById("think");
-alberto.innerHTML = "start";
+//advanced chatting
+let albertoLines;
+let timeouts = [];
+let albertoRequirement = false;
+
+fetch("texts/alberto.txt")
+  .then((response) => response.text())
+  .then((albertoText) => {
+    albertoLines = albertoText.replaceAll("\r", "").split("\n");
+  });
+
+document.getElementById("magenta").addEventListener("mousedown", function () {
+  if (albertoLines[dialoguestate] !== "break" || albertoRequirement === true) {
+    albertoRequirement = false;
+    if (albertoLines[dialoguestate] === "break") {
+      dialoguestate++;
+    }
+    words = albertoLines[dialoguestate];
+    say(albertoLines[dialoguestate]);
+    dialoguestate++;
+  }
+});
 
 function say(message) {
-  words = message;
-  if (alberto.innerHTML != "start") {
-    alberto.setAttribute("class", "fadeout");
+  for (let i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
   }
-  setTimeout("alberto.innerHTML = String(words)", 1000);
-  setTimeout('alberto.setAttribute("class", "fadein")', 1000);
+  alberto.innerHTML = "𓆩⟡𓆪𓆩⟡𓆪";
+  let letters = message.split("");
+  for (let i = 0; i < letters.length; i++) {
+    const id = setTimeout(() => {
+      alberto.innerHTML =
+        "𓆩⟡𓆪" + alberto.innerHTML.replaceAll("𓆩⟡𓆪", "") + letters[i] + "𓆩⟡𓆪";
+    }, i * 50);
+    timeouts.push(id);
+  }
 }
 
 function chatupdate() {
-  if (dialoguestate === 0 && tab === "magenta") {
-    say("greetings! my name is alberto.");
-    dialoguestate++;
-  } else if (dialoguestate === 1 && tab === "magenta") {
-    say(
-      "i hail from a faraway land where magic is almost as commonplace as breathing."
-    );
-    dialoguestate++;
-  } else if (dialoguestate === 2 && tab === "magenta") {
-    say("i have been called here by the great colors, to teach you magic.");
-    dialoguestate++;
-  } else if (dialoguestate === 3 && tab === "magenta") {
-    say("to begin, let's pour some magenta into a cauldron.");
-    dialoguestate++;
-  } else if (dialoguestate === 4 && tab === "magenta") {
-    say("now purchase your first spell (sixth slot) for 10 magic.");
-    dialoguestate++;
-  } else if (dialoguestate === 5 && tab === "magenta") {
-    say("great! this spell converts magic into magenta at a 3:1 ratio.");
-    dialoguestate++;
-  } else if (dialoguestate === 6 && tab === "magenta") {
-    say("go ahead, try casting it. the first one's on me.");
-    dialoguestate++;
-    magic += 10;
-  } else if (dialoguestate === 7 && tab === "magenta") {
-    say("amazing! you're a natural at this.");
-    dialoguestate++;
-  } else if (dialoguestate === 8 && tab === "magenta") {
-    say("that is all i can teach you for now.");
-    dialoguestate++;
-  } else if (dialoguestate === 9 && tab === "magenta") {
-    say("you can learn the rest by studying the hidden ancient scrolls.");
-    dialoguestate++;
-  } else if (dialoguestate === 10 && tab === "magenta") {
-    say("come back to me once you've found the first three.");
-    dialoguestate++;
-  } else if (dialoguestate === 11 && tab === "magenta") {
-    say("great! i'll tell you what these spells do.");
-    dialoguestate++;
-  } else if (dialoguestate === 12 && tab === "magenta") {
-    say(
-      "these spells all exchange magic for colors. 1 magic for 1 second worth."
-    );
-    dialoguestate++;
-  } else if (dialoguestate === 13 && tab === "magenta") {
-    say("the time has come for me to go. continue getting stronger my friend!");
-    dialoguestate++;
-  } else if (dialoguestate === 14 && tab === "magenta") {
-    say("i will see you again soon...");
-    dialoguestate++;
-  } else if (dialoguestate === 15 && tab === "magenta") {
-    say("");
-    dialoguestate++;
-  }
+  albertoRequirement = true;
 }
 
-window.setInterval(function () {
-  if (tab === "magenta" && holyalbertostate === 0) {
-    timer--;
-    if (dialoguestate === 0 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 1 && timer <= 0) {
-      chatupdate();
-      timer = 80;
-    } else if (dialoguestate === 2 && timer <= 0) {
-      chatupdate();
-      timer = 60;
-    } else if (dialoguestate === 3 && timer <= 0) {
-      chatupdate();
-      timer = 60;
-    } else if (dialoguestate === 6 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 8 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 9 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 10 && timer <= 0) {
-      chatupdate();
-      timer = 45;
-    } else if (dialoguestate === 12 && timer <= 0) {
-      chatupdate();
-      timer = 60;
-    } else if (dialoguestate === 13 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 14 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    } else if (dialoguestate === 15 && timer <= 0) {
-      chatupdate();
-      timer = 40;
-    }
-  }
-}, 100);
+//chat w alberto
+alberto = document.getElementById("think");
+alberto.innerHTML = "𓆩⟡𓆪";
 
 //funny
 function holyalberto() {
@@ -3874,7 +2955,7 @@ function holyalberto() {
         "This feature is available in magenta tab.\nClick the button again to disable"
       );
       holyalbertostate = 1;
-      fetch("bible.txt")
+      fetch("texts/bible.txt")
         .then((response) => response.text())
         .then((data) => {
           bible = data;
@@ -3935,8 +3016,8 @@ function pour(x) {
 //then with those numbers balance this
 //but maybe go through the rest of the game and balance the early game first
 //because first starting out
-//your first red filter will take 20 seconds to make another
-//the ui isnt that interesting to keep you busy those 20 seconds
+//your first red filter will take 14 seconds to make another
+//the ui isnt that interesting to keep you busy those 14 seconds
 //and i dont think thats possible so
 //idk man
 //maybe boost the first redfilters you buy secretly?? seems a bit weird though
@@ -4312,6 +3393,8 @@ function resetMagenta() {
     .getElementById("magentaspell")
     .setAttribute("onclick", "buymagentaspell()");
   cauldron = study = feed = feedperson = drink = magic = 0;
+  timeouts = [];
+  albertoRequirement = false;
   magenta = cauldroncost = 10;
   studycost = 100;
   feedcost = 1000;
@@ -4325,8 +3408,8 @@ function resetMagenta() {
     greenscrollcount =
     bluescrollcount =
       0;
-  dialoguestate = 0;
-  say("");
+  dialoguestate = 1;
+
   save();
   document.body.style.display = "none";
   window.setTimeout(function () {
@@ -4403,6 +3486,16 @@ const achievementinfo = document.getElementById("achievementInfo");
 let achQBackgColor = [];
 let achQForgColor = [];
 let achQImg = [];
+
+//function for closing achievementstab
+window.addEventListener("mouseup", function () {
+  if (
+    this.document.querySelector("#achievementTab:hover") === null &&
+    this.document.querySelector("#achievementTab").style.display === "flex"
+  ) {
+    displayachievement();
+  }
+});
 
 //function for reused code
 function achievementCall(
@@ -4741,6 +3834,10 @@ function starFadeOut() {
     stars[i].dataset.duration = Number(stars[i].dataset.duration) - 20;
     stars[i].style.opacity =
       stars[i].dataset.duration / stars[i].dataset.totalDuration;
+    stars[i].style.left =
+      String((parseFloat(stars[i].style.left) - 50) * 0.99 + 50) + "vw";
+    stars[i].style.top =
+      String((parseFloat(stars[i].style.top) - 50) * 0.99 + 50) + "vh";
   }
 }
 function starSpawn() {
@@ -4753,3 +3850,927 @@ function starSpawn() {
     );
   }
 }
+
+//RED
+//contents:
+//1: red variables
+//2: red buy functions
+//3: red calculation functions
+
+//variables
+var red = 10;
+var redfilter = 0;
+var redpointer = 0;
+var bigredfilter = 0;
+var bigredpointer = 0;
+var rednanometerwave = 0;
+var redupgrade1 = 0;
+var redupgrade2 = 0;
+var redupgrade3 = 0;
+var redfiltercost = 10;
+var redpointercost = 100;
+var bigredfiltercost = 1000;
+var bigredpointercost = 10000;
+var rednanometerwavecost = 100000;
+
+//2: buy functions
+function buyredfilter() {
+  if (red >= redfiltercost) {
+    redfilter++;
+    red -= redfiltercost;
+    redfiltercost = Math.floor(
+      (10 * Math.pow(1.1, redfilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("redcount").innerHTML =
+      "red: " + formatNumber(Math.floor(red));
+    document.getElementById("redfiltercount").innerHTML = redfilter;
+    document.getElementById("redfiltercost").innerHTML =
+      formatNumber(redfiltercost);
+  }
+}
+
+function buyredpointer() {
+  if (red >= redpointercost) {
+    redpointer++;
+    red -= redpointercost;
+    redpointercost = Math.floor(
+      (100 * Math.pow(1.1, redpointer)) / (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("redcount").innerHTML =
+      "red: " + formatNumber(Math.floor(red));
+    document.getElementById("redpointercount").innerHTML = redpointer;
+    document.getElementById("redpointercost").innerHTML =
+      formatNumber(redpointercost);
+  }
+}
+
+function buybigredfilter() {
+  if (red >= bigredfiltercost) {
+    bigredfilter++;
+    red -= bigredfiltercost;
+    bigredfiltercost = Math.floor(
+      (1000 * Math.pow(1.1, bigredfilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("redcount").innerHTML =
+      "red: " + formatNumber(Math.floor(red));
+    document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
+    document.getElementById("bigredfiltercost").innerHTML =
+      formatNumber(bigredfiltercost);
+  }
+}
+
+function buybigredpointer() {
+  if (red >= bigredpointercost) {
+    bigredpointer++;
+    red -= bigredpointercost;
+    bigredpointercost = Math.floor(
+      (10000 * Math.pow(1.1, bigredpointer)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("redcount").innerHTML =
+      "red: " + formatNumber(Math.floor(red));
+    document.getElementById("bigredpointercount").innerHTML = bigredpointer;
+    document.getElementById("bigredpointercost").innerHTML =
+      formatNumber(bigredpointercost);
+  }
+}
+
+function buyrednanometerwave() {
+  if (red >= rednanometerwavecost) {
+    rednanometerwave++;
+    red -= rednanometerwavecost;
+    rednanometerwavecost = Math.floor(
+      (100000 * Math.pow(1.1, rednanometerwave)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("redcount").innerHTML =
+      "red: " + formatNumber(Math.floor(red));
+    document.getElementById("rednanometerwavecount").innerHTML =
+      rednanometerwave;
+    document.getElementById("rednanometerwavecost").innerHTML =
+      formatNumber(rednanometerwavecost);
+  }
+}
+
+function buyredupgrade1() {
+  document.getElementById("redcount").innerHTML =
+    "red: " + formatNumber(Math.floor(red));
+  if (red >= 150000 && redupgrade1 === 0) {
+    redupgrade1 = 1;
+    red = red - 150000;
+    document.getElementById("redupgrade1cost").innerHTML = "bought";
+    //document.getElementById("redupgrade1").style.border = "outset";
+  }
+}
+
+function buyredupgrade2() {
+  document.getElementById("redcount").innerHTML =
+    "red: " + formatNumber(Math.floor(red));
+  if (red >= 250000 && redupgrade2 === 0) {
+    redupgrade2 = 1;
+    red = red - 250000;
+    document.getElementById("redupgrade2cost").innerHTML = "bought";
+    //document.getElementById("redupgrade2").style.border = "outset";
+  }
+}
+
+function buyredupgrade3() {
+  document.getElementById("redcount").innerHTML =
+    "red: " + formatNumber(Math.floor(red));
+  if (red >= 500000 && redupgrade3 === 0) {
+    redupgrade3 = 1;
+    red = red - 500000;
+    document.getElementById("redupgrade3cost").innerHTML = "bought";
+    //document.getElementById("redupgrade3").style.border = "outset";
+  }
+}
+
+//red calculation functions
+function calcred(number) {
+  debugrednumber = number / 2;
+  red = red + number / 200;
+  document.getElementById("redcount").innerHTML =
+    "red: " + formatNumber(Math.floor(red));
+}
+
+//GREEN
+//contents:
+//1: green variables
+//2: green buy functions
+//3: green calculation functions
+
+//1: variables
+var green = 0;
+var greenfilter = 0;
+var greenpointer = 0;
+var biggreenfilter = 0;
+var biggreenpointer = 0;
+var greennanometerwave = 0;
+var greenupgrade1 = 0;
+var greenupgrade2 = 0;
+var greenupgrade3 = 0;
+var greenfiltercost = 10;
+var greenpointercost = 100;
+var biggreenfiltercost = 1000;
+var biggreenpointercost = 10000;
+var greennanometerwavecost = 100000;
+
+//2: green buy functions
+function buygreenfilter() {
+  if (green >= greenfiltercost) {
+    greenfilter++;
+    green -= greenfiltercost;
+    greenfiltercost = Math.floor(
+      (10 * Math.pow(1.1, greenfilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("greencount").innerHTML =
+      "green: " + formatNumber(Math.floor(green));
+    document.getElementById("greenfiltercount").innerHTML = greenfilter;
+    document.getElementById("greenfiltercost").innerHTML =
+      formatNumber(greenfiltercost);
+  }
+}
+
+function buygreenpointer() {
+  if (green >= greenpointercost) {
+    greenpointer++;
+    green -= greenpointercost;
+    greenpointercost = Math.floor(
+      (100 * Math.pow(1.1, greenpointer)) / (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("greencount").innerHTML =
+      "green: " + formatNumber(Math.floor(green));
+    document.getElementById("greenpointercount").innerHTML = greenpointer;
+    document.getElementById("greenpointercost").innerHTML =
+      formatNumber(greenpointercost);
+  }
+}
+
+function buybiggreenfilter() {
+  if (green >= biggreenfiltercost) {
+    biggreenfilter++;
+    green -= biggreenfiltercost;
+    biggreenfiltercost = Math.floor(
+      (1000 * Math.pow(1.1, biggreenfilter)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("greencount").innerHTML =
+      "green: " + formatNumber(Math.floor(green));
+    document.getElementById("biggreenfiltercount").innerHTML = biggreenfilter;
+    document.getElementById("biggreenfiltercost").innerHTML =
+      formatNumber(biggreenfiltercost);
+  }
+}
+
+function buybiggreenpointer() {
+  if (green >= biggreenpointercost) {
+    biggreenpointer++;
+    green -= biggreenpointercost;
+    biggreenpointercost = Math.floor(
+      (10000 * Math.pow(1.1, biggreenpointer)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("greencount").innerHTML =
+      "green: " + formatNumber(Math.floor(green));
+    document.getElementById("biggreenpointercount").innerHTML = biggreenpointer;
+    document.getElementById("biggreenpointercost").innerHTML =
+      formatNumber(biggreenpointercost);
+  }
+}
+
+function buygreennanometerwave() {
+  if (green >= greennanometerwavecost) {
+    greennanometerwave++;
+    green -= greennanometerwavecost;
+    greennanometerwavecost = Math.floor(
+      (100000 * Math.pow(1.1, greennanometerwave)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("greencount").innerHTML =
+      "green: " + formatNumber(Math.floor(green));
+    document.getElementById("greennanometerwavecount").innerHTML =
+      greennanometerwave;
+    document.getElementById("greennanometerwavecost").innerHTML = formatNumber(
+      greennanometerwavecost
+    );
+  }
+}
+
+function buygreenupgrade1() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + formatNumber(Math.floor(green));
+  if (green >= 150000 && greenupgrade1 === 0) {
+    greenupgrade1 = 1;
+    green = green - 150000;
+    document.getElementById("greenupgrade1cost").innerHTML = "bought";
+    //document.getElementById("greenupgrade1").style.border = "outset";
+  }
+}
+
+function buygreenupgrade2() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + formatNumber(Math.floor(green));
+  if (green >= 250000 && greenupgrade2 === 0) {
+    greenupgrade2 = 1;
+    green = green - 250000;
+    document.getElementById("greenupgrade2cost").innerHTML = "bought";
+    //document.getElementById("greenupgrade2").style.border = "outset";
+  }
+}
+
+function buygreenupgrade3() {
+  document.getElementById("greencount").innerHTML =
+    "green: " + formatNumber(Math.floor(green));
+  if (green >= 500000 && greenupgrade3 === 0) {
+    greenupgrade3 = 1;
+    green = green - 500000;
+    document.getElementById("greenupgrade3cost").innerHTML = "bought";
+    //document.getElementById("greenupgrade3").style.border = "outset";
+  }
+}
+
+//3: green calculation functions
+function calcgreen(number) {
+  debuggreennumber = number / 2;
+  green = green + number / 200;
+  document.getElementById("greencount").innerHTML =
+    "green: " + formatNumber(Math.floor(green));
+}
+
+//BLUE
+//contents:
+//1: blue variables
+//2: blue buy functions
+//3: blue calculation functions
+
+//1: blue variables
+var blue = 0;
+var bluefilter = 0;
+var bluepointer = 0;
+var bigbluefilter = 0;
+var bigbluepointer = 0;
+var bluenanometerwave = 0;
+var blueupgrade1 = 0;
+var blueupgrade2 = 0;
+var blueupgrade3 = 0;
+var bluefiltercost = 10;
+var bluepointercost = 100;
+var bigbluefiltercost = 1000;
+var bigbluepointercost = 10000;
+var bluenanometerwavecost = 100000;
+
+//2: blue buy functions
+function buybluefilter() {
+  if (blue >= bluefiltercost) {
+    bluefilter++;
+    blue -= bluefiltercost;
+    bluefiltercost = Math.floor(
+      (10 * Math.pow(1.1, bluefilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluefiltercount").innerHTML = bluefilter;
+    document.getElementById("bluefiltercost").innerHTML =
+      formatNumber(bluefiltercost);
+  }
+}
+
+function buybluepointer() {
+  if (blue >= bluepointercost) {
+    bluepointer++;
+    blue -= bluepointercost;
+    bluepointercost = Math.floor(
+      (100 * Math.pow(1.1, bluepointer)) / (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluepointercount").innerHTML = bluepointer;
+    document.getElementById("bluepointercost").innerHTML =
+      formatNumber(bluepointercost);
+  }
+}
+
+function buybigbluefilter() {
+  if (blue >= bigbluefiltercost) {
+    bigbluefilter++;
+    blue -= bigbluefiltercost;
+    bigbluefiltercost = Math.floor(
+      (1000 * Math.pow(1.1, bigbluefilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bigbluefiltercount").innerHTML = bigbluefilter;
+    document.getElementById("bigbluefiltercost").innerHTML =
+      formatNumber(bigbluefiltercost);
+  }
+}
+
+function buybigbluepointer() {
+  if (blue >= bigbluepointercost) {
+    bigbluepointer++;
+    blue -= bigbluepointercost;
+    bigbluepointercost = Math.floor(
+      (10000 * Math.pow(1.1, bigbluepointer)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bigbluepointercount").innerHTML = bigbluepointer;
+    document.getElementById("bigbluepointercost").innerHTML =
+      formatNumber(bigbluepointercost);
+  }
+}
+
+function buybluenanometerwave() {
+  if (blue >= bluenanometerwavecost) {
+    bluenanometerwave++;
+    blue -= bluenanometerwavecost;
+    bluenanometerwavecost = Math.floor(
+      (100000 * Math.pow(1.1, bluenanometerwave)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluenanometerwavecount").innerHTML =
+      bluenanometerwave;
+    document.getElementById("bluenanometerwavecost").innerHTML = formatNumber(
+      bluenanometerwavecost
+    );
+  }
+}
+
+function buyblueupgrade1() {
+  document.getElementById("bluecount").innerHTML =
+    "blue: " + formatNumber(Math.floor(blue));
+  if (blue >= 150000 && blueupgrade1 === 0) {
+    blueupgrade1 = 1;
+    blue = blue - 150000;
+    document.getElementById("blueupgrade1cost").innerHTML = "bought";
+    //document.getElementById("blueupgrade1").style.border = "outset";
+  }
+}
+
+function buyblueupgrade2() {
+  document.getElementById("bluecount").innerHTML =
+    "blue: " + formatNumber(Math.floor(blue));
+  if (blue >= 250000 && blueupgrade2 === 0) {
+    blueupgrade2 = 1;
+    blue = blue - 250000;
+    document.getElementById("blueupgrade2cost").innerHTML = "bought";
+    //document.getElementById("blueupgrade2").style.border = "outset";
+  }
+}
+
+function buyblueupgrade3() {
+  document.getElementById("bluecount").innerHTML =
+    "blue: " + formatNumber(Math.floor(blue));
+  if (blue >= 250000 && blueupgrade3 === 0) {
+    blueupgrade3 = 1;
+    blue = blue - 250000;
+    document.getElementById("blueupgrade3cost").innerHTML = "bought";
+    //document.getElementById("blueupgrade3").style.border = "outset";
+  }
+}
+
+//3: blue calculation functions
+function calcblue(number) {
+  debugbluenumber = number / 2;
+  blue = blue + number / 200;
+  document.getElementById("bluecount").innerHTML =
+    "blue: " + formatNumber(Math.floor(blue));
+}
+
+//YELLOW
+//contents:
+//1: yellow variables
+//2: yellow buy functions
+//3: yellow calculation functions
+
+//1: yellow variables
+var yellow = 0;
+var governmentfundingcount = 0;
+var governmentfundingprice = 2;
+var largerprismsprice = 10;
+var largerprismscount = 0;
+var colorharmonyprice = 4;
+var colorharmonycount = 0;
+var streamlinedtasksprice = 5;
+var streamlinedtaskscount = 0;
+var yellowsynergyprice = 12;
+var yellowsynergycount = 0;
+var redoverflowprice = 100;
+var redoverflowcount = 0;
+var greenoverflowprice = 100;
+var greenoverflowcount = 0;
+var blueoverflowprice = 100;
+var blueoverflowcount = 0;
+var tricolorboostprice = 500;
+var tricolorboostcount = 0;
+var taskmasteryprice = 20;
+var taskmasterycount = 0;
+var goldenmultiplierprice = 35;
+var goldenmultipliercount = 0;
+var colorsyphonprice = 1200;
+var colorsyphoncount = 0;
+var focussedpointersprice = 30;
+var focussedpointerscount = 0;
+var finerfiltersprice = 30;
+var finerfilterscount = 0;
+var micrometerwaveprice = 60;
+var micrometerwavecount = 0;
+var strongersynergyprice = 100;
+var strongersynergycount = 0;
+var yellowGAIN = 0;
+
+//2: yellow buy functions
+function buygovernmentfunding() {
+  if (yellow >= governmentfundingprice) {
+    yellow -= governmentfundingprice;
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    governmentfundingcount++;
+    governmentfundingprice = Math.round(governmentfundingprice * 1.35);
+    document.getElementById("governmentfundingprice").innerHTML = formatNumber(
+      Math.floor(governmentfundingprice)
+    );
+    redfiltercost = Math.floor(
+      (10 * Math.pow(1.1, redfilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    redpointercost = Math.floor(
+      (100 * Math.pow(1.1, redpointer)) / (1 + 0.1 * governmentfundingcount)
+    );
+    bigredfiltercost = Math.floor(
+      (1000 * Math.pow(1.1, bigredfilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    bigredpointercost = Math.floor(
+      (10000 * Math.pow(1.1, bigredpointer)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    rednanometerwavecost = Math.floor(
+      (100000 * Math.pow(1.1, rednanometerwave)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    greenfiltercost = Math.floor(
+      (10 * Math.pow(1.1, greenfilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    greenpointercost = Math.floor(
+      (100 * Math.pow(1.1, greenpointer)) / (1 + 0.1 * governmentfundingcount)
+    );
+    biggreenfiltercost = Math.floor(
+      (1000 * Math.pow(1.1, biggreenfilter)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    biggreenpointercost = Math.floor(
+      (10000 * Math.pow(1.1, biggreenpointer)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    greennanometerwavecost = Math.floor(
+      (100000 * Math.pow(1.1, greennanometerwave)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    bluefiltercost = Math.floor(
+      (10 * Math.pow(1.1, bluefilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    bluepointercost = Math.floor(
+      (100 * Math.pow(1.1, bluepointer)) / (1 + 0.1 * governmentfundingcount)
+    );
+    bigbluefiltercost = Math.floor(
+      (1000 * Math.pow(1.1, bigbluefilter)) / (1 + 0.1 * governmentfundingcount)
+    );
+    bigbluepointercost = Math.floor(
+      (10000 * Math.pow(1.1, bigbluepointer)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    bluenanometerwavecost = Math.floor(
+      (100000 * Math.pow(1.1, bluenanometerwave)) /
+        (1 + 0.1 * governmentfundingcount)
+    );
+    document.getElementById("redfiltercost").innerHTML =
+      formatNumber(redfiltercost);
+    document.getElementById("redpointercost").innerHTML =
+      formatNumber(redpointercost);
+    document.getElementById("bigredfiltercost").innerHTML =
+      formatNumber(bigredfiltercost);
+    document.getElementById("bigredpointercost").innerHTML =
+      formatNumber(bigredpointercost);
+    document.getElementById("rednanometerwavecost").innerHTML =
+      formatNumber(rednanometerwavecost);
+    document.getElementById("greenfiltercost").innerHTML =
+      formatNumber(greenfiltercost);
+    document.getElementById("greenpointercost").innerHTML =
+      formatNumber(greenpointercost);
+    document.getElementById("biggreenfiltercost").innerHTML =
+      formatNumber(biggreenfiltercost);
+    document.getElementById("biggreenpointercost").innerHTML =
+      formatNumber(biggreenpointercost);
+    document.getElementById("greennanometerwavecost").innerHTML = formatNumber(
+      greennanometerwavecost
+    );
+    document.getElementById("bluefiltercost").innerHTML =
+      formatNumber(bluefiltercost);
+    document.getElementById("bluepointercost").innerHTML =
+      formatNumber(bluepointercost);
+    document.getElementById("bigbluefiltercost").innerHTML =
+      formatNumber(bigbluefiltercost);
+    document.getElementById("bigbluepointercost").innerHTML =
+      formatNumber(bigbluepointercost);
+    document.getElementById("bluenanometerwavecost").innerHTML = formatNumber(
+      bluenanometerwavecost
+    );
+  }
+}
+
+function buylargerprisms() {
+  if (yellow >= largerprismsprice) {
+    yellow -= largerprismsprice;
+    largerprismscount++;
+    largerprismsprice = Math.round(largerprismsprice * 1.85);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("largerprismsprice").innerHTML = formatNumber(
+      Math.floor(largerprismsprice)
+    );
+  }
+}
+
+function buycolorharmony() {
+  if (yellow >= colorharmonyprice) {
+    yellow -= colorharmonyprice;
+    colorharmonycount++;
+    colorharmonyprice = Math.round(colorharmonyprice * 1.43);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("colorharmonyprice").innerHTML = formatNumber(
+      Math.floor(colorharmonyprice)
+    );
+  }
+}
+
+function buystreamlinedtasks() {
+  if (yellow >= streamlinedtasksprice) {
+    yellow -= streamlinedtasksprice;
+    streamlinedtaskscount++;
+    streamlinedtasksprice = Math.round(streamlinedtasksprice * 1.32);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("streamlinedtasksprice").innerHTML = formatNumber(
+      Math.floor(streamlinedtasksprice)
+    );
+    taskColorGoalRed = taskColorGoalRed / 2;
+    taskColorGoalBlue = taskColorGoalBlue / 2;
+    taskColorGoalGreen = taskColorGoalGreen / 2;
+    document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
+      Math.round(taskColorGoalRed)
+    );
+    document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
+      Math.round(taskColorGoalGreen)
+    );
+    document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
+      Math.round(taskColorGoalBlue)
+    );
+  }
+}
+
+function buyyellowsynergy() {
+  if (yellow >= yellowsynergyprice) {
+    yellow -= yellowsynergyprice;
+    yellowsynergycount++;
+    yellowsynergyprice = Math.round(yellowsynergyprice * 1.61);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("yellowsynergyprice").innerHTML = formatNumber(
+      Math.floor(yellowsynergyprice)
+    );
+    taskRewardCount =
+      10 *
+      (1 + yellowsynergycount * 0.25) *
+      (1 + (goldenmultipliercount * tasksCompleted) / 1000);
+    document.getElementById("taskReward").innerHTML =
+      String(Math.round(taskRewardCount)) + " " + taskRewardColor;
+  }
+}
+
+function buyredoverflow() {
+  if (yellow >= redoverflowprice) {
+    yellow -= redoverflowprice;
+    redoverflowcount++;
+    redoverflowprice = Math.round(redoverflowprice * 1.8);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("redoverflowprice").innerHTML = formatNumber(
+      Math.floor(redoverflowprice)
+    );
+  }
+}
+
+function buygreenoverflow() {
+  if (yellow >= greenoverflowprice) {
+    yellow -= greenoverflowprice;
+    greenoverflowcount++;
+    greenoverflowprice = Math.round(greenoverflowprice * 1.8);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("greenoverflowprice").innerHTML = formatNumber(
+      Math.floor(greenoverflowprice)
+    );
+  }
+}
+
+function buyblueoverflow() {
+  if (yellow >= blueoverflowprice) {
+    yellow -= blueoverflowprice;
+    blueoverflowcount++;
+    blueoverflowprice = Math.round(blueoverflowprice * 1.8);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("blueoverflowprice").innerHTML = formatNumber(
+      Math.floor(blueoverflowprice)
+    );
+  }
+}
+
+function buytricolorboost() {
+  if (yellow >= tricolorboostprice) {
+    yellow -= tricolorboostprice;
+    tricolorboostcount++;
+    tricolorboostprice = Math.round(tricolorboostprice * 1.68);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("tricolorboostprice").innerHTML = formatNumber(
+      Math.floor(tricolorboostprice)
+    );
+  }
+}
+
+function buytaskmastery() {
+  if (yellow >= taskmasteryprice) {
+    yellow -= taskmasteryprice;
+    taskmasterycount++;
+    taskmasteryprice = Math.round(taskmasteryprice * 1.44);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("taskmasteryprice").innerHTML = formatNumber(
+      Math.floor(taskmasteryprice)
+    );
+  }
+}
+
+function buygoldenmultiplier() {
+  if (yellow >= goldenmultiplierprice) {
+    yellow -= goldenmultiplierprice;
+    goldenmultipliercount++;
+    goldenmultiplierprice = Math.round(goldenmultiplierprice * 1.91);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("goldenmultiplierprice").innerHTML = formatNumber(
+      Math.floor(goldenmultiplierprice)
+    );
+    taskRewardCount =
+      10 *
+      (1 + yellowsynergycount * 0.25) *
+      (1 + (goldenmultipliercount * tasksCompleted) / 1000);
+    document.getElementById("taskReward").innerHTML =
+      Math.round(taskRewardCount) + " " + taskRewardColor;
+  }
+}
+
+function buycolorsyphon() {
+  if (
+    yellow >= colorsyphonprice &&
+    red >= 1e15 &&
+    green >= 1e15 &&
+    blue >= 1e15
+  ) {
+    yellow -= colorsyphonprice;
+    colorsyphoncount++;
+    colorsyphonprice = 1200 + 100 * colorsyphoncount;
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("colorsyphonprice").innerHTML = formatNumber(
+      Math.floor(colorsyphonprice)
+    );
+    cyan += 10;
+    red -= 1e15;
+    blue -= 1e15;
+    green -= 1e15;
+    document.getElementById("cyancount").innerHTML = "cyan: " + cyan;
+    document.getElementById("tabcyan").style.display = "block";
+  }
+}
+
+function buyfocussedpointers() {
+  if (yellow >= focussedpointersprice) {
+    yellow -= focussedpointersprice;
+    focussedpointerscount++;
+    focussedpointersprice = Math.round(focussedpointersprice * 1.53);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("focussedpointersprice").innerHTML = formatNumber(
+      Math.floor(focussedpointersprice)
+    );
+  }
+}
+
+function buyfinerfilters() {
+  if (yellow >= finerfiltersprice) {
+    yellow -= finerfiltersprice;
+    finerfilterscount++;
+    finerfiltersprice = Math.round(finerfiltersprice * 1.43);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("finerfiltersprice").innerHTML = formatNumber(
+      Math.floor(finerfiltersprice)
+    );
+  }
+}
+
+function buymicrometerwave() {
+  if (yellow >= micrometerwaveprice) {
+    yellow -= micrometerwaveprice;
+    micrometerwavecount++;
+    micrometerwaveprice = Math.round(micrometerwaveprice * 1.51);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("micrometerwaveprice").innerHTML = formatNumber(
+      Math.floor(micrometerwaveprice)
+    );
+  }
+}
+
+function buystrongersynergy() {
+  if (yellow >= strongersynergyprice) {
+    yellow -= strongersynergyprice;
+    strongersynergycount++;
+    strongersynergyprice = Math.round(strongersynergyprice * 1.4);
+    document.getElementById("yellowcount").innerHTML =
+      "yellow: " + formatNumber(Math.floor(yellow));
+    document.getElementById("strongersynergyprice").innerHTML = formatNumber(
+      Math.floor(strongersynergyprice)
+    );
+  }
+}
+
+//yellow calculation functions
+
+//CYAN
+//contents:
+//1: cyan variables
+//2: cyan buy functions
+//3: cyan calculation functions
+
+//MAGENTA
+//contents:
+//1: magenta variables
+//2: magenta buy functions
+//3: magenta calculation functions
+
+//1: magenta variables
+var magic = 0;
+var magenta = 0;
+var bible = "";
+var holyalbertostate = 0;
+var timer = 0;
+var dialoguestate = 0;
+var words = "";
+var redscrollcount = 0;
+var greenscrollcount = 0;
+var bluescrollcount = 0;
+var magentaspellunlock = 0;
+var cauldron = 0;
+var study = 0;
+var feed = 0;
+var feedperson = 0;
+var drink = 0;
+var cauldroncost = 10;
+var studycost = 100;
+var feedcost = 1000;
+var feedpersoncost = 10000;
+var drinkcost = 100000;
+var spellcount = 3;
+var spell1unlock = 0;
+var spell2unlock = 0;
+var spell3unlock = 0;
+var spell4unlock = 0;
+var spell5unlock = 0;
+var randomnumber = 0;
+
+//magenta buy functions
+function buycauldron() {
+  if (magenta >= cauldroncost && dialoguestate >= 4) {
+    if (dialoguestate === 5) {
+      timer = 30;
+      chatupdate();
+    }
+    cauldron++;
+    magenta -= cauldroncost;
+    cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
+
+    document.getElementById("cauldroncount").innerHTML = cauldron;
+    document.getElementById("cauldroncost").innerHTML = cauldroncost;
+  }
+}
+
+function buystudy() {
+  if (magenta >= studycost) {
+    study++;
+    magenta -= studycost;
+    studycost = Math.floor((100 * Math.pow(1.1, study)) / 1);
+
+    document.getElementById("studycount").innerHTML = study;
+    document.getElementById("studycost").innerHTML = studycost;
+  }
+}
+
+function buyfeed() {
+  if (magenta >= feedcost) {
+    feed++;
+    magenta -= feedcost;
+    feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
+
+    document.getElementById("feedcount").innerHTML = feed;
+    document.getElementById("feedcost").innerHTML = feedcost;
+  }
+}
+
+function buyfeedperson() {
+  if (magenta >= feedpersoncost) {
+    feedperson++;
+    magenta -= feedpersoncost;
+    feedpersoncost = Math.floor((10000 * Math.pow(1.1, feedperson)) / 1);
+
+    document.getElementById("feedpersoncount").innerHTML = feedperson;
+    document.getElementById("feedpersoncost").innerHTML = feedpersoncost;
+  }
+}
+
+function buydrink() {
+  if (magenta >= drinkcost) {
+    drink++;
+    magenta -= drinkcost;
+    drinkcost = Math.floor((100000 * Math.pow(1.1, drink)) / 1);
+
+    document.getElementById("drinkcount").innerHTML = drink;
+    document.getElementById("drinkcost").innerHTML = drinkcost;
+  }
+}
+
+//magenta calculation functions
+function calcmagic(number) {
+  debugmagicnumber = number / 2;
+  magic = magic + number / 200;
+  document.getElementById("magiccount").innerHTML =
+    "magic: " + formatNumber(Math.floor(magic));
+}
+
+//magenta alberto
+
+//BLACK
+//contents:
+//1: black variables
+//2: black buy functions
+//3: black calculation functions
+//WHITE
+//contents:
+//1: blue variables
+//2: blue buy functions
+//3: blue calculation functions
