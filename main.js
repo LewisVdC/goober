@@ -2782,6 +2782,9 @@ function nerdmode(nerdnumber) {
 function nerdmodechange() {
   nerdmode(!currentnerdmode);
 }
+//nerdmode dragging
+
+//cheater!
 function cheat() {
   dev = !dev;
 }
@@ -3491,11 +3494,23 @@ let achQImg = [];
 window.addEventListener("mouseup", function () {
   if (
     this.document.querySelector("#achievementTab:hover") === null &&
-    this.document.querySelector("#achievementTab").style.display === "flex"
+    this.document.querySelector("#achievementTab").style.display === "flex" &&
+    this.document.querySelector("#achievementNotification:hover") === null
   ) {
     displayachievement();
   }
 });
+
+//function for clicking on achievements
+document
+  .getElementById("achievementNotification")
+  .addEventListener("mousedown", function () {
+    achQImg = [];
+    achQBackgColor = [];
+    achQForgColor = [];
+    displayachievement();
+    achievementNotification.classList.remove("slide");
+  });
 
 //function for reused code
 function achievementCall(
