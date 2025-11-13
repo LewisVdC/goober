@@ -657,6 +657,14 @@ button#tabblack {
 button {
   background-color: unset;
 }
+/*this is a fix for mozilla's weird button shading*/
+@-moz-document url-prefix() {
+  button {
+    box-shadow: inset #4f4f4f 1px 1px 0 1px, inset black -1px -1px 0 1px !important;
+    border: none;
+    padding: 2px;
+  }
+}
 .redupgrades {
   background-color: rgb(200, 25, 25);
   background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
@@ -989,7 +997,7 @@ span#blackholeintrocost {
   display: flex;
   flex-direction: column;
 }
-.yellowtext {
+span#blackholeintr .yellowtext {
   color: rgb(168, 140, 0);
   text-shadow: rgb(148, 148, 0) 0px 0px 10px, rgb(125, 125, 0) 0px 0px 10px;
 }
@@ -1167,6 +1175,7 @@ div#lewissucks.animate {
   z-index: 17;
   position: fixed;
   width: 79px;
+  height: 23px;
 }
 #settingscontainer {
   z-index: 17;
@@ -1275,8 +1284,8 @@ div#pourbuttonbox {
 }
 .pourbutton {
   border: none;
-  box-shadow: black 0px 0px 2px, rgb(0, 0, 0) 0px 0px 4px, black 0px 0px 1px,
-    black 0px 0px 2px, rgb(0, 0, 0) 0px 0px 4px, black 0px 0px 1px inset;
+  box-shadow: black 0px 0px 2px, rgb(0, 0, 0) 0px 0px 4px, black 0px 0px 1px, black 0px 0px 2px,
+    rgb(0, 0, 0) 0px 0px 4px, black 0px 0px 1px inset;
   background-color: black;
   color: white;
   border-radius: 0px;
@@ -1412,6 +1421,7 @@ div#saving.fadeout {
   margin-left: 79px;
   width: auto;
   z-index: 11;
+  height: 23px;
 }
 #achievementTab {
   box-shadow: black 0px 0px 20px 2px;
@@ -1558,4 +1568,62 @@ div#achievementInfo.achievementfadeaway {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+button {
+  outline: none;
+  -moz-outline: none;
+  -moz-user-focus: ignore;
+}
+
+#statisticsContainer {
+  box-shadow: black 0px 0px 20px 2px;
+  overflow-y: scroll;
+  position: fixed;
+  border: inset black 2px;
+  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+  width: 65vh;
+  height: 55vh;
+  margin-left: calc(50vw - 37.5vh - 1px);
+  margin-top: calc(22.5vh - 1px);
+  z-index: 19;
+  display: none;
+  color: white;
+  text-shadow: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5vh;
+  align-content: flex-start;
+}
+#statisticsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+div.statisticClass {
+  width: 100%;
+  display: flex;
+  margin-top: 5vh;
+  padding: 5px;
+  border: black 2px inset;
+  flex-direction: column;
+}
+.statistic {
+  width: 100%;
+}
+#redStatistics {
+  color: red;
+}
+#greenStatistics {
+  color: green;
+}
+#blueStatistics {
+  color: blue;
+}
+#yellowStatistics {
+  color: yellow;
+}
+#cyanStatistics {
+  color: cyan;
+}
+#magentaStatistics {
+  color: magenta;
 }
