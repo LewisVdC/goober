@@ -419,7 +419,7 @@ function load() {
       document.getElementById("strongersynergyprice").innerHTML = strongersynergyprice;
     }
     //cyan
-    document.getElementById("cyancount").innerHTML = "cyan: " + Math.round(cyan);
+    document.getElementById("cyancount").innerHTML = "cyan: " + Math.round(colors.cyan);
     if (typeof savegame.redfilterautomationcount !== "undefined")
       redfilterautomationcount = savegame.redfilterautomationcount;
     if (typeof savegame.redfilterautomationprice !== "undefined") {
@@ -629,7 +629,7 @@ function load() {
     if (tasksCompleted > 3) {
       document.getElementById("tabyellow").style.display = "block";
     }
-    if (cyan > 0) {
+    if (colors.cyan > 0) {
       document.getElementById("tabcyan").style.display = "block";
     }
     if (tasksCompleted > 99) {
@@ -1088,13 +1088,13 @@ const loopID = window.setInterval(function () {
 
       const cyancounters = document.querySelectorAll(".cyancount");
       cyancounters.forEach((counter) => {
-        counter.textContent = "cyan: " + formatNumber(Math.floor(cyan));
+        counter.textContent = "cyan: " + formatNumber(Math.floor(colors.cyan));
       });
 
       const magentacounters = document.querySelectorAll("#magentacount");
       magentacounters.forEach((counter) => {
         counter.textContent = document.getElementById("magentacount").innerHTML =
-          "magenta: " + formatNumber(Math.floor(magenta));
+          "magenta: " + formatNumber(Math.floor(colors.magenta));
       });
       //timo building 5 does not give 5k of the stuff per second it boosts production
       //mb
@@ -1433,8 +1433,9 @@ const loopID = window.setInterval(function () {
       document.getElementById("yellowcount").innerHTML =
         "yellow: " + formatNumber(Math.floor(colors.yellow));
       document.getElementById("magentacount").innerHTML =
-        "magenta: " + formatNumber(Math.floor(magenta));
-      document.getElementById("cyancount").innerHTML = "cyan: " + formatNumber(Math.floor(cyan));
+        "magenta: " + formatNumber(Math.floor(colors.magenta));
+      document.getElementById("cyancount").innerHTML =
+        "cyan: " + formatNumber(Math.floor(colors.cyan));
       //ugh
       //im moving the yellow upgrades update function somewhere else
       updateyellow();
@@ -1867,11 +1868,11 @@ function submitTask() {
           String(Math.round(taskRewardCount)) + " " + taskRewardColor;
       }
       if (tasksCompleted === 100) {
-        magenta += 10;
+        colors.magenta += 10;
         document.getElementById("tabmagenta").style.display = "block";
         document.getElementById("holyalbertomode").style.display = "block";
         document.getElementById("magentacount").innerHTML =
-          "magenta: " + formatNumber(Math.floor(magenta));
+          "magenta: " + formatNumber(Math.floor(colors.magenta));
       }
     }
   }
@@ -1886,7 +1887,7 @@ document.addEventListener("keydown", function (event) {
       showtab("blue");
     } else if (event.key === "y" && tasksCompleted >= 4) {
       showtab("yellow");
-    } else if (event.key === "c" && cyan > 0) {
+    } else if (event.key === "c" && colors.cyan > 0) {
       showtab("cyan");
     } else if (event.key === "m" && tasksCompleted > 99) {
       showtab("magenta");
@@ -2051,27 +2052,27 @@ window.setInterval(function () {
 
 //cyan upgrades
 function buyredfilterautomation() {
-  if (cyan >= redfilterautomationprice) {
+  if (colors.cyan >= redfilterautomationprice) {
     redfilterautomationcount++;
-    cyan -= redfilterautomationprice;
+    colors.cyan -= redfilterautomationprice;
     redfilterautomationprice = 5 * Math.pow(1.3, redfilterautomationcount);
     document.getElementById("redfilterautomationprice").innerHTML =
       Math.round(redfilterautomationprice);
   }
 }
 function buyredpointerautomation() {
-  if (cyan >= redpointerautomationprice) {
+  if (colors.cyan >= redpointerautomationprice) {
     redpointerautomationcount++;
-    cyan -= redpointerautomationprice;
+    colors.cyan -= redpointerautomationprice;
     redpointerautomationprice = 5 * Math.pow(1.3, redpointerautomationcount);
     document.getElementById("redpointerautomationprice").innerHTML =
       Math.round(redpointerautomationprice);
   }
 }
 function buybigredfilterautomation() {
-  if (cyan >= bigredfilterautomationprice) {
+  if (colors.cyan >= bigredfilterautomationprice) {
     bigredfilterautomationcount++;
-    cyan -= bigredfilterautomationprice;
+    colors.cyan -= bigredfilterautomationprice;
     bigredfilterautomationprice = 5 * Math.pow(1.3, bigredfilterautomationcount);
     document.getElementById("bigredfilterautomationprice").innerHTML = Math.round(
       bigredfilterautomationprice
@@ -2079,9 +2080,9 @@ function buybigredfilterautomation() {
   }
 }
 function buybigredpointerautomation() {
-  if (cyan >= bigredpointerautomationprice) {
+  if (colors.cyan >= bigredpointerautomationprice) {
     bigredpointerautomationcount++;
-    cyan -= bigredpointerautomationprice;
+    colors.cyan -= bigredpointerautomationprice;
     bigredpointerautomationprice = 5 * Math.pow(1.3, bigredpointerautomationcount);
     document.getElementById("bigredpointerautomationprice").innerHTML = Math.round(
       bigredpointerautomationprice
@@ -2089,9 +2090,9 @@ function buybigredpointerautomation() {
   }
 }
 function buyrednanometerwaveautomation() {
-  if (cyan >= rednanometerwaveautomationprice) {
+  if (colors.cyan >= rednanometerwaveautomationprice) {
     rednanometerwaveautomationcount++;
-    cyan -= rednanometerwaveautomationprice;
+    colors.cyan -= rednanometerwaveautomationprice;
     rednanometerwaveautomationprice = 5 * Math.pow(1.3, rednanometerwaveautomationcount);
     document.getElementById("rednanometerwaveautomationprice").innerHTML = Math.round(
       rednanometerwaveautomationprice
@@ -2099,9 +2100,9 @@ function buyrednanometerwaveautomation() {
   }
 }
 function buygreenfilterautomation() {
-  if (cyan >= greenfilterautomationprice) {
+  if (colors.cyan >= greenfilterautomationprice) {
     greenfilterautomationcount++;
-    cyan -= greenfilterautomationprice;
+    colors.cyan -= greenfilterautomationprice;
     greenfilterautomationprice = 5 * Math.pow(1.3, greenfilterautomationcount);
     document.getElementById("greenfilterautomationprice").innerHTML = Math.round(
       greenfilterautomationprice
@@ -2109,9 +2110,9 @@ function buygreenfilterautomation() {
   }
 }
 function buygreenpointerautomation() {
-  if (cyan >= greenpointerautomationprice) {
+  if (colors.cyan >= greenpointerautomationprice) {
     greenpointerautomationcount++;
-    cyan -= greenpointerautomationprice;
+    colors.cyan -= greenpointerautomationprice;
     greenpointerautomationprice = 5 * Math.pow(1.3, greenpointerautomationcount);
     document.getElementById("greenpointerautomationprice").innerHTML = Math.round(
       greenpointerautomationprice
@@ -2119,9 +2120,9 @@ function buygreenpointerautomation() {
   }
 }
 function buybiggreenfilterautomation() {
-  if (cyan >= biggreenfilterautomationprice) {
+  if (colors.cyan >= biggreenfilterautomationprice) {
     biggreenfilterautomationcount++;
-    cyan -= biggreenfilterautomationprice;
+    colors.cyan -= biggreenfilterautomationprice;
     biggreenfilterautomationprice = 5 * Math.pow(1.3, biggreenfilterautomationcount);
     document.getElementById("biggreenfilterautomationprice").innerHTML = Math.round(
       biggreenfilterautomationprice
@@ -2129,9 +2130,9 @@ function buybiggreenfilterautomation() {
   }
 }
 function buybiggreenpointerautomation() {
-  if (cyan >= biggreenpointerautomationprice) {
+  if (colors.cyan >= biggreenpointerautomationprice) {
     biggreenpointerautomationcount++;
-    cyan -= biggreenpointerautomationprice;
+    colors.cyan -= biggreenpointerautomationprice;
     biggreenpointerautomationprice = 5 * Math.pow(1.3, biggreenpointerautomationcount);
     document.getElementById("biggreenpointerautomationprice").innerHTML = Math.round(
       biggreenpointerautomationprice
@@ -2139,9 +2140,9 @@ function buybiggreenpointerautomation() {
   }
 }
 function buygreennanometerwaveautomation() {
-  if (cyan >= greennanometerwaveautomationprice) {
+  if (colors.cyan >= greennanometerwaveautomationprice) {
     greennanometerwaveautomationcount++;
-    cyan -= greennanometerwaveautomationprice;
+    colors.cyan -= greennanometerwaveautomationprice;
     greennanometerwaveautomationprice = 5 * Math.pow(1.3, greennanometerwaveautomationcount);
     document.getElementById("greennanometerwaveautomationprice").innerHTML = Math.round(
       greennanometerwaveautomationprice
@@ -2149,18 +2150,18 @@ function buygreennanometerwaveautomation() {
   }
 }
 function buybluefilterautomation() {
-  if (cyan >= bluefilterautomationprice) {
+  if (colors.cyan >= bluefilterautomationprice) {
     bluefilterautomationcount++;
-    cyan -= bluefilterautomationprice;
+    colors.cyan -= bluefilterautomationprice;
     bluefilterautomationprice = 5 * Math.pow(1.3, bluefilterautomationcount);
     document.getElementById("bluefilterautomationprice").innerHTML =
       Math.round(bluefilterautomationprice);
   }
 }
 function buybluepointerautomation() {
-  if (cyan >= bluepointerautomationprice) {
+  if (colors.cyan >= bluepointerautomationprice) {
     bluepointerautomationcount++;
-    cyan -= bluepointerautomationprice;
+    colors.cyan -= bluepointerautomationprice;
     bluepointerautomationprice = 5 * Math.pow(1.3, bluepointerautomationcount);
     document.getElementById("bluepointerautomationprice").innerHTML = Math.round(
       bluepointerautomationprice
@@ -2168,9 +2169,9 @@ function buybluepointerautomation() {
   }
 }
 function buybigbluefilterautomation() {
-  if (cyan >= bigbluefilterautomationprice) {
+  if (colors.cyan >= bigbluefilterautomationprice) {
     bigbluefilterautomationcount++;
-    cyan -= bigbluefilterautomationprice;
+    colors.cyan -= bigbluefilterautomationprice;
     bigbluefilterautomationprice = 5 * Math.pow(1.3, bigbluefilterautomationcount);
     document.getElementById("bigbluefilterautomationprice").innerHTML = Math.round(
       bigbluefilterautomationprice
@@ -2178,9 +2179,9 @@ function buybigbluefilterautomation() {
   }
 }
 function buybigbluepointerautomation() {
-  if (cyan >= bigbluepointerautomationprice) {
+  if (colors.cyan >= bigbluepointerautomationprice) {
     bigbluepointerautomationcount++;
-    cyan -= bigbluepointerautomationprice;
+    colors.cyan -= bigbluepointerautomationprice;
     bigbluepointerautomationprice = 5 * Math.pow(1.3, bigbluepointerautomationcount);
     document.getElementById("bigbluepointerautomationprice").innerHTML = Math.round(
       bigbluepointerautomationprice
@@ -2188,9 +2189,9 @@ function buybigbluepointerautomation() {
   }
 }
 function buybluenanometerwaveautomation() {
-  if (cyan >= bluenanometerwaveautomationprice) {
+  if (colors.cyan >= bluenanometerwaveautomationprice) {
     bluenanometerwaveautomationcount++;
-    cyan -= bluenanometerwaveautomationprice;
+    colors.cyan -= bluenanometerwaveautomationprice;
     bluenanometerwaveautomationprice = 5 * Math.pow(1.3, bluenanometerwaveautomationcount);
     document.getElementById("bluenanometerwaveautomationprice").innerHTML = Math.round(
       bluenanometerwaveautomationprice
@@ -2290,9 +2291,9 @@ function toggleblue() {
 function spell1() {
   if (spell1unlock === 1) {
     if (document.getElementById("redshell").style.background === "") {
-      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
       colors.red = colors.red + debugrednumber * tribute;
-      magic -= tribute;
+      colors.magic -= tribute;
       spellCoolDown("#redshell", 4000);
     }
   }
@@ -2300,9 +2301,9 @@ function spell1() {
 function spell2() {
   if (spell2unlock === 1) {
     if (document.getElementById("greenshell").style.background === "") {
-      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
       colors.green = colors.green + debuggreennumber * tribute;
-      magic -= tribute;
+      colors.magic -= tribute;
       spellCoolDown("#greenshell", 4000);
     }
   }
@@ -2310,9 +2311,9 @@ function spell2() {
 function spell3() {
   if (spell3unlock === 1) {
     if (document.getElementById("blueshell").style.background === "") {
-      let tribute = (document.getElementById("magicslider").value / 100) * magic;
+      let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
       colors.blue = colors.blue + debugbluenumber * tribute;
-      magic -= tribute;
+      colors.magic -= tribute;
       spellCoolDown("#blueshell", 4000);
     }
   }
@@ -2360,7 +2361,7 @@ function formatSmallNumber(number) {
 function redscroll() {
   if (colors.red >= 1e17 && spell1unlock == 0) {
     spell1unlock = 1;
-    magenta -= feedcost;
+    colors.magenta -= feedcost;
     feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
 
     document.getElementById("feedcount").innerHTML = feed;
@@ -2456,16 +2457,16 @@ function fancyblackhole() {
     colors.green >= 1e18 &&
     colors.blue >= 1e18 &&
     colors.yellow >= 1e6 &&
-    cyan >= 1500 &&
-    magenta >= 5000
+    colors.cyan >= 1500 &&
+    colors.magenta >= 5000
   ) {
     fancyblackhole2();
     colors.red -= 1e18;
     colors.green -= 1e18;
     colors.blue -= 1e18;
     colors.yellow -= 1e6;
-    cyan -= 1500;
-    magenta -= 5000;
+    colors.cyan -= 1500;
+    colors.magenta -= 5000;
   }
 }
 function fancyblackhole2() {
@@ -2487,15 +2488,15 @@ function fancyblackhole2() {
 }
 
 function buymagentaspell() {
-  if (magic >= 10 && dialoguestate >= 5) {
+  if (colors.magic >= 10 && dialoguestate >= 5) {
     document.getElementById("magentaspell").setAttribute("onclick", "castmagentaspell()");
-    magic -= 10;
+    colors.magic -= 10;
     magentaspellunlock = 1;
     document.getElementById("magentaspell").style.backgroundImage =
       "url(images/spells/magenta_spell.webp)";
     timer = 60;
     chatupdate();
-  } else if (magic < 10 && dialoguestate >= 5) {
+  } else if (colors.magic < 10 && dialoguestate >= 5) {
     say("you have insufficient magic right now. try saving up until you have 10.");
   }
 }
@@ -2507,9 +2508,9 @@ function castmagentaspell() {
       chatupdate();
     }
     if (document.getElementById("magentashell").style.background === "") {
-      let tribute = (document.getElementById("magicslider").value / 100) * magic;
-      magenta += tribute / 3;
-      magic -= tribute;
+      let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
+      colors.magenta += tribute / 3;
+      colors.magic -= tribute;
       spellCoolDown("#magentashell", 1000);
     }
   }
@@ -2527,7 +2528,7 @@ function displaysettings() {
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 function devmode() {
   if (buttonpress === true) {
-    colors.red = colors.green = colors.blue = colors.yellow = cyan = magenta = 1e24;
+    colors.red = colors.green = colors.blue = colors.yellow = colors.cyan = colors.magenta = 1e24;
     tasksCompleted = 100;
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "none";
@@ -2544,11 +2545,11 @@ function devmode() {
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "block";
 
-    if (magenta === 0) document.getElementById("tabmagenta").style.display = "none";
+    if (colors.magenta === 0) document.getElementById("tabmagenta").style.display = "none";
     if (colors.green === 0) document.getElementById("tabgreen").style.display = "none";
     if (colors.blue === 0) document.getElementById("tabblue").style.display = "none";
     if (colors.yellow === 0) document.getElementById("tabyellow").style.display = "none";
-    if (cyan === 0) document.getElementById("tabcyan").style.display = "none";
+    if (colors.cyan === 0) document.getElementById("tabcyan").style.display = "none";
     if (tasksCompleted === 0) {
       document.getElementById("tabs").style.width = "calc(250px/3)";
     } else if (tasksCompleted === 1) {
@@ -2793,12 +2794,12 @@ function pour(x) {
     colors.yellow = 0.9 * colors.yellow;
   }
   if (x == "cyan") {
-    colors.black += 250 * 0.1 * cyan;
-    cyan = 0.9 * cyan;
+    colors.black += 250 * 0.1 * colors.cyan;
+    colors.cyan = 0.9 * colors.cyan;
   }
   if (x == "magenta") {
-    colors.black += 25 * 0.1 * magenta; //TODO BALANCE THIS MAYBE??
-    magenta = 0.9 * magenta;
+    colors.black += 25 * 0.1 * colors.magenta; //TODO BALANCE THIS MAYBE??
+    colors.magenta = 0.9 * colors.magenta;
   }
 } //todo balance this for sure actually this sucks
 //or at least i think so i need magenta to be done first and then do a playtest of the game
@@ -3077,7 +3078,7 @@ window.addEventListener("focus", function () {
     colors.red += debugrednumber * (offlineTime / 1000);
     colors.green += debuggreennumber * (offlineTime / 1000);
     colors.blue += debugbluenumber * (offlineTime / 1000);
-    magic += debugmagicnumber * (offlineTime / 1000);
+    colors.magic += debugmagicnumber * (offlineTime / 1000);
     colors.yellow += yellowGAIN * 50 * (offlineTime / 1000);
   }
 });
@@ -3151,10 +3152,10 @@ function stuck() {
 function resetMagenta() {
   stuck();
   document.getElementById("magentaspell").setAttribute("onclick", "buymagentaspell()");
-  cauldron = study = feed = feedperson = drink = magic = 0;
+  cauldron = study = feed = feedperson = drink = colors.magic = 0;
   timeouts = [];
   albertoRequirement = false;
-  magenta = cauldroncost = 10;
+  colors.magenta = cauldroncost = 10;
   studycost = 100;
   feedcost = 1000;
   feedpersoncost = 10000;
@@ -3520,9 +3521,9 @@ function spell(spelltype) {
         if (achievement.magicCyan1 === false) {
           achievementCall("magicCyan1", 27, "#132322", "#01FFFF");
         }
-        let tribute = (document.getElementById("magicslider").value / 100) * magic;
-        cyan += tribute / 100;
-        magic -= tribute;
+        let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
+        colors.cyan += tribute / 100;
+        colors.magic -= tribute;
         spellCoolDown("#cyan1shell", 4000);
       } else {
         //buy it gng
@@ -3532,9 +3533,9 @@ function spell(spelltype) {
   if (spelltype == "cyan2") {
     if (document.getElementById("cyan2shell").style.background === "") {
       if (achievement.spellAutomation === true) {
-        let tribute = (document.getElementById("magicslider").value / 100) * magic;
+        let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
         cyanBuyTimeBoost = 1 + tribute / 1000;
-        magic -= tribute;
+        colors.magic -= tribute;
         window.setTimeout(function () {
           cyanBuyTimeBoost = 1;
         }, 2000);
@@ -3545,9 +3546,9 @@ function spell(spelltype) {
   if (spelltype == "yellow1") {
     if (document.getElementById("yellow1shell").style.background === "") {
       if (achievement.yellowAllUpgrades10 === true) {
-        let tribute = (document.getElementById("magicslider").value / 100) * magic;
+        let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
         colors.yellow += (yellowGAIN * 50 * tribute) / 1000;
-        magic -= tribute;
+        colors.magic -= tribute;
         spellCoolDown("#yellow1shell", 20000);
       }
     }
@@ -4286,11 +4287,11 @@ function buycolorsyphon() {
     document.getElementById("colorsyphonprice").innerHTML = formatNumber(
       Math.floor(colorsyphonprice)
     );
-    cyan += 10;
+    colors.cyan += 10;
     colors.red -= 1e15;
     colors.blue -= 1e15;
     colors.green -= 1e15;
-    document.getElementById("cyancount").innerHTML = "cyan: " + cyan;
+    document.getElementById("cyancount").innerHTML = "cyan: " + colors.cyan;
     document.getElementById("tabcyan").style.display = "block";
   }
 }
@@ -4362,7 +4363,7 @@ function buystrongersynergy() {
 //3: magenta calculation functions
 
 //1: magenta variables
-var magic = 0;
+//var colors.magic = 0;
 //var magenta = 0;
 var bible = "";
 var holyalbertostate = 0;
@@ -4393,13 +4394,13 @@ var randomnumber = 0;
 
 //magenta buy functions
 function buycauldron() {
-  if (magenta >= cauldroncost && dialoguestate >= 4) {
+  if (colors.magenta >= cauldroncost && dialoguestate >= 4) {
     if (dialoguestate === 5) {
       timer = 30;
       chatupdate();
     }
     cauldron++;
-    magenta -= cauldroncost;
+    colors.magenta -= cauldroncost;
     cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
 
     document.getElementById("cauldroncount").innerHTML = cauldron;
@@ -4408,9 +4409,9 @@ function buycauldron() {
 }
 
 function buystudy() {
-  if (magenta >= studycost) {
+  if (colors.magenta >= studycost) {
     study++;
-    magenta -= studycost;
+    colors.magenta -= studycost;
     studycost = Math.floor((100 * Math.pow(1.1, study)) / 1);
 
     document.getElementById("studycount").innerHTML = study;
@@ -4419,9 +4420,9 @@ function buystudy() {
 }
 
 function buyfeed() {
-  if (magenta >= feedcost) {
+  if (colors.magenta >= feedcost) {
     feed++;
-    magenta -= feedcost;
+    colors.magenta -= feedcost;
     feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
 
     document.getElementById("feedcount").innerHTML = feed;
@@ -4430,9 +4431,9 @@ function buyfeed() {
 }
 
 function buyfeedperson() {
-  if (magenta >= feedpersoncost) {
+  if (colors.magenta >= feedpersoncost) {
     feedperson++;
-    magenta -= feedpersoncost;
+    colors.magenta -= feedpersoncost;
     feedpersoncost = Math.floor((10000 * Math.pow(1.1, feedperson)) / 1);
 
     document.getElementById("feedpersoncount").innerHTML = feedperson;
@@ -4441,9 +4442,9 @@ function buyfeedperson() {
 }
 
 function buydrink() {
-  if (magenta >= drinkcost) {
+  if (colors.magenta >= drinkcost) {
     drink++;
-    magenta -= drinkcost;
+    colors.magenta -= drinkcost;
     drinkcost = Math.floor((100000 * Math.pow(1.1, drink)) / 1);
 
     document.getElementById("drinkcount").innerHTML = drink;
@@ -4454,8 +4455,9 @@ function buydrink() {
 //magenta calculation functions
 function calcmagic(number) {
   debugmagicnumber = number / 2;
-  magic = magic + number / 200;
-  document.getElementById("magiccount").innerHTML = "magic: " + formatNumber(Math.floor(magic));
+  colors.magic = colors.magic + number / 200;
+  document.getElementById("magiccount").innerHTML =
+    "magic: " + formatNumber(Math.floor(colors.magic));
 }
 
 //magenta alberto
