@@ -710,9 +710,10 @@ function load() {
     document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(colors.red));
     document.getElementById("greencount").innerHTML =
       "green: " + formatNumber(Math.floor(colors.green));
-    document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(colors.blue));
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     var nextredCost1 = Math.floor(
       (10 * Math.pow(1.1, redfilter)) / (1 + 0.1 * governmentfundingcount)
     );
@@ -807,7 +808,7 @@ function load() {
 document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(colors.red));
 document.getElementById("greencount").innerHTML =
   "green: " + formatNumber(Math.floor(colors.green));
-document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
+document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(colors.blue));
 
 // tabCall("red","rgb(200, 25, 25)", "rgb(20,0,0)", "0px 0px 10px red, 0 0 10px rgb(125,0,0)");
 
@@ -1077,12 +1078,12 @@ const loopID = window.setInterval(function () {
       });
       const bluecounters = document.querySelectorAll(".bluecount");
       bluecounters.forEach((counter) => {
-        counter.textContent = "blue: " + formatNumber(Math.floor(blue));
+        counter.textContent = "blue: " + formatNumber(Math.floor(colors.blue));
       });
 
       const yellowcounters = document.querySelectorAll(".yellowcount");
       yellowcounters.forEach((counter) => {
-        counter.textContent = "yellow: " + formatNumber(Math.floor(yellow));
+        counter.textContent = "yellow: " + formatNumber(Math.floor(colors.yellow));
       });
 
       const cyancounters = document.querySelectorAll(".cyancount");
@@ -1427,10 +1428,10 @@ const loopID = window.setInterval(function () {
 
       //wuuuuuuuuuuuuuuugh
       document.getElementById("taskAmountRed").innerHTML = formatNumber(Math.floor(colors.red));
-      document.getElementById("taskAmountBlue").innerHTML = formatNumber(Math.floor(blue));
+      document.getElementById("taskAmountBlue").innerHTML = formatNumber(Math.floor(colors.blue));
       document.getElementById("taskAmountGreen").innerHTML = formatNumber(Math.floor(colors.green));
       document.getElementById("yellowcount").innerHTML =
-        "yellow: " + formatNumber(Math.floor(yellow));
+        "yellow: " + formatNumber(Math.floor(colors.yellow));
       document.getElementById("magentacount").innerHTML =
         "magenta: " + formatNumber(Math.floor(magenta));
       document.getElementById("cyancount").innerHTML = "cyan: " + formatNumber(Math.floor(cyan));
@@ -1538,7 +1539,7 @@ const loopID = window.setInterval(function () {
         20 * cyanBuyTimeBoost,
         bluenanometerwaveautomationcount
       );
-      document.getElementById("blackcount").innerHTML = formatNumber(black);
+      document.getElementById("blackcount").innerHTML = formatNumber(colors.black);
       if (redfilterautomationtimer >= 200 && redtogglestate) {
         redfilterautomationtimer = 0;
         buyredfilter();
@@ -1626,7 +1627,7 @@ const loopID = window.setInterval(function () {
           (Math.log1p(colors.green) * greenupgrade2 + 1)) /
           (10 * greenupgrade2 + 1)) *
           // weaksynergyblue
-          (Math.log1p(blue) * blueupgrade2 + 1)) /
+          (Math.log1p(colors.blue) * blueupgrade2 + 1)) /
           (10 * blueupgrade2 + 1)) *
           // stronger synergy
           (1 + Math.sqrt(strongersynergycount) * 5) *
@@ -1635,9 +1636,11 @@ const loopID = window.setInterval(function () {
           // yellow larger prisms
           (1 + 2 * largerprismscount) *
           // yellow color harmony
-          (1 + (Math.log1p(yellow) / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+          (1 +
+            (Math.log1p(colors.yellow) / 10) *
+              (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          (1 + tricolorboostcount * 0.5 * (colors.yellow / 1000)) *
           // black
           (blackboost + 1)
       );
@@ -1663,7 +1666,7 @@ const loopID = window.setInterval(function () {
           (Math.log1p(colors.red) * redupgrade2 + 1)) /
           (10 * redupgrade2 + 1)) *
           // weaksynergyblue
-          (Math.log1p(blue) * blueupgrade2 + 1)) /
+          (Math.log1p(colors.blue) * blueupgrade2 + 1)) /
           (10 * blueupgrade2 + 1)) *
           // stronger synergy
           (1 + Math.sqrt(strongersynergycount) * 5) *
@@ -1672,9 +1675,11 @@ const loopID = window.setInterval(function () {
           // yellow larger prisms
           (1 + 2 * largerprismscount) *
           // yellow color harmony
-          (1 + (Math.log1p(yellow) / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+          (1 +
+            (Math.log1p(colors.yellow) / 10) *
+              (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          (1 + tricolorboostcount * 0.5 * (colors.yellow / 1000)) *
           // black
           (blackboost + 1)
       );
@@ -1708,9 +1713,11 @@ const loopID = window.setInterval(function () {
           // yellow larger prisms
           (1 + 2 * largerprismscount) *
           // yellow color harmony
-          (1 + (Math.log1p(yellow) / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
+          (1 +
+            (Math.log1p(colors.yellow) / 10) *
+              (colorharmonycount / Math.sqrt(colorharmonycount + 1))) *
           // tri-color boost
-          (1 + tricolorboostcount * 0.5 * (yellow / 1000)) *
+          (1 + tricolorboostcount * 0.5 * (colors.yellow / 1000)) *
           // black
           (blackboost + 1)
       );
@@ -1739,11 +1746,11 @@ function submitTask() {
   if (
     colors.red >= streamlinedTaskColorGoal.red &&
     colors.green >= streamlinedTaskColorGoal.green &&
-    blue >= streamlinedTaskColorGoal.blue
+    colors.blue >= streamlinedTaskColorGoal.blue
   ) {
     colors.red -= streamlinedTaskColorGoal.red;
     colors.green -= streamlinedTaskColorGoal.green;
-    blue -= streamlinedTaskColorGoal.blue;
+    colors.blue -= streamlinedTaskColorGoal.blue;
     tasksCompleted++;
     if (tasksCompleted === 1) {
       taskColorGoalRed = 0;
@@ -1788,7 +1795,7 @@ function submitTask() {
       taskRewardColor = "x color gain";
       document.getElementById("tabs").style.width = "250px";
       document.getElementById("tabblue").style.display = "block";
-      blue += 10;
+      colors.blue += 10;
     } else if (tasksCompleted === 3) {
       taskColorGoalRed = 1100000;
       taskColorGoalGreen = 115000;
@@ -1841,17 +1848,17 @@ function submitTask() {
         String(Math.round(taskColorGoalBlue / (1000 * Math.pow(1.2, tasksCompleted)))) +
         ")";
       document.getElementById("tabyellow").style.display = "block";
-      yellow += taskRewardCount;
+      colors.yellow += taskRewardCount;
       taskRewardCount =
         10 *
         (1 + yellowsynergycount * 0.25) *
         (1 + (goldenmultipliercount * tasksCompleted) / 1000);
       if (Math.random() * 100 <= taskmasterycount) {
-        yellow += taskRewardCount * 10 * taskmasterycount;
+        colors.yellow += taskRewardCount * 10 * taskmasterycount;
         taskMasteryTrigger = true;
       }
       document.getElementById("yellowcount").innerHTML =
-        "yellow: " + formatNumber(Math.floor(yellow));
+        "yellow: " + formatNumber(Math.floor(colors.yellow));
       if (tasksCompleted === 99) {
         document.getElementById("taskReward").innerHTML =
           String(Math.round(taskRewardCount)) + " " + taskRewardColor + " and 10 magenta";
@@ -1975,13 +1982,15 @@ window.setInterval(function () {
         (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
         (Math.log1p(colors.green) * greenupgrade2 + 1)) / // Controlled synergy with green
         (10 * greenupgrade2 + 1)) *
-        (Math.log1p(blue) * blueupgrade2 + 1)) / // Controlled synergy with blue
+        (Math.log1p(colors.blue) * blueupgrade2 + 1)) / // Controlled synergy with blue
         (10 * blueupgrade2 + 1)) *
         (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
         (1 + 2 * largerprismscount) *
-        (1 + (Math.log1p(yellow) / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+        (1 +
+          (Math.log1p(colors.yellow) / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+      (1 + tricolorboostcount * 0.5 * (colors.yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 red
 
   yellowGAIN +=
@@ -1999,13 +2008,15 @@ window.setInterval(function () {
         (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
         (Math.log1p(colors.red) * redupgrade2 + 1)) / // Controlled synergy with red
         (10 * redupgrade2 + 1)) *
-        (Math.log1p(blue) * blueupgrade2 + 1)) / // Controlled synergy with blue
+        (Math.log1p(colors.blue) * blueupgrade2 + 1)) / // Controlled synergy with blue
         (10 * blueupgrade2 + 1)) *
         (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
         (1 + 2 * largerprismscount) *
-        (1 + (Math.log1p(yellow) / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+        (1 +
+          (Math.log1p(colors.yellow) / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+      (1 + tricolorboostcount * 0.5 * (colors.yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 green
 
   yellowGAIN +=
@@ -2026,14 +2037,16 @@ window.setInterval(function () {
         (1 + Math.sqrt(strongersynergycount) * 5) * // Diminishing returns for strongersynergy
         taskBooster *
         (1 + 2 * largerprismscount) *
-        (1 + (Math.log1p(yellow) / 10) * (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
-      (1 + tricolorboostcount * 0.5 * (yellow / 1000))) / // Tri-color boost scaling
+        (1 +
+          (Math.log1p(colors.yellow) / 10) *
+            (colorharmonycount / Math.sqrt(colorharmonycount + 1)))) * // Balanced color harmony
+      (1 + tricolorboostcount * 0.5 * (colors.yellow / 1000))) / // Tri-color boost scaling
     1e12; // Adjusted scaling factor for 1e10 red
   yellowGAIN = Math.min(
     4 * (1 + (redoverflowcount + greenoverflowcount + blueoverflowcount)),
     yellowGAIN
   );
-  yellow += yellowGAIN;
+  colors.yellow += yellowGAIN;
 }, 20);
 
 //cyan upgrades
@@ -2298,7 +2311,7 @@ function spell3() {
   if (spell3unlock === 1) {
     if (document.getElementById("blueshell").style.background === "") {
       let tribute = (document.getElementById("magicslider").value / 100) * magic;
-      blue = blue + debugbluenumber * tribute;
+      colors.blue = colors.blue + debugbluenumber * tribute;
       magic -= tribute;
       spellCoolDown("#blueshell", 4000);
     }
@@ -2411,9 +2424,9 @@ function buygreenscroll() {
   }
 }
 function buybluescroll() {
-  if (blue >= 1e19 && dialoguestate >= 14) {
+  if (colors.blue >= 1e19 && dialoguestate >= 14) {
     spell3unlock++;
-    blue -= 1e19;
+    colors.blue -= 1e19;
     bluescrollcount++;
     document.getElementById("bluescroll").style.display = "none";
     document.getElementById("bluespell").style.backgroundImage =
@@ -2441,16 +2454,16 @@ function fancyblackhole() {
   if (
     colors.red >= 1e18 &&
     colors.green >= 1e18 &&
-    blue >= 1e18 &&
-    yellow >= 1e6 &&
+    colors.blue >= 1e18 &&
+    colors.yellow >= 1e6 &&
     cyan >= 1500 &&
     magenta >= 5000
   ) {
     fancyblackhole2();
     colors.red -= 1e18;
     colors.green -= 1e18;
-    blue -= 1e18;
-    yellow -= 1e6;
+    colors.blue -= 1e18;
+    colors.yellow -= 1e6;
     cyan -= 1500;
     magenta -= 5000;
   }
@@ -2468,7 +2481,7 @@ function fancyblackhole2() {
     document.getElementById("blackholeintro").style.display = "none";
     document.getElementById("blackhole").style.scale = "3";
     blackholeanimationdone = 1;
-    black = +1500000;
+    colors.black = +1500000;
     document.getElementById("blackholecounter").style.display = "block";
   }, 2001);
 }
@@ -2514,7 +2527,7 @@ function displaysettings() {
 //temp devmode (disables annoying coming soon signs and unlocks all tabs)
 function devmode() {
   if (buttonpress === true) {
-    colors.red = colors.green = blue = yellow = cyan = magenta = 1e24;
+    colors.red = colors.green = colors.blue = colors.yellow = cyan = magenta = 1e24;
     tasksCompleted = 100;
     buttonpress = !buttonpress;
     document.getElementById("comingsoonwhite").style.display = "none";
@@ -2533,8 +2546,8 @@ function devmode() {
 
     if (magenta === 0) document.getElementById("tabmagenta").style.display = "none";
     if (colors.green === 0) document.getElementById("tabgreen").style.display = "none";
-    if (blue === 0) document.getElementById("tabblue").style.display = "none";
-    if (yellow === 0) document.getElementById("tabyellow").style.display = "none";
+    if (colors.blue === 0) document.getElementById("tabblue").style.display = "none";
+    if (colors.yellow === 0) document.getElementById("tabyellow").style.display = "none";
     if (cyan === 0) document.getElementById("tabcyan").style.display = "none";
     if (tasksCompleted === 0) {
       document.getElementById("tabs").style.width = "calc(250px/3)";
@@ -2764,27 +2777,27 @@ function enter() {
 //magenta isnt even done lol but eh idk
 function pour(x) {
   if (x == "red") {
-    black += 0.5 * 0.1 * colors.red;
+    colors.black += 0.5 * 0.1 * colors.red;
     colors.red = 0.9 * colors.red;
   }
   if (x == "green") {
-    black += 0.5 * 0.1 * colors.green;
+    colors.black += 0.5 * 0.1 * colors.green;
     colors.green = 0.9 * colors.green;
   }
   if (x == "blue") {
-    black += 0.5 * 0.1 * blue;
-    blue = 0.9 * blue;
+    colors.black += 0.5 * 0.1 * colors.blue;
+    colors.blue = 0.9 * colors.blue;
   }
   if (x == "yellow") {
-    black += 5 * 0.1 * yellow;
-    yellow = 0.9 * yellow;
+    colors.black += 5 * 0.1 * colors.yellow;
+    colors.yellow = 0.9 * colors.yellow;
   }
   if (x == "cyan") {
-    black += 250 * 0.1 * cyan;
+    colors.black += 250 * 0.1 * cyan;
     cyan = 0.9 * cyan;
   }
   if (x == "magenta") {
-    black += 25 * 0.1 * magenta; //TODO BALANCE THIS MAYBE??
+    colors.black += 25 * 0.1 * magenta; //TODO BALANCE THIS MAYBE??
     magenta = 0.9 * magenta;
   }
 } //todo balance this for sure actually this sucks
@@ -2801,8 +2814,8 @@ function pour(x) {
 var blackboost = 0; // doesnt need to be saved its ok dw
 
 function calcblack() {
-  if (black != 0) {
-    blackboost = Math.pow(black, 0.2) * 10; // ok revised it so comment below isnt as true anymore bt this still sucks
+  if (colors.black != 0) {
+    blackboost = Math.pow(colors.black, 0.2) * 10; // ok revised it so comment below isnt as true anymore bt this still sucks
     //TODO i dont know how to balance this, this is so bad it makes me cry
     document.getElementById("blackboost").innerHTML =
       formatNumber(Math.round(blackboost * 100) / 100) + "%";
@@ -3063,9 +3076,9 @@ window.addEventListener("focus", function () {
   if (offlineTime <= 60000) {
     colors.red += debugrednumber * (offlineTime / 1000);
     colors.green += debuggreennumber * (offlineTime / 1000);
-    blue += debugbluenumber * (offlineTime / 1000);
+    colors.blue += debugbluenumber * (offlineTime / 1000);
     magic += debugmagicnumber * (offlineTime / 1000);
-    yellow += yellowGAIN * 50 * (offlineTime / 1000);
+    colors.yellow += yellowGAIN * 50 * (offlineTime / 1000);
   }
 });
 
@@ -3308,7 +3321,7 @@ function checkAchievement() {
   if (achievement.bluePerSec1000 === false && debugbluenumber >= 1000) {
     achievementCall("bluePerSec1000", 13, "#100F22", "#0B1EED");
   }
-  if (achievement.have1e7blue === false && blue >= 10000000) {
+  if (achievement.have1e7blue === false && colors.blue >= 10000000) {
     achievementCall("have1e7blue", 14, "#100F22", "#0B1EED");
   }
   if (
@@ -3322,14 +3335,14 @@ function checkAchievement() {
   if (achievement.bluePerSec1e17 === false && debugbluenumber >= 1e17) {
     achievementCall("bluePerSec1e17", 16, "#100F22", "#0B1EED");
   }
-  if (achievement.have1e22blue === false && blue >= 1e22) {
+  if (achievement.have1e22blue === false && colors.blue >= 1e22) {
     achievementCall("have1e22blue", 17, "#100F22", "#0B1EED");
   }
   //yellow
-  if (achievement.yellow1 === false && yellow >= 1) {
+  if (achievement.yellow1 === false && colors.yellow >= 1) {
     achievementCall("yellow1", 18, "#222310", "#FFFF00");
   }
-  if (achievement.yellow100 === false && yellow >= 100) {
+  if (achievement.yellow100 === false && colors.yellow >= 100) {
     achievementCall("yellow100", 19, "#222310", "#FFFF00");
   }
   if (achievement.triggertaskmastery === false && taskMasteryTrigger === true) {
@@ -3361,7 +3374,7 @@ function checkAchievement() {
     document.getElementById("yellow1spell").style.backgroundImage =
       "url('images/spells/yellow_spell.webp')";
   }
-  if (achievement.have1e7yellow === false && yellow >= 1e7) {
+  if (achievement.have1e7yellow === false && colors.yellow >= 1e7) {
     achievementCall("have1e7yellow", 23, "#222310", "#FFFF00");
   }
   //cyan
@@ -3533,7 +3546,7 @@ function spell(spelltype) {
     if (document.getElementById("yellow1shell").style.background === "") {
       if (achievement.yellowAllUpgrades10 === true) {
         let tribute = (document.getElementById("magicslider").value / 100) * magic;
-        yellow += (yellowGAIN * 50 * tribute) / 1000;
+        colors.yellow += (yellowGAIN * 50 * tribute) / 1000;
         magic -= tribute;
         spellCoolDown("#yellow1shell", 20000);
       }
@@ -3883,65 +3896,70 @@ var bluenanometerwavecost = 100000;
 
 //2: blue buy functions
 function buybluefilter() {
-  if (blue >= bluefiltercost) {
+  if (colors.blue >= bluefiltercost) {
     bluefilter++;
-    blue -= bluefiltercost;
+    colors.blue -= bluefiltercost;
     bluefiltercost = Math.floor(
       (10 * Math.pow(1.1, bluefilter)) / (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(colors.blue));
     document.getElementById("bluefiltercount").innerHTML = bluefilter;
     document.getElementById("bluefiltercost").innerHTML = formatNumber(bluefiltercost);
   }
 }
 
 function buybluepointer() {
-  if (blue >= bluepointercost) {
+  if (colors.blue >= bluepointercost) {
     bluepointer++;
-    blue -= bluepointercost;
+    colors.blue -= bluepointercost;
     bluepointercost = Math.floor(
       (100 * Math.pow(1.1, bluepointer)) / (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(colors.blue));
     document.getElementById("bluepointercount").innerHTML = bluepointer;
     document.getElementById("bluepointercost").innerHTML = formatNumber(bluepointercost);
   }
 }
 
 function buybigbluefilter() {
-  if (blue >= bigbluefiltercost) {
+  if (colors.blue >= bigbluefiltercost) {
     bigbluefilter++;
-    blue -= bigbluefiltercost;
+    colors.blue -= bigbluefiltercost;
     bigbluefiltercost = Math.floor(
       (1000 * Math.pow(1.1, bigbluefilter)) / (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(colors.blue));
     document.getElementById("bigbluefiltercount").innerHTML = bigbluefilter;
     document.getElementById("bigbluefiltercost").innerHTML = formatNumber(bigbluefiltercost);
   }
 }
 
 function buybigbluepointer() {
-  if (blue >= bigbluepointercost) {
+  if (colors.blue >= bigbluepointercost) {
     bigbluepointer++;
-    blue -= bigbluepointercost;
+    colors.blue -= bigbluepointercost;
     bigbluepointercost = Math.floor(
       (10000 * Math.pow(1.1, bigbluepointer)) / (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(colors.blue));
     document.getElementById("bigbluepointercount").innerHTML = bigbluepointer;
     document.getElementById("bigbluepointercost").innerHTML = formatNumber(bigbluepointercost);
   }
 }
 
 function buybluenanometerwave() {
-  if (blue >= bluenanometerwavecost) {
+  if (colors.blue >= bluenanometerwavecost) {
     bluenanometerwave++;
-    blue -= bluenanometerwavecost;
+    colors.blue -= bluenanometerwavecost;
     bluenanometerwavecost = Math.floor(
       (100000 * Math.pow(1.1, bluenanometerwave)) / (1 + 0.1 * governmentfundingcount)
     );
-    document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
+    document.getElementById("bluecount").innerHTML =
+      "blue: " + formatNumber(Math.floor(colors.blue));
     document.getElementById("bluenanometerwavecount").innerHTML = bluenanometerwave;
     document.getElementById("bluenanometerwavecost").innerHTML =
       formatNumber(bluenanometerwavecost);
@@ -3949,30 +3967,30 @@ function buybluenanometerwave() {
 }
 
 function buyblueupgrade1() {
-  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
-  if (blue >= 150000 && blueupgrade1 === 0) {
+  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(colors.blue));
+  if (colors.blue >= 150000 && blueupgrade1 === 0) {
     blueupgrade1 = 1;
-    blue = blue - 150000;
+    colors.blue = colors.blue - 150000;
     document.getElementById("blueupgrade1cost").innerHTML = "bought";
     //document.getElementById("blueupgrade1").style.border = "outset";
   }
 }
 
 function buyblueupgrade2() {
-  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
-  if (blue >= 250000 && blueupgrade2 === 0) {
+  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(colors.blue));
+  if (colors.blue >= 250000 && blueupgrade2 === 0) {
     blueupgrade2 = 1;
-    blue = blue - 250000;
+    colors.blue = colors.blue - 250000;
     document.getElementById("blueupgrade2cost").innerHTML = "bought";
     //document.getElementById("blueupgrade2").style.border = "outset";
   }
 }
 
 function buyblueupgrade3() {
-  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
-  if (blue >= 250000 && blueupgrade3 === 0) {
+  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(colors.blue));
+  if (colors.blue >= 250000 && blueupgrade3 === 0) {
     blueupgrade3 = 1;
-    blue = blue - 250000;
+    colors.blue = colors.blue - 250000;
     document.getElementById("blueupgrade3cost").innerHTML = "bought";
     //document.getElementById("blueupgrade3").style.border = "outset";
   }
@@ -3981,8 +3999,8 @@ function buyblueupgrade3() {
 //3: blue calculation functions
 function calcblue(number) {
   debugbluenumber = number / 2;
-  blue = blue + number / 200;
-  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(blue));
+  colors.blue = colors.blue + number / 200;
+  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(colors.blue));
 }
 
 //YELLOW
@@ -4029,10 +4047,10 @@ var yellowGAIN = 0;
 
 //2: yellow buy functions
 function buygovernmentfunding() {
-  if (yellow >= governmentfundingprice) {
-    yellow -= governmentfundingprice;
+  if (colors.yellow >= governmentfundingprice) {
+    colors.yellow -= governmentfundingprice;
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     governmentfundingcount++;
     governmentfundingprice = Math.round(governmentfundingprice * 1.35);
     document.getElementById("governmentfundingprice").innerHTML = formatNumber(
@@ -4104,12 +4122,12 @@ function buygovernmentfunding() {
 }
 
 function buylargerprisms() {
-  if (yellow >= largerprismsprice) {
-    yellow -= largerprismsprice;
+  if (colors.yellow >= largerprismsprice) {
+    colors.yellow -= largerprismsprice;
     largerprismscount++;
     largerprismsprice = Math.round(largerprismsprice * 1.85);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("largerprismsprice").innerHTML = formatNumber(
       Math.floor(largerprismsprice)
     );
@@ -4117,12 +4135,12 @@ function buylargerprisms() {
 }
 
 function buycolorharmony() {
-  if (yellow >= colorharmonyprice) {
-    yellow -= colorharmonyprice;
+  if (colors.yellow >= colorharmonyprice) {
+    colors.yellow -= colorharmonyprice;
     colorharmonycount++;
     colorharmonyprice = Math.round(colorharmonyprice * 1.43);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("colorharmonyprice").innerHTML = formatNumber(
       Math.floor(colorharmonyprice)
     );
@@ -4130,12 +4148,12 @@ function buycolorharmony() {
 }
 
 function buystreamlinedtasks() {
-  if (yellow >= streamlinedtasksprice) {
-    yellow -= streamlinedtasksprice;
+  if (colors.yellow >= streamlinedtasksprice) {
+    colors.yellow -= streamlinedtasksprice;
     streamlinedtaskscount++;
     streamlinedtasksprice = Math.round(streamlinedtasksprice * 1.32);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("streamlinedtasksprice").innerHTML = formatNumber(
       Math.floor(streamlinedtasksprice)
     );
@@ -4155,12 +4173,12 @@ function buystreamlinedtasks() {
 }
 
 function buyyellowsynergy() {
-  if (yellow >= yellowsynergyprice) {
-    yellow -= yellowsynergyprice;
+  if (colors.yellow >= yellowsynergyprice) {
+    colors.yellow -= yellowsynergyprice;
     yellowsynergycount++;
     yellowsynergyprice = Math.round(yellowsynergyprice * 1.61);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("yellowsynergyprice").innerHTML = formatNumber(
       Math.floor(yellowsynergyprice)
     );
@@ -4172,12 +4190,12 @@ function buyyellowsynergy() {
 }
 
 function buyredoverflow() {
-  if (yellow >= redoverflowprice) {
-    yellow -= redoverflowprice;
+  if (colors.yellow >= redoverflowprice) {
+    colors.yellow -= redoverflowprice;
     redoverflowcount++;
     redoverflowprice = Math.round(redoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("redoverflowprice").innerHTML = formatNumber(
       Math.floor(redoverflowprice)
     );
@@ -4185,12 +4203,12 @@ function buyredoverflow() {
 }
 
 function buygreenoverflow() {
-  if (yellow >= greenoverflowprice) {
-    yellow -= greenoverflowprice;
+  if (colors.yellow >= greenoverflowprice) {
+    colors.yellow -= greenoverflowprice;
     greenoverflowcount++;
     greenoverflowprice = Math.round(greenoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("greenoverflowprice").innerHTML = formatNumber(
       Math.floor(greenoverflowprice)
     );
@@ -4198,12 +4216,12 @@ function buygreenoverflow() {
 }
 
 function buyblueoverflow() {
-  if (yellow >= blueoverflowprice) {
-    yellow -= blueoverflowprice;
+  if (colors.yellow >= blueoverflowprice) {
+    colors.yellow -= blueoverflowprice;
     blueoverflowcount++;
     blueoverflowprice = Math.round(blueoverflowprice * 1.8);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("blueoverflowprice").innerHTML = formatNumber(
       Math.floor(blueoverflowprice)
     );
@@ -4211,12 +4229,12 @@ function buyblueoverflow() {
 }
 
 function buytricolorboost() {
-  if (yellow >= tricolorboostprice) {
-    yellow -= tricolorboostprice;
+  if (colors.yellow >= tricolorboostprice) {
+    colors.yellow -= tricolorboostprice;
     tricolorboostcount++;
     tricolorboostprice = Math.round(tricolorboostprice * 1.68);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("tricolorboostprice").innerHTML = formatNumber(
       Math.floor(tricolorboostprice)
     );
@@ -4224,12 +4242,12 @@ function buytricolorboost() {
 }
 
 function buytaskmastery() {
-  if (yellow >= taskmasteryprice) {
-    yellow -= taskmasteryprice;
+  if (colors.yellow >= taskmasteryprice) {
+    colors.yellow -= taskmasteryprice;
     taskmasterycount++;
     taskmasteryprice = Math.round(taskmasteryprice * 1.44);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("taskmasteryprice").innerHTML = formatNumber(
       Math.floor(taskmasteryprice)
     );
@@ -4237,12 +4255,12 @@ function buytaskmastery() {
 }
 
 function buygoldenmultiplier() {
-  if (yellow >= goldenmultiplierprice) {
-    yellow -= goldenmultiplierprice;
+  if (colors.yellow >= goldenmultiplierprice) {
+    colors.yellow -= goldenmultiplierprice;
     goldenmultipliercount++;
     goldenmultiplierprice = Math.round(goldenmultiplierprice * 1.91);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("goldenmultiplierprice").innerHTML = formatNumber(
       Math.floor(goldenmultiplierprice)
     );
@@ -4254,18 +4272,23 @@ function buygoldenmultiplier() {
 }
 
 function buycolorsyphon() {
-  if (yellow >= colorsyphonprice && colors.red >= 1e15 && colors.green >= 1e15 && blue >= 1e15) {
-    yellow -= colorsyphonprice;
+  if (
+    colors.yellow >= colorsyphonprice &&
+    colors.red >= 1e15 &&
+    colors.green >= 1e15 &&
+    colors.blue >= 1e15
+  ) {
+    colors.yellow -= colorsyphonprice;
     colorsyphoncount++;
     colorsyphonprice = 1200 + 100 * colorsyphoncount;
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("colorsyphonprice").innerHTML = formatNumber(
       Math.floor(colorsyphonprice)
     );
     cyan += 10;
     colors.red -= 1e15;
-    blue -= 1e15;
+    colors.blue -= 1e15;
     colors.green -= 1e15;
     document.getElementById("cyancount").innerHTML = "cyan: " + cyan;
     document.getElementById("tabcyan").style.display = "block";
@@ -4273,12 +4296,12 @@ function buycolorsyphon() {
 }
 
 function buyfocussedpointers() {
-  if (yellow >= focussedpointersprice) {
-    yellow -= focussedpointersprice;
+  if (colors.yellow >= focussedpointersprice) {
+    colors.yellow -= focussedpointersprice;
     focussedpointerscount++;
     focussedpointersprice = Math.round(focussedpointersprice * 1.53);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("focussedpointersprice").innerHTML = formatNumber(
       Math.floor(focussedpointersprice)
     );
@@ -4286,12 +4309,12 @@ function buyfocussedpointers() {
 }
 
 function buyfinerfilters() {
-  if (yellow >= finerfiltersprice) {
-    yellow -= finerfiltersprice;
+  if (colors.yellow >= finerfiltersprice) {
+    colors.yellow -= finerfiltersprice;
     finerfilterscount++;
     finerfiltersprice = Math.round(finerfiltersprice * 1.43);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("finerfiltersprice").innerHTML = formatNumber(
       Math.floor(finerfiltersprice)
     );
@@ -4299,12 +4322,12 @@ function buyfinerfilters() {
 }
 
 function buymicrometerwave() {
-  if (yellow >= micrometerwaveprice) {
-    yellow -= micrometerwaveprice;
+  if (colors.yellow >= micrometerwaveprice) {
+    colors.yellow -= micrometerwaveprice;
     micrometerwavecount++;
     micrometerwaveprice = Math.round(micrometerwaveprice * 1.51);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("micrometerwaveprice").innerHTML = formatNumber(
       Math.floor(micrometerwaveprice)
     );
@@ -4312,12 +4335,12 @@ function buymicrometerwave() {
 }
 
 function buystrongersynergy() {
-  if (yellow >= strongersynergyprice) {
-    yellow -= strongersynergyprice;
+  if (colors.yellow >= strongersynergyprice) {
+    colors.yellow -= strongersynergyprice;
     strongersynergycount++;
     strongersynergyprice = Math.round(strongersynergyprice * 1.4);
     document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(yellow));
+      "yellow: " + formatNumber(Math.floor(colors.yellow));
     document.getElementById("strongersynergyprice").innerHTML = formatNumber(
       Math.floor(strongersynergyprice)
     );
