@@ -1,3 +1,7 @@
+function applyGovernmentFunding(x) {
+  return x / (1 + 0.1 * governmentfundingcount);
+}
+
 window.colors = {
   red: 10,
   green: 0,
@@ -74,11 +78,22 @@ class BasicColorUpgrade {
   }
   updatePrice() {
     this.price = Math.floor(
-      eval(this.growth.replaceAll("x", this.count)) / (1 + 0.1 * governmentfundingcount)
+      applyGovernmentFunding(eval(this.growth.replaceAll("x", this.count)))
       /*example growth formula:
         (10 * Math.pow(1.1, x));*/
     );
     this.priceSpan.innerHTML = this.price;
+  }
+  static updateAllPrices() {
+    for (let i in BasicColorUpgrade.instances) {
+      let inst = BasicColorUpgrade.instances[i];
+      inst.price = Math.floor(
+        applyGovernmentFunding(eval(inst.growth.replaceAll("x", inst.count)))
+        /*example growth formula:
+        (10 * Math.pow(1.1, x));*/
+      );
+      inst.priceSpan.innerHTML = inst.price;
+    }
   }
 
   //method for buying an upgrade
@@ -94,7 +109,7 @@ class BasicColorUpgrade {
       colors[this.color] -= this.price;
 
       this.price = Math.floor(
-        eval(this.growth.replaceAll("x", this.count)) / (1 + 0.1 * governmentfundingcount)
+        applyGovernmentFunding(eval(this.growth.replaceAll("x", this.count)))
         /*example growth formula:
         (10 * Math.pow(1.1, x));*/
       );
@@ -107,6 +122,8 @@ class BasicColorUpgrade {
   static saveUpgrades() {
     let saveObj = {};
     for (let i in BasicColorUpgrade.instances) {
+      BasicColorUpgrade.instances[i].updatePrice();
+
       saveObj[i] = {
         price: BasicColorUpgrade.instances[i].price,
         count: BasicColorUpgrade.instances[i].count,
@@ -212,27 +229,50 @@ let achievement = {
 };
 
 //red
-let REDfilter = new BasicColorUpgrade(
+let redFilter = new BasicColorUpgrade(
   "red",
-  "REDfilter",
+  "redFilter",
   10,
   "(10 * Math.pow(1.1, x))",
   document.getElementById("redfiltercount"),
   document.getElementById("redfiltercost")
 );
-var redfilter = 0;
-var redpointer = 0;
-var bigredfilter = 0;
-var bigredpointer = 0;
-var rednanometerwave = 0;
+let redPointer = new BasicColorUpgrade(
+  "red",
+  "redPointer",
+  100,
+  "100*Math.pow(1.1,x)",
+  document.getElementById("redpointercount"),
+  document.getElementById("redpointercost")
+);
+let bigRedFilter = new BasicColorUpgrade(
+  "red",
+  "bigRedFilter",
+  1000,
+  "1000*Math.pow(1.1, x)",
+  document.getElementById("bigredfiltercount"),
+  document.getElementById("bigredfiltercost")
+);
+let bigRedPointer = new BasicColorUpgrade(
+  "red",
+  "bigRedPointer",
+  10000,
+  "10000*Math.pow(1.1, x)",
+  document.getElementById("bigredpointercount"),
+  document.getElementById("bigredpointercost")
+);
+let redNanometerWave = new BasicColorUpgrade(
+  "red",
+  "redNanometerWave",
+  100000,
+  "100000*Math.pow(1.1, x)",
+  document.getElementById("rednanometerwavecount"),
+  document.getElementById("rednanometerwavecost")
+);
+
 var redupgrade1 = 0;
 var redupgrade2 = 0;
 var redupgrade3 = 0;
-var redfiltercost = 10;
-var redpointercost = 100;
-var bigredfiltercost = 1000;
-var bigredpointercost = 10000;
-var rednanometerwavecost = 100000;
 
 //green
 var greenfilter = 0;
@@ -434,11 +474,6 @@ function save() {
     greenscrollcount: greenscrollcount,
     bluescrollcount: bluescrollcount,
     magentaspellunlock: magentaspellunlock,
-    //redfilter: redfilter,
-    redpointer: redpointer,
-    bigredfilter: bigredfilter,
-    bigredpointer: bigredpointer,
-    rednanometerwave: rednanometerwave,
     redupgrade1: redupgrade1,
     redupgrade2: redupgrade2,
     redupgrade3: redupgrade3,
@@ -471,11 +506,6 @@ function save() {
     blackunlock: blackunlock,
     governmentfundingcount: governmentfundingcount,
     governmentfundingprice: governmentfundingprice,
-    redfiltercost: redfiltercost,
-    redpointercost: redpointercost,
-    bigredfiltercost: bigredfiltercost,
-    bigredpointercost: bigredpointercost,
-    rednanometerwavecost: rednanometerwavecost,
     greenfiltercost: greenfiltercost,
     greenpointercost: greenpointercost,
     biggreenfiltercost: biggreenfiltercost,
@@ -582,8 +612,6 @@ function save() {
 
 //MAIN LOAD FUNCTION THAT RUNS ONE SCRIPTS START
 function load() {
-  BasicColorUpgrade.loadUpgrades();
-
   var savegame2 = JSON.parse(localStorage.getItem("save2"));
   if (savegame2 != null) {
     if (typeof savegame2.dev !== "undefined") {
@@ -651,23 +679,10 @@ function load() {
     }
     //red
     if (typeof savegame.colors !== "undefined") colors = savegame.colors;
-    //if (typeof savegame.redfilter !== "undefined") redfilter = savegame.redfilter;
-    if (typeof savegame.redpointer !== "undefined") redpointer = savegame.redpointer;
-    if (typeof savegame.bigredfilter !== "undefined") bigredfilter = savegame.bigredfilter;
-    if (typeof savegame.bigredpointer !== "undefined") bigredpointer = savegame.bigredpointer;
-    if (typeof savegame.rednanometerwave !== "undefined")
-      rednanometerwave = savegame.rednanometerwave;
+
     if (typeof savegame.redupgrade1 !== "undefined") redupgrade1 = savegame.redupgrade1;
     if (typeof savegame.redupgrade2 !== "undefined") redupgrade2 = savegame.redupgrade2;
     if (typeof savegame.redupgrade3 !== "undefined") redupgrade3 = savegame.redupgrade3;
-    if (typeof savegame.redfiltercost !== "undefined") redfiltercost = savegame.redfiltercost;
-    if (typeof savegame.redpointercost !== "undefined") redpointercost = savegame.redpointercost;
-    if (typeof savegame.bigredfiltercost !== "undefined")
-      bigredfiltercost = savegame.bigredfiltercost;
-    if (typeof savegame.bigredpointercost !== "undefined")
-      bigredpointercost = savegame.bigredpointercost;
-    if (typeof savegame.rednanometerwavecost !== "undefined")
-      rednanometerwavecost = savegame.rednanometerwavecost;
 
     //green
     if (typeof savegame.greenfilter !== "undefined") greenfilter = savegame.greenfilter;
@@ -1084,45 +1099,13 @@ function load() {
       "blue: " + formatNumber(Math.floor(colors.blue));
     document.getElementById("yellowcount").innerHTML =
       "yellow: " + formatNumber(Math.floor(colors.yellow));
-    var nextredCost1 = Math.floor(
-      (10 * Math.pow(1.1, REDfilter.count)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextredCost2 = Math.floor(
-      (100 * Math.pow(1.1, redpointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextredCost3 = Math.floor(
-      (1000 * Math.pow(1.1, bigredfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextredCost4 = Math.floor(
-      (10000 * Math.pow(1.1, bigredpointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextredCost5 = Math.floor(
-      (100000 * Math.pow(1.1, rednanometerwave)) / (1 + 0.1 * governmentfundingcount)
-    );
-    document.getElementById("redfiltercost").innerHTML = formatNumber(nextredCost1);
-    document.getElementById("redfiltercount").innerHTML = REDfilter.count;
-    document.getElementById("redpointercost").innerHTML = formatNumber(nextredCost2);
-    document.getElementById("redpointercount").innerHTML = redpointer;
-    document.getElementById("bigredfiltercount").innerHTML = bigredfilter;
-    document.getElementById("bigredfiltercost").innerHTML = formatNumber(nextredCost3);
-    document.getElementById("bigredpointercount").innerHTML = bigredpointer;
-    document.getElementById("bigredpointercost").innerHTML = formatNumber(nextredCost4);
-    document.getElementById("rednanometerwavecost").innerHTML = formatNumber(nextredCost5);
-    document.getElementById("rednanometerwavecount").innerHTML = rednanometerwave;
-    var nextgreenCost1 = Math.floor(
-      (10 * Math.pow(1.1, greenfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextgreenCost2 = Math.floor(
-      (100 * Math.pow(1.1, greenpointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextgreenCost3 = Math.floor(
-      (1000 * Math.pow(1.1, biggreenfilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextgreenCost4 = Math.floor(
-      (10000 * Math.pow(1.1, biggreenpointer)) / (1 + 0.1 * governmentfundingcount)
-    );
+
+    var nextgreenCost1 = Math.floor(applyGovernmentFunding(10 * Math.pow(1.1, greenfilter)));
+    var nextgreenCost2 = Math.floor(applyGovernmentFunding(100 * Math.pow(1.1, greenpointer)));
+    var nextgreenCost3 = Math.floor(applyGovernmentFunding(1000 * Math.pow(1.1, biggreenfilter)));
+    var nextgreenCost4 = Math.floor(applyGovernmentFunding(10000 * Math.pow(1.1, biggreenpointer)));
     var nextgreenCost5 = Math.floor(
-      (100000 * Math.pow(1.1, greennanometerwave)) / (1 + 0.1 * governmentfundingcount)
+      applyGovernmentFunding(100000 * Math.pow(1.1, greennanometerwave))
     );
 
     document.getElementById("greenfiltercost").innerHTML = formatNumber(nextgreenCost1);
@@ -1135,20 +1118,12 @@ function load() {
     document.getElementById("biggreenpointercost").innerHTML = formatNumber(nextgreenCost4);
     document.getElementById("greennanometerwavecost").innerHTML = formatNumber(nextgreenCost5);
     document.getElementById("greennanometerwavecount").innerHTML = greennanometerwave;
-    var nextblueCost1 = Math.floor(
-      (10 * Math.pow(1.1, bluefilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextblueCost2 = Math.floor(
-      (100 * Math.pow(1.1, bluepointer)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextblueCost3 = Math.floor(
-      (1000 * Math.pow(1.1, bigbluefilter)) / (1 + 0.1 * governmentfundingcount)
-    );
-    var nextblueCost4 = Math.floor(
-      (10000 * Math.pow(1.1, bigbluepointer)) / (1 + 0.1 * governmentfundingcount)
-    );
+    var nextblueCost1 = Math.floor(applyGovernmentFunding(10 * Math.pow(1.1, bluefilter)));
+    var nextblueCost2 = Math.floor(applyGovernmentFunding(100 * Math.pow(1.1, bluepointer)));
+    var nextblueCost3 = Math.floor(applyGovernmentFunding(1000 * Math.pow(1.1, bigbluefilter)));
+    var nextblueCost4 = Math.floor(applyGovernmentFunding(10000 * Math.pow(1.1, bigbluepointer)));
     var nextblueCost5 = Math.floor(
-      (100000 * Math.pow(1.1, bluenanometerwave)) / (1 + 0.1 * governmentfundingcount)
+      applyGovernmentFunding(100000 * Math.pow(1.1, bluenanometerwave))
     );
 
     document.getElementById("bluefiltercost").innerHTML = formatNumber(nextblueCost1);
@@ -1161,6 +1136,9 @@ function load() {
     document.getElementById("bigbluepointercost").innerHTML = formatNumber(nextblueCost4);
     document.getElementById("bluenanometerwavecost").innerHTML = formatNumber(nextblueCost5);
     document.getElementById("bluenanometerwavecount").innerHTML = bluenanometerwave;
+
+    //load upgrades (must come after governmentfunding loading to update properly)
+    BasicColorUpgrade.loadUpgrades();
     console.log("loaded");
     loaded = 1;
   } else {
