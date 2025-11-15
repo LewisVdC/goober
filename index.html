@@ -477,7 +477,8 @@
             <span>red filter: <span id="redfiltercount"></span></span>
           </div>
           <div id="redbuilding1">
-            <button id="redfilter" class="redupgrades" onClick="buyredfilter()">
+            <button id="redfilter" class="redupgrades" onClick="REDfilter.buy(1)">
+              <!--upgrades test-->
               cost:
               <span id="redfiltercost">10</span>
             </button>
@@ -738,182 +739,86 @@
       <div id="yellowbuildings">
         <button class="yellowupgrades" onclick="buygovernmentfunding()" id="yellowupgrade1">
           <strong>government funding</strong>
-          <p class="yellowdescription">divide upgrade cost by /1.1</p>
-          <p class="yellowdescription">cost: <span id="governmentfundingprice">2</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade1amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade1cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade1amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade1cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buycolorharmony()" id="yellowupgrade2">
           <strong>color harmony</strong>
-          <p class="yellowdescription">multiply rgb gain by yellow/10</p>
-          <p class="yellowdescription">cost: <span id="colorharmonyprice">2</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade2amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade2cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade2amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade2cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buylargerprisms()" id="yellowupgrade3">
           <strong>larger prisms</strong>
-          <p class="yellowdescription">multiply rgb gain by +1x</p>
-          <p class="yellowdescription">cost: <span id="largerprismsprice">10</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade3amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade3cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade3amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade3cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buystreamlinedtasks()" id="yellowupgrade4">
           <strong>streamlined tasks</strong>
-          <p class="yellowdescription">divide task goal by /10</p>
-          <p class="yellowdescription">cost: <span id="streamlinedtasksprice">5</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade4amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade4cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade4amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade4cost"></span></p>
         </button>
         <br />
         <button class="yellowupgrades" onclick="buyyellowsynergy()" id="yellowupgrade5">
           <strong>yellow synergy</strong>
-          <p class="yellowdescription">boost yellow output by 25%</p>
-          <p class="yellowdescription">cost: <span id="yellowsynergyprice">12</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade5amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade5cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade5amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade5cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buyredoverflow()" id="yellowupgrade6">
           <strong>red overflow</strong>
-          <p class="yellowdescription">gain 1 yellow/s per 1e12 red/s</p>
-          <p class="yellowdescription">cost: <span id="redoverflowprice">100</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade6amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade6cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade6amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade6cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buygreenoverflow()" id="yellowupgrade7">
           <strong>green overflow</strong>
-          <p class="yellowdescription">gain 1 yellow/s per 1e12 green/s</p>
-          <p class="yellowdescription">cost: <span id="greenoverflowprice">100</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade7amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade7cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade7amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade7cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buyblueoverflow()" id="yellowupgrade8">
           <strong>blue overflow</strong>
-          <p class="yellowdescription">gain 1 yellow/s per 1e12 blue/s</p>
-          <p class="yellowdescription">cost: <span id="blueoverflowprice">100</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade8amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade8cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade8amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade8cost"></span></p>
         </button>
         <br />
         <button class="yellowupgrades" onclick="buytricolorboost()" id="yellowupgrade9">
           <strong>tri-color boost</strong>
-          <p class="yellowdescription">+50% rgb gain per 1000 yellow</p>
-          <p class="yellowdescription">cost: <span id="tricolorboostprice">500</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade9amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade9cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade9amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade9cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buytaskmastery()" id="yellowupgrade10">
           <strong>task mastery</strong>
-          <p class="yellowdescription">get a small chance for 10x task reward</p>
-          <p class="yellowdescription">cost: <span id="taskmasteryprice">20</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade10amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade10cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade10amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade10cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buygoldenmultiplier()" id="yellowupgrade11">
           <strong>golden multiplier</strong>
-          <p class="yellowdescription">boost yellow gain by tasks completed</p>
-          <p class="yellowdescription">cost: <span id="goldenmultiplierprice">35</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade11amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade11cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade11amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade11cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buystrongersynergy()" id="yellowupgrade12">
           <strong>stronger synergy</strong>
-          <p class="yellowdescription">make weak synergy 1.5x stronger</p>
-          <p class="yellowdescription">cost: <span id="strongersynergyprice">100</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade12amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade12cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade12amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade12cost"></span></p>
         </button>
         <br />
         <button class="yellowupgrades" onclick="buyfocussedpointers()" id="yellowupgrade13">
           <strong>focused pointers</strong>
-          <p class="yellowdescription">boost pointers by 2x</p>
-          <p class="yellowdescription">cost: <span id="focussedpointersprice">30</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade13amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade13cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade13amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade13cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buyfinerfilters()" id="yellowupgrade14">
           <strong>finer filters</strong>
-          <p class="yellowdescription">boost filters by 2x</p>
-          <p class="yellowdescription">cost: <span id="finerfiltersprice">30</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade14amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade14cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade14amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade14cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buymicrometerwave()" id="yellowupgrade15">
           <strong>micrometer wave</strong>
-          <p class="yellowdescription">boost nanometer wave by 2x</p>
-          <p class="yellowdescription">cost: <span id="micrometerwaveprice">60</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade15amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade15cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade15amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade15cost"></span></p>
         </button>
         <button class="yellowupgrades" onclick="buycolorsyphon()" id="yellowupgrade16">
           <strong>color syphon</strong>
-          <p class="yellowdescription">mix 1e15 of each color to create 10 cyan</p>
-          <p class="yellowdescription">cost: <span id="colorsyphonprice">1200</span></p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade16amount"></span>
-          </p>
-          <p class="yellowdescription2">
-            <span id="yellowupgrade16cost"></span>
-          </p>
+          <p class="yellowdescription2">level: <span id="yellowupgrade16amount"></span></p>
+          <p class="yellowdescription2">cost: <span id="yellowupgrade16cost"></span></p>
         </button>
         <br />
       </div>
@@ -1272,6 +1177,7 @@
     </div>
     <script src="JavaScript/Variables.js"></script>
     <script type="text/javascript" src="JavaScript/main.js"></script>
+    <script src="JavaScript/Formulas.js"></script>
     <script src="JavaScript/Buying.js"></script>
     <script src="JavaScript/Achievements.js"></script>
     <script src="JavaScript/Dialogue.js"></script>

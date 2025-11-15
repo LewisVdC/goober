@@ -747,11 +747,6 @@ div#confusion {
   font-size: 1em;
   background: linear-gradient(45deg, rgb(101 84 0), yellow, rgb(168, 140, 0));
 }
-.yellowdescription {
-  margin-top: 0;
-  margin-bottom: 0;
-  display: none;
-}
 .yellowdescription2 {
   margin-top: 0;
   margin-bottom: 0;
@@ -997,7 +992,7 @@ span#blackholeintrocost {
   display: flex;
   flex-direction: column;
 }
-span#blackholeintr .yellowtext {
+.yellowtext {
   color: rgb(168, 140, 0);
   text-shadow: rgb(148, 148, 0) 0px 0px 10px, rgb(125, 125, 0) 0px 0px 10px;
 }
