@@ -2053,8 +2053,8 @@ function calcblack() {
 function updateyellow() {
   //bazinga
   //1
-  document.getElementById("yellowupgrade1amount").innerHTML = governmentfundingcount;
-  document.getElementById("yellowupgrade1cost").innerHTML = formatNumber(governmentfundingprice);
+  document.getElementById("yellowupgrade1amount").innerHTML = governmentFunding.count;
+  document.getElementById("yellowupgrade1cost").innerHTML = formatNumber(governmentFunding.price);
   //2
   document.getElementById("yellowupgrade2amount").innerHTML = colorharmonycount;
   document.getElementById("yellowupgrade2cost").innerHTML = formatNumber(colorharmonyprice);
@@ -2411,7 +2411,7 @@ function checkAchievement() {
   }
   if (
     achievement.yellowAllUpgrades10 === false &&
-    governmentfundingcount >= 10 &&
+    governmentFunding.count >= 10 &&
     largerprismscount >= 10 &&
     colorharmonycount >= 10 &&
     streamlinedtaskscount >= 10 &&
@@ -2732,17 +2732,6 @@ function calcblue(number) {
 //var yellow = 0;
 
 //2: yellow buy functions
-function buygovernmentfunding() {
-  if (colors.yellow >= governmentfundingprice) {
-    colors.yellow -= governmentfundingprice;
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(colors.yellow));
-    governmentfundingcount++;
-    governmentfundingprice = Math.round(governmentfundingprice * 1.35);
-
-    BasicColorUpgrade.updateAllPrices();
-  }
-}
 
 function buylargerprisms() {
   if (colors.yellow >= largerprismsprice) {

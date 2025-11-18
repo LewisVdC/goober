@@ -1,5 +1,7 @@
+let governmentFunding = {};
+
 function applyGovernmentFunding(x) {
-  return x / (1 + 0.1 * governmentfundingcount);
+  return x / (1 + 0.1 * governmentFunding.count);
 }
 
 window.colors = {
@@ -32,6 +34,9 @@ class BasicColorUpgrade {
    * @param {string} growth - An algorithm for the growth of the price, using "x" as # of upgrades bought
    * @param {element} countSpan - The span element where the count of the upgrade is displayed
    * @param {element} priceSpan - The span where the price of the upgrade is displayed
+   * @param {function name(params)} buyFunctionExtra - a function to run on buying (optional, else put null)
+    
+   }}
    */
 
   constructor(
@@ -41,7 +46,8 @@ class BasicColorUpgrade {
     growth,
     //buyButton,
     countSpan,
-    priceSpan
+    priceSpan,
+    buyFunctionExtra
   ) {
     this.color = color;
     this.upgradeName = upgradeName;
@@ -52,6 +58,7 @@ class BasicColorUpgrade {
     this.priceSpan = priceSpan;
     this.count = 0;
     this.price = startPrice;
+    this.buyFunctionExtra = buyFunctionExtra;
 
     BasicColorUpgrade.instances[this.upgradeName] = this;
   }
@@ -117,6 +124,10 @@ class BasicColorUpgrade {
         (10 * Math.pow(1.1, x));*/
       );
       this.updatePrice();
+
+      if (!this.buyFunctionExtra) return;
+
+      this.buyFunctionExtra();
       return true;
     }
   }
@@ -253,6 +264,149 @@ class OneTimeColorUpgrade {
       let obj = OneTimeColorUpgrade.instances[i];
       obj.count = savedUpgrade.count;
 
+      obj.updatePrice();
+    }
+  }
+
+  //end of class
+}
+
+/**
+ * Represents an upgrade
+ * @class
+ */
+class BasicYellowUpgrade {
+  static instances = {};
+  /**
+   * Create a new upgrade object with all management options
+   * @param {string} color - The color of the upgrade
+   * @param {string} upgradeName - Name of the upgrade
+   * @param {number} startPrice - The base price of the upgrade
+   * @param {string} growth - An algorithm for the growth of the price, using "x" as # of upgrades bought
+   * @param {element} countSpan - The span element where the count of the upgrade is displayed
+   * @param {element} priceSpan - The span where the price of the upgrade is displayed
+   * @param {function name(params)} buyFunctionExtra - a function to run on buying (optional, else put null)
+    
+   }}
+   */
+
+  constructor(
+    upgradeName,
+    startPrice,
+    growth,
+    //buyButton,
+    countSpan,
+    priceSpan,
+    buyFunctionExtra
+  ) {
+    this.color = "yellow";
+    this.upgradeName = upgradeName;
+    this.startPrice = startPrice;
+    this.growth = growth;
+    //this.buyButton = buyButton;
+    this.countSpan = countSpan;
+    this.priceSpan = priceSpan;
+    this.count = 0;
+    this.price = startPrice;
+    this.buyFunctionExtra = buyFunctionExtra;
+
+    BasicYellowUpgrade.instances[this.upgradeName] = this;
+  }
+
+  //method for creating empty upgrade
+  static createEmpty(name) {
+    return new BasicYellowUpgrade("", name, 0, "", null, null, null);
+  }
+
+  //methods for updating upgrade's displays
+  updateCount() {
+    if (!this.countSpan) return;
+    this.countSpan.innerHTML = this.count;
+  }
+  updatePrice() {
+    this.price = Math.floor(
+      eval(this.growth.replaceAll("x", this.count))
+      /*example growth formula:
+        (10 * Math.pow(1.1, x));*/
+    );
+    if (!this.priceSpan) return;
+    this.priceSpan.innerHTML = this.price;
+  }
+  static updateAllPrices() {
+    for (let i in BasicYellowUpgrade.instances) {
+      let inst = BasicYellowUpgrade.instances[i];
+      inst.price = Math.floor(
+        eval(inst.growth.replaceAll("x", inst.count))
+        /*example growth formula:
+        (10 * Math.pow(1.1, x));*/
+      );
+      if (!inst.priceSpan) continue;
+      inst.priceSpan.innerHTML = inst.price;
+    }
+  }
+
+  //method for buying an upgrade
+  buy(count) {
+    for (let i = 0; i < count; i++) {
+      if (colors[this.color] < this.price) {
+        return false;
+      }
+      //if you can buy the upgrade, continue
+      this.count++;
+      this.updateCount();
+
+      colors[this.color] -= this.price;
+
+      this.price = Math.floor(
+        applyGovernmentFunding(eval(this.growth.replaceAll("x", this.count)))
+        /*example growth formula:
+        (10 * Math.pow(1.1, x));*/
+      );
+      this.updatePrice();
+
+      if (!this.buyFunctionExtra) return;
+
+      this.buyFunctionExtra();
+      return true;
+    }
+  }
+
+  //methods for saving and loading
+  static saveUpgrades() {
+    let saveObj = {};
+    for (let i in BasicYellowUpgrade.instances) {
+      BasicYellowUpgrade.instances[i].updatePrice();
+
+      saveObj[i] = {
+        price: BasicYellowUpgrade.instances[i].price,
+        count: BasicYellowUpgrade.instances[i].count,
+      };
+    }
+    let savedUpgrades = JSON.stringify(saveObj);
+
+    localStorage.setItem("upgrades3", savedUpgrades);
+  }
+
+  /**
+   * @function
+   * Load upgrades count and price from locastorage into current instances.
+   * Only call after BasicYellowUpgrade instances are created.
+   */
+  static loadUpgrades() {
+    let savedUpgrades = JSON.parse(localStorage.getItem("upgrades3"));
+
+    if (!savedUpgrades) return;
+
+    for (let i in BasicYellowUpgrade.instances) {
+      let savedUpgrade = savedUpgrades[i];
+      //if savedupgrades does not contain the instance, return
+      if (!savedUpgrade) return;
+      //if it does, set the instance's count and price to saved values
+      let obj = BasicYellowUpgrade.instances[i];
+      obj.count = savedUpgrade.count;
+      obj.price = savedUpgrade.price;
+
+      obj.updateCount();
       obj.updatePrice();
     }
   }
@@ -509,9 +663,19 @@ let blueUpgrade3 = new OneTimeColorUpgrade(
 );
 
 //yellow
+governmentFunding = new BasicYellowUpgrade(
+  "governmentFunding",
+  2,
+  "2*Math.pow(1.35,x)",
+  document.getElementById("yellowupgrade1amount"),
+  document.getElementById("yellowupgrade1cost"),
+  function () {
+    BasicColorUpgrade.updateAllPrices();
+  }
+);
 
-var governmentfundingcount = 0;
-var governmentfundingprice = 2;
+/*var governmentfundingcount = 0;
+var governmentfundingprice = 2;*/
 var largerprismsprice = 10;
 var largerprismscount = 0;
 var colorharmonyprice = 4;
@@ -667,6 +831,7 @@ const hex = {
 
 function save() {
   //save the upgrades
+  BasicYellowUpgrade.saveUpgrades();
   BasicColorUpgrade.saveUpgrades();
   OneTimeColorUpgrade.saveUpgrades();
 
@@ -706,8 +871,7 @@ function save() {
     taskBooster: taskBooster,
     whiteunlock: whiteunlock,
     blackunlock: blackunlock,
-    governmentfundingcount: governmentfundingcount,
-    governmentfundingprice: governmentfundingprice,
+
     greenfiltercost: greenfiltercost,
     greenpointercost: greenpointercost,
     biggreenfiltercost: biggreenfiltercost,
@@ -921,11 +1085,6 @@ function load() {
     if (typeof savegame.bluenanometerwavecost !== "undefined")
       bluenanometerwavecost = savegame.bluenanometerwavecost;
     //yellow
-    if (typeof savegame.governmentfundingcount !== "undefined")
-      governmentfundingcount = savegame.governmentfundingcount;
-    if (typeof savegame.governmentfundingprice !== "undefined") {
-      governmentfundingprice = savegame.governmentfundingprice;
-    }
     if (typeof savegame.largerprismscount !== "undefined")
       largerprismscount = savegame.largerprismscount;
     if (typeof savegame.largerprismsprice !== "undefined") {
@@ -1324,6 +1483,7 @@ function load() {
     document.getElementById("bluenanometerwavecount").innerHTML = bluenanometerwave;
 
     //load upgrades (must come after governmentfunding loading to update properly)
+    BasicYellowUpgrade.loadUpgrades();
     BasicColorUpgrade.loadUpgrades();
     OneTimeColorUpgrade.loadUpgrades();
     console.log("loaded");
