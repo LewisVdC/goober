@@ -58,7 +58,7 @@ class BasicColorUpgrade {
 
   //method for creating empty upgrade
   static createEmpty(name) {
-    return new BasicColorUpgrade({}, 0, "", name, 0, "", null, null);
+    return new BasicColorUpgrade("", name, 0, "", null, null);
   }
 
   //method for getting all upgrades of one color
@@ -74,6 +74,7 @@ class BasicColorUpgrade {
 
   //methods for updating upgrade's displays
   updateCount() {
+    if (!this.countSpan) return;
     this.countSpan.innerHTML = this.count;
   }
   updatePrice() {
@@ -82,6 +83,7 @@ class BasicColorUpgrade {
       /*example growth formula:
         (10 * Math.pow(1.1, x));*/
     );
+    if (!this.priceSpan) return;
     this.priceSpan.innerHTML = this.price;
   }
   static updateAllPrices() {
@@ -92,6 +94,7 @@ class BasicColorUpgrade {
         /*example growth formula:
         (10 * Math.pow(1.1, x));*/
       );
+      if (!inst.priceSpan) continue;
       inst.priceSpan.innerHTML = inst.price;
     }
   }
@@ -160,14 +163,102 @@ class BasicColorUpgrade {
 
   //end of class
 }
-let e = new BasicColorUpgrade(
-  "red",
-  "e",
-  10,
-  "(10 * Math.pow(1.1, x))",
-  document.getElementById("redfiltercount"),
-  document.getElementById("redfiltercost")
-);
+
+/**
+ * @class A class for upgrades that can only be bought once
+ */
+class OneTimeColorUpgrade {
+  static instances = {};
+  /**
+   * Create a new upgrade object with all management options
+   * @param {string} color - The color of the upgrade
+   * @param {string} upgradeName - Name of the upgrade
+   * @param {number} startPrice - The base price of the upgrade
+   * @param {element} countSpan - The span element where the count of the upgrade is displayed
+   * @param {element} priceSpan - The span where the price of the upgrade is displayed
+   */
+
+  constructor(color, upgradeName, startPrice, priceSpan) {
+    this.color = color;
+    this.upgradeName = upgradeName;
+    this.price = startPrice;
+    this.priceSpan = priceSpan;
+    this.count = 0;
+
+    OneTimeColorUpgrade.instances[this.upgradeName] = this;
+  }
+
+  //method for creating empty upgrade
+  static createEmpty(name) {
+    return new OneTimeColorUpgrade("", name, 0, null);
+  }
+
+  //method for getting all upgrades of one color
+  static upgradesWithColor(color) {
+    let upgradesList = [];
+    for (let i in OneTimeColorUpgrade.instances) {
+      if (OneTimeColorUpgrade.instances[i].color == color) {
+        upgradesList.push(OneTimeColorUpgrade.instances[i]);
+      }
+    }
+    return upgradesList;
+  }
+
+  updatePrice() {
+    if (!this.priceSpan) return;
+    this.priceSpan.innerHTML = this.count ? "bought" : this.price;
+  }
+
+  //method for buying an upgrade
+  buy() {
+    if (colors[this.color] < this.price || this.count) {
+      return false;
+    }
+    //if you can buy the upgrade, continue
+    this.count++;
+    this.updatePrice();
+
+    colors[this.color] -= this.price;
+    return true;
+  }
+
+  //methods for saving and loading
+  static saveUpgrades() {
+    let saveObj = {};
+    for (let i in OneTimeColorUpgrade.instances) {
+      saveObj[i] = {
+        count: OneTimeColorUpgrade.instances[i].count,
+      };
+    }
+    let savedUpgrades = JSON.stringify(saveObj);
+
+    localStorage.setItem("upgrades2", savedUpgrades);
+  }
+
+  /**
+   * @function
+   * Load upgrades count and price from locastorage into current instances.
+   * Only call after BasicColorUpgrade instances are created.
+   */
+  static loadUpgrades() {
+    let savedUpgrades = JSON.parse(localStorage.getItem("upgrades2"));
+
+    if (!savedUpgrades) return;
+
+    for (let i in OneTimeColorUpgrade.instances) {
+      let savedUpgrade = savedUpgrades[i];
+      //if savedupgrades does not contain the instance, return
+      if (!savedUpgrade) return;
+      //if it does, set the instance's count and price to saved values
+      let obj = OneTimeColorUpgrade.instances[i];
+      obj.count = savedUpgrade.count;
+
+      obj.updatePrice();
+    }
+  }
+
+  //end of class
+}
 
 //ALL OF THE VARIABLES
 
@@ -270,39 +361,152 @@ let redNanometerWave = new BasicColorUpgrade(
   document.getElementById("rednanometerwavecost")
 );
 
-var redupgrade1 = 0;
-var redupgrade2 = 0;
-var redupgrade3 = 0;
+let redUpgrade1 = new OneTimeColorUpgrade(
+  "red",
+  "redUpgrade1",
+  15e4,
+  document.getElementById("redupgrade1cost")
+);
+
+let redUpgrade2 = new OneTimeColorUpgrade(
+  "red",
+  "redUpgrade2",
+  25e4,
+  document.getElementById("redupgrade2cost")
+);
+
+let redUpgrade3 = new OneTimeColorUpgrade(
+  "red",
+  "redUpgrade3",
+  5e5,
+  document.getElementById("redupgrade3cost")
+);
 
 //green
-var greenfilter = 0;
-var greenpointer = 0;
-var biggreenfilter = 0;
-var biggreenpointer = 0;
-var greennanometerwave = 0;
-var greenupgrade1 = 0;
-var greenupgrade2 = 0;
-var greenupgrade3 = 0;
-var greenfiltercost = 10;
-var greenpointercost = 100;
-var biggreenfiltercost = 1000;
-var biggreenpointercost = 10000;
-var greennanometerwavecost = 100000;
+let greenFilter = new BasicColorUpgrade(
+  "green",
+  "greenFilter",
+  10,
+  "(10 * Math.pow(1.1, x))",
+  document.getElementById("greenfiltercount"),
+  document.getElementById("greenfiltercost")
+);
+let greenPointer = new BasicColorUpgrade(
+  "green",
+  "greenPointer",
+  100,
+  "100*Math.pow(1.1,x)",
+  document.getElementById("greenpointercount"),
+  document.getElementById("greenpointercost")
+);
+let bigGreenFilter = new BasicColorUpgrade(
+  "green",
+  "bigBlueFilter",
+  1000,
+  "1000*Math.pow(1.1, x)",
+  document.getElementById("biggreenfiltercount"),
+  document.getElementById("biggreenfiltercost")
+);
+let bigGreenPointer = new BasicColorUpgrade(
+  "green",
+  "bigBluePointer",
+  10000,
+  "10000*Math.pow(1.1, x)",
+  document.getElementById("biggreenpointercount"),
+  document.getElementById("biggreenpointercost")
+);
+let greenNanometerWave = new BasicColorUpgrade(
+  "green",
+  "greenNanometerWave",
+  100000,
+  "100000*Math.pow(1.1, x)",
+  document.getElementById("greennanometerwavecount"),
+  document.getElementById("greennanometerwavecost")
+);
+
+let greenUpgrade1 = new OneTimeColorUpgrade(
+  "green",
+  "greenUpgrade1",
+  15e4,
+  document.getElementById("greenupgrade1cost")
+);
+
+let greenUpgrade2 = new OneTimeColorUpgrade(
+  "green",
+  "greenUpgrade2",
+  25e4,
+  document.getElementById("greenupgrade2cost")
+);
+
+let greenUpgrade3 = new OneTimeColorUpgrade(
+  "green",
+  "greenUpgrade3",
+  5e5,
+  document.getElementById("greenupgrade3cost")
+);
 
 //blue
-var bluefilter = 0;
-var bluepointer = 0;
-var bigbluefilter = 0;
-var bigbluepointer = 0;
-var bluenanometerwave = 0;
-var blueupgrade1 = 0;
-var blueupgrade2 = 0;
-var blueupgrade3 = 0;
-var bluefiltercost = 10;
-var bluepointercost = 100;
-var bigbluefiltercost = 1000;
-var bigbluepointercost = 10000;
-var bluenanometerwavecost = 100000;
+let blueFilter = new BasicColorUpgrade(
+  "blue",
+  "blueFilter",
+  10,
+  "(10 * Math.pow(1.1, x))",
+  document.getElementById("bluefiltercount"),
+  document.getElementById("bluefiltercost")
+);
+let bluePointer = new BasicColorUpgrade(
+  "blue",
+  "bluePointer",
+  100,
+  "100*Math.pow(1.1,x)",
+  document.getElementById("bluepointercount"),
+  document.getElementById("bluepointercost")
+);
+let bigBlueFilter = new BasicColorUpgrade(
+  "blue",
+  "bigBlueFilter",
+  1000,
+  "1000*Math.pow(1.1, x)",
+  document.getElementById("bigbluefiltercount"),
+  document.getElementById("bigbluefiltercost")
+);
+let bigBluePointer = new BasicColorUpgrade(
+  "blue",
+  "bigBluePointer",
+  10000,
+  "10000*Math.pow(1.1, x)",
+  document.getElementById("bigbluepointercount"),
+  document.getElementById("bigbluepointercost")
+);
+let blueNanometerWave = new BasicColorUpgrade(
+  "blue",
+  "blueNanometerWave",
+  100000,
+  "100000*Math.pow(1.1, x)",
+  document.getElementById("bluenanometerwavecount"),
+  document.getElementById("bluenanometerwavecost")
+);
+
+let blueUpgrade1 = new OneTimeColorUpgrade(
+  "blue",
+  "blueUpgrade1",
+  15e4,
+  document.getElementById("blueupgrade1cost")
+);
+
+let blueUpgrade2 = new OneTimeColorUpgrade(
+  "blue",
+  "blueUpgrade2",
+  25e4,
+  document.getElementById("blueupgrade2cost")
+);
+
+let blueUpgrade3 = new OneTimeColorUpgrade(
+  "blue",
+  "blueUpgrade3",
+  5e5,
+  document.getElementById("blueupgrade3cost")
+);
 
 //yellow
 
@@ -464,6 +668,7 @@ const hex = {
 function save() {
   //save the upgrades
   BasicColorUpgrade.saveUpgrades();
+  OneTimeColorUpgrade.saveUpgrades();
 
   var save = {
     //new saved objects
@@ -474,9 +679,6 @@ function save() {
     greenscrollcount: greenscrollcount,
     bluescrollcount: bluescrollcount,
     magentaspellunlock: magentaspellunlock,
-    redupgrade1: redupgrade1,
-    redupgrade2: redupgrade2,
-    redupgrade3: redupgrade3,
     greenfilter: greenfilter,
     greenpointer: greenpointer,
     biggreenfilter: biggreenfilter,
@@ -677,12 +879,8 @@ function load() {
       alberto.style.opacity = "1";
       alberto.innerHTML = "𓆩⟡𓆪" + words + "𓆩⟡𓆪";
     }
-    //red
+    //general
     if (typeof savegame.colors !== "undefined") colors = savegame.colors;
-
-    if (typeof savegame.redupgrade1 !== "undefined") redupgrade1 = savegame.redupgrade1;
-    if (typeof savegame.redupgrade2 !== "undefined") redupgrade2 = savegame.redupgrade2;
-    if (typeof savegame.redupgrade3 !== "undefined") redupgrade3 = savegame.redupgrade3;
 
     //green
     if (typeof savegame.greenfilter !== "undefined") greenfilter = savegame.greenfilter;
@@ -1055,18 +1253,6 @@ function load() {
     //
     //
     //red, green & blue
-    if (redupgrade1 === 1) {
-      document.getElementById("redupgrade1cost").innerHTML = "bought";
-      //document.getElementById("redupgrade1").style.border = "outset";
-    }
-    if (redupgrade2 === 1) {
-      document.getElementById("redupgrade2cost").innerHTML = "bought";
-      //document.getElementById("redupgrade2").style.border = "outset";
-    }
-    if (redupgrade3 === 1) {
-      document.getElementById("redupgrade3cost").innerHTML = "bought";
-      //document.getElementById("redupgrade3").style.border = "outset";
-    }
     if (greenupgrade1 === 1) {
       document.getElementById("greenupgrade1cost").innerHTML = "bought";
       //document.getElementById("greenupgrade1").style.border = "outset";
@@ -1139,6 +1325,7 @@ function load() {
 
     //load upgrades (must come after governmentfunding loading to update properly)
     BasicColorUpgrade.loadUpgrades();
+    OneTimeColorUpgrade.loadUpgrades();
     console.log("loaded");
     loaded = 1;
   } else {
