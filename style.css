@@ -1443,7 +1443,7 @@ div#saving.fadeout {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 2px;
-  align-content: center;
+  width: 100%;
 }
 .achievement-item {
   background-image: "images/locked_idiot.webp";
@@ -1456,6 +1456,9 @@ div#saving.fadeout {
   border-radius: 5%;
   width: 95%;
   height: 95%;
+  box-shadow: inset #4f4f4f 1px 1px 0 1px, inset black -1px -1px 0 1px !important;
+  border: none;
+  padding: 2px;
 }
 #achievementText {
   color: white;
