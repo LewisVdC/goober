@@ -831,19 +831,19 @@ const loopID = window.setInterval(function () {
         // filter
         (((((redFilter.count *
           (redFilter.count * redUpgrade1.count + 1) *
-          (1 + Math.sqrt(finerfilterscount) * 2) +
+          (1 + Math.sqrt(finerFilters.count) * 2) +
           // pointer
           redPointer.count *
             10 *
             (redPointer.count * redUpgrade3.count + 1) *
-            (1 + Math.sqrt(focussedpointerscount) * 2) +
+            (1 + Math.sqrt(focussedPointers.count) * 2) +
           // bigredfilter
-          bigRedFilter.count * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+          bigRedFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
           // bigredpointer
-          bigRedPointer.count * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          bigRedPointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
           // rednanometerwave
           (redNanometerWave.count * 0.5 + 1) *
-          (1 + Math.log1p(micrometerwavecount) * 1.5) *
+          (1 + Math.log1p(micrometerWave.count) * 1.5) *
           // weaksynergygreen
           (Math.log1p(colors.green) * greenUpgrade2.count + 1)) /
           (10 * greenUpgrade2.count + 1)) *
@@ -870,19 +870,19 @@ const loopID = window.setInterval(function () {
         // filter
         (((((greenFilter.count *
           (greenFilter.count * greenUpgrade1.count + 1) *
-          (1 + Math.sqrt(finerfilterscount) * 2) +
+          (1 + Math.sqrt(finerFilters.count) * 2) +
           // pointer
           greenPointer.count *
             10 *
             (greenPointer.count * greenUpgrade3.count + 1) *
-            (1 + Math.sqrt(focussedpointerscount) * 2) +
+            (1 + Math.sqrt(focussedPointers.count) * 2) +
           // biggreenfilter
-          bigGreenFilter.count * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+          bigGreenFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
           // biggreenpointer
-          bigGreenPointer.count * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          bigGreenPointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
           // greennanometerwave
           (greenNanometerWave.count * 0.5 + 1) *
-          (1 + Math.log1p(micrometerwavecount) * 1.5) *
+          (1 + Math.log1p(micrometerWave.count) * 1.5) *
           // weaksynergyred
           (Math.log1p(colors.red) * redUpgrade2.count + 1)) /
           (10 * redUpgrade2.count + 1)) *
@@ -910,19 +910,19 @@ const loopID = window.setInterval(function () {
         // filter
         (((((blueFilter.count *
           (blueFilter.count * blueUpgrade1.count + 1) *
-          (1 + Math.sqrt(finerfilterscount) * 2) +
+          (1 + Math.sqrt(finerFilters.count) * 2) +
           // pointer
           bluePointer.count *
             10 *
             (bluePointer.count * blueUpgrade3.count + 1) *
-            (1 + Math.sqrt(focussedpointerscount) * 2) +
+            (1 + Math.sqrt(focussedPointers.count) * 2) +
           // bigbluefilter
-          bigBlueFilter.count * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
+          bigBlueFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
           // bigbluepointer
-          bigBluePointer.count * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          bigBluePointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
           // bluenanometerwave
           (blueNanometerWave.count * 0.5 + 1) *
-          (1 + Math.log1p(micrometerwavecount) * 1.5) *
+          (1 + Math.log1p(micrometerWave.count) * 1.5) *
           // weaksynergygreen
           (Math.log1p(colors.green) * greenUpgrade2.count + 1)) /
           (10 * greenUpgrade2.count + 1)) *
@@ -1199,15 +1199,15 @@ window.setInterval(function () {
     (redOverflow.count *
       ((((((redFilter.count *
         (redFilter.count * redUpgrade1.count + 1) *
-        (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
+        (1 + Math.sqrt(finerFilters.count) * 2) + // Diminishing returns for finerfilters
         redPointer.count *
           10 *
           (redPointer.count * redUpgrade3.count + 1) *
-          (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
-        bigRedFilter.count * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
-        bigRedPointer.count * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          (1 + Math.sqrt(focussedPointers.count) * 2) + // Diminishing returns for focussedpointers
+        bigRedFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
+        bigRedPointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
         (redNanometerWave.count * 0.5 + 1) *
-        (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+        (1 + Math.log1p(micrometerWave.count) * 1.5) + // Logarithmic scaling for micrometerwave
         (Math.log1p(colors.green) * greenUpgrade2.count + 1)) / // Controlled synergy with green
         (10 * greenUpgrade2.count + 1)) *
         (Math.log1p(colors.blue) * blueUpgrade2.count + 1)) / // Controlled synergy with blue
@@ -1225,15 +1225,15 @@ window.setInterval(function () {
     (greenOverflow.count *
       ((((((greenFilter.count *
         (greenFilter.count * greenUpgrade1.count + 1) *
-        (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
+        (1 + Math.sqrt(finerFilters.count) * 2) + // Diminishing returns for finerfilters
         greenPointer.count *
           10 *
           (greenPointer.count * greenUpgrade3.count + 1) *
-          (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
-        bigGreenFilter.count * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
-        bigGreenPointer.count * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          (1 + Math.sqrt(focussedPointers.count) * 2) + // Diminishing returns for focussedpointers
+        bigGreenFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
+        bigGreenPointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
         (greenNanometerWave.count * 0.5 + 1) *
-        (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+        (1 + Math.log1p(micrometerWave.count) * 1.5) + // Logarithmic scaling for micrometerwave
         (Math.log1p(colors.red) * redUpgrade2.count + 1)) / // Controlled synergy with red
         (10 * redUpgrade2.count + 1)) *
         (Math.log1p(colors.blue) * blueUpgrade2.count + 1)) / // Controlled synergy with blue
@@ -1251,15 +1251,15 @@ window.setInterval(function () {
     (blueOverflow.count *
       ((((((blueFilter.count *
         (blueFilter.count * blueUpgrade1.count + 1) *
-        (1 + Math.sqrt(finerfilterscount) * 2) + // Diminishing returns for finerfilters
+        (1 + Math.sqrt(finerFilters.count) * 2) + // Diminishing returns for finerfilters
         bluePointer.count *
           10 *
           (bluePointer.count * blueUpgrade3.count + 1) *
-          (1 + Math.sqrt(focussedpointerscount) * 2) + // Diminishing returns for focussedpointers
-        bigBlueFilter.count * 100 * (1 + Math.sqrt(finerfilterscount) * 2) +
-        bigBluePointer.count * 1000 * (1 + Math.sqrt(focussedpointerscount) * 2)) *
+          (1 + Math.sqrt(focussedPointers.count) * 2) + // Diminishing returns for focussedpointers
+        bigBlueFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
+        bigBluePointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
         (blueNanometerWave.count * 0.5 + 1) *
-        (1 + Math.log1p(micrometerwavecount) * 1.5) + // Logarithmic scaling for micrometerwave
+        (1 + Math.log1p(micrometerWave.count) * 1.5) + // Logarithmic scaling for micrometerwave
         (Math.log1p(colors.red) * redUpgrade2.count + 1)) / // Controlled synergy with red
         (10 * redUpgrade2.count + 1)) *
         (Math.log1p(colors.green) * greenUpgrade2.count + 1)) / // Controlled synergy with green
@@ -2092,14 +2092,14 @@ function updateyellow() {
   document.getElementById("yellowupgrade12amount").innerHTML = strongerSynergy.count;
   document.getElementById("yellowupgrade12cost").innerHTML = formatNumber(strongerSynergy.price);
   //13
-  document.getElementById("yellowupgrade13amount").innerHTML = focussedpointerscount;
-  document.getElementById("yellowupgrade13cost").innerHTML = formatNumber(focussedpointersprice);
+  document.getElementById("yellowupgrade13amount").innerHTML = focussedPointers.count;
+  document.getElementById("yellowupgrade13cost").innerHTML = formatNumber(focussedPointers.price);
   //14
-  document.getElementById("yellowupgrade14amount").innerHTML = finerfilterscount;
-  document.getElementById("yellowupgrade14cost").innerHTML = formatNumber(finerfiltersprice);
+  document.getElementById("yellowupgrade14amount").innerHTML = finerFilters.count;
+  document.getElementById("yellowupgrade14cost").innerHTML = formatNumber(finerFilters.price);
   //15
-  document.getElementById("yellowupgrade15amount").innerHTML = micrometerwavecount;
-  document.getElementById("yellowupgrade15cost").innerHTML = formatNumber(micrometerwaveprice);
+  document.getElementById("yellowupgrade15amount").innerHTML = micrometerWave.count;
+  document.getElementById("yellowupgrade15cost").innerHTML = formatNumber(micrometerWave.price);
   //16
   document.getElementById("yellowupgrade16amount").innerHTML = colorSyphon.count;
   document.getElementById("yellowupgrade16cost").innerHTML = formatNumber(colorSyphon.price);
@@ -2732,60 +2732,6 @@ function calcblue(number) {
 //3: yellow calculation functions
 
 //1: yellow variables
-//var yellow = 0;
-
-//2: yellow buy functions
-
-/*function buycolorsyphon() {
-  if (
-    colors.yellow >= colorSyphon.price &&
-    colors.red >= 1e15 &&
-    colors.green >= 1e15 &&
-    colors.blue >= 1e15
-  ) {
-    colors.yellow -= colorSyphon.price;
-    colorSyphon.count++;
-    colorSyphon.price = 1200 + 100 * colorSyphon.count;
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(colors.yellow));
-    colors.cyan += 10 * colorSyphon.count;
-    colors.red -= 1e15;
-    colors.blue -= 1e15;
-    colors.green -= 1e15;
-    document.getElementById("cyancount").innerHTML = "cyan: " + colors.cyan;
-    document.getElementById("tabcyan").style.display = "block";
-  }
-}*/
-
-function buyfocussedpointers() {
-  if (colors.yellow >= focussedpointersprice) {
-    colors.yellow -= focussedpointersprice;
-    focussedpointerscount++;
-    focussedpointersprice = Math.round(focussedpointersprice * 1.53);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(colors.yellow));
-  }
-}
-
-function buyfinerfilters() {
-  if (colors.yellow >= finerfiltersprice) {
-    colors.yellow -= finerfiltersprice;
-    finerfilterscount++;
-    finerfiltersprice = Math.round(finerfiltersprice * 1.43);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(colors.yellow));
-  }
-}
-
-function buymicrometerwave() {
-  if (colors.yellow >= micrometerwaveprice) {
-    colors.yellow -= micrometerwaveprice;
-    micrometerwavecount++;
-    micrometerwaveprice = Math.round(micrometerwaveprice * 1.51);
-    document.getElementById("yellowcount").innerHTML =
-      "yellow: " + formatNumber(Math.floor(colors.yellow));
-  }
-}
 
 //yellow calculation functions
 

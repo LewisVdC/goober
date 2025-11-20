@@ -785,6 +785,27 @@ let strongerSynergy = new BasicYellowUpgrade(
   null
 );
 
+let focussedPointers = new BasicYellowUpgrade(
+  "focussedPointers",
+  30,
+  "30*Math.pow(1.53,x)",
+  document.getElementById("yellowupgrade13amount"),
+  document.getElementById("yellowupgrade13cost")
+);
+let finerFilters = new BasicYellowUpgrade(
+  "finerFilters",
+  30,
+  "30*Math.pow(1.43,x)",
+  document.getElementById("yellowupgrade14amount"),
+  document.getElementById("yellowupgrade14cost")
+);
+let micrometerWave = new BasicYellowUpgrade(
+  "micrometerWave",
+  60,
+  "30*Math.pow(1.51,x)",
+  document.getElementById("yellowupgrade15amount"),
+  document.getElementById("yellowupgrade15cost")
+);
 //kinda hard to do this one
 let colorSyphon = new BasicYellowUpgrade(
   "colorSyphon",
@@ -799,14 +820,8 @@ let colorSyphon = new BasicYellowUpgrade(
   }
 );
 
-var focussedpointersprice = 30;
-var focussedpointerscount = 0;
-var finerfiltersprice = 30;
-var finerfilterscount = 0;
-var micrometerwaveprice = 60;
-var micrometerwavecount = 0;
-var strongersynergyprice = 100;
-var strongersynergycount = 0;
+//var strongersynergyprice = 100;
+//var strongersynergycount = 0;
 var yellowGAIN = 0;
 
 //cyan
@@ -973,14 +988,6 @@ function save() {
     whiteunlock: whiteunlock,
     blackunlock: blackunlock,
 
-    focussedpointerscount: focussedpointerscount,
-    focussedpointersprice: focussedpointersprice,
-    finerfilterscount: finerfilterscount,
-    finerfiltersprice: finerfiltersprice,
-    micrometerwavecount: micrometerwavecount,
-    micrometerwaveprice: micrometerwaveprice,
-    strongersynergycount: strongersynergycount,
-    strongersynergyprice: strongersynergyprice,
     redfilterautomationcount: redfilterautomationcount,
     redfilterautomationprice: redfilterautomationprice,
     redpointerautomationcount: redpointerautomationcount,
@@ -1121,26 +1128,6 @@ function load() {
 
     //yellow
 
-    if (typeof savegame.focussedpointerscount !== "undefined")
-      focussedpointerscount = savegame.focussedpointerscount;
-    if (typeof savegame.focussedpointersprice !== "undefined") {
-      focussedpointersprice = savegame.focussedpointersprice;
-    }
-    if (typeof savegame.finerfilterscount !== "undefined")
-      finerfilterscount = savegame.finerfilterscount;
-    if (typeof savegame.finerfiltersprice !== "undefined") {
-      finerfiltersprice = savegame.finerfiltersprice;
-    }
-    if (typeof savegame.micrometerwavecount !== "undefined")
-      micrometerwavecount = savegame.micrometerwavecount;
-    if (typeof savegame.micrometerwaveprice !== "undefined") {
-      micrometerwaveprice = savegame.micrometerwaveprice;
-    }
-    if (typeof savegame.strongersynergycount !== "undefined")
-      strongersynergycount = savegame.strongersynergycount;
-    if (typeof savegame.strongersynergyprice !== "undefined") {
-      strongersynergyprice = savegame.strongersynergyprice;
-    }
     //cyan
     document.getElementById("cyancount").innerHTML = "cyan: " + Math.round(colors.cyan);
     if (typeof savegame.redfilterautomationcount !== "undefined")
