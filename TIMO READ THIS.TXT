@@ -21,3 +21,5 @@ purple spell: boosts random resource
 rainbow spell: boosts all resources
 yellow spell: gives 1s worth of yellow
 yellow spell 2: increases yellow effects?
+why not add combined spells "Simone"
+PS previous comment make a merger "Simone"
