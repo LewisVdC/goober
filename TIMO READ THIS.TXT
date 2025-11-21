@@ -25,3 +25,4 @@ yellow spell: gives 1s worth of yellow
 yellow spell 2: increases yellow effects?
 why not add combined spells "Simone"
 PS previous comment make a merger "Simone"
+I added the new locked screan for the achievements to the "images folder". "Simone"
