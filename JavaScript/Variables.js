@@ -272,7 +272,7 @@ class OneTimeColorUpgrade {
 }
 
 /**
- * Represents an upgrade
+ * Represents a yellow upgrade
  * @class
  */
 class BasicYellowUpgrade {
@@ -405,6 +405,42 @@ class BasicYellowUpgrade {
   }
 
   //end of class
+}
+
+/**
+ * A class for upgrades with automation functions built in
+ * (name is automatically set to upgrade to automate + "Automation")
+ * @class
+ */
+class AutomationUpgrade {
+  /**
+   * @param {number} startPrice - The base price of the upgrade
+   * @param {string} growth - An algorithm for the growth of the price, using "x" as # of upgrades bought
+   * @param {element} countSpan - The span element where the count of the upgrade is displayed
+   * @param {element} priceSpan - The span where the price of the upgrade is displayed
+   * @param {Object} automationUpgrade - the object (BasicColorUpgrade, BasicYellowUpgrade) to automate
+   *
+   * @param {string} upgradeName - Name of the upgrade (set to upgrade to automate + "Automation" if empty)
+   */
+  constructor(
+    startPrice,
+    growth,
+    countSpan,
+    priceSpan,
+    automationUpgrade,
+    upgradeName = automationUpgrade + "Automation"
+  ) {
+    this.startPrice = startPrice;
+    this.growth = growth;
+    this.countSpan = countSpan;
+    this.priceSpan = priceSpan;
+    this.automationUpgrade = automationUpgrade;
+    this.upgradeName = upgradeName;
+  }
+
+  static createEmpty() {
+    return new AutomationUpgrade(0, "", null, null, {}, "");
+  }
 }
 
 //ALL OF THE VARIABLES
