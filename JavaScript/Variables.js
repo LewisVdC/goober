@@ -426,11 +426,6 @@ class BasicYellowUpgrade {
   //end of class
 }
 
-let automationToggles = {
-  red: true,
-  green: true,
-  blue: true,
-};
 /**
  * A class for upgrades with automation functions built in
  * (name is automatically set to upgrade to automate + "Automation")
@@ -438,6 +433,12 @@ let automationToggles = {
  */
 class AutomationUpgrade {
   static instances = {};
+  static automationToggles = {
+    red: true,
+    green: true,
+    blue: true,
+  };
+
   /**
    * @param {number} startPrice - The base price of the upgrade
    * @param {string} growth - An algorithm for the growth of the price, using "x" as # of upgrades bought
@@ -518,7 +519,7 @@ class AutomationUpgrade {
     for (let key in AutomationUpgrade.instances) {
       let inst = AutomationUpgrade.instances[key];
 
-      if (!automationToggles[inst.automationUpgrade.color]) continue;
+      if (!AutomationUpgrade.automationToggles[inst.automationUpgrade.color]) continue;
 
       inst.automationTimer += deltaTime * inst.count * 0.5 * cyanBuyTimeBoost;
       if (inst.automationTimer >= 1000) {
@@ -529,11 +530,8 @@ class AutomationUpgrade {
   }
 
   //method for toggling a color
-  /**color must be a string and the toggle button must have an id of "color + togglestate" and "color + toggle" for the button */
-  static toggle(color) {
-    automationToggles[color] = !automationToggles[color];
-
-    if (automationToggles[color]) {
+  static updateToggle(color) {
+    if (AutomationUpgrade.automationToggles[color]) {
       document.getElementById(color + "toggle").style.background =
         "linear-gradient(45deg, #003e00, #32db32, #025202)";
       document.getElementById(color + "togglestate").innerHTML = "on";
@@ -542,6 +540,16 @@ class AutomationUpgrade {
         "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
       document.getElementById(color + "togglestate").innerHTML = "off";
     }
+  }
+  static updateAllToggles() {
+    for (let key in AutomationUpgrade.automationToggles) {
+      AutomationUpgrade.updateToggle(key);
+    }
+  }
+  /**color must be a string and the toggle button must have an id of "color + togglestate" and "color + toggle" for the button */
+  static toggle(color) {
+    AutomationUpgrade.automationToggles[color] = !AutomationUpgrade.automationToggles[color];
+    AutomationUpgrade.updateToggle(color);
   }
 
   //methods for saving and loading
@@ -554,8 +562,10 @@ class AutomationUpgrade {
       saveObj[i] = {
         price: AutomationUpgrade.instances[i].price,
         count: AutomationUpgrade.instances[i].count,
+        automationTimer: AutomationUpgrade.instances[i].automationTimer,
       };
     }
+    saveObj["toggles"] = AutomationUpgrade.automationToggles;
     let savedUpgrades = JSON.stringify(saveObj);
 
     localStorage.setItem("upgrades4", savedUpgrades);
@@ -578,9 +588,12 @@ class AutomationUpgrade {
         let obj = AutomationUpgrade.instances[i];
         obj.count = savedUpgrade.count;
         obj.price = savedUpgrade.price;
+        obj.automationTimer = savedUpgrade.automationTimer;
       }
+      AutomationUpgrade.automationToggles = savedUpgrades["toggles"];
     }
     AutomationUpgrade.updateAllUpgrades();
+    AutomationUpgrade.updateAllToggles();
   }
 
   //end of class
@@ -688,7 +701,7 @@ let redNanometerWave = new BasicColorUpgrade(
   document.getElementById("rednanometerwavecount"),
   document.getElementById("rednanometerwavecost")
 );
-
+//upgrades
 let redUpgrade1 = new OneTimeColorUpgrade(
   "red",
   "redUpgrade1",
@@ -729,7 +742,7 @@ let greenPointer = new BasicColorUpgrade(
 );
 let bigGreenFilter = new BasicColorUpgrade(
   "green",
-  "bigBlueFilter",
+  "bigGreenFilter",
   1000,
   "1000*Math.pow(1.1, x)",
   document.getElementById("biggreenfiltercount"),
@@ -737,7 +750,7 @@ let bigGreenFilter = new BasicColorUpgrade(
 );
 let bigGreenPointer = new BasicColorUpgrade(
   "green",
-  "bigBluePointer",
+  "bigGreenPointer",
   10000,
   "10000*Math.pow(1.1, x)",
   document.getElementById("biggreenpointercount"),
@@ -751,7 +764,7 @@ let greenNanometerWave = new BasicColorUpgrade(
   document.getElementById("greennanometerwavecount"),
   document.getElementById("greennanometerwavecost")
 );
-
+//upgrades
 let greenUpgrade1 = new OneTimeColorUpgrade(
   "green",
   "greenUpgrade1",
@@ -814,7 +827,7 @@ let blueNanometerWave = new BasicColorUpgrade(
   document.getElementById("bluenanometerwavecount"),
   document.getElementById("bluenanometerwavecost")
 );
-
+//upgrades
 let blueUpgrade1 = new OneTimeColorUpgrade(
   "blue",
   "blueUpgrade1",
@@ -1009,6 +1022,7 @@ var yellowGAIN = 0;
 var cyanBuyTimeBoost = 1;
 
 //new classes!!!
+//red
 let redFilterAutomation = new AutomationUpgrade(
   5,
   "5*Math.pow(1.3,x)",
@@ -1016,55 +1030,108 @@ let redFilterAutomation = new AutomationUpgrade(
   document.getElementById("redfilterautomationprice"),
   redFilter
 );
+let redPointerAutomation = new AutomationUpgrade(
+  15,
+  "15*Math.pow(1.25,x)",
+  document.getElementById("redpointerautomationcount"),
+  document.getElementById("redpointerautomationprice"),
+  redPointer
+);
+let bigRedFilterAutomation = new AutomationUpgrade(
+  25,
+  "25*Math.pow(1.20,x)",
+  document.getElementById("bigredfilterautomationcount"),
+  document.getElementById("bigredfilterautomationprice"),
+  bigRedFilter
+);
+let bigRedPointerAutomation = new AutomationUpgrade(
+  35,
+  "35*Math.pow(1.19,x)",
+  document.getElementById("bigredpointerautomationcount"),
+  document.getElementById("bigredpointerautomationprice"),
+  bigRedPointer
+);
+let redNanometerWaveAutomation = new AutomationUpgrade(
+  50,
+  "50*Math.pow(1.3,x)",
+  document.getElementById("rednanometerwaveautomationcount"),
+  document.getElementById("rednanometerwaveautomationprice"),
+  redNanometerWave
+);
 
-var redfilterautomationcount = 0;
-var redfilterautomationprice = 5;
-var redpointerautomationcount = 0;
-var redpointerautomationprice = 5;
-var bigredfilterautomationcount = 0;
-var bigredfilterautomationprice = 5;
-var bigredpointerautomationcount = 0;
-var bigredpointerautomationprice = 5;
-var rednanometerwaveautomationcount = 0;
-var rednanometerwaveautomationprice = 5;
-var greenfilterautomationcount = 0;
-var greenfilterautomationprice = 5;
-var greenpointerautomationcount = 0;
-var greenpointerautomationprice = 5;
-var biggreenfilterautomationcount = 0;
-var biggreenfilterautomationprice = 5;
-var biggreenpointerautomationcount = 0;
-var biggreenpointerautomationprice = 5;
-var greennanometerwaveautomationcount = 0;
-var greennanometerwaveautomationprice = 5;
-var bluefilterautomationcount = 0;
-var bluefilterautomationprice = 5;
-var bluepointerautomationcount = 0;
-var bluepointerautomationprice = 5;
-var bigbluefilterautomationcount = 0;
-var bigbluefilterautomationprice = 5;
-var bigbluepointerautomationcount = 0;
-var bigbluepointerautomationprice = 5;
-var bluenanometerwaveautomationcount = 0;
-var bluenanometerwaveautomationprice = 5;
-var redfilterautomationtimer = 0;
-var redpointerautomationtimer = 0;
-var bigredfilterautomationtimer = 0;
-var bigredpointerautomationtimer = 0;
-var rednanometerwaveautomationtimer = 0;
-var greenfilterautomationtimer = 0;
-var greenpointerautomationtimer = 0;
-var biggreenfilterautomationtimer = 0;
-var biggreenpointerautomationtimer = 0;
-var greennanometerwaveautomationtimer = 0;
-var bluefilterautomationtimer = 0;
-var bluepointerautomationtimer = 0;
-var bigbluefilterautomationtimer = 0;
-var bigbluepointerautomationtimer = 0;
-var bluenanometerwaveautomationtimer = 0;
-var redtogglestate = true;
-var greentogglestate = true;
-var bluetogglestate = true;
+//green
+let greenFilterAutomation = new AutomationUpgrade(
+  5,
+  "5*Math.pow(1.3,x)",
+  document.getElementById("greenfilterautomationcount"),
+  document.getElementById("greenfilterautomationprice"),
+  greenFilter
+);
+let greenPointerAutomation = new AutomationUpgrade(
+  15,
+  "15*Math.pow(1.25,x)",
+  document.getElementById("greenpointerautomationcount"),
+  document.getElementById("greenpointerautomationprice"),
+  greenPointer
+);
+let bigGreenFilterAutomation = new AutomationUpgrade(
+  25,
+  "25*Math.pow(1.20,x)",
+  document.getElementById("biggreenfilterautomationcount"),
+  document.getElementById("biggreenfilterautomationprice"),
+  bigGreenFilter
+);
+let bigGreenPointerAutomation = new AutomationUpgrade(
+  35,
+  "35*Math.pow(1.19,x)",
+  document.getElementById("biggreenpointerautomationcount"),
+  document.getElementById("biggreenpointerautomationprice"),
+  bigGreenPointer
+);
+let greenNanometerWaveAutomation = new AutomationUpgrade(
+  50,
+  "50*Math.pow(1.3,x)",
+  document.getElementById("greennanometerwaveautomationcount"),
+  document.getElementById("greennanometerwaveautomationprice"),
+  greenNanometerWave
+);
+
+//blue
+let blueFilterAutomation = new AutomationUpgrade(
+  5,
+  "5*Math.pow(1.3,x)",
+  document.getElementById("bluefilterautomationcount"),
+  document.getElementById("bluefilterautomationprice"),
+  blueFilter
+);
+let bluePointerAutomation = new AutomationUpgrade(
+  15,
+  "15*Math.pow(1.25,x)",
+  document.getElementById("bluepointerautomationcount"),
+  document.getElementById("bluepointerautomationprice"),
+  bluePointer
+);
+let bigBlueFilterAutomation = new AutomationUpgrade(
+  25,
+  "25*Math.pow(1.20,x)",
+  document.getElementById("bigbluefilterautomationcount"),
+  document.getElementById("bigbluefilterautomationprice"),
+  bigBlueFilter
+);
+let bigBluePointerAutomation = new AutomationUpgrade(
+  35,
+  "35*Math.pow(1.19,x)",
+  document.getElementById("bigbluepointerautomationcount"),
+  document.getElementById("bigbluepointerautomationprice"),
+  bigBluePointer
+);
+let blueNanometerWaveAutomation = new AutomationUpgrade(
+  50,
+  "50*Math.pow(1.3,x)",
+  document.getElementById("bluenanometerwaveautomationcount"),
+  document.getElementById("bluenanometerwaveautomationprice"),
+  blueNanometerWave
+);
 
 //magenta
 

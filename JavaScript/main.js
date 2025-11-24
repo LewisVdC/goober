@@ -704,66 +704,7 @@ const loopID = window.setInterval(function () {
       }
 
       document.getElementById("blackcount").innerHTML = formatNumber(colors.black);
-      if (redfilterautomationtimer >= 200 && redtogglestate) {
-        redfilterautomationtimer = 0;
-        redFilter.buy(1);
-      }
-      if (greenfilterautomationtimer >= 200 && greentogglestate) {
-        greenfilterautomationtimer = 0;
-        greenFilter.buy(1);
-      }
-      if (bluefilterautomationtimer >= 200 && bluetogglestate) {
-        bluefilterautomationtimer = 0;
-        blueFilter.buy(1);
-      }
-      if (redpointerautomationtimer >= 200 && redtogglestate) {
-        redpointerautomationtimer = 0;
-        redPointer.buy(1);
-      }
-      if (greenpointerautomationtimer >= 200 && greentogglestate) {
-        greenpointerautomationtimer = 0;
-        greenPointer.buy(1);
-      }
-      if (bluepointerautomationtimer >= 200 && bluetogglestate) {
-        bluepointerautomationtimer = 0;
-        bluePointer.buy(1);
-      }
-      if (bigredfilterautomationtimer >= 200 && redtogglestate) {
-        bigredfilterautomationtimer = 0;
-        bigRedFilter.buy(1);
-      }
-      if (biggreenfilterautomationtimer >= 200 && greentogglestate) {
-        biggreenfilterautomationtimer = 0;
-        bigGreenFilter.buy(1);
-      }
-      if (bigbluefilterautomationtimer >= 200 && bluetogglestate) {
-        bigbluefilterautomationtimer = 0;
-        bigBlueFilter.buy(1);
-      }
-      if (bigredpointerautomationtimer >= 200 && redtogglestate) {
-        bigredpointerautomationtimer = 0;
-        bigRedPointer.buy(1);
-      }
-      if (biggreenpointerautomationtimer >= 200 && greentogglestate) {
-        biggreenpointerautomationtimer = 0;
-        bigGreenPointer.buy(1);
-      }
-      if (bigbluepointerautomationtimer >= 200 && bluetogglestate) {
-        bigbluepointerautomationtimer = 0;
-        bigBluePointer.buy(1);
-      }
-      if (rednanometerwaveautomationtimer >= 200 && redtogglestate) {
-        rednanometerwaveautomationtimer = 0;
-        redNanometerWave.buy(1);
-      }
-      if (greennanometerwaveautomationtimer >= 200 && greentogglestate) {
-        greennanometerwaveautomationtimer = 0;
-        greenNanometerwave.buy(1);
-      }
-      if (bluenanometerwaveautomationtimer >= 200 && bluetogglestate) {
-        bluenanometerwaveautomationtimer = 0;
-        blueNanometerwave.buy(1);
-      }
+
       //magic stuff
 
       //increase magic!! woo
@@ -1226,153 +1167,6 @@ window.setInterval(function () {
 }, 20);
 
 //cyan upgrades
-function buyredfilterautomation() {
-  if (colors.cyan >= redfilterautomationprice) {
-    redfilterautomationcount++;
-    colors.cyan -= redfilterautomationprice;
-    redfilterautomationprice = 5 * Math.pow(1.3, redfilterautomationcount);
-    document.getElementById("redfilterautomationprice").innerHTML =
-      Math.round(redfilterautomationprice);
-  }
-}
-function buyredpointerautomation() {
-  if (colors.cyan >= redpointerautomationprice) {
-    redpointerautomationcount++;
-    colors.cyan -= redpointerautomationprice;
-    redpointerautomationprice = 5 * Math.pow(1.3, redpointerautomationcount);
-    document.getElementById("redpointerautomationprice").innerHTML =
-      Math.round(redpointerautomationprice);
-  }
-}
-function buybigredfilterautomation() {
-  if (colors.cyan >= bigredfilterautomationprice) {
-    bigredfilterautomationcount++;
-    colors.cyan -= bigredfilterautomationprice;
-    bigredfilterautomationprice = 5 * Math.pow(1.3, bigredfilterautomationcount);
-    document.getElementById("bigredfilterautomationprice").innerHTML = Math.round(
-      bigredfilterautomationprice
-    );
-  }
-}
-function buybigredpointerautomation() {
-  if (colors.cyan >= bigredpointerautomationprice) {
-    bigredpointerautomationcount++;
-    colors.cyan -= bigredpointerautomationprice;
-    bigredpointerautomationprice = 5 * Math.pow(1.3, bigredpointerautomationcount);
-    document.getElementById("bigredpointerautomationprice").innerHTML = Math.round(
-      bigredpointerautomationprice
-    );
-  }
-}
-function buyrednanometerwaveautomation() {
-  if (colors.cyan >= rednanometerwaveautomationprice) {
-    rednanometerwaveautomationcount++;
-    colors.cyan -= rednanometerwaveautomationprice;
-    rednanometerwaveautomationprice = 5 * Math.pow(1.3, rednanometerwaveautomationcount);
-    document.getElementById("rednanometerwaveautomationprice").innerHTML = Math.round(
-      rednanometerwaveautomationprice
-    );
-  }
-}
-function buygreenfilterautomation() {
-  if (colors.cyan >= greenfilterautomationprice) {
-    greenfilterautomationcount++;
-    colors.cyan -= greenfilterautomationprice;
-    greenfilterautomationprice = 5 * Math.pow(1.3, greenfilterautomationcount);
-    document.getElementById("greenfilterautomationprice").innerHTML = Math.round(
-      greenfilterautomationprice
-    );
-  }
-}
-function buygreenpointerautomation() {
-  if (colors.cyan >= greenpointerautomationprice) {
-    greenpointerautomationcount++;
-    colors.cyan -= greenpointerautomationprice;
-    greenpointerautomationprice = 5 * Math.pow(1.3, greenpointerautomationcount);
-    document.getElementById("greenpointerautomationprice").innerHTML = Math.round(
-      greenpointerautomationprice
-    );
-  }
-}
-function buybiggreenfilterautomation() {
-  if (colors.cyan >= biggreenfilterautomationprice) {
-    biggreenfilterautomationcount++;
-    colors.cyan -= biggreenfilterautomationprice;
-    biggreenfilterautomationprice = 5 * Math.pow(1.3, biggreenfilterautomationcount);
-    document.getElementById("biggreenfilterautomationprice").innerHTML = Math.round(
-      biggreenfilterautomationprice
-    );
-  }
-}
-function buybiggreenpointerautomation() {
-  if (colors.cyan >= biggreenpointerautomationprice) {
-    biggreenpointerautomationcount++;
-    colors.cyan -= biggreenpointerautomationprice;
-    biggreenpointerautomationprice = 5 * Math.pow(1.3, biggreenpointerautomationcount);
-    document.getElementById("biggreenpointerautomationprice").innerHTML = Math.round(
-      biggreenpointerautomationprice
-    );
-  }
-}
-function buygreennanometerwaveautomation() {
-  if (colors.cyan >= greennanometerwaveautomationprice) {
-    greennanometerwaveautomationcount++;
-    colors.cyan -= greennanometerwaveautomationprice;
-    greennanometerwaveautomationprice = 5 * Math.pow(1.3, greennanometerwaveautomationcount);
-    document.getElementById("greennanometerwaveautomationprice").innerHTML = Math.round(
-      greennanometerwaveautomationprice
-    );
-  }
-}
-function buybluefilterautomation() {
-  if (colors.cyan >= bluefilterautomationprice) {
-    bluefilterautomationcount++;
-    colors.cyan -= bluefilterautomationprice;
-    bluefilterautomationprice = 5 * Math.pow(1.3, bluefilterautomationcount);
-    document.getElementById("bluefilterautomationprice").innerHTML =
-      Math.round(bluefilterautomationprice);
-  }
-}
-function buybluepointerautomation() {
-  if (colors.cyan >= bluepointerautomationprice) {
-    bluepointerautomationcount++;
-    colors.cyan -= bluepointerautomationprice;
-    bluepointerautomationprice = 5 * Math.pow(1.3, bluepointerautomationcount);
-    document.getElementById("bluepointerautomationprice").innerHTML = Math.round(
-      bluepointerautomationprice
-    );
-  }
-}
-function buybigbluefilterautomation() {
-  if (colors.cyan >= bigbluefilterautomationprice) {
-    bigbluefilterautomationcount++;
-    colors.cyan -= bigbluefilterautomationprice;
-    bigbluefilterautomationprice = 5 * Math.pow(1.3, bigbluefilterautomationcount);
-    document.getElementById("bigbluefilterautomationprice").innerHTML = Math.round(
-      bigbluefilterautomationprice
-    );
-  }
-}
-function buybigbluepointerautomation() {
-  if (colors.cyan >= bigbluepointerautomationprice) {
-    bigbluepointerautomationcount++;
-    colors.cyan -= bigbluepointerautomationprice;
-    bigbluepointerautomationprice = 5 * Math.pow(1.3, bigbluepointerautomationcount);
-    document.getElementById("bigbluepointerautomationprice").innerHTML = Math.round(
-      bigbluepointerautomationprice
-    );
-  }
-}
-function buybluenanometerwaveautomation() {
-  if (colors.cyan >= bluenanometerwaveautomationprice) {
-    bluenanometerwaveautomationcount++;
-    colors.cyan -= bluenanometerwaveautomationprice;
-    bluenanometerwaveautomationprice = 5 * Math.pow(1.3, bluenanometerwaveautomationcount);
-    document.getElementById("bluenanometerwaveautomationprice").innerHTML = Math.round(
-      bluenanometerwaveautomationprice
-    );
-  }
-}
 
 //toggle automation
 
@@ -2340,20 +2134,20 @@ function checkAchievement() {
   if (
     achievement.automation1 === false &&
     redFilterAutomation.count +
-      redpointerautomationcount +
-      bigredfilterautomationcount +
-      bigredpointerautomationcount +
-      rednanometerwaveautomationcount +
-      greenfilterautomationcount +
-      greenpointerautomationcount +
-      biggreenfilterautomationcount +
-      biggreenpointerautomationcount +
-      greennanometerwaveautomationcount +
-      bluefilterautomationcount +
-      bluepointerautomationcount +
-      bigbluefilterautomationcount +
-      bigbluepointerautomationcount +
-      bluenanometerwaveautomationcount >=
+      redPointerAutomation.count +
+      bigRedFilterAutomation.count +
+      bigRedPointerAutomation.count +
+      redNanometerWaveAutomation.count +
+      greenFilterAutomation.count +
+      greenPointerAutomation.count +
+      bigGreenFilterAutomation.count +
+      bigGreenPointerAutomation.count +
+      greenNanometerWaveAutomation.count +
+      blueFilterAutomation.count +
+      bluePointerAutomation.count +
+      bigBlueFilterAutomation.count +
+      bigBluePointerAutomation.count +
+      blueNanometerWaveAutomation.count >=
       1
   ) {
     achievementCall("automation1", 25, "#132322", "#01FFFF");
@@ -2361,20 +2155,20 @@ function checkAchievement() {
   if (
     achievement.everyAutomation === false &&
     redFilterAutomation.count >= 1 &&
-    redpointerautomationcount >= 1 &&
-    bigredfilterautomationcount >= 1 &&
-    bigredpointerautomationcount >= 1 &&
-    rednanometerwaveautomationcount >= 1 &&
-    greenfilterautomationcount >= 1 &&
-    greenpointerautomationcount >= 1 &&
-    biggreenfilterautomationcount >= 1 &&
-    biggreenpointerautomationcount >= 1 &&
-    greennanometerwaveautomationcount >= 1 &&
-    bluefilterautomationcount >= 1 &&
-    bluepointerautomationcount >= 1 &&
-    bigbluefilterautomationcount >= 1 &&
-    bigbluepointerautomationcount >= 1 &&
-    bluenanometerwaveautomationcount >= 1
+    redPointerAutomation.count >= 1 &&
+    bigRedFilterAutomation.count >= 1 &&
+    bigRedPointerAutomation.count >= 1 &&
+    redNanometerWaveAutomation.count >= 1 &&
+    greenFilterAutomation.count >= 1 &&
+    greenPointerAutomation.count >= 1 &&
+    bigGreenFilterAutomation.count >= 1 &&
+    bigGreenPointerAutomation.count >= 1 &&
+    greenNanometerWaveAutomation.count >= 1 &&
+    blueFilterAutomation.count >= 1 &&
+    bluePointerAutomation.count >= 1 &&
+    bigBlueFilterAutomation.count >= 1 &&
+    bigBluePointerAutomation.count >= 1 &&
+    blueNanometerWaveAutomation.count >= 1
   ) {
     achievementCall("everyAutomation", 26, "#132322", "#01FFFF");
   }
