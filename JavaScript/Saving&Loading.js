@@ -5,6 +5,7 @@ function save() {
   BasicYellowUpgrade.saveUpgrades();
   BasicColorUpgrade.saveUpgrades();
   OneTimeColorUpgrade.saveUpgrades();
+  AutomationUpgrade.saveUpgrades();
 
   var save = {
     //new saved objects
@@ -456,4 +457,5 @@ function load() {
   BasicYellowUpgrade.loadUpgrades();
   BasicColorUpgrade.loadUpgrades();
   OneTimeColorUpgrade.loadUpgrades();
+  AutomationUpgrade.loadUpgrades();
 }

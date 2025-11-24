@@ -835,111 +835,138 @@
       </div>
       <div id="cyanbuildings">
         <div id="redautomation">
-          <button class="cyanupgrades redupgrades" onclick="buyredfilterautomation()">
+          <button class="cyanupgrades redupgrades" onclick="redFilterAutomation.buy(1)">
             Automate buy red filter
             <br />
-            cost: <span id="redfilterautomationprice">5</span>
+            cost: <span id="redfilterautomationprice">5</span> | level:
+            <span id="redfilterautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades redupgrades" onclick="buyredpointerautomation()">
+          <button class="cyanupgrades redupgrades" onclick="redPointerAutomation.buy(1)">
             Automate buy red pointer
             <br />
-            cost: <span id="redpointerautomationprice">5</span>
+            cost: <span id="redpointerautomationprice">5</span> | level:
+            <span id="redpointerautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades redupgrades" onclick="buybigredfilterautomation()">
+          <button class="cyanupgrades redupgrades" onclick="bigRedFilterAutomation.buy(1)">
             Automate buy big red filter
             <br />
-            cost: <span id="bigredfilterautomationprice">5</span>
+            cost: <span id="bigredfilterautomationprice">5</span> | level:
+            <span id="bigredfilterautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades redupgrades" onclick="buybigredpointerautomation()">
+          <button class="cyanupgrades redupgrades" onclick="bigRedPointerAutomation.buy(1)">
             Automate buy big red pointer
             <br />
-            cost: <span id="bigredpointerautomationprice">5</span>
+            cost: <span id="bigredpointerautomationprice">5</span> | level:
+            <span id="bigredpointerautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades redupgrades" onclick="buyrednanometerwaveautomation()">
+          <button class="cyanupgrades redupgrades" onclick="redNanometerWaveAutomation.buy(1)">
             Automate buy red nanometer wave
             <br />
-            cost: <span id="rednanometerwaveautomationprice">5</span>
+            cost: <span id="rednanometerwaveautomationprice">5</span> | level:
+            <span id="rednanometerwaveautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades toggle" id="redtoggle" onclick="togglered()">
+          <button
+            class="cyanupgrades toggle"
+            id="redtoggle"
+            onclick="AutomationUpgrade.toggle('red')"
+          >
             toggle red automation
             <br />
             <span id="redtogglestate">on</span>
           </button>
         </div>
         <div id="greenautomation">
-          <button class="cyanupgrades greenupgrades" onclick="buygreenfilterautomation()">
+          <button class="cyanupgrades greenupgrades" onclick="greenFilterAutomation.buy(1)">
             Automate buy green filter
             <br />
-            cost: <span id="greenfilterautomationprice">5</span>
+            cost: <span id="greenfilterautomationprice">5</span> | level:
+            <span id="greenfilterautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades greenupgrades" onclick="buygreenpointerautomation()">
+          <button class="cyanupgrades greenupgrades" onclick="greenPointerAutomation.buy(1)">
             Automate buy green pointer
             <br />
-            cost: <span id="greenpointerautomationprice">5</span>
+            cost: <span id="greenpointerautomationprice">5</span> | level:
+            <span id="greenpointerautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades greenupgrades" onclick="buybiggreenfilterautomation()">
+          <button class="cyanupgrades greenupgrades" onclick="bigGreenFilterAutomation.buy(1)">
             Automate buy big green filter
             <br />
-            cost: <span id="biggreenfilterautomationprice">5</span>
+            cost: <span id="biggreenfilterautomationprice">5</span> | level:
+            <span id="biggreenfilterautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades greenupgrades" onclick="buybiggreenpointerautomation()">
+          <button class="cyanupgrades greenupgrades" onclick="bigGreenPointerAutomation.buy(1)">
             Automate buy big green pointer
             <br />
-            cost: <span id="biggreenpointerautomationprice">5</span>
+            cost: <span id="biggreenpointerautomationprice">5</span> | level:
+            <span id="biggreenpointerautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades greenupgrades" onclick="buygreennanometerwaveautomation()">
+          <button class="cyanupgrades greenupgrades" onclick="greenNanometerWaveAutomation.buy(1)">
             Automate buy green nanometer wave
             <br />
-            cost: <span id="greennanometerwaveautomationprice">5</span>
+            cost: <span id="greennanometerwaveautomationprice">5</span> | level:
+            <span id="greennanometerwaveautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades toggle" id="greentoggle" onclick="togglegreen()">
+          <button
+            class="cyanupgrades toggle"
+            id="greentoggle"
+            onclick="AutomationUpgrade.toggle('green')"
+          >
             toggle green automation
             <br />
             <span id="greentogglestate">on</span>
           </button>
         </div>
         <div id="blueautomation">
-          <button class="cyanupgrades blueupgrades" onclick="buybluefilterautomation()">
+          <button class="cyanupgrades blueupgrades" onclick="blueFilterAutomation.buy(1)">
             Automate buy blue filter
             <br />
-            cost: <span id="bluefilterautomationprice">5</span>
+            cost: <span id="bluefilterautomationprice">5</span> | level:
+            <span id="bluefilterautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades blueupgrades" onclick="buybluepointerautomation()">
+          <button class="cyanupgrades blueupgrades" onclick="bluePointerAutomation.buy(1)">
             Automate buy blue pointer
             <br />
-            cost: <span id="bluepointerautomationprice">5</span>
+            cost: <span id="bluepointerautomationprice">5</span> | level:
+            <span id="bluepointerautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades blueupgrades" onclick="buybigbluefilterautomation()">
+          <button class="cyanupgrades blueupgrades" onclick="bigBlueFilterAutomation.buy(1)">
             Automate buy big blue filter
             <br />
-            cost: <span id="bigbluefilterautomationprice">5</span>
+            cost: <span id="bigbluefilterautomationprice">5</span> | level:
+            <span id="bigbluefilterautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades blueupgrades" onclick="buybigbluepointerautomation()">
+          <button class="cyanupgrades blueupgrades" onclick="bigBluePointerAutomation.buy(1)">
             Automate buy big blue pointer
             <br />
-            cost: <span id="bigbluepointerautomationprice">5</span>
+            cost: <span id="bigbluepointerautomationprice">5</span> | level:
+            <span id="bigbluepointerautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades blueupgrades" onclick="buybluenanometerwaveautomation()">
+          <button class="cyanupgrades blueupgrades" onclick="blueNanometerWaveAutomation.buy(1)">
             Automate buy blue nanometer wave
             <br />
-            cost: <span id="bluenanometerwaveautomationprice">5</span>
+            cost: <span id="bluenanometerwaveautomationprice">5</span> | level:
+            <span id="bluenanometerwaveautomationcount">0</span>
           </button>
           <br />
-          <button class="cyanupgrades toggle" id="bluetoggle" onclick="toggleblue()">
+          <button
+            class="cyanupgrades toggle"
+            id="bluetoggle"
+            onclick="AutomationUpgrade.toggle('blue')"
+          >
             toggle blue automation
             <br />
             <span id="bluetogglestate">on</span>

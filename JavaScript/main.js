@@ -215,6 +215,14 @@ const loopID = window.setInterval(function () {
     if (loaded === 1) {
       // if u showed this code to me when i was starting this i would have died on the spot
 
+      //here comes the new improved functions that need to be updated:
+
+      //support for multiple counters !! use classes !!
+      updateAllColors();
+
+      //update cyan automation!
+      AutomationUpgrade.updateAutomation(loopDelay);
+
       //"update" game for ppl
       if (
         document.getElementById("tabmagenta").style.display === "block" &&
@@ -284,35 +292,6 @@ const loopID = window.setInterval(function () {
       document.getElementById("feedpersoncount").innerHTML = feedperson;
       document.getElementById("drinkcount").innerHTML = drink;
 
-      //support for multiple counters !! use classes !!
-      const redcounters = document.querySelectorAll(".redcount");
-      redcounters.forEach((counter) => {
-        counter.textContent = "red: " + formatNumber(Math.floor(colors.red));
-      });
-      const greencounters = document.querySelectorAll(".greencount");
-      greencounters.forEach((counter) => {
-        counter.textContent = "green: " + formatNumber(Math.floor(colors.green));
-      });
-      const bluecounters = document.querySelectorAll(".bluecount");
-      bluecounters.forEach((counter) => {
-        counter.textContent = "blue: " + formatNumber(Math.floor(colors.blue));
-      });
-
-      const yellowcounters = document.querySelectorAll(".yellowcount");
-      yellowcounters.forEach((counter) => {
-        counter.textContent = "yellow: " + formatNumber(Math.floor(colors.yellow));
-      });
-
-      const cyancounters = document.querySelectorAll(".cyancount");
-      cyancounters.forEach((counter) => {
-        counter.textContent = "cyan: " + formatNumber(Math.floor(colors.cyan));
-      });
-
-      const magentacounters = document.querySelectorAll("#magentacount");
-      magentacounters.forEach((counter) => {
-        counter.textContent = document.getElementById("magentacount").innerHTML =
-          "magenta: " + formatNumber(Math.floor(colors.magenta));
-      });
       //timo building 5 does not give 5k of the stuff per second it boosts production
       //mb
       //im rly struggling to read this code
@@ -655,7 +634,7 @@ const loopID = window.setInterval(function () {
         "cyan: " + formatNumber(Math.floor(colors.cyan));
       //ugh
       //im moving the yellow upgrades update function somewhere else
-      //i'm removing the yellow upgrades update, like why do we even need to update it every time?
+      //i'm removing the yellow upgrades update, like why do we even need to update it every time? -boongabonga
       //updateyellow();
       //unlocks
       if (debugrednumber >= 5000 && achievement.have1e5red === true) {
@@ -724,40 +703,6 @@ const loopID = window.setInterval(function () {
         savecounter = 0;
       }
 
-      //auto buy
-      redfilterautomationtimer += Math.min(20 * cyanBuyTimeBoost, redfilterautomationcount);
-      redpointerautomationtimer += Math.min(20 * cyanBuyTimeBoost, redpointerautomationcount);
-      bigredfilterautomationtimer += Math.min(20 * cyanBuyTimeBoost, bigredfilterautomationcount);
-      bigredpointerautomationtimer += Math.min(20 * cyanBuyTimeBoost, bigredpointerautomationcount);
-      rednanometerwaveautomationtimer += Math.min(
-        20 * cyanBuyTimeBoost,
-        rednanometerwaveautomationcount
-      );
-      greenfilterautomationtimer += Math.min(20 * cyanBuyTimeBoost, greenfilterautomationcount);
-      greenpointerautomationtimer += Math.min(20 * cyanBuyTimeBoost, greenpointerautomationcount);
-      biggreenfilterautomationtimer += Math.min(
-        20 * cyanBuyTimeBoost,
-        biggreenfilterautomationcount
-      );
-      biggreenpointerautomationtimer += Math.min(
-        20 * cyanBuyTimeBoost,
-        biggreenpointerautomationcount
-      );
-      greennanometerwaveautomationtimer += Math.min(
-        20 * cyanBuyTimeBoost,
-        greennanometerwaveautomationcount
-      );
-      bluefilterautomationtimer += Math.min(20 * cyanBuyTimeBoost, bluefilterautomationcount);
-      bluepointerautomationtimer += Math.min(20 * cyanBuyTimeBoost, bluepointerautomationcount);
-      bigbluefilterautomationtimer += Math.min(20 * cyanBuyTimeBoost, bigbluefilterautomationcount);
-      bigbluepointerautomationtimer += Math.min(
-        20 * cyanBuyTimeBoost,
-        bigbluepointerautomationcount
-      );
-      bluenanometerwaveautomationtimer += Math.min(
-        20 * cyanBuyTimeBoost,
-        bluenanometerwaveautomationcount
-      );
       document.getElementById("blackcount").innerHTML = formatNumber(colors.black);
       if (redfilterautomationtimer >= 200 && redtogglestate) {
         redfilterautomationtimer = 0;
@@ -946,7 +891,7 @@ const loopID = window.setInterval(function () {
       );
     }
   }
-}, 10);
+}, loopDelay);
 
 function rgbToHex(rgb) {
   let rgbColor = rgb.split(", ");
@@ -1184,6 +1129,7 @@ function resetData() {
     localStorage.removeItem("upgrades1");
     localStorage.removeItem("upgrades2");
     localStorage.removeItem("upgrades3");
+    localStorage.removeItem("upgrades4");
     location.reload();
   }
 }
@@ -1429,42 +1375,6 @@ function buybluenanometerwaveautomation() {
 }
 
 //toggle automation
-function togglered() {
-  redtogglestate = !redtogglestate;
-  if (redtogglestate) {
-    document.getElementById("redtoggle").style.background =
-      "linear-gradient(45deg, #003e00, #32db32, #025202)";
-    document.getElementById("redtogglestate").innerHTML = "on";
-  } else {
-    document.getElementById("redtoggle").style.background =
-      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
-    document.getElementById("redtogglestate").innerHTML = "off";
-  }
-}
-function togglegreen() {
-  greentogglestate = !greentogglestate;
-  if (greentogglestate) {
-    document.getElementById("greentoggle").style.background =
-      "linear-gradient(45deg, #003e00, #32db32, #025202)";
-    document.getElementById("greentogglestate").innerHTML = "on";
-  } else {
-    document.getElementById("greentoggle").style.background =
-      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
-    document.getElementById("greentogglestate").innerHTML = "off";
-  }
-}
-function toggleblue() {
-  bluetogglestate = !bluetogglestate;
-  if (bluetogglestate) {
-    document.getElementById("bluetoggle").style.background =
-      "linear-gradient(45deg, #003e00, #32db32, #025202)";
-    document.getElementById("bluetogglestate").innerHTML = "on";
-  } else {
-    document.getElementById("bluetoggle").style.background =
-      "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
-    document.getElementById("bluetogglestate").innerHTML = "off";
-  }
-}
 
 //
 //code for magenta goes here
@@ -1567,23 +1477,6 @@ function explode() {
   resetData();
 }
 
-//some number formatting
-//lol u can tell by the comments chatgpt wrote this
-//what comments?
-function formatNumber(number) {
-  if (Math.abs(number) >= 1e7) {
-    return number.toExponential(3);
-  } else {
-    return number.toString();
-  }
-}
-function formatSmallNumber(number) {
-  if (Math.abs(number) >= 100) {
-    return number.toExponential(0);
-  } else {
-    return number.toString();
-  }
-}
 //real
 //fake i give up
 //scroll time!
@@ -2446,7 +2339,7 @@ function checkAchievement() {
   }
   if (
     achievement.automation1 === false &&
-    redfilterautomationcount +
+    redFilterAutomation.count +
       redpointerautomationcount +
       bigredfilterautomationcount +
       bigredpointerautomationcount +
@@ -2467,7 +2360,7 @@ function checkAchievement() {
   }
   if (
     achievement.everyAutomation === false &&
-    redfilterautomationcount >= 1 &&
+    redFilterAutomation.count >= 1 &&
     redpointerautomationcount >= 1 &&
     bigredfilterautomationcount >= 1 &&
     bigredpointerautomationcount >= 1 &&
@@ -2592,10 +2485,11 @@ function spell(spelltype) {
   }
   if (spelltype == "cyan2") {
     if (document.getElementById("cyan2shell").style.background === "") {
-      if (achievement.spellAutomation === true) {
-        let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
-        cyanBuyTimeBoost = 1 + tribute / 1000;
-        colors.magic -= tribute;
+      if (achievement.spellAutomation === true && colorSyphon.magic >= 1000) {
+        //gonna change this up, maybe a 10x boost to buying speed for 2s, with a set magic cost of
+        //let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
+        cyanBuyTimeBoost = 10;
+        colors.magic -= 1000;
         window.setTimeout(function () {
           cyanBuyTimeBoost = 1;
         }, 2000);

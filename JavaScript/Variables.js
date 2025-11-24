@@ -16,8 +16,35 @@ window.colors = {
   white: 0,
 };
 
+//some number formatting
+//lol u can tell by the comments chatgpt wrote this
+//what comments?
+function formatNumber(number) {
+  if (Math.abs(number) >= 1e7) {
+    return number.toExponential(3);
+  } else {
+    return number.toFixed(1);
+  }
+}
+function formatSmallNumber(number) {
+  if (Math.abs(number) >= 100) {
+    return number.toExponential(0);
+  } else {
+    return number.toFixed(1);
+  }
+}
+
 function updateColor(color) {
-  document.getElementById(color + "count").innerHTML = color + ": " + Math.floor(colors[color]);
+  document.querySelectorAll(color + "count").forEach((element) => {
+    element.innerHTML = color + ": " + formatNumber(Math.floor(colors[color]));
+  });
+  document.getElementById(color + "count").innerHTML =
+    color + ": " + formatNumber(Math.floor(colors[color]));
+}
+function updateAllColors() {
+  for (key in colors) {
+    updateColor(key);
+  }
 }
 
 /**
@@ -85,10 +112,12 @@ class BasicColorUpgrade {
     this.countSpan.innerHTML = this.count;
   }
   updatePrice() {
-    this.price = Math.floor(
-      applyGovernmentFunding(eval(this.growth.replaceAll("x", this.count)))
-      /*example growth formula:
+    this.price = formatNumber(
+      Math.floor(
+        applyGovernmentFunding(eval(this.growth.replaceAll("x", this.count)))
+        /*example growth formula:
         (10 * Math.pow(1.1, x));*/
+      )
     );
     if (!this.priceSpan) return;
     this.priceSpan.innerHTML = this.price;
@@ -113,16 +142,10 @@ class BasicColorUpgrade {
         return false;
       }
       //if you can buy the upgrade, continue
-      this.count++;
+      this.count += count;
       this.updateCount();
 
       colors[this.color] -= this.price;
-
-      this.price = Math.floor(
-        applyGovernmentFunding(eval(this.growth.replaceAll("x", this.count)))
-        /*example growth formula:
-        (10 * Math.pow(1.1, x));*/
-      );
       this.updatePrice();
 
       if (!this.buyFunctionExtra) return;
@@ -221,7 +244,7 @@ class OneTimeColorUpgrade {
   }
 
   //method for buying an upgrade
-  buy() {
+  buy(count = 1) {
     if (colors[this.color] < this.price || this.count) {
       return false;
     }
@@ -324,10 +347,12 @@ class BasicYellowUpgrade {
     this.countSpan.innerHTML = this.count;
   }
   updatePrice() {
-    this.price = Math.floor(
-      eval(this.growth.replaceAll("x", this.count))
-      /*example growth formula:
+    this.price = formatNumber(
+      Math.floor(
+        eval(this.growth.replaceAll("x", this.count))
+        /*example growth formula:
         (10 * Math.pow(1.1, x));*/
+      )
     );
     if (!this.priceSpan) return;
     this.priceSpan.innerHTML = this.price;
@@ -347,16 +372,10 @@ class BasicYellowUpgrade {
         return false;
       }
       //if you can buy the upgrade, continue
-      this.count++;
+      this.count += count;
       this.updateCount();
 
       colors[this.color] -= this.price;
-
-      this.price = Math.floor(
-        eval(this.growth.replaceAll("x", this.count))
-        /*example growth formula:
-        (10 * Math.pow(1.1, x));*/
-      );
       this.updatePrice();
 
       this.buyFunctionExtra;
@@ -407,12 +426,18 @@ class BasicYellowUpgrade {
   //end of class
 }
 
+let automationToggles = {
+  red: true,
+  green: true,
+  blue: true,
+};
 /**
  * A class for upgrades with automation functions built in
  * (name is automatically set to upgrade to automate + "Automation")
  * @class
  */
 class AutomationUpgrade {
+  static instances = {};
   /**
    * @param {number} startPrice - The base price of the upgrade
    * @param {string} growth - An algorithm for the growth of the price, using "x" as # of upgrades bought
@@ -428,19 +453,137 @@ class AutomationUpgrade {
     countSpan,
     priceSpan,
     automationUpgrade,
-    upgradeName = automationUpgrade + "Automation"
+    upgradeName = automationUpgrade.upgradeName + "Automation"
   ) {
     this.startPrice = startPrice;
+    this.price = startPrice;
     this.growth = growth;
     this.countSpan = countSpan;
     this.priceSpan = priceSpan;
     this.automationUpgrade = automationUpgrade;
     this.upgradeName = upgradeName;
+    this.color = "cyan";
+    this.count = 0;
+    this.automationTimer = 0;
+    AutomationUpgrade.instances[this.upgradeName] = this;
   }
 
   static createEmpty() {
     return new AutomationUpgrade(0, "", null, null, {}, "");
   }
+
+  //methods for updating upgrade's displays
+  updateCount() {
+    if (!this.countSpan) return;
+    this.countSpan.innerHTML = this.count;
+  }
+  updatePrice() {
+    this.price = formatNumber(
+      Math.floor(
+        eval(this.growth.replaceAll("x", this.count))
+        /*example growth formula:
+        (10 * Math.pow(1.1, x));*/
+      )
+    );
+    if (!this.priceSpan) return;
+    this.priceSpan.innerHTML = this.price;
+  }
+  static updateAllUpgrades() {
+    for (let i in AutomationUpgrade.instances) {
+      let inst = AutomationUpgrade.instances[i];
+      inst.updateCount();
+      inst.updatePrice();
+    }
+  }
+
+  //buy function!
+  buy(count) {
+    for (let i = 0; i < count; i++) {
+      if (colors[this.color] < this.price) {
+        return false;
+      }
+      //if you can buy the upgrade, continue
+      this.count += count;
+      this.updateCount();
+
+      colors[this.color] -= this.price;
+      this.updatePrice();
+
+      return true;
+    }
+  }
+
+  //and here's the automation function
+  static updateAutomation(deltaTime) {
+    for (let key in AutomationUpgrade.instances) {
+      let inst = AutomationUpgrade.instances[key];
+
+      if (!automationToggles[inst.automationUpgrade.color]) continue;
+
+      inst.automationTimer += deltaTime * inst.count * 0.5 * cyanBuyTimeBoost;
+      if (inst.automationTimer >= 1000) {
+        inst.automationUpgrade.buy(Math.floor(inst.automationTimer / 1000));
+        inst.automationTimer = inst.automationTimer % 1000;
+      }
+    }
+  }
+
+  //method for toggling a color
+  /**color must be a string and the toggle button must have an id of "color + togglestate" and "color + toggle" for the button */
+  static toggle(color) {
+    automationToggles[color] = !automationToggles[color];
+
+    if (automationToggles[color]) {
+      document.getElementById(color + "toggle").style.background =
+        "linear-gradient(45deg, #003e00, #32db32, #025202)";
+      document.getElementById(color + "togglestate").innerHTML = "on";
+    } else {
+      document.getElementById(color + "toggle").style.background =
+        "linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25))";
+      document.getElementById(color + "togglestate").innerHTML = "off";
+    }
+  }
+
+  //methods for saving and loading
+  static saveUpgrades() {
+    let saveObj = {};
+    for (let i in AutomationUpgrade.instances) {
+      AutomationUpgrade.instances[i].updatePrice();
+      AutomationUpgrade.instances[i].updateCount();
+
+      saveObj[i] = {
+        price: AutomationUpgrade.instances[i].price,
+        count: AutomationUpgrade.instances[i].count,
+      };
+    }
+    let savedUpgrades = JSON.stringify(saveObj);
+
+    localStorage.setItem("upgrades4", savedUpgrades);
+  }
+
+  /**
+   * @function
+   * Load upgrades count and price from locastorage into current instances.
+   * Only call after AutomationUpgrade instances are created.
+   */
+  static loadUpgrades() {
+    let savedUpgrades = JSON.parse(localStorage.getItem("upgrades4"));
+
+    if (savedUpgrades) {
+      for (let i in AutomationUpgrade.instances) {
+        let savedUpgrade = savedUpgrades[i];
+        //if savedupgrades does not contain the instance, return
+        if (!savedUpgrade) return;
+        //if it does, set the instance's count and price to saved values
+        let obj = AutomationUpgrade.instances[i];
+        obj.count = savedUpgrade.count;
+        obj.price = savedUpgrade.price;
+      }
+    }
+    AutomationUpgrade.updateAllUpgrades();
+  }
+
+  //end of class
 }
 
 //ALL OF THE VARIABLES
@@ -455,6 +598,8 @@ var whiteunlock = 0;
 var whiteunlocked = 0;
 var blackunlock = 0;
 var blackunlocked = 0;
+//delay for main loop
+let loopDelay = 10;
 
 //offline
 var offlineTime = 0;
@@ -862,7 +1007,16 @@ var yellowGAIN = 0;
 
 //cyan
 var cyanBuyTimeBoost = 1;
-//var cyan = 0;
+
+//new classes!!!
+let redFilterAutomation = new AutomationUpgrade(
+  5,
+  "5*Math.pow(1.3,x)",
+  document.getElementById("redfilterautomationcount"),
+  document.getElementById("redfilterautomationprice"),
+  redFilter
+);
+
 var redfilterautomationcount = 0;
 var redfilterautomationprice = 5;
 var redpointerautomationcount = 0;
