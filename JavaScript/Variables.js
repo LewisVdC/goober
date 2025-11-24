@@ -19,6 +19,137 @@ window.colors = {
 //some number formatting
 //lol u can tell by the comments chatgpt wrote this
 //what comments?
+
+//ALL OF THE VARIABLES
+
+//general
+var debugrednumber = 0;
+var debuggreennumber = 0;
+var debugbluenumber = 0;
+var debugmagicnumber = 0;
+var tab = "red";
+var whiteunlock = 0;
+var whiteunlocked = 0;
+var blackunlock = 0;
+var blackunlocked = 0;
+//delay for main loop
+let loopDelay = 10;
+
+//offline
+var offlineTime = 0;
+var time = Date.now();
+var visibilityState = "visible";
+
+//achievements
+let taskMasteryTrigger = false;
+let achievement = {
+  redfilter1: false,
+  redPerSec10: false,
+  have1e5red: false,
+  buyAllRedUpgrades: false,
+  redPerSec1e15: false,
+  have1e20red: false,
+  greenfilter1: false,
+  greenPerSec100: false,
+  have1e6green: false,
+  buyAllGreenUpgrades: false,
+  greenPerSec1e16: false,
+  have1e21green: false,
+  bluefilter1: false,
+  bluePerSec1000: false,
+  have1e7blue: false,
+  buyAllBlueUpgrades: false,
+  bluePerSec1e17: false,
+  have1e22blue: false,
+  yellow1: false,
+  yellow100: false,
+  triggertaskmastery: false,
+  yellowPerSec10: false,
+  yellowAllUpgrades10: false,
+  have1e7yellow: false,
+  yellowCyan1: false,
+  automation1: false,
+  everyAutomation: false,
+  magicCyan1: false,
+  spellAutomation: false,
+  prestiegeAutomation: false,
+  buyCauldron1: false,
+  castSpell1: false,
+  magicPerSec1e4: false,
+  buyAllScrolls: false,
+  earn1e9magenta: false,
+  allSpellsUnlocked: false,
+};
+
+//magenta
+
+//black
+//var black = 0;
+var enterbuttonx = 0;
+var enterbuttony = 0;
+var blackholex = 0;
+var blackholex = 0;
+var blackholey = 0;
+var blackholeanimationdone = 0;
+var blackholex2 = 0;
+var buttony = 0;
+var blackholey2 = 0;
+
+//nerdmode
+var currentnerdmode = 0;
+var nerdtimer = 0;
+
+//saving
+var decodedtext = 0;
+var savecounter = 0;
+var savetime = 15000;
+var loaded = 0;
+var loaded2 = 0;
+
+//devmode
+var buttonpress = true;
+var dev = 0;
+
+//tasks
+var arrOfPtags = document.getElementsByTagName("p");
+var arrOfSpanTags = document.getElementsByTagName("span");
+var taskColorGoalHEX = "#ffff00";
+var taskColorGoalRed = 255;
+var taskColorGoalGreen = 0;
+var taskColorGoalBlue = 0;
+var streamlinedTaskColorGoal = {
+  red: 1,
+  green: 1,
+  blue: 1,
+};
+let hexResult = "#";
+var tasksCompleted = 0;
+var taskRewardCount = 10;
+var taskRewardColor = "green";
+var taskBooster = 1;
+//can u explain to me what this is 😭??
+//idk best not to touch it
+const hex = {
+  0: "0",
+  1: "1",
+  2: "2",
+  3: "3",
+  4: "4",
+  5: "5",
+  6: "6",
+  7: "6",
+  8: "8",
+  9: "9",
+  10: "A",
+  11: "B",
+  12: "C",
+  13: "D",
+  14: "E",
+  15: "F",
+};
+
+//THE UPGRADES CLASSES STUFF THINGIES
+
 function formatNumber(number) {
   if (Math.abs(number) >= 1e7) {
     return number.toExponential(3);
@@ -599,67 +730,6 @@ class AutomationUpgrade {
   //end of class
 }
 
-//ALL OF THE VARIABLES
-
-//general
-var debugrednumber = 0;
-var debuggreennumber = 0;
-var debugbluenumber = 0;
-var debugmagicnumber = 0;
-var tab = "red";
-var whiteunlock = 0;
-var whiteunlocked = 0;
-var blackunlock = 0;
-var blackunlocked = 0;
-//delay for main loop
-let loopDelay = 10;
-
-//offline
-var offlineTime = 0;
-var time = Date.now();
-var visibilityState = "visible";
-
-//achievements
-let taskMasteryTrigger = false;
-let achievement = {
-  redfilter1: false,
-  redPerSec10: false,
-  have1e5red: false,
-  buyAllRedUpgrades: false,
-  redPerSec1e15: false,
-  have1e20red: false,
-  greenfilter1: false,
-  greenPerSec100: false,
-  have1e6green: false,
-  buyAllGreenUpgrades: false,
-  greenPerSec1e16: false,
-  have1e21green: false,
-  bluefilter1: false,
-  bluePerSec1000: false,
-  have1e7blue: false,
-  buyAllBlueUpgrades: false,
-  bluePerSec1e17: false,
-  have1e22blue: false,
-  yellow1: false,
-  yellow100: false,
-  triggertaskmastery: false,
-  yellowPerSec10: false,
-  yellowAllUpgrades10: false,
-  have1e7yellow: false,
-  yellowCyan1: false,
-  automation1: false,
-  everyAutomation: false,
-  magicCyan1: false,
-  spellAutomation: false,
-  prestiegeAutomation: false,
-  buyCauldron1: false,
-  castSpell1: false,
-  magicPerSec1e4: false,
-  buyAllScrolls: false,
-  earn1e9magenta: false,
-  allSpellsUnlocked: false,
-};
-
 //red
 let redFilter = new BasicColorUpgrade(
   "red",
@@ -1132,70 +1202,3 @@ let blueNanometerWaveAutomation = new AutomationUpgrade(
   document.getElementById("bluenanometerwaveautomationprice"),
   blueNanometerWave
 );
-
-//magenta
-
-//black
-//var black = 0;
-var enterbuttonx = 0;
-var enterbuttony = 0;
-var blackholex = 0;
-var blackholex = 0;
-var blackholey = 0;
-var blackholeanimationdone = 0;
-var blackholex2 = 0;
-var buttony = 0;
-var blackholey2 = 0;
-
-//nerdmode
-var currentnerdmode = 0;
-var nerdtimer = 0;
-
-//saving
-var decodedtext = 0;
-var savecounter = 0;
-var savetime = 15000;
-var loaded = 0;
-var loaded2 = 0;
-
-//devmode
-var buttonpress = true;
-var dev = 0;
-
-//tasks
-var arrOfPtags = document.getElementsByTagName("p");
-var arrOfSpanTags = document.getElementsByTagName("span");
-var taskColorGoalHEX = "#ffff00";
-var taskColorGoalRed = 255;
-var taskColorGoalGreen = 0;
-var taskColorGoalBlue = 0;
-var streamlinedTaskColorGoal = {
-  red: 1,
-  green: 1,
-  blue: 1,
-};
-let hexResult = "#";
-var tasksCompleted = 0;
-var taskRewardCount = 10;
-var taskRewardColor = "green";
-var taskBooster = 1;
-//can u explain to me what this is 😭??
-//idk best not to touch it
-const hex = {
-  0: "0",
-  1: "1",
-  2: "2",
-  3: "3",
-  4: "4",
-  5: "5",
-  6: "6",
-  7: "6",
-  8: "8",
-  9: "9",
-  10: "A",
-  11: "B",
-  12: "C",
-  13: "D",
-  14: "E",
-  15: "F",
-};

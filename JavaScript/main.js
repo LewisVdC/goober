@@ -241,11 +241,7 @@ const loopID = window.setInterval(function () {
         starFadeOut();
         starSpawn();
       }
-      //nerdmode text "margins" (actually width in disguise)
-      document.getElementById("nerdmodetext").style.width =
-        "calc(50% - 320px - " +
-        String(document.getElementById("tabwhite").getBoundingClientRect().width) +
-        "px)";
+
       //feed the users info
       document.getElementById("redcountup").innerHTML =
         "per second: " + formatNumber(Math.round(debugrednumber * 10) / 10);
@@ -301,6 +297,11 @@ const loopID = window.setInterval(function () {
       //fixed
       //for any onlookers, this is to change the nerdmode text for every. single. upgrade.
       //death
+      //nerdmode text "margins" (actually width in disguise)
+      document.getElementById("nerdmodetext").style.width =
+        "calc(50% - 320px - " +
+        String(document.getElementById("tabwhite").getBoundingClientRect().width) +
+        "px)";
 
       if (document.querySelector("#redbuild1:hover") != null) {
         nerdtimer = 0;
