@@ -131,6 +131,7 @@ function showtab(x) {
       "0px 0px 10px cyan, 0 0 10px rgb(0,125,125)",
       "rgb(0, 180, 190)"
     );
+    document.getElementById("submitTaskButton").style.backgroundColor = "rgb(0, 180, 190)";
   }
   //magenta
   if (x === "magenta") {

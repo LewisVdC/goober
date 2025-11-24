@@ -16,22 +16,7 @@ function save() {
     greenscrollcount: greenscrollcount,
     bluescrollcount: bluescrollcount,
     magentaspellunlock: magentaspellunlock,
-    greenfilter: greenfilter,
-    greenpointer: greenpointer,
-    biggreenfilter: biggreenfilter,
-    biggreenpointer: biggreenpointer,
-    greennanometerwave: greennanometerwave,
-    greenupgrade1: greenupgrade1,
-    greenupgrade2: greenupgrade2,
-    greenupgrade3: greenupgrade3,
-    bluefilter: bluefilter,
-    bluepointer: bluepointer,
-    bigbluefilter: bigbluefilter,
-    bigbluepointer: bigbluepointer,
-    bluenanometerwave: bluenanometerwave,
-    blueupgrade1: blueupgrade1,
-    blueupgrade2: blueupgrade2,
-    blueupgrade3: blueupgrade3,
+
     tasksCompleted: tasksCompleted,
     colorGoal: document.getElementById("taskColor").innerHTML,
     colorGoalColor: document.getElementById("taskColor").style.color,
@@ -44,36 +29,6 @@ function save() {
     whiteunlock: whiteunlock,
     blackunlock: blackunlock,
 
-    redfilterautomationcount: redfilterautomationcount,
-    redfilterautomationprice: redfilterautomationprice,
-    redpointerautomationcount: redpointerautomationcount,
-    redpointerautomationprice: redpointerautomationprice,
-    bigredfilterautomationcount: bigredfilterautomationcount,
-    bigredfilterautomationprice: bigredfilterautomationprice,
-    bigredpointerautomationcount: bigredpointerautomationcount,
-    bigredpointerautomationprice: bigredpointerautomationprice,
-    rednanometerwaveautomationcount: rednanometerwaveautomationcount,
-    rednanometerwaveautomationprice: rednanometerwaveautomationprice,
-    greenfilterautomationcount: greenfilterautomationcount,
-    greenfilterautomationprice: greenfilterautomationprice,
-    greenpointerautomationcount: greenpointerautomationcount,
-    greenpointerautomationprice: greenpointerautomationprice,
-    biggreenfilterautomationcount: biggreenfilterautomationcount,
-    biggreenfilterautomationprice: biggreenfilterautomationprice,
-    biggreenpointerautomationcount: biggreenpointerautomationcount,
-    biggreenpointerautomationprice: biggreenpointerautomationprice,
-    greennanometerwaveautomationcount: greennanometerwaveautomationcount,
-    greennanometerwaveautomationprice: greennanometerwaveautomationprice,
-    bluefilterautomationcount: bluefilterautomationcount,
-    bluefilterautomationprice: bluefilterautomationprice,
-    bluepointerautomationcount: bluepointerautomationcount,
-    bluepointerautomationprice: bluepointerautomationprice,
-    bigbluefilterautomationcount: bigbluefilterautomationcount,
-    bigbluefilterautomationprice: bigbluefilterautomationprice,
-    bigbluepointerautomationcount: bigbluepointerautomationcount,
-    bigbluepointerautomationprice: bigbluepointerautomationprice,
-    bluenanometerwaveautomationcount: bluenanometerwaveautomationcount,
-    bluenanometerwaveautomationprice: bluenanometerwaveautomationprice,
     redtogglestate: redtogglestate,
     blackholeanimationdone: blackholeanimationdone,
     greentogglestate: greentogglestate,
@@ -99,6 +54,7 @@ function save() {
     cooldowntimeleft: cooldowntimeleft,
     cooldowntimes: cooldowntimes,
     achievement: achievement,
+    tab: tab,
   };
   localStorage.setItem("save", JSON.stringify(save));
   document.getElementById("saving").setAttribute("class", "");
@@ -121,6 +77,10 @@ function load() {
   }
   var savegame = JSON.parse(localStorage.getItem("save"));
   if (savegame != null) {
+    //tab
+    if (savegame.tab) {
+      showtab(savegame.tab);
+    }
     //achievement and nerdmode
     if (typeof savegame.achievement !== "undefined") {
       achievement = savegame.achievement;
@@ -459,3 +419,7 @@ function load() {
   OneTimeColorUpgrade.loadUpgrades();
   AutomationUpgrade.loadUpgrades();
 }
+
+window.addEventListener("beforeunload", (event) => {
+  save();
+});
