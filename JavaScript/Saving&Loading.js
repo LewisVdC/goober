@@ -420,6 +420,7 @@ function load() {
   AutomationUpgrade.loadUpgrades();
 }
 
-window.addEventListener("beforeunload", (event) => {
+function beforeUnloadHandler(event) {
   save();
-});
+}
+window.addEventListener("beforeunload", beforeUnloadHandler);

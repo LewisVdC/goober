@@ -1062,6 +1062,7 @@ document.addEventListener("keydown", function (event) {
     }
   }
 });
+
 function resetData() {
   //galaxy says not to use things like alert and confirm for anything because it kicks you out of fullscreen
   //but i think deleting your save is serious enough that you want a confirmation that pulls you out the game for a second
@@ -1072,6 +1073,7 @@ function resetData() {
     localStorage.removeItem("upgrades2");
     localStorage.removeItem("upgrades3");
     localStorage.removeItem("upgrades4");
+    window.removeEventListener("beforeunload", beforeUnloadHandler);
     location.reload();
   }
 }
