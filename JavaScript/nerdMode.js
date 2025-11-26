@@ -87,7 +87,7 @@ let nerdModeTexts = {
   studycauldron: "gives 5 magic/s",
   feed: "gives 50 magic/s",
   feedperson: "gives 500 magic/s",
-  drink: "gives 5000 magic/s",
+  drink: "boosts magic production",
 };
 
 function updateNerdMode(deltaTime) {
