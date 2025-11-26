@@ -20,9 +20,7 @@ function save() {
     tasksCompleted: tasksCompleted,
     colorGoal: document.getElementById("taskColor").innerHTML,
     colorGoalColor: document.getElementById("taskColor").style.color,
-    taskColorGoalBlue: taskColorGoalBlue,
-    taskColorGoalGreen: taskColorGoalGreen,
-    taskColorGoalRed: taskColorGoalRed,
+    taskColorGoal: taskColorGoal,
     taskRewardCount: taskRewardCount,
     taskRewardColor: taskRewardColor,
     taskBooster: taskBooster,
@@ -49,7 +47,6 @@ function save() {
     spell1unlock: spell1unlock,
     spell2unlock: spell2unlock,
     spell3unlock: spell3unlock,
-    streamlinedTaskColorGoal: streamlinedTaskColorGoal,
     cooldownspells: cooldownspells,
     cooldowntimeleft: cooldowntimeleft,
     cooldowntimes: cooldowntimes,
@@ -369,23 +366,9 @@ function load() {
     } else {
       document.getElementById("tabs").style.width = "250px";
     }
-    if (typeof savegame.streamlinedTaskColorGoal !== "undefined")
-      streamlinedTaskColorGoal = savegame.streamlinedTaskColorGoal;
-    if (typeof savegame.taskColorGoalRed !== "undefined")
-      taskColorGoalRed = savegame.taskColorGoalRed;
-    document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
-      Math.floor(taskColorGoalRed)
-    );
-    if (typeof savegame.taskColorGoalGreen !== "undefined")
-      taskColorGoalGreen = savegame.taskColorGoalGreen;
-    document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
-      Math.floor(taskColorGoalGreen)
-    );
-    if (typeof savegame.taskColorGoalBlue !== "undefined")
-      taskColorGoalBlue = savegame.taskColorGoalBlue;
-    document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
-      Math.floor(taskColorGoalBlue)
-    );
+    if (typeof savegame.taskColorGoal !== "undefined") taskColorGoal = savegame.taskColorGoal;
+    updateTasksAmount();
+
     if (typeof savegame.taskRewardColor !== "undefined") taskRewardColor = savegame.taskRewardColor;
     if (typeof savegame.taskRewardCount !== "undefined") taskRewardCount = savegame.taskRewardCount;
     document.getElementById("taskReward").innerHTML =

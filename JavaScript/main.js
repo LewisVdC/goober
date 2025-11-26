@@ -224,6 +224,9 @@ const loopID = window.setInterval(function () {
       //update cyan automation!
       AutomationUpgrade.updateAutomation(loopDelay);
 
+      //update nerd mode!
+      updateNerdMode(loopDelay);
+
       //"update" game for ppl
       if (
         document.getElementById("tabmagenta").style.display === "block" &&
@@ -244,27 +247,14 @@ const loopID = window.setInterval(function () {
 
       //feed the users info
       document.getElementById("redcountup").innerHTML =
-        "per second: " + formatNumber(Math.round(debugrednumber * 10) / 10);
+        "per second: " + formatNumber(Math.round(debugrednumber * 10) / 10, 1);
       document.getElementById("greencountup").innerHTML =
-        "per second: " + formatNumber(Math.round(debuggreennumber * 10) / 10);
+        "per second: " + formatNumber(Math.round(debuggreennumber * 10) / 10, 1);
       document.getElementById("bluecountup").innerHTML =
-        "per second: " + formatNumber(Math.round(debugbluenumber * 10) / 10);
+        "per second: " + formatNumber(Math.round(debugbluenumber * 10) / 10, 1);
       //calc the black
       calcblack();
-      //change task goal w streamlined tasks
-      streamlinedTaskColorGoal.red = taskColorGoalRed / Math.pow(2, streamlinedTasks.count);
-      streamlinedTaskColorGoal.green = taskColorGoalGreen / Math.pow(2, streamlinedTasks.count);
-      streamlinedTaskColorGoal.blue = taskColorGoalBlue / Math.pow(2, streamlinedTasks.count);
-      //change text
-      document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
-        Math.round(streamlinedTaskColorGoal.red)
-      );
-      document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
-        Math.round(streamlinedTaskColorGoal.green)
-      );
-      document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
-        Math.round(streamlinedTaskColorGoal.blue)
-      );
+
       //devmode!!
       if (dev == 1) {
         document.getElementById("devmode").style.display = "block";
@@ -303,98 +293,8 @@ const loopID = window.setInterval(function () {
         String(document.getElementById("tabwhite").getBoundingClientRect().width) +
         "px)";
 
-      if (document.querySelector("#redbuild1:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives 0.5 red/s";
-      } else if (document.querySelector("#redbuild2:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  5 red/s";
-      } else if (document.querySelector("#redbuild3:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  50 red/s";
-      } else if (document.querySelector("#redbuild4:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  500 red/s";
-      } else if (document.querySelector("#redbuild5:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "boosts red production by 50% (additive)";
-      } else if (document.querySelector("#greenbuild1:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives 0.5 green/s";
-      } else if (document.querySelector("#greenbuild2:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  5 green/s";
-      } else if (document.querySelector("#greenbuild3:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  50 green/s";
-      } else if (document.querySelector("#greenbuild4:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  500 green/s";
-      } else if (document.querySelector("#greenbuild5:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "boosts green production by 50% (additive)";
-      } else if (document.querySelector("#bluebuild1:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives 0.5 blue/s";
-      } else if (document.querySelector("#bluebuild2:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  5 blue/s";
-      } else if (document.querySelector("#bluebuild3:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  50 blue/s";
-      } else if (document.querySelector("#bluebuild4:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "gives  500 blue/s";
-      } else if (document.querySelector("#bluebuild5:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "boosts blue production by 50% (additive)";
-      } else if (document.querySelector("#redupgrade1:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies red filter gain by the amount of red filters"; //maybe here
-      } else if (document.querySelector("#redupgrade3:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies red pointer gain by the amount of red pointers"; //maybe here
-      } else if (document.querySelector("#redupgrade2:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies gain of other colors by log1p(red)"; //here
-      } else if (document.querySelector("#greenupgrade1:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies green filter gain by the amount of green filters"; //maybe here
-      } else if (document.querySelector("#greenupgrade3:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies green pointer gain by the amount of green pointers"; //maybe here
-      } else if (document.querySelector("#greenupgrade2:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies gain of other colors by log1p(green)"; //here
-      } else if (document.querySelector("#blueupgrade1:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies blue filter gain by the amount of blue filters"; //maybe here
-      } else if (document.querySelector("#blueupgrade3:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies blue pointer gain by the amount of blue pointers"; //maybe here
-      } else if (document.querySelector("#blueupgrade2:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML =
-          "multiplies gain of other colors by log1p(blue)"; //and here
-      } else if (document.querySelector("#redscroll:hover") != null) {
-        nerdtimer = 0;
-        document.getElementById("nerdmodetext").innerHTML = "???";
-      } else if (document.querySelector("#greenscroll:hover") != null) {
-        document.getElementById("nerdmodetext").innerHTML = "???";
-        nerdtimer = 0;
-      } else if (document.querySelector("#bluescroll:hover") != null) {
-        document.getElementById("nerdmodetext").innerHTML = "???";
+      /*
+
       } else if (document.querySelector("#yellowupgrade1:hover") != null) {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
@@ -599,7 +499,7 @@ const loopID = window.setInterval(function () {
         nerdtimer = 0;
         document.getElementById("nerdmodetext").innerHTML =
           "converts magic into cyan at a 100:1 ratio";
-      } else {
+      } */ /*else {
         if (nerdtimer > 1) {
           document.getElementById("nerdmodetext").innerHTML =
             "hover over an upgrade to see what it does.";
@@ -607,7 +507,7 @@ const loopID = window.setInterval(function () {
         } else {
           nerdtimer += 0.01;
         }
-      }
+      }*/
       //man
 
       const div = document.querySelector("div#blackholecontainer");
@@ -629,15 +529,14 @@ const loopID = window.setInterval(function () {
       document.getElementById("taskAmountBlue").innerHTML = formatNumber(Math.floor(colors.blue));
       document.getElementById("taskAmountGreen").innerHTML = formatNumber(Math.floor(colors.green));
       document.getElementById("yellowcount").innerHTML =
-        "yellow: " + formatNumber(Math.floor(colors.yellow));
+        "yellow: " + formatNumber(Math.floor(colors.yellow), 1);
       document.getElementById("magentacount").innerHTML =
-        "magenta: " + formatNumber(Math.floor(colors.magenta));
+        "magenta: " + formatNumber(Math.floor(colors.magenta), 1);
       document.getElementById("cyancount").innerHTML =
-        "cyan: " + formatNumber(Math.floor(colors.cyan));
+        "cyan: " + formatNumber(Math.floor(colors.cyan), 1);
       //ugh
       //im moving the yellow upgrades update function somewhere else
       //i'm removing the yellow upgrades update, like why do we even need to update it every time? -boongabonga
-      //updateyellow();
       //unlocks
       if (debugrednumber >= 5000 && achievement.have1e5red === true) {
         document.getElementById("redupgrades").style.display = "flex";
@@ -705,7 +604,7 @@ const loopID = window.setInterval(function () {
         savecounter = 0;
       }
 
-      document.getElementById("blackcount").innerHTML = formatNumber(colors.black);
+      document.getElementById("blackcount").innerHTML = formatNumber(colors.black, 1);
 
       //magic stuff
 
@@ -732,7 +631,7 @@ const loopID = window.setInterval(function () {
           // rednanometerwave
           (redNanometerWave.count * 0.5 + 1) *
           (1 + Math.log1p(micrometerWave.count) * 1.5) *
-          // weaksynergygreen
+          //weaksynergygreen
           (Math.log1p(colors.green) * greenUpgrade2.count + 1)) /
           (10 * greenUpgrade2.count + 1)) *
           // weaksynergyblue
@@ -855,27 +754,20 @@ function rgbToHex(rgb) {
 
 function submitTask() {
   if (
-    colors.red >= streamlinedTaskColorGoal.red &&
-    colors.green >= streamlinedTaskColorGoal.green &&
-    colors.blue >= streamlinedTaskColorGoal.blue
+    colors.red >= taskColorGoal.red &&
+    colors.green >= taskColorGoal.green &&
+    colors.blue >= taskColorGoal.blue
   ) {
-    colors.red -= streamlinedTaskColorGoal.red;
-    colors.green -= streamlinedTaskColorGoal.green;
-    colors.blue -= streamlinedTaskColorGoal.blue;
+    colors.red -= taskColorGoal.red;
+    colors.green -= taskColorGoal.green;
+    colors.blue -= taskColorGoal.blue;
     tasksCompleted++;
     if (tasksCompleted === 1) {
-      taskColorGoalRed = 0;
-      taskColorGoalGreen = 255;
-      taskColorGoalBlue = 0;
-      document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
-        Math.round(taskColorGoalRed)
-      );
-      document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
-        Math.round(taskColorGoalGreen)
-      );
-      document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
-        Math.round(taskColorGoalBlue)
-      );
+      taskColorGoal.red = 0;
+      taskColorGoal.green = 255;
+      taskColorGoal.blue = 0;
+      updateTasksAmount();
+
       document.getElementById("taskColor").innerHTML = "#00FF00";
       document.getElementById("taskColor").style.color = "green";
       document.getElementById("taskColor").style.textShadow = "0 0 10px green";
@@ -886,18 +778,11 @@ function submitTask() {
       document.getElementById("tabs").style.width = "calc(250px/3*2)";
       colors.green += 10;
     } else if (tasksCompleted === 2) {
-      taskColorGoalRed = 0;
-      taskColorGoalGreen = 0;
-      taskColorGoalBlue = 255;
-      document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
-        Math.round(taskColorGoalRed)
-      );
-      document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
-        Math.round(taskColorGoalGreen)
-      );
-      document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
-        Math.round(taskColorGoalBlue)
-      );
+      taskColorGoal.red = 0;
+      taskColorGoal.green = 0;
+      taskColorGoal.blue = 255;
+      updateTasksAmount();
+
       document.getElementById("taskColor").innerHTML = "#0000FF";
       document.getElementById("taskColor").style.color = "blue";
       document.getElementById("taskColor").style.textShadow = "0 0 10px blue";
@@ -908,18 +793,11 @@ function submitTask() {
       document.getElementById("tabblue").style.display = "block";
       colors.blue += 10;
     } else if (tasksCompleted === 3) {
-      taskColorGoalRed = 1100000;
-      taskColorGoalGreen = 115000;
-      taskColorGoalBlue = 4100;
-      document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
-        Math.round(taskColorGoalRed)
-      );
-      document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
-        Math.round(taskColorGoalGreen)
-      );
-      document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
-        Math.round(taskColorGoalBlue)
-      );
+      taskColorGoal.red = 1100000;
+      taskColorGoal.green = 115000;
+      taskColorGoal.blue = 4100;
+      updateTasksAmount();
+
       document.getElementById("taskColor").innerHTML = "#6E7329";
       document.getElementById("taskColor").style.color = "rgb(168, 140, 0)";
       document.getElementById("taskColor").style.textShadow = "0 0 10px yellow";
@@ -928,48 +806,48 @@ function submitTask() {
       taskRewardColor = "yellow";
       taskBooster = 2;
     } else {
-      taskColorGoalRed = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
-      taskColorGoalGreen = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
-      taskColorGoalBlue = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
+      taskColorGoal.red = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
+      taskColorGoal.green = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
+      taskColorGoal.blue = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
 
       rgbToHex(
-        Math.round(taskColorGoalRed / (1000 * Math.pow(1.2, tasksCompleted))) +
+        Math.round(taskColorGoal.red / (1000 * Math.pow(1.2, tasksCompleted))) +
           ", " +
-          Math.round(taskColorGoalGreen / (1000 * Math.pow(1.2, tasksCompleted))) +
+          Math.round(taskColorGoal.green / (1000 * Math.pow(1.2, tasksCompleted))) +
           ", " +
-          Math.round(taskColorGoalBlue / (1000 * Math.pow(1.2, tasksCompleted)))
+          Math.round(taskColorGoal.blue / (1000 * Math.pow(1.2, tasksCompleted)))
       );
       document.getElementById("taskColor").innerHTML = hexResult;
       document.getElementById("taskColor").style.color =
         "rgb(" +
-        String(Math.round(taskColorGoalRed / (1000 * Math.pow(1.2, tasksCompleted)))) +
+        String(Math.round(taskColorGoal.red / (1000 * Math.pow(1.2, tasksCompleted)))) +
         ", " +
         String(
-          Math.round(taskColorGoalGreen / (1000 * Math.pow(1.2, tasksCompleted))) +
+          Math.round(taskColorGoal.green / (1000 * Math.pow(1.2, tasksCompleted))) +
             ", " +
-            String(Math.round(taskColorGoalBlue / (1000 * Math.pow(1.2, tasksCompleted))) + ")")
+            String(Math.round(taskColorGoal.blue / (1000 * Math.pow(1.2, tasksCompleted))) + ")")
         );
       document.getElementById("taskColor").style.textShadow =
         "0px 0px 10px " +
         "rgb(" +
-        String(Math.round(taskColorGoalRed / (1000 * Math.pow(1.2, tasksCompleted)))) +
+        String(Math.round(taskColorGoal.red / (1000 * Math.pow(1.2, tasksCompleted)))) +
         ", " +
-        String(Math.round(taskColorGoalGreen / (1000 * Math.pow(1.2, tasksCompleted)))) +
+        String(Math.round(taskColorGoal.green / (1000 * Math.pow(1.2, tasksCompleted)))) +
         ", " +
-        String(Math.round(taskColorGoalBlue / (1000 * Math.pow(1.2, tasksCompleted)))) +
+        String(Math.round(taskColorGoal.blue / (1000 * Math.pow(1.2, tasksCompleted)))) +
         ")";
       document.getElementById("tabyellow").style.display = "block";
       colors.yellow += taskRewardCount;
       taskRewardCount =
         10 *
         (1 + yellowSynergy.count * 0.25) *
-        (1 + (goldenmultipliercount * tasksCompleted) / 1000);
-      if (Math.random() * 100 <= taskmasterycount) {
-        colors.yellow += taskRewardCount * 10 * taskmasterycount;
+        (1 + (goldenMultiplier.count * tasksCompleted) / 1000);
+      if (Math.random() * 100 <= taskMastery.count) {
+        colors.yellow += taskRewardCount * 10 * taskMastery.count;
         taskMasteryTrigger = true;
       }
       document.getElementById("yellowcount").innerHTML =
-        "yellow: " + formatNumber(Math.floor(colors.yellow));
+        "yellow: " + formatNumber(Math.floor(colors.yellow), 1);
       if (tasksCompleted === 99) {
         document.getElementById("taskReward").innerHTML =
           String(Math.round(taskRewardCount)) + " " + taskRewardColor + " and 10 magenta";
@@ -982,8 +860,9 @@ function submitTask() {
         document.getElementById("tabmagenta").style.display = "block";
         document.getElementById("holyalbertomode").style.display = "block";
         document.getElementById("magentacount").innerHTML =
-          "magenta: " + formatNumber(Math.floor(colors.magenta));
+          "magenta: " + formatNumber(Math.floor(colors.magenta), 1);
       }
+      updateTasksAmount();
     }
   }
 }
@@ -1084,91 +963,21 @@ function resetData() {
 //
 //
 
+//needed revision maybe in the future
 window.setInterval(function () {
   yellowGAIN = 0;
-  yellowGAIN +=
-    (redOverflow.count *
-      ((((((redFilter.count *
-        (redFilter.count * redUpgrade1.count + 1) *
-        (1 + Math.sqrt(finerFilters.count) * 2) + // Diminishing returns for finerfilters
-        redPointer.count *
-          10 *
-          (redPointer.count * redUpgrade3.count + 1) *
-          (1 + Math.sqrt(focussedPointers.count) * 2) + // Diminishing returns for focussedpointers
-        bigRedFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
-        bigRedPointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
-        (redNanometerWave.count * 0.5 + 1) *
-        (1 + Math.log1p(micrometerWave.count) * 1.5) + // Logarithmic scaling for micrometerwave
-        (Math.log1p(colors.green) * greenUpgrade2.count + 1)) / // Controlled synergy with green
-        (10 * greenUpgrade2.count + 1)) *
-        (Math.log1p(colors.blue) * blueUpgrade2.count + 1)) / // Controlled synergy with blue
-        (10 * blueUpgrade2.count + 1)) *
-        (1 + Math.sqrt(strongerSynergy.count) * 5) * // Diminishing returns for strongersynergy
-        taskBooster *
-        (1 + 2 * largerPrisms.count) *
-        (1 +
-          (Math.log1p(colors.yellow) / 10) *
-            (colorHarmony.count / Math.sqrt(colorHarmony.count + 1)))) * // Balanced color harmony
-      (1 + triColorBoost.count * 0.5 * (colors.yellow / 1000))) / // Tri-color boost scaling
-    1e12; // Adjusted scaling factor for 1e10 red
+  yellowGAIN += Math.sqrt(debugrednumber / 1e12); // Adjusted scaling factor for 1e10 red
 
-  yellowGAIN +=
-    (greenOverflow.count *
-      ((((((greenFilter.count *
-        (greenFilter.count * greenUpgrade1.count + 1) *
-        (1 + Math.sqrt(finerFilters.count) * 2) + // Diminishing returns for finerfilters
-        greenPointer.count *
-          10 *
-          (greenPointer.count * greenUpgrade3.count + 1) *
-          (1 + Math.sqrt(focussedPointers.count) * 2) + // Diminishing returns for focussedpointers
-        bigGreenFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
-        bigGreenPointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
-        (greenNanometerWave.count * 0.5 + 1) *
-        (1 + Math.log1p(micrometerWave.count) * 1.5) + // Logarithmic scaling for micrometerwave
-        (Math.log1p(colors.red) * redUpgrade2.count + 1)) / // Controlled synergy with red
-        (10 * redUpgrade2.count + 1)) *
-        (Math.log1p(colors.blue) * blueUpgrade2.count + 1)) / // Controlled synergy with blue
-        (10 * blueUpgrade2.count + 1)) *
-        (1 + Math.sqrt(strongerSynergy.count) * 5) * // Diminishing returns for strongersynergy
-        taskBooster *
-        (1 + 2 * largerPrisms.count) *
-        (1 +
-          (Math.log1p(colors.yellow) / 10) *
-            (colorHarmony.count / Math.sqrt(colorHarmony.count + 1)))) * // Balanced color harmony
-      (1 + triColorBoost.count * 0.5 * (colors.yellow / 1000))) / // Tri-color boost scaling
-    1e12; // Adjusted scaling factor for 1e10 green
+  yellowGAIN += Math.sqrt(debugrednumber / 1e12); // Adjusted scaling factor for 1e10 green
 
-  yellowGAIN +=
-    (blueOverflow.count *
-      ((((((blueFilter.count *
-        (blueFilter.count * blueUpgrade1.count + 1) *
-        (1 + Math.sqrt(finerFilters.count) * 2) + // Diminishing returns for finerfilters
-        bluePointer.count *
-          10 *
-          (bluePointer.count * blueUpgrade3.count + 1) *
-          (1 + Math.sqrt(focussedPointers.count) * 2) + // Diminishing returns for focussedpointers
-        bigBlueFilter.count * 100 * (1 + Math.sqrt(finerFilters.count) * 2) +
-        bigBluePointer.count * 1000 * (1 + Math.sqrt(focussedPointers.count) * 2)) *
-        (blueNanometerWave.count * 0.5 + 1) *
-        (1 + Math.log1p(micrometerWave.count) * 1.5) + // Logarithmic scaling for micrometerwave
-        (Math.log1p(colors.red) * redUpgrade2.count + 1)) / // Controlled synergy with red
-        (10 * redUpgrade2.count + 1)) *
-        (Math.log1p(colors.green) * greenUpgrade2.count + 1)) / // Controlled synergy with green
-        (10 * greenUpgrade2.count + 1)) *
-        (1 + Math.sqrt(strongerSynergy.count) * 5) * // Diminishing returns for strongersynergy
-        taskBooster *
-        (1 + 2 * largerPrisms.count) *
-        (1 +
-          (Math.log1p(colors.yellow) / 10) *
-            (colorHarmony.count / Math.sqrt(colorHarmony.count + 1)))) * // Balanced color harmony
-      (1 + triColorBoost.count * 0.5 * (colors.yellow / 1000))) / // Tri-color boost scaling
-    1e12; // Adjusted scaling factor for 1e10 red
+  yellowGAIN += Math.sqrt(debugrednumber / 1e12); // Adjusted scaling factor for 1e10 blue
   yellowGAIN = Math.min(
-    4 * (1 + (redOverflow.count + greenOverflow.count + blueOverflow.count)),
+    redOverflow.price * 0.1 + greenOverflow.price * 0.1 + blueOverflow.price * 0.1,
     yellowGAIN
   );
+  yellowGAIN = 50 * yellowGAIN * (loopDelay / 1000); //conversion to variable delay (it was made with 20ms delay intended)
   colors.yellow += yellowGAIN;
-}, 20);
+}, loopDelay);
 
 //cyan upgrades
 
@@ -1480,20 +1289,6 @@ function devmode() {
   }
 }
 
-function nerdmode(nerdnumber) {
-  if (nerdnumber == 1) {
-    document.getElementById("nerdmodetext").style.display === "";
-    document.getElementById("nerdmodetext").style.display = "flex";
-    currentnerdmode = 1;
-    document.getElementById("confusion").style.display = "none";
-  } else {
-    document.getElementById("nerdmodetext").style.display = "";
-    currentnerdmode = 0;
-  }
-}
-function nerdmodechange() {
-  nerdmode(!currentnerdmode);
-}
 //nerdmode dragging
 
 //cheater!
@@ -1744,57 +1539,7 @@ function calcblack() {
     blackboost = 0;
   } //make sure i dont blow everything up on accident when you dont have any black yet
 }
-function updateyellow() {
-  //bazinga
-  //1
-  document.getElementById("yellowupgrade1amount").innerHTML = governmentFunding.count;
-  document.getElementById("yellowupgrade1cost").innerHTML = formatNumber(governmentFunding.price);
-  //2
-  document.getElementById("yellowupgrade2amount").innerHTML = colorHarmony.count;
-  document.getElementById("yellowupgrade2cost").innerHTML = formatNumber(colorHarmony.price);
-  //3
-  document.getElementById("yellowupgrade3amount").innerHTML = largerPrisms.count;
-  document.getElementById("yellowupgrade3cost").innerHTML = formatNumber(largerPrisms.price);
-  //4
-  document.getElementById("yellowupgrade4amount").innerHTML = streamlinedTasks.count;
-  document.getElementById("yellowupgrade4cost").innerHTML = formatNumber(streamlinedTasks.price);
-  //5
-  document.getElementById("yellowupgrade5amount").innerHTML = yellowSynergy.count;
-  document.getElementById("yellowupgrade5cost").innerHTML = formatNumber(yellowSynergy.price);
-  //6
-  document.getElementById("yellowupgrade6amount").innerHTML = redOverflow.count;
-  document.getElementById("yellowupgrade6cost").innerHTML = formatNumber(redOverflow.price);
-  //7
-  document.getElementById("yellowupgrade7amount").innerHTML = greenOverflow.count;
-  document.getElementById("yellowupgrade7cost").innerHTML = formatNumber(greenOverflow.price);
-  //8
-  document.getElementById("yellowupgrade8amount").innerHTML = blueOverflow.count;
-  document.getElementById("yellowupgrade8cost").innerHTML = formatNumber(blueOverflow.price);
-  //9
-  document.getElementById("yellowupgrade9amount").innerHTML = triColorBoost.count;
-  document.getElementById("yellowupgrade9cost").innerHTML = formatNumber(triColorBoost.price);
-  //10
-  document.getElementById("yellowupgrade10amount").innerHTML = taskMastery.count;
-  document.getElementById("yellowupgrade10cost").innerHTML = formatNumber(taskMastery.price);
-  //11
-  document.getElementById("yellowupgrade11amount").innerHTML = goldenMultiplier.count;
-  document.getElementById("yellowupgrade11cost").innerHTML = formatNumber(goldenMultiplier.price);
-  //12
-  document.getElementById("yellowupgrade12amount").innerHTML = strongerSynergy.count;
-  document.getElementById("yellowupgrade12cost").innerHTML = formatNumber(strongerSynergy.price);
-  //13
-  document.getElementById("yellowupgrade13amount").innerHTML = focussedPointers.count;
-  document.getElementById("yellowupgrade13cost").innerHTML = formatNumber(focussedPointers.price);
-  //14
-  document.getElementById("yellowupgrade14amount").innerHTML = finerFilters.count;
-  document.getElementById("yellowupgrade14cost").innerHTML = formatNumber(finerFilters.price);
-  //15
-  document.getElementById("yellowupgrade15amount").innerHTML = micrometerWave.count;
-  document.getElementById("yellowupgrade15cost").innerHTML = formatNumber(micrometerWave.price);
-  //16
-  document.getElementById("yellowupgrade16amount").innerHTML = colorSyphon.count;
-  document.getElementById("yellowupgrade16cost").innerHTML = formatNumber(colorSyphon.price);
-}
+
 function leaveblackhole() {
   blackhole.classList.remove("animate2");
   blackhole.classList.add("animate3");
@@ -2325,8 +2070,6 @@ function merchanttalk() {}
 //
 //go!
 
-function merchanttalk() {}
-
 //no more black hole im sicka it
 //funny stars
 function star(x, y, size, duration) {
@@ -2377,7 +2120,7 @@ function starSpawn() {
 function calcred(number) {
   debugrednumber = number / 2;
   colors.red = colors.red + number / 200;
-  document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(colors.red));
+  document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(colors.red), 1);
 }
 
 //GREEN
@@ -2396,7 +2139,7 @@ function calcgreen(number) {
   debuggreennumber = number / 2;
   colors.green = colors.green + number / 200;
   document.getElementById("greencount").innerHTML =
-    "green: " + formatNumber(Math.floor(colors.green));
+    "green: " + formatNumber(Math.floor(colors.green), 1);
 }
 
 //BLUE
@@ -2414,7 +2157,8 @@ function calcgreen(number) {
 function calcblue(number) {
   debugbluenumber = number / 2;
   colors.blue = colors.blue + number / 200;
-  document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(colors.blue));
+  document.getElementById("bluecount").innerHTML =
+    "blue: " + formatNumber(Math.floor(colors.blue), 1);
 }
 
 //YELLOW
@@ -2534,7 +2278,7 @@ function calcmagic(number) {
   debugmagicnumber = number / 2;
   colors.magic = colors.magic + number / 200;
   document.getElementById("magiccount").innerHTML =
-    "magic: " + formatNumber(Math.floor(colors.magic));
+    "magic: " + formatNumber(Math.floor(colors.magic), 1);
 }
 
 //magenta alberto

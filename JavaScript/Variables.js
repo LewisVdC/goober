@@ -1,7 +1,7 @@
 let governmentFunding = {};
 
 function applyGovernmentFunding(x) {
-  return x / (1 + 0.1 * governmentFunding.count);
+  return x * Math.pow(0.9, governmentFunding.count);
 }
 
 window.colors = {
@@ -114,19 +114,32 @@ var dev = 0;
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
 var taskColorGoalHEX = "#ffff00";
-var taskColorGoalRed = 255;
+/*var taskColorGoalRed = 255;
 var taskColorGoalGreen = 0;
-var taskColorGoalBlue = 0;
-var streamlinedTaskColorGoal = {
-  red: 1,
-  green: 1,
-  blue: 1,
+var taskColorGoalBlue = 0;*/
+let taskColorGoal = {
+  red: 255,
+  green: 0,
+  blue: 0,
 };
 let hexResult = "#";
 var tasksCompleted = 0;
 var taskRewardCount = 10;
 var taskRewardColor = "green";
 var taskBooster = 1;
+
+//update tasks fun
+function updateTasksAmount() {
+  document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
+    Math.floor(taskColorGoal.red)
+  );
+  document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
+    Math.floor(taskColorGoal.green)
+  );
+  document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
+    Math.floor(taskColorGoal.blue)
+  );
+}
 //can u explain to me what this is 😭??
 //idk best not to touch it
 const hex = {
@@ -150,33 +163,36 @@ const hex = {
 
 //THE UPGRADES CLASSES STUFF THINGIES
 
-function formatNumber(number) {
+function formatNumber(number, decimalDigits = 0) {
   if (Math.abs(number) >= 1e7) {
     return number.toExponential(3);
   } else {
-    return number.toFixed(1);
+    return number.toFixed(decimalDigits);
   }
 }
-function formatSmallNumber(number) {
+function formatSmallNumber(number, decimalDigits) {
   if (Math.abs(number) >= 100) {
     return number.toExponential(0);
   } else {
-    return number.toFixed(1);
+    return number.toFixed(decimalDigits);
   }
 }
 
 function updateColor(color) {
   document.querySelectorAll(color + "count").forEach((element) => {
-    element.innerHTML = color + ": " + formatNumber(Math.floor(colors[color]));
+    element.innerHTML = color + ": " + formatNumber(Math.floor(colors[color]), 1);
   });
   document.getElementById(color + "count").innerHTML =
-    color + ": " + formatNumber(Math.floor(colors[color]));
+    color + ": " + formatNumber(Math.floor(colors[color]), 1);
 }
 function updateAllColors() {
   for (key in colors) {
     updateColor(key);
   }
 }
+
+//function for checking if another function is empty without executing it
+//nvm
 
 /**
  * Represents an upgrade
@@ -256,10 +272,12 @@ class BasicColorUpgrade {
   static updateAllPrices() {
     for (let i in BasicColorUpgrade.instances) {
       let inst = BasicColorUpgrade.instances[i];
-      inst.price = Math.floor(
-        applyGovernmentFunding(eval(inst.growth.replaceAll("x", inst.count)))
-        /*example growth formula:
+      inst.price = formatNumber(
+        Math.floor(
+          applyGovernmentFunding(eval(inst.growth.replaceAll("x", inst.count)))
+          /*example growth formula:
         (10 * Math.pow(1.1, x));*/
+        )
       );
       if (!inst.priceSpan) continue;
       inst.priceSpan.innerHTML = inst.price;
@@ -270,19 +288,17 @@ class BasicColorUpgrade {
   buy(count) {
     for (let i = 0; i < count; i++) {
       if (colors[this.color] < this.price) {
-        return false;
+        return;
       }
       //if you can buy the upgrade, continue
-      this.count += count;
-      this.updateCount();
-
+      this.count++;
       colors[this.color] -= this.price;
       this.updatePrice();
+      this.updateCount();
 
-      if (!this.buyFunctionExtra) return;
+      if (typeof this.buyFunctionExtra !== "function") continue;
 
       this.buyFunctionExtra();
-      return true;
     }
   }
 
@@ -503,15 +519,16 @@ class BasicYellowUpgrade {
         return false;
       }
       //if you can buy the upgrade, continue
-      this.count += count;
-      this.updateCount();
+      this.count++;
 
       colors[this.color] -= this.price;
       this.updatePrice();
+      this.updateCount();
 
-      this.buyFunctionExtra;
-
-      return true;
+      if (typeof this.buyFunctionExtra !== "function") {
+        continue;
+      }
+      this.buyFunctionExtra();
     }
   }
 
@@ -632,16 +649,14 @@ class AutomationUpgrade {
   buy(count) {
     for (let i = 0; i < count; i++) {
       if (colors[this.color] < this.price) {
-        return false;
+        return;
       }
       //if you can buy the upgrade, continue
-      this.count += count;
-      this.updateCount();
+      this.count += 1;
 
       colors[this.color] -= this.price;
       this.updatePrice();
-
-      return true;
+      this.updateCount();
     }
   }
 
@@ -955,18 +970,18 @@ let streamlinedTasks = new BasicYellowUpgrade(
   document.getElementById("yellowupgrade4amount"),
   document.getElementById("yellowupgrade4cost"),
   function () {
-    taskColorGoalRed = taskColorGoalRed / 2;
-    taskColorGoalBlue = taskColorGoalBlue / 2;
-    taskColorGoalGreen = taskColorGoalGreen / 2;
-
+    taskColorGoal.red *= 0.5;
+    taskColorGoal.blue *= 0.5;
+    taskColorGoal.green *= 0.5;
+    console.log("cheapered");
     document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
-      Math.round(taskColorGoalRed)
+      Math.round(taskColorGoal.red)
     );
     document.getElementById("taskGoalAmountGreen").innerHTML = formatNumber(
-      Math.round(taskColorGoalGreen)
+      Math.round(taskColorGoal.green)
     );
     document.getElementById("taskGoalAmountBlue").innerHTML = formatNumber(
-      Math.round(taskColorGoalBlue)
+      Math.round(taskColorGoal.blue)
     );
   }
 );
@@ -979,7 +994,9 @@ let yellowSynergy = new BasicYellowUpgrade(
   document.getElementById("yellowupgrade5cost"),
   function () {
     taskRewardCount =
-      10 * (1 + yellowSynergy.count * 0.25) * (1 + (goldenmultipliercount * tasksCompleted) / 1000);
+      10 *
+      (1 + yellowSynergy.count * 0.25) *
+      (1 + (goldenMultiplier.count * tasksCompleted) / 1000);
     document.getElementById("taskReward").innerHTML =
       String(Math.round(taskRewardCount)) + " " + taskRewardColor;
   }
