@@ -114,14 +114,7 @@ var dev = 0;
 var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
 var taskColorGoalHEX = "#ffff00";
-/*var taskColorGoalRed = 255;
-var taskColorGoalGreen = 0;
-var taskColorGoalBlue = 0;*/
-let taskColorGoal = {
-  red: 255,
-  green: 0,
-  blue: 0,
-};
+
 let hexResult = "#";
 var tasksCompleted = 0;
 var taskRewardCount = 10;

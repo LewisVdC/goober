@@ -1,3 +1,25 @@
+:root {
+  --redTextColor: rgb(200, 25, 25);
+  --greenTextColor: rgb(0, 219, 0);
+  --blueTextColor: rgb(50, 50, 255);
+  --yellowTextColor: rgb(168, 140, 0);
+  --cyanTextColor: rgb(0, 180, 190);
+  --magentaTextColor: magenta;
+  --magicTextColor: #731dc8;
+  --blackTextColor: black;
+  --whiteTextColor: white;
+
+  --redTextShadow: red 0px 0px 10px, rgb(125, 0, 0) 0px 0px 10px;
+  --greenTextShadow: green 0px 0px 10px, rgb(0, 125, 0) 0px 0px 10px;
+  --blueTextShadow: blue 0px 0px 10px, rgb(0, 0, 125) 0px 0px 10px;
+  --yellowTextShadow: rgb(148, 148, 0) 0px 0px 10px, rgb(125, 125, 0) 0px 0px 10px;
+  --cyanTextShadow: cyan 0px 0px 10px, rgb(0, 125, 125) 0px 0px 10px;
+  --magentaTextShadow: rgb(255, 0, 238) 0px 0px 10px, rgb(255, 126, 126) 0px 0px 10px;
+  --magicTextShadow: #0003fc 0 0 10px, #834c85 0 0 10px;
+  --blackTextShadow: white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, white 0px 0px 2px;
+  --whiteTextShadow: white 0px 0px 5px, white 0px 0px 10px;
+}
+
 html,
 body {
   width: 100%;
@@ -36,7 +58,7 @@ body {
 }
 div#tasks {
   display: none;
-  color: rgb(200, 25, 25);
+  color: var(--redTextColor);
   position: absolute;
   text-align: right;
   right: 0px;
@@ -45,6 +67,23 @@ div#tasks {
   border-width: 5px;
   border-color: rgb(200, 25, 25);
   width: 17.5%;
+}
+
+#taskRed {
+}
+#taskGreen {
+}
+#taskBlue {
+}
+#taskYellow {
+}
+#taskCyan {
+}
+#taskMagenta {
+}
+#taskBlack {
+}
+#taskWhite {
 }
 
 div#toptext {
@@ -59,7 +98,7 @@ div#top {
   padding-top: 2.5%;
 }
 span#redcount {
-  color: rgb(200, 25, 25);
+  color: var(--redTextColor);
 }
 span#greencount {
   color: #00db00;
@@ -270,7 +309,7 @@ button#redupgrade3 {
 }
 
 .bought1 {
-  color: rgb(200, 25, 25);
+  color: var(--redTextColor);
 }
 div#redupgrades {
   display: none;
@@ -687,11 +726,11 @@ button {
   background: linear-gradient(45deg, white, #bdbdbd, gray);
 }
 .redtext {
-  color: rgb(200, 25, 25);
+  color: var(--redTextColor);
   /*text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);*/
 }
 .redtext2 {
-  color: rgb(200, 25, 25);
+  color: var(--redTextColor);
   text-shadow: 0 0 4px red, 0 0 10px rgb(125, 0, 0);
 }
 .bluetext {
@@ -1190,7 +1229,7 @@ div#lewissucks.animate {
 }
 #nerdmodetext {
   word-break: break-word;
-  color: rgb(200, 25, 25);
+  color: var(--redTextColor);
   height: 100%;
   width: calc(50% - 220px);
   display: flex;
@@ -1360,7 +1399,7 @@ span#blackboost {
   }
 }
 #saving {
-  color: rgb(200, 25, 25);
+  color: var(--redTextColor);
   opacity: 0;
   font-size: small;
   margin-left: 2vh;
@@ -1484,7 +1523,7 @@ div#saving.fadeout {
 }
 #achievementNotification {
   z-index: 22;
-  color: rgb(200, 25, 25);
+  color: var(--redTextColor);
   border-color: rgb(200, 25, 25);
   position: fixed;
   border-width: medium;
