@@ -7,6 +7,8 @@ function save() {
   OneTimeColorUpgrade.saveUpgrades();
   AutomationUpgrade.saveUpgrades();
 
+  taskColorGoal.saveCurrentTask();
+
   var save = {
     //new saved objects
     colors: colors,
@@ -18,11 +20,8 @@ function save() {
     magentaspellunlock: magentaspellunlock,
 
     tasksCompleted: tasksCompleted,
-    colorGoal: document.getElementById("taskColor").innerHTML,
-    colorGoalColor: document.getElementById("taskColor").style.color,
     taskColorGoal: taskColorGoal,
-    taskRewardCount: taskRewardCount,
-    taskRewardColor: taskRewardColor,
+
     taskBooster: taskBooster,
     whiteunlock: whiteunlock,
     blackunlock: blackunlock,
@@ -366,8 +365,6 @@ function load() {
     } else {
       document.getElementById("tabs").style.width = "250px";
     }
-    if (typeof savegame.taskColorGoal !== "undefined") taskColorGoal = savegame.taskColorGoal;
-    updateTasksAmount();
 
     if (typeof savegame.taskRewardColor !== "undefined") taskRewardColor = savegame.taskRewardColor;
     if (typeof savegame.taskRewardCount !== "undefined") taskRewardCount = savegame.taskRewardCount;
@@ -401,6 +398,8 @@ function load() {
   BasicColorUpgrade.loadUpgrades();
   OneTimeColorUpgrade.loadUpgrades();
   AutomationUpgrade.loadUpgrades();
+
+  taskColorGoal.loadSavedTask();
 }
 
 function beforeUnloadHandler(event) {

@@ -18,6 +18,36 @@
   --magicTextShadow: #0003fc 0 0 10px, #834c85 0 0 10px;
   --blackTextShadow: white 0px 0px 5px, rgb(255, 255, 255) 0px 0px 10px, white 0px 0px 2px;
   --whiteTextShadow: white 0px 0px 5px, white 0px 0px 10px;
+
+  --redBackgroundColor: rgb(20, 0, 0);
+  --greenBackgroundColor: rgb(0, 20, 0);
+  --blueBackgroundColor: rgb(0, 0, 20);
+  --yellowBackgroundColor: rgb(44, 44, 0);
+  --cyanBackgroundColor: rgb(0, 44, 44);
+  --magentaBackgroundColor: rgb(44, 0, 44);
+  --blackBackgroundCOlor: black;
+  --whiteBackgroundColor: rgb(80, 80, 80);
+
+  --redBoxShadow: 0px 0px 50px 1px red;
+  --greenBoxShadow: 0px 0px 50px 1px green;
+  --blueBoxShadow: 0px 0px 50px 1px blue;
+  --yellowBoxShadow: 0px 0px 50px 1px yellow;
+  --cyanBoxShadow: 0px 0px 50px 1px cyan;
+  --magentaBoxShadow: 0px 0px 50px 1px magenta;
+  --blackBoxShadow: 0px 0px 50px 5px black;
+  --whiteBoxShadow: 0px 0px 50px 1px white;
+
+  --redBorderColor: rgb(200, 25, 25);
+
+  --redButtonBackground: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
+  --greenButtonBackground: linear-gradient(45deg, #003e00, #32db32, #025202);
+  --blueButtonBackground: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
+  --yellowButtonBackground: linear-gradient(45deg, rgb(101 84 0), yellow, rgb(168, 140, 0));
+  --cyanButtonBackground: linear-gradient(45deg, #004f4f, #00ffff, #009a9a);
+  --magentaButtonBackground: linear-gradient(45deg, #5e005e, #ff00ff, #9b009b);
+  --blackButtonBackground: linear-gradient(45deg, black, #2b2b2b, #626262);
+  --whiteButtonBackground: linear-gradient(45deg, white, #bdbdbd, gray);
+  --settingsBackground: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
 }
 
 html,
@@ -28,7 +58,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(20, 0, 0);
+  background-color: var(--redBackgroundColor);
   overflow-x: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -43,7 +73,7 @@ body {
 #reward {
   border-bottom: outset;
   border-width: 5px;
-  border-color: rgb(200, 25, 25);
+  border-color: var(--redBorderColor);
   width: 100%;
   margin-left: 0px;
   border-left-width: 15px;
@@ -65,7 +95,7 @@ div#tasks {
   border-left-style: outset;
   border-bottom-style: outset;
   border-width: 5px;
-  border-color: rgb(200, 25, 25);
+  border-color: var(--redBorderColor);
   width: 17.5%;
 }
 
@@ -104,13 +134,13 @@ span#greencount {
   color: #00db00;
 }
 span#bluecount {
-  color: rgb(50, 50, 255);
+  color: var(--blueTextColor);
 }
 span#cyancount {
-  color: rgb(0, 180, 190);
+  color: var(--cyanTextColor);
 }
 span#magentacount {
-  color: magenta;
+  color: var(--magentaTextColor);
 }
 span#magiccount {
   color: #731dc8 !important;
@@ -118,28 +148,28 @@ span#magiccount {
 }
 div#red {
   display: block;
-  background-color: rgb(20, 0, 0);
+  background-color: var(--redBackgroundColor);
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 div#green {
-  background-color: rgb(0, 20, 0);
+  background-color: var(--greenBackgroundColor);
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 div#blue {
-  background-color: rgb(0, 0, 20);
+  background-color: var(--blueBackgroundColor);
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 div#yellow {
-  background-color: rgb(44, 44, 0);
+  background-color: var(--yellowBackgroundColor);
   height: 100%;
   width: 100%;
   margin: 0;
@@ -147,7 +177,7 @@ div#yellow {
 }
 div#cyan {
   display: none;
-  background-color: rgb(0, 44, 44);
+  background-color: var(--cyanBackgroundColor);
   height: 100%;
   width: 100%;
   margin: 0;
@@ -318,7 +348,7 @@ div#redupgradesbox {
   display: none;
 }
 div#tabs {
-  background-color: rgb(20, 0, 0);
+  background-color: var(--redBackgroundColor);
   display: flex;
   justify-content: center;
   width: calc(250px / 3);
@@ -655,75 +685,95 @@ button#blueupgrade3 {
 }
 button#tabred {
   background-color: rgb(200, 25, 25);
-  box-shadow: 0px 0px 50px 1px red;
+  box-shadow: var(--redBoxShadow);
 }
 button#tabblue {
   display: none;
   background-color: blue;
-  box-shadow: 0px 0px 50px 1px blue;
+  box-shadow: var(--blueBoxShadow);
 }
 button#tabgreen {
   display: none;
   background-color: green;
-  box-shadow: 0px 0px 50px 1px green;
+  box-shadow: var(--greenBoxShadow);
 }
 button#tabyellow {
   display: none;
   background-color: yellow;
-  box-shadow: 0px 0px 50px 0px yellow;
+  box-shadow: var(--yellowBoxShadow);
 }
 button#tabcyan {
   display: none;
   background-color: cyan;
-  box-shadow: 0 0 50px 1px cyan;
+  box-shadow: var(--cyanBoxShadow);
 }
 button#tabmagenta {
   display: none;
   background-color: magenta;
-  box-shadow: 0 0 50px 1px magenta;
+  box-shadow: var(--magentaBoxShadow);
 }
 button#tabwhite {
   z-index: 2;
   background-color: white;
-  box-shadow: 0 0 50px 1px white;
+  box-shadow: var(--whiteBoxShadow);
   width: auto;
 }
 button#tabblack {
   background-color: black;
   color: white;
-  box-shadow: 0 0 50px 5px black;
+  box-shadow: var(--blackBoxShadow);
 }
 button {
   background-color: unset;
+  border: none;
+  padding: 2px;
 }
 /*this is a fix for mozilla's weird button shading*/
+/*
 @-moz-document url-prefix() {
   button {
     box-shadow: inset #4f4f4f 1px 1px 0 1px, inset black -1px -1px 0 1px !important;
-    border: none;
-    padding: 2px;
   }
+}*/
+/* universal edge shading added to all buttons */
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  /* Your shading (use box-shadow here) */
+  box-shadow: inset #4f4f4f 1px 1px 0 1px, inset black -1px -1px 0 1px;
+
+  pointer-events: none; /* avoid blocking clicks */
+  z-index: -1; /* sit behind button background */
 }
+
 .redupgrades {
+  box-shadow: var(--redBoxShadow);
   background-color: rgb(200, 25, 25);
-  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
+  background: var(--redButtonBackground);
 }
 .greenupgrades {
+  box-shadow: var(--greenBoxShadow);
   background-color: green;
-  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  background: var(--greenButtonBackground);
 }
 .blueupgrades {
+  box-shadow: var(--blueBoxShadow);
   background-color: blue;
-  background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
+  background: var(--blueButtonBackground);
 }
 .blackupgrades {
+  box-shadow: var(--blackBoxShadow);
   color: white;
   background-color: black;
-  background: linear-gradient(45deg, black, #2b2b2b, #626262);
+  background: var(--blackButtonBackground);
 }
 .whiteupgrades {
+  box-shadow: var(--whiteBoxShadow);
   background-color: white;
-  background: linear-gradient(45deg, white, #bdbdbd, gray);
+  background: var(--whiteButtonBackground);
 }
 .redtext {
   color: var(--redTextColor);
@@ -784,7 +834,7 @@ div#confusion {
   text-align: center;
   border-radius: 10px;
   font-size: 1em;
-  background: linear-gradient(45deg, rgb(101 84 0), yellow, rgb(168, 140, 0));
+  background: var(--yellowButtonBackground);
 }
 .yellowdescription2 {
   margin-top: 0;
@@ -854,20 +904,20 @@ div#cyanbuildings {
   height: 100%;
 }
 button#redautomation {
-  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
+  background: var(--redButtonBackground);
 }
 #greenautomation {
   height: 100%;
   margin: 0 10px;
 }
 button#greenautomation {
-  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  background: var(--greenButtonBackground);
 }
 #blueautomation {
   height: 100%;
 }
 button#blueautomation {
-  background: linear-gradient(45deg, rgb(0 61 153), rgb(66 135 245), blue);
+  background: var(--blueButtonBackground);
 }
 
 .magentabuild {
@@ -892,32 +942,32 @@ button#blueautomation {
 .magentaupgrades {
   width: 150px;
   height: 24px;
-  background: linear-gradient(45deg, #5e005e, #ff00ff, #9b009b);
+  background: var(--magentaButtonBackground);
 }
 div#magenta {
   display: none;
-  background-color: rgb(44, 0, 44);
+  background-color: var(--magentaBackgroundColor);
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 .cyansubmit {
-  background: linear-gradient(45deg, #004f4f, #00ffff, #009a9a);
+  background: var(--cyanButtonBackground);
 }
 .toggle {
   margin-top: 20px;
 }
 #redtoggle {
-  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  background: var(--greenButtonBackground);
   height: 40px;
 }
 #greentoggle {
-  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  background: var(--greenButtonBackground);
   height: 40px;
 }
 #bluetoggle {
-  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  background: var(--greenButtonBackground);
   height: 40px;
 }
 #devtooltip {
@@ -1117,7 +1167,7 @@ div#lewissucks {
   height: 100px;
   width: 100px;
   animation: gostupid 2s infinite;
-  background: black;
+  background: var(--blackBackgroundColor);
 }
 
 @keyframes gostupid {
@@ -1220,7 +1270,7 @@ div#lewissucks.animate {
 }
 .setting {
   color: white;
-  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+  background: var(--settingsBackground);
   width: 90px;
 }
 #reset {
@@ -1278,7 +1328,7 @@ button#enterbutton {
 div#blackhole.animate2 {
   animation: animate2 10s forwards;
   z-index: 10;
-  background-color: black;
+  background-color: var(--blackBackgroundColor);
 }
 @keyframes animate2 {
   0% {
@@ -1290,7 +1340,7 @@ div#blackhole.animate2 {
 }
 div#blackhole.animate3 {
   animation: animate3 5s forwards;
-  background-color: black;
+  background-color: var(--blackBackgroundColor);
 }
 @keyframes animate3 {
   0% {
@@ -1415,7 +1465,7 @@ div#saving.fadeout {
   text-shadow: 0 0 5px white;
   border: inset black;
   color: white;
-  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+  background: var(--settingsBackground);
   flex-wrap: wrap;
   display: none;
 
@@ -1444,10 +1494,10 @@ div#saving.fadeout {
   height: 10vh;
 }
 #yes {
-  background: linear-gradient(45deg, #6d0000, #ff2c2c, rgb(200, 25, 25));
+  background: var(--redButtonBackground);
 }
 #no {
-  background: linear-gradient(45deg, #003e00, #32db32, #025202);
+  background: var(--greenButtonBackground);
 }
 #achievementButton {
   position: fixed;
@@ -1462,7 +1512,7 @@ div#saving.fadeout {
   overflow-y: scroll;
   position: fixed;
   border: inset black 2px;
-  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+  background: var(--settingsBackground);
   width: 65vh;
   height: 55vh;
   margin-left: calc(50vw - 37.5vh - 1px);
@@ -1524,7 +1574,7 @@ div#saving.fadeout {
 #achievementNotification {
   z-index: 22;
   color: var(--redTextColor);
-  border-color: rgb(200, 25, 25);
+  border-color: var(--redBorderColor);
   position: fixed;
   border-width: medium;
   border-style: outset none none outset;
@@ -1617,7 +1667,7 @@ button {
   overflow-y: scroll;
   position: fixed;
   border: inset black 2px;
-  background: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+  background: var(--settingsBackground);
   width: 65vh;
   height: 55vh;
   margin-left: calc(50vw - 37.5vh - 1px);

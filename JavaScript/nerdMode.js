@@ -103,3 +103,8 @@ function updateNerdMode(deltaTime) {
   nerdtimer = 0;
   setNerdText(nerdModeTexts[hover]);
 }
+
+function nerdmodechange() {
+  let el = document.getElementById("nerdmodetext");
+  el.style.display == "none" ? (el.style.display = "flex") : (el.style.display = "none");
+}

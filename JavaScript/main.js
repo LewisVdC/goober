@@ -520,23 +520,6 @@ const loopID = window.setInterval(function () {
   }
 }, loopDelay);
 
-function rgbToHex(rgb) {
-  let rgbColor = rgb.split(", ");
-  let values = Object.values(hex);
-  hexResult = "#";
-  rgbColor.forEach((element) => {
-    if (values.includes(element)) {
-      hexResult += element + element;
-    } else {
-      let number = Number(element) / 16;
-      let firstDig = String(number).slice(0, 2).replace(".", "");
-      let secondDig = String((number - Number(firstDig)) * 16);
-      hexResult += hex[firstDig];
-      hexResult += hex[secondDig];
-    }
-  });
-}
-
 function submitTask() {
   if (
     colors.red >= taskColorGoal.red &&
@@ -738,6 +721,7 @@ function resetData() {
     localStorage.removeItem("upgrades2");
     localStorage.removeItem("upgrades3");
     localStorage.removeItem("upgrades4");
+    localStorage.removeItem("taskSave");
     window.removeEventListener("beforeunload", beforeUnloadHandler);
     location.reload();
   }

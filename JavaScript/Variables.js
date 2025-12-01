@@ -115,7 +115,6 @@ var arrOfPtags = document.getElementsByTagName("p");
 var arrOfSpanTags = document.getElementsByTagName("span");
 var taskColorGoalHEX = "#ffff00";
 
-let hexResult = "#";
 var tasksCompleted = 0;
 var taskRewardCount = 10;
 var taskRewardColor = "green";
@@ -143,7 +142,7 @@ const hex = {
   4: "4",
   5: "5",
   6: "6",
-  7: "6",
+  7: "7",
   8: "8",
   9: "9",
   10: "A",
