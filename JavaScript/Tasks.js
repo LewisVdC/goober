@@ -173,9 +173,6 @@ class taskGoal {
     } else {
       newReward = splitReward[0]; //if there is no splitting to do, just don't.
     }
-    console.log(newReward);
-    console.log(rewardBases);
-    console.log(rewardText);
 
     //and now we have an array of the bases we want to use in rewardBases.
 
@@ -360,6 +357,14 @@ function submitTask1() {
       taskColorGoal = generateTask(
         "{10} yellow",
         `colors.yellow += calculateTaskReward(10);`,
+        acceptedColors
+      );
+    } else if (tasksCompleted >= 100) {
+      let acceptedColors = new colorsBool(true, true, true);
+      taskColorGoal = generateTask(
+        "{10} yellow and {2} cyan",
+        `colors.yellow += calculateTaskReward(10);
+         colors.cyan += calculateTaskReward(2)`,
         acceptedColors
       );
     }
