@@ -131,7 +131,9 @@ class taskGoal {
         continue;
       }
       document.getElementById("task" + keyCamel).style.display = "block";
-      document.getElementById("taskGoalAmount" + keyCamel).innerHTML = this[key] * this.colorScale;
+      document.getElementById("taskGoalAmount" + keyCamel).innerHTML = formatNumber(
+        Math.round(this[key] * this.colorScale)
+      );
     }
 
     //display reward
@@ -159,12 +161,13 @@ class taskGoal {
         rewardText.shift();
       }
 
+      //loop through all separated parts to make one full string
       for (let i = 0; i < rewardText.length; i++) {
         if (rewardBases[i] == undefined) {
           newReward += rewardText[i];
           continue;
         } else {
-          newReward += calculateTaskReward(rewardBases[i]) + rewardText[i];
+          newReward += Math.round(calculateTaskReward(rewardBases[i])) + rewardText[i];
         }
       }
     } else {
@@ -328,25 +331,38 @@ taskColorGoal.displayTask();
 
 function submitTask1() {
   for (color in colors) {
-    if (colors[color] < taskColorGoal[color]) return false;
+    if (colors[color] < taskColorGoal[color] * taskColorGoal.colorScale) return false;
   }
   //if you can complete the task, take the materials
   for (color in colors) {
-    colors[color] -= taskColorGoal[color];
+    colors[color] -= taskColorGoal[color] * taskColorGoal.colorScale;
   }
   tasksCompleted++;
-  eval(taskColorGoal.rewardFunction);
+
+  //gambling
+  if (Math.random() * 100 <= taskMastery.count) {
+    for (let i = 0; i < taskMastery.count * 10; i++) {
+      eval(taskColorGoal.rewardFunction);
+    }
+  } else {
+    eval(taskColorGoal.rewardFunction);
+  }
 
   //process of setting new color goal
   if (customTasks[tasksCompleted + 1]) {
     taskColorGoal = customTasks[tasksCompleted + 1];
-    taskColorGoal.displayTask();
   } else {
     //if there is no custom task for it, generate one.
 
     //for now, if the task's under 100 completion, give yellow - over, give yellow and some cyan maybe???
     if (tasksCompleted < 100) {
-      taskColorGoal = generateTask();
+      let acceptedColors = new colorsBool(true, true, true);
+      taskColorGoal = generateTask(
+        "{10} yellow",
+        `colors.yellow += calculateTaskReward(10);`,
+        acceptedColors
+      );
     }
   }
+  taskColorGoal.displayTask();
 }

@@ -991,6 +991,7 @@ let yellowSynergy = new BasicYellowUpgrade(
       (1 + (goldenMultiplier.count * tasksCompleted) / 1000);
     document.getElementById("taskReward").innerHTML =
       String(Math.round(taskRewardCount)) + " " + taskRewardColor;
+    taskColorGoal.displayTask();
   }
 );
 let redOverflow = new BasicYellowUpgrade(
@@ -1047,6 +1048,7 @@ let goldenMultiplier = new BasicYellowUpgrade(
       (1 + (goldenMultiplier.count * tasksCompleted) / 1000);
     document.getElementById("taskReward").innerHTML =
       Math.round(taskRewardCount) + " " + taskRewardColor;
+    taskColorGoal.displayTask();
   }
 );
 let strongerSynergy = new BasicYellowUpgrade(
