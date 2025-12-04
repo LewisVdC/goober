@@ -30,16 +30,7 @@ function save() {
     blackholeanimationdone: blackholeanimationdone,
     greentogglestate: greentogglestate,
     bluetogglestate: bluetogglestate,
-    cauldron: cauldron,
-    study: study,
-    feed: feed,
-    feedperson: feedperson,
-    drink: drink,
-    cauldroncost: cauldroncost,
-    studycost: studycost,
-    feedcost: feedcost,
-    feedpersoncost: feedpersoncost,
-    drinkcost: drinkcost,
+
     currentnerdmode: currentnerdmode,
     dialoguestate: dialoguestate,
     words: words,
@@ -61,6 +52,9 @@ function save() {
 }
 
 //MAIN LOAD FUNCTION THAT RUNS ONCE SCRIPTS START
+document.addEventListener("DOMContentLoaded", () => {
+  load(); // safe to run now
+});
 function load() {
   var savegame2 = JSON.parse(localStorage.getItem("save2"));
   if (savegame2 != null) {
@@ -142,126 +136,7 @@ function load() {
 
     //cyan
     document.getElementById("cyancount").innerHTML = "cyan: " + Math.round(colors.cyan);
-    if (typeof savegame.redfilterautomationcount !== "undefined")
-      redfilterautomationcount = savegame.redfilterautomationcount;
-    if (typeof savegame.redfilterautomationprice !== "undefined") {
-      redfilterautomationprice = savegame.redfilterautomationprice;
-      document.getElementById("redfilterautomationprice").innerHTML =
-        Math.round(redfilterautomationprice);
-    }
-    if (typeof savegame.redpointerautomationcount !== "undefined")
-      redpointerautomationcount = savegame.redpointerautomationcount;
-    if (typeof savegame.redpointerautomationprice !== "undefined") {
-      redpointerautomationprice = savegame.redpointerautomationprice;
-      document.getElementById("redpointerautomationprice").innerHTML =
-        Math.round(redpointerautomationprice);
-    }
-    if (typeof savegame.bigredfilterautomationcount !== "undefined")
-      bigredfilterautomationcount = savegame.bigredfilterautomationcount;
-    if (typeof savegame.bigredfilterautomationprice !== "undefined") {
-      bigredfilterautomationprice = savegame.bigredfilterautomationprice;
-      document.getElementById("bigredfilterautomationprice").innerHTML = Math.round(
-        bigredfilterautomationprice
-      );
-    }
-    if (typeof savegame.bigredpointerautomationcount !== "undefined")
-      bigredpointerautomationcount = savegame.bigredpointerautomationcount;
-    if (typeof savegame.bigredpointerautomationprice !== "undefined") {
-      bigredpointerautomationprice = savegame.bigredpointerautomationprice;
-      document.getElementById("bigredpointerautomationprice").innerHTML = Math.round(
-        bigredpointerautomationprice
-      );
-    }
-    if (typeof savegame.rednanometerwaveautomationcount !== "undefined") {
-      rednanometerwaveautomationcount = savegame.rednanometerwaveautomationcount;
-    }
-    if (typeof savegame.rednanometerwaveautomationprice !== "undefined") {
-      rednanometerwaveautomationprice = savegame.rednanometerwaveautomationprice;
-      document.getElementById("rednanometerwaveautomationprice").innerHTML = Math.round(
-        rednanometerwaveautomationprice
-      );
-    }
-    if (typeof savegame.greenfilterautomationcount !== "undefined")
-      greenfilterautomationcount = savegame.greenfilterautomationcount;
-    if (typeof savegame.greenfilterautomationprice !== "undefined") {
-      greenfilterautomationprice = savegame.greenfilterautomationprice;
-      document.getElementById("greenfilterautomationprice").innerHTML = Math.round(
-        greenfilterautomationprice
-      );
-    }
-    if (typeof savegame.greenpointerautomationcount !== "undefined")
-      greenpointerautomationcount = savegame.greenpointerautomationcount;
-    if (typeof savegame.greenpointerautomationprice !== "undefined") {
-      greenpointerautomationprice = savegame.greenpointerautomationprice;
-      document.getElementById("greenpointerautomationprice").innerHTML = Math.round(
-        greenpointerautomationprice
-      );
-    }
-    if (typeof savegame.biggreenfilterautomationcount !== "undefined")
-      biggreenfilterautomationcount = savegame.biggreenfilterautomationcount;
-    if (typeof savegame.biggreenfilterautomationprice !== "undefined") {
-      biggreenfilterautomationprice = savegame.biggreenfilterautomationprice;
-      document.getElementById("biggreenfilterautomationprice").innerHTML = Math.round(
-        biggreenfilterautomationprice
-      );
-    }
-    if (typeof savegame.biggreenpointerautomationcount !== "undefined")
-      biggreenpointerautomationcount = savegame.biggreenpointerautomationcount;
-    if (typeof savegame.biggreenpointerautomationprice !== "undefined") {
-      biggreenpointerautomationprice = savegame.biggreenpointerautomationprice;
-      document.getElementById("biggreenpointerautomationprice").innerHTML = Math.round(
-        biggreenpointerautomationprice
-      );
-    }
-    if (typeof savegame.greennanometerwaveautomationcount !== "undefined") {
-      greennanometerwaveautomationcount = savegame.greennanometerwaveautomationcount;
-    }
-    if (typeof savegame.greennanometerwaveautomationprice !== "undefined") {
-      greennanometerwaveautomationprice = savegame.greennanometerwaveautomationprice;
-      document.getElementById("greennanometerwaveautomationprice").innerHTML = Math.round(
-        greennanometerwaveautomationprice
-      );
-    }
-    if (typeof savegame.bluefilterautomationcount !== "undefined")
-      bluefilterautomationcount = savegame.bluefilterautomationcount;
-    if (typeof savegame.bluefilterautomationprice !== "undefined") {
-      bluefilterautomationprice = savegame.bluefilterautomationprice;
-      document.getElementById("bluefilterautomationprice").innerHTML =
-        Math.round(bluefilterautomationprice);
-    }
-    if (typeof savegame.bluepointerautomationcount !== "undefined")
-      bluepointerautomationcount = savegame.bluepointerautomationcount;
-    if (typeof savegame.bluepointerautomationprice !== "undefined") {
-      bluepointerautomationprice = savegame.bluepointerautomationprice;
-      document.getElementById("bluepointerautomationprice").innerHTML = Math.round(
-        bluepointerautomationprice
-      );
-    }
-    if (typeof savegame.bigbluefilterautomationcount !== "undefined")
-      bigbluefilterautomationcount = savegame.bigbluefilterautomationcount;
-    if (typeof savegame.bigbluefilterautomationprice !== "undefined") {
-      bigbluefilterautomationprice = savegame.bigbluefilterautomationprice;
-      document.getElementById("bigbluefilterautomationprice").innerHTML = Math.round(
-        bigbluefilterautomationprice
-      );
-    }
-    if (typeof savegame.bigbluepointerautomationcount !== "undefined")
-      bigbluepointerautomationcount = savegame.bigbluepointerautomationcount;
-    if (typeof savegame.bigbluepointerautomationprice !== "undefined") {
-      bigbluepointerautomationprice = savegame.bigbluepointerautomationprice;
-      document.getElementById("bigbluepointerautomationprice").innerHTML = Math.round(
-        bigbluepointerautomationprice
-      );
-    }
-    if (typeof savegame.bluenanometerwaveautomationcount !== "undefined") {
-      bluenanometerwaveautomationcount = savegame.bluenanometerwaveautomationcount;
-    }
-    if (typeof savegame.bluenanometerwaveautomationprice !== "undefined") {
-      bluenanometerwaveautomationprice = savegame.bluenanometerwaveautomationprice;
-      document.getElementById("bluenanometerwaveautomationprice").innerHTML = Math.round(
-        bluenanometerwaveautomationprice
-      );
-    }
+
     if (typeof savegame.redtogglestate !== "undefined") redtogglestate = savegame.redtogglestate;
     if (redtogglestate) {
       document.getElementById("redtogglestate").innerHTML = "on";
@@ -324,16 +199,6 @@ function load() {
       document.getElementById("magentaspell").style.backgroundImage =
         "url(images/spells/magenta_spell.webp)";
     }
-    if (typeof savegame.cauldron !== "undefined") cauldron = savegame.cauldron;
-    if (typeof savegame.study !== "undefined") study = savegame.study;
-    if (typeof savegame.feed !== "undefined") feed = savegame.feed;
-    if (typeof savegame.feedperson !== "undefined") feedperson = savegame.feedperson;
-    if (typeof savegame.drink !== "undefined") drink = savegame.drink;
-    if (typeof savegame.cauldroncost !== "undefined") cauldroncost = savegame.cauldroncost;
-    if (typeof savegame.studycost !== "undefined") studycost = savegame.studycost;
-    if (typeof savegame.feedcost !== "undefined") feedcost = savegame.feedcost;
-    if (typeof savegame.feedpersoncost !== "undefined") feedpersoncost = savegame.feedpersoncost;
-    if (typeof savegame.drinkcost !== "undefined") drinkcost = savegame.drinkcost;
     //tasks
     if (typeof savegame.tasksCompleted !== "undefined") tasksCompleted = savegame.tasksCompleted;
     if (typeof savegame.colorGoal !== "undefined")

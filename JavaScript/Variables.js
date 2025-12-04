@@ -88,7 +88,6 @@ let achievement = {
 var enterbuttonx = 0;
 var enterbuttony = 0;
 var blackholex = 0;
-var blackholex = 0;
 var blackholey = 0;
 var blackholeanimationdone = 0;
 var blackholex2 = 0;
@@ -171,11 +170,16 @@ function formatSmallNumber(number, decimalDigits) {
 }
 
 function updateColor(color) {
-  document.querySelectorAll(color + "count").forEach((element) => {
+  document.querySelectorAll("." + color + "count").forEach((element) => {
     element.innerHTML = color + ": " + formatNumber(Math.floor(colors[color]), 1);
   });
   document.getElementById(color + "count").innerHTML =
     color + ": " + formatNumber(Math.floor(colors[color]), 1);
+
+  let taskAmount = document.getElementById("taskAmount" + color[0].toUpperCase() + color.slice(1));
+  if (taskAmount !== null) {
+    taskAmount.innerHTML = formatNumber(Math.floor(colors[color]), 1);
+  }
 }
 function updateAllColors() {
   for (key in colors) {
@@ -222,8 +226,8 @@ class BasicColorUpgrade {
     //this.buyButton = buyButton;
     this.countSpan = countSpan;
     this.priceSpan = priceSpan;
-    this.count = 0;
-    this.price = startPrice;
+    this._count = 0;
+    this._price = startPrice;
     this.buyFunctionExtra = buyFunctionExtra;
 
     BasicColorUpgrade.instances[this.upgradeName] = this;
@@ -248,43 +252,54 @@ class BasicColorUpgrade {
   //methods for updating upgrade's displays
   updateCount() {
     if (!this.countSpan) return;
-    this.countSpan.innerHTML = this.count;
+    this.countSpan.innerHTML = this._count;
   }
   updatePrice() {
-    this.price = formatNumber(
-      Math.floor(
-        applyGovernmentFunding(eval(this.growth.replaceAll("x", this.count)))
-        /*example growth formula:
-        (10 * Math.pow(1.1, x));*/
-      )
-    );
+    this._price = applyGovernmentFunding(eval(this.growth.replaceAll("x", this._count)));
     if (!this.priceSpan) return;
-    this.priceSpan.innerHTML = this.price;
+    this.priceSpan.innerHTML = formatNumber(Math.round(this._price));
   }
   static updateAllPrices() {
     for (let i in BasicColorUpgrade.instances) {
       let inst = BasicColorUpgrade.instances[i];
-      inst.price = formatNumber(
-        Math.floor(
-          applyGovernmentFunding(eval(inst.growth.replaceAll("x", inst.count)))
-          /*example growth formula:
-        (10 * Math.pow(1.1, x));*/
-        )
-      );
+      inst.price = applyGovernmentFunding(eval(inst.growth.replaceAll("x", inst.count)));
       if (!inst.priceSpan) continue;
-      inst.priceSpan.innerHTML = inst.price;
+      inst.priceSpan.innerHTML = formatNumber(Math.round(inst._price));
     }
+  }
+  static updateAllCounts() {
+    for (let i in BasicColorUpgrade.instances) {
+      BasicColorUpgrade.instances[i].updateCount();
+    }
+  }
+
+  set count(value) {
+    this._count = value;
+    this.updateCount();
+  }
+  set price(value) {
+    this._price = value;
+    this.updatePrice();
+  }
+  get count() {
+    return this._count;
+  }
+  get price() {
+    return this._price;
   }
 
   //method for buying an upgrade
   buy(count) {
+    //prevent magenta upgrades from being bought before the proper dialoguestate reached
+    if (this.color == "magenta" && dialoguestate < 4) return;
+
     for (let i = 0; i < count; i++) {
-      if (colors[this.color] < this.price) {
+      if (colors[this.color] < this._price) {
         return;
       }
       //if you can buy the upgrade, continue
-      this.count++;
-      colors[this.color] -= this.price;
+      this._count++;
+      colors[this.color] -= this._price;
       this.updatePrice();
       this.updateCount();
 
@@ -323,7 +338,7 @@ class BasicColorUpgrade {
     for (let i in BasicColorUpgrade.instances) {
       let savedUpgrade = savedUpgrades[i];
       //if savedupgrades does not contain the instance, return
-      if (!savedUpgrade) return;
+      if (!savedUpgrade) continue;
       //if it does, set the instance's count and price to saved values
       let obj = BasicColorUpgrade.instances[i];
       obj.count = savedUpgrade.count;
@@ -354,9 +369,9 @@ class OneTimeColorUpgrade {
   constructor(color, upgradeName, startPrice, priceSpan) {
     this.color = color;
     this.upgradeName = upgradeName;
-    this.price = startPrice;
+    this._price = startPrice;
     this.priceSpan = priceSpan;
-    this.count = 0;
+    this._count = 0;
 
     OneTimeColorUpgrade.instances[this.upgradeName] = this;
   }
@@ -379,19 +394,34 @@ class OneTimeColorUpgrade {
 
   updatePrice() {
     if (!this.priceSpan) return;
-    this.priceSpan.innerHTML = this.count ? "bought" : this.price;
+    this.priceSpan.innerHTML = this._count ? "bought" : this._price;
+  }
+
+  set count(value) {
+    this._count = value;
+    //this.updateCount();
+  }
+  set price(value) {
+    this._price = value;
+    this.updatePrice();
+  }
+  get count() {
+    return this._count;
+  }
+  get price() {
+    return this._price;
   }
 
   //method for buying an upgrade
   buy(count = 1) {
-    if (colors[this.color] < this.price || this.count) {
+    if (colors[this.color] < this._price || this._count) {
       return false;
     }
     //if you can buy the upgrade, continue
-    this.count++;
+    this._count++;
     this.updatePrice();
 
-    colors[this.color] -= this.price;
+    colors[this.color] -= this._price;
     return true;
   }
 
@@ -421,7 +451,7 @@ class OneTimeColorUpgrade {
     for (let i in OneTimeColorUpgrade.instances) {
       let savedUpgrade = savedUpgrades[i];
       //if savedupgrades does not contain the instance, return
-      if (!savedUpgrade) return;
+      if (!savedUpgrade) continue;
       //if it does, set the instance's count and price to saved values
       let obj = OneTimeColorUpgrade.instances[i];
       obj.count = savedUpgrade.count;
@@ -468,8 +498,8 @@ class BasicYellowUpgrade {
     //this.buyButton = buyButton;
     this.countSpan = countSpan;
     this.priceSpan = priceSpan;
-    this.count = 0;
-    this.price = startPrice;
+    this._count = 0;
+    this._price = startPrice;
     this.buyFunctionExtra = buyFunctionExtra;
 
     BasicYellowUpgrade.instances[this.upgradeName] = this;
@@ -483,18 +513,16 @@ class BasicYellowUpgrade {
   //methods for updating upgrade's displays
   updateCount() {
     if (!this.countSpan) return;
-    this.countSpan.innerHTML = this.count;
+    this.countSpan.innerHTML = this._count;
   }
   updatePrice() {
-    this.price = formatNumber(
-      Math.floor(
-        eval(this.growth.replaceAll("x", this.count))
-        /*example growth formula:
+    this._price = Math.floor(
+      eval(this.growth.replaceAll("x", this._count))
+      /*example growth formula:
         (10 * Math.pow(1.1, x));*/
-      )
     );
     if (!this.priceSpan) return;
-    this.priceSpan.innerHTML = this.price;
+    this.priceSpan.innerHTML = formatNumber(this._price);
   }
   static updateAllUpgrades() {
     for (let i in BasicYellowUpgrade.instances) {
@@ -504,16 +532,31 @@ class BasicYellowUpgrade {
     }
   }
 
+  set count(value) {
+    this._count = value;
+    //this.updateCount();
+  }
+  set price(value) {
+    this._price = value;
+    this.updatePrice();
+  }
+  get count() {
+    return this._count;
+  }
+  get price() {
+    return this._price;
+  }
+
   //method for buying an upgrade
   buy(count) {
     for (let i = 0; i < count; i++) {
-      if (colors[this.color] < this.price) {
+      if (colors[this.color] < this._price) {
         return false;
       }
       //if you can buy the upgrade, continue
-      this.count++;
+      this._count++;
 
-      colors[this.color] -= this.price;
+      colors[this.color] -= this._price;
       this.updatePrice();
       this.updateCount();
 
@@ -553,7 +596,7 @@ class BasicYellowUpgrade {
       for (let i in BasicYellowUpgrade.instances) {
         let savedUpgrade = savedUpgrades[i];
         //if savedupgrades does not contain the instance, return
-        if (!savedUpgrade) return;
+        if (!savedUpgrade) continue;
         //if it does, set the instance's count and price to saved values
         let obj = BasicYellowUpgrade.instances[i];
         obj.count = savedUpgrade.count;
@@ -597,14 +640,14 @@ class AutomationUpgrade {
     upgradeName = automationUpgrade.upgradeName + "Automation"
   ) {
     this.startPrice = startPrice;
-    this.price = startPrice;
+    this._price = startPrice;
     this.growth = growth;
     this.countSpan = countSpan;
     this.priceSpan = priceSpan;
     this.automationUpgrade = automationUpgrade;
     this.upgradeName = upgradeName;
     this.color = "cyan";
-    this.count = 0;
+    this._count = 0;
     this.automationTimer = 0;
     AutomationUpgrade.instances[this.upgradeName] = this;
   }
@@ -616,18 +659,16 @@ class AutomationUpgrade {
   //methods for updating upgrade's displays
   updateCount() {
     if (!this.countSpan) return;
-    this.countSpan.innerHTML = this.count;
+    this.countSpan.innerHTML = this._count;
   }
   updatePrice() {
-    this.price = formatNumber(
-      Math.floor(
-        eval(this.growth.replaceAll("x", this.count))
-        /*example growth formula:
+    this._price = Math.floor(
+      eval(this.growth.replaceAll("x", this._count))
+      /*example growth formula:
         (10 * Math.pow(1.1, x));*/
-      )
     );
     if (!this.priceSpan) return;
-    this.priceSpan.innerHTML = this.price;
+    this.priceSpan.innerHTML = formatNumber(this._price);
   }
   static updateAllUpgrades() {
     for (let i in AutomationUpgrade.instances) {
@@ -637,16 +678,31 @@ class AutomationUpgrade {
     }
   }
 
+  set count(value) {
+    this._count = value;
+    //this.updateCount();
+  }
+  set price(value) {
+    this._price = value;
+    this.updatePrice();
+  }
+  get count() {
+    return this._count;
+  }
+  get price() {
+    return this._price;
+  }
+
   //buy function!
   buy(count) {
     for (let i = 0; i < count; i++) {
-      if (colors[this.color] < this.price) {
+      if (colors[this.color] < this._price) {
         return;
       }
       //if you can buy the upgrade, continue
-      this.count += 1;
+      this._count += 1;
 
-      colors[this.color] -= this.price;
+      colors[this.color] -= this._price;
       this.updatePrice();
       this.updateCount();
     }
@@ -721,7 +777,7 @@ class AutomationUpgrade {
       for (let i in AutomationUpgrade.instances) {
         let savedUpgrade = savedUpgrades[i];
         //if savedupgrades does not contain the instance, return
-        if (!savedUpgrade) return;
+        if (!savedUpgrade) continue;
         //if it does, set the instance's count and price to saved values
         let obj = AutomationUpgrade.instances[i];
         obj.count = savedUpgrade.count;
@@ -965,7 +1021,6 @@ let streamlinedTasks = new BasicYellowUpgrade(
     taskColorGoal.red *= 0.5;
     taskColorGoal.blue *= 0.5;
     taskColorGoal.green *= 0.5;
-    console.log("cheapered");
     document.getElementById("taskGoalAmountRed").innerHTML = formatNumber(
       Math.round(taskColorGoal.red)
     );
@@ -1094,11 +1149,9 @@ let colorSyphon = new BasicYellowUpgrade(
     document.getElementById("tabcyan").style.display = "block";
   }
 );
-
-//var strongersynergyprice = 100;
-//var strongersynergycount = 0;
 var yellowGAIN = 0;
 
+//
 //cyan
 var cyanBuyTimeBoost = 1;
 
@@ -1212,4 +1265,59 @@ let blueNanometerWaveAutomation = new AutomationUpgrade(
   document.getElementById("bluenanometerwaveautomationcount"),
   document.getElementById("bluenanometerwaveautomationprice"),
   blueNanometerWave
+);
+
+//
+//
+//magenta
+//same as r, g and b but it produces magic which isn't a problem
+let cauldron = new BasicColorUpgrade(
+  "magenta",
+  "cauldron",
+  10,
+  "(10 * Math.pow(1.1, x))",
+  document.getElementById("cauldroncount"),
+  document.getElementById("cauldroncost"),
+  () => {
+    if (dialoguestate === 5) {
+      timer = 30;
+      chatupdate();
+    }
+  }
+);
+
+let study = new BasicColorUpgrade(
+  "magenta",
+  "study",
+  100,
+  "100*Math.pow(1.1,x)",
+  document.getElementById("studycount"),
+  document.getElementById("studyprice")
+);
+
+let feed = new BasicColorUpgrade(
+  "magenta",
+  "feed",
+  1000,
+  "1000*Math.pow(1.1,x)",
+  document.getElementById("feedcount"),
+  document.getElementById("feedprice")
+);
+
+let feedPerson = new BasicColorUpgrade(
+  "magenta",
+  "feedPerson",
+  10000,
+  "10000*Math.pow(1.1,x)",
+  document.getElementById("feedpersoncount"),
+  document.getElementById("feedpersonprice")
+);
+
+let drink = new BasicColorUpgrade(
+  "magenta",
+  "drink",
+  100000,
+  "100000*Math.pow(1.1,x)",
+  document.getElementById("drinkcount"),
+  document.getElementById("drinkprice")
 );

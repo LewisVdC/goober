@@ -16,7 +16,7 @@
     <!-- preload images bc it looked horrible there were 150ms before the images loaded right it does throw a warning in console though -->
   </head>
 
-  <body onload="load()" id="body">
+  <body id="body">
     <!--help menu for players updating-->
     <div id="helpmenu">
       <span id="magentaresettext">do you want to reset magenta?</span>
@@ -1069,7 +1069,7 @@
             <span>pour some magenta into a cauldron: <span id="cauldroncount"></span></span>
           </div>
           <div id="magentabuilding1" class="magentabuilding">
-            <button id="cauldron" class="magentaupgrades" onClick="buycauldron()">
+            <button id="cauldron" class="magentaupgrades" onClick="cauldron.buy(1)">
               cost:
               <span id="cauldroncost">10</span>
             </button>
@@ -1080,7 +1080,7 @@
             <span>study your mixture: <span id="studycount"></span></span>
           </div>
           <div id="magentabuilding2" class="magentabuilding">
-            <button id="studycauldron" class="magentaupgrades" onClick="buystudy()">
+            <button id="studycauldron" class="magentaupgrades" onClick="study.buy(1)">
               cost:
               <span id="studycost">100</span>
             </button>
@@ -1091,7 +1091,7 @@
             <span>feed it to a test animal: <span id="feedcount"></span></span>
           </div>
           <div id="magentabuilding3" class="magentabuilding">
-            <button id="feed" class="magentaupgrades" onClick="buyfeed()">
+            <button id="feed" class="magentaupgrades" onClick="feed.buy(1)">
               cost:
               <span id="feedcost">1000</span>
             </button>
@@ -1102,7 +1102,7 @@
             <span>feed it to a person: <span id="feedpersoncount"></span></span>
           </div>
           <div id="magentabuilding4" class="magentabuilding">
-            <button id="feedperson" class="magentaupgrades" onClick="buyfeedperson()">
+            <button id="feedperson" class="magentaupgrades" onClick="feedPerson.buy(1)">
               cost:
               <span id="feedpersoncost">10000</span>
             </button>
@@ -1113,7 +1113,7 @@
             <span>drink it yourself: <span id="drinkcount"></span></span>
           </div>
           <div id="magentabuilding5" class="magentabuilding">
-            <button id="drink" class="magentaupgrades" onClick="buydrink()">
+            <button id="drink" class="magentaupgrades" onClick="drink.buy(1)">
               cost:
               <span id="drinkcost">100000</span>
             </button>

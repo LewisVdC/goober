@@ -1,16 +1,5 @@
 // ):
 //VARIABLES
-/*window.colors = {
-  red: 10,
-  green: 0,
-  blue: 0,
-  yellow: 0,
-  cyan: 0,
-  magenta: 0,
-  magic: 0,
-  black: 0,
-  white: 0,
-};*/
 
 //END VARIABLES
 
@@ -272,12 +261,6 @@ const loopID = window.setInterval(function () {
       } else {
         document.getElementById("tabblack").style.display = "none";
       }
-      //update
-      document.getElementById("cauldroncount").innerHTML = cauldron;
-      document.getElementById("studycount").innerHTML = study;
-      document.getElementById("feedcount").innerHTML = feed;
-      document.getElementById("feedpersoncount").innerHTML = feedperson;
-      document.getElementById("drinkcount").innerHTML = drink;
 
       //timo building 5 does not give 5k of the stuff per second it boosts production
       //mb
@@ -310,15 +293,7 @@ const loopID = window.setInterval(function () {
       document.getElementById("enterdiv").style.top = `${blackholey2}px`;
 
       //wuuuuuuuuuuuuuuugh
-      document.getElementById("taskAmountRed").innerHTML = formatNumber(Math.floor(colors.red));
-      document.getElementById("taskAmountBlue").innerHTML = formatNumber(Math.floor(colors.blue));
-      document.getElementById("taskAmountGreen").innerHTML = formatNumber(Math.floor(colors.green));
-      document.getElementById("yellowcount").innerHTML =
-        "yellow: " + formatNumber(Math.floor(colors.yellow), 1);
-      document.getElementById("magentacount").innerHTML =
-        "magenta: " + formatNumber(Math.floor(colors.magenta), 1);
-      document.getElementById("cyancount").innerHTML =
-        "cyan: " + formatNumber(Math.floor(colors.cyan), 1);
+
       //ugh
       //im moving the yellow upgrades update function somewhere else
       //i'm removing the yellow upgrades update, like why do we even need to update it every time? -boongabonga
@@ -389,14 +364,16 @@ const loopID = window.setInterval(function () {
         savecounter = 0;
       }
 
-      document.getElementById("blackcount").innerHTML = formatNumber(colors.black, 1);
-
       //magic stuff
 
       //increase magic!! woo
       calcmagic(
         //how do i do this,,
-        cauldron * 1 + study * 10 + feed * 100 + feedperson * 1000 + drink * 10000
+        cauldron.count * 1 +
+          study.count * 10 +
+          feed.count * 100 +
+          feedPerson.count * 1000 +
+          drink.count * 10000
       );
       //increase red
       calcred(
@@ -520,120 +497,6 @@ const loopID = window.setInterval(function () {
   }
 }, loopDelay);
 
-function submitTask() {
-  if (
-    colors.red >= taskColorGoal.red &&
-    colors.green >= taskColorGoal.green &&
-    colors.blue >= taskColorGoal.blue
-  ) {
-    colors.red -= taskColorGoal.red;
-    colors.green -= taskColorGoal.green;
-    colors.blue -= taskColorGoal.blue;
-    tasksCompleted++;
-    if (tasksCompleted === 1) {
-      taskColorGoal.red = 0;
-      taskColorGoal.green = 255;
-      taskColorGoal.blue = 0;
-      updateTasksAmount();
-
-      document.getElementById("taskColor").innerHTML = "#00FF00";
-      document.getElementById("taskColor").style.color = "green";
-      document.getElementById("taskColor").style.textShadow = "0 0 10px green";
-      document.getElementById("taskReward").innerHTML = "10 blue";
-      taskRewardCount = 10;
-      taskRewardColor = "blue";
-      document.getElementById("tabgreen").style.display = "block";
-      document.getElementById("tabs").style.width = "calc(250px/3*2)";
-      colors.green += 10;
-    } else if (tasksCompleted === 2) {
-      taskColorGoal.red = 0;
-      taskColorGoal.green = 0;
-      taskColorGoal.blue = 255;
-      updateTasksAmount();
-
-      document.getElementById("taskColor").innerHTML = "#0000FF";
-      document.getElementById("taskColor").style.color = "blue";
-      document.getElementById("taskColor").style.textShadow = "0 0 10px blue";
-      document.getElementById("taskReward").innerHTML = "2x color gain";
-      taskRewardCount = 2;
-      taskRewardColor = "x color gain";
-      document.getElementById("tabs").style.width = "250px";
-      document.getElementById("tabblue").style.display = "block";
-      colors.blue += 10;
-    } else if (tasksCompleted === 3) {
-      taskColorGoal.red = 1100000;
-      taskColorGoal.green = 115000;
-      taskColorGoal.blue = 4100;
-      updateTasksAmount();
-
-      document.getElementById("taskColor").innerHTML = "#6E7329";
-      document.getElementById("taskColor").style.color = "rgb(168, 140, 0)";
-      document.getElementById("taskColor").style.textShadow = "0 0 10px yellow";
-      document.getElementById("taskReward").innerHTML = "10 yellow";
-      taskRewardCount = 10;
-      taskRewardColor = "yellow";
-      taskBooster = 2;
-    } else {
-      taskColorGoal.red = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
-      taskColorGoal.green = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
-      taskColorGoal.blue = Math.floor(Math.random() * 255 * 1000 * Math.pow(1.2, tasksCompleted));
-
-      rgbToHex(
-        Math.round(taskColorGoal.red / (1000 * Math.pow(1.2, tasksCompleted))) +
-          ", " +
-          Math.round(taskColorGoal.green / (1000 * Math.pow(1.2, tasksCompleted))) +
-          ", " +
-          Math.round(taskColorGoal.blue / (1000 * Math.pow(1.2, tasksCompleted)))
-      );
-      document.getElementById("taskColor").innerHTML = hexResult;
-      document.getElementById("taskColor").style.color =
-        "rgb(" +
-        String(Math.round(taskColorGoal.red / (1000 * Math.pow(1.2, tasksCompleted)))) +
-        ", " +
-        String(
-          Math.round(taskColorGoal.green / (1000 * Math.pow(1.2, tasksCompleted))) +
-            ", " +
-            String(Math.round(taskColorGoal.blue / (1000 * Math.pow(1.2, tasksCompleted))) + ")")
-        );
-      document.getElementById("taskColor").style.textShadow =
-        "0px 0px 10px " +
-        "rgb(" +
-        String(Math.round(taskColorGoal.red / (1000 * Math.pow(1.2, tasksCompleted)))) +
-        ", " +
-        String(Math.round(taskColorGoal.green / (1000 * Math.pow(1.2, tasksCompleted)))) +
-        ", " +
-        String(Math.round(taskColorGoal.blue / (1000 * Math.pow(1.2, tasksCompleted)))) +
-        ")";
-      document.getElementById("tabyellow").style.display = "block";
-      colors.yellow += taskRewardCount;
-      taskRewardCount =
-        10 *
-        (1 + yellowSynergy.count * 0.25) *
-        (1 + (goldenMultiplier.count * tasksCompleted) / 1000);
-      if (Math.random() * 100 <= taskMastery.count) {
-        colors.yellow += taskRewardCount * 10 * taskMastery.count;
-        taskMasteryTrigger = true;
-      }
-      document.getElementById("yellowcount").innerHTML =
-        "yellow: " + formatNumber(Math.floor(colors.yellow), 1);
-      if (tasksCompleted === 99) {
-        document.getElementById("taskReward").innerHTML =
-          String(Math.round(taskRewardCount)) + " " + taskRewardColor + " and 10 magenta";
-      } else {
-        document.getElementById("taskReward").innerHTML =
-          String(Math.round(taskRewardCount)) + " " + taskRewardColor;
-      }
-      if (tasksCompleted === 100) {
-        colors.magenta += 10;
-        document.getElementById("tabmagenta").style.display = "block";
-        document.getElementById("holyalbertomode").style.display = "block";
-        document.getElementById("magentacount").innerHTML =
-          "magenta: " + formatNumber(Math.floor(colors.magenta), 1);
-      }
-      updateTasksAmount();
-    }
-  }
-}
 document.addEventListener("keydown", function (event) {
   if (tab != "black2") {
     if (event.key === "r") {
@@ -661,7 +524,7 @@ document.addEventListener("keydown", function (event) {
       } else if (tab === "blue") {
         blueFilter.buy(1);
       } else if (tab === "magenta") {
-        buycauldron();
+        cauldron.buy(1);
       }
     }
     if (event.code === "Digit2") {
@@ -672,7 +535,7 @@ document.addEventListener("keydown", function (event) {
       } else if (tab === "blue") {
         bluePointer.buy(1);
       } else if (tab === "magenta") {
-        buystudy();
+        study.buy(1);
       }
     }
     if (event.code === "Digit3") {
@@ -683,7 +546,7 @@ document.addEventListener("keydown", function (event) {
       } else if (tab === "blue") {
         bigBlueFilter.buy(1);
       } else if (tab === "magenta") {
-        buyfeed();
+        feed.buy(1);
       }
     }
     if (event.code === "Digit4") {
@@ -694,7 +557,7 @@ document.addEventListener("keydown", function (event) {
       } else if (tab === "blue") {
         bigBluePointer.buy(1);
       } else if (tab === "magenta") {
-        buyfeedperson();
+        feedPerson.buy(1);
       }
     }
     if (event.code === "Digit5") {
@@ -705,7 +568,7 @@ document.addEventListener("keydown", function (event) {
       } else if (tab === "blue") {
         blueNanometerWave.buy(1);
       } else if (tab === "magenta") {
-        buydrink();
+        drink.buy(1);
       }
     }
   }
@@ -859,11 +722,11 @@ function explode() {
 function redscroll() {
   if (colors.red >= 1e17 && spell1unlock == 0) {
     spell1unlock = 1;
-    colors.magenta -= feedcost;
-    feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
+    colors.magenta -= feed.price;
+    feed.price = Math.floor((1000 * Math.pow(1.1, feed.count)) / 1);
 
-    document.getElementById("feedcount").innerHTML = feed;
-    document.getElementById("feedcost").innerHTML = feedcost;
+    document.getElementById("feedcount").innerHTML = feed.count;
+    document.getElementById("feedcost").innerHTML = feed.price;
   }
 }
 
@@ -1417,14 +1280,12 @@ function stuck() {
 function resetMagenta() {
   stuck();
   document.getElementById("magentaspell").setAttribute("onclick", "buymagentaspell()");
-  cauldron = study = feed = feedperson = drink = colors.magic = 0;
+  cauldron.count = study.count = feed.count = feedPerson.count = drink.count = colors.magic = 0;
   timeouts = [];
   albertoRequirement = false;
-  colors.magenta = cauldroncost = 10;
-  studycost = 100;
-  feedcost = 1000;
-  feedpersoncost = 10000;
-  drinkcost = 100000;
+  colors.magenta = 10;
+  BasicColorUpgrade.updateAllPrices();
+  BasicColorUpgrade.updateAllCounts();
   spell1unlock =
     spell2unlock =
     spell3unlock =
@@ -1701,7 +1562,7 @@ function checkAchievement() {
     achievementCall("prestiegeAutomation", 29, "#132322", "#01FFFF");
   }
   //magenta
-  if (achievement.buyCauldron1 === false && cauldron >= 1) {
+  if (achievement.buyCauldron1 === false && cauldron.count >= 1) {
     achievementCall("buyCauldron1", 30, "#211023", "#FF01FF");
   }
   if (achievement.castSpell1 === false && dialoguestate >= 8) {
@@ -1964,16 +1825,6 @@ var redscrollcount = 0;
 var greenscrollcount = 0;
 var bluescrollcount = 0;
 var magentaspellunlock = 0;
-var cauldron = 0;
-var study = 0;
-var feed = 0;
-var feedperson = 0;
-var drink = 0;
-var cauldroncost = 10;
-var studycost = 100;
-var feedcost = 1000;
-var feedpersoncost = 10000;
-var drinkcost = 100000;
 var spellcount = 3;
 var spell1unlock = 0;
 var spell2unlock = 0;
@@ -1981,66 +1832,6 @@ var spell3unlock = 0;
 var spell4unlock = 0;
 var spell5unlock = 0;
 var randomnumber = 0;
-
-//magenta buy functions
-function buycauldron() {
-  if (colors.magenta >= cauldroncost && dialoguestate >= 4) {
-    if (dialoguestate === 5) {
-      timer = 30;
-      chatupdate();
-    }
-    cauldron++;
-    colors.magenta -= cauldroncost;
-    cauldroncost = Math.floor((10 * Math.pow(1.1, cauldron)) / 1);
-
-    document.getElementById("cauldroncount").innerHTML = cauldron;
-    document.getElementById("cauldroncost").innerHTML = cauldroncost;
-  }
-}
-
-function buystudy() {
-  if (colors.magenta >= studycost) {
-    study++;
-    colors.magenta -= studycost;
-    studycost = Math.floor((100 * Math.pow(1.1, study)) / 1);
-
-    document.getElementById("studycount").innerHTML = study;
-    document.getElementById("studycost").innerHTML = studycost;
-  }
-}
-
-function buyfeed() {
-  if (colors.magenta >= feedcost) {
-    feed++;
-    colors.magenta -= feedcost;
-    feedcost = Math.floor((1000 * Math.pow(1.1, feed)) / 1);
-
-    document.getElementById("feedcount").innerHTML = feed;
-    document.getElementById("feedcost").innerHTML = feedcost;
-  }
-}
-
-function buyfeedperson() {
-  if (colors.magenta >= feedpersoncost) {
-    feedperson++;
-    colors.magenta -= feedpersoncost;
-    feedpersoncost = Math.floor((10000 * Math.pow(1.1, feedperson)) / 1);
-
-    document.getElementById("feedpersoncount").innerHTML = feedperson;
-    document.getElementById("feedpersoncost").innerHTML = feedpersoncost;
-  }
-}
-
-function buydrink() {
-  if (colors.magenta >= drinkcost) {
-    drink++;
-    colors.magenta -= drinkcost;
-    drinkcost = Math.floor((100000 * Math.pow(1.1, drink)) / 1);
-
-    document.getElementById("drinkcount").innerHTML = drink;
-    document.getElementById("drinkcost").innerHTML = drinkcost;
-  }
-}
 
 //magenta calculation functions
 function calcmagic(number) {
