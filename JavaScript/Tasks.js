@@ -341,6 +341,7 @@ function submitTask1() {
     for (let i = 0; i < taskMastery.count * 10; i++) {
       eval(taskColorGoal.rewardFunction);
     }
+    taskMasteryTrigger = true;
   } else {
     eval(taskColorGoal.rewardFunction);
   }

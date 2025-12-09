@@ -25,3 +25,6 @@ yellow spell: gives 1s worth of yellow
 yellow spell 2: increases yellow effects?
 why not add combined spells "Simone"
 PS previous comment make a merger "Simone"
+/\
+sure, but like how? what? we gotta figure out how to do this then, do u wanna maybe make like a spell crafting thing with 
+different materials u get somehow to combine for different effects? and also how would we generate new icons?

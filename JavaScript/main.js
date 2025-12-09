@@ -1,20 +1,9 @@
 // ):
-//VARIABLES
 
-//END VARIABLES
-
-//LOADING (VARIABLES)
-
-// most important one bc yea oh nvm this is kinda useless
-//var save = {
-//  red: red,
-//  redFilter.count: redFilter.count,
-//};
-
-document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(colors.red));
+/*document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(colors.red));
 document.getElementById("greencount").innerHTML =
   "green: " + formatNumber(Math.floor(colors.green));
-document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(colors.blue));
+document.getElementById("bluecount").innerHTML = "blue: " + formatNumber(Math.floor(colors.blue));*/
 
 // tabCall("red","rgb(200, 25, 25)", "rgb(20,0,0)", "0px 0px 10px red, 0 0 10px rgb(125,0,0)");
 
@@ -216,7 +205,11 @@ const loopID = window.setInterval(function () {
       //update nerd mode!
       updateNerdMode(loopDelay);
 
+      //update spell cooldowns
+      Spell.updateSpellCooldowns(loopDelay);
+
       //"update" game for ppl
+      //temp-t
       if (
         document.getElementById("tabmagenta").style.display === "block" &&
         redscrollcount + greenscrollcount + bluescrollcount === 3 &&
@@ -224,6 +217,7 @@ const loopID = window.setInterval(function () {
       ) {
         chatupdate();
       }
+
       //if loaded === 1 is important for keeping everything from
       //doing stuff its not supposed to before gameload
       window.scrollBy(-window.innerWidth, 0);
@@ -585,6 +579,7 @@ function resetData() {
     localStorage.removeItem("upgrades3");
     localStorage.removeItem("upgrades4");
     localStorage.removeItem("taskSave");
+    localStorage.removeItem("spellSave");
     window.removeEventListener("beforeunload", beforeUnloadHandler);
     location.reload();
   }
@@ -697,6 +692,7 @@ function spell3() {
   }
 }
 //oh and make it so u have to unlock the spells that sounds silly
+//temp-t
 function think() {
   var randomspell = Math.floor(Math.random() * spellcount) + 1;
   if (window[`spell${randomspell}unlock`] == 1) {
@@ -719,6 +715,7 @@ function explode() {
 //real
 //fake i give up
 //scroll time!
+//temp-t
 function redscroll() {
   if (colors.red >= 1e17 && spell1unlock == 0) {
     spell1unlock = 1;
@@ -846,35 +843,6 @@ function fancyblackhole2() {
     colors.black = +1500000;
     document.getElementById("blackholecounter").style.display = "block";
   }, 2001);
-}
-
-function buymagentaspell() {
-  if (colors.magic >= 10 && dialoguestate >= 5) {
-    document.getElementById("magentaspell").setAttribute("onclick", "castmagentaspell()");
-    colors.magic -= 10;
-    magentaspellunlock = 1;
-    document.getElementById("magentaspell").style.backgroundImage =
-      "url(images/spells/magenta_spell.webp)";
-    timer = 60;
-    chatupdate();
-  } else if (colors.magic < 10 && dialoguestate >= 5) {
-    say("you have insufficient magic right now. try saving up until you have 10.");
-  }
-}
-//uhh if the price scales with the amount of magic u make then whats the point even,,?
-//the only idea i have rn is just that as the price scales so does the amount it gives so that it stays balanced
-function castmagentaspell() {
-  if (dialoguestate >= 10) {
-    if (dialoguestate === 10) {
-      chatupdate();
-    }
-    if (document.getElementById("magentashell").style.background === "") {
-      let tribute = (document.getElementById("magicslider").value / 100) * colors.magic;
-      colors.magenta += tribute / 3;
-      colors.magic -= tribute;
-      spellCoolDown("#magentashell", 1000);
-    }
-  }
 }
 
 //settings
@@ -1040,6 +1008,7 @@ function isBase64(str) {
 }
 
 //advanced chatting
+//temp-t
 let albertoLines;
 let timeouts = [];
 let albertoRequirement = false;
@@ -1112,6 +1081,7 @@ function holyalberto() {
     say(words);
   }
 }
+
 function enter() {
   const blackhole = document.getElementById("blackhole");
   blackhole.classList.remove("animate3");
@@ -1276,24 +1246,17 @@ function stuck() {
     document.getElementById("helpmenu").style.display = "flex";
   }
 }
-
+//temp-t
 function resetMagenta() {
   stuck();
-  document.getElementById("magentaspell").setAttribute("onclick", "buymagentaspell()");
+  document.getElementById("magentaspell").setAttribute("onclick", "magentaSpell.buySpell()");
   cauldron.count = study.count = feed.count = feedPerson.count = drink.count = colors.magic = 0;
   timeouts = [];
   albertoRequirement = false;
   colors.magenta = 10;
   BasicColorUpgrade.updateAllPrices();
   BasicColorUpgrade.updateAllCounts();
-  spell1unlock =
-    spell2unlock =
-    spell3unlock =
-    magentaspellunlock =
-    redscrollcount =
-    greenscrollcount =
-    bluescrollcount =
-      0;
+  redscrollcount = greenscrollcount = bluescrollcount = 0;
   dialoguestate = 1;
 
   save();
@@ -1418,7 +1381,7 @@ function checkAchievement() {
     achievementCall("have1e20red", 5, "#261711", "#F20C0C");
   }
   //green
-  if (achievement.greenfilter1 === false && greenfilter >= 1) {
+  if (achievement.greenfilter1 === false && greenFilter.count >= 1) {
     achievementCall("greenfilter1", 6, "#172311", "#19FF00");
   }
   if (achievement.greenPerSec100 === false && debuggreennumber >= 100) {
@@ -1429,9 +1392,9 @@ function checkAchievement() {
   }
   if (
     achievement.buyAllGreenUpgrades === false &&
-    greenupgrade1 === 1 &&
-    greenupgrade2 === 1 &&
-    greenupgrade3 === 1
+    greenUpgrade1.count === 1 &&
+    greenUpgrade2.count === 1 &&
+    greenUpgrade3.count === 1
   ) {
     achievementCall("buyAllGreenUpgrades", 9, "#172311", "#19FF00");
   }
@@ -1442,20 +1405,20 @@ function checkAchievement() {
     achievementCall("have1e21green", 11, "#172311", "#19FF00");
   }
   //blue
-  if (achievement.bluefilter1 === false && bluefilter >= 1) {
+  if (achievement.bluefilter1 === false && blueFilter.count >= 1) {
     achievementCall("bluefilter1", 12, "#100F22", "#0B1EED");
   }
   if (achievement.bluePerSec1000 === false && debugbluenumber >= 1000) {
     achievementCall("bluePerSec1000", 13, "#100F22", "#0B1EED");
   }
-  if (achievement.have1e7blue === false && colors.blue >= 10000000) {
+  if (achievement.have1e7blue === false && colors.blue >= 1e7) {
     achievementCall("have1e7blue", 14, "#100F22", "#0B1EED");
   }
   if (
     achievement.buyAllBlueUpgrades === false &&
-    blueupgrade1 === 1 &&
-    blueupgrade2 === 1 &&
-    blueupgrade3 === 1
+    blueUpgrade1.count === 1 &&
+    blueUpgrade2.count === 1 &&
+    blueUpgrade3.count === 1
   ) {
     achievementCall("buyAllBlueUpgrades", 15, "#100F22", "#0B1EED");
   }
@@ -1565,7 +1528,7 @@ function checkAchievement() {
   if (achievement.buyCauldron1 === false && cauldron.count >= 1) {
     achievementCall("buyCauldron1", 30, "#211023", "#FF01FF");
   }
-  if (achievement.castSpell1 === false && dialoguestate >= 8) {
+  if (achievement.castSpell1 === false && dialoguestate >= 9) {
     achievementCall("castSpell1", 31, "#211023", "#FF01FF");
   }
   if (achievement.magicPerSec1e4 === false && debugmagicnumber >= 1e4) {
@@ -1750,7 +1713,7 @@ function starSpawn() {
 function calcred(number) {
   debugrednumber = number / 2;
   colors.red = colors.red + number / 200;
-  document.getElementById("redcount").innerHTML = "red: " + formatNumber(Math.floor(colors.red), 1);
+  //updateColor("red");
 }
 
 //GREEN
@@ -1768,8 +1731,8 @@ function calcred(number) {
 function calcgreen(number) {
   debuggreennumber = number / 2;
   colors.green = colors.green + number / 200;
-  document.getElementById("greencount").innerHTML =
-    "green: " + formatNumber(Math.floor(colors.green), 1);
+  //document.getElementById("greencount").innerHTML =
+  //  "green: " + formatNumber(Math.floor(colors.green), 1);
 }
 
 //BLUE
@@ -1787,8 +1750,8 @@ function calcgreen(number) {
 function calcblue(number) {
   debugbluenumber = number / 2;
   colors.blue = colors.blue + number / 200;
-  document.getElementById("bluecount").innerHTML =
-    "blue: " + formatNumber(Math.floor(colors.blue), 1);
+  //document.getElementById("bluecount").innerHTML =
+  //  "blue: " + formatNumber(Math.floor(colors.blue), 1);
 }
 
 //YELLOW
@@ -1837,8 +1800,8 @@ var randomnumber = 0;
 function calcmagic(number) {
   debugmagicnumber = number / 2;
   colors.magic = colors.magic + number / 200;
-  document.getElementById("magiccount").innerHTML =
-    "magic: " + formatNumber(Math.floor(colors.magic), 1);
+  //document.getElementById("magiccount").innerHTML =
+  //  "magic: " + formatNumber(Math.floor(colors.magic), 1);
 }
 
 //magenta alberto

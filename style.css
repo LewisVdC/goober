@@ -48,6 +48,9 @@
   --blackButtonBackground: linear-gradient(45deg, black, #2b2b2b, #626262);
   --whiteButtonBackground: linear-gradient(45deg, white, #bdbdbd, gray);
   --settingsBackground: linear-gradient(45deg, #363636, #4f4f4f, #2b2b2b);
+
+  /*random stuff*/
+  --spellEmptyBackground: radial-gradient(#222 40%, #686868);
 }
 
 html,
@@ -99,7 +102,7 @@ div#tasks {
   width: 17.5%;
 }
 
-#taskRed {
+/*#taskRed {
 }
 #taskGreen {
 }
@@ -114,7 +117,7 @@ div#tasks {
 #taskBlack {
 }
 #taskWhite {
-}
+}*/
 
 div#toptext {
   color: white;

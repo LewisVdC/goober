@@ -7,6 +7,8 @@ function save() {
   OneTimeColorUpgrade.saveUpgrades();
   AutomationUpgrade.saveUpgrades();
 
+  Spell.saveSpells();
+
   taskColorGoal.saveCurrentTask();
 
   var save = {
@@ -263,6 +265,8 @@ function load() {
   BasicColorUpgrade.loadUpgrades();
   OneTimeColorUpgrade.loadUpgrades();
   AutomationUpgrade.loadUpgrades();
+
+  Spell.loadSpells();
 
   taskColorGoal.loadSavedTask();
 }

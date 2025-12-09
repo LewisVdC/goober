@@ -155,6 +155,7 @@ const hex = {
 //THE UPGRADES CLASSES STUFF THINGIES
 
 function formatNumber(number, decimalDigits = 0) {
+  if (!number && number !== 0) return number;
   if (Math.abs(number) >= 1e7) {
     return number.toExponential(3);
   } else {
@@ -171,14 +172,14 @@ function formatSmallNumber(number, decimalDigits) {
 
 function updateColor(color) {
   document.querySelectorAll("." + color + "count").forEach((element) => {
-    element.innerHTML = color + ": " + formatNumber(Math.floor(colors[color]), 1);
+    element.innerHTML = color + ": " + formatNumber(colors[color], 1);
   });
   document.getElementById(color + "count").innerHTML =
-    color + ": " + formatNumber(Math.floor(colors[color]), 1);
+    color + ": " + formatNumber(colors[color], 1);
 
   let taskAmount = document.getElementById("taskAmount" + color[0].toUpperCase() + color.slice(1));
   if (taskAmount !== null) {
-    taskAmount.innerHTML = formatNumber(Math.floor(colors[color]), 1);
+    taskAmount.innerHTML = formatNumber(colors[color], 1);
   }
 }
 function updateAllColors() {
