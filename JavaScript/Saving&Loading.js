@@ -9,6 +9,8 @@ function save() {
 
   Spell.saveSpells();
 
+  dialogueBox.saveDialogues();
+
   taskColorGoal.saveCurrentTask();
 
   var save = {
@@ -34,7 +36,6 @@ function save() {
     bluetogglestate: bluetogglestate,
 
     currentnerdmode: currentnerdmode,
-    dialoguestate: dialoguestate,
     words: words,
     spell1unlock: spell1unlock,
     spell2unlock: spell2unlock,
@@ -121,7 +122,6 @@ function load() {
       blackholeanimationdone = savegame.blackholeanimationdone;
     //dialogue
     timer = 50;
-    if (typeof savegame.dialoguestate !== "undefined") dialoguestate = savegame.dialoguestate;
     if (typeof savegame.words !== "undefined") {
       words = savegame.words;
       alberto.style.opacity = "1";
@@ -267,6 +267,8 @@ function load() {
   AutomationUpgrade.loadUpgrades();
 
   Spell.loadSpells();
+
+  dialogueBox.loadDialogues();
 
   taskColorGoal.loadSavedTask();
 }

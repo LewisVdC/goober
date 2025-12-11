@@ -59,7 +59,7 @@ class Spell {
   }
 
   castSpell() {
-    if (dialoguestate < 10) return; //temp-t
+    if (Alberto.dialogueCounter < 7) return; //no buy if no can cast
     if (this._cooldownTimeLeft > 0) return;
     if (!this._bought) return;
 
@@ -131,25 +131,30 @@ let magentaSpell = new Spell(
   1000,
 
   (tribute) => {
-    if (dialoguestate === 10) {
-      chatupdate();
+    if (Alberto.dialogueCounter === 7) {
+      Alberto.requirements[7] = () => {
+        return true;
+      };
+      Alberto.clickHandler();
+      colors.magic += tribute;
     }
     colors.magenta += tribute / 3;
     colors.magic -= tribute;
   },
 
   () => {
-    if (colors.magic >= 10 && dialoguestate >= 5) {
+    if (colors.magic >= 10 && Alberto.dialogueCounter == 5) {
       colors.magic -= 10;
-
-      timer = 60;
-      chatupdate();
       return true;
-    } else if (colors.magic < 10 && dialoguestate >= 7) {
-      say("you have insufficient magic right now. try saving up until you have 10.");
+    } else if (colors.magic < 10 && Alberto.dialogueCounter == 5) {
+      Alberto.displayTextDelayed(
+        "you have insufficient magic right now. try saving up until you have 10."
+      );
     }
     return false;
   },
   document.getElementById("magentashell"),
   "images/spells/magenta_spell.webp"
 );
+
+//gonna stop here, idk if this is the way we really want this to be?

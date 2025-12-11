@@ -56,7 +56,7 @@ function showtab(x) {
       "rgb(0, 219, 0)"
     );
     //green scroll interferes with tasks
-    if (dialoguestate >= 14 && greenscrollcount === 0) {
+    if (Alberto.dialogueCounter == 11) {
       document.getElementById("submitTaskButton").style.position = "absolute";
       document.getElementById("submitTaskButton").style.width = "50%";
       document.getElementById("submitTaskButton").style.borderRightStyle = "none";
@@ -208,15 +208,10 @@ const loopID = window.setInterval(function () {
       //update spell cooldowns
       Spell.updateSpellCooldowns(loopDelay);
 
+      //check if alberto requirement is alr met
+      Alberto.checkRequirement();
+
       //"update" game for ppl
-      //temp-t
-      if (
-        document.getElementById("tabmagenta").style.display === "block" &&
-        redscrollcount + greenscrollcount + bluescrollcount === 3 &&
-        dialoguestate === 14
-      ) {
-        chatupdate();
-      }
 
       //if loaded === 1 is important for keeping everything from
       //doing stuff its not supposed to before gameload
@@ -325,7 +320,7 @@ const loopID = window.setInterval(function () {
         document.getElementById("blueupgrade2").style.display = "block";
         document.getElementById("blueupgrade3").style.display = "block";
       }
-      if (dialoguestate >= 14) {
+      if (Alberto.dialogueCounter == 11) {
         if (redscrollcount === 0) {
           document.getElementById("redscroll").style.display = "inline-block";
         }
@@ -580,6 +575,7 @@ function resetData() {
     localStorage.removeItem("upgrades4");
     localStorage.removeItem("taskSave");
     localStorage.removeItem("spellSave");
+    localStorage.removeItem("dialogueSave");
     window.removeEventListener("beforeunload", beforeUnloadHandler);
     location.reload();
   }
@@ -728,17 +724,15 @@ function redscroll() {
 }
 
 function buyredscroll() {
-  if (colors.red >= 1e17 && dialoguestate >= 14) {
+  if (colors.red >= 1e17 && Alberto.dialogueCounter == 11) {
     spell1unlock++;
     colors.red -= 1e17;
     redscrollcount++;
     document.getElementById("redscroll").style.display = "none";
     document.getElementById("redspell").style.backgroundImage = "url(images/spells/red_spell.webp)";
     window.setTimeout("showtab('magenta')", 1000);
-    if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
-      window.setTimeout("chatupdate()", 1500);
-    } else {
-      say(
+    if (redscrollcount + greenscrollcount + bluescrollcount != 3) {
+      Alberto.displayTextDelayed(
         "great! you've got the red scroll. only " +
           (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +
           " to go."
@@ -752,7 +746,7 @@ function buyredscroll() {
   }
 }
 function buygreenscroll() {
-  if (colors.green >= 1e18 && dialoguestate >= 14) {
+  if (colors.green >= 1e18 && Alberto.dialogueCounter == 11) {
     spell2unlock++;
     colors.green -= 1e18;
     greenscrollcount++;
@@ -765,11 +759,8 @@ function buygreenscroll() {
     document.getElementById("greenspell").style.backgroundImage =
       "url(images/spells/green_spell.webp)";
     window.setTimeout("showtab('magenta')", 1000);
-    if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
-      window.setTimeout("chatupdate()", 1500);
-      window.setTimeout("timer = 50", 1400);
-    } else {
-      say(
+    if (redscrollcount + greenscrollcount + bluescrollcount != 3) {
+      Alberto.displayTextDelayed(
         "you've got the green scroll down. only " +
           (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +
           " more."
@@ -783,7 +774,7 @@ function buygreenscroll() {
   }
 }
 function buybluescroll() {
-  if (colors.blue >= 1e19 && dialoguestate >= 14) {
+  if (colors.blue >= 1e19 && Alberto.dialogueCounter == 11) {
     spell3unlock++;
     colors.blue -= 1e19;
     bluescrollcount++;
@@ -791,11 +782,8 @@ function buybluescroll() {
     document.getElementById("bluespell").style.backgroundImage =
       "url(images/spells/blue_spell.webp)";
     window.setTimeout("showtab('magenta')", 1000);
-    if (redscrollcount + greenscrollcount + bluescrollcount === 3) {
-      window.setTimeout("chatupdate()", 1500);
-      window.setTimeout("timer = 50", 1400);
-    } else {
-      say(
+    if (redscrollcount + greenscrollcount + bluescrollcount != 3) {
+      Alberto.displayTextDelayed(
         "now you have the blue scroll. " +
           (3 - (redscrollcount + greenscrollcount + bluescrollcount)) +
           " more and then you're done."
@@ -1008,51 +996,7 @@ function isBase64(str) {
 }
 
 //advanced chatting
-//temp-t
-let albertoLines;
-let timeouts = [];
-let albertoRequirement = false;
-
-fetch("texts/alberto.txt")
-  .then((response) => response.text())
-  .then((albertoText) => {
-    albertoLines = albertoText.replaceAll("\r", "").split("\n");
-  });
-
-document.getElementById("magenta").addEventListener("mousedown", function () {
-  if (albertoLines[dialoguestate] !== "break" || albertoRequirement === true) {
-    albertoRequirement = false;
-    if (albertoLines[dialoguestate] === "break") {
-      dialoguestate++;
-    }
-    words = albertoLines[dialoguestate];
-    say(albertoLines[dialoguestate]);
-    dialoguestate++;
-  }
-});
-
-function say(message) {
-  for (let i = 0; i < timeouts.length; i++) {
-    clearTimeout(timeouts[i]);
-  }
-  alberto.innerHTML = "𓆩⟡𓆪𓆩⟡𓆪";
-  let letters = message.split("");
-  for (let i = 0; i < letters.length; i++) {
-    const id = setTimeout(() => {
-      alberto.innerHTML = "𓆩⟡𓆪" + alberto.innerHTML.replaceAll("𓆩⟡𓆪", "") + letters[i] + "𓆩⟡𓆪";
-    }, i * 50);
-    timeouts.push(id);
-  }
-}
-
-function chatupdate() {
-  albertoRequirement = true;
-}
-
-//chat w alberto
-alberto = document.getElementById("think");
-alberto.innerHTML = "𓆩⟡𓆪";
-
+let alberto = document.getElementById("think");
 //funny
 function holyalberto() {
   if (holyalbertostate === 0) {
@@ -1078,7 +1022,7 @@ function holyalberto() {
   } else {
     document.body.style.overflowY = "hidden";
     holyalbertostate = 0;
-    say(words);
+    Alberto.displayTextDelayed(words);
   }
 }
 
@@ -1257,7 +1201,7 @@ function resetMagenta() {
   BasicColorUpgrade.updateAllPrices();
   BasicColorUpgrade.updateAllCounts();
   redscrollcount = greenscrollcount = bluescrollcount = 0;
-  dialoguestate = 1;
+  Alberto.dialogueCounter = 0;
 
   save();
   document.body.style.display = "none";
@@ -1468,7 +1412,11 @@ function checkAchievement() {
     achievementCall("have1e7yellow", 23, "#222310", "#FFFF00");
   }
   //cyan
-  if (achievement.yellowCyan1 === false && colorSyphon.count >= 1 && dialoguestate >= 16) {
+  if (
+    achievement.yellowCyan1 === false &&
+    colorSyphon.count >= 1 &&
+    Alberto.dialogueCounter >= 16
+  ) {
     achievementCall("yellowCyan1", 24, "#132322", "#01FFFF");
     document.getElementById("cyan1spell").style.backgroundImage =
       "url('images/spells/cyan_spell.webp')";
@@ -1528,7 +1476,7 @@ function checkAchievement() {
   if (achievement.buyCauldron1 === false && cauldron.count >= 1) {
     achievementCall("buyCauldron1", 30, "#211023", "#FF01FF");
   }
-  if (achievement.castSpell1 === false && dialoguestate >= 9) {
+  if (achievement.castSpell1 === false && Alberto.dialogueCounter >= 6) {
     achievementCall("castSpell1", 31, "#211023", "#FF01FF");
   }
   if (achievement.magicPerSec1e4 === false && debugmagicnumber >= 1e4) {
@@ -1782,7 +1730,6 @@ function calcblue(number) {
 var bible = "";
 var holyalbertostate = 0;
 var timer = 0;
-var dialoguestate = 0;
 var words = "";
 var redscrollcount = 0;
 var greenscrollcount = 0;

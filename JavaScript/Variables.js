@@ -291,8 +291,8 @@ class BasicColorUpgrade {
 
   //method for buying an upgrade
   buy(count) {
-    //prevent magenta upgrades from being bought before the proper dialoguestate reached
-    if (this.color == "magenta" && dialoguestate < 4) return;
+    //prevent magenta upgrades from being bought before the proper Alberto.dialogueCounter reached
+    if (this.color == "magenta" && Alberto.dialogueCounter < 4) return;
 
     for (let i = 0; i < count; i++) {
       if (colors[this.color] < this._price) {
@@ -1278,13 +1278,7 @@ let cauldron = new BasicColorUpgrade(
   10,
   "(10 * Math.pow(1.1, x))",
   document.getElementById("cauldroncount"),
-  document.getElementById("cauldroncost"),
-  () => {
-    if (dialoguestate === 5) {
-      timer = 30;
-      chatupdate();
-    }
-  }
+  document.getElementById("cauldroncost")
 );
 
 let study = new BasicColorUpgrade(
